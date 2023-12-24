@@ -3,6 +3,7 @@ import "./Greeting.css";
 // import icon from "/public/images/bell.webp";
 // import icon2 from "/public/images/AI.png";
 import { Link } from "react-router-dom";
+import ManageAdmins from "./ManageAdmins";
 
 function Greeting(props){
     
@@ -23,10 +24,17 @@ function Greeting(props){
         setNotiClick(!isNotiClick);
     }
 
+    
     return (
 
         <div className="greetmain">
             <h1 className="greet">Hey <Link to={`/profile`}><span className="greetName">{props.fname}</span></Link>,</h1>
+
+            <Link 
+            style={props.isAdmin ? {"display":"block"} : {"display":"none"}}
+            className="AddAdminBtn" to={`/manageAdmins`}>Manage Admins</Link>
+
+            
             {/* <div className="Notify" id="noti" 
             style= {isNotiClick ?  NotiStyle : null} >
             

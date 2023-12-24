@@ -24,8 +24,34 @@
 }
 
 .greetmain{
+    /* border: 2px solid red; */
+    display: flex;
+    justify-content: space-between; 
     position: relative;
+    margin-right: 5vh;
+
     /* margin-top: 10vh; */
+}
+
+.AddAdminBtn{
+    font-size: 120%;
+    position: relative;
+    bottom:0px;
+    height: fit-content;
+    width: fit-content;
+    color: white;
+    padding: 10px;
+    /* border: 2px solid white; */
+    background-color: #6913BF;
+    align-self: flex-end;
+    border-radius: 8px;
+}
+
+.AddAdminBtn:hover{
+    cursor: pointer;
+    color: #6913BF;
+    /* border: 2px solid white; */
+    background-color: white;
 }
 
 .Notify{

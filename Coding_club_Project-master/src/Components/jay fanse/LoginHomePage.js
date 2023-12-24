@@ -18,6 +18,7 @@ const location = useLocation();
   const userID = sessionStorage.getItem('userID');
 
   const [fname,setFname] = useState("");
+  const [isAdmin,setAdmin] = useState(false);
 
   useEffect( () => {
     fetch(`home/user/?userID=${userID}`)
@@ -28,6 +29,7 @@ const location = useLocation();
       data => {
         console.log(data);
         setFname(data[0].fname);
+        setAdmin(data[0].isAdmin);
       }
     )
   },[])
@@ -37,7 +39,7 @@ const location = useLocation();
     <Navbar_after_login />
     <div className='background-color-LoginHome'>
         
-        <Greeting fname={fname} userID={userID}/>
+        <Greeting fname={fname} userID={userID} isAdmin={isAdmin}/>
         <NewTasks userID={userID}/>
         <NewUpdates title={"Articles"} userID={userID} isArticleSelected={true}/>
         <NewUpdates title={"News"} userID={userID} isArticleSelected={false}/>

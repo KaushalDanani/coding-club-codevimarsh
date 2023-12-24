@@ -32,6 +32,7 @@ import ArticlesNewsHomePage from './Components/jay fanse/ArticlesNewsHomePage';
 import EditUserProfile from './Components/jay fanse/EditUserProfile';
 import ResourcesContent from './Components/jay fanse/ResourcesContent';
 import UserProfile from './Components/jay fanse/UserProfile';
+import ManageAdmins from './Components/jay fanse/ManageAdmins.js';
 
 // jay prajapati
 import ResourcesHome from './Components/Jay prajapati/ResourcesHome';
@@ -82,6 +83,7 @@ function App() {
           <Route path='/signup/step-2' element={<Sign_up_second_page />} />
           <Route path='/signup/step-3' element={<Sign_up_third_page />} />
           <Route path='/home' element={<LoginHomePage />} />
+          <Route path='/manageAdmins' element={<ManageAdmins />} />
           <Route path='/contest' element={<Contest_main />} />
           <Route path='/article&news' element={<ArticlesNewsHomePage />} />
           <Route path='/resources' element={<ResourcesHome/>} />

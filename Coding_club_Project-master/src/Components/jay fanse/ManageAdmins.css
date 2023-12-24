@@ -1,0 +1,66 @@
+.manageAdminsDiv{
+    /* border: 2px solid red; */
+    margin: 10vh 25vw;
+}
+
+.manageAdminsHeader{
+    background-color: #6913BF;
+    color: white;
+    font-size: 2rem;
+    display: flex;
+    justify-content: center;
+    border-top-right-radius: 20px;
+    border-top-left-radius: 20px;
+    padding: 10px 0px;
+}
+
+.manageAdminsBody{
+    color: white;
+    background-color: #363636;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    padding: 20px;    
+}
+
+.manageAdminsList{
+    height: 50vh;
+    overflow: auto;
+}
+
+.manageAdminsBodyRow{
+    /* border: 2px solid yellow; */
+    display: grid;
+    grid-template-columns: 2fr 2fr 1fr;
+    justify-content: center;
+    padding: 5px;
+}
+
+.manageAdminsBodyRow div{
+    font-size: 1.1rem;
+    /* border: 2px solid green; */
+    display: flex;
+    justify-content: center;
+}
+
+.deleteAdminBtn{
+    border: none;
+    background-image: url("/public/images/deleteAdmin.png");
+    background-repeat: no-repeat;
+    height: 18px;
+    width: 18px;
+    background-size: contain;
+    background-color:transparent;
+    /* padding: 0.3vw; */
+    box-sizing:content-box;
+}
+.addAdminBtn{
+    border: none;
+    background-image: url("/public/images/addAdmin.png");
+    background-repeat: no-repeat;
+    height: 18px;
+    width: 18px;
+    background-size: contain;
+    background-color:transparent;
+    /* padding: 0.3vw; */
+    box-sizing:content-box;
+}

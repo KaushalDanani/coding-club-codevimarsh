@@ -199,6 +199,9 @@ const User = mongoose.model(
     leetcode: {
       type: String,
     },
+    isAdmin: {
+      type: Boolean,
+    }
   })
 );
 
@@ -557,6 +560,12 @@ app.get("/loginHome/contests", async (req, res) => {
   const contestData = await Contest.find({ type: "upcoming" });
   res.send(contestData);
 });
+
+app.post("/adminList",async (req,res) => {
+  const admins = await User.find({isAdmin : true});
+  res.send({admins : admins});
+});
+
 
 app.get("/resources/rescontent", async (req, res) => {
   try {
