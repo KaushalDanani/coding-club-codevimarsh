@@ -1,0 +1,79 @@
+[{
+  "_id": {
+    "$oid": "6526db6d907275bbfe0b6b7b"
+  },
+  "asker": {
+    "$oid": "65224e09173a453d81b6c5c8"
+  },
+  "question": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Distinctio aspernatur ea alias quibusdam fugiat odit. Tempore ipsum culpa obcaecati. Dolore doloremque vel pariatur iure?",
+  "description": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nisi recusandae numquam id accusamus molestias non quod totam ratione similique qui aut, consequatur ea expedita omnis. Non consequuntur officiis ad molestias adipisci asperiores quis natus, laborum deserunt reprehenderit odit enim illo tenetur at incidunt ratione cupiditate. Delectus expedita ab exercitationem explicabo.",
+  "upvotes": 41,
+  "askDate": {
+    "$date": "2023-11-09T18:30:00.000Z"
+  },
+  "replies": [
+    {
+      "$oid": "65224c61a968191435a2cae5"
+    },
+    {
+      "$oid": "65224c61a968191435a2cae7"
+    },
+    {
+      "$oid": "6538f05e4da751b229ae66a6"
+    },
+    {
+      "$oid": "653923b69c95bbb844ebcbd8"
+    }
+  ],
+  "__v": 0,
+  "tags": [
+    "java"
+  ]
+},
+{
+  "_id": {
+    "$oid": "6526db6d907275bbfe0b6b7c"
+  },
+  "asker": {
+    "$oid": "65224e09173a453d81b6c5c7"
+  },
+  "question": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Distinctio aspernatur ea alias quibusdam fugiat odit. Tempore ipsum culpa obcaecati. Dolore doloremque vel pariatur iure?",
+  "description": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nisi recusandae numquam id accusamus molestias non quod totam ratione similique qui aut, consequatur ea expedita omnis. Non consequuntur officiis ad molestias adipisci asperiores quis natus, laborum deserunt reprehenderit odit enim illo tenetur at incidunt ratione cupiditate. Delectus expedita ab exercitationem explicabo.",
+  "upvotes": 40,
+  "askDate": {
+    "$date": "2023-11-09T18:30:00.000Z"
+  },
+  "replies": [],
+  "__v": 0,
+  "tags": [
+    "Web Development",
+    "DSA"
+  ]
+},
+{
+  "_id": {
+    "$oid": "65393a9e5a5c9722f20cb69e"
+  },
+  "asker": {
+    "$oid": "65224e09173a453d81b6c5c6"
+  },
+  "question": "I want to Know more about MERN Stack, Where can i get resources?",
+  "description": "",
+  "code": "",
+  "upvotes": 1,
+  "askDate": {
+    "$date": "2023-10-25T15:56:14.152Z"
+  },
+  "replies": [
+    {
+      "$oid": "65393bc05a5c9722f20cb6f4"
+    }
+  ],
+  "tags": [
+    "React",
+    "MongoDB",
+    "NodeJS",
+    "ExpressJS"
+  ],
+  "__v": 0
+}]

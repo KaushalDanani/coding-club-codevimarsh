@@ -1,0 +1,102 @@
+.head{
+    display: flex;
+}
+.card{
+    color: black;
+    margin: auto;
+    background-color: #e5dce8;
+    border: 3px solid rgb(72, 69, 72);
+    border-radius: 1vw;
+    box-shadow: 0px 0px 25px black;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    height: 26vh;
+    width: 24vw;
+}
+.card:hover{
+    margin: auto;
+    /* height: 28vh;
+    width: 25vw; */
+    transform: scale3d(1.02,1.02,1.02);
+}
+
+.cardDesc{
+    /* margin-top: 5%; */
+    font-size: 1.2rem;
+}
+
+#topic{
+    text-align: center;
+    font-size: 1.9rem;
+    text-decoration: underline;
+    margin: 3vh;
+}
+#imgcont{
+    margin-left: 3vw;
+}
+#details{
+    margin: 3vh;
+    margin-top: 0;
+    padding-left: 0%;
+}
+a{
+    text-decoration: none;
+    color: aliceblue;
+}
+.lg{
+    height: 6vw;
+    width: 6vw;
+    border: 1px solid white;
+    border-radius: 1vw;
+    background-color: rgb(135, 47, 223);
+    box-shadow: 0px 0px 25px black;
+    padding: 0.5vw;
+    position: absolute;
+    top: 7vh;
+    left: -3vw;
+}
+
+@media (max-width:900px){
+    .cardDesc{
+        font-size: 1.8rem;
+        margin-top: 2vh;
+    }
+    #topic{
+        /* font-size: 2rem; */
+        font-size: 10vw;
+    }
+    .card{
+        height: 28vh;
+        width: 35vw;
+        border-radius: 3vw;
+    }
+    .card:hover{
+        height: 28vh;
+        width: 35vw;
+    }
+    .lg{
+        height: 9vw;
+        width:  9vw;
+        border-radius: 2vh;
+    }
+}
+
+@media (max-width:600px){
+    #details{
+        font-size: 1.8rem;
+    }
+    #topic{
+        
+    }
+    .card{
+        height: 28vh;
+        width: 55vw;
+    }
+    .card:hover{
+        height: 28vh;
+        width: 55vw;
+    }
+    .lg{
+        height: 10vw;
+        width:  10vw;
+    }
+}

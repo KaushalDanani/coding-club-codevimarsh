@@ -1,0 +1,143 @@
+@import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
+
+
+*{
+    margin: 0%;
+    padding: 0%;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+
+
+.projectmain{
+    /* color: white; */
+    color: black;
+    padding: 20px 100px;
+}
+.projdisplay{
+    width: 100%;
+    height: 100%;
+    /* background-color: #363636; */
+    background: wheat;
+    padding: 35px 60px;
+    border-radius: 8px;
+    box-shadow: 0px 0px 20px black;
+
+}
+
+.projectname{
+    font-size: 2.5rem !important;
+    margin: 10px 0px 10px 0px;
+    font-weight: 500;
+    color: black;
+}
+
+/* .projectname:hover{
+    color: rgb(215, 215, 215);
+} */
+
+.projdispheader{
+    display: flex;
+    column-gap: 100px;
+}
+
+
+.projdispheader p{
+    margin: 5px 0px 5px 0px;
+    font-size: 1.2rem !important;
+}
+
+.projdispbutton{
+    padding: 5px 20px;
+    background: #0c73e2;
+    border: 0ch;
+    border-radius: 25px;
+    color: white;
+    cursor: pointer;
+    float: right;
+    margin-right: 10px;
+    font-size: 1.2rem;
+}
+
+.projbtn{
+    padding: 15px 0px;
+}
+
+.projdispbutton:hover{
+    background-color: #0958ac;
+}
+
+.projlink{
+    margin-top: 30px;
+}
+
+.projdispheader img{
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+}
+
+.video_info{
+    margin-top: 40px;
+    display: none;
+}
+
+.video_info video{
+    width: 600px ;
+    height: 400px ;
+    float: left;
+    margin: 0px 20px 20px 0px !important;
+}
+
+.teaminfo{
+    margin-top: 30px;
+    clear: left;
+}
+
+.teaminfo li{
+    /* list-style: ; */
+    font-size: 1.15rem;
+}
+
+.ProjectLink{
+    text-decoration: none;
+    color: white;
+    background-color: #0c73e2;
+    padding: 5px 20px 8px 18px;
+    border-radius: 8px;
+    border: 0cap;
+    margin-top: 5px;
+}
+
+@media only screen and (max-width: 650px) {
+
+    .projectmain{
+        color: white;
+        padding: 20px 30px;
+    }
+    .projdispheader{
+        flex-direction: column;
+        align-items: center;
+        padding: 30px 10px;
+    }
+    .projectname{
+        font-size: 2rem !important;
+        margin: 10px 0px 10px 0px;
+        font-weight: 500;
+    }
+    .projdispheader p{
+        margin: 5px 0px 5px 0px;
+        font-size: 1.2rem !important;
+    }
+    .projdispheader img{
+        width: 200px;
+        height: 200px;
+        margin-bottom: 20px;
+    }
+    .video_info video{
+        width: 100%;
+        height: 100%;
+    }
+
+}

@@ -1,0 +1,28 @@
+#heading{
+    font-size: 30px;
+    color: white;
+    padding: 2vw 0 2vw 5vw ;
+    /* margin-top: 5vw; */
+}
+
+#cardgrid{
+    display: grid ;
+    grid-template-columns: repeat(3,1fr);
+    gap:4vw 1.5vw;
+    padding: 3vw;
+    padding-top: 0;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+@media (max-width:900px){
+    #cardgrid{
+        grid-template-columns: repeat(2,1fr);
+    }
+}
+
+@media (max-width:600px){
+    #cardgrid{
+        grid-template-columns: repeat(1,1fr);
+    }
+}

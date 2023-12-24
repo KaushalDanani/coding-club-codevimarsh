@@ -1,0 +1,69 @@
+Before Login Home Page :				Kaushal
+-> change links to hovering buttons.
+-> sign in links to home page buttons.
+-> change styling of founder card.
+-> privacy policy and terms links in footer & collab->collaborations
+-> navbar hovering colour->white.
+
+After Login Home Page :					Jay F
+-> Change colour of hover effect of name on home page after login page.
+-> change styles of article/news cards
+-> new api for news/article
+-> footer on every page -> 2nd footer with links.
+-> navbar hovering colour->white.
+-> Bell Notifications
+
+Contest Page :						Soham 
+-> Automatically select type of contest based on date.
+-> Hovering Effect issue for past contest result button.
+-> Grid display for past contests.
+-> button CSS change - https://webdeasy.de/en/top-css-buttons-en/    --> No-8
+
+Resources Page : 					Jay P				
+-> Change colour black->white
+
+Articles/News Page :					Jay F
+-> Card colour black->off-white
+-> main div box shadow
+-> image adjustment
+-> secondary navbar text color change
+
+Discussion Forums : 					Jay P
+-> Heading Style same as project collaboration
+-> Add button yellow->white
+-> button CSS change - https://webdeasy.de/en/top-css-buttons-en/
+-> Back button black text issue.
+-> Delete button
+-> Add question page same as add Collab
+
+Discussion Forums inner page :				Jay P
+-> Font size and padding
+-> remove div where code is not available
+-> Question div shade->light black
+-> padding in comment button
+-> Delete button
+-> Add reply page same as add collab
+
+Project Collaboration : 				Kaushal
+-> button colour yellow->white
+-> banner change
+-> Delete button
+
+Project Display :					Soham
+-> background colour black->off-white
+-> button styling yellow->off-white
+-> Delete button
+-> show more button style change
+-> Video length problem
+-> Add project same as add collab
+
+Profile :
+-> About and Skills section placeholder and link to edit profile when empty	Jay P	
+-> Card colour same as contest colour
+	
+Edit Profile :						Kaushal						
+-> Edit div shift upward
+-> Password check for each textField separately
+-> Back button
+
+

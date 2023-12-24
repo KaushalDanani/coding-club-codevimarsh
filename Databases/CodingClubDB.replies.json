@@ -1,0 +1,101 @@
+[{
+  "_id": {
+    "$oid": "65224c61a968191435a2cae1"
+  },
+  "replier": {
+    "$oid": "65224e09173a453d81b6c5c6"
+  },
+  "description": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nisi recusandae numquam id accusamus molestias non quod totam ratione similique qui aut, consequatur ea expedita omnis. Non consequuntur officiis ad molestias adipisci asperiores quis natus, laborum deserunt reprehenderit odit enim illo tenetur at incidunt ratione cupiditate. Delectus expedita ab exercitationem explicabo.",
+  "upvotes": 40,
+  "replyDate": {
+    "$date": "2023-11-09T18:30:00.000Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65224c61a968191435a2cae3"
+  },
+  "replier": {
+    "$oid": "65224e09173a453d81b6c5c8"
+  },
+  "description": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nisi recusandae numquam id accusamus molestias non quod totam ratione similique qui aut, consequatur ea expedita omnis. Non consequuntur officiis ad molestias adipisci asperiores quis natus, laborum deserunt reprehenderit odit enim illo tenetur at incidunt ratione cupiditate. Delectus expedita ab exercitationem explicabo.",
+  "upvotes": 40,
+  "replyDate": {
+    "$date": "2023-11-09T18:30:00.000Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65224c61a968191435a2cae5"
+  },
+  "replier": {
+    "$oid": "65224e09173a453d81b6c5c8"
+  },
+  "description": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nisi recusandae numquam id accusamus molestias non quod totam ratione similique qui aut, consequatur ea expedita omnis. Non consequuntur officiis ad molestias adipisci asperiores quis natus, laborum deserunt reprehenderit odit enim illo tenetur at incidunt ratione cupiditate. Delectus expedita ab exercitationem explicabo.",
+  "upvotes": 41,
+  "replyDate": {
+    "$date": "2023-11-09T18:30:00.000Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65224c61a968191435a2cae7"
+  },
+  "replier": {
+    "$oid": "6526e2d2bd6fc1ab8cf0900c"
+  },
+  "description": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nisi recusandae numquam id accusamus molestias non quod totam ratione similique qui aut, consequatur ea expedita omnis. Non consequuntur officiis ad molestias adipisci asperiores quis natus, laborum deserunt reprehenderit odit enim illo tenetur at incidunt ratione cupiditate. Delectus expedita ab exercitationem explicabo.",
+  "upvotes": 40,
+  "replyDate": {
+    "$date": "2023-11-09T18:30:00.000Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6538f05e4da751b229ae66a6"
+  },
+  "replier": {
+    "$oid": "65224e09173a453d81b6c5c6"
+  },
+  "description": "Nice Question",
+  "code": "",
+  "upvotes": 0,
+  "replyDate": {
+    "$date": "2023-10-25T10:39:26.977Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "653923b69c95bbb844ebcbd8"
+  },
+  "replier": {
+    "$oid": "65224e09173a453d81b6c5c6"
+  },
+  "description": "This is a simple hello world in java. I hope it makes your concepts clear",
+  "code": "public class HelloWorld {\n    public static void main(String[] args) {\n        System.out.println(\"Hello, World!\");\n    }\n}\n",
+  "upvotes": 2,
+  "replyDate": {
+    "$date": "2023-10-25T14:18:30.250Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65393bc05a5c9722f20cb6f4"
+  },
+  "replier": {
+    "$oid": "65389b6cec8919a69d5d7d73"
+  },
+  "description": "W3 Schools and Geeks for Geeks are the best resources",
+  "code": "",
+  "upvotes": 0,
+  "replyDate": {
+    "$date": "2023-10-25T16:01:04.804Z"
+  },
+  "__v": 0
+}]

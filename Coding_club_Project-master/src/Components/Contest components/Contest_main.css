@@ -1,0 +1,102 @@
+@font-face {
+    font-family: newFont;
+    src: url("/public/fonts/Cyborg\ Punk.ttf");
+}
+
+*{
+    margin: 0;
+    padding: 0%;
+    box-sizing: border-box;
+}
+
+.contest_main{
+    background-color: #350E43;
+    /* padding: 5px 0px; */
+}
+
+.upcomingContestGrid{
+    display: grid;
+    /* border: 2px solid white; */
+    margin: 0% 6.5%;
+    gap: 0px 8%;
+    grid-template-columns: repeat(2,1fr);
+}
+
+.contest_heading{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 3%;
+}
+
+.contest_heading p{
+    font-size: 2.6rem;
+    margin-top: 7px;
+    font-family: newFont;
+    color: white;
+}
+
+.upcoming_contest{
+    padding-top: 0.8%;
+    font-family: 'Courier New', Courier, monospace;
+    /* padding-left: 3.2%; */
+    /* background: rgb(90, 6, 168) */
+    /* height: 100vh; */
+}
+
+.upcoming_contest p{
+    font-size: 1.5rem;
+    color: aliceblue;
+    padding-bottom: 0.5%;
+    padding-left: 6.5%;
+}
+
+.runnig_contest{
+    padding-top: 2.7%;
+    /* background: rgb(90, 6, 168) */
+    /* height: 100vh; */
+}
+
+.runnig_contest p{
+    font-size: 1.5rem;
+    color: aliceblue;
+    padding-bottom: 0.5%;
+    padding-left: 6.5%;
+}
+
+.past_contest{
+    padding-top: 2.7%;
+    /* background: rgb(90, 6, 168) */
+    /* height: 100vh; */
+}
+
+.past_contest p{
+    font-size: 1.5rem;
+    color: aliceblue;
+    padding-bottom: 0.5%;
+    padding-left: 6.5%;
+}
+
+@media only screen and (max-width: 600px) {
+    .contest_heading p {
+        margin-top: 10px;
+        font-size: 1.7rem !important;
+        margin-bottom: 15px;
+    }
+
+    .upcoming_contest p,
+    .runnig_contest p {
+        font-size: 1.2rem !important;
+        margin-bottom: 4%;
+    }
+
+    .past_contest p {
+        margin-top: 4%;
+        font-size: 1.2rem !important;
+        margin-bottom: 4%;
+    }
+    .upcomingContestGrid{
+        grid-template-columns: repeat(1,1fr);
+    }
+}

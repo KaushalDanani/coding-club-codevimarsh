@@ -1,0 +1,430 @@
+.sign-up_section {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%; 
+    flex-wrap: wrap;
+    background-color: #000000;
+    gap: 2.5px;
+    overflow: hidden;
+}
+
+.sign-up_section::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(black, #db00ef, black);
+    animation: animate 6s linear infinite;
+}
+@keyframes animate {
+    0%{
+        transform: translateY(-100%);
+    }
+    100%{
+        transform: translateY(100%);
+    }
+}
+.sign-up_section span {
+    position: relative;
+    display: block;
+    width: calc(5.475vw - 00.4vw);
+    height: calc(5vw - 1px);
+    background: #000000;
+    z-index: 1;
+    border: 2px solid rgb(0, 0, 0);
+    transition: 1.5s;
+}
+.sign-up_section span:hover {
+    background: #db00ef;
+    transition: 0s;
+}
+
+.sign-up_section .signup {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    width: 39%;
+    justify-content: center;
+    background: rgb(34, 34, 34);
+    padding: 30px 30px 28px 30px;
+    border-radius: 50px;
+    border: 2.5px solid #ea00ff;
+    box-shadow: 0 0 40px #db00ef;
+    z-index: 2;
+}
+.sign-up_section .container
+{ 
+    display: flex;
+    justify-content: center;
+    /* align-items: center; */
+    flex-direction: column;
+    width: 75%;
+}
+.sign-up_section .container h2 {
+    font-family:'Times New Roman', Times, serif;
+    /* text-transform: uppercase; */
+    font-size: 35px;
+    margin-left: 8.3vw;
+    color: rgb(194, 194, 194);
+    margin-bottom: 4%;
+    padding-bottom: 8%;
+}
+.sign-up_section .container .form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 6%;
+    gap: 30px;
+}
+.sign-up_section .container .form .inputbox {
+    position: relative;
+    width: 100%;
+    color: #ffffff;
+}
+
+.requireSuggestion {
+    margin-left: 0.4vw;
+    margin-top: 1%;
+    margin-bottom: -1vh;
+    font-size: 1.8vh;
+    color: #ff0000;
+}
+.sign-up_section .container .form .inputbox input {
+    width: 100%;
+    box-sizing: border-box;
+    background-color: #333;
+    /* outline: #cb3131; */
+    font-size: 17.5px;
+    color: #ffffff;
+    padding: 12px 17px 12px 17px;
+    border-radius: 2.4vh;
+    border: 2px solid #db00ef;
+}
+.sign-up_section .container .form .signupbox .signupButton {
+    width: 45%;
+    /* box-sizing: border-box; */
+    float: right;
+    text-transform: uppercase;
+    background-color: transparent;
+    border: 2px solid #db00ef;
+    font-size: 19px;
+    color: #ffffff;
+    padding: 8px;
+    border-radius: 20px;
+    /* border: 2px solid #db00ef; */
+}
+.sign-up_section .container .form .signupbox .signupButton:hover {
+    background-color: #db00ef;
+    padding: 8px 15px 8px 0px;
+    background-image: url(/public/images/next-slide.png);
+    background-repeat: no-repeat;
+    background-size: 13% 50%;
+    background-position: 6.85vw;
+}
+
+.sign-up_section .container .form .inputbox label {
+    position: absolute;
+    color: #aaa;
+    margin-left: 17px;
+    top: 17%;
+    left: 0;
+    font-size: 20px;
+    pointer-events: none;
+    font-style: normal;
+    transition: 0.6s;
+    z-index: 4;
+}
+.sign-up_section .container .form .inputbox input:valid ~label,
+.sign-up_section .container .form .inputbox input:focus ~label {
+    transform: translateY(-3.5vh) translateX(-0.05vw);
+    font-size: 18.5px;
+    background-color: rgb(34, 34, 34);
+    background-image: none;
+    padding-left: 0.55vw;
+    padding-right: 0.5vw;
+    padding-bottom: 0.1vh;
+    border-radius: 1.4vh;
+}
+
+.trackbar {
+    width: 33%;
+    height: 100%;
+    margin-top: 3.5%;
+    background-color: bisque;
+    transform: skew(-45deg);
+}
+#firstbar {
+    background-color: #db00ef;
+}
+
+@media (max-width: 500px) {
+
+    .sign-up_section {
+        font-size: 14px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .sign-up_section::before {
+        background: linear-gradient( black 50%, #db00ef, black);
+        animation: animate 6s linear infinite;
+    }
+    @keyframes animate {
+        0% {
+            transform: translateY(-100%);
+        }
+        100% {
+            transform: translateY(40%);
+        }
+    }
+    
+    .sign-up_section span {
+        width: calc(16vw);
+        height: calc(16vw);
+    }
+    .sign-up_section .signup {
+        width: 65%;
+        top: 10%;
+    }
+
+    .sign-up_section .container {
+        width: 100%;
+    }
+
+    .sign-up_section .container .form .inputbox input {
+        height: 36px;
+        padding: 12px 17px 12px 14px !important;
+        border-radius: 14px !important;
+        border: 1px solid #db00ef;
+    }
+    .sign-up_section .container .form .inputbox label {
+        top: 18%;
+        margin: 0px 0px 0px 15px !important;
+    }
+
+    .sign-up_section .container .form .inputbox input:valid ~label,
+    .sign-up_section .container .form .inputbox input:focus ~label {
+        transform: translateY(-17px) translateX(-5px) !important;
+        padding: 0px 6px 0px 6px !important;
+    }
+
+    .sign-up_section .container .form {
+        gap: 23px;
+    }
+    .sign-up_section .container h2 {
+        font-size: 3vh !important;
+        margin-left: 16vw;
+        margin-bottom: 5.7%;
+    }
+    .sign-up_section .container .form .signupbox .signupButton:hover {
+        background-position: 47px;
+        background-size: 16% 50%;
+        padding: 8px 7px 8px 0px;
+    }
+
+    .requireSuggestion {
+        font-size: 1.4032vh !important;
+    }
+}
+
+@media (min-width:501px) and (max-width:650px) {
+    
+    .sign-up_section {
+        font-size: 14px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .sign-up_section::before {
+        width: 155%;
+        background: linear-gradient( black 40%, #db00ef, black);
+        animation: animate 5s linear infinite;
+    }
+    @keyframes animate {
+        0%{
+            transform: translateY(-90%)
+        }
+        100%{
+            transform: translateY(55%)
+        }
+    }
+
+    .sign-up_section span {
+        width: calc(13vw + 1px);
+        height: calc(12vw + 2.8px);
+    }
+
+    .sign-up_section .signup {
+        width: 35%;
+        top: 18%;
+    }
+    
+    .sign-up_section .container {
+        width: 85%;
+        margin-bottom: 3%;
+    }
+    
+    .sign-up_section .container .form {
+        gap: 30px;
+    }
+}
+
+@media (min-width:651px) and (max-width:800px) {
+    
+    .sign-up_section {
+        font-size: 14px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .sign-up_section::before {
+        width: 155%;
+        background: linear-gradient( black 30%, #db00ef, black);
+        animation: animate 5s linear infinite;
+    }
+    @keyframes animate {
+        0%{
+            translate: -70% -70%;
+        }
+        100%{
+            translate: 55% 55%;
+        }
+    }
+
+    .sign-up_section span {
+        width: calc(9vw + 1.7px);
+        height: calc(9vw + 1px);
+    }
+
+    .sign-up_section .signup {
+        width: 45%;
+        top: 14.5%;
+        display: flex;
+        align-items: center;
+        justify-content: center
+    }
+    
+    .sign-up_section .container {
+        width: 85%;
+        margin-bottom: 3%;
+    }
+    
+    .sign-up_section .container .form {
+        gap: 30px;
+    }
+}
+
+@media (min-width:800px) and (max-width:1024px) {
+    
+    .sign-up_section {
+        font-size: 14px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .sign-up_section::before {
+        width: 155%;
+        background: linear-gradient( black 50%, #db00ef, black);
+        animation: animate 6s linear infinite;
+    }
+
+    .sign-up_section span {
+        width: calc(8vw - 2.8px);
+        height: calc(8vw - 2px);
+    }
+    
+    .sign-up_section .signup {
+        width: 35%;
+        top: 15%;
+        display: flex;
+        align-items: center;
+        justify-content: center
+    }
+
+    .sign-up_section .container {
+        width: 80%;
+        margin-bottom: 3%;
+    }
+
+    .sign-up_section .container .form {
+        gap: 30px;
+    }
+}
+
+@media (min-width:1025px) and (max-width:1200px) {
+    
+    .sign-up_section {
+        font-size: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .sign-up_section::before {
+        width: 155%;
+        background: linear-gradient( black 50%, #db00ef, black);
+        animation: animate 6s linear infinite;
+    }
+
+    .sign-up_section span {
+        width: calc(7vw - 4.5px);
+        height: calc(7vw - 2px);
+    }
+    
+    .sign-up_section .signup {
+        width: 30%;
+        top: 14.5%;
+        display: flex;
+        align-items: center;
+        justify-content: center
+    }
+
+    .sign-up_section .container {
+        width: 80%;
+        margin-bottom: 3%;
+    }
+
+    .sign-up_section .container .form {
+        gap: 30px;
+    }
+}
+
+@media (min-width:1201px) and (max-width:1376px) {
+    
+    .sign-up_section {
+        font-size: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .sign-up_section::before {
+        width: 155%;
+        background: linear-gradient( black 50%, #db00ef, black);
+        animation: animate 6s linear infinite;
+    }
+
+    .sign-up_section span {
+        width: calc(6vw - 3px);
+        height: calc(6vw - 3px);
+    }
+
+    .sign-up_section .signup {
+        width: 27%;
+        top: 14.5%;
+        display: flex;
+        align-items: center;
+        justify-content: center
+    }
+
+    .sign-up_section .container {
+        width: 82%;
+        margin-bottom: 3%;
+    }
+
+    .sign-up_section .container .form {
+        gap: 30px;
+    }
+
+}

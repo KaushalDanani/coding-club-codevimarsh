@@ -1,0 +1,75 @@
+[{
+  "_id": {
+    "$oid": "652648ebf3ce5f250fecc36f"
+  },
+  "name": "STARTER 0",
+  "type": "past",
+  "startDate": {
+    "$date": "2023-10-01T14:30:00.000Z"
+  },
+  "contestLink": "https://www.hackerrank.com/contests",
+  "resultLink": "https://www.hackerrank.com/contests",
+  "solutionLink": "https://www.hackerrank.com/contests",
+  "time": "20:00 to 22:00",
+  "type1": "Weekly Contest"
+},
+{
+  "_id": {
+    "$oid": "65264917f3ce5f250fecc370"
+  },
+  "name": "STARTER 1",
+  "type": "past",
+  "startDate": {
+    "$date": "2023-10-08T14:30:00.000Z"
+  },
+  "contestLink": "https://www.hackerrank.com/contests",
+  "resultLink": "https://www.hackerrank.com/contests",
+  "solutionLink": "https://www.hackerrank.com/contests",
+  "time": "20:00 to 22:00",
+  "type1": "Weekly Contest"
+},
+{
+  "_id": {
+    "$oid": "652683e6f3ce5f250fecc371"
+  },
+  "name": "STARTER 3",
+  "type": "upcoming",
+  "startDate": {
+    "$date": "2023-10-22T14:30:00.000Z"
+  },
+  "time": "20:00 to 22:00",
+  "contestLink": "https://www.hackerrank.com/contests",
+  "resultLink": "https://www.hackerrank.com/contests",
+  "solutionLink": "https://www.hackerrank.com/contests",
+  "type1": "Weekly Contest"
+},
+{
+  "_id": {
+    "$oid": "65268403f3ce5f250fecc372"
+  },
+  "name": "LONG 1",
+  "type": "upcoming",
+  "startDate": {
+    "$date": "2023-11-01T02:30:00.000Z"
+  },
+  "time": "08:00 to 22:00",
+  "contestLink": "https://www.hackerrank.com/contests",
+  "resultLink": "https://www.hackerrank.com/contests",
+  "solutionLink": "https://www.hackerrank.com/contests",
+  "type1": "Monthly Contest"
+},
+{
+  "_id": {
+    "$oid": "65268411f3ce5f250fecc373"
+  },
+  "name": "STARTER 2",
+  "type": "current",
+  "startDate": {
+    "$date": "2023-10-15T14:30:00.000Z"
+  },
+  "time": "20:00 to 22:00",
+  "contestLink": "https://www.hackerrank.com/contests",
+  "resultLink": "https://www.hackerrank.com/contests",
+  "solutionLink": "https://www.hackerrank.com/contests",
+  "type1": "Weekly Contest"
+}]
