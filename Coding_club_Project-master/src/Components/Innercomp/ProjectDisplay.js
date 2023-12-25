@@ -8,44 +8,44 @@ const userID = sessionStorage.getItem('userID');
 
 export default function ProjectDisplay(props) {
 
-    // function deletebtn(){
-    //     var b = false;
-    //     for(let i=0;i<props.team.length;i++){
-    //         if(props.team[i] == userID){
-    //             b = true;
-    //         }
-    //     }
-    //     console.log(b + "okokok");
-    //     if(b == false){
-    //         const closebtn = document.getElementById("btnname" + props.name + "dlt");
-    //         closebtn.style.display = "none";
-    //     }
-    // }
-
-    const [adminList, setAdminList] = useState([]);
-    fetch('/adminListID', {
-        method: 'GET',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-    })
-        .then(response => response.json())
-        .then(data => setAdminList(data));
-
-    function deletebtn() {
-        var b = (props.team).includes(userID) || adminList.includes(userID);
-        // for(let i=0;i<props.team.length;i++){
-        //     if(props.team[i] == userID){
-        //         b = true;
-        //     }
-        // }
-
+    function deletebtn(){
+        var b = false;
+        for(let i=0;i<props.team.length;i++){
+            if(props.team[i] == userID){
+                b = true;
+            }
+        }
         console.log(b + "okokok");
-        if (b == false) {
+        if(b == false){
             const closebtn = document.getElementById("btnname" + props.name + "dlt");
             closebtn.style.display = "none";
         }
     }
+
+    // const [adminList, setAdminList] = useState([]);
+    // fetch('/adminListID', {
+    //     method: 'GET',
+    //     headers: {
+    //         'Content-Type': 'application/json',
+    //     },
+    // })
+    //     .then(response => response.json())
+    //     .then(data => setAdminList(data));
+
+    // function deletebtn() {
+    //     var b = (props.team).includes(userID) || adminList.includes(userID);
+    //     // for(let i=0;i<props.team.length;i++){
+    //     //     if(props.team[i] == userID){
+    //     //         b = true;
+    //     //     }
+    //     // }
+
+    //     console.log(b + "okokok");
+    //     if (b == false) {
+    //         const closebtn = document.getElementById("btnname" + props.name + "dlt");
+    //         closebtn.style.display = "none";
+    //     }
+    // }
 
     useEffect(() => {
         if(props.team){
