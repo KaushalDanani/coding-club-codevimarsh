@@ -566,6 +566,19 @@ app.post("/adminList",async (req,res) => {
   res.send({admins : admins});
 });
 
+app.get("/adminListID",(req,res)=>{
+
+  User.find({isAdmin : true},"_id username")
+    .then((adminList) => {
+      const dataL  = adminList.map(obj => obj._id.toString());
+      // console.log(dataL);
+      res.send(dataL);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+})
+
 
 app.get("/resources/rescontent", async (req, res) => {
   try {
