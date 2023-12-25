@@ -82,9 +82,15 @@ app.get("/project", (req, res) => {
     });
 });
 
+app.get(`/projectDisplay/userData/`, async (req,res) => {
+  const userID = req.url.userID;
+  const admin=await User.findById(userID,'isAdmin');
+  res.send(admin);
+});
+
 app.post("/addproject", async (req, res) => {
   const members = req.body.projectteam;
-  console.log("asd");
+  // console.log("asd");
   var memberDataArray = [];
 
   for (const memUsername of members) {
@@ -98,7 +104,7 @@ app.post("/addproject", async (req, res) => {
       // Handle the error as needed
     }
   }
-  console.log("MemberDataArray:", memberDataArray);
+  // console.log("MemberDataArray:", memberDataArray);
 
   const newproject = new Project({
     projectName: req.body.projectname,
@@ -111,19 +117,19 @@ app.post("/addproject", async (req, res) => {
     video: req.body.projectvideo,
   });
   await newproject.save();
-  console.log("newproj", newproject);
+  // console.log("newproj", newproject);
   res.end();
 });
 
 app.post("/deleteproject",async (req,res) => {
   await Project.deleteOne({"projectName": req.body.project_name});
-  console.log( req.body.project_name);
+  // console.log( req.body.project_name);
   
   res.end();
 })
 
 const imageBuffer = fs.readFileSync(
-  "D:/Coding_club_Project-master-git/Coding_club_Project-master/public/images/profile.jpeg"
+  "D:/Coding_club_Project-master/Coding_club_Project-master/public/images/profile.jpeg"
 );
 const base64Image = imageBuffer.toString("base64");
 
@@ -199,9 +205,6 @@ const User = mongoose.model(
     leetcode: {
       type: String,
     },
-    isAdmin: {
-      type: Boolean,
-    }
   })
 );
 
@@ -211,7 +214,7 @@ app.get("/user", (req, res) => {
       res.send(userinfo);
     })
     .catch((err) => {
-      console.log(err);
+      // console.log(err);
     });
 });
 
@@ -219,13 +222,13 @@ app.post("/findusername", jsonParser, function (req, res) {
   User.find({ _id: req.body.userID })
     .then((userinfo) => {
       if (userinfo.length > 0) {
-        // console.log(userinfo[0].username);
+        // // console.log(userinfo[0].username);
         res.send(userinfo);
       }
-      // console.log("ok");
+      // // console.log("ok");
     })
     .catch((err) => {
-      console.log(err);
+      // console.log(err);
     });
 });
 
@@ -249,7 +252,7 @@ app.get("/question", (req, res) => {
       res.send(questioninfo);
     })
     .catch((err) => {
-      console.log(err);
+      // console.log(err);
     });
 });
 
@@ -264,7 +267,7 @@ app.post("/addmyquestion", jsonParser, function (req, res) {
     replies: [],
     tags: req.body.questiontags,
   });
-  // console.log(req.body);
+  // // console.log(req.body);
   newquestion.save();
 });
 
@@ -290,19 +293,19 @@ app.post("/addmyreply", jsonParser, function (req, res) {
 
   newreply.save().then((data) => {
     var arr;
-    console.log(data);
+    // console.log(data);
     Question.find({ _id: req.body.answerqid }).then((questioninfo) => {
-      // console.log(questioninfo);
+      // // console.log(questioninfo);
 
       arr = questioninfo[0].replies;
       arr.push(data._id);
-      // console.log(arr);
+      // // console.log(arr);
       Question.findOneAndUpdate(
         { _id: req.body.answerqid },
         { replies: arr },
         { new: true }
       ).then((data) => {
-        // console.log(data);
+        // // console.log(data);
       });
     });
   });
@@ -376,7 +379,7 @@ app.get("/resources", async (req, resp) => {
 
 // app.post('/resources/content', (req, resp) => {
 //   const data = req.body;
-//   console.log(data);
+//   // console.log(data);
 // })
 
 app.get("/asker", async (req, resp) => {
@@ -412,8 +415,8 @@ app.get("/discussion/question", async (req, resp) => {
     const replierMap = new Map();
     const upvoteMap = new Map();
 
-    console.log(q_id);
-    console.log(userID);
+    // console.log(q_id);
+    // console.log(userID);
 
     const Q_data = await Question.findById(q_id);
     const Asker = await User.findById(Q_data.asker, "username profileImg");
@@ -443,8 +446,8 @@ app.get("/discussion/question", async (req, resp) => {
     }
     const rArr = Array.from(replierMap);
 
-    // console.log(Q_upvote);
-    // console.log(uArr);
+    // // console.log(Q_upvote);
+    // // console.log(uArr);
 
     resp.send([Q_data, Asker, Q_upvote, R_data, rArr, uArr]);
   } catch (err) {
@@ -458,8 +461,8 @@ app.post("/discussion/question", async (req, resp) => {
   const Id = req.body.Id;
   const state = req.body.state;
   const count = req.body.count;
-  // console.log("THis :" + count);
-  // console.log(state);
+  // // console.log("THis :" + count);
+  // // console.log(state);
   // const Id = req.body.Id;
   // const count = req.body.count;
 
@@ -474,41 +477,41 @@ app.post("/discussion/question", async (req, resp) => {
 
   if (type === "r") {
     const updated = await Resplie.updateOne({ _id: Id }, { upvotes: count });
-    // console.log(updated)
+    // // console.log(updated)
     if (state) {
       ur.push(Id);
     } else {
-      // console.log("Before : " + ur);
+      // // console.log("Before : " + ur);
       let ind = ur.indexOf(Id);
       ur.splice(ind, 1);
-      // console.log("After : " + ur);
+      // // console.log("After : " + ur);
     }
     const UserUps = await User.updateOne(
       { _id: userID },
       { repliesUpvotes: ur }
     );
-    // console.log("user upvote data changed for replies : " + UserUps);
+    // // console.log("user upvote data changed for replies : " + UserUps);
   }
 
   if (type === "q") {
-    console.log(Id);
+    // console.log(Id);
     const updated = await Question.updateOne({ _id: Id }, { upvotes: count });
-    // console.log(updated)
+    // // console.log(updated)
     if (state) {
       uq.push(Id);
-      // console.log("Here in if");
+      // // console.log("Here in if");
     } else {
-      // console.log("Here in else");
-      // console.log("Before : " + uq);
+      // // console.log("Here in else");
+      // // console.log("Before : " + uq);
       let ind = uq.indexOf(Id);
       uq.splice(ind, 1);
-      // console.log("After : " + uq);
+      // // console.log("After : " + uq);
     }
     const UserUps = await User.updateOne(
       { _id: userID },
       { questionUpvotes: uq }
     );
-    // console.log("user upvote data changed for replies : " + UserUps);
+    // // console.log("user upvote data changed for replies : " + UserUps);
   }
 });
 
@@ -518,10 +521,10 @@ app.delete('/discussion/delQue/:q_id', async (req, res) => {
     const result = await Question.deleteOne({ _id: q_id });
 
     if (result.deletedCount === 1) {
-      console.log("Successfully deleted");
+      // console.log("Successfully deleted");
       return res.json({ message: 'Deleted successfully' });
     } else {
-      console.log("Question not found");
+      // console.log("Question not found");
       return res.status(404).json({ error: 'Question not found' });
     }
   } catch (error) {
@@ -536,10 +539,10 @@ app.delete('/discussion/question/delRep/:r_id', async (req, res) => {
     const result = await Resplie.deleteOne({ _id: r_id });
 
     if (result.deletedCount === 1) {
-      console.log("Successfully deleted");
+      // console.log("Successfully deleted");
       return res.json({ message: 'Deleted successfully' });
     } else {
-      console.log("reply not found");
+      // console.log("reply not found");
       return res.status(404).json({ error: 'reply not found' });
     }
   } catch (error) {
@@ -560,25 +563,6 @@ app.get("/loginHome/contests", async (req, res) => {
   const contestData = await Contest.find({ type: "upcoming" });
   res.send(contestData);
 });
-
-app.post("/adminList",async (req,res) => {
-  const admins = await User.find({isAdmin : true});
-  res.send({admins : admins});
-});
-
-app.get("/adminListID",(req,res)=>{
-
-  User.find({isAdmin : true},"_id username")
-    .then((adminList) => {
-      const dataL  = adminList.map(obj => obj._id.toString());
-      // console.log(dataL);
-      res.send(dataL);
-    })
-    .catch((err) => {
-      console.log(err);
-    });
-})
-
 
 app.get("/resources/rescontent", async (req, res) => {
   try {
@@ -603,7 +587,7 @@ app.get("/profile/user", async (req, res) => {
   const userID = req.query.userID;
   try {
     const resData = await User.find({ _id: userID });
-    // console.log(resData);
+    // // console.log(resData);
     res.send(resData);
   } catch (err) {
     res.status(500).send(err.message);
@@ -612,10 +596,10 @@ app.get("/profile/user", async (req, res) => {
 
 app.get("/profile/projects", async (req, res) => {
   const userID = req.query.userID;
-  // console.log(userID);
+  // // console.log(userID);
 
   const projData = await Project.find({ contributors: { $in: [userID] } });
-  // console.log(projData);
+  // // console.log(projData);
   res.send(projData);
 });
 
@@ -635,7 +619,7 @@ app.post("/profile/projects/members", async (req, res) => {
       // Handle the error as needed
     }
   }
-  // console.log(memberDataArray);
+  // // console.log(memberDataArray);
   res.send(memberDataArray);
 });
 
@@ -672,17 +656,17 @@ app.post("/editprofile/userSkills", async (req, res) => {
     await user.save();
     res.send(user);
   } catch (err) {
-    console.log(err);
+    // console.log(err);
   }
 });
 
 app.post("/editprofile/personal", async (req, res) => {
   const personalData = req.body;
   const userID = req.query.userID;
-  // console.log(userID);
+  // // console.log(userID);
 
   let user = await User.findOne({ _id: userID });
-  // console.log(user);
+  // // console.log(user);
   user = {
     ...user._doc,
     ...personalData,
@@ -693,7 +677,7 @@ app.post("/editprofile/personal", async (req, res) => {
     runValidators: true,
   });
 
-  // console.log(user);
+  // // console.log(user);
   res.send(personalData);
 });
 
@@ -743,15 +727,15 @@ app.post("/editprofile/profileImg", async (req, res) => {
   const profileImg = req.body.profileImg;
   const userID = req.query.userID;
 
-  // console.log(profileImg);
-  // console.log(userID);
+  // // console.log(profileImg);
+  // // console.log(userID);
 
   const updatedUser = await User.updateOne(
     { _id: userID },
     { profileImg: profileImg }
   );
 
-  console.log(updatedUser);
+  // console.log(updatedUser);
   res.send(req.body);
 });
 
@@ -815,7 +799,7 @@ app.get('/projectcollabration', async (req, res) => {
 //   const collabrationData = {collabrationLeader: data.userID, ...data};
 //   const addProjectCollab = new projectCollabration(collabrationData);
 
-//   // console.log(collabrationData)
+//   // // console.log(collabrationData)
 //   const addDone = await addProjectCollab.save();
 //   // res.sendFile("Project_Collabration.js", {root: '../Frontend/src/components/kaushal'})
 // })
@@ -838,7 +822,7 @@ app.post("/addprojectcollabration", async (req, res) => {
   };
   const addProjectCollab = new projectCollabration(collabrationData);
 
-  // console.log(collabrationData)
+  // // console.log(collabrationData)
   const addDone = await addProjectCollab.save();
 });
 
@@ -867,7 +851,7 @@ app.use(
 //         }
 //         const signupUser = new User (userData)
 //         // const token = await User.generateAuthToken();
-//         console.log(signupUser)
+//         // console.log(signupUser)
 //         const signup_done = await signupUser.save();
 //         const user = await User.findOne({username: userData.username})
 //         res.sendFile("LoginHomePage.js", {root: '../Frontend/src/components/jay fanse'})
@@ -875,7 +859,7 @@ app.use(
 //         res.send({userID: user._id})
 //     }
 //     catch (err) {
-//         console.log(err)
+//         // console.log(err)
 //         res.sendStatus(400)
 //     }
 // })
@@ -887,11 +871,11 @@ app.post("/usersignin", async (req, res) => {
       username: loginData.username,
       password: loginData.password,
     });
-    // console.log(userDetail)
+    // // console.log(userDetail)
     if (userDetail === null) res.send({ message: "Invalid User Credential" });
     else res.status(200).send({ userID: userDetail._id });
   } catch (err) {
-    console.log(err);
+    // console.log(err);
     res.sendStatus(400);
   }
 });
