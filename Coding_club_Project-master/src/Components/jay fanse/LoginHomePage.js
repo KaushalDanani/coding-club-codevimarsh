@@ -30,6 +30,7 @@ const location = useLocation();
         console.log(data);
         setFname(data[0].fname);
         setAdmin(data[0].isAdmin);
+        sessionStorage.setItem('isAdmin', data[0].isAdmin);
       }
     )
   },[])

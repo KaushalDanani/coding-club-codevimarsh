@@ -82,11 +82,7 @@ app.get("/project", (req, res) => {
     });
 });
 
-app.get(`/projectDisplay/userData/`, async (req,res) => {
-  const userID = req.url.userID;
-  const admin=await User.findById(userID,'isAdmin');
-  res.send(admin);
-});
+
 
 app.post("/addproject", async (req, res) => {
   const members = req.body.projectteam;
@@ -205,8 +201,25 @@ const User = mongoose.model(
     leetcode: {
       type: String,
     },
+    isAdmin: {
+      type: Boolean,
+    }
   })
 );
+
+app.get(`/projectDisplay/userData/`, async (req, res) => {
+  try {
+    const userID = req.query.userID;
+    const admin = await User.findById(userID, 'isAdmin');
+    // console.log(admin);
+    res.send({ admin: admin.isAdmin });
+  } catch (e) {
+    // Handle the exception here, for example, log the error or send an error response.
+    console.error(e);
+    res.status(500).send({ error: 'Internal Server Error' });
+  }
+});
+
 
 app.get("/user", (req, res) => {
   User.find({})
