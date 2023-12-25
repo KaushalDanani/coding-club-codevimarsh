@@ -8,10 +8,21 @@ const userID = sessionStorage.getItem('userID');
 
 export default function ProjectDisplay(props) {
 
+    const [admin,setAdmin] = useState(false);
+
+    useEffect(() => {
+        if(userID)
+        {
+            fetch(`/projectDisplay/userData/?userID=${userID}`)
+            .then(data => setAdmin(data));
+            console.log(admin);
+        }
+    },[userID])
+
     function deletebtn(){
         var b = false;
         for(let i=0;i<props.team.length;i++){
-            if(props.team[i] == userID){
+            if(admin===true || props.team[i] == userID ){
                 b = true;
             }
         }
@@ -20,32 +31,11 @@ export default function ProjectDisplay(props) {
             const closebtn = document.getElementById("btnname" + props.name + "dlt");
             closebtn.style.display = "none";
         }
+        else{
+            const closebtn = document.getElementById("btnname" + props.name + "dlt");
+            closebtn.style.display = "block";
+        }
     }
-
-    // const [adminList, setAdminList] = useState([]);
-    // fetch('/adminListID', {
-    //     method: 'GET',
-    //     headers: {
-    //         'Content-Type': 'application/json',
-    //     },
-    // })
-    //     .then(response => response.json())
-    //     .then(data => setAdminList(data));
-
-    // function deletebtn() {
-    //     var b = (props.team).includes(userID) || adminList.includes(userID);
-    //     // for(let i=0;i<props.team.length;i++){
-    //     //     if(props.team[i] == userID){
-    //     //         b = true;
-    //     //     }
-    //     // }
-
-    //     console.log(b + "okokok");
-    //     if (b == false) {
-    //         const closebtn = document.getElementById("btnname" + props.name + "dlt");
-    //         closebtn.style.display = "none";
-    //     }
-    // }
 
     useEffect(() => {
         if(props.team){
