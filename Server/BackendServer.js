@@ -565,7 +565,8 @@ app.get("/loginHome/contests", async (req, res) => {
 });
 
 app.post("/adminList", async (req, res) => {
-  
+    const adminList = await User.find({isAdmin : true});
+    res.send({admins : adminList});
 });
 
 app.get("/resources/rescontent", async (req, res) => {
