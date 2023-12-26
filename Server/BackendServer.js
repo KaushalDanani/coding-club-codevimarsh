@@ -566,6 +566,11 @@ app.delete('/discussion/question/delRep/:r_id', async (req, res) => {
 
 // jay fanse
 
+app.post("/adminList", async (req, res) => {
+  const adminList = await User.find({isAdmin : true});
+  res.send({admins : adminList});
+});
+
 app.get("/navbar/profileImg", async (req, res) => {
   const userID = req.query.userID;
   const userData = await User.find({ _id: userID });
