@@ -564,6 +564,10 @@ app.get("/loginHome/contests", async (req, res) => {
   res.send(contestData);
 });
 
+app.post("/adminList", async (req, res) => {
+  
+});
+
 app.get("/resources/rescontent", async (req, res) => {
   try {
     const resData = await resModel.find({});
