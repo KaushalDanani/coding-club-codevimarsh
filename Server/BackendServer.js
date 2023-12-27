@@ -571,6 +571,21 @@ app.post("/adminList", async (req, res) => {
   res.send({admins : adminList});
 });
 
+app.get("/addAdmin/",async (req,res) => {
+  const newAdminUsername = req.query.username;
+  
+  const user = await User.findOneAndUpdate({username : newAdminUsername},{isAdmin : true});
+  // console.log(user);
+  res.send({user : user,message : "Admin Registered successfully!"});
+
+});
+
+app.get("/deleteAdmin/", async (req,res) => {
+  const deleteUsername = req.query.username;
+  await User.findOneAndUpdate({username : deleteUsername},{isAdmin : false});
+  res.send({message : `${deleteUsername} is no longer an admin!`});
+});
+
 app.get("/navbar/profileImg", async (req, res) => {
   const userID = req.query.userID;
   const userData = await User.find({ _id: userID });
