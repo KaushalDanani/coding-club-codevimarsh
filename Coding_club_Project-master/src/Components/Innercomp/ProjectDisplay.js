@@ -4,11 +4,25 @@ import { Link, Navigate, useLocation, useNavigate } from 'react-router-dom'
 import './ProjectDisplay.css'
 import TechTag from "../kaushal/TechTag";
 
-const userID = sessionStorage.getItem('userID');
 
 export default function ProjectDisplay(props) {
+    
+    // const [admin,setAdmin] = useState('false');
+    const userID=sessionStorage.getItem('userID');
+    const admin = sessionStorage.getItem('isAdmin');
 
-    const [admin,setAdmin] = useState(false);
+    // useEffect(() => {
+          
+    //     fetch(`/projectDisplay/userData/?userID=${userID}`)
+    //     .then(response => response.json())
+    //     .then(data => {
+         
+    //         setAdmin(data.admin);
+    //         // console.log("admin : "+data.admin);
+    //     })
+    // },[]);
+
+    // const [admin,setAdmin] = useState(false);
 
     useEffect(() => {
         if(userID)
@@ -21,12 +35,14 @@ export default function ProjectDisplay(props) {
 
     function deletebtn(){
         var b = false;
+        console.log(admin);
+        // console.log("user : "+userID);
         for(let i=0;i<props.team.length;i++){
-            if(admin===true || props.team[i] == userID ){
+            if(admin==='true' || props.team[i] == userID ){
                 b = true;
             }
         }
-        console.log(b + "okokok");
+        // console.log(b + "okokok");
         if(b == false){
             const closebtn = document.getElementById("btnname" + props.name + "dlt");
             closebtn.style.display = "none";
@@ -41,7 +57,7 @@ export default function ProjectDisplay(props) {
         if(props.team){
                 deletebtn();
         }
-    }, [props.team]);
+    }, [props.team,userID]);
 
     function f(){
         var x = document.getElementById("video_info"+props.name);

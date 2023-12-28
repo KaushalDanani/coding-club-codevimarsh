@@ -82,11 +82,6 @@ app.get("/project", (req, res) => {
     });
 });
 
-app.get(`/projectDisplay/userData/`, async (req,res) => {
-  const userID = req.url.userID;
-  const admin=await User.findById(userID,'isAdmin');
-  res.send(admin);
-});
 
 app.post("/addproject", async (req, res) => {
   const members = req.body.projectteam;
@@ -205,8 +200,25 @@ const User = mongoose.model(
     leetcode: {
       type: String,
     },
+    isAdmin: {
+      type: Boolean,
+    }
   })
 );
+
+app.get(`/projectDisplay/userData/`, async (req, res) => {
+  try {
+    const userID = req.query.userID;
+    const admin = await User.findById(userID, 'isAdmin');
+    // console.log(admin);
+    res.send({ admin: admin.isAdmin });
+  } catch (e) {
+    // Handle the exception here, for example, log the error or send an error response.
+    console.error(e);
+    res.status(500).send({ error: 'Internal Server Error' });
+  }
+});
+
 
 app.get("/user", (req, res) => {
   User.find({})
@@ -552,6 +564,26 @@ app.delete('/discussion/question/delRep/:r_id', async (req, res) => {
 });
 
 // jay fanse
+
+app.post("/adminList", async (req, res) => {
+  const adminList = await User.find({isAdmin : true});
+  res.send({admins : adminList});
+});
+
+app.get("/addAdmin/",async (req,res) => {
+  const newAdminUsername = req.query.username;
+  
+  const user = await User.findOneAndUpdate({username : newAdminUsername},{isAdmin : true});
+  // console.log(user);
+  res.send({user : user,message : "Admin Registered successfully!"});
+
+});
+
+app.get("/deleteAdmin/", async (req,res) => {
+  const deleteUsername = req.query.username;
+  await User.findOneAndUpdate({username : deleteUsername},{isAdmin : false});
+  res.send({message : `${deleteUsername} is no longer an admin!`});
+});
 
 app.get("/navbar/profileImg", async (req, res) => {
   const userID = req.query.userID;

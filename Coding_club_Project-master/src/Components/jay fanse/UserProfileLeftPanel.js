@@ -38,6 +38,7 @@ function UserProfileLeftPanel(props) {
         </div>
         <div className="ProfileUsername">
           @{props.userData.username}
+          {props.userData.isAdmin ? " (Admin)" : ""}
         </div>
         {(props.visitID==null) ? 
         <div className="ProfileEditLink">
