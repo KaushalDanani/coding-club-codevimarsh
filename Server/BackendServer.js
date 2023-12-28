@@ -83,6 +83,7 @@ app.get("/project", (req, res) => {
 });
 
 
+
 app.post("/addproject", async (req, res) => {
   const members = req.body.projectteam;
   // console.log("asd");
@@ -594,11 +595,6 @@ app.get("/navbar/profileImg", async (req, res) => {
 app.get("/loginHome/contests", async (req, res) => {
   const contestData = await Contest.find({ type: "upcoming" });
   res.send(contestData);
-});
-
-app.post("/adminList", async (req, res) => {
-    const adminList = await User.find({isAdmin : true});
-    res.send({admins : adminList});
 });
 
 app.get("/resources/rescontent", async (req, res) => {
