@@ -22,17 +22,6 @@ export default function ProjectDisplay(props) {
     //     })
     // },[]);
 
-    // const [admin,setAdmin] = useState(false);
-
-    useEffect(() => {
-        if(userID)
-        {
-            fetch(`/projectDisplay/userData/?userID=${userID}`)
-            .then(data => setAdmin(data));
-            console.log(admin);
-        }
-    },[userID])
-
     function deletebtn(){
         var b = false;
         console.log(admin);
