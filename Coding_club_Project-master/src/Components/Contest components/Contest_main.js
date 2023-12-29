@@ -83,7 +83,8 @@ export default function Contest_main() {
                     <Running_contest
                         name={element.name}
                         startdate={`${startdate.getDate()}-${startdate.getMonth() + 1}-${startdate.getFullYear()} `}
-                        time={element.time}
+                        time={`${startdate.getHours()}:${startdate.getMinutes()} to ${startdate.getHours() + Number(element.time)}:${startdate.getMinutes()}`}
+
                         start={element.contestLink}
                     />
                 );
@@ -100,7 +101,8 @@ export default function Contest_main() {
                     <Completed_contest
                         name={element.name}
                         startdate={`${startdate.getDate()}-${startdate.getMonth() + 1}-${startdate.getFullYear()} `}
-                        time={element.time}
+                        time={`${startdate.getHours()}:${startdate.getMinutes()} to ${startdate.getHours() + Number(element.time)}:${startdate.getMinutes()}`}
+
                         result={element.resultLink}
                         solution={element.solutionLink} >
                     </Completed_contest>

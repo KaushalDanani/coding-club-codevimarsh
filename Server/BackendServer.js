@@ -672,17 +672,17 @@ app.post("/profile/projects/members", async (req, res) => {
   res.send(memberDataArray);
 });
 
-app.get("/signin/home", async (req, res) => {
-  try {
-    const userData = await User.find({
-      username: "sohamzdfy610",
-      password: "abc123",
-    });
-    res.send(userData);
-  } catch (err) {
-    res.status(500).send(err.message);
-  }
-});
+// app.get("/signin/home", async (req, res) => {
+//   try {
+//     const userData = await User.find({
+//       username: "sohamzdfy610",
+//       password: "abc123",
+//     });
+//     res.send(userData);
+//   } catch (err) {
+//     res.status(500).send(err.message);
+//   }
+// });
 
 app.get("/editSkillTags/", async (req, res) => {
   const userID = req.query.userID;
