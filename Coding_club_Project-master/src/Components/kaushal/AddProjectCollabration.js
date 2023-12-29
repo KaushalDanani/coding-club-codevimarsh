@@ -61,7 +61,7 @@ function AddProjectCollabration() {
         <Navbar_after_login />
         <div className='addprojectCollabrationContainer'>
             <div className='addProjectCollabrationHeader'>
-                <h1> Add Project Collabration Details </h1>
+                <h1> Add Project Collaboration Details </h1>
             </div>
             <hr style={{height: '2.5px', width: '100%', backgroundColor: 'white', margin: '0px'}} />
             <div className='formContainer'>

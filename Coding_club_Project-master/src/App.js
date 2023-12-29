@@ -1,4 +1,4 @@
-import React from 'react';
+import {React,useState,useEffect} from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 // soham zadafiya
@@ -71,18 +71,48 @@ function HomeBeforeLogin() {
 
 
 function App() {
+
+  const [checkAuth, setCheckAuth] = useState(false);
+
+  useEffect( () => {
+      fetch('/checkUser', {
+        method: "GET",
+        headers: { 
+            'Content-Type': 'application/json' 
+          }
+      })
+      .then(response => response.json())
+      .then(data => {
+
+        if(data.error === undefined){
+          console.log(data.Token);
+          if(data.Token === undefined)
+            setCheckAuth(false);
+          else
+            setCheckAuth(true);
+        }
+        else{
+            alert(data.error)
+        }
+      })
+  }, []);
+
   return (
     <>
     <div>
           
 <Router>
         <Routes>
-          <Route path='/' element={<HomeBeforeLogin />} />
+        { checkAuth ? (
+              <Route path='/' element={<LoginHomePage />} />
+            ) : (
+              <Route path='/' element={<HomeBeforeLogin />} />
+            ) }
           <Route path='/signin' element={<Sign_in_page />} />
           <Route path='/signup/step-1' element={<Sign_up_first_page />} />
           <Route path='/signup/step-2' element={<Sign_up_second_page />} />
           <Route path='/signup/step-3' element={<Sign_up_third_page />} />
-          <Route path='/home' element={<LoginHomePage />} />
+          {/* <Route path='/home' element={<LoginHomePage />} /> */}
           <Route path='/manageAdmins' element={<ManageAdmins />} />
           <Route path='/contest' element={<Contest_main />} />
           <Route path='/article&news' element={<ArticlesNewsHomePage />} />

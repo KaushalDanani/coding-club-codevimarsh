@@ -49,7 +49,7 @@ function Project_Collabration() {
     <div className='projectCollabrationContainer'>
       <div className='projectCollabrationHeader'>
         <div className='imageConatainer'> <img id='pc_image' src="/images/project-collab.png" alt='PC' /> </div>
-        <h2 className='projectTitle'>Project Collabration</h2>
+        <h2 className='projectTitle'>Project Collaboration</h2>
         <p className='project_collabration_oneliner'>Talent wins games, but teamwork and intelligence win championships.</p>
       </div>
       <div style={{width: '85%'}}>

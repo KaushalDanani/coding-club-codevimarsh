@@ -1039,7 +1039,8 @@ app.get('/navbar/profileImg/dataset', async (req, res) => {
   const jwt = req.cookies.jwtAuth;
   try {
     const resData = await User.findOne({'tokens.token' : jwt});
-    res.send({resData});
+    res.send({data : resData});
+    // console.log(resData);
   } catch (err) {
     res.status(500).send(err.message);
   }
