@@ -19,18 +19,25 @@ const Contest = mongoose.model(
   "contest",
   new mongoose.Schema({
     name: String,
-    type: String,
+    type1: String,
     startDate: Date,
-    endDate: Date,
+    // endDate: Date,
     contestLink: String,
     resultLink: String,
     solutionLink: String,
+    time : String
   })
 );
 
 app.get("/contest/past", (req, res) => {
-  Contest.find({ type: "past" })
+  Contest.find({})
     .then((contestinfo) => {
+      contestinfo = contestinfo.filter((data) => {
+        var d =  new Date();
+        var time = Number(data.time) * 60 * 60 * 1000;
+        return data.startDate.getTime() + time < d.getTime();
+      })
+     
       res.send(contestinfo);
     })
     .catch((err) => {
@@ -39,8 +46,13 @@ app.get("/contest/past", (req, res) => {
 });
 
 app.get("/contest/current", (req, res) => {
-  Contest.find({ type: "current" })
+  Contest.find({})
     .then((contestinfo) => {
+      contestinfo = contestinfo.filter((data) => {
+        var d =  new Date();
+        var time = Number(data.time) * 60 * 60 * 1000 ;
+        return (d.getTime() - data.startDate.getTime() < time && d.getTime() > data.startDate.getTime());
+      })
       res.send(contestinfo);
     })
     .catch((err) => {
@@ -49,8 +61,12 @@ app.get("/contest/current", (req, res) => {
 });
 
 app.get("/contest/upcoming", (req, res) => {
-  Contest.find({ type: "upcoming" })
+  Contest.find()
     .then((contestinfo) => {
+      contestinfo = contestinfo.filter((data) => {
+        var d =  new Date();
+        return data.startDate.getTime() > d.getTime();
+      })
       res.send(contestinfo);
     })
     .catch((err) => {

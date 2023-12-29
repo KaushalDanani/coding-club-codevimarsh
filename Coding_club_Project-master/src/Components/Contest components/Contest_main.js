@@ -65,7 +65,7 @@ export default function Contest_main() {
                         type = {element.type1}
                         name={element.name}
                         startdate={`${startdate.getDate()}-${startdate.getMonth() + 1}-${startdate.getFullYear()} `}
-                        time={element.time}
+                        time={`${startdate.getHours()}:${startdate.getMinutes()} to ${startdate.getHours() + Number(element.time)}:${startdate.getMinutes()}`}
                         link={element.contestLink}
                     />
                     
