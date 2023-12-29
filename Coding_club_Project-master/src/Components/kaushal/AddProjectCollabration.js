@@ -58,7 +58,9 @@ function AddProjectCollabration() {
 
   return (
     <>     
-        <Navbar_after_login />
+        <Link to={'/project_collab'}>
+        <div className='projCollabBackBtn'></div>
+        </Link>
         <div className='addprojectCollabrationContainer'>
             <div className='addProjectCollabrationHeader'>
                 <h1> Add Project Collaboration Details </h1>

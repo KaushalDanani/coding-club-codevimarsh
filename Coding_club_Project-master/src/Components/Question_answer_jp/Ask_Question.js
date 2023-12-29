@@ -70,7 +70,9 @@ export default function Ask_Question(){
     
     return(
         <>
-        <Navbar_after_login/>
+        <Link to={'/discussion'}>
+        <div className='discussionBackBtn'></div>
+        </Link>
         <div className="askQuestionContainer">
             <div className="askQuestionHeader">
                 <h1><p className="question">Ask Your Question</p></h1>
