@@ -11,6 +11,10 @@
 
 .container_fluid {
     width: 100%;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    box-shadow: 0 0 11vh 4vh rgb(255, 255, 255);
 }
 .navigation_bar {   
     width: 100%;
@@ -18,10 +22,9 @@
     display: flex;
     justify-content: space-between;
     letter-spacing: 1.5px;
-    background-color: rgba(0, 0, 0, 0.75);
+    background-color: rgba(0, 0, 0, 1);
     /* background-color: transparent; */
     border-bottom: 3px solid rgb(255, 255, 255);
-    box-shadow: 0 0 12vh 4vh rgb(255, 255, 255);
     /* overflow: hidden; */
 }
 .horizontal_bar{
@@ -37,6 +40,7 @@
 .horizontal_bar li {
     height: 75px;
     list-style: none;
+    cursor: pointer;
     padding: 0px 5px;
     /* border: 2px solid white; */
 }
@@ -63,6 +67,10 @@
     /* border: 2px solid yellow; */
 }
 
+LinkScroll {
+    padding-left: -16px;
+}
+
 .liComponent#home:hover {
     background-position-y: 23.5px;
     /* border-bottom: none; */
@@ -72,7 +80,7 @@
     /* height: 7.1vh; */
     height: 56px;
     /* border-bottom: 3.5px solid #1eff00; */
-    border-bottom: 3px solid #ffffff;
+    border-bottom: 3.5px solid #ffffff;
 }
 .mobile-li:hover {
     list-style: none;

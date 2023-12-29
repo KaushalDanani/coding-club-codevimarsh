@@ -1,6 +1,6 @@
 import React from "react";
 import './Resources.css';
-import { useState } from "react";
+import { Link } from 'react-router-dom'
 
 
 export default function Resources(){
@@ -26,7 +26,7 @@ export default function Resources(){
 
     return(
         <div className={`resources fade-in-section ${isVisible ? 'is-visible' : ''}`}
-        ref={domRef}>
+        ref={domRef} id="resourcesSource">
             <div className="image">
                 <img src="/images/Resources.jpg" alt="Resources image"></img>
             </div>
@@ -35,7 +35,7 @@ export default function Resources(){
                 <p className="discnode">
                     Get The Full Resources of Study Material And  Other Resources Of Computer Science Field
                 </p>
-                <button className="btnresource">Resources</button>
+                <Link to={"signin"}> <button className="btnresource">Resources</button> </Link>
             </div>
             
         </div>

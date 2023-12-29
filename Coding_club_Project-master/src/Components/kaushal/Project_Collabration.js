@@ -3,14 +3,12 @@ import "./Project_Collabration.css";
 import { Link } from 'react-router-dom';
 import ProjectCollabrationCard from './ProjectCollabrationCard';
 import Navbar_after_login from './Navbar_after_login';
-import MyfooterAfterLogin from '../MyfooterAfterLogin';
 
 
 function Project_Collabration() {
 
   const [changeImage, setChangeImage] = useState('true');
   const [collabrationData, setCollabrationData] = useState([]);
-  const [array, setArray] = useState([]);
   const [map, setMap] = useState(new Map())
 
   useEffect(() => {
@@ -22,9 +20,9 @@ function Project_Collabration() {
     })
     .then(response => response.json())
     .then(data => {
-      console.log(data);
+      // console.log(data);
       setCollabrationData(data[0]);
-      setArray(data[1]);
+      // setArray(data[1]);
       const dataMap = new Map(data[1]);
       setMap(dataMap);
 
@@ -39,6 +37,7 @@ function Project_Collabration() {
     if(collabrationData.size !== 0)
     {
       return(collabrationData.map((itemData) => (
+        // console.log("Helelo :  "+map.get(itemData._id)),
         <ProjectCollabrationCard data={itemData} userDetails={map.get(itemData._id)} />
       )))
     }
@@ -64,7 +63,6 @@ function Project_Collabration() {
         {mapDataCards(collabrationData)}
 
       </div>
-      <MyfooterAfterLogin/>
     </>
   )
 }

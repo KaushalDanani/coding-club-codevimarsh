@@ -8,12 +8,23 @@ function Sign_in_page() {
 
     const [enterdUsername, setEnterdUsername] = useState('')
     const [enterdPassword, setEnterdPassword] = useState('')
+    const [showhide, setShowhide] = useState('true');
 
     const usernameChangeHandler = (e) => {
         setEnterdUsername(e.target.value)
     }
     const passwordChangeHandler = (e) => {
         setEnterdPassword(e.target.value)
+    }
+
+    const passwordVisibilityHandler = (e) => {
+        setShowhide(!showhide);
+
+        let x = document.getElementById("pwd");
+        if(showhide)
+            x.type = 'text';
+        else
+            x.type = 'password';
     }
 
     const submitHandler = (e) => {
@@ -291,7 +302,8 @@ function Sign_in_page() {
                             <label> Username </label>
                         </div>
                         <div className="inputbox"> 
-                            <input type="password" value={enterdPassword} onChange={passwordChangeHandler} required />
+                            <input className={showhide ? "show_pwd" : "hide_pwd"} onClick={passwordVisibilityHandler} type='button' />
+                            <input id='pwd' type="password" value={enterdPassword} onChange={passwordChangeHandler} required />
                             <label> Password </label>
                         </div>
                         {/* <div className="links_section">

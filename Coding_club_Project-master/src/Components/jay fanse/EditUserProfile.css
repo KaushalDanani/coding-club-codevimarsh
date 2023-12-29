@@ -10,6 +10,17 @@
     font-size: 5% !important;
 }
 
+.EditUserProfileBack {
+    position: absolute;
+    top: 1vh;
+    left: 1vw;
+    height: 6vh;
+    width: 6vw;
+    background: url('/public/images/back-btn-white.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
 .EditProfileImg{
     position: relative;
     /* background-image: url("../images/profile.jpeg"); */

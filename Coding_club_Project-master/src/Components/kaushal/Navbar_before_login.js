@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
+import { Link as LinkScroll} from 'react-scroll'
 import "./Navbar_before_login.css";
 
 function Navbar_before_login() {
@@ -18,12 +19,12 @@ function Navbar_before_login() {
                     <ul className={mobileMenu ? "horizontal_bar" : "horizontal_bar mobile-menu-icon"}>
                         <li className={mobileMenu ? "liComponent" : "mobile-li"} id="home"><a href=""></a></li>
                         <li className={mobileMenu ? "liComponent" : "mobile-li"} id="contact"><a href="https://mail.google.com/mail/?view=cm&to=sohamzadafiya@gmail.com" target="_blank" >CONTACT US</a></li>
-                        <li className={mobileMenu ? "liComponent" : "mobile-li"} id="about"><a href="#AboutUS">ABOUT US</a></li>
+                        <li className={mobileMenu ? "liComponent" : "mobile-li"} id="about"> <LinkScroll to="AboutUS" style={{color: 'white'}} spy={true} smooth={true} offset={-10}> ABOUT US </LinkScroll> </li>
                     </ul>
                 </div>
 
                 <ul className='sign_in_container'>
-                    <li><Link to={"signin"}><input  type="button" value="Sign In" className="signin_btn" /></Link>  </li>
+                    <li><Link to={"signin"}><input  type="button" value="Sign In" className="signin_btn" /></Link> </li>
                 </ul>
             </nav>
         </header>

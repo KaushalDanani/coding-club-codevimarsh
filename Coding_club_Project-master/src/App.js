@@ -54,7 +54,7 @@ function HomeBeforeLogin() {
       <Discussion/>
     <div className='founderinfo'>
       <h1 className='foundercardline'>
-        The Founders And Current Operator Of MSU Coding Club Website
+        The Founders Of CodeMinions
       </h1>
       <div className="founderGrid"  id="AboutUS">
       {founderinfo.map(function Founderinfocard(element){

@@ -10,11 +10,11 @@ function Navbar_after_login(props) {
     const [base64Img,setBase64Img] = useState('');
 
     useEffect( () => {
-        fetch(`/navbar/profileImg/?userID=${userID}`)
+        fetch('/navbar/profileImg/dataset')
         .then(response => response.json())
         .then(data => {
             setUserData(data);
-            setBase64Img(`data:image/png;base64,${data[0].profileImg}`);
+            setBase64Img(`data:image/png;base64,${data.profileImg}`);
             // console.log('aaa',data[0].profileImg);
         });
     },[])

@@ -12,6 +12,7 @@
 .projectCollabrationHeader {
     width: 85%;
     height: 38vh;
+    padding-left: 1vw;
     margin-top: 10vh;
     border-radius: 20px;
     background-color: rgb(105, 19, 191);
@@ -60,7 +61,7 @@
 
 .project_collabration_oneliner {
     position: relative;
-    top: 18.5vh;
+    top: 16.5vh;
     left: 2.5vw;
     font-size: 3.2vh;
     color: rgb(255, 255, 255);
@@ -71,8 +72,8 @@
 .ProjectCollabrationBtn {
     height: 5vh;
     padding: 0vw 1.8vw 0vw 3.2vw;
-    margin-top: 3vh;
-    margin-bottom: 2.9vh;
+    margin-top: 3.5vh;
+    margin-bottom: 3.4vh;
     font-weight: 700;
     border-radius: 50px;
     background: transparent;
@@ -85,7 +86,7 @@
     font-size: 1.25rem;
     font-family: sans-serif;
     color: white;
-    border: 2px solid #eaff00;
+    border: 2px solid #ffffff;
 }
 .changeAddImage {
     background-image: url("/public/images/add-project-collabration.png");
@@ -94,9 +95,9 @@
     background-position: 22% 50%;
 }
 .ProjectCollabrationBtn:hover {
-    color: black;
-    background-color: #eaff00;
-    box-shadow: 0px 0px 15px 30px #eaff00;
+    color: rgb(0, 0, 0);
+    background-color: #ffffff;
+    box-shadow: 0px 0px 15px 30px #000000;
     box-shadow: none;
     border: 1px solid black;
 }

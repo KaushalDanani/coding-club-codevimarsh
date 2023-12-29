@@ -179,6 +179,37 @@
     border-radius: 20px;
 }
 
+.show_pwd {
+    width: 18% !important;
+    height: 75%;
+    position: absolute;
+    top: 30%;
+    left: 83.5%;
+    opacity: 0.8;
+    border-radius: 0px !important;
+    background-color: transparent !important;
+    border: none !important;
+    background-image: url(/public/images/show-password.png);
+    background-repeat: no-repeat;
+    background-size: 50% 50%;
+}
+
+.hide_pwd {
+    width: 18% !important;
+    height: 75%;
+    position: absolute;
+    top: 30%;
+    left: 83.5%;
+    opacity: 0.8;
+    border-radius: 0px !important;
+    background-color: transparent !important;
+    border: none !important;
+    background-image: url(/public/images/hide-password.png);
+    background-repeat: no-repeat;
+    background-size: 50% 50%;
+}
+
+
 @media (max-width: 500px) {
 
     .signin_section {

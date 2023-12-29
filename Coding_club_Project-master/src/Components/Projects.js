@@ -1,6 +1,6 @@
 import React from "react";
-import'./Projects.css';
-
+import './Projects.css';
+import { Link } from "react-router-dom";
 
 
 export default function Projects(){
@@ -26,7 +26,7 @@ export default function Projects(){
 
     return(
         <div className={`projects fade-in-section ${isVisible ? 'is-visible' : ''}`}
-        ref={domRef}>
+        ref={domRef} id="projectSources">
             <div className="image">
                 <img src="/images/Project.jpg" alt="Project image"></img>
             </div>
@@ -35,7 +35,7 @@ export default function Projects(){
                 <p className="discnode">
                     Get Knowledge Of All Previous Projects Which Are Made By Senior
                 </p>
-                <button className="btnproject">See All</button>
+                <Link to={"signin"}> <button className="btnproject">See All</button> </Link>
             </div>
             
         </div>
