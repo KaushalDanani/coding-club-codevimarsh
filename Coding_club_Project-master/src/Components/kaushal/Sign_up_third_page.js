@@ -71,7 +71,7 @@ function Sign_up_third_page() {
             // alert(data.userID);
             if(data.error === undefined){
                 sessionStorage.setItem('userID', data.userID)
-                navigate("/home")
+                navigate("/")
             }
             else{
                 alert(data.error)

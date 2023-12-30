@@ -7,6 +7,7 @@ import "./LoginHomePage.css";
 import Navbar_after_login from '../kaushal/Navbar_after_login';
 import Myfooter from '../Myfooter';
 import { useLocation } from 'react-router-dom';
+import useUser from '../../store/userContext';
 
 function LoginHomePage(props) {
 
@@ -22,6 +23,9 @@ const location = useLocation();
   const [userID, setUserID] = useState("")
   const [admin,setAdmin] = useState(false);
 
+  const {user, setUser} = useUser();
+  console.log(user, '💣💣💣💣💣💣');
+
   useEffect( () => {
     fetch("/home/user/dataset", {
         method: "GET",
@@ -34,7 +38,7 @@ const location = useLocation();
     )
     .then(
       data => {
-        console.log(data);
+        setUser(data[0]);
         setFname(data[0].fname);
         setUserID(data[0]._id);
         setAdmin(data[0].isAdmin);

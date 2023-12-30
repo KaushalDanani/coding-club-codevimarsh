@@ -52,7 +52,7 @@ function Sign_in_page() {
                 {
                     // alert(data.message);
                     sessionStorage.setItem('userID', data.userID)
-                    navigate('/home')
+                    navigate('/')
                 }
             })
             .catch((err) => {

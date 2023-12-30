@@ -41,6 +41,7 @@ import Question_data from './Components/Jay prajapati/Question_data';
 import ProjectMain from './Components/Jay prajapati/ProjectMain';
 import Ask_Question from './Components/Question_answer_jp/Ask_Question.js';
 import Give_answer from './Components/Question_answer_jp/Give_answer.js';
+import { UserProvider } from './store/userContext.js';
 
 function HomeBeforeLogin() {
   return (
@@ -98,7 +99,7 @@ function App() {
   }, []);
 
   return (
-    <>
+    <UserProvider>
     <div>
           
 <Router>
@@ -132,7 +133,7 @@ function App() {
     </Router>
     </div>
 
-    </>
+    </UserProvider>
   );
 }
 
