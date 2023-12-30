@@ -49,7 +49,7 @@ function Sign_up_third_page() {
             year: sessionStorage.getItem('graduation_year'),
             programme: sessionStorage.getItem('programme'),
             department: sessionStorage.getItem('department'),
-            linkedIn: sessionStorage.getItem('linkedin_id'),
+            linkedin: sessionStorage.getItem('linkedin_id'),
             codechef: sessionStorage.getItem('codechef_id'),
             leetcode: sessionStorage.getItem('leetcode_id')
         }
@@ -71,7 +71,7 @@ function Sign_up_third_page() {
             // alert(data.userID);
             if(data.error === undefined){
                 sessionStorage.setItem('userID', data.userID)
-                navigate("/home")
+                navigate("/")
             }
             else{
                 alert(data.error)

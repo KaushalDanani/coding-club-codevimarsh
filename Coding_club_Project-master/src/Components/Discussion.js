@@ -1,6 +1,6 @@
 import React from "react";
 import './Discussion.css';
-
+import { Link } from "react-router-dom";
 
 export default function Discussion(){
 
@@ -26,7 +26,7 @@ export default function Discussion(){
 
     return(
         <div className={`discussion fade-in-section ${isVisible ? 'is-visible' : ''}`}
-        ref={domRef}>
+        ref={domRef} id="discussionSource">
             <div className="image">
                 <img src="/images/Discussion.jpg" alt="Discussion image"></img>
             </div>
@@ -35,7 +35,7 @@ export default function Discussion(){
                 <p className="Ddiscnode">
                     Take a Part In Discussion, Ask Your Question, And Give The Answer Of Othres Question. 
                 </p>
-                <button className="btndiscussion">Discuss</button>
+                <Link to={"signin"}> <button className="btndiscussion">Discuss</button> </Link>
             </div>
             
         </div>

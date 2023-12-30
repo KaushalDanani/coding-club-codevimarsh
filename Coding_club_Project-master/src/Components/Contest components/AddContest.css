@@ -2,9 +2,12 @@
 
 
 .contestBackBtn{
-    color: white;
     position: absolute;
-    left: 1.2vh;
-    top: 1.2vh;
-    font-size: 1.3rem;
+    top: 1vh;
+    left: 1vw;
+    height: 6vh;
+    width: 6vw;
+    background: url('/public/images/back-btn-white.png');
+    background-repeat: no-repeat;
+    background-size: contain;
 }

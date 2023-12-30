@@ -11,6 +11,8 @@ function Sign_up_first_page() {
     const [uname, setUname] = useState('')
     const [pwd, setPwd] = useState('')
     const [cpwd, setCpwd] = useState('')
+    const [showhide, setShowhide] = useState('true');
+    const [showhideforconfirm, setShowhideforconfirm] = useState('true')
 
     useEffect(() => {
         
@@ -36,6 +38,26 @@ function Sign_up_first_page() {
     }
     const cpwdChangeHandler = (event) => {
         setCpwd(event.target.value)
+    }
+
+    const passwordVisibilityHandler = (e) => {
+        setShowhide(!showhide);
+
+        let x = document.getElementById("pwd");
+        if(showhide)
+            x.type = 'text';
+        else
+            x.type = 'password';
+    }
+
+    const confirmPasswordVisibilityHandler = (e) => {
+        setShowhideforconfirm(!showhideforconfirm);
+
+        let x = document.getElementById("confirmPwd");
+        if(showhideforconfirm)
+            x.type = 'text';
+        else
+            x.type = 'password';
     }
 
     function data() {
@@ -310,14 +332,16 @@ function Sign_up_first_page() {
                                 <label> Username </label>
                                 { (uname === '') && (<div className='requireSuggestion'> *Username is required. </div>) }
                             </div>
-                            <div className="inputbox"> 
-                                <input type="password" name='password' value={pwd} onChange={pwdChangeHandler} required />
+                            <div className="inputbox">
+                                <input className={showhide ? "show_pwd_signup" : "hide_pwd_signup"} onClick={passwordVisibilityHandler} type='button' />
+                                <input id='pwd' type="password" name='password' value={pwd} onChange={pwdChangeHandler} required />
                                 <label> Password </label>
                                 { (pwd === '') && (<div className='requireSuggestion'> *Password is required. </div>) }
                                 { (pwd.length < 8 && pwd !== '') && (<div className='requireSuggestion'> *Length must be &gt;= 8 Characters. </div>) }
                             </div>
-                            <div className="inputbox"> 
-                                <input type="password" name='confirm_password' value={cpwd} onChange={cpwdChangeHandler} required />
+                            <div className="inputbox">
+                                <input className={showhideforconfirm ? "show_pwd_signup" : "hide_pwd_signup"} onClick={confirmPasswordVisibilityHandler} type='button' />
+                                <input id='confirmPwd' type="password" name='confirm_password' value={cpwd} onChange={cpwdChangeHandler} required />
                                 <label> Confirm Password </label>
                                 { (pwd !== cpwd || cpwd === '') && (<div className='requireSuggestion'> *Confirm Password isn't match. </div>) }
                             </div>

@@ -81,7 +81,9 @@ function ManageAdmins() {
 
   return (
     <>
-    <Link to={'/home'} className='adminBackBtn'> &lt; Back to Home</Link>
+    <Link to={'/'}>
+        <div className='adminBackBtn'></div>
+    </Link>
     <div className='manageAdminsDiv'>
         <div className='manageAdminsHeader'>Admin List</div>
         <div className='manageAdminsBody'>

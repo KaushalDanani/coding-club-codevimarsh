@@ -12,23 +12,18 @@ footer{
     /* width: 100%; */
     color: white;
     display: flex;
+    margin-top: 6.5%;
     justify-content: space-between;
-    padding: .5vh 8vh;
-    padding-top: 4vh;
+    padding: 2% 4%;
     /* position: absolute !important;
     bottom: 0; */
-    /* font-size: 1.9vh; */
-}
-
-.box{
-    /* padding: 0.5%; */
+    font-size: 0.9rem;
 }
 
 .box h2{
     font-weight: 400;
-    font-size: 3.2vh !important;
+    font-size: 2rem !important;
     color: rgb(183, 183, 183);
-    margin-bottom: 3vh;
 }
 
 .box a{
@@ -38,9 +33,9 @@ footer{
 
 .box li{
     list-style: none;
-    margin: 1vh -4vh;
-    font-size: 2.2vh;
-    margin-bottom: 0vh;
+    cursor: pointer;
+    margin: 0.8rem -1.8rem;
+    font-size: 1.2rem;
 }
 
 .box a:hover{
@@ -50,12 +45,12 @@ footer{
 .copyright{
     /* width: 100vw; */
     /* padding-bottom: 15px; */
-    padding: 2px;
-    padding-top: 15px;
+    padding: 5px;
+    padding-top: 20px;
     background-color: rgb(30, 30, 31);
     text-align: center;
     color: white;
-    font-size: 1.6vh;
+    font-size: 1.1rem;
     /* margin-top: 5px; */
 }
 

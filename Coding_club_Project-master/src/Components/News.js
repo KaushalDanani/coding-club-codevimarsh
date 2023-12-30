@@ -1,5 +1,6 @@
 import React from "react";
 import './News.css';
+import { Link } from "react-router-dom";
 import { useEffect } from "react";
 
 
@@ -27,7 +28,7 @@ export default function News(){
 
     return(
         <div className={`news fade-in-section ${isVisible ? 'is-visible' : ''}`}
-        ref={domRef}>
+        ref={domRef} id="newsSource">
             <div className="image">
                 <img src="/images/News.jpg" alt="News image"></img>
             </div>
@@ -36,7 +37,7 @@ export default function News(){
                 <p className="newsdiscnode">
                     Get The Latest News Of Technology And Computer Science Field
                 </p>
-                <button className="btnnews">News</button>
+                <Link to={"signin"}> <button className="btnnews">News</button> </Link>
             </div>
             
         </div>

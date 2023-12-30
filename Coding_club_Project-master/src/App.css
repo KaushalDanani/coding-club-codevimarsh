@@ -1,5 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
 
+@font-face {
+    font-family: myFont;
+    src: url("/public/fonts/Cyborg\ Punk.ttf");
+}
+
 *{
     margin: 0%;
     padding: 0%;
@@ -11,7 +16,7 @@
     background-size: cover; */
     background-color: #611a7c !important;
     padding: 2%;
-    margin: 2%;
+    margin: 3%;
     margin-top: 10%;
     border-radius: 20px;
 
@@ -20,18 +25,17 @@
 .foundercardline{
     display: flex;
     justify-content: center;
-    font-family: 'Poppins', sans-serif;
-    /* padding: 2% 0% 0% 3%; */
+    margin: 1.5% 0% 2% 0%;
+    font-family: myFont;
+    /* font-size: 2rem; */
     color: rgb(255, 255, 255);
 }
 
 .founderGrid{
-    /* border: 2px solid red; */
-    display: grid; 
-    grid-template-columns: repeat(4,1fr);
-    padding: 0.8%;
-    gap: 1%;
-    padding-bottom: 3%;
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    margin: 4.5% 1% 2% 3.1%;
 }
 
 @media (width<1200px) {

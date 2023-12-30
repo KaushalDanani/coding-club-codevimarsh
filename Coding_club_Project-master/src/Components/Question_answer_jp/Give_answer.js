@@ -54,6 +54,10 @@ function Give_answer() {
 
 
     return (
+        <>
+        <Link to={`/discussion/question/?q_id=${q_id}`}>
+        <div className='replyBackBtn'></div>
+        </Link>
         <div className="addReplyContainer">
             <div className="addReplyHeader">
                 <h1><p className="reply">Add Your Reply</p></h1>
@@ -81,6 +85,7 @@ function Give_answer() {
                 </form>
             </div>
         </div>
+        </>
     );
 }
 

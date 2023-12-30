@@ -1,46 +1,88 @@
-@import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@700&family=Poppins:wght@300;600&display=swap');
 
+    .cardContainer {
+        position: relative;
+        cursor: pointer;
+        height: 325px;
+        width: 19vw;
+        background-color: transparent;
+        border-radius: 8%;
+    }
 
-*{
-    margin: 0%;
-    padding: 0%;
-    box-sizing: border-box;
-}
+    .cardView {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        transition: all 0.5s ease-in-out;
+        border: 1.5px dotted black;
+        box-shadow: 0 0 10px 7px rgb(119, 119, 119) !important;
+        transform-style: preserve-3d;
+        border-radius: 8%;
+    }
 
-.foundercard {
-    /* width: 23.2vw !important; */
-    height: 100% ;
-    background-color: rgb(255, 255, 255) ;
-    margin: 0.9%;
-    border-radius: 10px;
-    box-shadow: 0px 0px 5px rgb(43, 43, 43);
-    padding: 2%;
-    
-    font-family: 'Poppins', sans-serif;
-    display: inline-block ;
-}
+    .cardContainer:hover .cardView {
+        transform: rotateY(-180deg);
+    }
 
-.foundercard p{
-    color: rgb(53, 53, 53) ;
-}
+    .foundercard {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        backface-visibility: hidden; 
+        background-color: rgb(255, 255, 255) ;
+        border-radius: 8%;
+    }
 
-.quote{
-    width: 20px;
-    height: 20px;
-    margin-bottom: 4%;
-}
+    .back {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        backface-visibility: hidden; 
+        transform: rotateY(-180deg);
+        border-radius: 8%;
+        background-color: rgb(255, 255, 255) ;
+        color: black;
+        overflow: hidden;
+    }
 
-.userimage{
-    width: 90px;
-    height: 90px;
-    border-radius: 50%;
-    margin-top: 8%;
-    margin-bottom: 5%;
-}
+    .founderData {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
 
-.username{
-    font-weight: 600;
-    color: rgb(91, 91, 91);
-    font-size: 20px;
-}
+    .foundercard p{
+        margin: 4.5px;
+        font-family: cursive;
+        color: rgb(53, 53, 53) ;
+    }
 
+    .back p {
+        padding: 7.2% 10%;
+        line-height: 1.45;
+        font-size: 1.1rem;
+        padding-bottom: 8%;
+        font-weight: 600;
+        font-family: 'Times New Roman', Times, serif;
+        text-align: justify;
+    }
+
+    .quote{
+        width: 20px;
+        height: 20px;
+        /* margin-bottom: 4%; */
+    }
+
+    .userimage{
+        width: 105px;
+        height: 105px;
+        border-radius: 50%;
+        margin-top: 10%;
+        margin-bottom: 8.5%;
+    }
+
+    .username{
+        font-weight: 600;
+        color: rgb(91, 91, 91);
+        font-size: 20px;
+    }

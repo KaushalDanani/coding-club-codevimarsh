@@ -11,6 +11,7 @@ function AddProjectCollabration() {
     const [pc_title, setPc_title] = useState('')
     const [pc_tags, setPc_tags] = useState('')
     const [pc_description, setPc_description] = useState('')
+    const [userID, setUserID] = useState(sessionStorage.getItem('userID'))
 
     const titleChangeHandler = (e) => {
         setPc_title(e.target.value)
@@ -22,12 +23,12 @@ function AddProjectCollabration() {
         setPc_description(e.target.value)
     }
 
-    const [added,setAdded] = ("");
+
 
     const submitHandler = (e) => {
 
         const formData = {
-            userID: sessionStorage.getItem('userID'),
+            userID: userID,
             collabrationTitle: pc_title,
             collabrationTags: pc_tags.split(','),
             collabrationDescription: pc_description
@@ -44,11 +45,10 @@ function AddProjectCollabration() {
             })
             .then(response => response.json())
             .then((data) => {
-                // alert('Project Collabration added successfully')
-                navigate('/project_collab')
+                alert('Project Collabration added successfully')
             })
             .catch((err) => {
-                alert(`Error : ${err}`)
+                // alert(`Error Bye 3 : ${err}`)
             })
         }
         else {
@@ -58,10 +58,12 @@ function AddProjectCollabration() {
 
   return (
     <>     
-            <Navbar_after_login />
+        <Link to={'/project_collab'}>
+        <div className='projCollabBackBtn'></div>
+        </Link>
         <div className='addprojectCollabrationContainer'>
             <div className='addProjectCollabrationHeader'>
-                <h1> Add Project Collabration Details </h1>
+                <h1> Add Project Collaboration Details </h1>
             </div>
             <hr style={{height: '2.5px', width: '100%', backgroundColor: 'white', margin: '0px'}} />
             <div className='formContainer'>
@@ -83,7 +85,7 @@ function AddProjectCollabration() {
 
                     <div className='buttonSection'>
                         <Link to={'/project_collab'}> <button id='pc_cancelbtn' className='addProjectCollabrationBtn'> Cancel </button> </Link>
-                        <button id='pc_addbtn' className='addProjectCollabrationBtn' onClick={submitHandler} > Post </button>
+                        <Link to={'/project_collab'}> <button id='pc_addbtn' className='addProjectCollabrationBtn' onClick={submitHandler}> Post </button> </Link>
                     </div>
                 </form>
             </div>

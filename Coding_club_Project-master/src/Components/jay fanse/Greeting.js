@@ -4,10 +4,12 @@ import "./Greeting.css";
 // import icon2 from "/public/images/AI.png";
 import { Link } from "react-router-dom";
 import ManageAdmins from "./ManageAdmins";
+import useUser from "../../store/userContext";
 
 function Greeting(props){
     
     const [isNotiClick,setNotiClick] = useState(false);
+    const {user} = useUser();
 
 
     const fname = props.userData && props.userData.fname ? props.userData.fname : "";
@@ -28,6 +30,9 @@ function Greeting(props){
     return (
 
         <div className="greetmain">
+            {/* <pre>
+            {JSON.stringify(user, null, 2)}
+            </pre> */}
             <h1 className="greet">Hey <Link to={`/profile`}><span className="greetName">{props.fname}</span></Link>,</h1>
 
             <Link 

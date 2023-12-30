@@ -8,7 +8,7 @@ function RecentTasksPanel(props) {
   const [contests,setContests] = useState([]);
   
   useEffect( () => {
-    fetch(`contest/upcoming`)
+    fetch(`/contest/upcoming`)
     .then(response => response.json())
     .then(data => {
       setContests(data);

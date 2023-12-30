@@ -1,4 +1,4 @@
-import React from 'react';
+import {React,useState,useEffect} from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 // soham zadafiya
@@ -42,6 +42,7 @@ import ProjectMain from './Components/Jay prajapati/ProjectMain';
 import Ask_Question from './Components/Question_answer_jp/Ask_Question.js';
 import Give_answer from './Components/Question_answer_jp/Give_answer.js';
 import AddContest from './Components/Contest components/AddContest.js';
+import { UserProvider } from './store/userContext.js';
 
 function HomeBeforeLogin() {
   return (
@@ -55,7 +56,7 @@ function HomeBeforeLogin() {
       <Discussion/>
     <div className='founderinfo'>
       <h1 className='foundercardline'>
-        The Founders And Current Operator Of MSU Coding Club Website
+        The Founders Of CodeMinions
       </h1>
       <div className="founderGrid"  id="AboutUS">
       {founderinfo.map(function Founderinfocard(element){
@@ -72,18 +73,54 @@ function HomeBeforeLogin() {
 
 
 function App() {
+
+  const [checkAuth, setCheckAuth] = useState(false);
+
+  useEffect( () => {
+      fetch('/checkUser', {
+        method: "GET",
+        headers: { 
+            'Content-Type': 'application/json' 
+          }
+      })
+      .then(response => response.json())
+      .then(data => {
+
+        if(data.error === undefined){
+          console.log(data.Token);
+          if(data.Token === undefined)
+            setCheckAuth(false);
+          else
+            setCheckAuth(true);
+        }
+        else{
+            alert(data.error)
+        }
+      })
+  }, []);
+
   return (
-    <>
+    <UserProvider>
     <div>
           
 <Router>
         <Routes>
+        {/* { checkAuth ? (
+              <Route path='/' element={<LoginHomePage />} />
+            ) : (
+              <Route path='/' element={<HomeBeforeLogin />} />
+            ) } */}
+          
+          
           <Route path='/' element={<HomeBeforeLogin />} />
+          <Route path='/home' element={<LoginHomePage />} />
+
+
+
           <Route path='/signin' element={<Sign_in_page />} />
           <Route path='/signup/step-1' element={<Sign_up_first_page />} />
           <Route path='/signup/step-2' element={<Sign_up_second_page />} />
           <Route path='/signup/step-3' element={<Sign_up_third_page />} />
-          <Route path='/home' element={<LoginHomePage />} />
           <Route path='/manageAdmins' element={<ManageAdmins />} />
           <Route path='/contest' element={<Contest_main />} />
           <Route path='/addContest' element={<AddContest />} />
@@ -104,7 +141,7 @@ function App() {
     </Router>
     </div>
 
-    </>
+    </UserProvider>
   );
 }
 

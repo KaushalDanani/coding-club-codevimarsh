@@ -74,7 +74,8 @@
     border: 2px solid #eaff00;
 }
 #pc_addbtn {
-    padding: 0% 3.2% 0% 3.2%;
+    margin-right: 2.5vw;
+    padding: 0% 20% 0% 20%;
 }
 #pc_cancelbtn {
     padding: 0% 20% 0% 20%;
@@ -85,4 +86,15 @@
     box-shadow: 0px 0px 15px 30px #eaff00;
     box-shadow: none;
     border: 1px solid black;
+}
+
+.projCollabBackBtn{
+    position: absolute;
+    top: 1vh;
+    left: 1vw;
+    height: 6vh;
+    width: 6vw;
+    background: url('/public/images/back-btn-white.png');
+    background-repeat: no-repeat;
+    background-size: contain;
 }

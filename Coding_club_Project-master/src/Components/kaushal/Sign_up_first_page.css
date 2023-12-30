@@ -160,6 +160,37 @@
     background-color: #db00ef;
 }
 
+.show_pwd_signup {
+    width: 2.8vw !important;
+    height: 5.5vh;
+    position: absolute;
+    top: 29.5%;
+    left: 88.5%;
+    opacity: 0.7;
+    border-radius: 0px !important;
+    background-color: transparent !important;
+    border: none !important;
+    background-image: url(/public/images/show-password.png);
+    background-repeat: no-repeat;
+    background-size: 50% 50%;
+}
+
+.hide_pwd_signup {
+    width: 2.8vw !important;
+    height: 5.5vh;
+    position: absolute;
+    top: 29.5%;
+    left: 88.5%;
+    opacity: 0.7;
+    border-radius: 0px !important;
+    background-color: transparent !important;
+    border: none !important;
+    background-image: url(/public/images/hide-password.png);
+    background-repeat: no-repeat;
+    background-size: 50% 50%;
+}
+
+
 @media (max-width: 500px) {
 
     .sign-up_section {
@@ -227,6 +258,20 @@
 
     .requireSuggestion {
         font-size: 1.4032vh !important;
+    }
+
+    .show_pwd_signup {
+        width: 14.5% !important;
+        height: 75% !important;
+        top: 31%;
+        left: 85%;
+    }
+
+    .hide_pwd_signup {
+        width: 14.5% !important;
+        height: 75% !important;
+        top: 31%;
+        left: 85%;
     }
 }
 

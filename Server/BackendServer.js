@@ -7,9 +7,14 @@ var bodyParser = require("body-parser");
 var jsonParser = bodyParser.json();
 const path = require("path");
 app.use(express.json({ limit: "1000mb" }));
+const User = require('./userSchema')
+const bcrypt = require("bcryptjs");
+const cookieParser = require("cookie-parser");
+
 
 app.use(bodyParser.json({ limit: "1000mb" }));
 app.use(bodyParser.urlencoded({ limit: "1000mb", extended: true }));
+app.use(cookieParser());
 
 const mongoose = require("mongoose");
 const { log } = require("console");
@@ -145,83 +150,83 @@ const imageBuffer = fs.readFileSync(
 );
 const base64Image = imageBuffer.toString("base64");
 
-const User = mongoose.model(
-  "user",
-  new mongoose.Schema({
-    // fname: String,
-    // lname: String,
-    // username: String,
-    // linkedIn: String,
-    // leetcode : String,
-    // codechef : String,
-    // programme: String,
-    // department: String,
-    // year: Number,
-    // email: String,
-    // password: String,
-    profileImg: {
-      type: String,
-      default: base64Image,
-    },
-    about: String,
-    skills: [],
-    questionUpvotes: [ObjectId],
-    repliesUpvotes: [ObjectId],
+// const User = mongoose.model(
+//   "user",
+//   new mongoose.Schema({
+//     // fname: String,
+//     // lname: String,
+//     // username: String,
+//     // linkedIn: String,
+//     // leetcode : String,
+//     // codechef : String,
+//     // programme: String,
+//     // department: String,
+//     // year: Number,
+//     // email: String,
+//     // password: String,
+//     profileImg: {
+//       type: String,
+//       default: base64Image,
+//     },
+//     about: String,
+//     skills: [],
+//     questionUpvotes: [ObjectId],
+//     repliesUpvotes: [ObjectId],
 
-    email: {
-      type: String,
-      required: true,
-      lowercase: true,
-      unique: true,
-      // match: [/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/, 'Please fill a valid email address']
-    },
-    username: {
-      type: String,
-      required: true,
-      lowercase: true,
-      unique: true,
-    },
-    password: {
-      type: String,
-      required: true,
-      // minLength: 8
-    },
-    fname: {
-      type: String,
-      required: true,
-      uppercase: true,
-    },
-    lname: {
-      type: String,
-      required: true,
-      uppercase: true,
-    },
-    year: {
-      type: String,
-      required: true,
-    },
-    programme: {
-      type: String,
-      required: true,
-    },
-    department: {
-      type: String,
-      required: true,
-    },
-    linkedIn: {
-      type: String,
-    },
-    codechef: {
-      type: String,
-    },
-    leetcode: {
-      type: String,
-    },
-    isAdmin: {
-      type: Boolean,
-    }
-  })
-);
+//     email: {
+//       type: String,
+//       required: true,
+//       lowercase: true,
+//       unique: true,
+//       // match: [/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/, 'Please fill a valid email address']
+//     },
+//     username: {
+//       type: String,
+//       required: true,
+//       lowercase: true,
+//       unique: true,
+//     },
+//     password: {
+//       type: String,
+//       required: true,
+//       // minLength: 8
+//     },
+//     fname: {
+//       type: String,
+//       required: true,
+//       uppercase: true,
+//     },
+//     lname: {
+//       type: String,
+//       required: true,
+//       uppercase: true,
+//     },
+//     year: {
+//       type: String,
+//       required: true,
+//     },
+//     programme: {
+//       type: String,
+//       required: true,
+//     },
+//     department: {
+//       type: String,
+//       required: true,
+//     },
+//     linkedIn: {
+//       type: String,
+//     },
+//     codechef: {
+//       type: String,
+//     },
+//     leetcode: {
+//       type: String,
+//     },
+//     isAdmin: {
+//       type: Boolean,
+//     }
+//   })
+// );
 
 app.get(`/projectDisplay/userData/`, async (req, res) => {
   try {
@@ -358,22 +363,22 @@ const forumSchema = mongoose.Schema({
   tags: [],
 });
 
-const userSchema = mongoose.Schema({
-  profileImg: String,
-  fname: String,
-  lname: String,
-  username: String,
-  about: String,
-  linkedIn: String,
-  programme: String,
-  department: String,
-  year: Number,
-  email: String,
-  password: String,
-  skills: [],
-  questionUpvotes: [ObjectId],
-  repliesUpvotes: [ObjectId],
-});
+// const userSchema = mongoose.Schema({
+//   profileImg: String,
+//   fname: String,
+//   lname: String,
+//   username: String,
+//   about: String,
+//   linkedIn: String,
+//   programme: String,
+//   department: String,
+//   year: Number,
+//   email: String,
+//   password: String,
+//   skills: [],
+//   questionUpvotes: [ObjectId],
+//   repliesUpvotes: [ObjectId],
+// });
 
 const replySchema = mongoose.Schema({
   replier: ObjectId,
@@ -622,15 +627,26 @@ app.get("/resources/rescontent", async (req, res) => {
   }
 });
 
-app.get("/home/user", async (req, res) => {
-  const userID = req.query.userID;
+// app.get("/home/user", async (req, res) => {
+//   const userID = req.query.userID;
+//   try {
+//     const resData = await User.find({ _id: userID });
+//     res.send(resData);
+//   } catch (err) {
+//     res.status(500).send(err.message);
+//   }
+// });
+
+app.get("/home/user/dataset", async (req,res) => {
+  const jwt = req.cookies.jwtAuth;
   try {
-    const resData = await User.find({ _id: userID });
+    const resData = await User.find({'tokens.token' : jwt});
     res.send(resData);
   } catch (err) {
     res.status(500).send(err.message);
   }
 });
+
 
 app.get("/profile/user", async (req, res) => {
   const userID = req.query.userID;
@@ -913,44 +929,179 @@ app.use(
 //     }
 // })
 
-app.post("/usersignin", async (req, res) => {
-  try {
-    const loginData = req.body;
-    const userDetail = await User.findOne({
-      username: loginData.username,
-      password: loginData.password,
-    });
-    // // console.log(userDetail)
-    if (userDetail === null) res.send({ message: "Invalid User Credential" });
-    else res.status(200).send({ userID: userDetail._id });
-  } catch (err) {
-    // console.log(err);
-    res.sendStatus(400);
-  }
-});
+// app.post("/usersignin", async (req, res) => {
+//   try {
+//     const loginData = req.body;
+//     const userDetail = await User.findOne({
+//       username: loginData.username,
+//       password: loginData.password,
+//     });
+//     // // console.log(userDetail)
+//     if (userDetail === null) res.send({ message: "Invalid User Credential" });
+//     else res.status(200).send({ userID: userDetail._id });
+//   } catch (err) {
+//     // console.log(err);
+//     res.sendStatus(400);
+//   }
+// });
 
-app.post("/usersignup", async (req, res) => {
+// app.post("/usersignup", async (req, res) => {
+//   try {
+//     const userData = req.body;
+//     const existingData = await User.findOne({
+//       $and: [
+//         { $or: [{ username: userData.username }, { email: userData.email }] },
+//       ],
+//     });
+
+//     if (existingData) {
+//       res.status(400).send({ error: "Username or email already exists!" });
+//     } else {
+//       const signupUser = new User(userData);
+//       const signup_done = await signupUser.save();
+//       const user = await User.findOne({ username: userData.username });
+//       res.status(200).send({ userID: user._id });
+//     }
+//   } catch (err) {
+//     console.error(err);
+//     res.status(500).send({ error: "Internal Server Error" });
+//   }
+// });
+
+app.post('/usersignin', async (req, res) => {
+
   try {
+      const loginData = req.body;
+
+      const userDetail = await User.findOne({username: loginData.username});
+      // console.log(userDetail)
+      if(userDetail == null)
+      {
+        res.send({message: "Invalid User Credential"})
+      }
+      else
+      {
+        const isSame = await bcrypt.compare(loginData.password, userDetail.password);
+
+        if(!isSame)
+          res.send({message: "Invalid User Credential"});
+        else
+        {
+          const token = await userDetail.generateAuthToken();
+
+          res.cookie("jwtAuth", token, {
+            expires: new Date(Date.now() + 31536000),
+            httpOnly: true
+          })
+
+          res.status(200).send({ userID: userDetail._id });
+        }
+      }
+  } catch (err) {
+      console.log(err)
+      res.sendStatus(400)
+  }
+})
+
+app.post('/usersignup', async (req, res) => {
+try {
     const userData = req.body;
     const existingData = await User.findOne({
-      $and: [
-        { $or: [{ username: userData.username }, { email: userData.email }] },
-      ],
+        $and: [
+            { $or: [{ username: userData.username }, { email: userData.email }] }
+        ]
     });
 
     if (existingData) {
-      res.status(400).send({ error: "Username or email already exists!" });
+        res.status(400).send({ error: "Username or email already exists!" });
     } else {
-      const signupUser = new User(userData);
-      const signup_done = await signupUser.save();
-      const user = await User.findOne({ username: userData.username });
-      res.status(200).send({ userID: user._id });
+        const signupUser = new User(userData);
+
+        const token = await signupUser.generateAuthToken();
+
+        res.cookie("jwtAuth", token, {
+          expires: new Date(Date.now() + 31536000), 
+          httpOnly: true
+        });
+
+        const signup_done = await signupUser.save();
+        const user = await User.findOne({ username: userData.username });
+
+        res.status(200).send({ userID: user._id });
     }
-  } catch (err) {
+} catch (err) {
     console.error(err);
     res.status(500).send({ error: "Internal Server Error" });
+}
+});
+
+app.get('/navbar/profileImg/dataset', async (req, res) => {
+  const jwt = req.cookies.jwtAuth;
+  try {
+    const resData = await User.findOne({'tokens.token' : jwt});
+    res.send({data : resData});
+    // console.log(resData);
+  } catch (err) {
+    res.status(500).send(err.message);
   }
 });
+
+
+app.get('/remove/user/auth', async (req, res) => {
+res.cookie("jwtAuth", '', { expires: new Date(0) });
+// res.sendFile(__dirname, '..', '/Frontend/src/Components/kaushal/Home_page_before_login.js');
+res.redirect('/');
+});
+
+
+app.get('/checkUser', async (req, res) => {
+try {
+  const jwt = req.cookies.jwtAuth;
+
+  console.log("TOKEN : "+jwt);
+
+  res.status(200).send({ Token: jwt });
+}
+catch(err)
+{
+  console.error(err);
+  res.status(500).send({ error: "Token is not found..." });
+}
+})
+
+app.post('/check/current/password', async (req, res) => {
+try {
+  const jwt = req.cookies.jwtAuth;
+  const userDetail = await User.findOne({'tokens.token': jwt});
+
+  const currentPwd = req.body.currentPassword;
+  const isSame = await bcrypt.compare(currentPwd, userDetail.password);
+
+  if(!isSame)
+    res.send({message: "Wrong Current Password..."});
+}
+catch(err)
+{
+  res.status(500).send({ message: "Server Error, Please try some time later..." });
+}
+})
+
+app.post('/getUser/whoUpload', async (req, res) => {
+const jwt = req.cookies.jwtAuth;
+const userDetail = await User.findOne({'tokens.token': jwt});
+
+res.send({username: userDetail.username});
+})
+
+app.post('/delete/projectCollabration/data', async (req, res) => {
+const data = req.body;
+
+const done = await projectCollabration.deleteOne({
+ _id: data.projectCollabrationCardId
+});
+
+res.send();
+})
 
 app.listen(port, () => {
   console.log(`Server listening on port ${port}`);

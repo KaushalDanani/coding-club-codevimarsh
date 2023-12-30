@@ -8,6 +8,7 @@ import UserProfileSkillTagElement from "./UserProfileSkillTagElement";
 import tagCollection from "./UserProfileTagsInfo";
 import { useLocation } from "react-router-dom";
 import { Link } from "react-router-dom";
+import { Button } from "react-scroll";
 
 function EditUserProfile() {
   const location = useLocation();
@@ -68,6 +69,43 @@ function EditUserProfile() {
         }
       )
     },[])
+
+
+    function removeUserAuth()
+    {
+      fetch('/remove/user/auth', {
+        method: "GET",
+        headers: { 
+          'Content-Type': 'application/json' 
+        }
+      })
+      .then(response => response.json())
+      .then(data => {
+          // window.location.reload();
+      });
+      window.location.reload();
+      window.location.reload();
+    }
+
+    function checkCurrentPassword()
+    {
+      const currentPwd = {
+        'currentPassword' : currentPass
+      }
+
+      fetch('/check/current/password', {
+        method: 'POST',
+        body: JSON.stringify(currentPwd),
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      })
+      .then(response => response.json())
+      .then(data => {
+        if(data.message !== undefined)
+          alert(data.message);
+      });
+    }
 
 
   const ToggleStyle = {
@@ -263,14 +301,8 @@ function EditUserProfile() {
   }
   
   function savePassword(event){
-    if(currentPass!=userData.password)
-    {
-      alert("Invalid current password!");
-      setCurrentPass("");
-      setNewPass("");
-      setConfirmNewPass("");
-    }
-    else if(currentPass==newPass)
+    
+    if(currentPass==newPass)
     {
       alert("New Password cannot be same as current password!");
       setConfirmNewPass("");
@@ -283,10 +315,11 @@ function EditUserProfile() {
     }
     else{
       const passwordData = {
-        newPass : newPass
+        newPass : newPass,
+        'currentPassword' : currentPass
       }
 
-      fetch(`/editprofile/password/?userID=${userID}`,{
+      fetch('/editprofile/password',{
         method : 'POST',
         headers: {
           'Content-Type':'application/json',
@@ -361,6 +394,7 @@ function EditUserProfile() {
 
   return (
     <div className="EditUserProfile">
+      <Link to={'/profile'}> <div className="EditUserProfileBack"> </div> </Link>
       <div className="EditProfilePhotoPanel">
         <div
           className="EditProfileImg"
@@ -546,7 +580,7 @@ function EditUserProfile() {
                 className="EditSaveButtonDiv"
                 style={{ justifyContent: "space-between" }}
               >
-                <button><Link to="/">Logout</Link></button>
+                <button onClick={removeUserAuth}><Link to="/">Logout</Link></button>
                 <button type="submit" onClick={saveAccount}>Save</button>
               </div>
             </div>
@@ -613,13 +647,13 @@ function EditUserProfile() {
             <div className="EditFormFrame">
               <span>Current Password</span>
               <span>:</span>
-              <input type="text" value={currentPass} onChange={changeCurrentPass} placeholder="enter current password"/>
+              <input type="text" value={currentPass} onChange={changeCurrentPass} onBlur={checkCurrentPassword} placeholder="Enter current password"/>
               <span>New Password</span>
               <span>:</span>
-              <input type="text" value={newPass} onChange={changeNewPass} placeholder="enter new password"/>
+              <input type="text" value={newPass} onChange={changeNewPass} placeholder="Enter new password"/>
               <span>Confirm Password</span>
               <span>:</span>
-              <input type="text" value={confirmNewPass} onChange={changeConfirmNewPass} placeholder="re-enter new password"/>
+              <input type="text" value={confirmNewPass} onChange={changeConfirmNewPass} placeholder="Re-enter new password"/>
               <div className="EditSaveButtonDiv">
                 <button onClick={savePassword}>Save</button>
               </div>
