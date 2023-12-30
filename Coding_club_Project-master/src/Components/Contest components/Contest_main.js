@@ -5,10 +5,13 @@ import Running_contest from "./Running_contest";
 import Completed_contest from "./Completed_contest";
 import Navbar_after_login from "../kaushal/Navbar_after_login";
 import MyfooterAfterLogin from "../MyfooterAfterLogin";
+import { Link } from "react-router-dom";
 
 export default function Contest_main() {
 
     const [pastcontestinfo, setPastContestinfo] = useState([{}]);
+    const isAdmin = sessionStorage.getItem("isAdmin");
+
     useEffect(() => {
         fetch("/contest/past").then(
             response => response.json()
@@ -56,6 +59,10 @@ export default function Contest_main() {
             {/* {upcoming contest} */}
             <div className="upcoming_contest">
                 <p>Up Coming Contest</p>
+                <Link 
+                style={isAdmin=="true" ? {"display":"block"} : {"display":"none"}}
+                className="AddContestBtn" to={`/addContest`}>Add Contest</Link>
+
             </div>
             <div className="upcomingContestGrid">
             {upcomingcontestinfo.map(function upcomingcontest(element){

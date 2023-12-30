@@ -29,6 +29,7 @@
     width: fit-content;
     color: white;
     padding: 10px;
+    border: none;
     /* border: 2px solid white; */
     background-color: #6913BF;
     align-self: flex-end;

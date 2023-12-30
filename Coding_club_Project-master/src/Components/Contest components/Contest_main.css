@@ -39,17 +39,18 @@
 
 .upcoming_contest{
     padding-top: 0.8%;
+    margin: 0% 6.5%;
+    display: flex;
+    justify-content: space-between;
     font-family: 'Courier New', Courier, monospace;
-    /* padding-left: 3.2%; */
-    /* background: rgb(90, 6, 168) */
-    /* height: 100vh; */
+    /* border: 2px solid red; */
 }
 
 .upcoming_contest p{
     font-size: 1.5rem;
     color: aliceblue;
     padding-bottom: 0.5%;
-    padding-left: 6.5%;
+    /* padding-left: 6.5%; */
 }
 
 .runnig_contest{
@@ -99,4 +100,25 @@
     .upcomingContestGrid{
         grid-template-columns: repeat(1,1fr);
     }
+}
+
+.AddContestBtn{
+    font-size: 120%;
+    position: relative;
+    bottom:0px;
+    height: fit-content;
+    width: fit-content;
+    color: white;
+    padding: 10px;
+    /* border: 2px solid white; */
+    background-color: #6913BF;
+    align-self: flex-end;
+    border-radius: 8px;
+}
+
+.AddContestBtn:hover{
+    cursor: pointer;
+    color: #6913BF;
+    /* border: 2px solid white; */
+    background-color: white;
 }

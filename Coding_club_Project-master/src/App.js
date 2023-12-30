@@ -41,6 +41,7 @@ import Question_data from './Components/Jay prajapati/Question_data';
 import ProjectMain from './Components/Jay prajapati/ProjectMain';
 import Ask_Question from './Components/Question_answer_jp/Ask_Question.js';
 import Give_answer from './Components/Question_answer_jp/Give_answer.js';
+import AddContest from './Components/Contest components/AddContest.js';
 
 function HomeBeforeLogin() {
   return (
@@ -85,6 +86,7 @@ function App() {
           <Route path='/home' element={<LoginHomePage />} />
           <Route path='/manageAdmins' element={<ManageAdmins />} />
           <Route path='/contest' element={<Contest_main />} />
+          <Route path='/addContest' element={<AddContest />} />
           <Route path='/article&news' element={<ArticlesNewsHomePage />} />
           <Route path='/resources' element={<ResourcesHome/>} />
           <Route path='/resources/rescontent' element={<ResourcesContent/>} />
