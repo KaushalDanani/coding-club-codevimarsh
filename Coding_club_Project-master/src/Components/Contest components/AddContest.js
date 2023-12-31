@@ -1,9 +1,12 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, Navigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import "./AddContest.css"
 import { toast } from "react-toastify";
 
 function AddContest() {
+
+    const navigate = useNavigate();
 
     const [cName,setCName]=useState("");
     const [cType,setCType]=useState("");
@@ -87,6 +90,7 @@ function AddContest() {
                 })
                 .then(response => response.json())
                 .then(data => {
+                    navigate('/contest');
                     alert(data.message);
                 });
             }
