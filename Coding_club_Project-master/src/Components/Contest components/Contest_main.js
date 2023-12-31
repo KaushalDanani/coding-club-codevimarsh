@@ -67,12 +67,13 @@ export default function Contest_main() {
             <div className="upcomingContestGrid">
             {upcomingcontestinfo.map(function upcomingcontest(element){
                 const startdate = new Date(element.startDate);
+                const endDate = new Date(element.endDate);
                 return(
                     <Weekly_contest
-                        type = {element.type1}
+                        type = {element.type}
                         name={element.name}
-                        startdate={`${startdate.getDate()}-${startdate.getMonth() + 1}-${startdate.getFullYear()} `}
-                        time={`${startdate.getHours()}:${startdate.getMinutes()} to ${startdate.getHours() + Number(element.time)}:${startdate.getMinutes()}`}
+                        startdate={`${startdate.getDate().toString().padStart(2,'0')}-${(startdate.getMonth() + 1).toString().padStart(2,'0')}-${startdate.getFullYear().toString().padStart(2,'0')} `}
+                        time={`${startdate.getHours().toString().padStart(2,'0')}:${startdate.getMinutes().toString().padStart(2,'0')} to ${endDate.getHours().toString().padStart(2,'0')}:${endDate.getMinutes().toString().padStart(2,'0')}`}
                         link={element.contestLink}
                     />
                     
@@ -86,11 +87,12 @@ export default function Contest_main() {
             </div>
             {currentcontestinfo.map(function currentcontest(element) {
                 const startdate = new Date(element.startDate);
+                const endDate = new Date(element.endDate);
                 return (
                     <Running_contest
                         name={element.name}
-                        startdate={`${startdate.getDate()}-${startdate.getMonth() + 1}-${startdate.getFullYear()} `}
-                        time={`${startdate.getHours()}:${startdate.getMinutes()} to ${startdate.getHours() + Number(element.time)}:${startdate.getMinutes()}`}
+                        startdate={`${startdate.getDate().toString().padStart(2,'0')}-${(startdate.getMonth() + 1).toString().padStart(2,'0')}-${startdate.getFullYear().toString().padStart(2,'0')} `}
+                        time={`${startdate.getHours().toString().padStart(2,'0')}:${startdate.getMinutes().toString().padStart(2,'0')} to ${endDate.getHours().toString().padStart(2,'0')}:${endDate.getMinutes().toString().padStart(2,'0')}`}
 
                         start={element.contestLink}
                     />
@@ -104,11 +106,13 @@ export default function Contest_main() {
             </div>
             {pastcontestinfo.map(function pastcontest(element) {
                 const startdate = new Date(element.startDate);
+                const endDate = new Date(element.endDate);
                 return (
                     <Completed_contest
                         name={element.name}
-                        startdate={`${startdate.getDate()}-${startdate.getMonth() + 1}-${startdate.getFullYear()} `}
-                        time={`${startdate.getHours()}:${startdate.getMinutes()} to ${startdate.getHours() + Number(element.time)}:${startdate.getMinutes()}`}
+                        startdate={`${startdate.getDate().toString().padStart(2,'0')}-${(startdate.getMonth() + 1).toString().padStart(2,'0')}-${startdate.getFullYear().toString().padStart(2,'0')} `}
+
+                        time={`${startdate.getHours().toString().padStart(2,'0')}:${startdate.getMinutes().toString().padStart(2,'0')} to ${endDate.getHours().toString().padStart(2,'0')}:${endDate.getMinutes().toString().padStart(2,'0')}`}
 
                         result={element.resultLink}
                         solution={element.solutionLink} >

@@ -1,4 +1,72 @@
+.addContestDiv{
+    /* border: 2px solid red; */
+    margin: 4vh 20vw;
+}
 
+.addContestHeader{
+    background-color: #6913BF;
+    color: white;
+    font-size: 2rem;
+    display: flex;
+    justify-content: center;
+    border-top-right-radius: 20px;
+    border-top-left-radius: 20px;
+    padding: 10px 0px;
+}
+
+.addContestBody{
+    color: white;
+    background-color: #363636;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    padding: 3vh 4vw;  
+}
+
+.addContestRow{
+    display: grid;
+    grid-template-columns: 6fr 1fr 20fr;
+    margin: 4vh 0vh;
+}
+
+.addContestDateRow{
+    display: grid;
+    grid-template-columns: 8fr 2fr 6fr;
+}
+
+.addContestRow div,
+.addContestDateRow div{
+    font-size: 1.3rem;
+}
+
+.addContestRow input,
+.addContestRow select,
+.addContestDateRow input{
+    padding: 5px 5px;
+    border-radius: 10px;
+    font-size: 1.1rem;
+    background-color: rgb(105, 105, 105);
+    color: white;
+    border: none;    
+}
+
+.addContestBtn{
+    display: flex;
+    justify-content: space-between;
+}
+
+.addContestBtn button{
+    border-radius: 10px;
+    font-size: 1.3rem;
+    background-color: #6913BF;
+    color: white;
+    border: none;
+    padding: 5px 15px;
+}
+
+.addContestBtn button:hover{
+    background-color: #822cd7;
+
+}
 
 
 .contestBackBtn{

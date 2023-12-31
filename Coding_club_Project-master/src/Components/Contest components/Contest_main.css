@@ -49,8 +49,7 @@
 .upcoming_contest p{
     font-size: 1.5rem;
     color: aliceblue;
-    padding-bottom: 0.5%;
-    /* padding-left: 6.5%; */
+    /* border: 2px solid red; */
 }
 
 .runnig_contest{
@@ -104,8 +103,8 @@
 
 .AddContestBtn{
     font-size: 120%;
-    position: relative;
-    bottom:0px;
+    /* position: relative;
+    bottom:0px; */
     height: fit-content;
     width: fit-content;
     color: white;
