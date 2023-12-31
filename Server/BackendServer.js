@@ -1024,7 +1024,7 @@ app.post('/usersignin', async (req, res) => {
             httpOnly: true
           })
 
-          res.status(200).send({ userID: userDetail._id });
+          res.status(200).send({ user: userDetail });
         }
       }
   } catch (err) {
@@ -1080,7 +1080,7 @@ app.get('/navbar/profileImg/dataset', async (req, res) => {
 app.get('/remove/user/auth', async (req, res) => {
 res.cookie("jwtAuth", '', { expires: new Date(0) });
 // res.sendFile(__dirname, '..', '/Frontend/src/Components/kaushal/Home_page_before_login.js');
-res.redirect('/');
+// res.redirect('/');
 });
 
 

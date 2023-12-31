@@ -83,8 +83,8 @@ function EditUserProfile() {
       .then(data => {
           // window.location.reload();
       });
-      window.location.reload();
-      window.location.reload();
+      // window.location.reload();
+      // window.location.reload();
     }
 
     function checkCurrentPassword()

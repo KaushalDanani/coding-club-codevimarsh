@@ -105,18 +105,15 @@ function App() {
           
 <Router>
         <Routes>
-        {/* { checkAuth ? (
+        { checkAuth ? (
               <Route path='/' element={<LoginHomePage />} />
             ) : (
               <Route path='/' element={<HomeBeforeLogin />} />
-            ) } */}
+            ) }
           
           
-          <Route path='/' element={<HomeBeforeLogin />} />
+          {/* <Route path='/' element={<HomeBeforeLogin />} /> */}
           <Route path='/home' element={<LoginHomePage />} />
-
-
-
           <Route path='/signin' element={<Sign_in_page />} />
           <Route path='/signup/step-1' element={<Sign_up_first_page />} />
           <Route path='/signup/step-2' element={<Sign_up_second_page />} />

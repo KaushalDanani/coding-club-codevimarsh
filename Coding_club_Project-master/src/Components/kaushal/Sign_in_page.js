@@ -2,9 +2,13 @@ import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useState } from 'react'
 import "./Sign_in_page.css";
+import useUser from '../../store/userContext';
 
 function Sign_in_page() {
     const navigate = useNavigate();
+
+    const {user, setUser} = useUser();
+
 
     const [enterdUsername, setEnterdUsername] = useState('')
     const [enterdPassword, setEnterdPassword] = useState('')
@@ -50,8 +54,7 @@ function Sign_in_page() {
                 }
                 else
                 {
-                    // alert(data.message);
-                    sessionStorage.setItem('userID', data.userID)
+                    setUser(data.user);
                     navigate('/home')
                 }
             })
