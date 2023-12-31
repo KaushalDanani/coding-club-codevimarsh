@@ -9,14 +9,16 @@ import tagCollection from "./UserProfileTagsInfo";
 import { useLocation } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { Button } from "react-scroll";
+import useUser from "../../store/userContext";
 
 function EditUserProfile() {
   const location = useLocation();
+  const {user,setUser} = useUser();
 
   // const searchParams = new URLSearchParams(location.search);
   // const userID = searchParams.get('userID');
 
-    const userID = sessionStorage.getItem('userID');
+    const userID = user._id;
 
     const [userData,setUserData] = useState([]);
     const [base64Img, setBase64Img] = useState("");

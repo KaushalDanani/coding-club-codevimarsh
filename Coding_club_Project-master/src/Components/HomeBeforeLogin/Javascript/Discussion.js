@@ -1,9 +1,8 @@
 import React from "react";
-import './Projects.css';
+import '../CSS/Discussion.css';
 import { Link } from "react-router-dom";
 
-
-export default function Projects(){
+export default function Discussion(){
 
   const [isVisible, setVisible] = React.useState(true);
   const domRef = React.useRef();
@@ -24,20 +23,22 @@ export default function Projects(){
     };
   }, []);
 
+
     return(
-        <div className={`projects fade-in-section ${isVisible ? 'is-visible' : ''}`}
-        ref={domRef} id="projectSources">
+        <div className={`discussion fade-in-section ${isVisible ? 'is-visible' : ''}`}
+        ref={domRef} id="discussionSource">
             <div className="image">
-                <img src="/images/Project.jpg" alt="Project image"></img>
+                <img src="/images/Discussion.jpg" alt="Discussion image"></img>
             </div>
-            <div className="discription">
-                <p className="dischead">All Previous Projects</p>
-                <p className="discnode">
-                    Get Knowledge Of All Previous Projects Which Are Made By Senior
+            <div className="Ddiscription">
+                <p className="Ddischead">Discussion</p>
+                <p className="Ddiscnode">
+                    Take a Part In Discussion, Ask Your Question, And Give The Answer Of Othres Question. 
                 </p>
-                <Link to={"signin"}> <button className="btnproject">See All</button> </Link>
+                <Link to={"signin"}> <button className="btndiscussion">Discuss</button> </Link>
             </div>
             
         </div>
     );
+
 }

@@ -1,8 +1,8 @@
 import React from "react";
-import './Discussion.css';
+import '../CSS/ProjCollab.css';
 import { Link } from "react-router-dom";
 
-export default function Discussion(){
+export default function ProjCollab(){
 
   const [isVisible, setVisible] = React.useState(true);
   const domRef = React.useRef();
@@ -23,19 +23,18 @@ export default function Discussion(){
     };
   }, []);
 
-
     return(
-        <div className={`discussion fade-in-section ${isVisible ? 'is-visible' : ''}`}
-        ref={domRef} id="discussionSource">
+        <div className={`projcollab fade-in-section ${isVisible ? 'is-visible' : ''}`}
+        ref={domRef} id="projectCollabSources">
             <div className="image">
-                <img src="/images/Discussion.jpg" alt="Discussion image"></img>
+                <img src="/images/ProjCollab.jpg" alt="Project Collabration image"></img>
             </div>
-            <div className="Ddiscription">
-                <p className="Ddischead">Discussion</p>
-                <p className="Ddiscnode">
-                    Take a Part In Discussion, Ask Your Question, And Give The Answer Of Othres Question. 
+            <div className="PCdiscription">
+                <p className="PCdischead">Current Running Projects</p>
+                <p className="PCdiscnode">
+                    Take a Part And Collaborate in Current Running Projects 
                 </p>
-                <Link to={"signin"}> <button className="btndiscussion">Discuss</button> </Link>
+                <Link to={"signin"}> <button className="btnprojcollab">Collaborate</button> </Link>
             </div>
             
         </div>

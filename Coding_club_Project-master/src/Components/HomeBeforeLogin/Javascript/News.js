@@ -1,8 +1,10 @@
 import React from "react";
-import './ProjCollab.css';
+import '../CSS/News.css';
 import { Link } from "react-router-dom";
+import { useEffect } from "react";
 
-export default function ProjCollab(){
+
+export default function News(){
 
   const [isVisible, setVisible] = React.useState(true);
   const domRef = React.useRef();
@@ -23,18 +25,19 @@ export default function ProjCollab(){
     };
   }, []);
 
+
     return(
-        <div className={`projcollab fade-in-section ${isVisible ? 'is-visible' : ''}`}
-        ref={domRef} id="projectCollabSources">
+        <div className={`news fade-in-section ${isVisible ? 'is-visible' : ''}`}
+        ref={domRef} id="newsSource">
             <div className="image">
-                <img src="/images/ProjCollab.jpg" alt="Project Collabration image"></img>
+                <img src="/images/News.jpg" alt="News image"></img>
             </div>
-            <div className="PCdiscription">
-                <p className="PCdischead">Current Running Projects</p>
-                <p className="PCdiscnode">
-                    Take a Part And Collaborate in Current Running Projects 
+            <div className="newsdiscription">
+                <p className="newsdischead">Know The Latest News</p>
+                <p className="newsdiscnode">
+                    Get The Latest News Of Technology And Computer Science Field
                 </p>
-                <Link to={"signin"}> <button className="btnprojcollab">Collaborate</button> </Link>
+                <Link to={"signin"}> <button className="btnnews">News</button> </Link>
             </div>
             
         </div>

@@ -4,13 +4,16 @@ import Comment from './Comment.js'
 import { useEffect, useState } from 'react'
 import { useLocation } from 'react-router-dom'
 import Navbar_after_login from '../kaushal/Navbar_after_login.js';
+import useUser from '../../store/userContext.js';
 // import { ObjectId } from 'mongoose'
 
 export default function Question_data() {
 
     const location = useLocation();
+    const {user,setUser} = useUser();
     const searchParams = new URLSearchParams(location.search);
-    const userID = sessionStorage.getItem('userID')
+    const userID = user ? user._id : null;
+    // const userID = sessionStorage.getItem('userID');
     const q_id = searchParams.get('q_id');
 
     const [Q_data, setQData] = useState([]);
@@ -52,7 +55,7 @@ export default function Question_data() {
 
     function questionHead() {
 
-        // console.log(Q_upvote); //This prints true..
+        // console.log(user); //This prints true..
         return (
             <Question
                 _id = {Q_data._id}

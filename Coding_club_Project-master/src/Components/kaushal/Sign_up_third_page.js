@@ -3,10 +3,12 @@ import { useNavigate } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import "./Sign_up_first_page.css"
 import "./Sign_up_third_page.css"
+import useUser from '../../store/userContext'
 
 
 function Sign_up_third_page() {
 
+    const {user, setUser} = useUser();
     const navigate = useNavigate();
 
     const [linkedIn, setLinkedIn] = useState('')
@@ -70,13 +72,28 @@ function Sign_up_third_page() {
             // console.log(data.error);
             // alert(data.userID);
             if(data.error === undefined){
-                sessionStorage.setItem('userID', data.userID)
-                navigate("/")
+
+                sessionStorage.removeItem('email_id');
+                sessionStorage.removeItem('username');
+                sessionStorage.removeItem('password');
+                sessionStorage.removeItem('confirm_password');
+                sessionStorage.removeItem('first_name');
+                sessionStorage.removeItem('last_name');
+                sessionStorage.removeItem('graduation_year');
+                sessionStorage.removeItem('programme');
+                sessionStorage.removeItem('department');
+                sessionStorage.removeItem('linkedin_id');
+                sessionStorage.removeItem('codechef_id');
+                sessionStorage.removeItem('leetcode_id');
+
+                // sessionStorage.setItem('userID', data.userID)
+                setUser(data.user);
+                navigate("/home")
             }
             else{
                 alert(data.error)
             }
-
+            
             // console.log(data);
         })
           .catch((error) => {

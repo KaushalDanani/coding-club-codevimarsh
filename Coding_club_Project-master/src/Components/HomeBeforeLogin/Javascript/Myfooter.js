@@ -1,5 +1,5 @@
 import React from "react";
-import './Myfooter.css';
+import '../CSS/Myfooter.css';
 import {Link} from "react-scroll";
 
 export default function Myfooter() {

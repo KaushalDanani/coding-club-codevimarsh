@@ -1,5 +1,5 @@
 import React from "react";
-import './Myfooter.css';
+import '../Components/HomeBeforeLogin/CSS/Myfooter.css';
 import { Link } from "react-router-dom";
 
 export default function MyfooterAfterLogin() {

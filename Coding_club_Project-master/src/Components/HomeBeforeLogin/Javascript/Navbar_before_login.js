@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { Link as LinkScroll} from 'react-scroll'
-import "./Navbar_before_login.css";
+import "../CSS/Navbar_before_login.css";
 
 function Navbar_before_login() {
 

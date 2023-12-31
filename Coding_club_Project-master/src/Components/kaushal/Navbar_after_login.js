@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Link, Navigate, useLocation, useNavigate } from 'react-router-dom'
-import "./Navbar_before_login.css";
+import "../HomeBeforeLogin/CSS/Navbar_before_login.css"
 import "./Navbar_after_login.css";
 
 function Navbar_after_login(props) {
@@ -34,7 +34,7 @@ function Navbar_after_login(props) {
                     </div>
                     
                     <ul className={mobileMenu ? "horizontal_bar" : "horizontal_bar mobile-menu-icon"}>
-                        <li className={mobileMenu ? "liComponent" : "mobile-li"} id="home"><Link to={`/`}></Link></li>
+                        <li className={mobileMenu ? "liComponent" : "mobile-li"} id="home"><Link to={`/home`}></Link></li>
                         <li className={mobileMenu ? "liComponent" : "mobile-li"} id="contact"><Link to={`/contest`}>CONTEST</Link></li>
                         <li className={mobileMenu ? "liComponent" : "mobile-li"} id="contact"><Link to={`/resources`}>RESOURCES</Link></li>
                         <li className={mobileMenu ? "liComponent" : "mobile-li"} id="contact"><Link to={`/article&news`}>ARTICLES/NEWS</Link></li>

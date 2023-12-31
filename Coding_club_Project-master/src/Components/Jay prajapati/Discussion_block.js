@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import "./DiscussionCard.css";
 import "./Forums.css";
+import useUser from '../../store/userContext';
 
 export default function Discussion_block(props) {
   function getTag(tag) {
@@ -30,7 +31,11 @@ export default function Discussion_block(props) {
   }, [props.date]);
 
   const location = useLocation();
-  const userID = sessionStorage.getItem('userID');
+  const {user,setUser} = useUser();
+  // const userID = user._id;            //  ---------------------------------------------------------------------------------
+  // const userID = sessionStorage.getItem('userID');
+
+  const userID = user._id;
   const delCheck = (userID === props.asker_id);
 
   function deleteQue(q_id) {

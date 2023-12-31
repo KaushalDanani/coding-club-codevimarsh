@@ -3,6 +3,7 @@ import { useSearchParams } from 'react-router-dom';
 import { Link, useNavigate } from 'react-router-dom'
 import './Ask_Question.css';
 import Navbar_after_login from "../kaushal/Navbar_after_login.js";
+import useUser from "../../store/userContext.js";
 
 // function question_close(){
 //     const closebtn = document.getElementById("question_main");
@@ -22,7 +23,9 @@ export default function Ask_Question(){
     const [Description , setDescription] = useState("");
     const [Code , setCode] = useState("");
 
-    const userID = sessionStorage.getItem('userID')
+    // const userID = sessionStorage.getItem('userID')
+    const {user,setUser} = useUser();
+    const userID = user._id;
 
     function addTital(){
         const tital = document.getElementById("tital_text").value;

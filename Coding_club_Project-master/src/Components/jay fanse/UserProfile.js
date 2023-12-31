@@ -5,13 +5,16 @@ import UserProfileMainPanel from "./UserProfileMainPanel";
 import Navbar_after_login from "../kaushal/Navbar_after_login";
 import { useLocation, useNavigate } from "react-router-dom";
 import MyfooterAfterLogin from "../MyfooterAfterLogin";
+import useUser, { UserProvider } from "../../store/userContext";
 
 function UserProfile() {
 
   const location = useLocation();
+  const {user, setUser} = useUser();
 
 const searchParams = new URLSearchParams(location.search);
-const userID = sessionStorage.getItem('userID')
+  const userID = user._id;
+   
   const visitID = searchParams.get('visitID');
   console.log('visit',visitID);
 
@@ -51,6 +54,7 @@ const userID = sessionStorage.getItem('userID')
   return (
     <>
     <Navbar_after_login/>
+    {console.log(user,"💣💣")}
     <div className="userProfile">
       {/* <div className="searchProfile">
         <input

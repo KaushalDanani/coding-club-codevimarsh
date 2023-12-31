@@ -1057,7 +1057,7 @@ try {
         const signup_done = await signupUser.save();
         const user = await User.findOne({ username: userData.username });
 
-        res.status(200).send({ userID: user._id });
+        res.status(200).send({ user: user });
     }
 } catch (err) {
     console.error(err);
@@ -1078,9 +1078,10 @@ app.get('/navbar/profileImg/dataset', async (req, res) => {
 
 
 app.get('/remove/user/auth', async (req, res) => {
-res.cookie("jwtAuth", '', { expires: new Date(0) });
+// res.cookie("jwtAuth", '', { expires: new Date(0) });
+res.clearCookie("jwtAuth");
 // res.sendFile(__dirname, '..', '/Frontend/src/Components/kaushal/Home_page_before_login.js');
-// res.redirect('/');
+res.redirect('/');
 });
 
 

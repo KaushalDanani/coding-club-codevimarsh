@@ -1,5 +1,5 @@
 import React from "react";
-import './Foundercard.css';
+import '../CSS/Foundercard.css';
 
 export default function Foundercard(props){
     return(

@@ -5,7 +5,7 @@ import NewTasks from './NewTasks';
 import NewUpdates from './NewUpdates';
 import "./LoginHomePage.css";
 import Navbar_after_login from '../kaushal/Navbar_after_login';
-import Myfooter from '../Myfooter';
+import Myfooter from '../../Components/HomeBeforeLogin/CSS/Myfooter.css';
 import { useLocation } from 'react-router-dom';
 import useUser from '../../store/userContext';
 
@@ -42,8 +42,8 @@ const location = useLocation();
         setFname(data[0].fname);
         setUserID(data[0]._id);
         setAdmin(data[0].isAdmin);
-        sessionStorage.setItem('userID', data[0]._id);
-        sessionStorage.setItem('isAdmin',data[0].isAdmin);
+        // sessionStorage.setItem('userID', data[0]._id);
+        // sessionStorage.setItem('isAdmin',data[0].isAdmin);
       }
     )
   },[])
