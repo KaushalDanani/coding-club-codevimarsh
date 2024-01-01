@@ -7,7 +7,7 @@ function App() {
 
   return (
     <UserProvider>
-    <PageLinks />
+      <PageLinks />
     </UserProvider>
   );
 }

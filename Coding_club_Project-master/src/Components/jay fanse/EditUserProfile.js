@@ -75,7 +75,8 @@ function EditUserProfile() {
 
     function removeUserAuth()
     {
-      fetch('/remove/user/auth', {
+      (async () => {
+      await fetch('/remove/user/auth', {
         method: "GET",
         headers: { 
           'Content-Type': 'application/json' 
@@ -86,8 +87,10 @@ function EditUserProfile() {
           // window.location.reload();
       });
       // window.location.reload();
-      // window.location.reload();
+      window.location.reload();
+      })()
     }
+  
 
     function checkCurrentPassword()
     {

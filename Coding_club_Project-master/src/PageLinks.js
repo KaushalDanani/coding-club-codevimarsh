@@ -1,4 +1,4 @@
-import {React,useState,useEffect} from 'react'
+import { React, useState, useEffect } from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 //Soham Zadafiya
@@ -31,39 +31,66 @@ import Ask_Question from './Components/Question_answer_jp/Ask_Question.js';
 import Give_answer from './Components/Question_answer_jp/Give_answer.js';
 import AddContest from './Components/Contest components/AddContest.js';
 import Home_page_before_login from './Components/HomeBeforeLogin/Javascript/Home_page_before_login.js';
+import useUser from './store/userContext.js';
 function PageLinks() {
 
-    const [checkAuth, setCheckAuth] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
+    const { user, setUser } = useUser();
 
     useEffect(() => {
-        fetch('/checkUser', {
-            method: "GET",
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        })
-            .then(response => response.json())
-            .then(data => {
+        (async () => {
+            try {
 
-                if (data.error === undefined) {
-                    console.log(data.Token);
-                    if (data.Token === undefined)
-                        setCheckAuth(false);
-                    else
-                        setCheckAuth(true);
-                }
-                else {
-                    alert(data.error)
-                }
-            })
-    }, []);
+                setIsLoading(true);
+                const response = await fetch("/home/user/dataset", {
+                    method: "GET",
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                });
+                const [data] = await response.json();
+                setUser(data);
+                console.log('-----------------------------USER-------------------------', data);
+                setIsLoading(false);
+            }
+            catch (err) {
+                console.error(err, err.response);
+            }
+        })();
+    }, [])
+
+    // useEffect(() => {
+    //     fetch('/checkUser', {
+    //         method: "GET",
+    //         headers: {
+    //             'Content-Type': 'application/json'
+    //         }
+    //     })
+    //         .then(response => response.json())
+    //         .then(data => {
+
+    //             if (data.error === undefined) {
+    //                 console.log(data.Token);
+    //                 if (data.Token === undefined)
+    //                     setCheckAuth(false);
+    //                 else
+    //                     setCheckAuth(true);
+    //             }
+    //             else {
+    //                 alert(data.error)
+    //             }
+    //         })
+    // }, []);
+
+    if (isLoading)
+        return <h1>Loading</h1>
 
 
     return (
         <div>
             <Router>
                 <Routes>
-                    {checkAuth ? (
+                    {user ? (
                         <Route path='/' element={<LoginHomePage />} />
                     ) : (
                         <Route path='/' element={<Home_page_before_login />} />

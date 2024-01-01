@@ -11,6 +11,8 @@ export default function Question_data() {
 
     const location = useLocation();
     const {user,setUser} = useUser();
+
+
     const searchParams = new URLSearchParams(location.search);
     const userID = user ? user._id : null;
     // const userID = sessionStorage.getItem('userID');
@@ -38,7 +40,7 @@ export default function Question_data() {
                 setRData(data[3]);
 
                 const rArr = data[4];
-                const m1 = new Map(rArr);
+                const m1 = new Map(data[4]);
                 const uArr = data[5];
                 const m2 = new Map(uArr);
 

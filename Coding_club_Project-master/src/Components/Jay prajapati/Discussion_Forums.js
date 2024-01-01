@@ -6,11 +6,13 @@ import Ask_Question from '../Question_answer/Ask_Question.js'
 import Navbar_after_login from '../kaushal/Navbar_after_login.js'
 import { Link } from 'react-router-dom';
 import { useEffect, useState } from "react";
+import useUser from '../../store/userContext.js'
+import ForumGenerator from './Discussion_data.js'
 
 
 export default function Forums() {
 	const [changeImage, setChangeImage] = useState('true');
-  
+
  
   return (
     <>
@@ -30,7 +32,7 @@ export default function Forums() {
           onMouseOver={() => setChangeImage(false)}
         > Add </button>
       </Link>
-      {forumGenerator()}
+      <ForumGenerator />
     </>
   )
 }
