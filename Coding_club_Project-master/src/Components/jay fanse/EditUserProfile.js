@@ -315,6 +315,12 @@ function EditUserProfile() {
       setConfirmNewPass("");
       setNewPass("");
     }
+    else if(newPass.length < 8 || confirmNewPass.length < 8)
+    {
+      alert("Please, keep your password minimum 8 character!!");
+      setNewPass("");
+      setConfirmNewPass("");
+    }
     else if(newPass!=confirmNewPass)
     {
       alert("Re-Enter new password!!");
@@ -654,13 +660,13 @@ function EditUserProfile() {
             <div className="EditFormFrame">
               <span>Current Password</span>
               <span>:</span>
-              <input type="text" value={currentPass} onChange={changeCurrentPass} onBlur={checkCurrentPassword} placeholder="Enter current password"/>
+              <input type="password" value={currentPass} onChange={changeCurrentPass} onBlur={checkCurrentPassword} placeholder="Enter current password"/>
               <span>New Password</span>
               <span>:</span>
-              <input type="text" value={newPass} onChange={changeNewPass} placeholder="Enter new password"/>
+              <input type="password" value={newPass} onChange={changeNewPass} placeholder="Enter new password"/>
               <span>Confirm Password</span>
               <span>:</span>
-              <input type="text" value={confirmNewPass} onChange={changeConfirmNewPass} placeholder="Re-enter new password"/>
+              <input type="password" value={confirmNewPass} onChange={changeConfirmNewPass} placeholder="Re-enter new password"/>
               <div className="EditSaveButtonDiv">
                 <button onClick={savePassword}>Save</button>
               </div>

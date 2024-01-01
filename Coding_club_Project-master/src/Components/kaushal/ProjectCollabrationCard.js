@@ -9,6 +9,7 @@ function ProjectCollabrationCard(props) {
   const [isDiplay, setIsDiplay] = useState('true');
   const [base64Img,setBase64Img] = useState("");
   const [sameUser, setSameUser] = useState(true);
+  const [isAdmin,setIsAdmin] = useState(false);
 
   useEffect( () => {
     if(props.userDetails.profileImg)
@@ -28,6 +29,9 @@ function ProjectCollabrationCard(props) {
         setSameUser(true);
       else
         setSameUser(false);
+
+      if(data.userData.isAdmin != undefined)
+      setIsAdmin(data.userData.isAdmin);
     })
   },[props.userDetails.profileImg])
 
@@ -65,7 +69,7 @@ function ProjectCollabrationCard(props) {
                       target="_blank">
                       <input type="button" value="Contact" className="project_collab_btn" />
                     </a>
-                    {sameUser ?
+                    {sameUser || isAdmin ?
                       (<input type="button" value="Delete" className="project_collab_del_btn" onClick={ProjectCollabrationCardDelete} />)
                       : null
                     }

@@ -1123,7 +1123,7 @@ app.post('/getUser/whoUpload', async (req, res) => {
 const jwt = req.cookies.jwtAuth;
 const userDetail = await User.findOne({'tokens.token': jwt});
 
-res.send({username: userDetail.username});
+res.send({username: userDetail.username,userData : userDetail});
 })
 
 app.post('/delete/projectCollabration/data', async (req, res) => {

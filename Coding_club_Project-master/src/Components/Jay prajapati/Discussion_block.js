@@ -12,6 +12,7 @@ export default function Discussion_block(props) {
       </div>
     );
   }
+  
 
   const [tag, setTags] = useState([]);
 
@@ -32,10 +33,11 @@ export default function Discussion_block(props) {
 
   const location = useLocation();
   const {user,setUser} = useUser();
-  
 
+  
+  const isAdmin = user.isAdmin;
   const userID = user._id;
-  const delCheck = (userID === props.asker_id);
+  const delCheck = (userID === props.asker_id || isAdmin===true);
 
   function deleteQue(q_id) {
     const conf = window.confirm('Are you sure you want to delete this reply?');
