@@ -62,7 +62,7 @@ function Home_page_before_login(props) {
                 <div style={{ display: 'flex' }}>
                     <div className='welcomeContainer'>
                         <div>
-                            <h2 className="welcomeToCode">Welcome to <br /><span> Code-Minions.. </span> </h2>
+                            <h2 className="welcomeToCode">Welcome to <br /><span> Coding Club,<br></br>MSU... </span> </h2>
                             <h4 className="oneLiner">Start your coding journey with codeMinions by joining us...</h4>
                             <Link to={'signin'}> <input type="button" value="Get Started" className="get_start" /> </Link>
                         </div>

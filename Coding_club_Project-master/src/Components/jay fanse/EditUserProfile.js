@@ -11,14 +11,24 @@ import { Link } from "react-router-dom";
 import { Button } from "react-scroll";
 import useUser from "../../store/userContext";
 
-function EditUserProfile() {
+function EditUserProfile(props) {
   const location = useLocation();
   const {user,setUser} = useUser();
+
+  const [userID,setUserID] = useState("");
+
+  useEffect( ()=> {
+    if(props.user!=null)
+    {
+      setUserID(props.user._id);
+    }
+  },[props.user])
+
 
   // const searchParams = new URLSearchParams(location.search);
   // const userID = searchParams.get('userID');
 
-    const userID = user._id;
+    // const userID = user._id;
 
     const [userData,setUserData] = useState([]);
     const [base64Img, setBase64Img] = useState("");
@@ -70,7 +80,7 @@ function EditUserProfile() {
           console.log(base64Img);
         }
       )
-    },[])
+    },[userID])
 
 
     function removeUserAuth()

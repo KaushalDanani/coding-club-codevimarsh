@@ -5,6 +5,22 @@
     /* margin-top: 5vw; */
 }
 
+.addSub{
+    padding: 0.4vw 1vw;
+    background-color: white;
+    
+    color: crimson;
+    font-family: 'Trebuchet MS';
+    font-size: large;font-weight: bold;
+    border: 1px solid black;
+    border-radius: 15%;
+}
+
+#addButton{
+    position: relative;
+    right: 5%;
+}
+
 #cardgrid{
     display: grid ;
     grid-template-columns: repeat(3,1fr);

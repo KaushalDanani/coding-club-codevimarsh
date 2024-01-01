@@ -7,13 +7,21 @@ import { useLocation, useNavigate } from "react-router-dom";
 import MyfooterAfterLogin from "../MyfooterAfterLogin";
 import useUser, { UserProvider } from "../../store/userContext";
 
-function UserProfile() {
+function UserProfile(props) {
 
   const location = useLocation();
-  const {user, setUser} = useUser();
+  // const {user, setUser} = useUser();
+  const [userID,setUserID] = useState("");
+
+  useEffect( () => {
+    if(props.user!=null)
+    {
+      setUserID(props.user._id);
+    }
+  },[props.user])
 
 const searchParams = new URLSearchParams(location.search);
-  const userID = user._id;
+  // const userID = user._id;
    
   const visitID = searchParams.get('visitID');
   console.log('visit',visitID);
@@ -44,7 +52,7 @@ const searchParams = new URLSearchParams(location.search);
       }
     )
     }
-  },[visitID])
+  },[visitID,userID])
 
 
   function changeSearchValue(event) {
@@ -54,7 +62,7 @@ const searchParams = new URLSearchParams(location.search);
   return (
     <>
     <Navbar_after_login/>
-    {console.log(user,"💣💣")}
+    {/* {console.log(user,"💣💣")} */}
     <div className="userProfile">
       {/* <div className="searchProfile">
         <input

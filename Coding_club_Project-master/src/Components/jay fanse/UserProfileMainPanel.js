@@ -43,6 +43,8 @@ function UserProfileMainPanel(props) {
         projectinfo={element.projectInfo}
         projectlink={element.projectLink}
         team={element.contributors}
+        userID = {props.userData._id}
+        admin = {props.userData.isAdmin}
       />
     )
   }

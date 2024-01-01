@@ -31,6 +31,12 @@ import Ask_Question from './Components/Question_answer_jp/Ask_Question.js';
 import Give_answer from './Components/Question_answer_jp/Give_answer.js';
 import AddContest from './Components/Contest components/AddContest.js';
 import Home_page_before_login from './Components/HomeBeforeLogin/Javascript/Home_page_before_login.js';
+import AddSubject from './Components/Jay prajapati/AddSubject.js';
+import AddBooks from './Components/jay fanse/AddBooks.js';
+import AddVideos from './Components/jay fanse/AddVideos.js';
+import AddNotes from './Components/jay fanse/AddNotes.js';
+
+
 import useUser from './store/userContext.js';
 function PageLinks() {
 
@@ -101,15 +107,20 @@ function PageLinks() {
                     <Route path='/contest' element={<Contest_main user={user} />} />
                     <Route path='/addContest' element={<AddContest />} />
                     <Route path='/article&news' element={<ArticlesNewsHomePage />} />
-                    <Route path='/resources' element={<ResourcesHome />} />
-                    <Route path='/resources/rescontent' element={<ResourcesContent />} />
+                    <Route path='/resources' element={<ResourcesHome user={user}/>} />
+                    <Route path='/resources/rescontent' element={<ResourcesContent user={user} />} />
+                    <Route path='/resources/rescontent/addBook' element={<AddBooks/>} />
+                    <Route path='/resources/rescontent/addVideo' element={<AddVideos/>} />
+                    <Route path='/resources/rescontent/addNote' element={<AddNotes/>} />
+                    <Route path='/addSubject' element={<AddSubject/>} />
+
                     <Route path='/discussion' element={<Discussion_Forums />} />
                     <Route path='/discussion/addQuestion' element={<Ask_Question />} />
                     <Route path='/discussion/question' element={<Question_data />} />
                     <Route path='/discussion/question/addReply' element={<Give_answer />} />
                     <Route path='/project' element={<ProjectMain user={user}/>} />
-                    <Route path='/profile' element={<UserProfile />} />
-                    <Route path='/profile/edit_profile' element={<EditUserProfile />} />
+                    <Route path='/profile' element={<UserProfile user={user}/>} />
+                    <Route path='/profile/edit_profile' element={<EditUserProfile user={user}/>} />
                     <Route path='/project_collab' element={<Project_Collabration />} />
                     <Route path='/project_collab/addpost' element={<AddProjectCollabration />} />
                     <Route path='*' element={<NotFoundPage />} />

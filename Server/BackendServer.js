@@ -443,6 +443,64 @@ app.get("/resources", async (req, resp) => {
   resp.send(docs);
 });
 
+app.post('/addmysubject',(req,res)=>{
+  const topic = req.body.subject;
+  const logo = req.body.sublogo;
+
+  console.log(topic);
+
+  const newSub = new resModel({
+    subject : topic,
+    logo : logo,
+  });
+  const respons = newSub.save();
+  console.log(respons);
+})
+
+app.post('/addmybook',async (req,res)=>{
+  const subject = req.body.sub_id;
+  const book = {
+    title : req.body.book,
+    link:req.body.link,
+    author:req.body.author,
+    edition:req.body.edition,
+    thumbnail:req.body.thumbnail,
+  }
+  const subObj = await resModel.findById(subject);
+  subObj.books.push(book);
+  const a = await subObj.save();
+  console.log(a);
+  res.send("OK");
+})
+
+app.post('/addmynote',async (req,res)=>{
+  const subject = req.body.sub_id;
+  const note = {
+    title : req.body.note,
+    link:req.body.link,
+  }
+  const subObj = await resModel.findById(subject);
+  subObj.notes.push(note);
+  const a = await subObj.save();
+  console.log(a);
+  res.send("OK");
+})
+
+app.post('/addmyvideo',async (req,res)=>{
+  const subject = req.body.sub_id;
+  const video = {
+    title : req.body.video,
+    link:req.body.link,
+    channel:req.body.channel,
+    source:req.body.source,
+  }
+  const subObj = await resModel.findById(subject);
+  subObj.videos.push(video);
+  const a = await subObj.save();
+  console.log(a);
+  res.send("OK");
+})
+
 // app.post('/resources/content', (req, resp) => {
 //   const data = req.body;
 //   // console.log(data);

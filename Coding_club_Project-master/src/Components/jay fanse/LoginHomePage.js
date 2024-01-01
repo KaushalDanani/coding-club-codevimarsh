@@ -8,6 +8,7 @@ import Navbar_after_login from '../kaushal/Navbar_after_login';
 import Myfooter from '../../Components/HomeBeforeLogin/CSS/Myfooter.css';
 import { useLocation } from 'react-router-dom';
 import useUser from '../../store/userContext';
+import MyfooterAfterLogin from '../MyfooterAfterLogin';
 
 function LoginHomePage(props) {
 
@@ -55,7 +56,7 @@ const location = useLocation();
         <NewUpdates title={"Articles"} userID={userID} isArticleSelected={true}/>
         <NewUpdates title={"News"} userID={userID} isArticleSelected={false}/>
     </div>
-    {/* <Myfooter/> */}
+    <MyfooterAfterLogin/>
     </>
   )
 }

@@ -4,6 +4,27 @@
     color: #FFF;
   }
   
+  .addResBut{
+    padding: 0.4vw 1vw;
+    background-color: white;
+    /* margin-bottom: 10px; */
+    color: crimson;
+    font-family: 'Trebuchet MS';
+    font-size: large;font-weight: bold;
+    border: 1px solid black;
+    border-radius: 15%;
+}
+
+  .title{
+    display: flex !important;
+    /* border: 1px solid crimson; */
+  }
+
+  .addRes{
+    position: absolute;
+    right: 2vw;    
+  }
+
   .ResourcesContentFrame{
     padding: 30px 40px;
     background-color: #2D003B;

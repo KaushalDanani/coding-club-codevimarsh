@@ -1,19 +1,38 @@
 import React, { useContext, useState, useEffect } from 'react';
 import "./ResourcesContent.css";
-import ResourcesBooksDisplay from './ResourcesBooksDisplay';
-import ResourcesVideosDisplay from './ResourcesVideosDisplay';
-import ResourcesNotesDisplay from './ResourcesNotesDisplay';
-import Navbar_after_login from '../kaushal/Navbar_after_login';
+import ResourcesBooksDisplay from './ResourcesBooksDisplay.js';
+import ResourcesVideosDisplay from './ResourcesVideosDisplay.js';
+import ResourcesNotesDisplay from './ResourcesNotesDisplay.js';
+import Navbar_after_login from '../kaushal/Navbar_after_login.js';
 // import { DataContext } from '../Jay prajapati/DataContext';
-import { useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
+import useUser from '../../store/userContext.js';
 
-function ResourcesContent() {
+function ResourcesContent(props) {
     const location = useLocation();
     const searchParams = new URLSearchParams(location.search);
-  const userID = searchParams.get('userID');
+    // const userID = searchParams.get('userID');
+    // const {user,setUser} = useUser();
+    // const admin = user.isAdmin;
+
+    const [admin,setAdmin] = useState(false);
+
+    useEffect( ()=>{
+        if(props.user)
+        {
+            setAdmin(props.user.isAdmin);
+        }
+    },[props.user])
+
+
+    function adminCheck(){
+        return (admin === true)
+    }
+
+
 
     const subjectRes = location.state.resources[0];
-
+    const sub_id = subjectRes._id;
     // const { filteredData } = useContext(DataContext);
 
     const books = subjectRes.books;
@@ -25,12 +44,12 @@ function ResourcesContent() {
         document.getElementById("videos").checked = false;
         document.getElementById("notes").checked = false;
         document.getElementById(active).checked = true;
-        console.log(active);
+        //console.log(active);
     }
 
     return (
         <>
-            <Navbar_after_login userID={userID}/>
+            <Navbar_after_login/>
             <div className="ResourcesContentFrame">
                 <div className="ResourcesContentTopic">Get all your requirements at just one click!</div>
                 <div className="ResourcesContentMain">
@@ -57,19 +76,31 @@ function ResourcesContent() {
                     </div>
                     <div className="text-content">
                         <div className="books text">
-                            <div className="title">Books</div>
+                            <div className="title">Books
+                                <div className='addRes' style={{display: adminCheck()?'block':'none'}}>
+                                    <Link to={`/resources/rescontent/addBook?sub_id=${sub_id}`}><button className='addResBut'>Add Books</button></Link>
+                                </div>
+                            </div>
                             <ResourcesBooksDisplay
                                 books={books}
                             />
                         </div>
                         <div className="videos text">
-                            <div className="title">Videos</div>
+                            <div className="title">Videos
+                                <div className='addRes' style={{display: adminCheck()?'block':'none'}}>
+                                    <Link to={`/resources/rescontent/addVideo?sub_id=${sub_id}`}><button className='addResBut'>Add Videos</button></Link>
+                                </div>
+                            </div>
                             <ResourcesVideosDisplay
                                 videos={videos}
                             />
                         </div>
                         <div className="notes text">
-                            <div className="title">Notes</div>
+                            <div className="title">Notes
+                                <div className='addRes' style={{display: adminCheck()?'block':'none'}}>
+                                    <Link to={`/resources/rescontent/addNote?sub_id=${sub_id}`}><button className='addResBut'>Add Notes</button></Link>
+                                </div>
+                            </div>
                             <ResourcesNotesDisplay
                                 notes={notes}
                             />

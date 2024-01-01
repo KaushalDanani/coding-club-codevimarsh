@@ -2,20 +2,19 @@ import React from 'react'
 import { useEffect, useState } from 'react'
 import './Comment.css'
 import Upvote from './upvote.js'
-import useUser from '../../store/userContext.js';
 
 
 export default function Comment(props) {
     const [qDate, setQDate] = useState("");
 
-    const {user,setUser} = useUser();
-    const userID = user._id;
-    const delCheck = (userID === props.commenter_id);
-    console.log(delCheck + "frr?");
+    const userID = sessionStorage.getItem('userID');
+    const admin = sessionStorage.getItem('isAdmin');
+    const delCheck = (userID === props.commenter_id || admin ==='true');
+    //console.log(delCheck + "frr?");
 
     function deleteRep(r_id) {
         const conf = window.confirm('Are you sure you want to delete this reply?');
-        if(conf){
+        if (conf) {
             fetch(`/discussion/question/delRep/${r_id}`, {
                 method: 'DELETE',
                 headers: {
