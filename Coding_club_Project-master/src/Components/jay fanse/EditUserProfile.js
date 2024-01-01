@@ -76,6 +76,8 @@ function EditUserProfile() {
     function removeUserAuth()
     {
       (async () => {
+        
+        setUser(null);
       await fetch('/remove/user/auth', {
         method: "GET",
         headers: { 
@@ -87,7 +89,7 @@ function EditUserProfile() {
           // window.location.reload();
       });
       // window.location.reload();
-      window.location.reload();
+      // window.location.reload();
       })()
     }
   

@@ -22,9 +22,9 @@ function Give_answer() {
 
     const [Reply , setReply] = useState("");
     const [Code , setCode] = useState("");
-    // const userID = sessionStorage.getItem('userID')
     const {user,setUser} = useUser();
     const userID = user._id;
+    console.log(user,'😒😒😒😒');
     const q_id = searchParams.get("q_id");
 
     function addReply(){
@@ -40,19 +40,21 @@ function Give_answer() {
     }
 
     function addMyReply(){
+
+        // const userID1 = user._id;
         fetch("/addmyreply",{
             method: 'POST',
             body: JSON.stringify({
                 "answerreply" : Reply,
                 "answercode" : Code,
                 "answerqid" : q_id,
-                "answerreplier" : userID,
+                "answerreplier" : userID1,
             }),
             headers: {
               'Content-Type': 'application/json'
                 }
             })
-            reply_close();
+            // reply_close();
     }
     
 

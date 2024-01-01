@@ -8,12 +8,19 @@ import MyfooterAfterLogin from "../MyfooterAfterLogin";
 import { Link } from "react-router-dom";
 import useUser from "../../store/userContext";
 
-export default function Contest_main() {
+export default function Contest_main(props) {
 
     const [pastcontestinfo, setPastContestinfo] = useState([{}]);
-    const {user,setUser} = useUser();
+    // const {user,setUser} = useUser();
     // const userID = user._id;
-    const isAdmin = user.isAdmin;
+    // const isAdmin = user.isAdmin;
+    const [isAdmin,setAdmin] = useState('');
+
+    useEffect(() => {
+
+        if(props.user!=null)
+        setAdmin(props.user.isAdmin);
+    },[props.user])
 
     useEffect(() => {
         fetch("/contest/past").then(

@@ -7,8 +7,6 @@ import useUser from '../../store/userContext';
 function Navbar_after_login(props) {
     const navigate=useNavigate();
     const [userData,setUserData] = useState('');
-    const {user,setUser} = useUser();
-    const userID = user._id;
     const [base64Img,setBase64Img] = useState('');
 
     useEffect( () => {

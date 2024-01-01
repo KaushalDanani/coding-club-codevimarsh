@@ -355,6 +355,8 @@ app.post("/addmyreply", jsonParser, function (req, res) {
     replyDate: new Date(),
   });
 
+  console.log(req.body.answerreplier);
+  console.log(newreply.replier);
   newreply.save().then((data) => {
     var arr;
     // console.log(data);

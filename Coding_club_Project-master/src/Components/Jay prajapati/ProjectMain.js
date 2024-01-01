@@ -9,8 +9,19 @@ import Filter_bar_Project from "./Filter_bar_Project.js"
 import "./ProjectMain.css"
 import MyfooterAfterLogin from "../MyfooterAfterLogin.js";
 
-export default function ProjectMain(){
+export default function ProjectMain(props){
 
+    const [admin,setAdmin] = useState('');
+    const [userID,setUserID] = useState('');
+
+    useEffect( ()=> {
+        if(props.user!=null)
+        {
+            setAdmin(props.user.isAdmin);
+            setUserID(props.user._id);
+        }
+    },[props.user])
+    
     const [Projectinfo, setProjectinfo] = useState([{}]);
       useEffect(() => {
         fetch("/project").then(
@@ -45,6 +56,8 @@ export default function ProjectMain(){
                                 projectlink = {proj.projectLink}
                                 team = {proj.contributors}
                                 image = {proj.image}
+                                admin = {admin}
+                                userID = {userID} 
                             />
                         );
                     }

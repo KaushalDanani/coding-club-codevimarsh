@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link, useLocation } from 'react-router-dom';
 // import { useLocation } from 'react-router-dom'
 import './Give_answer.css';
+import useUser from "../../store/userContext";
 
 // export function reply_close() {
 //     const closebtn = document.getElementById("reply_main");
@@ -21,7 +22,8 @@ function Give_answer() {
 
     const [Reply, setReply] = useState("");
     const [Code, setCode] = useState("");
-    const userID = sessionStorage.getItem('userID')
+    const {user,setUser} = useUser();
+    const userID = user._id;
     const q_id = searchParams.get("q_id");
 
     function addReply() {

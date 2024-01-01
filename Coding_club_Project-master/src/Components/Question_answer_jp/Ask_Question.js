@@ -23,7 +23,6 @@ export default function Ask_Question(){
     const [Description , setDescription] = useState("");
     const [Code , setCode] = useState("");
 
-    // const userID = sessionStorage.getItem('userID')
     const {user,setUser} = useUser();
     const userID = user._id;
 

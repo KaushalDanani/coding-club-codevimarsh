@@ -10,8 +10,6 @@ import Projects from './Projects.js';
 import News from './News.js';
 import ProjCollab from './ProjCollab.js';
 import Discussion from './Discussion.js';
-import { useNavigate } from 'react-router-dom';
-
 import Navbar_before_login from './Navbar_before_login.js';
 
 
@@ -49,11 +47,12 @@ function Home_page_before_login(props) {
 
     return (
 
-        { 
-            (props.user)  ? (
-            
-                { navigate("/") }
-                {window.location.reload()}
+        
+            (props.user) ? (
+            <>
+                {navigate("/home")}
+                {/* {window.location.reload()} */}
+            </>
         ) : (
 
 
@@ -172,7 +171,7 @@ function Home_page_before_login(props) {
                 </div>
                 <Myfooter />
             </>
-        )}
+        )
     )
 }
 

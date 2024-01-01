@@ -9,9 +9,22 @@ import useUser from "../../store/userContext";
 export default function ProjectDisplay(props) {
     
     // const [admin,setAdmin] = useState('false');
-    const {user,setUser} = useUser();
-    const userID = user._id;
-    const admin = user.isAdmin;
+    // const {user,setUser} = useUser();
+    // const userID = user._id;
+    // const admin = user.isAdmin;
+
+    const [admin,setAdmin] = useState('');
+    const [userID,setUserID] = useState('');
+
+    useEffect(  () => {
+        if(props.userID!=null)
+        setUserID(props.userID);
+    },[props.userID])
+
+    useEffect(  () => {
+        if(props.admin!=null)
+        setAdmin(props.admin);
+    },[props.admin])
 
     // useEffect(() => {
           

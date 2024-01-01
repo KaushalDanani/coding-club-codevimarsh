@@ -91,14 +91,14 @@ function PageLinks() {
             <Router>
                 <Routes>
                     
-                    <Route path='/' element={<HomeBeforeLogin user={user} />} />
+                    <Route path='/' element={<Home_page_before_login user={user} />} />
                     <Route path='/home' element={<LoginHomePage />} />
                     <Route path='/signin' element={<Sign_in_page />} />
                     <Route path='/signup/step-1' element={<Sign_up_first_page />} />
                     <Route path='/signup/step-2' element={<Sign_up_second_page />} />
                     <Route path='/signup/step-3' element={<Sign_up_third_page />} />
                     <Route path='/manageAdmins' element={<ManageAdmins />} />
-                    <Route path='/contest' element={<Contest_main />} />
+                    <Route path='/contest' element={<Contest_main user={user} />} />
                     <Route path='/addContest' element={<AddContest />} />
                     <Route path='/article&news' element={<ArticlesNewsHomePage />} />
                     <Route path='/resources' element={<ResourcesHome />} />
@@ -107,7 +107,7 @@ function PageLinks() {
                     <Route path='/discussion/addQuestion' element={<Ask_Question />} />
                     <Route path='/discussion/question' element={<Question_data />} />
                     <Route path='/discussion/question/addReply' element={<Give_answer />} />
-                    <Route path='/project' element={<ProjectMain />} />
+                    <Route path='/project' element={<ProjectMain user={user}/>} />
                     <Route path='/profile' element={<UserProfile />} />
                     <Route path='/profile/edit_profile' element={<EditUserProfile />} />
                     <Route path='/project_collab' element={<Project_Collabration />} />

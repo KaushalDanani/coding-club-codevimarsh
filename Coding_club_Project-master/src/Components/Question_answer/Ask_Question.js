@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useSearchParams } from 'react-router-dom';
 import './Ask_Question.css';
+import useUser from "../../store/userContext";
 
 function question_close(){
     const closebtn = document.getElementById("question_main");
@@ -20,7 +21,8 @@ export default function Ask_Question(){
     const [Description , setDescription] = useState("");
     const [Code , setCode] = useState("");
 
-    const userID = sessionStorage.getItem('userID')
+    const {user,setUser} = useUser();
+    const userID = user._id;
 
     function addTital(){
         const tital = document.getElementById("tital_text").value;

@@ -112,6 +112,7 @@ export default function AddProject(){
         // console.log(Team);
         // console.log(ProjectLink);
         // console.log(ProjectInfo);
+
             window.location.reload();
             addproject_close();
     }
