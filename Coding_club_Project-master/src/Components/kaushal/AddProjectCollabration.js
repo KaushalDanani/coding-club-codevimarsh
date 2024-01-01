@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import { useState } from 'react'
 import './AddProjectCollabration.css'
 import Navbar_after_login from './Navbar_after_login'
+import useUser from '../../store/userContext'
 
 function AddProjectCollabration() {
 
@@ -11,7 +12,10 @@ function AddProjectCollabration() {
     const [pc_title, setPc_title] = useState('')
     const [pc_tags, setPc_tags] = useState('')
     const [pc_description, setPc_description] = useState('')
-    const [userID, setUserID] = useState(sessionStorage.getItem('userID'))
+
+    const {user,setUser} = useUser();
+
+    const [userID, setUserID] = useState(user._id)
 
     const titleChangeHandler = (e) => {
         setPc_title(e.target.value)

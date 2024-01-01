@@ -90,14 +90,8 @@ function PageLinks() {
         <div>
             <Router>
                 <Routes>
-                    {user ? (
-                        <Route path='/' element={<LoginHomePage />} />
-                    ) : (
-                        <Route path='/' element={<Home_page_before_login />} />
-                    )}
-
-
-                    {/* <Route path='/' element={<HomeBeforeLogin />} /> */}
+                    
+                    <Route path='/' element={<HomeBeforeLogin user={user} />} />
                     <Route path='/home' element={<LoginHomePage />} />
                     <Route path='/signin' element={<Sign_in_page />} />
                     <Route path='/signup/step-1' element={<Sign_up_first_page />} />

@@ -3,13 +3,15 @@ import { Link, Navigate, useLocation, useNavigate } from 'react-router-dom'
 // import UserProfileSkillTagElement from "../jay fanse/UserProfileSkillTagElement";
 import './ProjectDisplay.css'
 import TechTag from "../kaushal/TechTag";
+import useUser from "../../store/userContext";
 
 
 export default function ProjectDisplay(props) {
     
     // const [admin,setAdmin] = useState('false');
-    const userID=sessionStorage.getItem('userID');
-    const admin = sessionStorage.getItem('isAdmin');
+    const {user,setUser} = useUser();
+    const userID = user._id;
+    const admin = user.isAdmin;
 
     // useEffect(() => {
           
@@ -27,7 +29,7 @@ export default function ProjectDisplay(props) {
         console.log(admin);
         // console.log("user : "+userID);
         for(let i=0;i<props.team.length;i++){
-            if(admin==='true' || props.team[i] == userID ){
+            if(admin===true || props.team[i] == userID ){
                 b = true;
             }
         }

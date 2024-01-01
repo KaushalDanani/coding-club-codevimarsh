@@ -16,7 +16,6 @@ const location = useLocation();
 // const searchParams = new URLSearchParams(location.search);
 //   const userID = searchParams.get('userID');
 
-  // const userID = sessionStorage.getItem('userID');
   // const userID = Cookies.get("userID");
   
   const [fname,setFname] = useState("");
@@ -42,8 +41,6 @@ const location = useLocation();
         setFname(data[0].fname);
         setUserID(data[0]._id);
         setAdmin(data[0].isAdmin);
-        // sessionStorage.setItem('userID', data[0]._id);
-        // sessionStorage.setItem('isAdmin',data[0].isAdmin);
       }
     )
   },[])

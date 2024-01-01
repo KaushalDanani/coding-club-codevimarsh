@@ -32,8 +32,7 @@ export default function Discussion_block(props) {
 
   const location = useLocation();
   const {user,setUser} = useUser();
-  // const userID = user._id;            //  ---------------------------------------------------------------------------------
-  // const userID = sessionStorage.getItem('userID');
+  
 
   const userID = user._id;
   const delCheck = (userID === props.asker_id);

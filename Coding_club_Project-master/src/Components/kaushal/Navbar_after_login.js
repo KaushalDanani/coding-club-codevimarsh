@@ -2,11 +2,13 @@ import React, { useEffect, useState } from 'react'
 import { Link, Navigate, useLocation, useNavigate } from 'react-router-dom'
 import "../HomeBeforeLogin/CSS/Navbar_before_login.css"
 import "./Navbar_after_login.css";
+import useUser from '../../store/userContext';
 
 function Navbar_after_login(props) {
     const navigate=useNavigate();
     const [userData,setUserData] = useState('');
-    const userID = sessionStorage.getItem('userID');
+    const {user,setUser} = useUser();
+    const userID = user._id;
     const [base64Img,setBase64Img] = useState('');
 
     useEffect( () => {

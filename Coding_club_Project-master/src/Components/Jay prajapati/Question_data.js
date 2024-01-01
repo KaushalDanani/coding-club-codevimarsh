@@ -15,7 +15,6 @@ export default function Question_data() {
 
     const searchParams = new URLSearchParams(location.search);
     const userID = user ? user._id : null;
-    // const userID = sessionStorage.getItem('userID');
     const q_id = searchParams.get('q_id');
 
     const [Q_data, setQData] = useState([]);

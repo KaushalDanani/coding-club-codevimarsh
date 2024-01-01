@@ -2,12 +2,14 @@ import React from 'react'
 import { useEffect, useState } from 'react'
 import './Comment.css'
 import Upvote from './upvote.js'
+import useUser from '../../store/userContext.js';
 
 
 export default function Comment(props) {
     const [qDate, setQDate] = useState("");
 
-    const userID = sessionStorage.getItem('userID');
+    const {user,setUser} = useUser();
+    const userID = user._id;
     const delCheck = (userID === props.commenter_id);
     console.log(delCheck + "frr?");
 
