@@ -64,7 +64,7 @@ export default function AddSubject() {
                         <div className="q_code">
                             <label htmlFor="code_text">Subject Logo :</label>
                             <p></p>
-                            <input type="file" name="code_text" id="img_text" onChange={(e) => { logoMaker(e) }}  cols="" rows="2"></input>
+                            <input className="fileInput" type="file" name="code_text" id="img_text" onChange={(e) => { logoMaker(e) }}  cols="" rows="2"></input>
                         </div>
 
 
