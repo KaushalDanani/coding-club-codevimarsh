@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
-import UserProfileLeftPanel from "./UserProfileLeftPanel";
 import "./UserProfile.css";
-import UserProfileMainPanel from "./UserProfileMainPanel";
-import Navbar_after_login from "../kaushal/Navbar_after_login";
+import UserProfileLeftPanel from "./UserProfileLeftPanel.js";
+import UserProfileMainPanel from "./UserProfileMainPanel.js";
+import Navbar_after_login from "../kaushal/Navbar_after_login.js";
+import MyfooterAfterLogin from "../MyfooterAfterLogin.js";
+import useUser, { UserProvider } from "../../store/userContext.js";
 import { useLocation, useNavigate } from "react-router-dom";
-import MyfooterAfterLogin from "../MyfooterAfterLogin";
-import useUser, { UserProvider } from "../../store/userContext";
 
 function UserProfile(props) {
 

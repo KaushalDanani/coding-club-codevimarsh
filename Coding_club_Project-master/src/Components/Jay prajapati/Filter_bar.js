@@ -1,7 +1,7 @@
 import React from 'react'
 import { useState } from 'react';
 import './Filter_bar.css'
-import { question_open } from '../Question_answer/Ask_Question';
+import { question_open } from '../Question_answer_jp/Ask_Question.js';
 // import { addproject_open ,  } from '../Innercomp/AddProject';
 // import {question_open} from '../Question_answer/Ask_Question';
 export default function Filter_bar() {

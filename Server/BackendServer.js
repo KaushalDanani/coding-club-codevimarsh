@@ -33,7 +33,7 @@ const Contest = mongoose.model(
     // time : String
   })
 );
-
+//usersignup
 app.get("/contest/past", (req, res) => {
   Contest.find({})
     .then((contestinfo) => {
@@ -176,7 +176,7 @@ app.post("/deleteproject",async (req,res) => {
 })
 
 const imageBuffer = fs.readFileSync(
-  "D:/Coding_club_Project-master/Coding_club_Project-master/public/images/profile.jpeg"
+  "D:/Coding_club_Project-master-git/Coding_club_Project-master/public/images/profile.jpeg"
 );
 const base64Image = imageBuffer.toString("base64");
 

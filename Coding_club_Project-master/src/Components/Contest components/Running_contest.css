@@ -5,12 +5,11 @@
 }
 
 .running_contest_main{
-    margin: 0% 6.5%;
+    margin: 0% 4.4% 3% 4.4%;
     border-radius: 10px;
     background-color: rgb(105, 19, 191);
     box-shadow: 0 0 20px black;
-    padding: 5px;
-    margin-top: 2%;
+    padding: 0vh 0.8vh 2vh 1.8vh;
 }
 
 .runnig_contest_name{

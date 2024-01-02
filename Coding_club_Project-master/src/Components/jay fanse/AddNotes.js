@@ -89,9 +89,9 @@ export default function AddNotes() {
                         </div>
 
                         <div className='buttonSection'>
-                            <Link to={'/resources'}> <button id='pc_cancelbtn' className='addProjectCollabrationBtn'> Cancel </button> </Link>
+                            <Link to={'/resources'}> <button className='addFormButton'> Cancel </button> </Link>
 
-                            <Link to={'/resources'}><input type="button" value={"Submit"} onClick={addMynote} className="q_submit" /></Link>
+                            <Link to={'/resources'}><button onClick={addMynote} className="addFormButton">Submit</button></Link>
                         </div>
 
                     </form>

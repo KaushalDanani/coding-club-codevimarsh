@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import "./DiscussionCard.css";
 import "./Forums.css";
-import useUser from '../../store/userContext';
+import useUser from '../../store/userContext.js';
 
 export default function Discussion_block(props) {
   function getTag(tag) {

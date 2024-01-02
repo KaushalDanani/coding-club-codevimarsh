@@ -1,10 +1,10 @@
 import React, {useState} from "react";
-import ArticleNewsLatestDiv from './ArticleNewsLatestDiv';
-import ArticleNewsTopBanner from './ArticleNewsTopBanner';
-import "./ArticlesNewsHomePage.css"
-import Navbar_after_login from "../kaushal/Navbar_after_login";
+import ArticleNewsLatestDiv from './ArticleNewsLatestDiv.js';
+import ArticleNewsTopBanner from './ArticleNewsTopBanner.js';
+import Navbar_after_login from "../kaushal/Navbar_after_login.js";
+import MyfooterAfterLogin from "../MyfooterAfterLogin.js";
 import { useLocation } from "react-router-dom";
-import MyfooterAfterLogin from "../MyfooterAfterLogin";
+import "./ArticlesNewsHomePage.css"
 
 function ArticlesNewsHomePage() {
   const location = useLocation();

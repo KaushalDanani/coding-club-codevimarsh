@@ -106,9 +106,9 @@ export default function Ask_Question(){
 
 
                     <div className='buttonSection'>
-                        <Link to={'/discussion'}> <button id='pc_cancelbtn' className='addProjectCollabrationBtn'> Cancel </button> </Link>
+                        <Link to={'/discussion'}> <button className='addFormButton'> Cancel </button> </Link>
                         
-                        <Link to={'/discussion'}><input type="button" value={"Submit"} onClick={addMyQuestion} className="q_submit"/></Link>
+                        <Link to={'/discussion'}><button onClick={addMyQuestion} className="addFormButton">Submit</button></Link>
                     </div>
                     
                 </form>

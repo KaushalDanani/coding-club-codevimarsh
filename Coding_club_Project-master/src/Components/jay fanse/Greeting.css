@@ -49,10 +49,11 @@
 
 .AddAdminBtn:hover{
     cursor: pointer;
-    color: #6913BF;
+    color: #ffffff;
     /* border: 2px solid white; */
-    background-color: white;
+    background-color: #8e31ec
 }
+
 
 .Notify{
     height: fit-content;

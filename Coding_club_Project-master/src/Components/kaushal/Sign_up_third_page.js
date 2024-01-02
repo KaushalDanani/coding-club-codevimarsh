@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import "./Sign_up_first_page.css"
 import "./Sign_up_third_page.css"
-import useUser from '../../store/userContext'
+import useUser from '../../store/userContext.js'
 
 
 function Sign_up_third_page() {
@@ -352,7 +352,7 @@ function Sign_up_third_page() {
                             
                             <div style={{display: 'inline', gap: '15px'}}>
                                 <div className="backbox">
-                                    <input type="button" value="Back" onClick={() => navigate('/signup/step-2')}/>
+                                    <button className='backButtonDiv' onClick={() => navigate('/signup/step-2')}>Back</button>
                                 </div>
                                 <div className="final_signup">
                                     <button className='final_signupButton' onClick={submitHandle}> Sign Up </button>

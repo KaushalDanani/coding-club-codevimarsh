@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import "./ArticleNewsNav.css";
-import ArticleNewsNavElement from './ArticleNewsNavElement';
+import ArticleNewsNavElement from './ArticleNewsNavElement.js';
 
 function ArticleNewsNav(props) {
   

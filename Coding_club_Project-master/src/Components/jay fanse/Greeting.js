@@ -3,8 +3,8 @@ import "./Greeting.css";
 // import icon from "/public/images/bell.webp";
 // import icon2 from "/public/images/AI.png";
 import { Link } from "react-router-dom";
-import ManageAdmins from "./ManageAdmins";
-import useUser from "../../store/userContext";
+import ManageAdmins from "./ManageAdmins.js";
+import useUser from "../../store/userContext.js";
 
 function Greeting(props){
     

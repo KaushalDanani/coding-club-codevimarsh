@@ -2,8 +2,8 @@ import React from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useState } from 'react'
 import './AddProjectCollabration.css'
-import Navbar_after_login from './Navbar_after_login'
-import useUser from '../../store/userContext'
+import Navbar_after_login from './Navbar_after_login.js'
+import useUser from '../../store/userContext.js'
 
 function AddProjectCollabration() {
 
@@ -88,8 +88,9 @@ function AddProjectCollabration() {
                     </div>
 
                     <div className='buttonSection'>
-                        <Link to={'/project_collab'}> <button id='pc_cancelbtn' className='addProjectCollabrationBtn'> Cancel </button> </Link>
-                        <Link to={'/project_collab'}> <button id='pc_addbtn' className='addProjectCollabrationBtn' onClick={submitHandler}> Post </button> </Link>
+                    <Link to={'/project_collab'}> <button className='addFormButton'> Cancel </button> </Link>
+                        
+                        <Link to={'/project_collab'}><button onClick={submitHandler} className="addFormButton">Submit</button></Link>
                     </div>
                 </form>
             </div>

@@ -54,7 +54,7 @@
     border: 2px solid #db00ef;
 }
 
-.sign-up_section .container .form .backbox input {
+.sign-up_section .container .form .backbox .backButtonDiv {
     width: 45%;
     /* box-sizing: border-box; */
     float: left;
@@ -67,7 +67,7 @@
     border-radius: 20px;
     /* border: 2px solid #db00ef; */
 }
-.sign-up_section .container .form .backbox input:hover {
+.sign-up_section .container .form .backbox .backButtonDiv:hover {
     background-color: #db00ef;
     padding: 8px 5px 8px 20px;
     background-image: url(/public/images/back-slide.png);

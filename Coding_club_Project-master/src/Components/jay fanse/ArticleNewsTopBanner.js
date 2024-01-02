@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./ArticleNewsTopBanner.css";
-import ArticleNewsNav from "./ArticleNewsNav";
+import ArticleNewsNav from "./ArticleNewsNav.js";
 import "bootstrap/dist/css/bootstrap.css";
 // import { event } from "jquery";
 import "bootstrap"

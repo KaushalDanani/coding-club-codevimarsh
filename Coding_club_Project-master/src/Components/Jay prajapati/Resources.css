@@ -6,20 +6,34 @@
 }
 
 .addSub{
-    padding: 0.4vw 1vw;
-    background-color: white;
-    
-    color: crimson;
-    font-family: 'Trebuchet MS';
-    font-size: large;font-weight: bold;
-    border: 1px solid black;
-    border-radius: 15%;
+    font-size: 2.3vh;
+    position: relative;
+    /* bottom:0px; */
+    height: fit-content;
+    width: fit-content;
+    color: white;
+    padding: 1.1vh 1.4vw;
+    border: none;
+    background-color: rgb(105, 19, 191);
+    align-self: flex-end;
+    border-radius: 10px;
+}
+
+.addSub:hover{
+    cursor: pointer;
+    color: #ffffff;
+    /* border: 2px solid white; */
+    background-color: #8e31ec
 }
 
 #addButton{
     position: relative;
     right: 5%;
 }
+
+/* #addButton input{
+    
+} */
 
 #cardgrid{
     display: grid ;

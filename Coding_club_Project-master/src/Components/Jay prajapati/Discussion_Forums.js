@@ -2,7 +2,7 @@ import React from 'react'
 import './Forums.css'
 import Filter_bar from './Filter_bar.js'
 import forumGenerator from './Discussion_data.js'
-import Ask_Question from '../Question_answer/Ask_Question.js'
+import Ask_Question from '../Question_answer_jp/Ask_Question.js'
 import Navbar_after_login from '../kaushal/Navbar_after_login.js'
 import { Link } from 'react-router-dom';
 import { useEffect, useState } from "react";

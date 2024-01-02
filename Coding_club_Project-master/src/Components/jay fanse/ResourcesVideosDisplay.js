@@ -1,7 +1,7 @@
 import React from 'react'
 import "./ResourcesVideosDisplay.css"
-import ResourcesVideosElement from './ResourcesVideosElement'
-import ResourcesVideoInfo from './ResourcesVideoInfo'
+import ResourcesVideosElement from './ResourcesVideosElement.js'
+import ResourcesVideoInfo from './ResourcesVideoInfo.js'
 
 function ResourcesVideosDisplay(props) {
 

@@ -4,7 +4,7 @@
 }
 
 *{
-    margin: 0;
+    margin: 0%;
     padding: 0%;
     box-sizing: border-box;
 }
@@ -17,29 +17,14 @@
 .upcomingContestGrid{
     display: grid;
     /* border: 2px solid white; */
-    margin: 0% 6.5%;
-    gap: 0px 8%;
+    margin: 0% 4.4%;
+    gap: 0px 3%;
     grid-template-columns: repeat(2,1fr);
 }
 
-.contest_heading{
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 3%;
-}
-
-.contest_heading p{
-    font-size: 2.6rem;
-    margin-top: 7px;
-    font-family: newFont;
-    color: white;
-}
-
 .upcoming_contest{
-    padding-top: 0.8%;
-    margin: 0% 6.5%;
+    padding-top: 2.8%;
+    margin: 0% 4.4%;
     display: flex;
     justify-content: space-between;
     font-family: 'Courier New', Courier, monospace;
@@ -47,7 +32,8 @@
 }
 
 .upcoming_contest p{
-    font-size: 1.5rem;
+    position: relative;
+    font-size: 1.7rem;
     color: aliceblue;
     /* border: 2px solid red; */
 }
@@ -59,10 +45,10 @@
 }
 
 .runnig_contest p{
-    font-size: 1.5rem;
+    font-size: 1.7rem;
     color: aliceblue;
     padding-bottom: 0.5%;
-    padding-left: 6.5%;
+    padding-left: 4.4%;
 }
 
 .past_contest{
@@ -72,10 +58,18 @@
 }
 
 .past_contest p{
-    font-size: 1.5rem;
+    font-size: 1.7rem;
     color: aliceblue;
     padding-bottom: 0.5%;
-    padding-left: 6.5%;
+    padding-left: 4.4%;
+}
+
+.PastContestGrid {
+    display: grid;
+    /* margin-bottom: 5.5% !important; */
+    gap: 4.5vh 4.5vh;
+    grid-template-columns: repeat(2, 1.5fr);
+    margin: 0% 3.8% 5.5% 3.8%;
 }
 
 @media only screen and (max-width: 600px) {
@@ -102,22 +96,22 @@
 }
 
 .AddContestBtn{
-    font-size: 120%;
-    /* position: relative;
-    bottom:0px; */
+    font-size: 2.3vh;
+    position: relative;
+    /* bottom:0px; */
     height: fit-content;
     width: fit-content;
     color: white;
-    padding: 10px;
+    padding: 1.1vh 1.4vw;
     /* border: 2px solid white; */
-    background-color: #6913BF;
-    align-self: flex-end;
-    border-radius: 8px;
+    background-color: rgb(105, 19, 191);
+    /* align-self: flex-end; */
+    border-radius: 10px;
 }
 
-.AddContestBtn:hover{
+.AddContestBtn:hover{   
     cursor: pointer;
-    color: #6913BF;
+    color: #ffffff;
     /* border: 2px solid white; */
-    background-color: white;
+    background-color: #8e31ec;
 }

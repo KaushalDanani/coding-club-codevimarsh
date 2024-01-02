@@ -1,8 +1,8 @@
 import React from 'react'
 import "./ArticlesNewsMore.css"
-import ArticleNewsMoreElement from './ArticleNewsMoreElement'
-import ArticleContentInfo from './ArticleContentInfo'
-import NewsContentInfo from './NewsContentInfo';
+import ArticleNewsMoreElement from './ArticleNewsMoreElement.js'
+import ArticleContentInfo from './ArticleContentInfo.js'
+import NewsContentInfo from './NewsContentInfo.js';
 
 function ArticlesNewsMore(props) {
 

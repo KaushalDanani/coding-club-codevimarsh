@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
-import RecentTasksCards from './RecentTasksCards'
+import RecentTasksCards from './RecentTasksCards.js'
+import RecentTasksCardsInfo from './RecentTasksInfo.js'
 import "./RecentTasksPanel.css"
-import RecentTasksCardsInfo from './RecentTasksInfo'
 
 function RecentTasksPanel(props) {
 

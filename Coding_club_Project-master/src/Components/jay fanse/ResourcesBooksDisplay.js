@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import "./ResourcesBooksDisplay.css"
-import ResourcesBookElement from './ResourcesBookElement'
-import ResourcesBookInfo from './ResourcesBookInfo'
+import ResourcesBookElement from './ResourcesBookElement.js'
+import ResourcesBookInfo from './ResourcesBookInfo.js'
 
 function ResourcesBooksDisplay(props) {
 

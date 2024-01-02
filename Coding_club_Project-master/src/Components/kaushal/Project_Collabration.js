@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import "./Project_Collabration.css";
 import { Link } from 'react-router-dom';
-import ProjectCollabrationCard from './ProjectCollabrationCard';
-import Navbar_after_login from './Navbar_after_login';
+import ProjectCollabrationCard from './ProjectCollabrationCard.js';
+import Navbar_after_login from './Navbar_after_login.js';
 
 
 function Project_Collabration() {

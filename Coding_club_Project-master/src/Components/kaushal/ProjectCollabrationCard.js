@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useState } from 'react';
-import TechTag from './TechTag';
+import TechTag from './TechTag.js';
 import "./ProjectCollabrationCard.css";
 
 function ProjectCollabrationCard(props) {

@@ -345,7 +345,7 @@ function Sign_up_second_page() {
                             </div>
                             <div style={{display: 'inline', gap: '15px'}}>
                                 <div className="backbox">
-                                    <Link to={'/signup/step-1'}> <input type="button" value="Back" /> </Link>
+                                    <Link to={'/signup/step-1'}> <button className='backButtonDiv'>Back</button> </Link>
                                 </div>
                                 <div className="signupbox">
                                     <button className='signupButton' onClick={submitHandler}> Next </button>

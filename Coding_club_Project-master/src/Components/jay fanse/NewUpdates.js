@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react'
 import React from 'react'
-import RecentHeading from './RecentHeading'
-import RecentUpdatesPanel from './RecentUpdatesPanel'
-import ArticlesNewsMore from './ArticlesNewsMore';
-import ArticlesNewsLoginPage from './ArticleNewsLoginPage';
+import RecentHeading from './RecentHeading.js'
+import RecentUpdatesPanel from './RecentUpdatesPanel.js'
+import ArticlesNewsMore from './ArticlesNewsMore.js';
+import ArticlesNewsLoginPage from './ArticleNewsLoginPage.js';
 
 function NewUpdates(props) {
 

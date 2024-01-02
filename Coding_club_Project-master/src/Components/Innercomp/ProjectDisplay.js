@@ -2,8 +2,8 @@ import React, { useEffect, useState } from "react";
 import { Link, Navigate, useLocation, useNavigate } from 'react-router-dom'
 // import UserProfileSkillTagElement from "../jay fanse/UserProfileSkillTagElement";
 import './ProjectDisplay.css'
-import TechTag from "../kaushal/TechTag";
-import useUser from "../../store/userContext";
+import TechTag from "../kaushal/TechTag.js";
+import useUser from "../../store/userContext.js";
 
 
 export default function ProjectDisplay(props) {
@@ -15,7 +15,7 @@ export default function ProjectDisplay(props) {
 
     const [admin,setAdmin] = useState('');
     const [userID,setUserID] = useState('');
-    const [hover,setHover] = useState(false);
+    
 
     useEffect(  () => {
         if(props.userID!=null)
@@ -151,10 +151,6 @@ export default function ProjectDisplay(props) {
             )
         }
 
-        function toggleLink(){
-            setHover(!hover);
-        }
-
     return (
         <>
         <div className="projectmain">
@@ -162,14 +158,15 @@ export default function ProjectDisplay(props) {
 
                 <div className="projdispheader">
                     <div>
-                    <a href={props.projectlink} target="_blank" >
                         {/* <img src={image()}    alt="project image"></img> */}
+                        <a href={props.projectlink} target="_blank" >
                         {image()}
                         </a>
                     </div>
                     <div>
-                        <a href={props.projectlink} target="_blank" onMouseEnter={toggleLink} onMouseLeave={toggleLink}><span className="projectname">{props.name}</span></a>
-                        {hover ? <span className="linkImg"></span> : null}
+                         <a href={props.projectlink} target="_blank" ><span className="projectname">{props.name}</span></a>
+                        
+                        <div className="linkImg"></div>
                         <p className="projectdiscription">Project Description : {props.description}</p>
                         <p className="projecttech">Technology Used :</p>
                         {addtags()}

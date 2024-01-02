@@ -5,28 +5,32 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Contest_main from './Components/Contest components/Contest_main.js';
 
 //Kaushal Danani
-import Sign_in_page from './Components/kaushal/Sign_in_page';
-import Sign_up_first_page from './Components/kaushal/Sign_up_first_page';
-import Sign_up_second_page from './Components/kaushal/Sign_up_second_page';
-import Sign_up_third_page from './Components/kaushal/Sign_up_third_page';
-import Project_Collabration from './Components/kaushal/Project_Collabration';
-import Navbar_after_login from './Components/kaushal/Navbar_after_login';
-import AddProjectCollabration from './Components/kaushal/AddProjectCollabration';
-import NotFoundPage from './Components/kaushal/NotFoundPage'
+import Sign_in_page from './Components/kaushal/Sign_in_page.js';
+import Sign_up_first_page from './Components/kaushal/Sign_up_first_page.js';
+import Sign_up_second_page from './Components/kaushal/Sign_up_second_page.js';
+import Sign_up_third_page from './Components/kaushal/Sign_up_third_page.js';
+import Project_Collabration from './Components/kaushal/Project_Collabration.js';
+import Navbar_after_login from './Components/kaushal/Navbar_after_login.js';
+import AddProjectCollabration from './Components/kaushal/AddProjectCollabration.js';
+import NotFoundPage from './Components/kaushal/NotFoundPage.js';
 
 // jay fanse
-import LoginHomePage from './Components/jay fanse/LoginHomePage';
-import ArticlesNewsHomePage from './Components/jay fanse/ArticlesNewsHomePage';
-import EditUserProfile from './Components/jay fanse/EditUserProfile';
-import ResourcesContent from './Components/jay fanse/ResourcesContent';
-import UserProfile from './Components/jay fanse/UserProfile';
-import ManageAdmins from './Components/jay fanse/ManageAdmins.js';
+import LoginHomePage from './Components/jay fanse/LoginHomePage.js';
+import ArticlesNewsHomePage from './Components/jay fanse/ArticlesNewsHomePage.js';
+import EditUserProfile from './Components/jay fanse/EditUserProfile.js';
+import ResourcesContent from './Components/jay fanse/ResourcesContent.js';
+import UserProfile from './Components/jay fanse/UserProfile.js';
+
 
 // jay prajapati
-import ResourcesHome from './Components/Jay prajapati/ResourcesHome';
-import Discussion_Forums from './Components/Jay prajapati/Discussion_Forums';
-import Question_data from './Components/Jay prajapati/Question_data';
-import ProjectMain from './Components/Jay prajapati/ProjectMain';
+import ResourcesHome from './Components/Jay prajapati/ResourcesHome.js';
+import Discussion_Forums from './Components/Jay prajapati/Discussion_Forums.js';
+import Question_data from './Components/Jay prajapati/Question_data.js';
+import ProjectMain from './Components/Jay prajapati/ProjectMain.js';
+
+
+
+import ManageAdmins from './Components/jay fanse/ManageAdmins.js';
 import Ask_Question from './Components/Question_answer_jp/Ask_Question.js';
 import Give_answer from './Components/Question_answer_jp/Give_answer.js';
 import AddContest from './Components/Contest components/AddContest.js';

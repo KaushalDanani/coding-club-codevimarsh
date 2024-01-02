@@ -151,12 +151,20 @@
     border-left: 2px solid white; */
 }
 
+.editLink{
+    text-decoration: none !important;
+    /* font-size: 10vw; */
+}
+
 .aboutPlaceHolder button{
     justify-content: center;
+    /* font-size: 10vw; */
+    text-decoration: none !important;
+    width: 5vw;
     border: 2px solid black;
     padding:5px 15px;
     border-radius: 20px;
-    background-color: rgb(126, 195, 244);
+    background-color: rgb(76, 7, 146);
     display: flex;
 }
 
@@ -165,7 +173,7 @@
     border: 2px solid black;
     padding:5px 15px;
     border-radius: 20px;
-    background-color: rgb(36, 95, 136) !important;
+    background-color: rgb(107, 41, 174) !important;
     display: flex;
 }
 

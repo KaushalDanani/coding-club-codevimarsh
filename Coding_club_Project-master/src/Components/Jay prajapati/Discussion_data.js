@@ -4,7 +4,7 @@ import { useEffect, useState, React } from "react";
 import "./Discussion_Forums.css"
 // import {Link} from 'react-router-dom'
 import { Link } from 'react-router-dom';
-import { question_open } from '../Question_answer/Ask_Question.js';
+import { question_open } from '../Question_answer_jp/Ask_Question.js';
 import useUser from "../../store/userContext.js";
 
 function ForumGenerator() {

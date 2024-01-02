@@ -14,11 +14,12 @@ function UserProfileSkillTagElement(props) {
 
   }, [props.use,props.userSkills]);
 
-  // console.log("DD");
-  // console.log(userSkillSet);
+  // // console.log("DD");
+  // // console.log(userSkillSet);
 
   const selectedTagStyle = {
-    backgroundColor : "red"
+    backgroundColor : "rgb(226, 226, 226)",
+    color: "black"
   }
 
   const toggleTagSelection = () => {
@@ -30,8 +31,8 @@ function UserProfileSkillTagElement(props) {
     //   .then(response => response.json())
     //   .then(data => {
     //     setUserSkillSet(data[0].skills);
-    //     console.log("fetched")
-    //     console.log(userSkillSet);
+    //     // console.log("fetched")
+    //     // console.log(userSkillSet);
     //   });
 
 

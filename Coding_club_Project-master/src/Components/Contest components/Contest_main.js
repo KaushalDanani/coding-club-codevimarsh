@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import './Contest_main.css';
-import Weekly_contest from "./Weekly_contest";
-import Running_contest from "./Running_contest";
-import Completed_contest from "./Completed_contest";
-import Navbar_after_login from "../kaushal/Navbar_after_login";
-import MyfooterAfterLogin from "../MyfooterAfterLogin";
+import Weekly_contest from "./Weekly_contest.js";
+import Running_contest from "./Running_contest.js";
+import Completed_contest from "./Completed_contest.js";
+import Navbar_after_login from "../kaushal/Navbar_after_login.js";
+import MyfooterAfterLogin from "../MyfooterAfterLogin.js";
 import { Link } from "react-router-dom";
-import useUser from "../../store/userContext";
+import useUser from "../../store/userContext.js";
 
 export default function Contest_main(props) {
 
@@ -61,10 +61,8 @@ export default function Contest_main(props) {
 
         <>
         <div className="contest_main">
-            {/* {console.log("ok")} */}
+            {/* {// console.log("ok")} */}
             <Navbar_after_login/>
-            <div className="contest_heading"><p>Coding Contest</p></div>
-
 
             {/* {upcoming contest} */}
             <div className="upcoming_contest">
@@ -95,42 +93,44 @@ export default function Contest_main(props) {
             <div className="runnig_contest">
                 <p>Running Contest</p>
             </div>
-            {currentcontestinfo.map(function currentcontest(element) {
-                const startdate = new Date(element.startDate);
-                const endDate = new Date(element.endDate);
-                return (
-                    <Running_contest
-                        name={element.name}
-                        startdate={`${startdate.getDate().toString().padStart(2,'0')}-${(startdate.getMonth() + 1).toString().padStart(2,'0')}-${startdate.getFullYear().toString().padStart(2,'0')} `}
-                        time={`${startdate.getHours().toString().padStart(2,'0')}:${startdate.getMinutes().toString().padStart(2,'0')} to ${endDate.getHours().toString().padStart(2,'0')}:${endDate.getMinutes().toString().padStart(2,'0')}`}
+            <div className="RunningContestGrid">
+                {currentcontestinfo.map(function currentcontest(element) {
+                    const startdate = new Date(element.startDate);
+                    const endDate = new Date(element.endDate);
+                    return (
+                        <Running_contest
+                            name={element.name}
+                            startdate={`${startdate.getDate().toString().padStart(2,'0')}-${(startdate.getMonth() + 1).toString().padStart(2,'0')}-${startdate.getFullYear().toString().padStart(2,'0')} `}
+                            time={`${startdate.getHours().toString().padStart(2,'0')}:${startdate.getMinutes().toString().padStart(2,'0')} to ${endDate.getHours().toString().padStart(2,'0')}:${endDate.getMinutes().toString().padStart(2,'0')}`}
 
-                        start={element.contestLink}
-                    />
-                );
-            })}
+                            start={element.contestLink}
+                        />
+                    );
+                })}
+            </div>
 
 
             {/* {past contest} */}
             <div className="past_contest">
                 <p>Past Contest</p>
             </div>
-            {pastcontestinfo.map(function pastcontest(element) {
-                const startdate = new Date(element.startDate);
-                const endDate = new Date(element.endDate);
-                return (
-                    <Completed_contest
-                        name={element.name}
-                        startdate={`${startdate.getDate().toString().padStart(2,'0')}-${(startdate.getMonth() + 1).toString().padStart(2,'0')}-${startdate.getFullYear().toString().padStart(2,'0')} `}
+            <div className="PastContestGrid">
+                {pastcontestinfo.map(function pastcontest(element) {
+                    const startdate = new Date(element.startDate);
+                    const endDate = new Date(element.endDate);
+                    return (
+                        <Completed_contest
+                            name={element.name}
+                            startdate={`${startdate.getDate().toString().padStart(2,'0')}-${(startdate.getMonth() + 1).toString().padStart(2,'0')}-${startdate.getFullYear().toString().padStart(2,'0')} `}
 
-                        time={`${startdate.getHours().toString().padStart(2,'0')}:${startdate.getMinutes().toString().padStart(2,'0')} to ${endDate.getHours().toString().padStart(2,'0')}:${endDate.getMinutes().toString().padStart(2,'0')}`}
+                            time={`${startdate.getHours().toString().padStart(2,'0')}:${startdate.getMinutes().toString().padStart(2,'0')} to ${endDate.getHours().toString().padStart(2,'0')}:${endDate.getMinutes().toString().padStart(2,'0')}`}
 
-                        result={element.resultLink}
-                        solution={element.solutionLink} >
-                    </Completed_contest>
-                );
-            })}
-
-
+                            result={element.resultLink}
+                            solution={element.solutionLink} >
+                        </Completed_contest>
+                    );
+                })}
+            </div>
 
         </div>
         <MyfooterAfterLogin/>

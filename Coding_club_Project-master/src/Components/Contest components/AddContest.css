@@ -57,15 +57,14 @@
 .addContestBtn button{
     border-radius: 10px;
     font-size: 1.3rem;
-    background-color: #6913BF;
+    background-color: rgb(105, 19, 191);
     color: white;
     border: none;
-    padding: 5px 15px;
+    padding: 5px 17px;
 }
 
 .addContestBtn button:hover{
-    background-color: #822cd7;
-
+    background-color: #8e31ec;
 }
 
 

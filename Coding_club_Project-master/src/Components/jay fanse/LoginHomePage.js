@@ -1,14 +1,13 @@
 import React, { useContext, useEffect, useState } from 'react'
-import Cookies from 'js-cookie';
-import Greeting from './Greeting';
-import NewTasks from './NewTasks';
-import NewUpdates from './NewUpdates';
 import "./LoginHomePage.css";
-import Navbar_after_login from '../kaushal/Navbar_after_login';
 import Myfooter from '../../Components/HomeBeforeLogin/CSS/Myfooter.css';
+import Greeting from './Greeting.js';
+import NewTasks from './NewTasks.js';
+import NewUpdates from './NewUpdates.js';
+import Navbar_after_login from '../kaushal/Navbar_after_login.js';
+import useUser from '../../store/userContext.js';
+import MyfooterAfterLogin from '../MyfooterAfterLogin.js';
 import { useLocation } from 'react-router-dom';
-import useUser from '../../store/userContext';
-import MyfooterAfterLogin from '../MyfooterAfterLogin';
 
 function LoginHomePage(props) {
 

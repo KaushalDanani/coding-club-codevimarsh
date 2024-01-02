@@ -1,6 +1,6 @@
 .ArticleNewsLatestDiv{
     position: relative;
-    padding: 40px 40px;
+    padding: 2.7vw 4.7vw;
     border: 2px solid white;
     border-top: none;
     border-bottom-left-radius: 20px;
@@ -8,7 +8,7 @@
     background-color: rgb(105, 56, 120);
     background-color: #2D033B;
     box-shadow: 0px 5px 15px #ababab;
-    top: -11vh;
+    top: -21vh;
     /* transition: all 2s; */
 }
 

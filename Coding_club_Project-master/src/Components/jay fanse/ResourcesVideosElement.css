@@ -1,7 +1,7 @@
 .ResourcesVideosElement{
     /* border: 2px solid salmon; */
     display: grid;
-    background-color: #333333;
+    background-color: #e5dce8;
     border-radius: 30px;
     grid-template-columns: 1fr 3fr;
     transition: scale 0.4s;
@@ -39,7 +39,7 @@
     border-radius: 15px;
 }
 .ResourcesVideosThumbnail iframe{
-    border: 4px solid white;
+    border: 4px solid black;
     border-radius: 15px;
 }
 
@@ -53,13 +53,14 @@
 
 .ResourcesVideoTitle{
     /* border: 2px solid gray; */
+    color: black;
     font-size: 2rem;
 }
 
 .ResourcesVideoChannel{
     /* border: 2px solid pink; */
     font-size: 1.2rem;
-    color: rgb(199, 199, 199);
+    color: rgb(10, 9, 9);
 }
 
 .ResourcesVideoSource{
@@ -68,6 +69,6 @@
     overflow: hidden;
     bottom: 2vh;
     font-size: 1.2rem;
-    color: rgb(209, 209, 209);
+    color: rgb(0, 0, 0);
 
 }

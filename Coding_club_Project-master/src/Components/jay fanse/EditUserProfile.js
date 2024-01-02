@@ -1,60 +1,92 @@
-import React, { useState,useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import "./EditUserProfile.css";
 // import dp from "../images/profile.jpeg";
-import UserProfileInfo from "./UserProfileInfo";
-// import { event } from "jquery";
-// import Filter_bar from "../additional_codes/Filter_bar";
-import UserProfileSkillTagElement from "./UserProfileSkillTagElement";
-import tagCollection from "./UserProfileTagsInfo";
+import UserProfileInfo from "./UserProfileInfo.js";
+// import { event } from "jquery.js";
+// import Filter_bar from "../additional_codes/Filter_bar.js";
+import UserProfileSkillTagElement from "./UserProfileSkillTagElement.js";
+import tagCollection from "./UserProfileTagsInfo.js";
+import useUser from "../../store/userContext.js";
 import { useLocation } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { Button } from "react-scroll";
-import useUser from "../../store/userContext";
 
 function EditUserProfile(props) {
   const location = useLocation();
-  const {user,setUser} = useUser();
+  const { user, setUser } = useUser();
+  const [showhide, setShowhide] = useState('true');
+  const [showhideforconfirm, setShowhideforconfirm] = useState('true');
+  const [showhideforreconfirm, setShowhideforreconfirm] = useState('true');
+  const [userID, setUserID] = useState("");
 
-  const [userID,setUserID] = useState("");
-
-  useEffect( ()=> {
-    if(props.user!=null)
-    {
+  useEffect(() => {
+    if (props.user != null) {
       setUserID(props.user._id);
     }
-  },[props.user])
+  }, [props.user])
 
 
   // const searchParams = new URLSearchParams(location.search);
   // const userID = searchParams.get('userID');
 
-    // const userID = user._id;
+  // const userID = user._id;
 
-    const [userData,setUserData] = useState([]);
-    const [base64Img, setBase64Img] = useState("");
-    const [fname, setFname] = useState("");
-    const [lname, setLname] = useState("");
-    const [about, setAbout] = useState("");
-    const [userSkills, setUserSkills] = useState([]);
-    const [linkedIn, setLinkedin] = useState("");
-    const [leetcode, setLeetcode] = useState("");
-    const [codechef, setCodechef] = useState("");
-    const [programme, setProgramme] = useState("");
-    const [department, setDepartment] = useState("");
-    const [year, setYear] = useState("");
-    const [username, setUsername] = useState("");
-    const [email, setEmail] = useState("");
-    const [addSkillDisplay,setaddSkillDisplay] = useState(false);
-    const [usernameTitle,setUsernameTitle] = useState("");
+  const [userData, setUserData] = useState([]);
+  const [base64Img, setBase64Img] = useState("");
+  const [fname, setFname] = useState("");
+  const [lname, setLname] = useState("");
+  const [about, setAbout] = useState("");
+  const [userSkills, setUserSkills] = useState([]);
+  const [linkedIn, setLinkedin] = useState("");
+  const [leetcode, setLeetcode] = useState("");
+  const [codechef, setCodechef] = useState("");
+  const [programme, setProgramme] = useState("");
+  const [department, setDepartment] = useState("");
+  const [year, setYear] = useState("");
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [addSkillDisplay, setaddSkillDisplay] = useState(false);
+  const [usernameTitle, setUsernameTitle] = useState("");
 
-    const [currentPass,setCurrentPass] = useState("");
-    const [newPass,setNewPass] = useState("");
-    const [confirmNewPass,setConfirmNewPass] = useState("");
+  const [currentPass, setCurrentPass] = useState("");
+  const [newPass, setNewPass] = useState("");
+  const [confirmNewPass, setConfirmNewPass] = useState("");
 
-    const [selectedTags,setSelectedTags] = useState([]);
+  const [selectedTags, setSelectedTags] = useState([]);
 
-    useEffect( () => {
-      fetch(`/profile/user/?userID=${userID}`)
+  const currentPasswordVisibilityHandler = (e) => {
+    setShowhide(!showhide);
+
+    let x = document.getElementById("editprofile_currentpass");
+    if (showhide)
+      x.type = 'text';
+    else
+      x.type = 'password';
+  }
+
+  const confirmPasswordVisibilityHandler = (e) => {
+    setShowhideforconfirm(!showhideforconfirm);
+
+    let x = document.getElementById("editprofile_newpass");
+    if (showhideforconfirm)
+      x.type = 'text';
+    else
+      x.type = 'password';
+  }
+
+  const reConfirmPasswordVisibilityHandler = (e) => {
+    setShowhideforreconfirm(!showhideforreconfirm);
+
+    let x = document.getElementById("editprofile_newpass_conf");
+    if (showhideforreconfirm)
+      x.type = 'text';
+    else
+      x.type = 'password';
+  }
+
+
+  useEffect(() => {
+    fetch(`/profile/user/?userID=${userID}`)
       .then(
         response => response.json()
       )
@@ -80,49 +112,47 @@ function EditUserProfile(props) {
           console.log(base64Img);
         }
       )
-    },[userID])
+  }, [userID])
 
 
-    function removeUserAuth()
-    {
-      (async () => {
-        
-        setUser(null);
+  function removeUserAuth() {
+    (async () => {
+
+      setUser(null);
       await fetch('/remove/user/auth', {
         method: "GET",
-        headers: { 
-          'Content-Type': 'application/json' 
-        }
-      })
-      .then(response => response.json())
-      .then(data => {
-          // window.location.reload();
-      });
-      // window.location.reload();
-      // window.location.reload();
-      })()
-    }
-  
-
-    function checkCurrentPassword()
-    {
-      const currentPwd = {
-        'currentPassword' : currentPass
-      }
-
-      fetch('/check/current/password', {
-        method: 'POST',
-        body: JSON.stringify(currentPwd),
         headers: {
           'Content-Type': 'application/json'
         }
       })
+        .then(response => response.json())
+        .then(data => {
+          // window.location.reload();
+        });
+      // window.location.reload();
+      // window.location.reload();
+    })()
+  }
+
+
+  function checkCurrentPassword() {
+    const currentPwd = {
+      'currentPassword': currentPass
+    }
+
+    fetch('/check/current/password', {
+      method: 'POST',
+      body: JSON.stringify(currentPwd),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
       .then(response => response.json())
       .then(data => {
-        if(data.message !== undefined)
+        if (data.message !== undefined)
           alert(data.message);
       });
-    }
+  }
 
 
   const ToggleStyle = {
@@ -199,13 +229,13 @@ function EditUserProfile(props) {
   }
 
   function addSkillTags(tagElement) {
-    
-    return <UserProfileSkillTagElement 
-      tag = {tagElement}
-      click = {false}
+
+    return <UserProfileSkillTagElement
+      tag={tagElement}
+      click={false}
     />
   }
-  
+
   function addAllSkillsTags(tagElement) {
 
     return (
@@ -214,9 +244,9 @@ function EditUserProfile(props) {
         tag={tagElement.name}
         use={userSkills.includes(tagElement.name)}
         id={tagElement.id}
-        click = {true}
-        userID = {userData._id}
-        selectHandler = {onSelection}
+        click={true}
+        userID={userData._id}
+        selectHandler={onSelection}
       />
     );
   }
@@ -224,16 +254,16 @@ function EditUserProfile(props) {
   function onSelection(name) {
     setSelectedTags(prev => {
       if (prev.includes(name)) {
-        return prev.filter(tag => tag !== name); 
+        return prev.filter(tag => tag !== name);
       } else {
-        return [...prev, name]; 
+        return [...prev, name];
       }
     });
     console.log('fff');
     console.log(selectedTags);
   }
-  
-  
+
+
   const sendDataToBackend = (data) => {
     fetch(`/editprofile/userSkills/?userID=${userID}`, {
       method: 'POST',
@@ -251,117 +281,113 @@ function EditUserProfile(props) {
       });
   };
 
-  function saveUserProfile(event){
+  function saveUserProfile(event) {
 
     const personalData = {
-      fname : fname,
-      lname : lname,
-      about : about,
-      linkedin : linkedIn,
-      leetcode : leetcode,
-      codechef : codechef,
-      programme : programme,
-      department : department,
-      year : year
+      fname: fname,
+      lname: lname,
+      about: about,
+      linkedin: linkedIn,
+      leetcode: leetcode,
+      codechef: codechef,
+      programme: programme,
+      department: department,
+      year: year
     }
 
-    fetch(`/editprofile/personal/?userID=${userID}`,{
-      method : 'POST',
+    fetch(`/editprofile/personal/?userID=${userID}`, {
+      method: 'POST',
       headers: {
-        'Content-Type':'application/json',
+        'Content-Type': 'application/json',
       },
-      body : JSON.stringify(personalData)
+      body: JSON.stringify(personalData)
     })
-    .then(response => response.json())
-    .then(data => {
-      console.log("personal" , data);
-      alert("Profile Updated Successfully!!")
-    })
-    .catch(err => {
-      console.log(err);
-    })
+      .then(response => response.json())
+      .then(data => {
+        console.log("personal", data);
+        alert("Profile Updated Successfully!!")
+      })
+      .catch(err => {
+        console.log(err);
+      })
     event.preventDefault();
   }
 
-  function saveAccount(event){
+  function saveAccount(event) {
     const accountData = {
-      username : username,
-      email : email
+      username: username,
+      email: email
     }
 
-    fetch(`/editprofile/account/?userID=${userID}`,{
-      method : 'POST',
+    fetch(`/editprofile/account/?userID=${userID}`, {
+      method: 'POST',
       headers: {
-        'Content-Type':'application/json',
+        'Content-Type': 'application/json',
       },
-      body : JSON.stringify(accountData)
+      body: JSON.stringify(accountData)
     })
-    .then(response => response.json())
-    .then(data => {
-      if(data.error){
-        alert(data.error)
-        setUsername(userData.username);
-        setEmail(userData.email);
-      }
-      else
-      {
-        alert(data.message);
-        setUsernameTitle(username);
-      }
-    })
-    .catch(err => {
-      console.log(err);
-    })
+      .then(response => response.json())
+      .then(data => {
+        if (data.error) {
+          alert(data.error)
+          setUsername(userData.username);
+          setEmail(userData.email);
+        }
+        else {
+          alert(data.message);
+          setUsernameTitle(username);
+        }
+      })
+      .catch(err => {
+        console.log(err);
+      })
 
 
     event.preventDefault();
   }
-  
-  function savePassword(event){
-    
-    if(currentPass==newPass)
-    {
+
+  function savePassword(event) {
+
+    if (currentPass == newPass) {
       alert("New Password cannot be same as current password!");
       setConfirmNewPass("");
       setNewPass("");
     }
-    else if(newPass.length < 8 || confirmNewPass.length < 8)
-    {
+    else if (newPass.length < 8 || confirmNewPass.length < 8) {
       alert("Please, keep your password minimum 8 character!!");
       setNewPass("");
       setConfirmNewPass("");
     }
-    else if(newPass!=confirmNewPass)
-    {
+    else if (newPass != confirmNewPass) {
       alert("Re-Enter new password!!");
       setConfirmNewPass("");
     }
-    else{
+    else {
       const passwordData = {
-        newPass : newPass,
-        'currentPassword' : currentPass
+        newPass: newPass,
+        'currentPassword': currentPass
       }
 
-      fetch('/editprofile/password',{
-        method : 'POST',
+      fetch('/editprofile/password', {
+        method: 'POST',
         headers: {
-          'Content-Type':'application/json',
+          'Content-Type': 'application/json',
         },
-        body : JSON.stringify(passwordData)
+        body: JSON.stringify(passwordData)
       })
-      .then(response => response.json())
-      .then(data => {
-        alert("Password updated successfully!")
-        setCurrentPass("");
-        setNewPass("");
-        setConfirmNewPass("");
-      })
+        .then(response => response.json())
+        .then(data => {
+          alert("Password updated successfully!")
+          setCurrentPass("");
+          setNewPass("");
+          setConfirmNewPass("");
+        })
     }
 
     event.preventDefault();
   }
 
-  function toggleAddSkills(event){
+  function toggleAddSkills(event) {
     setaddSkillDisplay(!addSkillDisplay);
     sendDataToBackend(selectedTags);
     setUserSkills(selectedTags);
@@ -369,13 +395,13 @@ function EditUserProfile(props) {
     event.preventDefault();
   }
 
-  function programmeChangeHandler(event){
+  function programmeChangeHandler(event) {
     setProgramme(event.target.value);
   }
-  function departmentChangeHandler(event){
+  function departmentChangeHandler(event) {
     setDepartment(event.target.value);
   }
-  function yearChangeHandler(event){
+  function yearChangeHandler(event) {
     setYear(event.target.value);
   }
 
@@ -393,18 +419,18 @@ function EditUserProfile(props) {
         setBase64Img(reader.result);
         const base64String = reader.result.split(',')[1];
         console.log(base64String);
-        fetch(`/editprofile/profileImg/?userID=${userID}`,{
-          method : 'POST',
-          headers : {
-            'Content-Type' : 'application/json'
+        fetch(`/editprofile/profileImg/?userID=${userID}`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
           },
-          body : JSON.stringify({profileImg : base64String})
+          body: JSON.stringify({ profileImg: base64String })
         })
-        .then(response => response.json())
-        .then(data => {
+          .then(response => response.json())
+          .then(data => {
 
-          // console.log(base64String);
-        })
+            // console.log(base64String);
+          })
       };
       if (file) {
         reader.readAsDataURL(file);
@@ -430,7 +456,7 @@ function EditUserProfile(props) {
             id="editDP"
             style={showEdit ? ToggleStyle : null}
           >
-            <button 
+            <button
               onClick={() => handleImageChange("dp")}
               className="EditProfileImgChangeButton">
               <svg
@@ -454,236 +480,239 @@ function EditUserProfile(props) {
       </div>
 
       <div className="EditProfileGrid">
-      
-      <div className="EditProfileSelectionPanel">
-        <div
-          name="ProfileInfo"
-          style={
-            isEditSelected.PersonalInfo == "true" ? EditSelectionStyle : null
-          }
-          onClick={() => {
-            return changeEditSelected("PersonalInfo");
-          }}
-        >
-          Personal Info
+
+        <div className="EditProfileSelectionPanel">
+          <div
+            name="ProfileInfo"
+            style={
+              isEditSelected.PersonalInfo == "true" ? EditSelectionStyle : null
+            }
+            onClick={() => {
+              return changeEditSelected("PersonalInfo");
+            }}
+          >
+            Personal Info
+          </div>
+          <div
+            name="CollegeInfo"
+            style={
+              isEditSelected.CollegeInfo == "true" ? EditSelectionStyle : null
+            }
+            onClick={() => {
+              return changeEditSelected("CollegeInfo");
+            }}
+          >
+            College Details
+          </div>
+          <div
+            name="AccountInfo"
+            style={
+              isEditSelected.AccountInfo == "true" ? EditSelectionStyle : null
+            }
+            onClick={() => {
+              return changeEditSelected("AccountInfo");
+            }}
+          >
+            Account
+          </div>
+          <div
+            name="AccountInfo"
+            style={
+              isEditSelected.PasswordInfo == "true" ? EditSelectionStyle : null
+            }
+            onClick={() => {
+              return changeEditSelected("PasswordInfo");
+            }}
+          >
+            Change Password
+          </div>
         </div>
-        <div
-          name="CollegeInfo"
-          style={
-            isEditSelected.CollegeInfo == "true" ? EditSelectionStyle : null
-          }
-          onClick={() => {
-            return changeEditSelected("CollegeInfo");
-          }}
-        >
-          College Details
-        </div>
-        <div
-          name="AccountInfo"
-          style={
-            isEditSelected.AccountInfo == "true" ? EditSelectionStyle : null
-          }
-          onClick={() => {
-            return changeEditSelected("AccountInfo");
-          }}
-        >
-          Account
-        </div>
-        <div
-          name="AccountInfo"
-          style={
-            isEditSelected.PasswordInfo == "true" ? EditSelectionStyle : null
-          }
-          onClick={() => {
-            return changeEditSelected("PasswordInfo");
-          }}
-        >
-          Change Password
-        </div>
-      </div>
-      <div className="EditProfileMainPanel">
-        <div
-          className="EditPerosnalInfoDisplay"
-          style={
-            isEditSelected.PersonalInfo == "true"
-              ? { display: "block" }
-              : { display: "none" }
-          }
-        >
-          <h3>Perosnal Info</h3>
-          <form>
-            <div className="EditFormFrame">
-              <span>First Name</span>
-              <span>:</span>
-              <input
-                name="fname"
-                id="fname"
-                type="text"
-                placeholder="First Name here"
-                value={fname}
-                onChange={changeFName}
-                required
-              />
-              <span>Last Name</span>
-              <span>:</span>{" "}
-              <input
-                name="lname"
-                type="text"
-                value={lname}
-                onChange={changeLName}
-                required
-              />
-              <span>About</span>
-              <span>:</span>{" "}
-              <textarea
-                name="about"
-                id=""
-                cols="15"
-                rows="6"
-                value={about}
-                onChange={changeAbout}
-                required
-              ></textarea>
-              <span>LinkedIn Profile</span>
-              <span>:</span>{" "}
-              <input type="text" value={linkedIn} onChange={changeLinkedIn} name="linkedIn"/>
-              <span>LeetCode Profile</span>
-              <span>:</span>{" "}
-              <input type="text" value={leetcode} onChange={changeLeetcode} name="codechef"/>
-              <span>Codechef Profile</span>
-              <span>:</span>{" "}
-              <input type="text" value={codechef} onChange={changeCodechef} name="leetcode"/>
+        <div className="EditProfileMainPanel">
+          <div
+            className="EditPerosnalInfoDisplay"
+            style={
+              isEditSelected.PersonalInfo == "true"
+                ? { display: "block" }
+                : { display: "none" }
+            }
+          >
+            <h3>Perosnal Info</h3>
+            <form>
+              <div className="EditFormFrame">
+                <span>First Name</span>
+                <span>:</span>
+                <input
+                  name="fname"
+                  id="fname"
+                  type="text"
+                  placeholder="First Name here"
+                  value={fname}
+                  onChange={changeFName}
+                  required
+                />
+                <span>Last Name</span>
+                <span>:</span>{" "}
+                <input
+                  name="lname"
+                  type="text"
+                  value={lname}
+                  onChange={changeLName}
+                  required
+                />
+                <span>About</span>
+                <span>:</span>{" "}
+                <textarea
+                  name="about"
+                  id=""
+                  cols="15"
+                  rows="6"
+                  value={about}
+                  onChange={changeAbout}
+                  required
+                ></textarea>
+                <span>LinkedIn Profile</span>
+                <span>:</span>{" "}
+                <input type="text" value={linkedIn} onChange={changeLinkedIn} name="linkedIn" />
+                <span>LeetCode Profile</span>
+                <span>:</span>{" "}
+                <input type="text" value={leetcode} onChange={changeLeetcode} name="codechef" />
+                <span>Codechef Profile</span>
+                <span>:</span>{" "}
+                <input type="text" value={codechef} onChange={changeCodechef} name="leetcode" />
 
 
-              <span style={{ border: "none" }}>Skills</span>
-              <span style={{ border: "none" }}>:</span>{" "}
-              <div className="skillTagContainer"
-              style={addSkillDisplay?{display:"none"} : {display:"flex"}}>
-                {userSkills.map(addSkillTags)}
-                <button className='UserProfileAddSkillTag'
-                onClick={toggleAddSkills}
-                >
-                  Edit skills
-                </button>
+                <span style={{ border: "none" }}>Skills</span>
+                <span style={{ border: "none" }}>:</span>{" "}
+                <div className="skillTagContainer"
+                  style={addSkillDisplay ? { display: "none" } : { display: "flex" }}>
+                  {userSkills.map(addSkillTags)}
+                  <button className='UserProfileAddSkillTag'
+                    onClick={toggleAddSkills}
+                  >
+                    Edit skills
+                  </button>
                 </div>
                 <div className="allSkillsTagContainer"
-                style={addSkillDisplay?{display:"flex"} : {display:"none"}}>
-                {tagCollection.map(addAllSkillsTags)}
-                <button className='UserProfileAddSkillTag'
-                onClick={toggleAddSkills}
-                >
-                  Done
-                </button>
+                  style={addSkillDisplay ? { display: "flex" } : { display: "none" }}>
+                  {tagCollection.map(addAllSkillsTags)}
+                  <button className='UserProfileAddSkillTag'
+                    onClick={toggleAddSkills}
+                  >
+                    Done
+                  </button>
 
                 </div>
-              <div className="EditSaveButtonDiv">
-                <button onClick={saveUserProfile}>Save</button>
+                <div className="EditSaveButtonDiv">
+                  <button onClick={saveUserProfile}>Save</button>
+                </div>
               </div>
-            </div>
-          </form>
-        </div>
-        <div
-          className="EditAccountInfoDisplay"
-          style={
-            isEditSelected.AccountInfo == "true"
-              ? { display: "block" }
-              : { display: "none" }
-          }
-        >
-          <h3>Account</h3>
-          <form action="">
-            <div className="EditFormFrame">
-              <span>Username</span>
-              <span>:</span>
-              <input type="text" value={username} onChange={changeUsername}/>
-              <span>E-mail</span>
-              <span>:</span>
-              <input type="text" value={email} onChange={changeEmail}/>
-              <div
-                className="EditSaveButtonDiv"
-                style={{ justifyContent: "space-between" }}
-              >
-                <button onClick={removeUserAuth}><Link to="/">Logout</Link></button>
-                <button type="submit" onClick={saveAccount}>Save</button>
+            </form>
+          </div>
+          <div
+            className="EditAccountInfoDisplay"
+            style={
+              isEditSelected.AccountInfo == "true"
+                ? { display: "block" }
+                : { display: "none" }
+            }
+          >
+            <h3>Account</h3>
+            <form action="">
+              <div className="EditFormFrame">
+                <span>Username</span>
+                <span>:</span>
+                <input type="text" value={username} onChange={changeUsername} />
+                <span>E-mail</span>
+                <span>:</span>
+                <input type="text" value={email} onChange={changeEmail} />
+                <div
+                  className="EditSaveButtonDiv"
+                  style={{ justifyContent: "space-between" }}
+                >
+                  <Link to="/"><button onClick={removeUserAuth}>Logout</button></Link>
+                  <button type="submit" onClick={saveAccount}>Save</button>
+                </div>
               </div>
-            </div>
-          </form>
-        </div>
-        <div
-          className="EditCollegeInfoDisplay"
-          style={
-            isEditSelected.CollegeInfo == "true"
-              ? { display: "block" }
-              : { display: "none" }
-          }
-        >
-          <h3>College Details</h3>
-          <form action="">
-            <div className="EditFormFrame">
-              <span>Programme</span>
-              <span>:</span>
-              <select
-                value={programme}
-                onChange={programmeChangeHandler}
-              >
-                <option>Bachelor's of Engineering</option>
-                <option>Master's of Engineering</option>
-                <option>Bachelor's of Computer Applications</option>
-                <option>Master's of Computer Applications</option>
-              </select>
-              <span>Department</span>
-              <span>:</span>
-              <select
-                value={department}
-                onChange={departmentChangeHandler}
-              >
-                <option>Computer Science and Engineering</option>
-                <option>Electronics and Communication Engineering</option>
-                <option>Electrical Engineering</option>
-              </select>
-              <span>Graduation Year</span>
-              <span>:</span>
-              <select
-              value={year}
-              onChange={yearChangeHandler}
-              >
-                <option>"2023"</option>
-                <option>"2024"</option>
-                <option>"2025"</option>
-                <option>"2026"</option>
-              </select>
-              <div className="EditSaveButtonDiv">
-                <button onClick={saveUserProfile}>Save</button>
+            </form>
+          </div>
+          <div
+            className="EditCollegeInfoDisplay"
+            style={
+              isEditSelected.CollegeInfo == "true"
+                ? { display: "block" }
+                : { display: "none" }
+            }
+          >
+            <h3>College Details</h3>
+            <form action="">
+              <div className="EditFormFrame">
+                <span>Programme</span>
+                <span>:</span>
+                <select
+                  value={programme}
+                  onChange={programmeChangeHandler}
+                >
+                  <option>Bachelor's of Engineering</option>
+                  <option>Master's of Engineering</option>
+                  <option>Bachelor's of Computer Applications</option>
+                  <option>Master's of Computer Applications</option>
+                </select>
+                <span>Department</span>
+                <span>:</span>
+                <select
+                  value={department}
+                  onChange={departmentChangeHandler}
+                >
+                  <option>Computer Science and Engineering</option>
+                  <option>Electronics and Communication Engineering</option>
+                  <option>Electrical Engineering</option>
+                </select>
+                <span>Graduation Year</span>
+                <span>:</span>
+                <select
+                  value={year}
+                  onChange={yearChangeHandler}
+                >
+                  <option>"2023"</option>
+                  <option>"2024"</option>
+                  <option>"2025"</option>
+                  <option>"2026"</option>
+                </select>
+                <div className="EditSaveButtonDiv">
+                  <button onClick={saveUserProfile}>Save</button>
+                </div>
               </div>
-            </div>
-          </form>
-        </div>
-        <div
-          style={
-            isEditSelected.PasswordInfo == "true"
-              ? { display: "block" }
-              : { display: "none" }
-          }
-        >
-          <h3>Change Password</h3>
-          <form action="">
-            <div className="EditFormFrame">
-              <span>Current Password</span>
-              <span>:</span>
-              <input type="password" value={currentPass} onChange={changeCurrentPass} onBlur={checkCurrentPassword} placeholder="Enter current password"/>
-              <span>New Password</span>
-              <span>:</span>
-              <input type="password" value={newPass} onChange={changeNewPass} placeholder="Enter new password"/>
-              <span>Confirm Password</span>
-              <span>:</span>
-              <input type="password" value={confirmNewPass} onChange={changeConfirmNewPass} placeholder="Re-enter new password"/>
-              <div className="EditSaveButtonDiv">
-                <button onClick={savePassword}>Save</button>
+            </form>
+          </div>
+          <div
+            style={
+              isEditSelected.PasswordInfo == "true"
+                ? { display: "block" }
+                : { display: "none" }
+            }
+          >
+            <h3>Change Password</h3>
+            <form action="">
+              <div className="EditFormFrame">
+                <span>Current Password</span>
+                <span>:</span>
+                <div id="pwd_icon" className={showhide ? "show_pwd_edit_profile" : "hide_pwd_edit_profile"} onClick={currentPasswordVisibilityHandler}></div>
+                <input type="password" value={currentPass} id="editprofile_currentpass" onChange={changeCurrentPass} onBlur={checkCurrentPassword} placeholder="Enter current password" />
+                <span>New Password</span>
+                <span>:</span>
+                <div id="confirmPwd_icon" className={showhideforconfirm ? "show_pwd_edit_profile" : "hide_pwd_edit_profile"} onClick={confirmPasswordVisibilityHandler} />
+                <input type="password" value={newPass} id="editprofile_newpass" onChange={changeNewPass} placeholder="Enter new password" />
+                <span>Confirm Password</span>
+                <span>:</span>
+                <div id="reconfirmPwd_icon" className={showhideforreconfirm ? "show_pwd_edit_profile" : "hide_pwd_edit_profile"} onClick={reConfirmPasswordVisibilityHandler} />
+                <input type="password" value={confirmNewPass} id="editprofile_newpass_conf" onChange={changeConfirmNewPass} placeholder="Re-enter new password" />
+                <div className="EditSaveButtonDiv">
+                  <button onClick={savePassword}>Save</button>
+                </div>
               </div>
-            </div>
-          </form>
+            </form>
+          </div>
         </div>
-      </div>
       </div>
     </div>
   );

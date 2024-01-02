@@ -7,9 +7,9 @@ function ResourcesBookElement(props) {
 
   return (
     <a href={props.link} target='_blank'>
-    <div className="BookElement">
+      <div className="BookElement">
         <div className="BookImageDiv">
-        <img src={base64Img} alt=""/>
+          <img src={base64Img} alt="" />
         </div>
         <div className="BookElementTitle">{props.title}</div>
         <div className="BookElementInfo">
@@ -17,7 +17,7 @@ function ResourcesBookElement(props) {
           {props.edition}
         </div>
         <div className="BookElementBy">~{props.author}</div>
-    </div>
+      </div>
     </a>
   )
 }

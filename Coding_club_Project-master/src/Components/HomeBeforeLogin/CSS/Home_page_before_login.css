@@ -3,29 +3,23 @@
     height: 5.5vh;
     font-size: 1.2vw;
     font-weight: 600;
-    padding: 0 2vw;
+    padding: 1vh 2vw;
     margin-top: 2vh;
     margin-left: 5.6%;
     border-radius: 50px;
     background: transparent;
     text-transform: uppercase;
     letter-spacing: 1px;
-    border: 2.5px solid #ffffff;
+    border: 2.5px solid #b44fd9;
     color: white;
 }
 
-.welcomeDiv{
-    /* border: 2px solid red; */
-    /* position: relative; */
-    width: 100%;
-}
-
 .get_start:hover {
-    color: #04083ff3;
+    color: black;
     /* border: none; */
-    background-color: rgb(254, 254, 254);
-    border: 2.5px solid #ffffff;
-    /* box-shadow: 0px 0px 15px 3px #db00ef; */
+    background-color: rgb(192, 100, 225);
+    border: 2.5px solid #cb65f0;
+    box-shadow: 0px 0px 15px 3px #db00ef;
 }
 
 .welcomeContainer {
@@ -35,7 +29,7 @@
 .welcomeToCode {
     display: flex;
     flex-wrap: wrap;
-    font-size: 3vw;
+    font-size: 3.5vw;
     font-family: myFont;
     color: rgb(255, 255, 255);
     margin-left: 5.6%;
@@ -87,14 +81,14 @@
   position: absolute;
   width: 100%;
   height: 100%;
-  background: rgb(61, 61, 63);
+  background: rgb(106, 5, 195);
   transition: 0.6s;
   display: flex;
   justify-content: center;
   align-items: center;
   color: #000000;
   font-size: 30px !important;
-  border: 1.5px solid rgb(255, 255, 255);
+  border: 1.5px solid yellow;
   border-radius: 5px;
 }
 

@@ -1,6 +1,6 @@
 import React from 'react'
-import ResourcesNotesElement from "./ResourcesNotesElement"
-import ResourcesNotesInfo from "./ResourcesNotesInfo"
+import ResourcesNotesElement from "./ResourcesNotesElement.js"
+import ResourcesNotesInfo from "./ResourcesNotesInfo.js"
 import "./ResourcesNotesDisplay.css"
 
 function ResourcesNotesDisplay(props) {

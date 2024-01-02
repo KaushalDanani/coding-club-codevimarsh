@@ -2,7 +2,7 @@ import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useState } from 'react'
 import "./Sign_in_page.css";
-import useUser from '../../store/userContext';
+import useUser from '../../store/userContext.js';
 
 function Sign_in_page() {
     const navigate = useNavigate();
@@ -305,7 +305,7 @@ function Sign_in_page() {
                             <label> Username </label>
                         </div>
                         <div className="inputbox"> 
-                            <input className={showhide ? "show_pwd" : "hide_pwd"} onClick={passwordVisibilityHandler} type='button' />
+                            <div className={showhide ? "show_pwd" : "hide_pwd"} onClick={passwordVisibilityHandler}/>
                             <input id='pwd' type="password" value={enterdPassword} onChange={passwordChangeHandler} required />
                             <label> Password </label>
                         </div>

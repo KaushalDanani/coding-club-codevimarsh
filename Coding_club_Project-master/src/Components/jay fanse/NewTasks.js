@@ -1,6 +1,6 @@
 import React from 'react'
-import RecentHeading from './RecentHeading'
-import RecentTasksPanel from './RecentTasksPanel'
+import RecentHeading from './RecentHeading.js'
+import RecentTasksPanel from './RecentTasksPanel.js'
 
 function NewTasks(props) {
   return (

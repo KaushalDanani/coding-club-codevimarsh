@@ -120,6 +120,12 @@
     gap: 2vh;
 }
 
+.editLink{
+    text-decoration: none;
+    color: aqua;
+    /* font-size: 10vw ; */
+}
+
 .skillPlaceHolder button{
     justify-content: center;
     border: 2px solid black;

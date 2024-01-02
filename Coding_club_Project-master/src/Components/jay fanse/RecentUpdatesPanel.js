@@ -1,7 +1,7 @@
 import React from 'react'
-import RecentUpdatesCards from './RecentUpdatesCards'
+import RecentUpdatesCards from './RecentUpdatesCards.js'
+import RecentUpdatesCardsInfo from './RecentUpdatesInfo.js'
 import "./RecentTasksPanel.css"
-import RecentUpdatesCardsInfo from './RecentUpdatesInfo'
 
 function RecentUpdatesPanel(props) {
 

@@ -43,8 +43,8 @@ function UserProfileMainPanel(props) {
         projectinfo={element.projectInfo}
         projectlink={element.projectLink}
         team={element.contributors}
-        userID = {props.userData._id}
-        admin = {props.userData.isAdmin}
+        userID={props.userData._id}
+        admin={props.userData.isAdmin}
       />
     )
   }
@@ -59,10 +59,10 @@ function UserProfileMainPanel(props) {
           </div>
           <div className="UPBioInfo">
             {props.userData.about}
-            <div className={((props.userData.about == null) ||( props.userData.about == ""))?"aboutPlaceHolder":"noPlaceHolder"}>
-            Edit profile to add your skills here...
-            <Link to={`edit_profile/`}><button>Edit</button></Link>
-          </div>
+            <div className={((props.userData.about == null) || (props.userData.about == "")) ? "aboutPlaceHolder" : "noPlaceHolder"}>
+              
+              <Link className="editLink" to={`edit_profile/`}>Edit profile</Link> to add about yourself...
+            </div>
           </div>
         </div>
         <div className="UPPersonalInfo">

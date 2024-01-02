@@ -141,9 +141,9 @@ export default function AddBooks() {
 
 
                         <div className='buttonSection'>
-                            <Link to={'/resources'}> <button id='pc_cancelbtn' className='addProjectCollabrationBtn'> Cancel </button> </Link>
+                            <Link to={'/resources'}> <button className='addFormButton'> Cancel </button> </Link>
 
-                            <Link to={'/resources'}><input type="button" value={"Submit"} onClick={addMyBook} className="q_submit" /></Link>
+                            <Link to={'/resources'}><button onClick={addMyBook} className="addFormButton">Submit</button></Link>
                         </div>
 
                     </form>

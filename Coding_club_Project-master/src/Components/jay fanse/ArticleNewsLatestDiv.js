@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
-import ArticleNewsLatestElement from "./ArticleNewsLatestElement";
 import "./ArticleNewsLatestDiv.css";
-import ArticlesNewsMore from "./ArticlesNewsMore";
-import ArticleContentInfo from "./ArticleContentInfo";
-import NewsContentInfo from "./NewsContentInfo";
+import ArticleNewsLatestElement from "./ArticleNewsLatestElement.js";
+import ArticlesNewsMore from "./ArticlesNewsMore.js";
+import ArticleContentInfo from "./ArticleContentInfo.js";
+import NewsContentInfo from "./NewsContentInfo.js";
 // import downArrow from "../images/down_arrow.png"
 // import upArrow from "../images/up_arrow.png"
 

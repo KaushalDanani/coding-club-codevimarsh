@@ -333,14 +333,14 @@ function Sign_up_first_page() {
                                 { (uname === '') && (<div className='requireSuggestion'> *Username is required. </div>) }
                             </div>
                             <div className="inputbox">
-                                <input className={showhide ? "show_pwd_signup" : "hide_pwd_signup"} onClick={passwordVisibilityHandler} type='button' />
+                                <div className={showhide ? "show_pwd_signup" : "hide_pwd_signup"} onClick={passwordVisibilityHandler}/>
                                 <input id='pwd' type="password" name='password' value={pwd} onChange={pwdChangeHandler} required />
                                 <label> Password </label>
                                 { (pwd === '') && (<div className='requireSuggestion'> *Password is required. </div>) }
                                 { (pwd.length < 8 && pwd !== '') && (<div className='requireSuggestion'> *Length must be &gt;= 8 Characters. </div>) }
                             </div>
                             <div className="inputbox">
-                                <input className={showhideforconfirm ? "show_pwd_signup" : "hide_pwd_signup"} onClick={confirmPasswordVisibilityHandler} type='button' />
+                                <div className={showhideforconfirm ? "show_pwd_signup" : "hide_pwd_signup"} onClick={confirmPasswordVisibilityHandler}/>
                                 <input id='confirmPwd' type="password" name='confirm_password' value={cpwd} onChange={cpwdChangeHandler} required />
                                 <label> Confirm Password </label>
                                 { (pwd !== cpwd || cpwd === '') && (<div className='requireSuggestion'> *Confirm Password isn't match. </div>) }

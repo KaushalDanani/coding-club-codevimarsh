@@ -191,7 +191,7 @@ export default function AddProject(){
                 </div> */}
 
                 <div className="addproj_btn" onClick={add}>
-                    Add Project
+                    Add My Project
                 </div>
                 
             </div>

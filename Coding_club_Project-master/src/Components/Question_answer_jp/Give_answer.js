@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link, useLocation } from 'react-router-dom';
 // import { useLocation } from 'react-router-dom'
 import './Give_answer.css';
-import useUser from "../../store/userContext";
+import useUser from "../../store/userContext.js";
 
 // export function reply_close() {
 //     const closebtn = document.getElementById("reply_main");
@@ -80,9 +80,10 @@ function Give_answer() {
                         <textarea name="code_text" id="code_text" onChange={addCode} cols="" rows="2"></textarea>
                     </div>
 
-                    <div className="buttonsaddRep">
-                    <Link to={`/discussion/question?q_id=${q_id}`}><input type="button" value={"Submit"} onClick={addMyReply} className="r_submit" /></Link>
-                    <Link to={`/discussion/question?q_id=${q_id}`}><input type="button" value={'cancel'} className="r_cancel" /></Link>
+                    <div className="buttonSection">
+                    <Link to={`/discussion/question/?q_id=${q_id}`}> <button className='addFormButton'> Cancel </button> </Link>
+                        
+                        <Link to={`/discussion/question/?q_id=${q_id}`}><button onClick={addMyReply} className="addFormButton">Submit</button></Link>
                     </div>
                 </form>
             </div>
