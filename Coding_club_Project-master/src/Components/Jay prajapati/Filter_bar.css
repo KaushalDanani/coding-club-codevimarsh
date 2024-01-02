@@ -1,6 +1,7 @@
 .filter {
     padding: 0 2vw;
     display: flex;
+    justify-content: center;
     margin-top: 2%;
     /* border: 1px solid white; */
 }

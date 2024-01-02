@@ -111,7 +111,11 @@
 }
 
 .ProfileEditLink a{
-    color: plum;
+    color: rgb(0, 238, 255);
+}
+
+.ProfileEditLink a:hover{
+    text-decoration: underline !important;
 }
 
 .UPSkillsContent{
@@ -124,6 +128,10 @@
     text-decoration: none;
     color: aqua;
     /* font-size: 10vw ; */
+}
+
+.editLink:hover{
+    text-decoration: underline !important;
 }
 
 .skillPlaceHolder button{

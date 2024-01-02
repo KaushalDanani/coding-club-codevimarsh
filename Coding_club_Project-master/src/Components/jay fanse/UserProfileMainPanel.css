@@ -75,7 +75,10 @@
 }
 .UPBioInfo a{
     color: rgb(0, 238, 255);
-    text-decoration: underline;
+}
+
+.UPBioInfo a:hover{
+    text-decoration: underline !important;
 }
 
 .UPPersonalInfo{

@@ -52,7 +52,7 @@ function Project_Collabration() {
         <h2 className='projectTitle'>Project Collaboration</h2>
         <p className='project_collabration_oneliner'>Talent wins games, but teamwork and intelligence win championships.</p>
       </div>
-      <div style={{width: '85%'}}>
+      <div className='addProjCollab' style={{width: '85%'}}>
         <Link to={'/project_collab/addpost'}> <button className={changeImage ? 'ProjectCollabrationBtn changeAddImage' : 'ProjectCollabrationBtn'} 
           onMouseOut={() => setChangeImage(true)}
           onMouseOver={()=> setChangeImage(false)}> Add </button> </Link>
