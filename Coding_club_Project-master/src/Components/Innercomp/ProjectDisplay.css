@@ -19,9 +19,10 @@
     width: 100%;
     height: 100%;
     /* background-color: #363636; */
-    background: wheat;
-    padding: 35px 60px;
-    border-radius: 8px;
+    background: #E5DCE8;
+    padding: 55px 30px;
+    padding-left: 50px;
+    border-radius: 2.5vh;
     box-shadow: 0px 0px 20px black;
 
 }
@@ -33,31 +34,59 @@
     color: black;
 }
 
-/* .projectname:hover{
-    color: rgb(215, 215, 215);
-} */
+.projectname:hover{
+    /* color: #3c3c3c ; */
+    text-decoration: underline;
+    /* font-weight: bold; */
+}
+
+.linkImg{
+    position: relative;
+    background-image: url('/public/images/link.png');
+    background-size: contain;
+    padding: 1.8vh;
+    background-repeat: no-repeat;
+    /* border: 2px solid red; */
+    margin-left: 1.2vh;
+    /* background-position: center; */
+    /* margin-top: 1px; */
+    top: 0.8vh;
+}
 
 .projdispheader{
     display: flex;
     column-gap: 100px;
+    color: black;
 }
 
 
 .projdispheader p{
     margin: 5px 0px 5px 0px;
     font-size: 1.2rem !important;
+    color: black;
 }
 
 .projdispbutton{
-    padding: 5px 20px;
+    /* padding: 5px 20px;
     background: #0c73e2;
     border: 0ch;
     border-radius: 25px;
     color: white;
-    cursor: pointer;
+    cursor: pointer; */
     float: right;
     margin-right: 10px;
-    font-size: 1.2rem;
+    height: 5.5vh;
+    padding: 0% 1.5vw;
+    font-size: 2.2vh;
+    font-weight: 600;
+    border-radius: 5vh;
+    letter-spacing: 1px;
+    text-transform: capitalize;
+    color: rgb(255, 255, 255);
+    background-color: #6913BF ;
+    border: none;
+    /* border: 2px solid #2D033B;; */
+    /* border: 2px solid white; */
 }
 
 .projbtn{
@@ -65,7 +94,8 @@
 }
 
 .projdispbutton:hover{
-    background-color: #0958ac;
+    background-color: #3f007e ;
+    
 }
 
 .projlink{
@@ -76,11 +106,13 @@
     width: 200px;
     height: 200px;
     border-radius: 50%;
+    /* margin-left: 20px; */
 }
 
 .video_info{
     margin-top: 40px;
     display: none;
+    color: black;
 }
 
 .video_info video{

@@ -13,7 +13,7 @@ function ArticleNewsLatestDiv(props) {
   useEffect(() => {
     props.isArticleSelected == false
       ? fetch(
-          "https://newsapi.org/v2/top-headlines?country=in&category=technology&apiKey=876ed1ab1a2545c18ffdb151c871e344"
+          "https://newsapi.org/v2/everything?q=apple&from=2023-12-31&to=2023-12-31&sortBy=popularity&apiKey=876ed1ab1a2545c18ffdb151c871e344"
         )
           .then((response) => response.json())
           .then((quote) => {
@@ -22,7 +22,7 @@ function ArticleNewsLatestDiv(props) {
             console.log(quote.articles);
           })
       : fetch(
-          "https://newsapi.org/v2/top-headlines?country=in&category=technology&apiKey=876ed1ab1a2545c18ffdb151c871e344"
+          "https://newsapi.org/v2/top-headlines?country=in&category=science&apiKey=876ed1ab1a2545c18ffdb151c871e344"
         )
           .then((response) => response.json())
           .then((quote) => {

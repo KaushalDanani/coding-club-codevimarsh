@@ -9,19 +9,21 @@ function NewUpdates(props) {
 
   const [news,setNews]=useState([]);
 
-  useEffect(() => {
-    props.title=="News" ? 
+  useEffect( () => {
 
-    fetch("https://newsapi.org/v2/top-headlines?country=in&category=technology&apiKey=876ed1ab1a2545c18ffdb151c871e344")
+    (async () => {
+      props.title=="News" ? 
+
+    await fetch("https://newsapi.org/v2/everything?q=apple&from=2023-12-31&to=2023-12-31&sortBy=popularity&apiKey=876ed1ab1a2545c18ffdb151c871e344")
       .then(response => response.json())
       .then(
           (quote) => {
-            // console.log(quote);
+            console.log('QUOTE : ',quote);
             setNews(quote.articles);
-            console.log(quote.articles);
+            console.log('News : ',quote.articles);
       })
       :
-      fetch("https://newsapi.org/v2/top-headlines?country=in&category=technology&apiKey=876ed1ab1a2545c18ffdb151c871e344")
+      await fetch("https://newsapi.org/v2/top-headlines?country=in&category=science&apiKey=876ed1ab1a2545c18ffdb151c871e344")
       .then(response => response.json())
       .then(
           (quote) => {
@@ -29,6 +31,7 @@ function NewUpdates(props) {
             setNews(quote.articles);
             console.log(quote.articles);
       })
+    })()
   }, [props.title])
 
   return (

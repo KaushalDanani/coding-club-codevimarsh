@@ -15,6 +15,7 @@ export default function ProjectDisplay(props) {
 
     const [admin,setAdmin] = useState('');
     const [userID,setUserID] = useState('');
+    const [hover,setHover] = useState(false);
 
     useEffect(  () => {
         if(props.userID!=null)
@@ -150,6 +151,10 @@ export default function ProjectDisplay(props) {
             )
         }
 
+        function toggleLink(){
+            setHover(!hover);
+        }
+
     return (
         <>
         <div className="projectmain">
@@ -157,12 +162,14 @@ export default function ProjectDisplay(props) {
 
                 <div className="projdispheader">
                     <div>
+                    <a href={props.projectlink} target="_blank" >
                         {/* <img src={image()}    alt="project image"></img> */}
                         {image()}
+                        </a>
                     </div>
                     <div>
-                         <a href={props.projectlink} target="_blank" ><span className="projectname">{props.name}</span></a>
-                        {/* {props.team.map(add)} */}
+                        <a href={props.projectlink} target="_blank" onMouseEnter={toggleLink} onMouseLeave={toggleLink}><span className="projectname">{props.name}</span></a>
+                        {hover ? <span className="linkImg"></span> : null}
                         <p className="projectdiscription">Project Description : {props.description}</p>
                         <p className="projecttech">Technology Used :</p>
                         {addtags()}

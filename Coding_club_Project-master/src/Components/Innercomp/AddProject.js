@@ -183,7 +183,7 @@ export default function AddProject(){
             <div className="addprojbtndiv">
                 
                 <div className="addproj_btn btn" onClick={addproject_close}>
-                    Cancle
+                    Cancel
                 </div>
 
                 {/* <div class="text-box">
@@ -191,7 +191,7 @@ export default function AddProject(){
                 </div> */}
 
                 <div className="addproj_btn" onClick={add}>
-                    Add My Project
+                    Add Project
                 </div>
                 
             </div>

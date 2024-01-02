@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import "./ArticleNewsLoginPage.css"
 import ArticleNewsMoreElement from './ArticleNewsMoreElement'
 import ArticleContentInfo from './ArticleContentInfo'
@@ -10,7 +10,16 @@ function ArticlesNewsLoginPage(props) {
   const ContentInfoReverse = toModifyArray.reverse();
   var MoreContentInfo = ContentInfoReverse.slice(2,5);
 
-  var moreNews = (props.news.slice(0,3));
+  const [moreNews,setMoreNews] = useState([]);
+
+  useEffect( ()=>{
+    if(props.news!=null)
+    {
+      setMoreNews(props.news.slice(0,3));
+    }
+  },[props.news])
+
+  // const moreNews = (props.news.slice(0,3));
 
   function AddContent(ContentItem){
     
@@ -25,6 +34,7 @@ function ArticlesNewsLoginPage(props) {
 
   return (
     <div className='ArticleNewsLoginPage'>
+        {console.log('more news ',moreNews)}
         {moreNews.map(AddContent)}
 
     </div>

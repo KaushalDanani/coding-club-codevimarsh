@@ -89,19 +89,26 @@
 }
 
 .addproj_btn{
-    border-radius: 35px;
-    padding: 5px 20px;
-    font-size: 1.2rem;
-    font-weight: 500;
-    background-color: transparent;
+    font-size: 2.3vh;
+    position: relative;
+    /* bottom:0px; */
+    height: fit-content;
+    width: fit-content;
     color: white;
-    border: 2px solid white;
-    cursor: pointer;
+    padding: 1.1vh 1.4vw;
+    /* border: 2px solid white; */
+    background-color: rgb(105, 19, 191);
+    align-self: flex-end;
+    border-radius: 10px;
+
 }
 
 .addproj_btn:hover{
-    color: black;
-    background-color: white;
+    cursor: pointer;
+    color: #ffffff;
+    /* border: 2px solid white; */
+    background-color: #8e31ec;
+
 }
 
 
@@ -118,7 +125,7 @@
 }
 
 .btn:hover {
-    transform: translateY(-3px);
+    /* transform: translateY(-3px); */
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
 

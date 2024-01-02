@@ -257,7 +257,7 @@ function EditUserProfile(props) {
       fname : fname,
       lname : lname,
       about : about,
-      linkedIn : linkedIn,
+      linkedin : linkedIn,
       leetcode : leetcode,
       codechef : codechef,
       programme : programme,

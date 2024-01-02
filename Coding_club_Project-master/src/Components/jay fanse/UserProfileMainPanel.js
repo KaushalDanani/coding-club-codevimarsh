@@ -97,7 +97,7 @@ function UserProfileMainPanel(props) {
               </span>
               {/* </div>
             <div> */}
-              <span style={props.userData.linkedIn == "" ? noStyle : null}>
+              <span style={props.userData.linkedin == "" ? noStyle : null}>
                 <a
                   href={props.userData.linkedIn}
                   target="_blank"
