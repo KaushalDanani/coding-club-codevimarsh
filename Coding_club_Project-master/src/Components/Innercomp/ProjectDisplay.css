@@ -44,10 +44,10 @@
     position: relative;
     background-image: url('/public/images/link.png');
     background-size: contain;
-    padding: 1.8vh;
+    padding: 2.2vh;
     background-repeat: no-repeat;
     /* border: 2px solid red; */
-    margin-left: 1.2vh;
+    margin-left: 0.8vh;
     /* background-position: center; */
     /* margin-top: 1px; */
     top: 0.8vh;
