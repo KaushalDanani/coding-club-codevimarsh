@@ -13,7 +13,7 @@
 
 .avtarDisc {
     position: absolute;
-    width: 3.5vw;
+    width: 3.7vw;
     aspect-ratio: 1/1;
     margin-top: 1vh;
     /* margin-right: 0.85vw; */
@@ -21,7 +21,7 @@
     /* background-color: rgb(217, 255, 0); */
     box-shadow: 0 0 50px black;
     overflow: hidden;
-    left: 5vw;
+    left: 8.5vw;
 }
 
 .avtarDisc img {
@@ -32,7 +32,7 @@
 .discussion_c_card .innercontentDisc {
     position: relative;
     /* margin-top: 0.2vh; */
-    width: 80vw;
+    width: 77.5vw;
     margin: 0px;
     /* padding-left: 2.5vw; */
     padding-bottom: 3.4vh;
@@ -42,6 +42,7 @@
     box-shadow: 0 0 20px black;
     overflow: hidden;
     box-sizing: border-box;
+    left: 2.2vw;
 }
 
 .project_coll_header {

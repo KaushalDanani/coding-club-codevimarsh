@@ -4,11 +4,13 @@
 }
 
 #discussionbody{
-    margin: 1vw 5vw;
+    margin: 1vw 8vw;
     border-radius: 3vh;
-    /* border: 1px solid white; */
+    border: 1px solid white;
+    /* display: flex; */
     padding: 0vh 0vh 0vh 0vh; 
     background:linear-gradient(to right,rgb(35,23,85),rgb(22,13,72));
+    box-shadow: 0px 0px 40px 8px black;
 }
 
 .discbanner{
@@ -17,21 +19,23 @@
     background-repeat:round;
     border-radius: 3vh;
     display: flex;
-    height: 50vh;
+    height: 43vh;
+    /* width: 40vw; */
     /* border: 2px solid green; */
+    /* float: right; */
 }
 
 #disc_header h1{
     font-family: 'Trebuchet MS';
     width: 15vw;
-    font-size: 3.2rem !important;
-    margin: 5vw;
+    font-size: 2.7rem !important;
+    margin: 6vh 5vw;
     color: azure;
     font-family: newFont !important;
-    line-height: 1.7;
+    line-height: 2;
 }
 
-.del{
+.del_discussion{
     /* float: right; */
     position: absolute;
     border: none;
@@ -45,6 +49,7 @@
     /* padding: 0.3vw; */
     box-sizing:content-box;
 }
+
 
 #discussion_block{
     margin: 2vw;

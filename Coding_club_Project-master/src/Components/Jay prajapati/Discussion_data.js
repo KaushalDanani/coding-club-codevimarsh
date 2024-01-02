@@ -14,7 +14,7 @@ function ForumGenerator() {
 
   
   const { user }= useUser();
-  console.log(user, '👍👍👍👍👍🧑🧑🧑🧑🧑 from DiscussionData.js');
+  // console.log(user, '👍👍👍👍👍🧑🧑🧑🧑🧑 from DiscussionData.js');
 
   useEffect(() => {
     fetch('/discussion', {
@@ -68,7 +68,7 @@ function ForumGenerator() {
   
 
 
-        <hr style={{width: '90%', height: '2.5px', backgroundColor: 'white', marginLeft: '70px',marginRight: '60px', marginBottom: '2.5vh'}}/>
+        <hr style={{width: '83%', height: '2.5px', backgroundColor: 'white', marginLeft: '130px',marginRight: '130px', marginBottom: '2.5vh'}}/>
 			
       {ques.map((disc, idx) => (
           <Discussion_block

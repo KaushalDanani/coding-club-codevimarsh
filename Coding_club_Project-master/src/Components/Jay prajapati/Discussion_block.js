@@ -13,7 +13,6 @@ export default function Discussion_block(props) {
     );
   }
   
-
   const [tag, setTags] = useState([]);
 
   useEffect(() => {
@@ -73,7 +72,7 @@ export default function Discussion_block(props) {
             <a href={`profile?visitID=${props.asker_id}`}>{props.asker_username}</a>
           </div>
           <button
-            className='del'
+            className='del_discussion'
             id={props.q_id}
             onClick={() => deleteQue(props.q_id)}
             style={{ display: (delCheck ? 'block' : 'none') }}
