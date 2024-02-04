@@ -52,8 +52,8 @@ const location = useLocation();
         
         <Greeting fname={fname} userID={userID} isAdmin={admin}/>
         <NewTasks userID={userID}/>
-        <NewUpdates title={"Articles"} userID={userID} isArticleSelected={true}/>
-        <NewUpdates title={"News"} userID={userID} isArticleSelected={false}/>
+        {/* <NewUpdates title={"Articles"} userID={userID} isArticleSelected={true}/> */}
+        {/* <NewUpdates title={"News"} userID={userID} isArticleSelected={false}/> */}
     </div>
     <MyfooterAfterLogin/>
     </>

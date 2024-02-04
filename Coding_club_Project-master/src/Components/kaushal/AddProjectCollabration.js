@@ -4,6 +4,7 @@ import { useState } from 'react'
 import './AddProjectCollabration.css'
 import Navbar_after_login from './Navbar_after_login.js'
 import useUser from '../../store/userContext.js'
+import ToastComponent from '../jay fanse/toastComponent.js'
 
 function AddProjectCollabration() {
 
@@ -12,6 +13,10 @@ function AddProjectCollabration() {
     const [pc_title, setPc_title] = useState('')
     const [pc_tags, setPc_tags] = useState('')
     const [pc_description, setPc_description] = useState('')
+
+    const [toastVisible,setToastVisible] = useState(false);
+  const [toastMessage,setToastMessage] = useState("");
+  const [toastType,setToastType] = useState("");
 
     const {user,setUser} = useUser();
 
@@ -50,6 +55,10 @@ function AddProjectCollabration() {
             .then(response => response.json())
             .then((data) => {
                 alert('Project Collabration added successfully')
+                setToastVisible(true);
+                setToastMessage('Project Collabration added successfully');
+                setToastType("success");
+                setTimeout(() => setToastVisible(false), 4000);
             })
             .catch((err) => {
                 // alert(`Error Bye 3 : ${err}`)
@@ -57,11 +66,17 @@ function AddProjectCollabration() {
         }
         else {
             alert("Please, Fill all information...")
+            setToastVisible(true);
+          setToastMessage("Please, Fill all information...");
+          setToastType("warning");
+          setTimeout(() => setToastVisible(false), 4000);
         }
     }
 
   return (
     <>     
+              {toastVisible ? <ToastComponent message={toastMessage} type={toastType} /> : null}
+
         <Link to={'/project_collab'}>
         <div className='projCollabBackBtn'></div>
         </Link>

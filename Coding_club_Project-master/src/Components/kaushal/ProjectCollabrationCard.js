@@ -2,6 +2,8 @@ import React, { useEffect } from 'react';
 import { useState } from 'react';
 import TechTag from './TechTag.js';
 import "./ProjectCollabrationCard.css";
+import ToastComponent from '../jay fanse/toastComponent.js';
+import "./../jay fanse/toastComponent.css"
 
 function ProjectCollabrationCard(props) {
 
@@ -10,6 +12,11 @@ function ProjectCollabrationCard(props) {
   const [base64Img,setBase64Img] = useState("");
   const [sameUser, setSameUser] = useState(true);
   const [isAdmin,setIsAdmin] = useState(false);
+
+  const [toastVisible,setToastVisible] = useState(false);
+  const [toastMessage,setToastMessage] = useState("");
+  const [toastType,setToastType] = useState("");
+                
 
   useEffect( () => {
     if(props.userDetails.profileImg)
@@ -50,11 +57,37 @@ function ProjectCollabrationCard(props) {
     })
     .then(data => {
     })
-    alert("Project Collaboration Deleted Successfully...");
-    window.location.reload();
+    
+    var sec=4
+    
+    setToastVisible(true);
+    setToastMessage("Project Collaboration Deleted...reloading in "+sec);
+    setToastType("success");
+    setTimeout(() => {
+      setToastVisible(false)
+      window.location.reload()
+    }, 4000);
+
+    setInterval( ()=> {
+      sec--;
+      setToastMessage("Project Collaboration Deleted...reloading in "+sec);
+    },1000)
+
   }
 
   return (
+    <>
+              {/* {toastVisible ? <ToastComponent message={toastMessage} type={toastType} /> : null} */}
+              {toastVisible ? 
+              <div className='toastComponent'
+              style={
+                toastType === "success" ? {"backgroundColor" : "green"} : 
+                toastType === "warning" ? {"backgroundColor" : "yellow", "color" : "black"} : null
+          
+              }
+              >{toastMessage}</div>
+              : null}
+
         <div className='project_c_card'>
             <div className='avtar'> <a href={`profile?visitID=${props.data.collabrationLeader}`}> <img src={base64Img} /> </a> </div>
             <div className='innercontent'>
@@ -95,6 +128,7 @@ function ProjectCollabrationCard(props) {
                 <button className='project_coll_more_btn' onClick={() => setExpand(!expand)}> {expand ? 'More' : 'Less'} </button> <br/>
             </div>
         </div>
+        </>
   )
 }
 

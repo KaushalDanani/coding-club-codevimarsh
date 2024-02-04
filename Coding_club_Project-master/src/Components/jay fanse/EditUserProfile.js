@@ -10,6 +10,7 @@ import useUser from "../../store/userContext.js";
 import { useLocation } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { Button } from "react-scroll";
+import ToastComponent from "./toastComponent.js";
 
 function EditUserProfile(props) {
   const location = useLocation();
@@ -18,6 +19,10 @@ function EditUserProfile(props) {
   const [showhideforconfirm, setShowhideforconfirm] = useState('true');
   const [showhideforreconfirm, setShowhideforreconfirm] = useState('true');
   const [userID, setUserID] = useState("");
+
+  const [toastVisible,setToastVisible] = useState(false);
+  const [toastMessage,setToastMessage] = useState("");
+  const [toastType,setToastType] = useState("");
 
   useEffect(() => {
     if (props.user != null) {
@@ -150,7 +155,11 @@ function EditUserProfile(props) {
       .then(response => response.json())
       .then(data => {
         if (data.message !== undefined)
-          alert(data.message);
+
+          setToastVisible(true);
+          setToastMessage(data.message);
+          setToastType("warning");
+          setTimeout(() => setToastVisible(false), 4000);
       });
   }
 
@@ -305,7 +314,12 @@ function EditUserProfile(props) {
       .then(response => response.json())
       .then(data => {
         console.log("personal", data);
-        alert("Profile Updated Successfully!!")
+
+        setToastVisible(true);
+        setToastMessage("Profile Updated Successfully!!");
+        setToastType("success");
+
+        setTimeout(() => setToastVisible(false), 4000);
       })
       .catch(err => {
         console.log(err);
@@ -329,12 +343,19 @@ function EditUserProfile(props) {
       .then(response => response.json())
       .then(data => {
         if (data.error) {
-          alert(data.error)
+          setToastVisible(true);
+          setToastMessage(data.error);
+          setToastType("warning");
+          setTimeout(() => setToastVisible(false), 4000);
+
           setUsername(userData.username);
           setEmail(userData.email);
         }
         else {
-          alert(data.message);
+          setToastVisible(true);
+          setToastMessage(data.message);
+          setToastType("warning");
+          setTimeout(() => setToastVisible(false), 4000);
           setUsernameTitle(username);
         }
       })
@@ -349,17 +370,29 @@ function EditUserProfile(props) {
   function savePassword(event) {
 
     if (currentPass == newPass) {
-      alert("New Password cannot be same as current password!");
+      setToastVisible(true);
+      setToastMessage("New Password cannot be same as current password!");
+      setToastType("warning");
+      setTimeout(() => setToastVisible(false), 4000);
+
       setConfirmNewPass("");
       setNewPass("");
     }
     else if (newPass.length < 8 || confirmNewPass.length < 8) {
-      alert("Please, keep your password minimum 8 character!!");
+      setToastVisible(true);
+      setToastMessage("Please, keep your password minimum 8 character!!");
+      setToastType("warning");
+      setTimeout(() => setToastVisible(false), 4000);
+
       setNewPass("");
       setConfirmNewPass("");
     }
     else if (newPass != confirmNewPass) {
-      alert("Re-Enter new password!!");
+      setToastVisible(true);
+      setToastMessage("Re-Enter new password!!");
+      setToastType("warning");
+      setTimeout(() => setToastVisible(false), 4000);
+
       setConfirmNewPass("");
     }
     else {
@@ -377,7 +410,11 @@ function EditUserProfile(props) {
       })
         .then(response => response.json())
         .then(data => {
-          alert("Password updated successfully!")
+          setToastVisible(true);
+        setToastMessage("Password updated successfully!");
+        setToastType("success");
+        setTimeout(() => setToastVisible(false), 4000);
+
           setCurrentPass("");
           setNewPass("");
           setConfirmNewPass("");
@@ -443,6 +480,8 @@ function EditUserProfile(props) {
 
   return (
     <div className="EditUserProfile">
+      
+      {toastVisible ? <ToastComponent message={toastMessage} type={toastType} /> : null}
       <Link to={'/profile'}> <div className="EditUserProfileBack"> </div> </Link>
       <div className="EditProfilePhotoPanel">
         <div

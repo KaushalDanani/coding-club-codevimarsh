@@ -4,7 +4,7 @@ import { Link, Navigate, useLocation, useNavigate } from 'react-router-dom'
 import './ProjectDisplay.css'
 import TechTag from "../kaushal/TechTag.js";
 import useUser from "../../store/userContext.js";
-
+import ToastComponent from "../jay fanse/toastComponent.js";
 
 export default function ProjectDisplay(props) {
     
@@ -16,6 +16,11 @@ export default function ProjectDisplay(props) {
     const [admin,setAdmin] = useState('');
     const [userID,setUserID] = useState('');
     const [hover,setHover] = useState(false);
+
+    const [toastVisible,setToastVisible] = useState(false);
+    const [toastMessage,setToastMessage] = useState("");
+    const [toastType,setToastType] = useState("");
+                
 
     useEffect(  () => {
         if(props.userID!=null)
@@ -89,8 +94,16 @@ export default function ProjectDisplay(props) {
                 'Content-Type': 'application/json'
                     }
                 })
-                alert("Project Deleted");
+                // alert("Project Deleted");
                 window.location.reload();
+
+                setToastVisible(true);
+                setToastMessage("Project deleted successfully!");
+                setToastType("success");
+                setTimeout(() => {
+                    setToastVisible(false)
+                }, 4000);
+
                 // alert("Refesh tha page to see the change")
         }
 
@@ -157,6 +170,7 @@ export default function ProjectDisplay(props) {
 
     return (
         <>
+        {toastVisible ? <ToastComponent message={toastMessage} type={toastType} /> : null}
         <div className="projectmain">
             <div className="projdisplay">
 

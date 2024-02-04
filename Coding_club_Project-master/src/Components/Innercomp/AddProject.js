@@ -21,7 +21,10 @@ export default function AddProject(){
     const [ProjectTags , setProjectTags] = useState("");
     const [ProjectLink , setProjectLink] = useState("");
     const [ProjectInfo , setProjectInfo] = useState("");
-
+    
+    const [toastVisible,setToastVisible] = useState(false);
+    const [toastMessage,setToastMessage] = useState("");
+    const [toastType,setToastType] = useState("");
     async function addImage(e) {
         const image = e.target.files[0];  
         setImage(await convertBase64(image));
@@ -29,11 +32,14 @@ export default function AddProject(){
 
     async function addVideo(e) {
         const image = e.target.files[0];
-        alert("adding");
+        // alert("adding");
         const videoData = await convertBase64(image);
         setVideo(videoData);
         // alert(videoData);
-        alert('video added');
+        setToastVisible(true);
+        setToastMessage("video added");
+        setToastType("success");
+        setTimeout(() => setToastVisible(false), 4000);
     }
     
 
