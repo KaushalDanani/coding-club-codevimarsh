@@ -21,7 +21,7 @@ const searchParams = new URLSearchParams(location.search);
 
   return (
     <>
-    <Navbar_after_login userID={userID}/>
+    <Navbar_after_login/>
     <div className="background-color-ArticlesNews">
       
       <ArticleNewsTopBanner onChange={onToggle} />
