@@ -1,0 +1,46 @@
+.toastComponent{
+    position: fixed;
+    top: -50px;
+    right: 20px;
+    z-index: 1000;
+    background-color: rgb(80, 1, 158);
+    font-size: 1rem;
+    padding: 12px 20px;
+    border-radius: 10px;
+    opacity: 1;
+    color: white;
+
+    
+    animation-name: toastAnimate;
+    animation-duration: 4s;
+    
+}
+
+@keyframes toastAnimate{
+    
+    0% {
+        /* background-color: rgb(79, 0, 124); */
+    }
+
+
+    5% {
+        top: 20px;
+    }
+
+    50% {
+        top: 20px;
+
+    }
+
+    80%{
+        opacity: 1;
+    }
+    
+    100% {
+        /* background-color: aqua; */
+        opacity: 0;
+        top: 20px;
+
+    }
+}
+
