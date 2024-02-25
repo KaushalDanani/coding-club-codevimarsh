@@ -3,8 +3,14 @@ import { useSearchParams } from 'react-router-dom';
 import { Link, useNavigate, useLocation } from 'react-router-dom'
 import './AddNotes.css';
 import Navbar_after_login from "../kaushal/Navbar_after_login.js";
+import ToastComponent from "./toastComponent.js";
 
 export default function AddNotes() {
+
+    const navigate = useNavigate();
+    const [toastVisible, setToastVisible] = useState(false);
+    const [toastMessage, setToastMessage] = useState("");
+    const [toastType, setToastType] = useState("");
 
     const location = useLocation();
     const searchParams = new URLSearchParams(location.search);
@@ -27,10 +33,10 @@ export default function AddNotes() {
 
     async function getnoteName() {
         try {
-            const response = await fetch(`/noteName?sub_id=${sub_id}`,{
+            const response = await fetch(`/noteName?sub_id=${sub_id}`, {
                 headers: {
                     'Content-type': 'application/json',
-                  },
+                },
             });
             const data = await response.json();
             // setSubj(data);
@@ -64,9 +70,20 @@ export default function AddNotes() {
                 'Content-Type': 'application/json'
             }
         })
+            .then(response => response.json())
+            .then(data => {
+                setToastVisible(true);
+                setToastMessage(data.message);
+                setToastType("success");
+                setTimeout(() => {
+                    setToastVisible(false)
+                    navigate('/resources');
+                }, 1000);
+            });
     }
     return (
         <>
+            {toastVisible ? <ToastComponent message={toastMessage} type={toastType} /> : null}
             <Navbar_after_login />
             <div className="addNoteContainer">
                 <div className="addNoteHeader">
@@ -91,7 +108,7 @@ export default function AddNotes() {
                         <div className='buttonSection'>
                             <Link to={'/resources'}> <button className='addFormButton'> Cancel </button> </Link>
 
-                            <Link to={'/resources'}><button onClick={addMynote} className="addFormButton">Submit</button></Link>
+                            <Link><button onClick={addMynote} className="addFormButton">Submit</button></Link>
                         </div>
 
                     </form>

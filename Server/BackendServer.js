@@ -333,6 +333,7 @@ app.post("/addmyquestion", jsonParser, function (req, res) {
   });
   // // console.log(req.body);
   newquestion.save();
+  res.send({message : "Question uploaded successfully!"});
 });
 
 const Resplie = mongoose.model(
@@ -375,6 +376,7 @@ app.post("/addmyreply", jsonParser, function (req, res) {
       });
     });
   });
+  res.send({message : "Reply added successfully!"});
 });
 
 app.use((req, res, next) => {
@@ -447,14 +449,15 @@ app.post('/addmysubject',(req,res)=>{
   const topic = req.body.subject;
   const logo = req.body.sublogo;
 
-  console.log(topic);
+  // console.log(topic);
 
   const newSub = new resModel({
     subject : topic,
     logo : logo,
   });
   const respons = newSub.save();
-  console.log(respons);
+  res.send({message : "Subject added successfully!"});
+  // console.log(respons);
 })
 
 app.post('/addmybook',async (req,res)=>{
@@ -469,8 +472,8 @@ app.post('/addmybook',async (req,res)=>{
   const subObj = await resModel.findById(subject);
   subObj.books.push(book);
   const a = await subObj.save();
-  console.log(a);
-  res.send("OK");
+  // console.log(a);
+  res.send({message : "Book added successfully!"});
 })
 
 app.post('/addmynote',async (req,res)=>{
@@ -482,8 +485,8 @@ app.post('/addmynote',async (req,res)=>{
   const subObj = await resModel.findById(subject);
   subObj.notes.push(note);
   const a = await subObj.save();
-  console.log(a);
-  res.send("OK");
+  // console.log(a);
+  res.send({message : "Note added successfully!"});
 })
 
 app.post('/addmyvideo',async (req,res)=>{
@@ -497,8 +500,8 @@ app.post('/addmyvideo',async (req,res)=>{
   const subObj = await resModel.findById(subject);
   subObj.videos.push(video);
   const a = await subObj.save();
-  console.log(a);
-  res.send("OK");
+  // console.log(a);
+  res.send({message : "Video added successfully!"});
 })
 
 // app.post('/resources/content', (req, resp) => {
@@ -540,7 +543,7 @@ app.get("/discussion/question", async (req, resp) => {
     const upvoteMap = new Map();
 
     // console.log(q_id);
-    // console.log(userID);
+    // console.log("sdfgeragye       :          "+userID);
 
     const Q_data = await Question.findById(q_id);
     const Asker = await User.findById(Q_data.asker, "username profileImg");
@@ -680,14 +683,22 @@ app.delete('/discussion/question/delRep/:r_id', async (req, res) => {
 app.post("/adminList", async (req, res) => {
   const adminList = await User.find({isAdmin : true});
   res.send({admins : adminList});
+  // console.log(adminList);
+});
+
+app.post("/getUserData", async(req,res) => {
+  const id = req.query.userID;
+  const userData = await User.find({userID : id});
+
+  res.send({userData : userData});
 });
 
 app.get("/addAdmin/",async (req,res) => {
   const newAdminUsername = req.query.username;
   
-  const user = await User.findOneAndUpdate({username : newAdminUsername},{isAdmin : true});
-  // console.log(user);
-  res.send({user : user,message : "Admin Registered successfully!"});
+  const userData = await User.findOneAndUpdate({username : newAdminUsername},{isAdmin : true});
+  // console.log(userData);
+  res.send({user : userData,message : "Admin Registered successfully!"});
 
 });
 

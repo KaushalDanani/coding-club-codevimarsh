@@ -120,7 +120,7 @@ function PageLinks() {
 
                     <Route path='/discussion' element={<Discussion_Forums />} />
                     <Route path='/discussion/addQuestion' element={<Ask_Question />} />
-                    <Route path='/discussion/question' element={<Question_data />} />
+                    <Route path='/discussion/question' element={<Question_data user={user}/>} />
                     <Route path='/discussion/question/addReply' element={<Give_answer />} />
                     <Route path='/project' element={<ProjectMain user={user}/>} />
                     <Route path='/profile' element={<UserProfile user={user}/>} />

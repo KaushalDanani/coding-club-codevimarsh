@@ -3,8 +3,14 @@ import { useSearchParams } from 'react-router-dom';
 import { Link, useNavigate, useLocation } from 'react-router-dom'
 import './AddBooks.css';
 import Navbar_after_login from "../kaushal/Navbar_after_login.js";
+import ToastComponent from "./toastComponent.js";
 
 export default function AddBooks() {
+
+    const navigate = useNavigate();
+    const [toastVisible,setToastVisible] = useState(false);
+    const [toastMessage,setToastMessage] = useState("");
+    const [toastType,setToastType] = useState("");
 
     const location = useLocation();
     const searchParams = new URLSearchParams(location.search);
@@ -88,9 +94,21 @@ export default function AddBooks() {
                 'Content-Type': 'application/json'
             }
         })
+        .then(response => response.json())
+        .then(data => {
+            setToastVisible(true);
+        setToastMessage(data.message);
+        setToastType("success");
+        setTimeout(() => 
+        {
+            setToastVisible(false)
+            navigate('/resources');
+        }, 1000);
+        });
     }
     return (
         <>
+            {toastVisible ? <ToastComponent message={toastMessage} type={toastType} /> : null}
             <Navbar_after_login />
             <div className="addBookContainer">
                 <div className="addBookHeader">
@@ -134,7 +152,7 @@ export default function AddBooks() {
                         <div className='buttonSection'>
                             <Link to={'/resources'}> <button className='addFormButton'> Cancel </button> </Link>
 
-                            <Link to={'/resources'}><button onClick={addMyBook} className="addFormButton">Submit</button></Link>
+                            <Link><button onClick={addMyBook} className="addFormButton">Submit</button></Link>
                         </div>
 
                     </form>

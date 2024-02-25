@@ -6,12 +6,16 @@ import "./Discussion_Forums.css"
 import { Link } from 'react-router-dom';
 import { question_open } from '../Question_answer_jp/Ask_Question.js';
 import useUser from "../../store/userContext.js";
+import ToastComponent from "../jay fanse/toastComponent.js";
 
 function ForumGenerator() {
   const [ques, setQues] = useState([]);
   const [m, setM] = useState(new Map());
 	const [changeImage, setChangeImage] = useState('true');
 
+  const [toastVisible,setToastVisible] = useState(false);
+    const [toastMessage,setToastMessage] = useState("");
+    const [toastType,setToastType] = useState("");
   
   const { user }= useUser();
   // console.log(user, '👍👍👍👍👍🧑🧑🧑🧑🧑 from DiscussionData.js');
@@ -47,6 +51,21 @@ function ForumGenerator() {
       });
   }, []); // Empty dependency array to fetch data once on component mount
 
+  function deleteQuestionFromList(key)
+  {
+    const newQues = ques.filter(question => question._id !== key);
+    setQues(newQues);
+    setToastVisible(true);
+          setToastMessage("Question deleted successfully!");
+          setToastType("success");
+          setTimeout(() => {
+            setToastVisible(false)
+            // window.location.reload();
+          }, 4000);
+  }
+
+
+
   // function MakeDiscussion(disc) {
   //   // console.log(disc);
   //   return (
@@ -67,6 +86,7 @@ function ForumGenerator() {
     <>
   
 
+  {toastVisible ? <ToastComponent message={toastMessage} type={toastType} /> : null}
 
         <hr style={{width: '83%', height: '2.5px', backgroundColor: 'white', marginLeft: '130px',marginRight: '130px', marginBottom: '2.5vh'}}/>
 			
@@ -81,6 +101,7 @@ function ForumGenerator() {
           date={disc.askDate}
           _id={disc.asker}
           q_id={disc._id}
+          deleteQuestionFromList={deleteQuestionFromList}
         />
       ))}
     </>

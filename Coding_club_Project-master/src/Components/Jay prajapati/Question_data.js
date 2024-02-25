@@ -6,15 +6,27 @@ import { useLocation } from 'react-router-dom'
 import Navbar_after_login from '../kaushal/Navbar_after_login.js';
 import useUser from '../../store/userContext.js';
 // import { ObjectId } from 'mongoose'
+import ToastComponent from '../jay fanse/toastComponent.js';
 
-export default function Question_data() {
+export default function Question_data(props) {
 
     const location = useLocation();
-    const {user,setUser} = useUser();
+    const [user, setUser] = useState();
+    const [userID, setUserID] = useState();
+
+    const [toastVisible, setToastVisible] = useState(false);
+    const [toastMessage, setToastMessage] = useState("");
+    const [toastType, setToastType] = useState("");
+
+    useEffect(() => {
+        if (props.user != null) {
+            setUser(props.user);
+            setUserID(props.user._id);
+        }
+    }, [props.user])
 
 
     const searchParams = new URLSearchParams(location.search);
-    const userID = user ? user._id : null;
     const q_id = searchParams.get('q_id');
 
     const [Q_data, setQData] = useState([]);
@@ -24,7 +36,12 @@ export default function Question_data() {
     const [rMap, setrMap] = useState(new Map());
     const [upMap, setupMap] = useState(new Map());
 
+    const [userData, setUserData] = useState();
+
     useEffect(() => {
+        if(userID!=null)
+        {
+
         fetch(`/discussion/question?userID=${userID}&q_id=${q_id}`)
             .then((response) => {
                 if (!response.ok) {
@@ -51,7 +68,9 @@ export default function Question_data() {
             .catch(error => {
                 console.error('Error:', error);
             });
-    }, [userID, q_id])
+        }
+    }, [userID, q_id]);
+
 
 
     function questionHead() {
@@ -59,7 +78,7 @@ export default function Question_data() {
         // console.log(user); //This prints true..
         return (
             <Question
-                _id = {Q_data._id}
+                _id={Q_data._id}
                 userID={userID}
                 pfp={Asker.profileImg}
                 asker_username={Asker.username}
@@ -74,6 +93,19 @@ export default function Question_data() {
         )
     }
 
+    function deleteReplyFromList(rid) {
+        const newRData = R_data.filter(reply => reply._id !== rid);
+        setRData(newRData);
+
+        setToastVisible(true);
+        setToastMessage("Reply deleted successfully!");
+        setToastType("success");
+        setTimeout(() => {
+            setToastVisible(false)
+            // window.location.reload();
+        }, 4000);
+    }
+
     function commentsGenerator() {
         function commentGenerator(comment) {
             // if (R_data.length > 0 && R_data[0].replier) {
@@ -82,7 +114,7 @@ export default function Question_data() {
 
             return (
                 <Comment
-                    _id = {comment._id}
+                    _id={comment._id}
                     userID={userID}
                     pfp={rMap.get(comment._id).profileImg}
                     commenter={rMap.get(comment._id).username}
@@ -92,6 +124,8 @@ export default function Question_data() {
                     up_count={comment.upvotes}
                     date={comment.replyDate}
                     value={upMap.get(comment._id)}
+                    admin={user.isAdmin}
+                    deleteReplyFromList={deleteReplyFromList}
                 />
             )
 
@@ -104,7 +138,10 @@ export default function Question_data() {
 
     return (
         <>
-            <Navbar_after_login/>
+            {toastVisible ? <ToastComponent message={toastMessage} type={toastType} /> : null}
+
+            <Navbar_after_login />
+            {console.log(R_data)}
             {questionHead()}
             {commentsGenerator()}
 

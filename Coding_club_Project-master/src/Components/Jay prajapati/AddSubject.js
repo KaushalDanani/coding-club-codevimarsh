@@ -1,10 +1,15 @@
 import React, { useEffect, useState } from "react";
-import { useSearchParams } from 'react-router-dom';
+import { Navigate, useSearchParams } from 'react-router-dom';
 import { Link, useNavigate } from 'react-router-dom'
 import './AddSubject.css';
 import Navbar_after_login from "../kaushal/Navbar_after_login.js";
+import ToastComponent from "../jay fanse/toastComponent.js";
 
 export default function AddSubject() {
+    const navigate = useNavigate();
+    const [toastVisible,setToastVisible] = useState(false);
+    const [toastMessage,setToastMessage] = useState("");
+    const [toastType,setToastType] = useState("");
 
     const [logo,setLogo] = useState("");
 
@@ -43,9 +48,21 @@ export default function AddSubject() {
                 'Content-Type': 'application/json'
             }
         })
+        .then(response => response.json())
+        .then(data => {
+            setToastVisible(true);
+        setToastMessage(data.message);
+        setToastType("success");
+        setTimeout(() => 
+        {
+            setToastVisible(false)
+            navigate('/resources');
+        }, 1000);
+        });
     }
     return (
         <>
+            {toastVisible ? <ToastComponent message={toastMessage} type={toastType} /> : null}
             <Navbar_after_login />
             <div className="addSubjectContainer">
                 <div className="addSubjectHeader">
@@ -71,7 +88,7 @@ export default function AddSubject() {
                         <div className='buttonSection'>
                             <Link to={'/resources'}> <button id='pc_cancelbtn' className='addProjectCollabrationBtn'> Cancel </button> </Link>
 
-                            <Link to={'/resources'}><input type="button" value={"Submit"} onClick={subName} className="q_submit" /></Link>
+                            <Link><input type="button" value={"Submit"} onClick={subName} className="q_submit" /></Link>
                         </div>
 
                     </form>
