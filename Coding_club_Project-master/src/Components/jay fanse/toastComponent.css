@@ -1,7 +1,7 @@
 .toastComponent{
     position: fixed;
-    top: -50px;
-    right: 20px;
+    bottom: 20px;
+    right: -100px;
     z-index: 1000;
     background-color: rgb(80, 1, 158);
     font-size: 1rem;
@@ -23,23 +23,23 @@
     }
 
 
-    5% {
-        top: 20px;
+    10% {
+        right: 20px;
     }
 
     50% {
-        top: 20px;
+        right: 20px;
 
     }
 
     80%{
         opacity: 1;
     }
-    
+
     100% {
         /* background-color: aqua; */
         opacity: 0;
-        top: 20px;
+        right: 20px;
 
     }
 }

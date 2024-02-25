@@ -24,6 +24,8 @@ function EditUserProfile(props) {
   const [toastMessage,setToastMessage] = useState("");
   const [toastType,setToastType] = useState("");
 
+  const [currPassMessage,setCurrPassMessage] = useState();
+
   useEffect(() => {
     if (props.user != null) {
       setUserID(props.user._id);
@@ -369,7 +371,43 @@ function EditUserProfile(props) {
 
   function savePassword(event) {
 
-    if (currentPass == newPass) {
+    const currentPwd = {
+      'currentPassword': currentPass
+    }
+
+    fetch('/check/current/password', {
+      method: 'POST',
+      body: JSON.stringify(currentPwd),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+      .then(response => response.json())
+      .then(data => {
+
+        setCurrPassMessage(data.message);
+        // alert("dfg");
+        // if (data.message !== undefined)
+        // {
+        //   setToastVisible(true);
+        //   setToastMessage(data.message);
+        //   setToastType("warning");
+        //   setTimeout(() => setToastVisible(false), 4000);
+        // }
+      })
+      .then(() => {
+
+        
+  
+     
+    if(currPassMessage !== undefined)
+    {
+      setToastVisible(true);
+          setToastMessage(currPassMessage);
+          setToastType("warning");
+          setTimeout(() => setToastVisible(false), 4000);
+    }
+    else if (currentPass == newPass) {
       setToastVisible(true);
       setToastMessage("New Password cannot be same as current password!");
       setToastType("warning");
@@ -420,6 +458,7 @@ function EditUserProfile(props) {
           setConfirmNewPass("");
         })
     }
+  })
 
     event.preventDefault();
   }
@@ -736,7 +775,7 @@ function EditUserProfile(props) {
                 <span>Current Password</span>
                 <span>:</span>
                 <div id="pwd_icon" className={showhide ? "show_pwd_edit_profile" : "hide_pwd_edit_profile"} onClick={currentPasswordVisibilityHandler}></div>
-                <input type="password" value={currentPass} id="editprofile_currentpass" onChange={changeCurrentPass} onBlur={checkCurrentPassword} placeholder="Enter current password" />
+                <input type="password" value={currentPass} id="editprofile_currentpass" onChange={changeCurrentPass} placeholder="Enter current password" />
                 <span>New Password</span>
                 <span>:</span>
                 <div id="confirmPwd_icon" className={showhideforconfirm ? "show_pwd_edit_profile" : "hide_pwd_edit_profile"} onClick={confirmPasswordVisibilityHandler} />
