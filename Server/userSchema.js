@@ -85,6 +85,15 @@ userSchema.pre("save", async function (next) {
     next();
 })
 
+userSchema.pre("updateOne", async function (next) {
+    if(this.isModified("password"))
+    {
+        this.password = await bcrypt.hash(this.password, 10);
+        // console.log(`Now, Password is : ${this.password}`);
+    }
+    next();
+})
+
 userSchema.methods.generateAuthToken = async function() {
     try {
         const tk = jwt.sign({_id:this._id.toString()}, "ourprojectisoncodingwebtocreatecodingculture");

@@ -881,11 +881,14 @@ app.post("/editprofile/password", async (req, res) => {
   const newPass = req.body.newPass;
   const userID = req.query.userID;
 
+  console.log("start");
+
   const updatedData = await User.updateOne(
     { _id: userID },
     { password: newPass }
   );
 
+  console.log("end");
   res.send(updatedData);
 });
 
@@ -1183,6 +1186,8 @@ try {
 
   if(!isSame)
     res.send({message: "Wrong Current Password..."});
+  else
+    res.send({message : ""});
 }
 catch(err)
 {

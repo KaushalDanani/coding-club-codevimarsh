@@ -401,7 +401,7 @@ function EditUserProfile(props) {
         
   
      
-    if(currPassMessage !== undefined)
+    if(currPassMessage !== "")
     {
       setToastVisible(true);
           setToastMessage(currPassMessage);
