@@ -8,22 +8,27 @@ import AddProject from "../Innercomp/AddProject.js";
 import Filter_bar_Project from "./Filter_bar_Project.js"
 import "./ProjectMain.css"
 import MyfooterAfterLogin from "../MyfooterAfterLogin.js";
+import ToastComponent from "../jay fanse/toastComponent.js";
 
-export default function ProjectMain(props){
+export default function ProjectMain(props) {
 
-    const [admin,setAdmin] = useState('');
-    const [userID,setUserID] = useState('');
+    const [admin, setAdmin] = useState('');
+    const [userID, setUserID] = useState('');
 
-    useEffect( ()=> {
-        if(props.user!=null)
-        {
+    const [toastVisible,setToastVisible] = useState(false);
+    const [toastMessage,setToastMessage] = useState("");
+    const [toastType,setToastType] = useState("");
+                
+
+    useEffect(() => {
+        if (props.user != null) {
             setAdmin(props.user.isAdmin);
             setUserID(props.user._id);
         }
-    },[props.user])
-    
+    }, [props.user])
+
     const [Projectinfo, setProjectinfo] = useState([{}]);
-      useEffect(() => {
+    useEffect(() => {
         fetch("/project").then(
             response => response.json()
         ).then(
@@ -33,37 +38,54 @@ export default function ProjectMain(props){
         )
     }, []);
 
-    return(
-        <>  
-            <Navbar_after_login/>
-            <h1 className="projectLib">Project Library</h1>
-            <Filter_bar_Project/>
+    function deleteProjectFromList(key,message) {
 
-            <AddProject/>
+        const newProjData = Projectinfo.filter(proj => proj._id !== key);
+        setProjectinfo(newProjData);
+
+        setToastVisible(true);
+        setToastMessage(message);
+        setToastType("success");
+        setTimeout(() => {
+            setToastVisible(false)
+        }, 4000);
+
+    }
+
+    return (
+        <>
+                {toastVisible ? <ToastComponent message={toastMessage} type={toastType} /> : null}
+
+            <Navbar_after_login />
+            <h1 className="projectLib">Project Library</h1>
+            <Filter_bar_Project />
+
+            <AddProject />
             {/* {cardGenerator(Projectinfo)} */}
             {/* {console.log("length: " + Projectinfo.length)} */}
             {
-                
                 Projectinfo.map(
                     (proj) => {
-                        return(
-                            <ProjectDisplay 
-                                name = {proj.projectName}
-                                tech = {proj.tags}
-                                description = {proj.description}
-                                projectinfo = {proj.projectInfo}
-                                video = {proj.video}
-                                projectlink = {proj.projectLink}
-                                team = {proj.contributors}
-                                image = {proj.image}
-                                admin = {admin}
-                                userID = {userID} 
+                        return (
+                            <ProjectDisplay
+                                id={proj._id}
+                                name={proj.projectName}
+                                tech={proj.tags}
+                                description={proj.description}
+                                projectinfo={proj.projectInfo}
+                                video={proj.video}
+                                projectlink={proj.projectLink}
+                                team={proj.contributors}
+                                image={proj.image}
+                                admin={admin}
+                                userID={userID}
+                                deleteProjectFromList={deleteProjectFromList}
                             />
                         );
                     }
                 )
             }
-            <MyfooterAfterLogin/>
+            <MyfooterAfterLogin />
         </>
     );
 }

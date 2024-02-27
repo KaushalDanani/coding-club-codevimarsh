@@ -47,8 +47,8 @@ export default function ProjectDisplay(props) {
         var b = false;
         console.log(admin);
         // console.log("user : "+userID);
-        for(let i=0;i<props.team.length;i++){
-            if(admin===true || props.team[i] == userID ){
+        for(let i=0;i<=props.team.length;i++){
+            if(admin===true || props.team[i]===userID ){
                 b = true;
             }
         }
@@ -94,16 +94,12 @@ export default function ProjectDisplay(props) {
                 'Content-Type': 'application/json'
                     }
                 })
-                // alert("Project Deleted");
-                window.location.reload();
+                .then(response => response.json())
+                .then(data => {
+                    props.deleteProjectFromList(props.id,data.message);
+                });
 
-                setToastVisible(true);
-                setToastMessage("Project deleted successfully!");
-                setToastType("success");
-                setTimeout(() => {
-                    setToastVisible(false)
-                }, 4000);
-
+                
                 // alert("Refesh tha page to see the change")
         }
 
@@ -170,7 +166,7 @@ export default function ProjectDisplay(props) {
 
     return (
         <>
-        {toastVisible ? <ToastComponent message={toastMessage} type={toastType} /> : null}
+        {/* {toastVisible ? <ToastComponent message={toastMessage} type={toastType} /> : null} */}
         <div className="projectmain">
             <div className="projdisplay">
 

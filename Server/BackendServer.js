@@ -172,7 +172,7 @@ app.post("/deleteproject",async (req,res) => {
   await Project.deleteOne({"projectName": req.body.project_name});
   // console.log( req.body.project_name);
   
-  res.end();
+  res.send({message : 'Project deleted successfully!'});
 })
 
 const imageBuffer = fs.readFileSync(
@@ -899,10 +899,11 @@ app.post("/editprofile/profileImg", async (req, res) => {
   const updatedUser = await User.updateOne(
     { _id: userID },
     { profileImg: profileImg }
+
   );
 
   // console.log(updatedUser);
-  res.send(req.body);
+  res.send({body : req.body,message : "Profile image updated sucessfully!"});
 });
 
 //kaushal
@@ -990,6 +991,7 @@ app.post("/addprojectcollabration", async (req, res) => {
 
   // // console.log(collabrationData)
   const addDone = await addProjectCollab.save();
+  res.send({message : "Collaboration uploaded successfully!"});
 });
 
 app.use(bodyParser.urlencoded({ extended: true }));

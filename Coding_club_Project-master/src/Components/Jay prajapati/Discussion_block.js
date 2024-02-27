@@ -44,7 +44,7 @@ export default function Discussion_block(props) {
   const delCheck = (userID === props.asker_id || isAdmin === true);
 
   function deleteQue(q_id) {
-    const conf = window.confirm('Are you sure you want to delete this reply?');
+    const conf = window.confirm('Are you sure you want to delete this Question?');
     if (conf) {
       fetch(`/discussion/delQue/${q_id}`, {
         method: 'DELETE',

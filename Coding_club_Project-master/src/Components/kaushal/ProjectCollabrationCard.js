@@ -44,6 +44,10 @@ function ProjectCollabrationCard(props) {
 
 
   function ProjectCollabrationCardDelete() {
+
+    const conf = window.confirm('Are you sure you want to delete collaboration?');
+    if(conf)
+    {
     const allDeleteData = {
       projectCollabrationCardId : props.data._id
     }
@@ -56,23 +60,10 @@ function ProjectCollabrationCard(props) {
       }
     })
     .then(data => {
+      props.deleteCollabCard(props.id);
+
     })
-    
-    var sec=4
-    
-    setToastVisible(true);
-    setToastMessage("Project Collaboration Deleted...reloading in "+sec);
-    setToastType("success");
-    setTimeout(() => {
-      setToastVisible(false)
-      window.location.reload()
-    }, 4000);
-
-    setInterval( ()=> {
-      sec--;
-      setToastMessage("Project Collaboration Deleted...reloading in "+sec);
-    },1000)
-
+  }
   }
 
   return (

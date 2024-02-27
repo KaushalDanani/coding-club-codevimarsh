@@ -285,7 +285,8 @@ function EditUserProfile(props) {
     })
       .then(response => response.json())
       .then(data => {
-        console.log('Success:', data);
+        // console.log('Success:', data);
+        
       })
       .catch((error) => {
         console.error('Error:', error);
@@ -356,7 +357,7 @@ function EditUserProfile(props) {
         else {
           setToastVisible(true);
           setToastMessage(data.message);
-          setToastType("warning");
+          setToastType("success");
           setTimeout(() => setToastVisible(false), 4000);
           setUsernameTitle(username);
         }
@@ -468,6 +469,14 @@ function EditUserProfile(props) {
     sendDataToBackend(selectedTags);
     setUserSkills(selectedTags);
 
+    if(addSkillDisplay===true)
+    {
+      setToastVisible(true);
+        setToastMessage("Skills Updated Successfully!!");
+        setToastType("success");
+        setTimeout(() => setToastVisible(false), 4000);
+    }
+
     event.preventDefault();
   }
 
@@ -504,7 +513,14 @@ function EditUserProfile(props) {
         })
           .then(response => response.json())
           .then(data => {
-
+            setToastVisible(true);
+                    setToastMessage(data.message);
+                    setToastType("success");
+                    setTimeout(() => 
+                    {
+                      setToastVisible(false)
+                    }, 4000);
+                    
             // console.log(base64String);
           })
       };
@@ -518,6 +534,10 @@ function EditUserProfile(props) {
   // const base64Img = ;
 
   return (
+
+    <>
+                {toastVisible ? <ToastComponent message={toastMessage} type={toastType} /> : null}
+
     <div className="EditUserProfile">
       
       {toastVisible ? <ToastComponent message={toastMessage} type={toastType} /> : null}
@@ -751,10 +771,10 @@ function EditUserProfile(props) {
                   value={year}
                   onChange={yearChangeHandler}
                 >
-                  <option>"2023"</option>
-                  <option>"2024"</option>
-                  <option>"2025"</option>
-                  <option>"2026"</option>
+                  <option>2023</option>
+                  <option>2024</option>
+                  <option>2025</option>
+                  <option>2026</option>
                 </select>
                 <div className="EditSaveButtonDiv">
                   <button onClick={saveUserProfile}>Save</button>
@@ -793,6 +813,7 @@ function EditUserProfile(props) {
         </div>
       </div>
     </div>
+    </>
   );
 }
 

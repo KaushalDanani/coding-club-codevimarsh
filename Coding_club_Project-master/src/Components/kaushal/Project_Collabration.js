@@ -3,13 +3,17 @@ import "./Project_Collabration.css";
 import { Link } from 'react-router-dom';
 import ProjectCollabrationCard from './ProjectCollabrationCard.js';
 import Navbar_after_login from './Navbar_after_login.js';
-
+import ToastComponent from '../jay fanse/toastComponent.js';
 
 function Project_Collabration() {
 
   const [changeImage, setChangeImage] = useState('true');
   const [collabrationData, setCollabrationData] = useState([]);
   const [map, setMap] = useState(new Map())
+
+  const [toastVisible, setToastVisible] = useState(false);
+    const [toastMessage, setToastMessage] = useState("");
+    const [toastType, setToastType] = useState("");
 
   useEffect(() => {
     fetch('/projectcollabration', {
@@ -33,18 +37,38 @@ function Project_Collabration() {
 
   }, [])
 
+  function deleteCollabCard(key){
+    const newCollabData = collabrationData.filter(collabElement => collabElement._id !== key)
+    setCollabrationData(newCollabData);
+
+    setToastVisible(false);
+    setToastVisible(true);
+    setToastMessage("Project Collaboration Deleted successfully!");
+    setToastType("success");
+    setTimeout(() => {
+      setToastVisible(false)
+      // window.location.reload()
+    }, 4000);
+  }
+
   function mapDataCards (collabrationData) {
     if(collabrationData.size !== 0)
     {
       return(collabrationData.map((itemData) => (
         // console.log("Helelo :  "+map.get(itemData._id)),
-        <ProjectCollabrationCard data={itemData} userDetails={map.get(itemData._id)} />
+        <ProjectCollabrationCard 
+        id={itemData._id}
+        data={itemData} userDetails={map.get(itemData._id)}
+        deleteCollabCard={deleteCollabCard}
+        />
       )))
     }
   }
 
   return (
     <>
+                {toastVisible ? <ToastComponent message={toastMessage} type={toastType} /> : null}
+
     <Navbar_after_login />
     <div className='projectCollabrationContainer'>
       <div className='projectCollabrationHeader'>

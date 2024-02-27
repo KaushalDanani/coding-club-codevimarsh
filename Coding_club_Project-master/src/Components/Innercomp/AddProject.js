@@ -112,13 +112,10 @@ export default function AddProject(){
               'Content-Type': 'application/json'
                 }
             })
-        // console.log(ProjectName);
-        // console.log(ProjectDescription);
-        // console.log(ProjectTags);
-        // console.log(Team);
-        // console.log(ProjectLink);
-        // console.log(ProjectInfo);
+            .then(response => response.json())
+            .then(data => {
 
+            });
             window.location.reload();
             addproject_close();
     }
