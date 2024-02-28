@@ -878,19 +878,23 @@ app.post("/editprofile/account", async (req, res) => {
 });
 
 app.post("/editprofile/password", async (req, res) => {
-  const newPass = req.body.newPass;
-  const userID = req.query.userID;
+  try {
+    const newPass = req.body.newPass;
+    const userID = req.query.userID;
 
-  console.log("start");
 
-  const updatedData = await User.updateOne(
-    { _id: userID },
-    { password: newPass }
-  );
+    const updatedUser = await User.findOneAndUpdate(
+      { _id: userID },
+      { password: newPass }
+    );
 
-  console.log("end");
-  res.send(updatedData);
+    res.send({message : "Updated successfully!"});
+  } catch (error) {
+    console.error("Error updating password:", error);
+    res.status(500).send("Error updating password");
+  }
 });
+
 
 app.post("/editprofile/profileImg", async (req, res) => {
   const profileImg = req.body.profileImg;

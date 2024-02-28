@@ -1,4 +1,13 @@
 body{
     /* background-color: #2d033b !important; */
-    background-color: #2d033bf3 !important;
+    /* background-color: #2d033bf3 !important; */
+}
+
+#root{
+    background-color: aquamarine !important;
+    background-image: url('/public/images/space1.gif');
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
 }

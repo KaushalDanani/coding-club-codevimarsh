@@ -370,41 +370,31 @@ function EditUserProfile(props) {
     event.preventDefault();
   }
 
-  function savePassword(event) {
+  async function savePassword(event) {
+
+    event.preventDefault();
+
 
     const currentPwd = {
       'currentPassword': currentPass
     }
 
-    fetch('/check/current/password', {
+    const response = await fetch('/check/current/password', {
       method: 'POST',
       body: JSON.stringify(currentPwd),
       headers: {
         'Content-Type': 'application/json'
       }
     })
-      .then(response => response.json())
-      .then(data => {
-
+    const data=await response.json();  
+    
         setCurrPassMessage(data.message);
-        // alert("dfg");
-        // if (data.message !== undefined)
-        // {
-        //   setToastVisible(true);
-        //   setToastMessage(data.message);
-        //   setToastType("warning");
-        //   setTimeout(() => setToastVisible(false), 4000);
-        // }
-      })
-      .then(() => {
 
-        
-  
-     
+             
     if(currPassMessage !== "")
     {
       setToastVisible(true);
-          setToastMessage(currPassMessage);
+          setToastMessage("Wrong password");
           setToastType("warning");
           setTimeout(() => setToastVisible(false), 4000);
     }
@@ -440,7 +430,7 @@ function EditUserProfile(props) {
         'currentPassword': currentPass
       }
 
-      fetch('/editprofile/password', {
+      fetch(`/editprofile/password/?userID=${userID}`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -459,9 +449,7 @@ function EditUserProfile(props) {
           setConfirmNewPass("");
         })
     }
-  })
-
-    event.preventDefault();
+  
   }
 
   function toggleAddSkills(event) {
