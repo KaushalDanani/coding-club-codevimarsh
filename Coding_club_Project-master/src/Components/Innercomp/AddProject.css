@@ -9,19 +9,28 @@
     border-bottom: 3px solid #777;
 }
 
+.Addprojectmain{
+
+    /* width: 100vw;
+    background: white;
+    background-color: rgb(60, 8, 73); */
+    padding: 70px 0px;
+}
+
 .AddProject{
-    position: absolute;
-    width: 70vw;
+    /* position: absolute; */
+    width: 80vw;
     overflow: hidden;
-    margin-left: 15vw;
+    margin-left: 10vw;
     justify-content: center;
     background-color: #710ec9;
     color: white;
     /* padding: 20px; */
-    top: 30px;
-    display: none;
+    /* top: 30px; */
+    /* display: none; */
     border-radius: 20px;
-    z-index: 100;
+    /* margin-top: 70px;
+    margin-bottom: 70px; */
 }
 
 .AddProject h1{
@@ -89,26 +98,19 @@
 }
 
 .addproj_btn{
-    font-size: 2.3vh;
-    position: relative;
-    /* bottom:0px; */
-    height: fit-content;
-    width: fit-content;
+    border-radius: 35px;
+    padding: 5px 20px;
+    font-size: 1.2rem;
+    font-weight: 500;
+    background-color: transparent;
     color: white;
-    padding: 1.1vh 1.4vw;
-    /* border: 2px solid white; */
-    background-color: rgb(105, 19, 191);
-    align-self: flex-end;
-    border-radius: 10px;
-
+    border: 2px solid white;
+    cursor: pointer;
 }
 
 .addproj_btn:hover{
-    cursor: pointer;
-    color: #ffffff;
-    /* border: 2px solid white; */
-    background-color: #8e31ec;
-
+    color: black;
+    background-color: white;
 }
 
 
@@ -125,7 +127,7 @@
 }
 
 .btn:hover {
-    /* transform: translateY(-3px); */
+    transform: translateY(-3px);
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
 }
 
@@ -176,4 +178,15 @@
         opacity: 1;
         transform: translateY(0px);
     }
+}
+
+.projBackBtn{
+    position: absolute;
+    top: 1vh;
+    left: 1vw;
+    height: 6vh;
+    width: 6vw;
+    background: url('/public/images/back-btn-white.png');
+    background-repeat: no-repeat;
+    background-size: contain;
 }

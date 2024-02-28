@@ -388,10 +388,9 @@ function EditUserProfile(props) {
     })
     const data=await response.json();  
     
-        setCurrPassMessage(data.message);
-
+        //setCurrPassMessage(data.message);
              
-    if(currPassMessage !== "")
+    if(data.message !== "")
     {
       setToastVisible(true);
           setToastMessage("Wrong password");

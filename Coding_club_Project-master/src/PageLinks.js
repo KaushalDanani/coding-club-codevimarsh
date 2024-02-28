@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 //Soham Zadafiya
 import Contest_main from './Components/Contest components/Contest_main.js';
+import AddProject from './Components/Innercomp/AddProject.js';
 
 //Kaushal Danani
 import Sign_in_page from './Components/kaushal/Sign_in_page.js';
@@ -123,6 +124,7 @@ function PageLinks() {
                     <Route path='/discussion/question' element={<Question_data user={user}/>} />
                     <Route path='/discussion/question/addReply' element={<Give_answer />} />
                     <Route path='/project' element={<ProjectMain user={user}/>} />
+                    <Route path='/project/add_project' element={<AddProject />}/>
                     <Route path='/profile' element={<UserProfile user={user}/>} />
                     <Route path='/profile/edit_profile' element={<EditUserProfile user={user}/>} />
                     <Route path='/project_collab' element={<Project_Collabration />} />

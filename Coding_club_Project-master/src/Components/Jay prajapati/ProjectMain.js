@@ -60,7 +60,6 @@ export default function ProjectMain(props) {
             <h1 className="projectLib">Project Library</h1>
             <Filter_bar_Project />
 
-            <AddProject />
             {/* {cardGenerator(Projectinfo)} */}
             {/* {console.log("length: " + Projectinfo.length)} */}
             {

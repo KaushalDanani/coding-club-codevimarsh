@@ -2,6 +2,8 @@ import React from 'react'
 import { useState } from 'react';
 import './Filter_bar.css'
 import { addproject_open ,  } from '../Innercomp/AddProject.js';
+import { Link } from 'react-router-dom';
+
 // import {question_open} from '../Question_answer/Ask_Question';
 export default function Filter_bar() {
 
@@ -29,10 +31,10 @@ export default function Filter_bar() {
 			{/* <Ask_Question/> */}
 			{/* <button className="borderbutton">Add Yours</button> */}
 
-			<button className={changeImage ? 'ProjectDispBtn changeAddImage' : 'ProjectDispBtn'} 
+			<Link to={'/project/add_project'}><button className={changeImage ? 'ProjectDispBtn changeAddImage' : 'ProjectDispBtn'} 
           onMouseOut={() => setChangeImage(true)}
           onMouseOver={()=> setChangeImage(false)}
-		  onClick={addproject_open}> Add </button>
+		  > Add </button></Link>
 
         <hr style={{width: '95%', height: '2.5px', backgroundColor: 'white', marginLeft: '60px', marginBottom: '2.5vh'}}/>
 			{/* <div className="select1">

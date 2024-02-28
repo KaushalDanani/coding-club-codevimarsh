@@ -146,6 +146,8 @@ app.post("/addproject", async (req, res) => {
       if (userData) {
         memberDataArray.push(userData[0]._id);
       }
+
+      res.send({message : "Project uploaded successfully!"});
     } catch (error) {
       console.error(`Error fetching data for userID: ${memUsername}`, error);
       // Handle the error as needed
@@ -1187,6 +1189,8 @@ try {
 
   const currentPwd = req.body.currentPassword;
   const isSame = await bcrypt.compare(currentPwd, userDetail.password);
+  
+  console.log(isSame);
 
   if(!isSame)
     res.send({message: "Wrong Current Password..."});
