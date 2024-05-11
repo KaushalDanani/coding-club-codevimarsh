@@ -152,7 +152,7 @@ export default function AddBooks() {
                         <div className='buttonSection'>
                             <Link to={'/resources'}> <button className='addFormButton'> Cancel </button> </Link>
 
-                            <Link><button onClick={addMyBook} className="addFormButton">Submit</button></Link>
+                            <Link to={'/resources'}><button onClick={addMyBook} className="addFormButton">Submit</button></Link>
                         </div>
 
                     </form>

@@ -18,8 +18,8 @@ function Navbar_before_login() {
 
                     <ul className={mobileMenu ? "horizontal_bar" : "horizontal_bar mobile-menu-icon"}>
                         <li className={mobileMenu ? "liComponent" : "mobile-li"} id="home"><a href=""></a></li>
-                        <li className={mobileMenu ? "liComponent" : "mobile-li"} id="contact"><a href="https://mail.google.com/mail/?view=cm&to=sohamzadafiya@gmail.com" target="_blank" >CONTACT US</a></li>
-                        <li className={mobileMenu ? "liComponent" : "mobile-li"} id="about"> <LinkScroll to="AboutUS" style={{color: 'white'}} spy={true} smooth={true} offset={-10}> ABOUT US </LinkScroll> </li>
+                        <li className={mobileMenu ? "liComponent" : "mobile-li"} id="contact"><a href="https://mail.google.com/mail/?view=cm&to=codingclub-cse@msubaroda.ac.in" target="_blank" >CONTACT US</a></li>
+                        <li className={mobileMenu ? "liComponent" : "mobile-li"} id="about"> <LinkScroll to="AboutUS" style={{color: 'white'}} spy={true} smooth={true} offset={-85}> ABOUT US </LinkScroll> </li>
                     </ul>
                 </div>
 

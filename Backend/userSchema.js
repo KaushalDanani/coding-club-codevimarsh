@@ -120,7 +120,7 @@ userSchema.methods.generateAuthToken = async function() {
         return tk;
     } catch (err) {
         res.send("The error is "+err)
-        console.log(err)
+        // console.log(err)
     }
 }
 

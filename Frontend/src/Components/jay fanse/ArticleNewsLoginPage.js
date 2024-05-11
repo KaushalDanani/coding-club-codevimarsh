@@ -15,7 +15,7 @@ function ArticlesNewsLoginPage(props) {
   useEffect( ()=>{
     if(props.news!=null)
     {
-      setMoreNews(props.news.slice(0,3));
+      setMoreNews(props.news.slice(0,4));
     }
   },[props.news])
 
@@ -24,17 +24,17 @@ function ArticlesNewsLoginPage(props) {
   function AddContent(ContentItem){
     
     return <ArticleNewsMoreElement 
-    title = {ContentItem.title}
-    info = {ContentItem.content}
-    by = {ContentItem.author}
-    url={ContentItem.url}
-    img={ContentItem.urlToImage}
+      title = {ContentItem.title}
+      info = {ContentItem.content}
+      by = {ContentItem.author}
+      url={ContentItem.url}
+      img={ContentItem.urlToImage}
     />
   }
 
   return (
     <div className='ArticleNewsLoginPage'>
-        {console.log('more news ',moreNews)}
+        {/* {console.log('more news ',moreNews)} */}
         {moreNews.map(AddContent)}
 
     </div>

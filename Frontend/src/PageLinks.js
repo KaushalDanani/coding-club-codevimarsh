@@ -1,9 +1,10 @@
 import { React, useState, useEffect } from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import HashLoader from "react-spinners/HashLoader";
+import './PageLinks.css'
 
 //Soham Zadafiya
 import Contest_main from './Components/Contest components/Contest_main.js';
-import AddProject from './Components/Innercomp/AddProject.js';
 
 //Kaushal Danani
 import Sign_in_page from './Components/kaushal/Sign_in_page.js';
@@ -27,7 +28,7 @@ import UserProfile from './Components/jay fanse/UserProfile.js';
 import ResourcesHome from './Components/Jay prajapati/ResourcesHome.js';
 import Discussion_Forums from './Components/Jay prajapati/Discussion_Forums.js';
 import Question_data from './Components/Jay prajapati/Question_data.js';
-import ProjectMain from './Components/Jay prajapati/ProjectMain.js';
+import ProjectMain from './Components/Innercomp/ProjectMain.js';
 
 
 
@@ -43,6 +44,7 @@ import AddNotes from './Components/jay fanse/AddNotes.js';
 
 
 import useUser from './store/userContext.js';
+import AddProject from './Components/Innercomp/AddProject.js';
 function PageLinks() {
 
     const [isLoading, setIsLoading] = useState(false);
@@ -51,7 +53,6 @@ function PageLinks() {
     useEffect(() => {
         (async () => {
             try {
-
                 setIsLoading(true);
                 const response = await fetch("/home/user/dataset", {
                     method: "GET",
@@ -63,6 +64,7 @@ function PageLinks() {
                 setUser(data);
                 console.log('-----------------------------USER-------------------------', data);
                 setIsLoading(false);
+                
             }
             catch (err) {
                 console.error(err, err.response);
@@ -94,14 +96,24 @@ function PageLinks() {
     // }, []);
 
     if (isLoading)
-        return <h1>Loading</h1>
+        return <>
+            <div className='loadingPage'>
+            <HashLoader
+                color={'#ffffff'}
+                loading={isLoading}
+                // cssOverride={override}
+                size={70}
+                aria-label="Loading Spinner"
+                data-testid="loader"
+            />
+            </div>
+        </>
 
 
     return (
-        <div>
+        <>
             <Router>
                 <Routes>
-                    
                     <Route path='/' element={<Home_page_before_login user={user} />} />
                     <Route path='/home' element={<LoginHomePage />} />
                     <Route path='/signin' element={<Sign_in_page />} />
@@ -121,10 +133,10 @@ function PageLinks() {
 
                     <Route path='/discussion' element={<Discussion_Forums />} />
                     <Route path='/discussion/addQuestion' element={<Ask_Question />} />
-                    <Route path='/discussion/question' element={<Question_data user={user}/>} />
+                    <Route path='/discussion/question' element={<Question_data />} />
                     <Route path='/discussion/question/addReply' element={<Give_answer />} />
                     <Route path='/project' element={<ProjectMain user={user}/>} />
-                    <Route path='/project/add_project' element={<AddProject />}/>
+                    <Route path='/project/add_project' element={<AddProject />} />
                     <Route path='/profile' element={<UserProfile user={user}/>} />
                     <Route path='/profile/edit_profile' element={<EditUserProfile user={user}/>} />
                     <Route path='/project_collab' element={<Project_Collabration />} />
@@ -132,7 +144,7 @@ function PageLinks() {
                     <Route path='*' element={<NotFoundPage />} />
                 </Routes>
             </Router>
-        </div>
+        </>
     )
 }
 

@@ -1,8 +1,22 @@
+@font-face {
+    font-family: newFont;
+    src: url("/public/fonts/Cyborg\ Punk.ttf");
+}
+
 #heading{
-    font-size: 30px;
+    font-size: 1.7rem;
     color: white;
-    padding: 2vw 0 2vw 5vw ;
+    padding: 2.2rem 0;
+    font-family: newFont;
+    line-height: 2.5;
     /* margin-top: 5vw; */
+}
+
+.subject_header_line {
+    width: 91%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .addSub{
@@ -14,6 +28,7 @@
     color: white;
     padding: 1.1vh 1.4vw;
     border: none;
+    letter-spacing: 1px;
     background-color: rgb(105, 19, 191);
     align-self: flex-end;
     border-radius: 10px;
@@ -27,22 +42,33 @@
 }
 
 #addButton{
-    position: relative;
-    right: 5%;
+    /* position: relative; */
+    margin-bottom: 1rem;
 }
 
-/* #addButton input{
-    
-} */
+.res_card_container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
 #cardgrid{
-    display: grid ;
-    grid-template-columns: repeat(3,1fr);
-    gap:4vw 1.5vw;
+    width: 95%;
+    display: grid;
+    /* justify-content: center; */
+    /* justify-content: space-around; */
+    grid-template-columns: repeat(4,1fr);
+    gap: 3vw 5.5vw;
     padding: 3vw;
     padding-top: 0;
     flex-wrap: wrap;
-    justify-content: space-around;
+}
+
+@media (max-width: 1300px) {
+    #cardgrid{
+        grid-template-columns: repeat(3,1fr);
+    }
 }
 
 @media (max-width:900px){
@@ -53,6 +79,7 @@
 
 @media (max-width:600px){
     #cardgrid{
+        width: 78%;
         grid-template-columns: repeat(1,1fr);
     }
 }

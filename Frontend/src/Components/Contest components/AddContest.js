@@ -51,7 +51,7 @@ function AddContest() {
         setSolutionLink(e.target.value);
     }
 
-    function clearHandler() {
+    function clearHandler(){
         setCName("");
         setCType("");
         setStartDate("");

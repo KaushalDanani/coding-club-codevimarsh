@@ -18,9 +18,14 @@ function UserProfileSkillTagElement(props) {
   // // console.log(userSkillSet);
 
   const selectedTagStyle = {
-    backgroundColor : "rgb(226, 226, 226)",
+    backgroundColor : "rgb(255,139,22)",
     color: "black"
   }
+
+  // const notSelectedTagStyle = {
+  //   backgroundColor : "rgba(0,0,0,0.4)",
+  //   color: "white"
+  // }
 
   const toggleTagSelection = () => {
 
@@ -54,7 +59,7 @@ function UserProfileSkillTagElement(props) {
 
   return (
     <div className='UserProfileSkillTag'
-    style={isTagSelected ? selectedTagStyle :null}
+    style={isTagSelected ? selectedTagStyle : null}
     >
     <label htmlFor={props.id}
     

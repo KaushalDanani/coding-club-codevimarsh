@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import '../CSS/Home_page_before_login.css';
+import { Typewriter, Cursor } from 'react-simple-typewriter';
 import { Link, useNavigate } from 'react-router-dom';
 import '../../../App.css';
 import Myfooter from './Myfooter.js'
@@ -11,6 +12,7 @@ import News from './News.js';
 import ProjCollab from './ProjCollab.js';
 import Discussion from './Discussion.js';
 import Navbar_before_login from './Navbar_before_login.js';
+import TypeWriter from './TypeWriter.js';
 
 
 function Home_page_before_login(props) {
@@ -19,7 +21,6 @@ function Home_page_before_login(props) {
     const [quote, setQuote] = useState("");
     const [author, setAuthor] = useState("");
     const [displayedQuote, setDisplayedQuote] = useState("");
-    const [currentIndex, setCurrentIndex] = useState(0);
 
     useEffect(() => {
         fetch("https://api.quotable.io/random")
@@ -41,40 +42,47 @@ function Home_page_before_login(props) {
                     setQuote(quote.content);
                     setAuthor(quote.author);
                     setDisplayedQuote("");
-                    setCurrentIndex(0);
                 })
     }
 
     return (
-
         
             (props.user) ? (
             <>
                 {navigate("/home")}
                 {/* {window.location.reload()} */}
             </>
-        ) : (
-
-
-
+            ) : (
             <>
                 <Navbar_before_login />
                 <div style={{ display: 'flex' }}>
                     <div className='welcomeContainer'>
-                        <div>
-                            <h2 className="welcomeToCode">Welcome to <br /><span> Coding Club,<br></br>MSU... </span> </h2>
+                        <div className='typewriterContainer'>
+                            {/* <h2 className="welcomeToCode">Welcome to <span> Coding Club,<br></br>MSU... </span> </h2> */}
+                            <span className='welcomeToCode'>
+                                <Typewriter 
+                                   words={["Welcome to Coding Club, MSU...", "Welcome to Code-Vimarsh...", "Let's grow together in coding...!"]}
+                                   loop={true}
+                                   cursor
+                                   cursorStyle='</>'
+                                   cursorBlinking={false}
+                                   typeSpeed={150}
+                                   deleteSpeed={100} 
+                                /> 
+                            </span>
+                            {/* <TypeWriter /> */}
                             <h4 className="oneLiner">Start your coding journey with codeMinions by joining us...</h4>
                             <Link to={'signin'}> <input type="button" value="Get Started" className="get_start" /> </Link>
                         </div>
                         <div className='newDesign'>
                             <ul className='designUL'>
-                                <li className='newLi'>
+                                {/* <li className='newLi'>
                                     <a href='https://react.dev/' target='_blank' onclick="kevin()">
                                         <span className='designSpan'></span>
                                         <span className='designSpan'></span>
                                         <span className='designSpan'></span>
                                         <span className='designSpan'></span>
-                                        <span> <a href='https://react.dev/' target='_blank'> <img src='/images/logo192.png'
+                                        <span> <a href='https://react.dev/' target='_blank'> <img src='/images/reactLogo.png'
                                             height="44px" width="44px"
                                         ></img> </a> </span>
                                     </a>
@@ -90,7 +98,7 @@ function Home_page_before_login(props) {
                                             height="44px" width="44px"
                                         ></img> </a> </span>
                                     </a>
-                                </li>
+                                </li> */}
 
                                 <li className='newLi'>
                                     <a href="https://www.geeksforgeeks.org/" onclick="kevin()" target='_blank'>
@@ -98,7 +106,7 @@ function Home_page_before_login(props) {
                                         <span className='designSpan'></span>
                                         <span className='designSpan'></span>
                                         <span className='designSpan'></span>
-                                        <span> <a href='https://www.geeksforgeeks.org/' target='_blank'> <img src='/images/geeksforgeeks.png' height="44px" width="44px"></img> </a> </span>
+                                        <span> <a href='https://www.geeksforgeeks.org/' target='_blank'> <img src='/images/geeksforgeeksLogo.svg' height="44px" width="44px"></img> </a> </span>
                                     </a>
                                 </li>
 
@@ -108,7 +116,7 @@ function Home_page_before_login(props) {
                                         <span className='designSpan'></span>
                                         <span className='designSpan'></span>
                                         <span className='designSpan'></span>
-                                        <span> <a href='https://www.w3schools.com/' target='_blank'> <img src='/images/W3Schools.png' height="44px" width="44px"></img> </a> </span>
+                                        <span> <a href='https://www.w3schools.com/' target='_blank'> <img src='/images/w3schoolsLogo.png' height="44px" width="44px"></img> </a> </span>
                                     </a>
                                 </li>
 
@@ -118,7 +126,7 @@ function Home_page_before_login(props) {
                                         <span className='designSpan'></span>
                                         <span className='designSpan'></span>
                                         <span className='designSpan'></span>
-                                        <span> <a href='https://leetcode.com/' target='_blank'> <img src='/images/leetcode_logo.webp' height="44px" width="44px"></img> </a> </span>
+                                        <span> <a href='https://leetcode.com/' target='_blank'> <img src='/images/leetcodeLogo.png' height="44px" width="44px"></img> </a> </span>
                                     </a>
                                 </li>
 
@@ -153,15 +161,14 @@ function Home_page_before_login(props) {
                 </div>
 
                 <Resources />
-                <News />
                 <Projects />
                 <ProjCollab />
                 <Discussion />
-                <div className='founderinfo'>
+                <div className='founderinfo' id="AboutUS">
                     <h1 className='foundercardline'>
                         The Founders Of CodeMinions
                     </h1>
-                    <div className="founderGrid" id="AboutUS">
+                    <div className="founderGrid">
                         {founderinfo.map(function Founderinfocard(element) {
                             return (
                                 <Foundercard key={element.id} name={element.name} post={element.post} image={element.image}></Foundercard>

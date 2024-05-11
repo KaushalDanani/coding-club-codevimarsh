@@ -41,8 +41,9 @@
     color: black;
     font-weight: 500;
     width: 100%;
+    margin-top: 0.4rem;
     /* font-size: 2.5rem; */
-    font-size: 3.5vh;
+    font-size: 1.7rem;
 }
 
 .ArticleNewsLatestElementInfo{
@@ -50,11 +51,11 @@
     /* border: 2px solid lime; */
     /* background-image: linear-gradient(gray 40%,white); */
     color: black;
-    margin-top: 30px;
-    height: 9vh;
+    margin-top: 1rem;
+    height: 7vh;
     /* width: 100%; */
     /* font-size: 1.5rem; */
-    font-size: 2vh;
+    font-size: 1rem;
     text-align: justify;
     overflow: hidden;
 }
@@ -87,8 +88,10 @@
 
 .ArticleImgDiv{
     display: flex;
-    height: 34vh;
-    width: 52vw;
+    height: 33vh;
+    width: 45vw;
+    /* height: 75%; */
+    /* width: 70%; */
     /* margin-bottom: 20px; */
     /* justify-content: center; */
 }

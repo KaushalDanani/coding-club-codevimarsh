@@ -18,6 +18,7 @@
     background-color: rgb(105, 19, 191);
     box-shadow: 0px 0px 40px 8px black;
     border: 1px solid white;
+    overflow: hidden;
 }
 
 @font-face {
@@ -31,6 +32,7 @@
     float: right;
     border-top-right-radius: 20px;
     border-bottom-right-radius: 20px;
+    box-shadow: 0 0 20px black;
 }
 
 /* .projectTitle {
@@ -45,8 +47,8 @@
 .projectTitle {
     position: relative;
     top: 10vh;
-    left: 1.5vw;
-    font-size: 5vh;
+    left: 1.2vw;
+    font-size: 4.8vh;
     letter-spacing: 1px;
     color: rgb(255, 255, 255);
     font-family: projectCollabrationFont;

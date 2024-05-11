@@ -11,29 +11,30 @@
     display: flex;
     column-gap: 5vw;
     font-family: 'Poppins', sans-serif;
-    border-top-right-radius: 80px;
-    border-bottom-right-radius: 80px;
+    border-top-left-radius: 80px;
+    border-bottom-left-radius: 80px;
     margin-bottom: 5%;
-    margin-right: 25%;
+    margin-left: 25%;
     padding: 2vh 0vh;
 }
 
 
 .image{
     height: 95%;
-    width: 40%;
-    margin: 1%;
+    width: 50%;
+    /* margin: 1%; */
 }
 
 .projcollab img{
-    margin-left: 10%;
-    width: 100%;
-    height: 100%;
+    margin-left: 20%;
+    /* margin-top: 2%; */
+    width: 90%;
+    height: 90%;
 }
 
 .PCdiscription {
     width: 50vw;  
-    padding: 12% 0% 10% 8%; 
+    padding: 10% 0% 8% 3%; 
     /* padding-left: 10%; */
 }
 

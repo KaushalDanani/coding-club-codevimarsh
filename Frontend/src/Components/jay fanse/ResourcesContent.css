@@ -1,3 +1,8 @@
+@font-face {
+  font-family: myFont;
+  src: url("/public/fonts/Cyborg\ Punk.ttf");
+}
+
   ::selection {
     background: rgba(110, 0, 244, 0.5);
     color: #FFF;
@@ -44,11 +49,13 @@
 
   .ResourcesContentTopic {
     /* border: 2px solid orchid; */
-    font-size: 2.2rem;
+    font-size: 1.7rem;
     font-weight: 500;
-    height: 15%;
-    margin-bottom: 20px;
-    color: rgba(255, 255, 255, 0.7);
+    /* height: 15%; */
+    margin-bottom: 2%;
+    /* font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; */
+    /* font-family: myFont; */
+    color: rgba(255, 255, 255);
   }
 
   .ResourcesContentMain input {

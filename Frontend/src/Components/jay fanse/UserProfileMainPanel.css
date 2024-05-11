@@ -25,7 +25,9 @@
     display: flex;
     flex-direction: column;
     /* border: 2px solid purple; */
-    background-color: rgb(105, 19, 191);
+    backdrop-filter: blur(2px);
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 1.25px solid rgb(193, 193, 193);
     border-radius: 25px;
     padding: 10px 20px;
 }
@@ -74,7 +76,7 @@
     width: 30px;
 }
 .UPBioInfo a{
-    color: rgb(0, 238, 255);
+    color: rgb(255,139,22);
 }
 
 .UPBioInfo a:hover{
@@ -85,7 +87,9 @@
     display: flex;
     flex-direction: column;
     /* border: 2px solid firebrick; */
-    background-color: rgb(105, 19, 191);
+    backdrop-filter: blur(2px);
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 1.25px solid rgb(193, 193, 193);
     border-radius: 25px;
     padding: 10px 20px;
 }
@@ -93,7 +97,9 @@
 .UPMainActivity{
     /* border: 2px solid black; */
     margin-top: 20px;
-    background-color: rgb(105, 19, 191);
+    backdrop-filter: blur(2px);
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 1.25px solid rgb(193, 193, 193);
     border-radius: 25px;
     padding: 10px 20px;
 }

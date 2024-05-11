@@ -30,9 +30,9 @@ function ResourcesContent(props) {
     }
 
 
-
     const subjectRes = location.state.resources[0];
     const sub_id = subjectRes._id;
+    const subject = subjectRes.subject;
     // const { filteredData } = useContext(DataContext);
 
     const books = subjectRes.books;
@@ -51,7 +51,7 @@ function ResourcesContent(props) {
         <>
             <Navbar_after_login/>
             <div className="ResourcesContentFrame">
-                <div className="ResourcesContentTopic">Get all your requirements at just one click!</div>
+                <div className="ResourcesContentTopic">Resources for {subject}</div>
                 <div className="ResourcesContentMain">
                     <input type="radio" name="slider" id="books" onClick={() => {
                         changeType("books");

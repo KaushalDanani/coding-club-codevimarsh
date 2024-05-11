@@ -19,6 +19,23 @@ function Navbar_after_login(props) {
         });
     },[])
 
+    function removeUserAuth() {
+        (async () => {
+    
+          await fetch('/remove/user/auth', {
+            method: "GET",
+            headers: {
+              'Content-Type': 'application/json'
+            }
+          })
+            .then(response => response.json())
+            .then(data => {
+              // window.location.reload();
+            });
+          // window.location.reload();
+          // window.location.reload();
+        })()
+      }
 
     // const userID= props.userID;
     const [mobileMenu, setMobileMenu] = useState('false');
@@ -35,19 +52,21 @@ function Navbar_after_login(props) {
                     
                     <ul className={mobileMenu ? "horizontal_bar" : "horizontal_bar mobile-menu-icon"}>
                         <li className={mobileMenu ? "liComponent" : "mobile-li"} id="home"><Link to={`/home`}></Link></li>
-                        <li className={mobileMenu ? "liComponent" : "mobile-li"} id="contact"><Link to={`/contest`}>CONTEST</Link></li>
-                        <li className={mobileMenu ? "liComponent" : "mobile-li"} id="contact"><Link to={`/resources`}>RESOURCES</Link></li>
-                        {/* <li className={mobileMenu ? "liComponent" : "mobile-li"} id="contact"><Link to={`/article&news`}>ARTICLES/NEWS</Link></li> */}
-                        <li className={mobileMenu ? "liComponent" : "mobile-li"} id="contact"><Link to={`/discussion`}>DISCUSSION</Link></li>
-                        <li className={mobileMenu ? "liComponent" : "mobile-li"} id="contact"><Link to={`/project_collab`}>PROJECT COLLABORATION</Link></li>
-                        <li className={mobileMenu ? "liComponent" : "mobile-li"} id="contact"><Link to={`/project`}>PROJECTS</Link></li>
+                        <li className={mobileMenu ? "liComponent" : "mobile-li"} id="contest"><Link to={`/contest`}>CONTEST</Link></li>
+                        <li className={mobileMenu ? "liComponent" : "mobile-li"} id="resources"><Link to={`/resources`}>RESOURCES</Link></li>
+                        {/* <li className={mobileMenu ? "liComponent" : "mobile-li"} id="articles/news"><Link to={`/article&news`}>ARTICLES/NEWS</Link></li> */}
+                        <li className={mobileMenu ? "liComponent" : "mobile-li"} id="discussion"><Link to={`/discussion`}>DISCUSSION</Link></li>
+                        <li className={mobileMenu ? "liComponent" : "mobile-li"} id="project_collaboration"><Link to={`/project_collab`}>PROJECT COLLABORATION</Link></li>
+                        <li className={mobileMenu ? "liComponent" : "mobile-li"} id="projects"><Link to={`/project`}>PROJECTS</Link></li>
                         {/* <li className={mobileMenu ? "liComponent" : "mobile-li"} id="contact"><Link>CONTACT US</Link></li> */}
                     </ul>
                     <ul className={mobileMenu ? "horizontal_bar" : "horizontal_bar mobile-menu-icon"}>
-                        <li className={mobileMenu ? "liComponent2" : "mobile-li"} id="profile"><Link to={`/profile`}>
-                            {/* <img src=''     */}
-                            <div className='loginDP'> <img src={base64Img}></img> </div>
-                        </Link></li>  
+                        <li className={mobileMenu ? "liComponent2" : "mobile-li"} id="profile">
+                            <Link to={`/profile`}><div className='loginDP' title='Profile'> <img src={base64Img}></img> </div></Link>
+                        </li>
+                        <li className={mobileMenu ? "liComponent2" : "mobile-li"} id='profile'>
+                            <Link to={`/`}> <div className='logoutNavbar' title='Logout' onClick={removeUserAuth}> </div> </Link>
+                        </li>
                     </ul>
                 </div>
 

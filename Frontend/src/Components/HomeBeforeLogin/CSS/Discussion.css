@@ -11,36 +11,38 @@
     display: flex;
     column-gap: 5vw;
     font-family: 'Poppins', sans-serif;
-    border-top-left-radius: 80px;
-    border-bottom-left-radius: 80px;
+    border-top-right-radius: 80px;
+    border-bottom-right-radius: 80px;
     margin-bottom: 5%;
-    margin-left: 25%;
+    margin-right: 25%;
     padding: 2vh 0vh;
 }
 
 
 .discussion .image{
     height: 95%;
-    width: 60%;
+    width: 48%;
     /* border: 2px solid black; */
-    margin: auto 0%;
-    margin-left: 10%;
+    /* margin: auto 0%;
+    margin-left: 10%; */
 }
 
 .discussion img{
     /* border: 2px solid red; */
-    margin: 10% 0%;
-    width: 100%;
-    height: 100%;
+    margin-left: 16%;
+    margin-top: 8%;
+    width: 80%;
+    height: 90%;
 }
 
 .Ddiscription {
-    width: 50vw;  
-    /* padding: 4% 0% 4% 0%;  */
+    width: 30vw;
+    word-wrap: break-word; 
+    padding: 8% 0% 8% 0%; 
     /* padding-left: 10%; */
-    display: flex;
+    /* display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: center; */
 
 }
 

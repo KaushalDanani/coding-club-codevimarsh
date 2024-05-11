@@ -23,24 +23,28 @@
     
     /* border: 2px solid black; */
     height: 95%;
-    width: 50%;
+    width: 45%;
     /* margin: 1%; */
-    display: flex;
-    justify-content: center;
+    /* display: flex;
+    justify-content: center; */
 }
 
 .resources img{
 
     /* padding: 5%; */
+    margin-left: 18%;
     width: 80%;
-    height: 90%;
+    height: 80%;
 }
 
 .description {
-    display: flex;
+    /* display: flex;
     flex-direction: column;
-    justify-content: center;
-    padding: 5%;
+    justify-content: center; */
+    width: 37vw;
+    box-sizing: border-box;
+    word-wrap: break-word;
+    padding: 8% 0% 8% 5%; 
     /* border: 2px solid red; */
 }
 

@@ -7,8 +7,10 @@
     justify-content: center;
     border: 2px solid black;
     border-radius: 20px;
-    background-color: rgba(0, 0, 0, 0.3);
+    background-color: rgb(255,139,22);
     display: flex;
+    color: black;
+    font-weight: 500;
     /* flex-grow: 2; */
 }
 

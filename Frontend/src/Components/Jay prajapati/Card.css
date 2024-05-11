@@ -2,21 +2,26 @@
     display: flex;
 }
 .card{
-    color: black;
+    color: rgb(230, 230, 230);
     margin: auto;
-    background-color: #e5dce8;
-    border: 3px solid rgb(72, 69, 72);
+    backdrop-filter: blur(3px);
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 2px solid rgb(230, 230, 230);
     border-radius: 1vw;
     box-shadow: 0px 0px 25px black;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    height: 26vh;
-    width: 24vw;
+    height: 94%;
+    width: 100%;
 }
 .card:hover{
     margin: auto;
-    /* height: 28vh;
-    width: 25vw; */
+    filter: brightness(2.3);
+    color: rgb(255, 255, 255);
     transform: scale3d(1.02,1.02,1.02);
+}
+
+.card:hover .lg {
+    filter: brightness(0.57);
 }
 
 .cardDesc{
@@ -31,7 +36,7 @@
     margin: 3vh;
 }
 #imgcont{
-    margin-left: 3vw;
+    margin-left: 2rem;
 }
 #details{
     margin: 3vh;
@@ -43,16 +48,31 @@ a{
     color: aliceblue;
 }
 .lg{
-    height: 6vw;
-    width: 6vw;
+    height: 5.5vw;
+    width: 5.5vw;
     border: 1px solid white;
     border-radius: 1vw;
-    background-color: rgb(105, 19, 191);
-    box-shadow: 0px 0px 25px black;
+    background-color: rgb(225, 225, 225);
+    /* box-shadow: 0px 0px 25px black; */
     padding: 0.5vw;
     position: absolute;
-    top: 7vh;
+    top: 5.6vh;
     left: -3vw;
+}
+
+@media (max-width: 1300px) {
+    .card{
+        /* height: 34.5vh; */
+        width: 24vw;
+        border-radius: 3vw;
+    }
+    .lg{
+        height: 7vw;
+        width: 7vw;
+        top: 3rem;
+        left: -7vh;
+        border-radius: 2vh;
+    }
 }
 
 @media (max-width:900px){
@@ -62,20 +82,22 @@ a{
     }
     #topic{
         /* font-size: 2rem; */
-        font-size: 10vw;
+        font-size: 4.5vh !important;
     }
     .card{
-        height: 28vh;
+        /* height: 31vh; */
         width: 35vw;
         border-radius: 3vw;
     }
     .card:hover{
-        height: 28vh;
+        /* height: 28vh; */
         width: 35vw;
     }
     .lg{
-        height: 9vw;
-        width:  9vw;
+        height: 10vw;
+        width: 10vw;
+        top: 8.4vh;
+        left: -6vh;
         border-radius: 2vh;
     }
 }
@@ -85,18 +107,16 @@ a{
         font-size: 1.8rem;
     }
     #topic{
-        
+        font-size: 3.5vh !important;
     }
     .card{
-        height: 28vh;
-        width: 55vw;
-    }
-    .card:hover{
-        height: 28vh;
-        width: 55vw;
+        /* height: 19vh; */
+        width: 90%;
     }
     .lg{
-        height: 10vw;
-        width:  10vw;
+        height: 6rem;
+        width:  6rem;
+        top: 5vh;
+        left: -3.2rem;
     }
 }

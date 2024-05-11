@@ -6,6 +6,7 @@ import Navbar_after_login from "../kaushal/Navbar_after_login.js";
 import MyfooterAfterLogin from "../MyfooterAfterLogin.js";
 import useUser, { UserProvider } from "../../store/userContext.js";
 import { useLocation, useNavigate } from "react-router-dom";
+import HashLoader from "react-spinners/HashLoader.js";
 
 function UserProfile(props) {
 
@@ -20,44 +21,61 @@ function UserProfile(props) {
     }
   },[props.user])
 
-const searchParams = new URLSearchParams(location.search);
+  const searchParams = new URLSearchParams(location.search);
   // const userID = user._id;
    
+  const [isLoadingProfile, setIsLoadingProfile] = useState(false);
   const visitID = searchParams.get('visitID');
-  console.log('visit',visitID);
+  // console.log('visit',visitID);
 
   const [searchValue, setSearchValue] = useState("");
   const [userData,setUserData] = useState([]);
 
   useEffect( () => {
 
-    {visitID===null || visitID===userID ? 
-    fetch(`/profile/user/?userID=${userID}`)
-    .then(
-      response => response.json()
-    )
-    .then(
-      data => {
-        setUserData(data[0]);
+    (async () => {
+      setIsLoadingProfile(true);
+      try {
+        if(visitID===null || visitID===userID)
+        {
+          const response = await fetch(`/profile/user/?userID=${userID}`)
+          const data = await response.json();
+          setUserData(data[0]);
+        }
+        else
+        {
+          const response = await fetch(`/profile/user/?userID=${visitID}`)
+          const data = await response.json();
+          setUserData(data[0]);
+        }
       }
-    )
-    :
-    fetch(`/profile/user/?userID=${visitID}`)
-    .then(
-      response => response.json()
-    )
-    .then(
-      data => {
-        setUserData(data[0]);
+      catch(err)
+      {
+        console.error(err, err.response);
       }
-    )
-    }
-  },[visitID,userID])
+      setIsLoadingProfile(false);
+    })();
+  },[visitID,userID]);
 
 
   function changeSearchValue(event) {
     setSearchValue(event.target.value);
   }
+
+  if (isLoadingProfile)
+    return <>
+      {/* <Navbar_after_login /> */}
+      <div className='loadingPage'>
+        <HashLoader
+            color={'#ffffff'}
+            loading={isLoadingProfile}
+            // cssOverride={override}
+            size={70}
+            aria-label="Loading Spinner"
+            data-testid="loader"
+        />
+      </div>
+    </>
 
   return (
     <>

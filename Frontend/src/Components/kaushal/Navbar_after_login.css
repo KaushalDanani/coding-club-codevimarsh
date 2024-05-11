@@ -13,21 +13,38 @@
     justify-content: space-between;
 }
 
+.liComponent2 {
+    padding-left: 0%;
+    padding-right: 0%;
+}
+
 .loginDP {
-    width: 3vw;
+    width: 2.95vw;
     position: relative;
     /* height: 6.5vh; */
-    aspect-ratio: 1/1;
     margin-top: 0.5vh;
-    margin-right: 0.85vw;
+    /* margin-right: 0.85vw; */
     border-radius: 100%;
-    background-color: transparent;
-    box-shadow: 0 0 50px black;
     overflow: hidden;
 }
 
 .loginDP img{
     width: 100%;
+}
+
+.logoutNavbar {
+    width: 2.5vw;
+    height: 75px;
+    margin: 0vh 0.3rem 0vh -0.7rem;
+    /* margin-top: 2.2vh;
+    margin-right: 1.1rem; */
+    background-color: transparent;
+    /* overflow: hidden; */
+    background-image: url(/public/images/logout.png);
+    /* background-position: 50% 45%; */
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
 }
 
 #id:hover{

@@ -11,6 +11,7 @@ import { useLocation } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { Button } from "react-scroll";
 import ToastComponent from "./toastComponent.js";
+import HashLoader from "react-spinners/HashLoader.js";
 
 function EditUserProfile(props) {
   const location = useLocation();
@@ -37,7 +38,7 @@ function EditUserProfile(props) {
   // const userID = searchParams.get('userID');
 
   // const userID = user._id;
-
+  const [isLoadingEditProfile, setIsLoadingEditProfile] = useState(false);
   const [userData, setUserData] = useState([]);
   const [base64Img, setBase64Img] = useState("");
   const [fname, setFname] = useState("");
@@ -91,34 +92,37 @@ function EditUserProfile(props) {
       x.type = 'password';
   }
 
-
   useEffect(() => {
-    fetch(`/profile/user/?userID=${userID}`)
-      .then(
-        response => response.json()
-      )
-      .then(
-        data => {
-          setUserData(data[0]);
-          setBase64Img(`data:image/png;base64,${data[0].profileImg}`);
-          setFname(data[0].fname);
-          setLname(data[0].lname);
-          setAbout(data[0].about);
-          setLinkedin(data[0].linkedIn);
-          setLeetcode(data[0].leetcode);
-          setCodechef(data[0].codechef);
-          setProgramme(data[0].programme);
-          setDepartment(data[0].department);
-          setYear(data[0].year);
-          setUserSkills(data[0].skills);
-          setSelectedTags(data[0].skills);
-          setUsername(data[0].username);
-          setUsernameTitle(data[0].username);
-          setEmail(data[0].email);
 
-          console.log(base64Img);
-        }
-      )
+    (async () => {
+      setIsLoadingEditProfile(true);
+      try {
+        const response = await fetch(`/profile/user/?userID=${userID}`)
+        const data = await response.json();
+        setUserData(data[0]);
+        setBase64Img(`data:image/png;base64,${data[0].profileImg}`);
+        setFname(data[0].fname);
+        setLname(data[0].lname);
+        setAbout(data[0].about);
+        setLinkedin(data[0].linkedIn);
+        setLeetcode(data[0].leetcode);
+        setCodechef(data[0].codechef);
+        setProgramme(data[0].programme);
+        setDepartment(data[0].department);
+        setYear(data[0].year);
+        setUserSkills(data[0].skills);
+        setSelectedTags(data[0].skills);
+        setUsername(data[0].username);
+        setUsernameTitle(data[0].username);
+        setEmail(data[0].email);
+      }
+      catch(err)
+      {
+        console.error(err, err.response);
+      }
+
+      setIsLoadingEditProfile(false);
+    })();
   }, [userID])
 
 
@@ -171,7 +175,9 @@ function EditUserProfile(props) {
   };
 
   const EditSelectionStyle = {
-    backgroundColor: "rgb(101, 5, 150)",
+    backgroundColor: "rgb(253,138,22)",
+    color: "black",
+    fontWeight: 500
   };
 
 
@@ -261,7 +267,6 @@ function EditUserProfile(props) {
       />
     );
   }
-
   function onSelection(name) {
     setSelectedTags(prev => {
       if (prev.includes(name)) {
@@ -285,8 +290,7 @@ function EditUserProfile(props) {
     })
       .then(response => response.json())
       .then(data => {
-        // console.log('Success:', data);
-        
+        console.log('Success:', data);
       })
       .catch((error) => {
         console.error('Error:', error);
@@ -520,14 +524,26 @@ function EditUserProfile(props) {
 
   // const base64Img = ;
 
+ 
+  if (isLoadingEditProfile)
+    return <>
+      {/* <Navbar_after_login /> */}
+      <div className='loadingPage'>
+        <HashLoader
+            color={'#ffffff'}
+            loading={isLoadingEditProfile}
+            // cssOverride={override}
+            size={70}
+            aria-label="Loading Spinner"
+            data-testid="loader"
+        />
+      </div>
+    </>
+
   return (
-
-    <>
-                {toastVisible ? <ToastComponent message={toastMessage} type={toastType} /> : null}
-
     <div className="EditUserProfile">
-      
-      {toastVisible ? <ToastComponent message={toastMessage} type={toastType} /> : null}
+    {toastVisible ? <ToastComponent message={toastMessage} type={toastType} /> : null}
+
       <Link to={'/profile'}> <div className="EditUserProfileBack"> </div> </Link>
       <div className="EditProfilePhotoPanel">
         <div
@@ -782,7 +798,7 @@ function EditUserProfile(props) {
                 <span>Current Password</span>
                 <span>:</span>
                 <div id="pwd_icon" className={showhide ? "show_pwd_edit_profile" : "hide_pwd_edit_profile"} onClick={currentPasswordVisibilityHandler}></div>
-                <input type="password" value={currentPass} id="editprofile_currentpass" onChange={changeCurrentPass} placeholder="Enter current password" />
+                <input type="password" value={currentPass} id="editprofile_currentpass" onChange={changeCurrentPass} onBlur={checkCurrentPassword} placeholder="Enter current password" />
                 <span>New Password</span>
                 <span>:</span>
                 <div id="confirmPwd_icon" className={showhideforconfirm ? "show_pwd_edit_profile" : "hide_pwd_edit_profile"} onClick={confirmPasswordVisibilityHandler} />
@@ -800,7 +816,6 @@ function EditUserProfile(props) {
         </div>
       </div>
     </div>
-    </>
   );
 }
 

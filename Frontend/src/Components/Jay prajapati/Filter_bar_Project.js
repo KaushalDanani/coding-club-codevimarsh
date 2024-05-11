@@ -36,7 +36,7 @@ export default function Filter_bar() {
           onMouseOver={()=> setChangeImage(false)}
 		  > Add </button></Link>
 
-        <hr style={{width: '95%', height: '2.5px', backgroundColor: 'white', marginLeft: '60px', marginBottom: '2.5vh'}}/>
+        {/* <hr style={{width: '95%', height: '2.5px', backgroundColor: 'white', marginLeft: '60px', marginBottom: '2.5vh'}}/> */}
 			{/* <div className="select1">
 				<p>
 					<button id="art" className="borderbutton" type="button" data-bs-toggle="collapse"

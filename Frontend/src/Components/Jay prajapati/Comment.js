@@ -80,36 +80,36 @@ export default function Comment(props) {
 
             </button> */}
 
-                <div id='commenter'>
-                    <a href={`../profile?visitID=${props.commenter_id}`}><div id='pfp_div'><img src={`data:Image/jpeg;base64,${props.pfp}`} alt="" id='pfpic' /></div></a>
-                    <div id='commenter_id'><a href={`../profile?visitID=${props.commenter_id}`}>{props.commenter}</a>
-                        <button
-                            className='deleteRep'
-                            id={props._id}
-                            onClick={() => deleteRep(props._id)}
-                            style={{ display: (delCheck ? 'block' : 'none') }}
-                        ></button>
-                    </div>
-                </div>
-                <div id="com_div">
-                    {props.comment}
-                </div>
-                <div className={(props.code == "" || props.code == null) ? 'noSnippet' : 'snippet'}>
-                    <pre>
-                        {props.code}
-                    </pre>
-                </div>
-                <div id='feed_bar'>
-                    <div id='upvote_div'>
-                        <Upvote value={props.value} Id={props._id} type='r' count={props.up_count} user={props.userID} />
-                        {/* {props.up_count} */}
-                    </div>
-
-                    <div id='date_div'>
-                        {qDate}
-                    </div>
+            <div id='commenter'>
+                <a href={`../profile?visitID=${props.commenter_id}`}><div id='pfp_div'><img src={`data:Image/jpeg;base64,${props.pfp}`} alt="" id='pfpic' /></div></a>
+                <div id='commenter_id'><a href={`../profile?visitID=${props.commenter_id}`}>{props.commenter}</a>
+                    <button
+                        className='deleteRep'
+                        id={props._id}
+                        onClick={() => deleteRep(props._id)}
+                        style={{ display: (delCheck ? 'block' : 'none') }}
+                    ></button>
                 </div>
             </div>
-        </>
-    )
+            <div id="com_div">
+                {props.comment}
+            </div>
+            <div className={(props.code == "" || props.code == null) ? 'noSnippet' : 'snippet'}>
+                <pre>
+                    {props.code}
+                </pre>
+            </div>
+            <div id='feed_bar'>
+                <div id='upvote_div'>
+                    <Upvote value={props.value} Id={props._id} type='r' count={props.up_count} user={props.userID} />
+                    {/* {props.up_count} */}
+                </div>
+
+                <div id='date_div'>
+                    {qDate}
+                </div>
+            </div>
+        </div>
+    </>
+    );
 }

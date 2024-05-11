@@ -33,7 +33,6 @@ const Contest = mongoose.model(
     // time : String
   })
 );
-//usersignup
 app.get("/contest/past", (req, res) => {
   Contest.find({})
     .then((contestinfo) => {
@@ -123,7 +122,7 @@ const Project = mongoose.model(
   })
 );
 
-app.get("/project", (req, res) => {
+app.post("/project", (req, res) => {
   Project.find({})
     .then((projectinfo) => {
       res.send(projectinfo);
@@ -182,84 +181,6 @@ const imageBuffer = fs.readFileSync(
 );
 const base64Image = imageBuffer.toString("base64");
 
-// const User = mongoose.model(
-//   "user",
-//   new mongoose.Schema({
-//     // fname: String,
-//     // lname: String,
-//     // username: String,
-//     // linkedIn: String,
-//     // leetcode : String,
-//     // codechef : String,
-//     // programme: String,
-//     // department: String,
-//     // year: Number,
-//     // email: String,
-//     // password: String,
-//     profileImg: {
-//       type: String,
-//       default: base64Image,
-//     },
-//     about: String,
-//     skills: [],
-//     questionUpvotes: [ObjectId],
-//     repliesUpvotes: [ObjectId],
-
-//     email: {
-//       type: String,
-//       required: true,
-//       lowercase: true,
-//       unique: true,
-//       // match: [/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/, 'Please fill a valid email address']
-//     },
-//     username: {
-//       type: String,
-//       required: true,
-//       lowercase: true,
-//       unique: true,
-//     },
-//     password: {
-//       type: String,
-//       required: true,
-//       // minLength: 8
-//     },
-//     fname: {
-//       type: String,
-//       required: true,
-//       uppercase: true,
-//     },
-//     lname: {
-//       type: String,
-//       required: true,
-//       uppercase: true,
-//     },
-//     year: {
-//       type: String,
-//       required: true,
-//     },
-//     programme: {
-//       type: String,
-//       required: true,
-//     },
-//     department: {
-//       type: String,
-//       required: true,
-//     },
-//     linkedIn: {
-//       type: String,
-//     },
-//     codechef: {
-//       type: String,
-//     },
-//     leetcode: {
-//       type: String,
-//     },
-//     isAdmin: {
-//       type: Boolean,
-//     }
-//   })
-// );
-
 app.get(`/projectDisplay/userData/`, async (req, res) => {
   try {
     const userID = req.query.userID;
@@ -288,13 +209,13 @@ app.post("/findusername", jsonParser, function (req, res) {
   User.find({ _id: req.body.userID })
     .then((userinfo) => {
       if (userinfo.length > 0) {
-        // // console.log(userinfo[0].username);
+        // // // console.log(userinfo[0].username);
         res.send(userinfo);
       }
-      // // console.log("ok");
+      // // // console.log("ok");
     })
     .catch((err) => {
-      // console.log(err);
+      // // console.log(err);
     });
 });
 
@@ -358,17 +279,15 @@ app.post("/addmyreply", jsonParser, function (req, res) {
     replyDate: new Date(),
   });
 
-  console.log(req.body.answerreplier);
-  console.log(newreply.replier);
   newreply.save().then((data) => {
     var arr;
-    // console.log(data);
+    // // console.log(data);
     Question.find({ _id: req.body.answerqid }).then((questioninfo) => {
-      // // console.log(questioninfo);
+      // // // console.log(questioninfo);
 
       arr = questioninfo[0].replies;
       arr.push(data._id);
-      // // console.log(arr);
+      // // // console.log(arr);
       Question.findOneAndUpdate(
         { _id: req.body.answerqid },
         { replies: arr },
@@ -721,7 +640,7 @@ app.get("/loginHome/contests", async (req, res) => {
   res.send(contestData);
 });
 
-app.get("/resources/rescontent", async (req, res) => {
+app.post("/resources/rescontent", async (req, res) => {
   try {
     const resData = await resModel.find({});
     res.send(resData);
@@ -954,7 +873,7 @@ const projectCollabration = mongoose.model(
 //   res.send(projectCollabData);
 // });
 
-app.get('/projectcollabration', async (req, res) => {
+app.post('/projectcollabration', async (req, res) => {
   const projectCollabData = await projectCollabration.find({});
 
   let realData = new Map();
@@ -1106,11 +1025,11 @@ app.post('/usersignin', async (req, res) => {
             httpOnly: true
           })
 
-          res.status(200).send({ user: userDetail });
+          res.status(200).send({ userID: userDetail._id });
         }
       }
   } catch (err) {
-      console.log(err)
+      // console.log(err)
       res.sendStatus(400)
   }
 })
@@ -1139,7 +1058,7 @@ try {
         const signup_done = await signupUser.save();
         const user = await User.findOne({ username: userData.username });
 
-        res.status(200).send({ user: user });
+        res.status(200).send({ userID: user._id });
     }
 } catch (err) {
     console.error(err);
@@ -1160,8 +1079,7 @@ app.get('/navbar/profileImg/dataset', async (req, res) => {
 
 
 app.get('/remove/user/auth', async (req, res) => {
-// res.cookie("jwtAuth", '', { expires: new Date(0) });
-res.clearCookie("jwtAuth");
+res.cookie("jwtAuth", '', { expires: new Date(0) });
 // res.sendFile(__dirname, '..', '/Frontend/src/Components/kaushal/Home_page_before_login.js');
 res.redirect('/');
 });
@@ -1171,7 +1089,7 @@ app.get('/checkUser', async (req, res) => {
 try {
   const jwt = req.cookies.jwtAuth;
 
-  console.log("TOKEN : "+jwt);
+  // console.log("TOKEN : "+jwt);
 
   res.status(200).send({ Token: jwt });
 }

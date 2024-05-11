@@ -1,13 +1,10 @@
 body{
     /* background-color: #2d033b !important; */
     /* background-color: #2d033bf3 !important; */
-}
-
-#root{
-    background-color: aquamarine !important;
-    background-image: url('/public/images/space1.gif');
-    background-attachment: fixed;
-    background-position: center;
+    /* background-color: rgb(1, 0, 74) !important; */
+    /* background-color: #0f0f32 !important; */
+    background: url(/public/images/pxfuel.jpg);
     background-repeat: no-repeat;
     background-size: 100% 100%;
+    background-attachment: fixed;
 }

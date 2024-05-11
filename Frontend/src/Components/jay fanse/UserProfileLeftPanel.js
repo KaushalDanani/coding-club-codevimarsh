@@ -1,10 +1,22 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "./UserProfileLeftPanel.css";
+import VanillaTilt from 'vanilla-tilt';
 // import dp from "../images/profile.jpeg";
 import EditUserProfile from "./EditUserProfile.js";
 import tagCollection from "./UserProfileTagsInfo.js";
 import UserProfileSkillTagElement from "./UserProfileSkillTagElement.js";
 import { Link } from "react-router-dom";
+
+function Tilt(props) {
+  const { options, ...rest } = props;
+  const tilt = useRef(null);
+
+  useEffect(() => {
+    VanillaTilt.init(tilt.current, options);
+  }, [options]);
+
+  return <div ref={tilt} {...rest} />;
+}
 
 function UserProfileLeftPanel(props) {
   const ToggleStyle = {
@@ -29,9 +41,9 @@ function UserProfileLeftPanel(props) {
 
   return (
     <div className="UPleftPanel">
-      <div className="UPProfile">
+      <Tilt options={{speed: 200, "glare": true, "max-glare": 0.2, max: 15}} className="UPProfile">
         <div className="ProfileImg" onMouseEnter={EditDP} onMouseLeave={EditDP}>
-          <img src={base64Img} alt="" className="ProfileImg"/>
+          <img src={base64Img} alt=""/>
         </div>
         <div className="ProfileName">
           {props.userData.fname} {props.userData.lname}
@@ -45,7 +57,7 @@ function UserProfileLeftPanel(props) {
           <Link to={`edit_profile/`}>Edit Profile</Link>
         </div>
         : null}
-      </div>
+      </Tilt>
       <div className="UPSkills">
         <div className="UPSkillsTitle">
           Skills

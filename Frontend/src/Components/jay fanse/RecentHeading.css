@@ -1,19 +1,30 @@
+@font-face {
+    font-family: myFont;
+    src: url(/public/fonts/Cyborg\ Punk.ttf);
+}
+
 .recentHeading h1{
     color: white;
-    font-size: 4vh;
-    margin-top: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.45rem;
+    /* margin-top: 60px; */
+    /* margin-bottom: 2%; */
+    font-family: myFont;
     /* border: 2px solid yellow; */
 }
 
 .recentHeading{
     display: flex;
+    align-items: center;
     position: relative;
     flex-direction: row;
     justify-content: space-between;
-    /* width: 94%; */
+    width: 95%;
     margin-right: 5vh;
     /* border: 2px solid salmon; */
-    margin-bottom: 20px;
+    margin-bottom: 3%;
 }
 
 .recentHeading a{
@@ -22,15 +33,17 @@
 }
 
 .recentHeadingButton{
-    font-size: 120%;
+    font-size: 100%;
+    align-items: flex-start;
     position: relative;
-    bottom:0px;
+    bottom: 0.5vh;
     height: fit-content;
     width: fit-content;
     color: white;
     padding: 10px;
     border: none;
     /* border: 2px solid white; */
+    letter-spacing: 1px;
     background-color: rgb(105, 19, 191);
     align-self: flex-end;
     border-radius: 8px;

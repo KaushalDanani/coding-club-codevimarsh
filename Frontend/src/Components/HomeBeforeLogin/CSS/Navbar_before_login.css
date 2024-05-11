@@ -14,7 +14,7 @@
     position: sticky;
     top: 0;
     z-index: 10;
-    box-shadow: 0 0 11vh 4vh rgb(255, 255, 255);
+    
 }
 .navigation_bar {   
     width: 100%;
@@ -22,9 +22,11 @@
     display: flex;
     justify-content: space-between;
     letter-spacing: 1.5px;
-    background-color: rgba(0, 0, 0, 1);
+    background: transparent;
+    backdrop-filter: blur(15px);
     /* background-color: transparent; */
     border-bottom: 3px solid rgb(255, 255, 255);
+    /* box-shadow: 0 0 20vh 4vh rgb(255, 255, 255); */
     /* overflow: hidden; */
 }
 .horizontal_bar{
@@ -33,7 +35,7 @@
     padding: 0%;
     height: 75px;
     flex-direction: row;
-    gap: 14px;
+    gap: 0.4rem;
     /* width: 100%; */
     /* border: 2px solid pink; */
 }
@@ -41,7 +43,7 @@
     height: 75px;
     list-style: none;
     cursor: pointer;
-    padding: 0px 5px;
+    /* padding: 0px 5px; */
     /* border: 2px solid white; */
 }
 .horizontal_bar #home {
@@ -61,8 +63,8 @@
     /* margin: 22.5px 0px; */
     color: white;
     height: 75px;
-    padding-left: 16px;
-    padding-right: 16px;
+    padding-left: 1.1rem;
+    padding-right: 1.1rem;
     text-decoration: none;
     /* border: 2px solid yellow; */
 }
@@ -92,7 +94,7 @@ LinkScroll {
 }
 
 .navigation_bar:hover {
-    background-color: black;
+    /* background-color: black; */
 }
 .horizontal_bar:hover .liComponent:not(:hover) {
     /* color: rgb(171, 171, 171); */
@@ -141,6 +143,7 @@ LinkScroll {
 }
 
 .NavBt {
+    width: 10%;
     display: none;
     position: relative;
     top: 18px;

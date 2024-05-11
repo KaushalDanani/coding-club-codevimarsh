@@ -36,16 +36,16 @@ export default function Discussion_block(props) {
   }, [props.date]);
 
   const location = useLocation();
-  const { user, setUser } = useUser();
+  const {user,setUser} = useUser();
 
-
+  
   const isAdmin = user.isAdmin;
   const userID = user._id;
-  const delCheck = (userID === props.asker_id || isAdmin === true);
+  const delCheck = (userID === props.asker_id || isAdmin===true);
 
   function deleteQue(q_id) {
-    const conf = window.confirm('Are you sure you want to delete this Question?');
-    if (conf) {
+    const conf = window.confirm('Are you sure you want to delete this reply?');
+    if(conf){
       fetch(`/discussion/delQue/${q_id}`, {
         method: 'DELETE',
         headers: {

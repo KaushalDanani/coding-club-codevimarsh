@@ -10,44 +10,21 @@ import NewsContentInfo from "./NewsContentInfo.js";
 function ArticleNewsLatestDiv(props) {
   const [news, setNews] = useState([]);
 
+  // useEffect(() => {
+  //   // console.log(props.news+"😡😡😡😡😡😡")
+  //   if(props.news != null)
+  //     setNews(props.news)
+  // }, [props.news])
+
   useEffect(() => {
-    props.isArticleSelected == false
-      ? fetch(
-          "https://newsapi.org/v2/everything?q=apple&from=2023-12-31&to=2023-12-31&sortBy=popularity&apiKey=876ed1ab1a2545c18ffdb151c871e344"
-        )
-          .then((response) => response.json())
-          .then((quote) => {
-            // console.log(quote);
-            setNews(quote.articles);
-            console.log(quote.articles);
-          })
-      : fetch(
-          "https://newsapi.org/v2/top-headlines?country=in&category=science&apiKey=876ed1ab1a2545c18ffdb151c871e344"
-        )
-          .then((response) => response.json())
-          .then((quote) => {
-            // console.log(quote);
-            setNews(quote.articles);
-            console.log(quote.articles);
-          });
-  }, [props.isArticleSelected]);
+    if(props.news != null && props.articles != null)
+    {
+      props.isArticleSelected == false ? 
+      setNews(props.news) : setNews(props.articles)
+    }
+  }, [props.isArticleSelected,props.news,props.articles]);
 
   var type = props.isArticleSelected ? "Articles" : "News";
-  var [Panel1, Panel2] = [];
-
-  if (news.length !== 0) {
-    [Panel1, Panel2] = props.isArticleSelected
-      ? [
-          // news[0],
-          // news[1]
-          ArticleContentInfo[ArticleContentInfo.length - 1],
-          ArticleContentInfo[ArticleContentInfo.length - 2],
-        ]
-      : [
-          NewsContentInfo[NewsContentInfo.length - 1],
-          NewsContentInfo[NewsContentInfo.length - 2],
-        ];
-  }
 
   const [more, setMore] = useState(false);
   const [imgSrc, setImgSrc] = useState("down");
@@ -55,11 +32,6 @@ function ArticleNewsLatestDiv(props) {
     setMore(!more);
     setImgSrc(more ? "down" : "up");
 
-    // if (more) {
-    //   document.getElementById("showImg").src = "/images/down_arrow.png";
-    // } else {
-    //   document.getElementById("showImg").src = "/images/up_arrow.png";
-    // }
   }
 
   return (

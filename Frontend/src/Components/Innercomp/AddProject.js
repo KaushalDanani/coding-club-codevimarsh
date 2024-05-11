@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+import { getStorage, ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
+import app from "../../Firebase.js"
 import './AddProject.css'
 import { Link, useNavigate } from "react-router-dom";
 import ToastComponent from "../jay fanse/toastComponent";
@@ -29,23 +31,89 @@ export default function AddProject() {
     const [toastMessage, setToastMessage] = useState("");
     const [toastType, setToastType] = useState("");
 
+    const [imgPercentage, setImgPercentage] = useState(0);
+    const [videoPercentage, setVideoPercentage] = useState(0);
+    const [imgDownloadUrl, setImgDownloadUrl] = useState();
+    const [videoDownloadUrl, setVideoDownloadUrl] = useState();
+    
+
     const navigate = useNavigate();
+
+    // useEffect(() => {
+    //     if(Image)
+    //         uploadFile(Image, "imgURL");
+    // }, [Image])
+
+    // useEffect(() => {
+    //     if(Video)
+    //         uploadFile(Video, "videoURL");
+    // }, [Video])
+
+    const uploadFile = async (file, fileType) => {
+        const storage = getStorage(app)
+        const selectFolder = fileType === "imgURL" ? "images/" : "videos/";
+        const fileName = new Date().getTime() + file.name;
+        const storageRef = ref(storage, selectFolder + fileName);
+        const uploadTask = uploadBytesResumable(storageRef, file);
+        
+        uploadTask.on('state_changed',
+        (snapshot) => {
+            const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+            // console.log('Upload is ' + progress + '% done');
+            if(fileType == "imgURL")
+                setImgPercentage(Math.round(progress))
+            else
+                setVideoPercentage(Math.round(progress))
+            switch (snapshot.state) {
+                case 'paused':
+                console.log('Upload is paused');
+                break;
+                case 'running':
+                console.log('Upload is running');
+                break;
+            }
+        }, 
+        (error) => {
+            switch (error.code) {
+                case 'storage/unauthorized':
+                // User doesn't have permission to access the object
+                alert("Error: "+error)
+                break;
+                case 'storage/canceled':
+                // User canceled the upload
+                alert("Error: "+error)
+                break;
+                case 'storage/unknown':
+                // Unknown error occurred, inspect error.serverResponse
+                alert("Error: "+error)
+                break;
+            }
+        }, 
+        () => {
+        // Upload completed successfully, now we can get the download URL
+        getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+            // console.log('File available at - ', downloadURL);
+            if(fileType === "imgURL")
+                setImgDownloadUrl(downloadURL);
+            else
+                setVideoDownloadUrl(downloadURL);
+        });
+        }
+        );
+    }
+
 
     async function addImage(e) {
         const image = e.target.files[0];
-        setImage(await convertBase64(image));
+        if(image !== Image)
+            setImage(image);
     }
 
     async function addVideo(e) {
-        const image = e.target.files[0];
-
-        alert("adding");
-        const videoData = await convertBase64(image);
-        setVideo(videoData);
-        // alert(videoData);
-        alert('video added');
+        const video = e.target.files[0];
+        if(video !== Video)
+            setVideo(video);
     }
-
 
     function addTeam() {
         var team = document.getElementById("teamInfo").value;
@@ -84,55 +152,48 @@ export default function AddProject() {
         setProjectInfo(projectInfo);
     }
 
-    function convertBase64(file) {
-        return new Promise((resolve, reject) => {
-            const fileReader = new FileReader();
-            fileReader.readAsDataURL(file);
-            fileReader.onload = () => {
-                resolve(fileReader.result);
-            }
-            fileReader.onerror = (error) => {
-                reject(error);
-            }
-        })
+
+    async function add() {
+
+        if(Image)
+            await uploadFile(Image, "imgURL");
+        if(Video)
+            await uploadFile(Video, "videoURL");
     }
 
-    function add() {
+    useEffect(() => {
 
+        if(imgDownloadUrl && videoDownloadUrl)
+        {
+            fetch("/addproject", {
+                method: 'POST',
+                body: JSON.stringify({
+                    "projectname": ProjectName,
+                    "projectdescription": ProjectDescription,
+                    "projecttags": ProjectTags,
+                    "projectteam": Team,
+                    "projectlink": ProjectLink,
+                    "projectinfo": ProjectInfo,
+                    "projectimage": imgDownloadUrl,
+                    "projectvideo": videoDownloadUrl
+                }),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+            .then(response => response.json())
+            .then((data) => {
 
-
-        fetch("/addproject", {
-            method: 'POST',
-            body: JSON.stringify({
-                "projectname": ProjectName,
-                "projectdescription": ProjectDescription,
-                "projecttags": ProjectTags,
-                "projectteam": Team,
-                "projectlink": ProjectLink,
-                "projectinfo": ProjectInfo,
-                "projectimage": Image,
-                "projectvideo": Video
-            }),
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        })
-            .then(
-                response => response.json()
-            )
-            .then(data => {
                 setToastVisible(true);
                 setToastMessage(data.message);
                 setToastType("success");
                 setTimeout(() => {
                     setToastVisible(false)
-                      navigate('/project');
-                }, 1000);
-            });
-
-
-
-    }
+                    navigate('/project');
+                }, 1500);
+            })
+        }
+    }, [imgDownloadUrl && videoDownloadUrl])
 
 
 
@@ -190,13 +251,13 @@ export default function AddProject() {
                         </div>
 
                         <div className="addprospace">
-                            <label>Project Image(thumbnail) : </label>
-                            <input type='file' name='datafile' onChange={(e) => { addImage(e) }} /><br />
+                            <label>Project Image(thumbnail) : </label> {imgPercentage > 0 ? "Uploading: "+imgPercentage+"%" : ""}
+                            <input type='file' accept="image/*" name='datafile' onChange={(e) => { addImage(e) }} /><br />
                         </div>
 
                         <div className="addprospace">
-                            <label>Project Video : </label>
-                            <input type='file' name='datafile' onChange={(e) => { addVideo(e) }} /><br />
+                            <label>Project Video : </label> {videoPercentage > 0 ? "Uploading: "+videoPercentage+"%" : ""}
+                            <input type='file' accept="video/*" name='datafile' onChange={(e) => { addVideo(e) }} /><br />
                         </div>
 
                         {/* <div className="addprospace " >

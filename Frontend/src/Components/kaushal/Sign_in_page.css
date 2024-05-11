@@ -48,7 +48,7 @@
     align-items: center;
     width: 29%;
     justify-content: center;
-    background: rgb(34, 34, 34);
+    background: rgb(30, 30, 30);
     padding: 30px;
     border-radius: 50px;
     border: 2.5px solid #ea00ff;
@@ -134,7 +134,7 @@
 .signin_section .container .form .inputbox input:focus ~label {
     transform: translateY(-29px);
     font-size: 18.5px;
-    background-color: rgb(34, 34, 34);
+    background-color: rgb(30, 30, 30);
     background-image: none;
     padding-left: 7px;
     padding-right: 7px;
@@ -165,7 +165,7 @@
     margin-left: 42.5%;
     padding-left: 6px;
     padding-right: 6px;
-    background-color: rgb(34, 34, 34);
+    background-color: rgb(30, 30, 30);
 }
 .signin_section .container .signup_form .loginbox input {
     width: 100%;

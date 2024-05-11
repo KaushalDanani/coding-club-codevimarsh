@@ -72,30 +72,6 @@
     color: rgb(196, 196, 196);
 }
 
-.project_collab_btn {
-    height: 4.5vh;
-    padding: 0% 1.5vw;
-    font-size: 2.2vh;
-    font-weight: 600;
-    border-radius: 5vh;
-    background: transparent;
-    letter-spacing: 1px;
-    text-transform: capitalize;
-    color: rgb(0, 0, 0);
-    /* background-color: #eaff00; */
-    /* background-color: #2823b2; */
-    background-color: #eeff00;
-    border: 2px solid #2D033B;
-    /* box-shadow: 0 3.5px black; */
-}
-.project_collab_btn:hover {
-    color: rgb(0, 0, 0);
-    background-color: #ebf835;
-    border: 1px solid #ebf835;
-    box-shadow: none;
-    /* box-shadow: 0 0 10px rgb(0, 0, 0); */
-}
-
 .project_coll_Title {
     position: relative;
     display: contents;
@@ -120,34 +96,6 @@
     width: 97%;
     margin-top: 0.5%;
     margin-bottom: 3vh;
-}
-
-.project_coll_more_btn {
-    float: right;
-    padding: 0.6vh 2vw;
-    border-radius: 5.5vh;
-    font-size: 2.1vh;
-    margin-right: 2.45vw;
-    color: white;
-    border: 1.5px solid #2D033B;
-    background-color: #2D033B;
-}
-.project_coll_more_btn:hover {
-    color: black;
-    background-color: #f2ff00;
-    border: 1.5px solid #eeff00;
-}
-
-.project_more_btn_show {
-    display: block !important;
-}
-
-.project_coll_tags {
-    position: relative;
-    color: white;
-    font-style: italic;
-    font-size: 2.2vh;
-    letter-spacing: 0.06vw;
 }
 
 .project_coll_description {

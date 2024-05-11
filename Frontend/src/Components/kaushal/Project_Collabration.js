@@ -5,8 +5,13 @@ import ProjectCollabrationCard from './ProjectCollabrationCard.js';
 import Navbar_after_login from './Navbar_after_login.js';
 import ToastComponent from '../jay fanse/toastComponent.js';
 
+
+import MyfooterAfterLogin from '../MyfooterAfterLogin.js';
+import HashLoader from 'react-spinners/HashLoader.js';
+
 function Project_Collabration() {
 
+  const [isLoadingProjectCollaboration, setIsLoadingProjectCollaboration] = useState(false);
   const [changeImage, setChangeImage] = useState('true');
   const [collabrationData, setCollabrationData] = useState([]);
   const [map, setMap] = useState(new Map())
@@ -50,6 +55,45 @@ function Project_Collabration() {
       // window.location.reload()
     }, 4000);
   }
+  useEffect(() => {
+    
+    (async () => {
+      setIsLoadingProjectCollaboration(true);
+      try {
+        const response = await fetch('/projectcollabration', {
+          method: 'POST',
+          headers: {
+              'Content-Type': 'application/json'
+          }
+        })
+        const data = await response.json();
+        setCollabrationData(data[0]);
+        // setArray(data[1]);
+        const dataMap = new Map(data[1]);
+        setMap(dataMap);
+      }
+      catch(err)
+      {
+        console.error(err, err.response);
+      }
+      setIsLoadingProjectCollaboration(false);
+    })();
+  }, [])
+
+  if (isLoadingProjectCollaboration)
+    return <>
+      {/* <Navbar_after_login /> */}
+      <div className='loadingPage'>
+        <HashLoader
+            color={'#ffffff'}
+            loading={isLoadingProjectCollaboration}
+            // cssOverride={override}
+            size={70}
+            aria-label="Loading Spinner"
+            data-testid="loader"
+        />
+      </div>
+    </>
 
   function mapDataCards (collabrationData) {
     if(collabrationData.size !== 0)
@@ -87,6 +131,7 @@ function Project_Collabration() {
         {mapDataCards(collabrationData)}
 
       </div>
+      <MyfooterAfterLogin />
     </>
   )
 }

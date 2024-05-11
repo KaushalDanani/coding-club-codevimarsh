@@ -33,7 +33,7 @@ function Greeting(props){
             {/* <pre>
             {JSON.stringify(user, null, 2)}
             </pre> */}
-            <h1 className="greet">Hey <Link to={`/profile`}><span className="greetName">{props.fname}</span></Link>,</h1>
+            <Link to={`/profile`}><h1 className="greet">Hey <span className="greetName">{props.fname}</span>,</h1></Link>
 
             <Link 
             style={props.isAdmin ? {"display":"block"} : {"display":"none"}}

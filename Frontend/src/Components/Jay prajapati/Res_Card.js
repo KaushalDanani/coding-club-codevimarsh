@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useContext } from 'react'
 import './Card.css'
 import { Link, useNavigate } from 'react-router-dom'
+import HashLoader from 'react-spinners/HashLoader.js';
 import ResourcesContent from '../jay fanse/ResourcesContent.js';
 import { DataContext } from './DataContext.js';
 
@@ -8,31 +9,45 @@ import { DataContext } from './DataContext.js';
 export default function Res_Card(props) {
 
     const navigate = useNavigate();
-
+    const [isLoadingResourceCardData, setIsLoadingResourceCardData] = useState(false)
     let books = [];
     let notes = [];
     let videos = [];
-    const { setFilteredData } = useContext(DataContext);
 
-    function ViewContent() {
-        //console.log(props.topic);
+    async function ViewContent() {
 
-        fetch("/resources/rescontent/")
-            .then(
-                response => response.json()
-
-            ).then(
-                data => {
-                    //console.log(data);
-                    const filtered = data.filter(subElement => subElement.subject === props.topic);
-                    setFilteredData(filtered);
-
-                    navigate(props.sub_link, { state: { resources: filtered } })
-
-                }
-            )
-
+        // setIsLoadingResourceCardData(true);
+        try {
+            const response = await fetch("/resources/rescontent/", {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                }    
+            })
+            const data = await response.json();
+            const filtered = data.filter(subElement => subElement.subject === props.topic);
+            navigate(props.sub_link, { state: { resources: filtered } })
+        }
+        catch(err)
+        {
+            console.error(err, err.response);
+        }
+        // setIsLoadingResourceCardData(false);
     }
+
+    // if (isLoadingResourceCardData)
+    // return <>
+    //     <div className='loadingPage'>
+    //       <HashLoader
+    //           color={'#ffffff'}
+    //           loading={isLoadingResourceCardData}
+    //           // cssOverride={override}
+    //           size={70}
+    //           aria-label="Loading Spinner"
+    //           data-testid="loader"
+    //       />
+    //       </div>
+    //   </>
 
     return (
         <div className="card" onClick={ViewContent}>

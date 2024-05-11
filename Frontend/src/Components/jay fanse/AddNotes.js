@@ -33,10 +33,10 @@ export default function AddNotes() {
 
     async function getnoteName() {
         try {
-            const response = await fetch(`/noteName?sub_id=${sub_id}`, {
+            const response = await fetch(`/noteName?sub_id=${sub_id}`,{
                 headers: {
                     'Content-type': 'application/json',
-                },
+                  },
             });
             const data = await response.json();
             // setSubj(data);
@@ -108,7 +108,7 @@ export default function AddNotes() {
                         <div className='buttonSection'>
                             <Link to={'/resources'}> <button className='addFormButton'> Cancel </button> </Link>
 
-                            <Link><button onClick={addMynote} className="addFormButton">Submit</button></Link>
+                            <Link to={'/resources'}><button onClick={addMynote} className="addFormButton">Submit</button></Link>
                         </div>
 
                     </form>

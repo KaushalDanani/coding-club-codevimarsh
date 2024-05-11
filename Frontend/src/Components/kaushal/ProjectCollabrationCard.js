@@ -40,7 +40,7 @@ function ProjectCollabrationCard(props) {
       if(data.userData.isAdmin != undefined)
       setIsAdmin(data.userData.isAdmin);
     })
-  },[props.userDetails.profileImg])
+  },[props.userDetails.profileImg]);
 
 
   function ProjectCollabrationCardDelete() {
@@ -62,9 +62,10 @@ function ProjectCollabrationCard(props) {
     .then(data => {
       props.deleteCollabCard(props.id);
 
-    })
+    });
   }
-  }
+}
+
 
   return (
     <>
@@ -116,11 +117,16 @@ function ProjectCollabrationCard(props) {
                 <div className={expand ? 'project_coll_description' : 'project_coll_description project_more_btn_show'}> <strong> Project Description : </strong> 
                   <p className='project_coll_description_content'> {props.data.collabrationDescription} </p>
                 </div>
-                <button className='project_coll_more_btn' onClick={() => setExpand(!expand)}> {expand ? 'More' : 'Less'} </button> <br/>
+                
+                <div className='contact_lessbtn'>
+                  <button className='project_coll_more_btn' onClick={() => setExpand(!expand)}> {expand ? 'More' : 'Less'} </button>
+                  { !expand ? <a href={`https://mail.google.com/mail/?view=cm&to=${props.userDetails.email}`}
+                      target="_blank"> <input type="button" value="Contact" className="project_collab_btn"/> </a> : null }
+                </div>
             </div>
         </div>
         </>
-  )
+  );
 }
 
-export default ProjectCollabrationCard
+export default ProjectCollabrationCard;
