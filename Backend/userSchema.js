@@ -4,7 +4,7 @@ const fs = require('fs');
 const { ObjectId } = require('mongodb');
 const jwt = require('jsonwebtoken')
 
-const imageBuffer = fs.readFileSync("D:/WebP/code_minions-web/Frontend/public/images/profile.jpeg");
+const imageBuffer = fs.readFileSync("D:/code_minions-web/Frontend/public/images/profile.jpeg");
 const base64Image = imageBuffer.toString("base64");
 
 const userSchema = new mongoose.Schema({

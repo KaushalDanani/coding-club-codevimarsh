@@ -178,7 +178,7 @@ app.post("/deleteproject",async (req,res) => {
 })
 
 const imageBuffer = fs.readFileSync(
-  "D:/WebP/code_minions-web/Frontend/public/images/profile.jpeg"
+  "D:/code_minions-web/Frontend/public/images/profile.jpeg"
 );
 const base64Image = imageBuffer.toString("base64");
 
