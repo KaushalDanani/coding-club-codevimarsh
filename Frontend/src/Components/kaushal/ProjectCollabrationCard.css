@@ -1,0 +1,179 @@
+.project_c_card {
+    margin: 0%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    width: 100%;
+    padding: 2.5vh 0vh;
+    /* height: 300px; */
+    /* border: 2px solid aliceblue; */
+    /* background-color: blue; */
+    box-sizing: border-box;
+}
+
+.avtar {
+    width: 4vw;
+    aspect-ratio: 1/1;
+    margin-top: 0.5vh;
+    margin-right: 0.85vw;
+    border-radius: 100%;
+    background-color: rgb(0, 0, 0);
+    box-shadow: 0 0 50px black;
+    overflow: hidden;
+}
+
+.avtar img {
+    width: 100%;
+    height: 100%;
+}
+
+.project_c_card .innercontent {
+    position: relative;
+    /* margin-top: 0.2vh; */
+    width: 80%;
+    padding-left: 2.5vw;
+    padding-bottom: 3.4vh;
+    border-radius: 1.5vh;
+    /* background-color: #3d3d3d; */
+    background-color: #363636;
+    box-shadow: 0 0 20px black;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+.project_coll_header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.8vh 2vw 2.7vh 2vw;
+    /* padding-right: 2vw;
+    padding-left: 2vw; */
+    /* margin-top: 1.8vh;
+    margin-bottom: 2.7vh; */
+    /* margin-left: -2.5vw; */
+    background-color: rgb(105, 19, 191);
+    /* background-color: #b29a00; */
+    overflow: hidden;
+}
+
+.project_coll_header a strong {
+    /* padding-top: 1vh; */
+    font-size: 2.7vh;
+    letter-spacing: 0.06vw;
+    color: white;
+}
+.project_coll_header a strong:hover {
+    color: rgb(196, 196, 196);
+}
+
+.project_collab_btn {
+    height: 4.5vh;
+    padding: 0% 1.5vw;
+    font-size: 2.2vh;
+    font-weight: 600;
+    border-radius: 5vh;
+    letter-spacing: 1px;
+    text-transform: capitalize;
+    color: rgb(255, 255, 255) !important;
+    background-color: #3b054ff3 !important;
+    border: 2px solid #2D033B;;
+    /* box-shadow: 0 3.5px black; */
+}
+.project_collab_btn:hover {
+    color: rgb(0, 0, 0) !important;
+    background-color: #ffffff !important;
+    border: 2px solid #ffffff !important;
+    /* box-shadow: none; */
+    /* box-shadow: 0 0 10px rgb(0, 0, 0); */
+}
+
+.project_collab_del_btn {
+    height: 4.5vh;
+    padding: 0% 1.5vw;
+    font-size: 2.2vh;
+    font-weight: 600;
+    border-radius: 5vh;
+    letter-spacing: 1px;
+    margin-left: 1.2vw;
+    text-transform: capitalize;
+    border: 2px solid #2D033B;
+    color: rgb(255, 255, 255) !important;
+    background-color: #3b054ff3 !important;
+}
+.project_collab_del_btn:hover {
+    color: rgb(0, 0, 0) !important;
+    background-color: #ffffff !important;
+    border: 2px solid #ffffff !important;
+    /* box-shadow: none; */
+    /* box-shadow: 0 0 10px rgb(0, 0, 0); */
+}
+
+.project_coll_Title {
+    position: relative;
+    display: contents;
+    width: 90%;
+    /* top: 8.9vh; */
+    /* left: 2.65vw; */
+    font-size: 2.15vh;
+    color: white;
+    letter-spacing: 0.05vw;
+}
+
+.project_coll_Title strong {
+    font-style: italic;
+    letter-spacing: 0.06vw;
+    font-size: 2.2vh;
+    margin-bottom: 0%;
+}
+
+.project_col_title_content {
+    position: relative;
+    text-align: justify;
+    width: 97%;
+    margin-top: 0.5%;
+    margin-bottom: 3vh;
+}
+
+.project_coll_more_btn {
+    float: right;
+    padding: 0.5vh 2vw !important;
+    border-radius: 5.5vh;
+    font-size: 2.1vh;
+    margin-right: 2.45vw;
+    color: white;
+    border: 1.5px solid #3b054ff3;
+    background-color: #3b054ff3;
+}
+.project_coll_more_btn:hover {
+    color: black;
+    background-color: #ffffff !important;
+    border: 1.5px solid #ffffff !important;
+}
+
+.project_more_btn_show {
+    display: block !important;
+}
+
+.project_coll_tags {
+    position: relative;
+    color: white;
+    font-style: italic;
+    font-size: 2.2vh;
+    letter-spacing: 0.06vw;
+}
+
+.project_coll_description {
+    display: none;
+    color: white;
+    font-style: italic;
+    font-size: 2.2vh;
+    margin-top: 2.8vh;
+    letter-spacing: 0.06vw;
+}
+.project_coll_description_content {
+    margin-top: 0.45%;
+    margin-bottom: 0.4%;
+    letter-spacing: 0.05vw;
+    text-align: justify;
+    width: 97%;
+}

@@ -1,0 +1,295 @@
+.EditUserProfile{
+    box-sizing: border-box;
+    /* background-color: #2D033B; */
+    /* background-color: #e9bbf8; */
+    width: 100%;
+    box-sizing: border-box;
+    min-height: 100vh;
+    position: relative;
+    color: white;
+    font-size: 5% !important;
+}
+
+.EditUserProfileBack {
+    position: absolute;
+    top: 1vh;
+    left: 1vw;
+    height: 6vh;
+    width: 6vw;
+    background: url('/public/images/back-btn-white.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.EditProfileImg{
+    position: relative;
+    /* background-image: url("../images/profile.jpeg"); */
+    background-size: contain;
+    border-radius: 100%;
+    width: 25vh;
+    height: 25vh;
+    display: flex;
+}
+
+.EditProfilePhotoPanel{
+    display: flex;
+    background-color: blueviolet;
+    padding: 5% 15%;
+    padding-top: 3%;
+    /* padding-left: 18%; */
+}
+
+.EditProfilePhotoPanel img{
+    border-radius: 100%;
+}
+
+.EditProfileImgChange{
+    /* border: 2px solid red; */
+    position: absolute;
+    background-image: linear-gradient(transparent 60%,rgb(0, 0, 0));
+    width: 100%;
+    height: 100%;    
+    border-radius: 100%;
+    display: none;
+    justify-content: center;
+    padding-top: 65%;
+}
+
+.EditProfileImgChangeButton{
+    background: none;
+    border: none;   
+    color: white;
+}
+
+.EditProfileUsernameDisplay{
+    font-size: 3.4rem;
+    margin: 2% 6.8%;
+    font-weight: bold;
+}
+
+@media (width<1270px) {
+    .EditProfileUsernameDisplay{
+        font-size: 3rem !important;
+    }
+    .EditProfileSelectionPanel div{
+        font-size: 20px !important;
+    }
+    .EditFormFrame textarea,.EditFormFrame input, .EditFormFrame select{
+        font-size: 16px !important;
+    }
+}
+
+
+.EditProfileGrid{
+    position: relative;
+    /* border: 2px solid orange; */
+    display: flex;
+    margin: auto;
+    width: fit-content;
+    top: -50px;
+    gap: 0px 20px;
+}
+
+.EditProfileMainPanel{
+    position: relative;
+    /* left: 30vw;
+    top: -8vh; */
+    top: -6.5vh;
+    width: 55vw;
+    /* height: 67vh; */
+    /* border: 2px solid yellow; */
+    background-color: rgb(101, 5, 150);
+    border-radius: 10px;
+    box-shadow: 6px 3px 10px rgb(70, 1, 70);
+    padding: 3vh 4vh;
+}
+
+.EditProfileSelectionPanel{
+    /* border: 2px solid pink; */
+    /* position: absolute; */
+    /* top : 38vh; */
+    width: fit-content;
+    /* margin-left: 8vw; */
+    margin: 0px auto;
+    margin-top: 65px;
+    
+}
+
+.EditProfileSelectionPanel div{
+    font-size: 1.8rem;
+    display: flex;
+    justify-content: left;
+    /* border: 2px solid red; */
+    /* background-color: rgb(101, 5, 150); */
+    /* margin: 2vh 4vh; */
+    border-radius: 15px;
+    padding:  10px 15px;
+    box-sizing: border-box;
+    /* background-color: #2D033B; */
+    transition: all 0.3s;
+}
+
+.EditProfileSelectionPanel div:hover{
+    cursor: pointer;
+    scale: 1.03;
+}
+
+.EditFormFrame{
+    margin-top: 4vh;
+    display: grid;
+    /* border: 2px solid green; */
+    gap: 2vh 0px;
+    grid-template-columns: 3fr 1fr 8fr;
+}
+
+.EditFormFrame>span{
+    font-size: 1.3rem;
+    border-bottom: 2px solid white;
+    padding-bottom: 2vh;
+    font-weight: bold;
+}
+
+.EditFormFrame textarea,.EditFormFrame input, .EditFormFrame select{
+    /* color: #2D033B; */
+    /* display: flex !important; */
+    padding: 0px 2px;
+    font-size: 1.3rem;
+    border: none;
+    border-bottom: 2px solid white;
+    background-color: rgb(101, 5, 150);
+    padding-bottom: 15px;
+    outline: none;
+    color: white;
+}
+
+.EditSaveButtonDiv{
+    display: flex;
+    justify-content: right;
+    grid-column: 1/4;
+    margin-top: 5vh;
+    color: white;
+}
+
+.EditSaveButtonDiv button{
+    font-size: 1.2rem;
+    background-color: #2D033B;
+    border-radius: 12px;
+    border: 2px solid white;
+    padding: 6px 25px;
+    width: fit-content;
+    color: white;
+}
+
+.EditSaveButtonDiv button:hover {
+    color: black !important;
+    border: 2px solid rgb(0, 0, 0);
+    background-color: rgb(226, 226, 226);
+}
+
+.skillTagContainer{
+    display: flex;
+    gap: 2vh;
+    /* border: 2px solid yellow; */
+    overflow: auto;
+    flex-wrap: wrap;
+    height: fit-content;
+    color: white;
+    font-size: 1rem;
+}
+.allSkillsTagContainer{
+    display: none;
+    gap: 2vh;
+    background-color: rgb(135, 44, 180);
+    padding: 10px;
+    border-radius: 20px;
+    /* border: 2px solid yellow; */
+    overflow: auto;
+    flex-wrap: wrap;
+    height: fit-content;
+    font-size: 1rem !important;
+}
+
+.UserProfileAddSkillTag{
+    display: flex;
+    justify-content: center;
+    border: 2px solid rgb(226, 226, 226);
+    padding: 5px 15px;
+    border-radius: 20px;
+    background-color: #2D033B;
+    color: white;
+    font-size: 1rem !important;
+}
+
+.UserProfileAddSkillTag:hover{
+    color: black;
+    border: 2px solid #2D033B;
+    background-color: rgb(255, 255, 255);
+}
+
+@media (width<1000px) {
+    .EditProfileUsernameDisplay{
+        font-size: 2rem !important;
+    }
+    .EditProfileGrid{
+        flex-direction: column;
+        /* margin: 0px 40px !important; */
+        margin: auto;
+        padding: 0px 40px;
+    }
+    .EditProfileSelectionPanel{
+        display: flex;
+        margin-bottom: 20px;
+    }
+    .EditProfileSelectionPanel div{
+        display: flex !important;
+        justify-content: center !important;
+        font-size: 1rem !important;
+        text-align: center;
+        margin: 0px 10px;
+        width: 100%;
+        flex-grow: 1;
+    }
+    .EditProfileMainPanel{
+        width: 100% !important;
+    }
+}
+
+.show_pwd_edit_profile {
+    width: 2.8vw !important;
+    height: 5.5vh;
+    position: absolute;
+    left: 87.5%;
+    opacity: 0.7;
+    border-radius: 0px !important;
+    background-color: transparent !important;
+    border: none !important;
+    background-image: url(/public/images/show-password.png);
+    background-repeat: no-repeat;
+    background-size: 50% 50%;
+}
+
+.hide_pwd_edit_profile {
+    width: 2.8vw !important;
+    height: 5.5vh;
+    position: absolute;
+    left: 87.5%;
+    opacity: 0.7;
+    border-radius: 0px !important;
+    background-color: transparent !important;
+    border: none !important;
+    background-image: url(/public/images/hide-password.png);
+    background-repeat: no-repeat;
+    background-size: 50% 50%;
+}
+
+#pwd_icon {
+    top: 25.5%;
+}
+
+#confirmPwd_icon {
+    top: 42.5%;
+}
+
+#reconfirmPwd_icon {
+    top: 61.5%
+}

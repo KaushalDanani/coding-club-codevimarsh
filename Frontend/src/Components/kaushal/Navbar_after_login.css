@@ -1,0 +1,82 @@
+
+.container_fluid {
+    box-shadow:none !important;
+}
+
+.navigation_bar {
+    display: flex !important;
+}
+
+.mainULNav{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.loginDP {
+    width: 3vw;
+    position: relative;
+    /* height: 6.5vh; */
+    aspect-ratio: 1/1;
+    margin-top: 0.5vh;
+    margin-right: 0.85vw;
+    border-radius: 100%;
+    background-color: transparent;
+    box-shadow: 0 0 50px black;
+    overflow: hidden;
+}
+
+.loginDP img{
+    width: 100%;
+}
+
+#id:hover{
+    border-bottom: none !important;
+}
+
+
+@media (max-width: 900px) {
+    *{
+        font-size: 12px !important;
+    }
+    .navigation_bar {
+        display: flex;
+        justify-content: space-between;
+        /* margin-top: auto; */
+        border-bottom: 2.5px solid white;
+        box-shadow: none;
+        background-color: black;
+    }
+    .horizontal_bar {
+        height: auto;
+        display: none;
+    }
+    .mobile-menu-icon {
+        display: flex;
+        height: auto;
+        flex-direction: column;
+        gap: 0px;
+    }
+    .horizontal_bar li {
+        height: auto;
+    }
+    .horizontal_bar #home {
+        margin-left: 5px;
+    }
+    .sign_in_container {
+
+        align-items: first baseline;
+        margin-right: 15px;
+        margin-top: 20px;
+    }
+    .signin_btn {
+        padding: 10% 22%;
+    }
+    .NavBt {
+        display: block;
+    }
+    .mainULNav{
+        flex-direction: column;
+    }
+    
+}

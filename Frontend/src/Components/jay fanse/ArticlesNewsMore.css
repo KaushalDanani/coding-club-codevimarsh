@@ -1,0 +1,21 @@
+.ArticleNewsMore{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap:  40px 2%;
+    margin-bottom: 40px;   
+    /* border: 2px solid red; */
+
+    
+}
+
+@media (width<1200px){
+    .ArticleNewsMore{
+        grid-template-columns: repeat(2,1fr);
+    }
+}
+
+@media (width<900px) {
+    .ArticleNewsMore{
+        grid-template-columns: repeat(1,1fr);
+    }
+}

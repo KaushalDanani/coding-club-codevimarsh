@@ -1,0 +1,19 @@
+.UserProfileSkillTagCheckbox{
+    display: none;
+}
+
+.UserProfileSkillTag{
+
+    justify-content: center;
+    border: 2px solid black;
+    border-radius: 20px;
+    background-color: rgba(0, 0, 0, 0.3);
+    display: flex;
+    /* flex-grow: 2; */
+}
+
+.UserProfileSkillTag label{
+    padding: 5px 15px;
+    border-radius: 20px;
+    /* border: 2px solid yellow; */
+}

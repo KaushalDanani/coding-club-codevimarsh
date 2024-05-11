@@ -1,0 +1,182 @@
+.q_class{
+    color: white;
+    background-color: rgb(41, 35, 35);
+    margin: 6vw;
+    padding: 1.6vw;
+    margin-bottom: 0 !important;
+    margin-top: 4vw !important;
+    border-radius: 2vw;
+    /* border: 1px solid teal; */
+    box-shadow: 0 0 20px black;
+    text-align: justify;
+}
+
+#reply_head{
+    margin: 0 6vw;
+    background-color:rgba(40, 40, 40, 0.606);
+    padding: 1vw;
+    color: white;
+    font-family: 'Trebuchet MS';
+    font-size: 2vw;
+}
+
+.snippet{
+    overflow: auto;
+    background-color: rgb(19, 42, 42);
+    margin: 1vw;
+    padding: 1vw;
+    border-radius: 1vh;
+    font-size: 1.5rem;
+}
+
+.noSnippet{
+    display: none;
+}
+
+#Que_statement{
+    margin: 1vw;
+    font-size: 1.4rem;
+    /* text-decoration: solid; */
+}
+
+#des_div{
+    margin: 1vw;
+    font-size: 1.2rem;
+}
+
+#asker{
+    display: flex;
+    /* border: 1px solid salmon; */
+}
+
+#pfp_div{
+    position: absolute;
+    left: 1vw;
+    height: 8vh;
+    width: 8vh;
+    border-radius: 4vh;
+    /* border: 1px solid white; */
+    /* margin: 0.5vw; */
+}
+#pfpic{
+    height: 8vh;
+    width: 8vh;
+}
+#asker_id a{
+    font-size: 1.8rem;
+    /* border: 1px solid maroon; */
+    margin: auto;
+    color: white;
+}
+
+#upvote_div, #comment_div{
+    margin: 1vw;
+    box-sizing: border-box;
+    font-size: 1.7rem;
+}
+
+#date_div{
+    margin: 1vw;
+    position: absolute;
+    float: right;
+    right: 2vw;
+}
+
+#com_button{
+    display: flex;
+    background: transparent;
+    padding: 0.4vw;
+    line-height: 2vw;
+    color: white;
+    font-family: 'Trebuchet MS';
+    border: 1px solid transparent;
+    border-radius: 1vw;
+    font-size: 1.5rem;
+    /* font-size: 1rem; */
+}
+
+#com_button:hover{
+    background: transparent;
+    color: white;
+    font-family: 'Trebuchet MS';
+    border: 0.02vh solid white;
+    border-radius: 1vw;
+    font-size: 1.5rem;
+}
+
+#feed_bar{
+    /* border-top: 1px solid teal; */
+    font-size: 1.6vw;
+    border-radius: 1vw;
+}
+
+
+#reply_head{
+    font-size: 2rem;
+    background-color: transparent;
+}
+
+.upvote-button{
+    background: transparent;
+    border: none;
+}
+
+@media (max-width:920px){
+    .q_class{
+        margin: 10vw;
+    }
+    
+    #Que_statement{
+        font-size: 1.7rem !important;
+    }
+    #des_div{
+        font-size: 1rem !important;
+    }
+    #reply_head{
+        font-size: 1.6rem !important;
+        margin: 0 10vw 0 10vw;
+    }
+    #pfpic{
+        height: 6vw !important;
+        width: 6vw !important;
+    }
+    #com_button{
+        line-height: 4vw;
+    }
+    #pfp_div{
+        left: 2vw;
+    }
+    #asker_id a{
+        font-size: 1.5rem !important;
+    }
+}
+
+@media (max-width:600px){
+    .q_class{
+        margin: 14vw;
+    }
+    
+    #Que_statement{
+        font-size: 1.4rem !important;
+    }
+    #des_div{
+        font-size: 0.9rem !important;
+    }
+    #reply_head{
+        font-size: 1.6rem !important;
+        margin: 0 14vw 0 14vw;
+    }
+    #pfpic{
+        height: 8vw !important;
+        width: 8vw !important;
+    }
+    #com_button{
+        line-height: 5vw;
+    }
+    #pfp_div{
+        left: 2vw;
+    }
+    #asker_id a{
+        font-size: 1.5rem !important;
+    }
+}

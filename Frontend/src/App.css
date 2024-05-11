@@ -1,0 +1,57 @@
+@import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
+
+@font-face {
+    font-family: myFont;
+    src: url("/public/fonts/Cyborg\ Punk.ttf");
+}
+
+*{
+    margin: 0%;
+    padding: 0%;
+}
+
+.founderinfo{
+    /* background: url(data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBwgHBgkIBwgKCgkLDRYPDQwMDRsUFRAWIB0iIiAdHx8kKDQsJCYxJx8fLT0tMTU3Ojo6Iys/RD84QzQ5OjcBCgoKDQwNGg8PGjclHyU3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3Nzc3N//AABEIAJwBOAMBIgACEQEDEQH/xAAZAAEBAQEBAQAAAAAAAAAAAAACAQADBAb/xAAeEAEBAAMAAwEBAQAAAAAAAAAAAQIREhMhQWExA//EABkBAQEBAQEBAAAAAAAAAAAAAAIBAAMGBf/EABgRAQEBAQEAAAAAAAAAAAAAAAABERIC/9oADAMBAAIRAxEAPwD7iKivsvNFCgwoJQoUGHEpxYcGHBpwocGHArpChwYcGukKHBhwKcKFP4kIa6xYrRhVoqRWVolVqjIlVKqDQroFUaAZHRpxzrlk55OuTnTjnXOhXTIKcc650K6UKcc6FGlRpQKFGlRqhWZvjKjLEWMxQoMODThQokKDThQ4kKDXSHIcGHApwocgyHINdIsOJCjnThRWixDixoyoTM2m0is1ZmZEpDVRApjVGhRpUacCueTnk6UKUc650MnTJzpxzrnRp0Mjc6FCnRpRzrnRp5BSCp8ZvjKirEhRmhQoMODThR0gQ4NdIUODDgV0hw8QjpArpDhQYcCukKFBhwacUokKCUYpEixCZlZFSpSoqyJSo1UGjSo1Qo0KdCnAoZOddKFKBXOhTyCnHOhQyOhTc6FDI6GROdChXShSjnR+MzKhLEhRFiw4MOIcKHAhwKcOHAhwa6Q46RzjpArpDhwIUCukOHAhQacOEEpQShwg2uxKEjbbbEqNsdqjUatG1hSjVo1YNGjSoV0gUaFKhSjnQyCnQpwKFCnQpudChTo0nOhRp0KUCizMolCglEKFCgw4JwocCHBKFCgwoNdIcOVzhQaUdJTlcoco2OkrrKUrlKUo2HK6yltylLY4UrpKu3OVZRwtdJW2G222Np2psLU22Np2jaO02uJq2jalo2lIGraFrWhaWDa1o2rsKUC1KFKjSc6NCnRphQo0qNKBQo06NUKDMyopQYUYoUOBCg0ocOBCg04cKDCg04UIYQkUVIqEsq9CyLrpMlmTnttpha6zJenHa9NjdO0ybpx6bpsXp16a5OXTdNidOnQ9DtNtjdFck2NrLg61qKKtqJSSrBoJSo1QoUaVGlBoUaVGkFGhSo0oFFUVUWLEhRCWFBhRFKHHOHBpQ4crnCg046QoEpQacOKkKITSNopF0mkGkdOW5TWxzR15TldTHP23t04/G4/G2NzXP2zpy0xbWwI2nSYtymrjnptOmm0utjnptGNZMGjSoUhqUKuQFArUKVClBGjSolAo0To1UoszKJRYyoTQoMJFWFBhRCKFBhQVKU5XOFBpx0hyucpY0aUdYccpTlGnHSQpiGNdMbBrpI3DeN0hSDpTy5eOt43fUXUHouI8/jTxvRZBul1r5ceEuLrk51QwLAp5VztOBUoWrlQtKBUoVbRpBUo0qNOCNGlRqwKNH4QrEqVKtTRCLLZ7ZkVUJiaKkISWFBhRFWFEkKRCiwokXXoaSlEhRFxZSlFoNKOspY5OO1lTDlemZlM3l6btL5Wensn+mm8ryeSt5KPC9vV5EubzeSt23Ldu1zG5OXSdHPKX0eVC1NtauAlo0kqjQGmNioI0qNOBRo2H8GrEoJSsFYKaRaipUZmVCZmRVWISKpSDCiEUWJFiFChQYUEoUL4kX4JLIzRUVGqsqg1KpWQfbbWszJurGixmaKzRGZlZlSxKQ1UEaVT4UEKJUVgUbEKjSSjRpJWEdekX4ixE0isqP//Z);
+    background-repeat: no-repeat;
+    background-size: cover; */
+    background-color: #611a7c !important;
+    padding: 2%;
+    margin: 3%;
+    margin-top: 10%;
+    border-radius: 20px;
+
+}
+
+.foundercardline{
+    display: flex;
+    justify-content: center;
+    margin: 1.5% 0% 2% 0%;
+    font-family: myFont;
+    /* font-size: 2rem; */
+    color: rgb(255, 255, 255);
+}
+
+.founderGrid{
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    margin: 4.5% 1% 2% 3.1%;
+}
+
+@media (width<1200px) {
+    .founderGrid{
+        grid-template-columns: repeat(3,1fr);
+    }
+}
+@media (width<900px) {
+    .founderGrid{
+        grid-template-columns: repeat(2,1fr);
+    }
+}
+@media (width<600px) {
+    .founderGrid{
+        grid-template-columns: repeat(1,1fr);
+    }
+}
+
+

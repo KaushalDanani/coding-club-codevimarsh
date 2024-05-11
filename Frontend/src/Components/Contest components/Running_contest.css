@@ -1,0 +1,66 @@
+*{
+    margin: 0;
+    padding: 0%;
+    box-sizing: border-box;
+}
+
+.running_contest_main{
+    margin: 0% 4.4% 3% 4.4%;
+    border-radius: 10px;
+    background-color: rgb(105, 19, 191);
+    box-shadow: 0 0 20px black;
+    padding: 0vh 0.8vh 2vh 1.8vh;
+}
+
+.runnig_contest_name{
+    padding: 15px;
+}
+
+.runnig_contest_name p{
+    color: white;
+    font-size: 1.8rem;
+}
+
+.contest_flex{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.running_date_time p{
+    color: white;
+    font-size: 1.2rem;
+    margin: 5px 20px;
+}
+
+.contest_start_btn button{
+    
+    background: transparent;
+    border-radius: 15px;
+    margin-top: -1.5vh;
+    margin-right: 20px;
+    padding: 5px 16px;
+    cursor: pointer;
+    color: white;
+    border: 2.5px solid #ffffff;
+    font-size: 1.2rem;
+}
+
+.contest_start_btn button:hover,
+.contest_start_btn button a:hover{
+    /* scale: 1.05; */
+    color: black;
+    background-color: #ffffff;
+    transition: 0.1s;
+}
+
+
+@media only screen and (max-width: 600px) {
+    .contest_flex{
+        flex-direction: column;
+        align-items: normal;
+    }
+    .contest_start_btn button{
+        margin-left: 15px;
+     }
+  }
