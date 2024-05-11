@@ -41,7 +41,7 @@ function ForumGenerator(props) {
   return (
     <>
 
-        <hr style={{width: '83%', height: '2.5px', backgroundColor: 'white', marginLeft: '130px',marginRight: '130px', marginBottom: '2.5vh'}}/>
+        <hr style={{width: '83%', height: '2.5px', backgroundColor: 'white', marginTop: '0px', marginLeft: '130px',marginRight: '130px', marginBottom: '2.5vh'}}/>
 			
       {ques.map((disc, idx) => (
           <Discussion_block

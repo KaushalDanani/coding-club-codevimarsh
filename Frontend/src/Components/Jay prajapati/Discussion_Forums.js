@@ -60,22 +60,33 @@ export default function Forums() {
   return (
     <>
       <Navbar_after_login />
-      <Filter_bar />
-      {/* <Ask_Question /> */}
-      <div id='discussionbody'>
-        <div className="discbanner">
-          <div id='disc_header'>
-            <h1>Discussion Forums</h1>
-          </div>
+      {/* <div className='projectHeader'>
+                <div className='imageConatainer'> <img id='proj_image' src="/images/projdis3.jpg" alt='discC' /> </div>
+                <h2 className='projTitle'>Discussion Forums</h2>
+                <p className='project_oneliner'>The aim of argument, or of discussion, should not be victory, but progress.</p>
+            </div> */}
+      <div className='projectCollabrationContainer'>
+      <div className='projectCollabrationHeader'>
+          <div className='imageConatainer'> <img id='pc_image' src="/images/discuss2main.jpg" alt='PC' /> </div>
+          <h2 className='projectTitle'>Discussion Forums</h2>
+          <p className='project_collabration_oneliner'>The aim of argument, or of discussion, should not be victory, but progress.</p>
         </div>
-      </div>
-      <Link to={'/discussion/addQuestion'}>
+        <div className='addProjCollab' style={{width: '85%'}}>
+          <Link to={'/project_collab/addpost'}> <button className={changeImage ? 'ProjectCollabrationBtn changeAddImage' : 'ProjectCollabrationBtn'} 
+            onMouseOut={() => setChangeImage(true)}
+            onMouseOver={()=> setChangeImage(false)}> Add </button> </Link>
+        </div>
+
+      {/* <Filter_bar /> */}
+      {/* <Ask_Question /> */}
+      {/* <Link to={'/discussion/addQuestion'}>
         <button className={changeImage ? 'AddDiscBtn changeAddImage' : 'AddDiscBtn'}
           onMouseOut={() => setChangeImage(true)}
           onMouseOver={() => setChangeImage(false)}
         > Add </button>
-      </Link>
+      </Link> */}
       <ForumGenerator questions={ques} array={map} />
+      </div>
       <MyfooterAfterLogin />
     </>
   )

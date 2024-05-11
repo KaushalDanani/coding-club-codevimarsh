@@ -5,6 +5,7 @@ import Navbar_after_login from "../kaushal/Navbar_after_login.js"
 import ProjectDisplay from "../Innercomp/ProjectDisplay.js"
 import React, { useEffect, useState } from "react";
 import AddProject from "../Innercomp/AddProject.js";
+import { Link } from 'react-router-dom';
 import Filter_bar_Project from "../Jay prajapati/Filter_bar_Project.js"
 import "./ProjectMain.css"
 import MyfooterAfterLogin from "../MyfooterAfterLogin.js";
@@ -15,6 +16,7 @@ export default function ProjectMain(props){
     const [isLoadingProject, setIsLoadingProject] = useState(false);
     const [admin,setAdmin] = useState('');
     const [userID,setUserID] = useState('');
+    const [changeImage, setChangeImage] = useState('true');
     const [Projectinfo, setProjectinfo] = useState([{}]);
 
     useEffect( ()=> {
@@ -66,12 +68,24 @@ export default function ProjectMain(props){
     return(
         <>  
             <Navbar_after_login/>
-            <div className='projectHeader'>
+            {/* <div className='projectHeader'>
                 <div className='imageConatainer'> <img id='proj_image' src="/images/projdis3.jpg" alt='discC' /> </div>
-                <h2 className='projTitle'>Discussion Forums</h2>
+                <h2 className='projTitle'>Projects</h2>
                 <p className='project_oneliner'>The aim of argument, or of discussion, should not be victory, but progress.</p>
-            </div>
-            <Filter_bar_Project />
+            </div> */}
+            <div className='projectsContainer'>
+        <div className='projectCollabrationHeader'>
+          <div className='imageConatainer'> <img id='pc_image' src="/images/project-collab.png" alt='PC' /> </div>
+          <h2 className='projectTitle'>Projects</h2>
+          <p className='project_collabration_oneliner'>The aim of argument, or of discussion, should not be victory, but progress.</p>
+        </div>
+        <div className='addProjCollab' style={{width: '85%'}}>
+          <Link to={'/project_collab/addpost'}> <button className={changeImage ? 'ProjectCollabrationBtn changeAddImage' : 'ProjectCollabrationBtn'} 
+            onMouseOut={() => setChangeImage(true)}
+            onMouseOver={()=> setChangeImage(false)}> Add </button> </Link>
+        </div>
+        </div>
+            {/* <Filter_bar_Project /> */}
             <hr style={{width: '85%', height: '2.5px', backgroundColor: 'white', margin: 'auto', marginBottom: '2.5vh'}}/>
 
             {/* <AddProject/> */}
@@ -98,6 +112,7 @@ export default function ProjectMain(props){
                     }
                 )
             }
+            
             <MyfooterAfterLogin/>
         </>
     );
