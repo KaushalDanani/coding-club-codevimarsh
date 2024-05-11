@@ -1,0 +1,99 @@
+
+.container_fluid {
+    box-shadow:none !important;
+}
+
+.navigation_bar {
+    display: flex !important;
+}
+
+.mainULNav{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.liComponent2 {
+    padding-left: 0%;
+    padding-right: 0%;
+}
+
+.loginDP {
+    width: 2.95vw;
+    position: relative;
+    /* height: 6.5vh; */
+    margin-top: 0.5vh;
+    /* margin-right: 0.85vw; */
+    border-radius: 100%;
+    overflow: hidden;
+}
+
+.loginDP img{
+    width: 100%;
+}
+
+.logoutNavbar {
+    width: 2.5vw;
+    height: 75px;
+    margin: 0vh 0.3rem 0vh -0.7rem;
+    /* margin-top: 2.2vh;
+    margin-right: 1.1rem; */
+    background-color: transparent;
+    /* overflow: hidden; */
+    background-image: url(/public/images/logout.png);
+    /* background-position: 50% 45%; */
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+}
+
+#id:hover{
+    border-bottom: none !important;
+}
+
+
+@media (max-width: 900px) {
+    *{
+        font-size: 12px !important;
+    }
+    .navigation_bar {
+        display: flex;
+        justify-content: space-between;
+        /* margin-top: auto; */
+        border-bottom: 2.5px solid white;
+        box-shadow: none;
+        background-color: black;
+    }
+    .horizontal_bar {
+        height: auto;
+        display: none;
+    }
+    .mobile-menu-icon {
+        display: flex;
+        height: auto;
+        flex-direction: column;
+        gap: 0px;
+    }
+    .horizontal_bar li {
+        height: auto;
+    }
+    .horizontal_bar #home {
+        margin-left: 5px;
+    }
+    .sign_in_container {
+
+        align-items: first baseline;
+        margin-right: 15px;
+        margin-top: 20px;
+    }
+    .signin_btn {
+        padding: 10% 22%;
+    }
+    .NavBt {
+        display: block;
+    }
+    .mainULNav{
+        flex-direction: column;
+    }
+    
+}

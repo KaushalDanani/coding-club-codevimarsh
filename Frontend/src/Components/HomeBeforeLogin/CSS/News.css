@@ -1,0 +1,103 @@
+@import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
+
+.news{
+    margin: 0%;
+    padding: 0%;
+    box-sizing: border-box;
+    /* width: 100%; */
+    /* height: 100%; */
+    /* overflow: hidden; */
+    background: rgb(67, 75, 190);
+    display: flex;
+    column-gap: 5vw;
+    font-family: 'Poppins', sans-serif;
+    border-top-right-radius: 80px;
+    border-bottom-right-radius: 80px;
+    margin-right: 25%;
+    margin-bottom: 5%;
+
+}
+
+
+.news .image{
+    height: 95%;
+    width: 50%;
+    /* margin: 1%; */
+}
+
+.news img{
+    width: 100%;
+    margin: 4vh 0vh;
+    height: 100%;
+}
+
+.newsdiscription {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 50vw;  
+    /* padding: 12% 0% 10% 8%;  */
+    /* padding-left: 10%; */
+}
+
+.newsdischead{
+    color: white;
+    font-size: 2.5rem;
+    font-weight: 300;
+}
+
+.newsdiscnode{
+    margin: 13px 0px 25px 5px;
+    color: rgb(174, 174, 174)
+}
+
+.btnnews{
+    width: 200px;
+    height: 45px;
+    font-size: 1.1rem;
+    background-color: #3011a0;
+    color: white;
+    border: 0px;
+    border-radius: 5px;
+    font-weight: 500;
+}
+
+.btnnews:hover{
+    background:  #281183;
+    cursor: pointer;
+}
+
+@media only screen and (max-width: 600px) {
+    .news{
+        flex-direction: column;
+        border-top-right-radius: 0px;
+        border-bottom-right-radius: 0px;
+        margin-right: 0%;
+        margin-bottom: 0%;
+        padding: 12% 0% 10% 8%; 
+
+    }
+    .news .image{
+        width: 60%;
+        margin: auto;
+    }
+    .discription{
+        width: 100%;
+    }
+    .btnnews{
+        width: 150px;
+    }
+}
+
+.fade-in-section {
+    opacity: 0;
+    transform: translateY(40vh);
+    visibility: hidden;
+    transition: opacity 0.6s ease-out, transform 1.2s ease-out;
+    will-change: opacity, visibility;
+  }
+  .fade-in-section .is-visible {
+    opacity: 1;
+    transform: none;
+    visibility: visible;
+  }

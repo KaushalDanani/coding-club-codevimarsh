@@ -1,0 +1,110 @@
+*{
+    margin: 0;
+    padding: 0%;
+    box-sizing: border-box;
+}
+
+.running_contest_main{
+    /* margin: 0% 0% 2% 0%; */
+    padding: 2% 0%;
+    border-radius: 10px;
+    backdrop-filter: blur(3px);
+    background-color: rgba(255, 255, 255, 0.1);
+    /* background-color: transparent; */
+    /* background: linear-gradient(45deg, rgba(4, 26, 93, 0.808) 0%, rgb(118, 91, 236) 130%); */
+    /* padding: 5px; */
+    border: 2px dotted #e5dce8;
+    box-shadow: 0 0 20px 5px black;
+    overflow: hidden;
+    /* transition: 0.5 all; */
+}
+.running_contest_main:hover {
+    scale: 1.01;
+    filter: brightness(4.2);
+    border: 2px solid #e5dce8;
+}
+
+.running_contest_main:hover .runnig_contest_name p{
+    color: black;
+    font-weight: 900;
+}
+.running_contest_main:hover .running_date_time p{
+    color: black;
+    font-family: dateFont;
+    letter-spacing: 1px;
+    /* font-weight: 900; */
+}
+.running_contest_main:hover .contest_start_btn button {
+    border: 3px solid rgb(0, 0, 0);
+    background-color: black;
+    color: white;
+    font-weight: 400;
+}
+.running_contest_main:hover .contest_start_btn button:hover {
+    color: rgb(255, 255, 255);
+    border: 3px solid rgba(0, 0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+
+.runnig_contest_name{
+    width: 55%;
+    padding: 4px 15px 15px 20px;
+    word-wrap: break-word;
+}
+
+.runnig_contest_name p{
+    color: white;
+    word-wrap: break-word;
+    font-weight: 700;
+    letter-spacing: 1px;
+    font-size: 1.8rem;
+}
+
+.contest_flex{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.running_date_time p{
+    color: white;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: 600;
+    font-size: 1.2rem;
+    margin: 5px 20px 0px 20px;
+}
+
+.contest_start_btn button{
+    color: rgb(0, 0, 0);
+    /* background-color: transparent; */
+    border: 2px solid white;
+    letter-spacing: 1px;
+    margin-top: 1vh;
+    border-radius: 15px;
+    margin-right: 25px;
+    padding: 4px 16px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 1.2rem;
+}
+
+.contest_start_btn button:hover,
+.contest_start_btn button a:hover{
+    /* scale: 1.05; */
+    color: rgb(255, 255, 255);
+    background-color: rgba(0, 0, 0, 0.85);
+    border: 2px solid black;
+    transition: 0.2s;
+}
+
+
+@media only screen and (max-width: 600px) {
+    .contest_start_btn button{
+        /* margin-left: 10px; */
+        margin-right: 10px;
+    }
+    .running_contest_main {
+        margin-bottom: 6%;
+    }
+  }

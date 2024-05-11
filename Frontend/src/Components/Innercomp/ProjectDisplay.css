@@ -1,0 +1,175 @@
+@import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
+
+
+*{
+    margin: 0%;
+    padding: 0%;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+
+
+.projectmain{
+    /* color: white; */
+    color: black;
+    padding: 20px 100px;
+}
+.projdisplay{
+    width: 100%;
+    height: 100%;
+    /* background-color: #363636; */
+    background: #E5DCE8;
+    padding: 55px 30px;
+    padding-left: 50px;
+    border-radius: 2.5vh;
+    box-shadow: 0px 0px 20px black;
+
+}
+
+.projectname{
+    font-size: 2.5rem !important;
+    margin: 10px 0px 10px 0px;
+    font-weight: 500;
+    color: black;
+}
+
+.projectname:hover{
+    /* color: #3c3c3c ; */
+    text-decoration: underline;
+    /* font-weight: bold; */
+}
+
+.linkImg{
+    position: relative;
+    background-image: url('/public/images/link.png');
+    background-size: contain;
+    padding: 2.2vh;
+    background-repeat: no-repeat;
+    /* border: 2px solid red; */
+    margin-left: 0.8vh;
+    /* background-position: center; */
+    /* margin-top: 1px; */
+    top: 0.8vh;
+}
+
+.projdispheader{
+    display: flex;
+    column-gap: 100px;
+    color: black;
+}
+
+
+.projdispheader p{
+    margin: 5px 0px 5px 0px;
+    font-size: 1.2rem !important;
+    color: black;
+}
+
+.projdispbutton{
+    /* padding: 5px 20px;
+    background: #0c73e2;
+    border: 0ch;
+    border-radius: 25px;
+    color: white;
+    cursor: pointer; */
+    float: right;
+    margin-right: 10px;
+    height: 5.5vh;
+    padding: 0% 1.5vw;
+    font-size: 2.2vh;
+    font-weight: 600;
+    border-radius: 5vh;
+    letter-spacing: 1px;
+    text-transform: capitalize;
+    color: rgb(255, 255, 255);
+    background-color: #6913BF ;
+    border: none;
+    /* border: 2px solid #2D033B;; */
+    /* border: 2px solid white; */
+}
+
+.projbtn{
+    padding: 15px 0px;
+}
+
+.projdispbutton:hover{
+    background-color: #3f007e ;
+    
+}
+
+.projlink{
+    margin-top: 30px;
+}
+
+.projdispheader img{
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    /* margin-left: 20px; */
+}
+
+.video_info{
+    margin-top: 40px;
+    display: none;
+    color: black;
+}
+
+.video_info video{
+    width: 600px ;
+    height: 400px ;
+    float: left;
+    margin: 0px 20px 20px 0px !important;
+}
+
+.teaminfo{
+    margin-top: 30px;
+    clear: left;
+}
+
+.teaminfo li{
+    /* list-style: ; */
+    font-size: 1.15rem;
+}
+
+.ProjectLink{
+    text-decoration: none;
+    color: white;
+    background-color: #0c73e2;
+    padding: 5px 20px 8px 18px;
+    border-radius: 8px;
+    border: 0cap;
+    margin-top: 5px;
+}
+
+@media only screen and (max-width: 650px) {
+
+    .projectmain{
+        color: white;
+        padding: 20px 30px;
+    }
+    .projdispheader{
+        flex-direction: column;
+        align-items: center;
+        padding: 30px 10px;
+    }
+    .projectname{
+        font-size: 2rem !important;
+        margin: 10px 0px 10px 0px;
+        font-weight: 500;
+    }
+    .projdispheader p{
+        margin: 5px 0px 5px 0px;
+        font-size: 1.2rem !important;
+    }
+    .projdispheader img{
+        width: 200px;
+        height: 200px;
+        margin-bottom: 20px;
+    }
+    .video_info video{
+        width: 100%;
+        height: 100%;
+    }
+
+}

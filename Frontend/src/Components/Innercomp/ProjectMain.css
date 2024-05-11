@@ -1,0 +1,51 @@
+@font-face {
+    font-family: newFont;
+    src: url("/public/fonts/Cyborg\ Punk.ttf");
+}
+
+.projectLib{
+    color: white;
+    margin-top: 3%;
+    font-family: newFont;
+    display: flex;
+    justify-content: center;
+}
+
+.projectHeader {
+    width: 85%;
+    height: 38vh;
+    padding-left: 1vw;
+    margin : 3vw auto 1vw auto;
+    border-radius: 20px;
+    background-color: rgb(105, 19, 191);
+    box-shadow: 0 0 25px 10px rgb(0, 0, 0);
+}
+
+.projTitle {
+    position: relative;
+    top: 10vh;
+    left: 1.5vw;
+    font-size: 5vh;
+    letter-spacing: 1px;
+    color: rgb(255, 255, 255);
+    font-family: projectCollabrationFont;
+    z-index: 2;
+}
+
+#proj_image {
+    width: 28vw;
+    height: 38vh;
+    float: right;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+
+.project_oneliner {
+    position: relative;
+    top: 16.5vh;
+    left: 2.5vw;
+    font-size: 3.1vh;
+    color: rgb(255, 255, 255);
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    /* border: 2px solid red; */
+}

@@ -1,0 +1,161 @@
+
+.UPleftPanel{
+    display: flex;
+    flex-direction: column;
+    /* border: 2px solid black; */
+    height: 100%;
+}
+
+.UPProfile{
+    /* border: 2px solid rgb(235, 255, 18); */
+    padding: 45px 0px;
+    backdrop-filter: blur(2px);
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 1.25px solid rgb(193, 193, 193);
+    /* background-color: #333; */
+    border-radius: 25px;
+}
+
+.ProfileImg{
+    position: relative;
+    /* background-image: url("../images/profile.jpeg"); */
+    box-shadow: 0 0 30px 2px black;
+    background-size: contain;
+    border-radius: 100%;
+    width: 25vh;
+    height: 25vh;
+    display: flex;
+    margin: auto;
+    justify-content: center;
+    /* border: 2px solid red; */
+}
+
+.UPProfile img{
+    border-radius: 100%;
+}
+
+.ProfileImgEdit{
+    /* border: 2px solid red; */
+    position: absolute;
+    background-image: linear-gradient(transparent 60%,rgb(0, 0, 0));
+    width: 100%;
+    height: 100%;    
+    border-radius: 100%;
+    display: none;
+    justify-content: center;
+    padding-top: 65%;
+}
+
+.EditDPButton{
+    background: none;
+    border: none;
+    
+}
+
+.ProfileName{
+    position: relative;
+    display: flex;
+    /* border: 2px solid wheat; */
+    /* justify-content: center; */
+    font-size: 180%;
+    font-weight: 650;
+    height: 6vh;
+    width: fit-content;
+    margin: auto;
+    margin-top: 6%;
+    padding-bottom: 0px;
+}
+
+.ProfileUsername{
+    display: flex; 
+    justify-content: center;
+    font-size: 110%;
+    height: 3vh;
+    width: fit-content;
+    margin: auto;
+    /* border: 2px solid green; */
+}
+
+.ProfileLeftInput{
+    text-align: center;
+    width: 80%;
+    background: none;
+    /* border: 2px solid red; */
+    margin: auto;
+}
+
+.UPSkills{
+    /* border: 2px solid rgb(21, 24, 215); */
+    margin-top: 20px;
+    backdrop-filter: blur(2px);
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 1.25px solid rgb(193, 193, 193);
+    /* background-color: #333; */
+    border-radius: 25px;
+    /* height: 30vh; */
+    padding: 10px 20px;
+    padding-bottom: 15px;
+}
+
+.UPSkillsTitle{
+    display: flex;
+    justify-content: space-between;
+    /* border: 2px solid red; */
+    height: 6vh;
+    font-size: 1.8rem;
+    font-weight: 650;
+    margin-bottom: 2vh;
+}
+
+.ProfileEditLink{
+    display: flex;
+    justify-content: center;
+    margin-top: 3vh;
+    font-size: 1.2rem;
+}
+
+.ProfileEditLink a{
+    color: rgb(255,139,22);
+}
+
+.ProfileEditLink a:hover{
+    text-decoration: underline !important;
+}
+
+.UPSkillsContent{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2vh;
+}
+
+.editLink{
+    text-decoration: none;
+    color: aqua;
+    /* font-size: 10vw ; */
+}
+
+.editLink:hover{
+    text-decoration: underline !important;
+}
+
+.skillPlaceHolder button{
+    justify-content: center;
+    border: 2px solid black;
+    padding:5px 15px;
+    border-radius: 20px;
+    background-color: rgb(126, 195, 244);
+    display: flex;
+}
+
+.skillPlaceHolder button:hover{
+    justify-content: center;
+    border: 2px solid black;
+    padding:5px 15px;
+    border-radius: 20px;
+    background-color: rgb(36, 95, 136) !important;
+    display: flex;
+}
+
+.noPlaceHolder{
+    display: none;
+}

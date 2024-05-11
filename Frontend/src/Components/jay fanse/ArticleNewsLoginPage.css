@@ -1,0 +1,20 @@
+.ArticleNewsLoginPage{
+    width: 95%;
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    gap: 4vh;
+    margin-bottom: 40px;    
+    /* border: 2px solid red; */
+}
+
+@media (width<1100px){
+    .ArticleNewsLoginPage{
+        grid-template-columns: repeat(3,1fr);
+    }
+}
+
+@media (width<700px) {
+    .ArticleNewsLoginPage{
+        grid-template-columns: repeat(2,1fr);
+    }
+}
