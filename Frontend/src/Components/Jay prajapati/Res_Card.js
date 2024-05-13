@@ -50,9 +50,10 @@ export default function Res_Card(props) {
     //   </>
 
     return (
-        <div className="card" onClick={ViewContent}>
+        <div className="card">
 
-            <div className="card-body">
+                <button id='resdelt' className='off' onClick={ () => { props.deleteOption(props.id) } }></button>
+            <div className="card-body" onClick={ViewContent}>
                 <img src={`data:Image/jpeg;base64,${props.resimg}`} className='lg' />
                 <div id='imgcont'>
                     <span id='topic'>{props.topic}</span>

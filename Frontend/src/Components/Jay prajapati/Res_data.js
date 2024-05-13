@@ -7,6 +7,28 @@ function Res_data(props) {
    
     const [V,setVar] = useState(props.source);
 
+    function deleteTopic(id){
+        const conf = window.confirm("Are you sure you want to remove this topic??");
+        if(conf){
+            const updatedTopics = V.filter(topic => topic._id !== id);
+            setVar(updatedTopics);
+            
+            fetch(`/resources/delTopic/${id}`,{
+                method: 'DELETE',
+                headers:{
+                    'Content-type' : 'application/json'
+                }
+            })
+            .then(response=>response.json())
+            .then((data)=>{
+                alert("Topic Deleted....!!");
+            })
+            .catch(err => {
+                console.error("Error deleting the topic..!");
+            })
+        }
+    }
+
     function subjectGenerator(props){
     return (
 
@@ -17,6 +39,8 @@ function Res_data(props) {
             vd_count = {props.videos[0]}
             b_count = {props.books[0]}
             // qp_count = {props.qp_count}
+            id = {props._id}
+            deleteOption = {deleteTopic}
             sub_link = {`rescontent?subject=${props.subject}`} />
         )
     }

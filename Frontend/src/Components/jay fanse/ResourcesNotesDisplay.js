@@ -14,6 +14,8 @@ function ResourcesNotesDisplay(props) {
     function addNotes(NoteElement){
         return <ResourcesNotesElement 
         title = {NoteElement.title}
+        id = {NoteElement.title+NoteElement.link}
+        deleteNote = {props.deleteNote}
         link = {NoteElement.link}
         />
     }
@@ -21,8 +23,7 @@ function ResourcesNotesDisplay(props) {
     return (
 
     <div className='ResourcesNotesDisplay' style={notesLen!=0 ? bgStyle : null}>
-        {props.notes ? props.notes.map(addNotes) : null}
-        
+        {props.notes ? props.notes.map(addNotes) : null}        
     </div>
   )
 }
