@@ -2,6 +2,8 @@ import React, { useEffect } from 'react';
 import { useState } from 'react';
 import TechTag from './TechTag.js';
 import "./ProjectCollabrationCard.css";
+import ToastComponent from '../jay fanse/toastComponent.js';
+import "./../jay fanse/toastComponent.css"
 
 function ProjectCollabrationCard(props) {
 
@@ -10,6 +12,11 @@ function ProjectCollabrationCard(props) {
   const [base64Img,setBase64Img] = useState("");
   const [sameUser, setSameUser] = useState(true);
   const [isAdmin,setIsAdmin] = useState(false);
+
+  const [toastVisible,setToastVisible] = useState(false);
+  const [toastMessage,setToastMessage] = useState("");
+  const [toastType,setToastType] = useState("");
+                
 
   useEffect( () => {
     if(props.userDetails.profileImg)
@@ -33,10 +40,14 @@ function ProjectCollabrationCard(props) {
       if(data.userData.isAdmin != undefined)
       setIsAdmin(data.userData.isAdmin);
     })
-  },[props.userDetails.profileImg])
+  },[props.userDetails.profileImg]);
 
 
   function ProjectCollabrationCardDelete() {
+
+    const conf = window.confirm('Are you sure you want to delete collaboration?');
+    if(conf)
+    {
     const allDeleteData = {
       projectCollabrationCardId : props.data._id
     }
@@ -49,12 +60,26 @@ function ProjectCollabrationCard(props) {
       }
     })
     .then(data => {
-    })
-    alert("Project Collaboration Deleted Successfully...");
-    window.location.reload();
+      props.deleteCollabCard(props.id);
+
+    });
   }
+}
+
 
   return (
+    <>
+              {/* {toastVisible ? <ToastComponent message={toastMessage} type={toastType} /> : null} */}
+              {toastVisible ? 
+              <div className='toastComponent'
+              style={
+                toastType === "success" ? {"backgroundColor" : "green"} : 
+                toastType === "warning" ? {"backgroundColor" : "yellow", "color" : "black"} : null
+          
+              }
+              >{toastMessage}</div>
+              : null}
+
         <div className='project_c_card'>
             <div className='avtar'> <a href={`profile?visitID=${props.data.collabrationLeader}`}> <img src={base64Img} /> </a> </div>
             <div className='innercontent'>
@@ -66,7 +91,7 @@ function ProjectCollabrationCard(props) {
                   </div>
                   <div>
                     {sameUser || isAdmin ?
-                      (<input type="button" title='Delete' className="project_collab_del_btn" onClick={ProjectCollabrationCardDelete} />)
+                      (<input type="button" className="project_collab_del_btn" onClick={ProjectCollabrationCardDelete} />)
                       : null
                     }
                   </div>
@@ -96,7 +121,8 @@ function ProjectCollabrationCard(props) {
                 </div>
             </div>
         </div>
-  )
+        </>
+  );
 }
 
-export default ProjectCollabrationCard
+export default ProjectCollabrationCard;

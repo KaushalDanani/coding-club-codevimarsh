@@ -8,6 +8,7 @@ function Navbar_after_login(props) {
     const navigate=useNavigate();
     const [userData,setUserData] = useState('');
     const [base64Img,setBase64Img] = useState('');
+    const {user,setUser} = useUser();
 
     useEffect( () => {
         fetch('/navbar/profileImg/dataset')
@@ -21,7 +22,9 @@ function Navbar_after_login(props) {
 
     function removeUserAuth() {
         (async () => {
-    
+          
+          setUser(null);
+
           await fetch('/remove/user/auth', {
             method: "GET",
             headers: {

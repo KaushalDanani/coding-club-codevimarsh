@@ -72,7 +72,7 @@ export default function Forums() {
           <p className='project_collabration_oneliner'>The aim of argument, or of discussion, should not be victory, but progress.</p>
         </div>
         <div className='addProjCollab' style={{width: '85%'}}>
-          <Link to={'/project_collab/addpost'}> <button className={changeImage ? 'ProjectCollabrationBtn changeAddImage' : 'ProjectCollabrationBtn'} 
+          <Link to={'/discussion/addQuestion'}> <button className={changeImage ? 'ProjectCollabrationBtn changeAddImage' : 'ProjectCollabrationBtn'} 
             onMouseOut={() => setChangeImage(true)}
             onMouseOver={()=> setChangeImage(false)}> Add </button> </Link>
         </div>

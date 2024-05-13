@@ -1,0 +1,46 @@
+@import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@700&family=Poppins:wght@300;600&display=swap');
+
+
+*{
+    margin: 0%;
+    padding: 0%;
+    box-sizing: border-box;
+}
+
+.foundercard {
+    /* width: 23.2vw !important; */
+    height: 100% ;
+    background-color: rgb(255, 255, 255) ;
+    margin: 0.9%;
+    border-radius: 10px;
+    box-shadow: 0px 0px 5px rgb(43, 43, 43);
+    padding: 2%;
+    
+    font-family: 'Poppins', sans-serif;
+    display: inline-block ;
+}
+
+.foundercard p{
+    color: rgb(53, 53, 53) ;
+}
+
+.quote{
+    width: 20px;
+    height: 20px;
+    margin-bottom: 4%;
+}
+
+.userimage{
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    margin-top: 8%;
+    margin-bottom: 5%;
+}
+
+.username{
+    font-weight: 600;
+    color: rgb(91, 91, 91);
+    font-size: 20px;
+}
+

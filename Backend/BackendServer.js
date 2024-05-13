@@ -33,7 +33,6 @@ const Contest = mongoose.model(
     // time : String
   })
 );
-
 app.get("/contest/past", (req, res) => {
   Contest.find({})
     .then((contestinfo) => {
@@ -172,13 +171,13 @@ app.post("/addproject", async (req, res) => {
 
 app.post("/deleteproject",async (req,res) => {
   await Project.deleteOne({"projectName": req.body.project_name});
-  // // console.log( req.body.project_name);
+  // console.log( req.body.project_name);
   
-  res.end();
+  res.send({message : 'Project deleted successfully!'});
 })
 
 const imageBuffer = fs.readFileSync(
-  "D:/WebP/code_minions-web/Frontend/public/images/profile.jpeg"
+  "D:/code_minions-web/Frontend/public/images/profile.jpeg"
 );
 const base64Image = imageBuffer.toString("base64");
 
@@ -186,7 +185,7 @@ app.get(`/projectDisplay/userData/`, async (req, res) => {
   try {
     const userID = req.query.userID;
     const admin = await User.findById(userID, 'isAdmin');
-    // // console.log(admin);
+    // console.log(admin);
     res.send({ admin: admin.isAdmin });
   } catch (e) {
     // Handle the exception here, for example, log the error or send an error response.
@@ -202,7 +201,7 @@ app.get("/user", (req, res) => {
       res.send(userinfo);
     })
     .catch((err) => {
-      // // console.log(err);
+      // console.log(err);
     });
 });
 
@@ -240,7 +239,7 @@ app.get("/question", (req, res) => {
       res.send(questioninfo);
     })
     .catch((err) => {
-      // // console.log(err);
+      // console.log(err);
     });
 });
 
@@ -255,8 +254,9 @@ app.post("/addmyquestion", jsonParser, function (req, res) {
     replies: [],
     tags: req.body.questiontags,
   });
-  // // // console.log(req.body);
+  // // console.log(req.body);
   newquestion.save();
+  res.send({message : "Question uploaded successfully!"});
 });
 
 const Resplie = mongoose.model(
@@ -293,10 +293,11 @@ app.post("/addmyreply", jsonParser, function (req, res) {
         { replies: arr },
         { new: true }
       ).then((data) => {
-        // // // console.log(data);
+        // // console.log(data);
       });
     });
   });
+  res.send({message : "Reply added successfully!"});
 });
 
 app.use((req, res, next) => {
@@ -365,9 +366,68 @@ app.get("/resources", async (req, resp) => {
   resp.send(docs);
 });
 
+app.post('/addmysubject',(req,res)=>{
+  const topic = req.body.subject;
+  const logo = req.body.sublogo;
+
+  // console.log(topic);
+
+  const newSub = new resModel({
+    subject : topic,
+    logo : logo,
+  });
+  const respons = newSub.save();
+  res.send({message : "Subject added successfully!"});
+  // console.log(respons);
+})
+
+app.post('/addmybook',async (req,res)=>{
+  const subject = req.body.sub_id;
+  const book = {
+    title : req.body.book,
+    link:req.body.link,
+    author:req.body.author,
+    edition:req.body.edition,
+    thumbnail:req.body.thumbnail,
+  }
+  const subObj = await resModel.findById(subject);
+  subObj.books.push(book);
+  const a = await subObj.save();
+  // console.log(a);
+  res.send({message : "Book added successfully!"});
+})
+
+app.post('/addmynote',async (req,res)=>{
+  const subject = req.body.sub_id;
+  const note = {
+    title : req.body.note,
+    link:req.body.link,
+  }
+  const subObj = await resModel.findById(subject);
+  subObj.notes.push(note);
+  const a = await subObj.save();
+  // console.log(a);
+  res.send({message : "Note added successfully!"});
+})
+
+app.post('/addmyvideo',async (req,res)=>{
+  const subject = req.body.sub_id;
+  const video = {
+    title : req.body.video,
+    link:req.body.link,
+    channel:req.body.channel,
+    source:req.body.source,
+  }
+  const subObj = await resModel.findById(subject);
+  subObj.videos.push(video);
+  const a = await subObj.save();
+  // console.log(a);
+  res.send({message : "Video added successfully!"});
+})
+
 // app.post('/resources/content', (req, resp) => {
 //   const data = req.body;
-//   // // console.log(data);
+//   // console.log(data);
 // })
 
 app.get("/asker", async (req, resp) => {
@@ -403,8 +463,8 @@ app.get("/discussion/question", async (req, resp) => {
     const replierMap = new Map();
     const upvoteMap = new Map();
 
-    // // console.log(q_id);
-    // // console.log(userID);
+    // console.log(q_id);
+    // console.log("sdfgeragye       :          "+userID);
 
     const Q_data = await Question.findById(q_id);
     const Asker = await User.findById(Q_data.asker, "username profileImg");
@@ -434,8 +494,8 @@ app.get("/discussion/question", async (req, resp) => {
     }
     const rArr = Array.from(replierMap);
 
-    // // // console.log(Q_upvote);
-    // // // console.log(uArr);
+    // // console.log(Q_upvote);
+    // // console.log(uArr);
 
     resp.send([Q_data, Asker, Q_upvote, R_data, rArr, uArr]);
   } catch (err) {
@@ -449,8 +509,8 @@ app.post("/discussion/question", async (req, resp) => {
   const Id = req.body.Id;
   const state = req.body.state;
   const count = req.body.count;
-  // // // console.log("THis :" + count);
-  // // // console.log(state);
+  // // console.log("THis :" + count);
+  // // console.log(state);
   // const Id = req.body.Id;
   // const count = req.body.count;
 
@@ -465,41 +525,41 @@ app.post("/discussion/question", async (req, resp) => {
 
   if (type === "r") {
     const updated = await Resplie.updateOne({ _id: Id }, { upvotes: count });
-    // // // console.log(updated)
+    // // console.log(updated)
     if (state) {
       ur.push(Id);
     } else {
-      // // // console.log("Before : " + ur);
+      // // console.log("Before : " + ur);
       let ind = ur.indexOf(Id);
       ur.splice(ind, 1);
-      // // // console.log("After : " + ur);
+      // // console.log("After : " + ur);
     }
     const UserUps = await User.updateOne(
       { _id: userID },
       { repliesUpvotes: ur }
     );
-    // // // console.log("user upvote data changed for replies : " + UserUps);
+    // // console.log("user upvote data changed for replies : " + UserUps);
   }
 
   if (type === "q") {
-    // // console.log(Id);
+    // console.log(Id);
     const updated = await Question.updateOne({ _id: Id }, { upvotes: count });
-    // // // console.log(updated)
+    // // console.log(updated)
     if (state) {
       uq.push(Id);
-      // // // console.log("Here in if");
+      // // console.log("Here in if");
     } else {
-      // // // console.log("Here in else");
-      // // // console.log("Before : " + uq);
+      // // console.log("Here in else");
+      // // console.log("Before : " + uq);
       let ind = uq.indexOf(Id);
       uq.splice(ind, 1);
-      // // // console.log("After : " + uq);
+      // // console.log("After : " + uq);
     }
     const UserUps = await User.updateOne(
       { _id: userID },
       { questionUpvotes: uq }
     );
-    // // // console.log("user upvote data changed for replies : " + UserUps);
+    // // console.log("user upvote data changed for replies : " + UserUps);
   }
 });
 
@@ -509,10 +569,10 @@ app.delete('/discussion/delQue/:q_id', async (req, res) => {
     const result = await Question.deleteOne({ _id: q_id });
 
     if (result.deletedCount === 1) {
-      // // console.log("Successfully deleted");
+      // console.log("Successfully deleted");
       return res.json({ message: 'Deleted successfully' });
     } else {
-      // // console.log("Question not found");
+      // console.log("Question not found");
       return res.status(404).json({ error: 'Question not found' });
     }
   } catch (error) {
@@ -527,10 +587,10 @@ app.delete('/discussion/question/delRep/:r_id', async (req, res) => {
     const result = await Resplie.deleteOne({ _id: r_id });
 
     if (result.deletedCount === 1) {
-      // // console.log("Successfully deleted");
+      // console.log("Successfully deleted");
       return res.json({ message: 'Deleted successfully' });
     } else {
-      // // console.log("reply not found");
+      // console.log("reply not found");
       return res.status(404).json({ error: 'reply not found' });
     }
   } catch (error) {
@@ -544,14 +604,22 @@ app.delete('/discussion/question/delRep/:r_id', async (req, res) => {
 app.post("/adminList", async (req, res) => {
   const adminList = await User.find({isAdmin : true});
   res.send({admins : adminList});
+  // console.log(adminList);
+});
+
+app.post("/getUserData", async(req,res) => {
+  const id = req.query.userID;
+  const userData = await User.find({userID : id});
+
+  res.send({userData : userData});
 });
 
 app.get("/addAdmin/",async (req,res) => {
   const newAdminUsername = req.query.username;
   
-  const user = await User.findOneAndUpdate({username : newAdminUsername},{isAdmin : true});
-  // // console.log(user);
-  res.send({user : user,message : "Admin Registered successfully!"});
+  const userData = await User.findOneAndUpdate({username : newAdminUsername},{isAdmin : true});
+  // console.log(userData);
+  res.send({user : userData,message : "Admin Registered successfully!"});
 
 });
 
@@ -606,7 +674,7 @@ app.get("/profile/user", async (req, res) => {
   const userID = req.query.userID;
   try {
     const resData = await User.find({ _id: userID });
-    // // // console.log(resData);
+    // // console.log(resData);
     res.send(resData);
   } catch (err) {
     res.status(500).send(err.message);
@@ -615,10 +683,10 @@ app.get("/profile/user", async (req, res) => {
 
 app.get("/profile/projects", async (req, res) => {
   const userID = req.query.userID;
-  // // // console.log(userID);
+  // // console.log(userID);
 
   const projData = await Project.find({ contributors: { $in: [userID] } });
-  // // // console.log(projData);
+  // // console.log(projData);
   res.send(projData);
 });
 
@@ -638,7 +706,7 @@ app.post("/profile/projects/members", async (req, res) => {
       // Handle the error as needed
     }
   }
-  // // // console.log(memberDataArray);
+  // // console.log(memberDataArray);
   res.send(memberDataArray);
 });
 
@@ -675,17 +743,17 @@ app.post("/editprofile/userSkills", async (req, res) => {
     await user.save();
     res.send(user);
   } catch (err) {
-    // // console.log(err);
+    // console.log(err);
   }
 });
 
 app.post("/editprofile/personal", async (req, res) => {
   const personalData = req.body;
   const userID = req.query.userID;
-  // // // console.log(userID);
+  // // console.log(userID);
 
   let user = await User.findOne({ _id: userID });
-  // // // console.log(user);
+  // // console.log(user);
   user = {
     ...user._doc,
     ...personalData,
@@ -696,7 +764,7 @@ app.post("/editprofile/personal", async (req, res) => {
     runValidators: true,
   });
 
-  // // // console.log(user);
+  // // console.log(user);
   res.send(personalData);
 });
 
@@ -731,31 +799,39 @@ app.post("/editprofile/account", async (req, res) => {
 });
 
 app.post("/editprofile/password", async (req, res) => {
-  const newPass = req.body.newPass;
-  const userID = req.query.userID;
+  try {
+    const newPass = req.body.newPass;
+    const userID = req.query.userID;
 
-  const updatedData = await User.updateOne(
-    { _id: userID },
-    { password: newPass }
-  );
 
-  res.send(updatedData);
+    const updatedUser = await User.findOneAndUpdate(
+      { _id: userID },
+      { password: newPass }
+    );
+
+    res.send({message : "Updated successfully!"});
+  } catch (error) {
+    console.error("Error updating password:", error);
+    res.status(500).send("Error updating password");
+  }
 });
+
 
 app.post("/editprofile/profileImg", async (req, res) => {
   const profileImg = req.body.profileImg;
   const userID = req.query.userID;
 
-  // // // console.log(profileImg);
-  // // // console.log(userID);
+  // // console.log(profileImg);
+  // // console.log(userID);
 
   const updatedUser = await User.updateOne(
     { _id: userID },
     { profileImg: profileImg }
+
   );
 
-  // // console.log(updatedUser);
-  res.send(req.body);
+  // console.log(updatedUser);
+  res.send({body : req.body,message : "Profile image updated sucessfully!"});
 });
 
 //kaushal
@@ -818,7 +894,7 @@ app.post('/projectcollabration', async (req, res) => {
 //   const collabrationData = {collabrationLeader: data.userID, ...data};
 //   const addProjectCollab = new projectCollabration(collabrationData);
 
-//   // // // console.log(collabrationData)
+//   // // console.log(collabrationData)
 //   const addDone = await addProjectCollab.save();
 //   // res.sendFile("Project_Collabration.js", {root: '../Frontend/src/components/kaushal'})
 // })
@@ -841,9 +917,9 @@ app.post("/addprojectcollabration", async (req, res) => {
   };
   const addProjectCollab = new projectCollabration(collabrationData);
 
-  // // // console.log(collabrationData)
+  // // console.log(collabrationData)
   const addDone = await addProjectCollab.save();
-  res.send({message: "Collaboration updated successfully"})
+  res.send({message : "Collaboration uploaded successfully!"});
 });
 
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -871,7 +947,7 @@ app.use(
 //         }
 //         const signupUser = new User (userData)
 //         // const token = await User.generateAuthToken();
-//         // // console.log(signupUser)
+//         // console.log(signupUser)
 //         const signup_done = await signupUser.save();
 //         const user = await User.findOne({username: userData.username})
 //         res.sendFile("LoginHomePage.js", {root: '../Frontend/src/components/jay fanse'})
@@ -879,7 +955,7 @@ app.use(
 //         res.send({userID: user._id})
 //     }
 //     catch (err) {
-//         // // console.log(err)
+//         // console.log(err)
 //         res.sendStatus(400)
 //     }
 // })
@@ -891,11 +967,11 @@ app.use(
 //       username: loginData.username,
 //       password: loginData.password,
 //     });
-//     // // // console.log(userDetail)
+//     // // console.log(userDetail)
 //     if (userDetail === null) res.send({ message: "Invalid User Credential" });
 //     else res.status(200).send({ userID: userDetail._id });
 //   } catch (err) {
-//     // // console.log(err);
+//     // console.log(err);
 //     res.sendStatus(400);
 //   }
 // });
@@ -929,7 +1005,7 @@ app.post('/usersignin', async (req, res) => {
       const loginData = req.body;
 
       const userDetail = await User.findOne({username: loginData.username});
-      // // console.log(userDetail)
+      // console.log(userDetail)
       if(userDetail == null)
       {
         res.send({message: "Invalid User Credential"})
@@ -995,7 +1071,7 @@ app.get('/navbar/profileImg/dataset', async (req, res) => {
   try {
     const resData = await User.findOne({'tokens.token' : jwt});
     res.send({data : resData});
-    // // console.log(resData);
+    // console.log(resData);
   } catch (err) {
     res.status(500).send(err.message);
   }
@@ -1031,9 +1107,13 @@ try {
 
   const currentPwd = req.body.currentPassword;
   const isSame = await bcrypt.compare(currentPwd, userDetail.password);
+  
+  console.log(isSame);
 
   if(!isSame)
     res.send({message: "Wrong Current Password..."});
+  else
+    res.send({message : ""});
 }
 catch(err)
 {
@@ -1042,20 +1122,20 @@ catch(err)
 })
 
 app.post('/getUser/whoUpload', async (req, res) => {
-  const jwt = req.cookies.jwtAuth;
-  const userDetail = await User.findOne({'tokens.token': jwt});
+const jwt = req.cookies.jwtAuth;
+const userDetail = await User.findOne({'tokens.token': jwt});
 
-  res.send({userData: userDetail});
+res.send({username: userDetail.username,userData : userDetail});
 })
 
 app.post('/delete/projectCollabration/data', async (req, res) => {
-  const data = req.body;
+const data = req.body;
 
-  const done = await projectCollabration.deleteOne({
-  _id: data.projectCollabrationCardId
-  });
+const done = await projectCollabration.deleteOne({
+ _id: data.projectCollabrationCardId
+});
 
-  res.send();
+res.send();
 })
 
 app.listen(port, () => {
