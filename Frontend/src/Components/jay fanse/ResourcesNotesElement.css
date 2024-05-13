@@ -11,6 +11,18 @@
     transition: all 0.3s;
 }
 
+.NoteElement #resElemDelt{
+    background-image: url("/public/images/delete2.png");
+    width: 32px;
+    height: 32px;
+    border: none;
+    background-color: transparent;
+    position: absolute;
+    left: 1.2vw;
+    bottom: 30%;
+}
+
+
 .NoteA{
     flex-grow: 1;
 

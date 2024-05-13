@@ -17,6 +17,8 @@ function ResourcesVideosDisplay(props) {
         title = {videoElement.title}
         channel = {videoElement.channel}
         source = {videoElement.source}
+        id = {videoElement.title+videoElement.channel}
+        deleteVideo = {props.deleteVideo}
         />
     }
 

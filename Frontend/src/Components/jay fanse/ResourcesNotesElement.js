@@ -3,12 +3,12 @@ import "./ResourcesNotesElement.css"
 
 function ResourcesNotesElement(props) {
   return (
-
-    <a href={props.link} target='_blank' className='NoteA'>
+    <div className='NoteA'>
     <div className="NoteElement">
-        <div className="NoteElementTitle">{props.title}</div>
+        <a className="NoteElementTitle" target='_blank' href={props.link}>{props.title}</a>
+        <button id='resElemDelt' className='off' onClick={()=>{props.deleteNote(props.id)}}/>
     </div>
-    </a>
+    </div>
   )
 }
 

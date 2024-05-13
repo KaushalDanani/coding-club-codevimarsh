@@ -49,6 +49,16 @@ export default function Resources(props) {
     elem.style.display = 'block'
   }
 
+  function editOption() {
+    let comps = document.querySelectorAll('#resdelt');
+    for (const c of comps) {
+      if (c.classList.contains('off'))
+        c.classList.remove('off');
+      else
+        c.classList.add('off');
+    }
+  }
+
   function boolCheck(){
     if(isAdmin === true)
       return true;
@@ -78,6 +88,7 @@ export default function Resources(props) {
           <div className="container-fluid subject_header_line">
             <a id='heading'>Select Topic to prepare</a>
             <div id='addButton' style={{ display: (boolCheck() ? 'block' : 'none') }}>
+            <input type="button" value={"Edit"} className='addSub' onClick={editOption} />
             <Link id='linkSub' to={'/addSubject'}><input type='button' value={"Add Subject"} className='addSub'></input></Link>
             </div>
           </div>

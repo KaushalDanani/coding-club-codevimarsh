@@ -17,6 +17,8 @@ function ResourcesBooksDisplay(props) {
         title = {BookElement.title}
         edition = {BookElement.edition}
         author = {BookElement.author}
+        id = {BookElement.title+BookElement.author+BookElement.edition}
+        deleteBook = {props.deleteBook}
         link = {BookElement.link}
         />
     }
