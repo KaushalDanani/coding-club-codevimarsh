@@ -4,7 +4,7 @@ const fs = require('fs');
 const { ObjectId } = require('mongodb');
 const jwt = require('jsonwebtoken')
 
-const imageBuffer = fs.readFileSync("D:/WebP/code_minions-web/Frontend/public/images/profile.jpeg");
+const imageBuffer = fs.readFileSync("D:/code_minions-web/Frontend/public/images/profile.jpeg");
 const base64Image = imageBuffer.toString("base64");
 
 const userSchema = new mongoose.Schema({
@@ -80,17 +80,42 @@ userSchema.pre("save", async function (next) {
     if(this.isModified("password"))
     {
         this.password = await bcrypt.hash(this.password, 10);
-        // // console.log(`Now, Password is : ${this.password}`);
+        // console.log(`Now, Password is : ${this.password}`);
     }
     next();
 })
+
+
+userSchema.pre(["updateOne", "findByIdAndUpdate", "findOneAndUpdate"], async function (next) {
+    console.log("Middleware triggered");
+
+    const data = this.getUpdate();
+    
+    // Check if password is being modified
+    if (data.password) {
+
+        
+
+        const hashedPassword = await bcrypt.hash(data.password, 10);
+
+        // Update the password in the update document
+        data.password = hashedPassword;
+
+    }
+    
+    // Call next to proceed with the operation
+    next();
+});
+
+
+
 
 userSchema.methods.generateAuthToken = async function() {
     try {
         const tk = jwt.sign({_id:this._id.toString()}, "ourprojectisoncodingwebtocreatecodingculture");
         this.tokens = this.tokens.concat({token: tk});
         await this.save();
-        // // console.log(tk);
+        // console.log(tk);
 
         return tk;
     } catch (err) {

@@ -4,7 +4,7 @@ import { Link, Navigate, useLocation, useNavigate } from 'react-router-dom'
 import './ProjectDisplay.css'
 import TechTag from "../kaushal/TechTag.js";
 import useUser from "../../store/userContext.js";
-
+import ToastComponent from "../jay fanse/toastComponent.js";
 
 export default function ProjectDisplay(props) {
     
@@ -16,6 +16,11 @@ export default function ProjectDisplay(props) {
     const [admin,setAdmin] = useState('');
     const [userID,setUserID] = useState('');
     const [hover,setHover] = useState(false);
+
+    const [toastVisible,setToastVisible] = useState(false);
+    const [toastMessage,setToastMessage] = useState("");
+    const [toastType,setToastType] = useState("");
+                
 
     useEffect(  () => {
         if(props.userID!=null)
@@ -42,8 +47,8 @@ export default function ProjectDisplay(props) {
         var b = false;
         console.log(admin);
         // console.log("user : "+userID);
-        for(let i=0;i<props.team.length;i++){
-            if(admin===true || props.team[i] == userID ){
+        for(let i=0;i<=props.team.length;i++){
+            if(admin===true || props.team[i]===userID ){
                 b = true;
             }
         }
@@ -60,7 +65,7 @@ export default function ProjectDisplay(props) {
 
     useEffect(() => {
         if(props.team){
-            deletebtn();
+                deletebtn();
         }
     }, [props.team,userID]);
 
@@ -89,8 +94,12 @@ export default function ProjectDisplay(props) {
                 'Content-Type': 'application/json'
                     }
                 })
-                alert("Project Deleted");
-                window.location.reload();
+                .then(response => response.json())
+                .then(data => {
+                    props.deleteProjectFromList(props.id,data.message);
+                });
+
+                
                 // alert("Refesh tha page to see the change")
         }
 
@@ -157,6 +166,7 @@ export default function ProjectDisplay(props) {
 
     return (
         <>
+        {/* {toastVisible ? <ToastComponent message={toastMessage} type={toastType} /> : null} */}
         <div className="projectmain">
             <div className="projdisplay">
 

@@ -6,21 +6,65 @@ import "./Discussion_Forums.css"
 import { Link } from 'react-router-dom';
 import { question_open } from '../Question_answer_jp/Ask_Question.js';
 import useUser from "../../store/userContext.js";
+import ToastComponent from "../jay fanse/toastComponent.js";
 
-function ForumGenerator(props) {
+function ForumGenerator() {
   const [ques, setQues] = useState([]);
   const [m, setM] = useState(new Map());
 	const [changeImage, setChangeImage] = useState('true');
-  const { user } = useUser();
+
+  const [toastVisible,setToastVisible] = useState(false);
+    const [toastMessage,setToastMessage] = useState("");
+    const [toastType,setToastType] = useState("");
+  
+  const { user }= useUser();
   // console.log(user, '👍👍👍👍👍🧑🧑🧑🧑🧑 from DiscussionData.js');
 
   useEffect(() => {
-      setQues(props.questions);
-      const mArray = props.array;
-      const map = new Map(mArray);
-      setM(map);
+    fetch('/discussion', {
+      method: 'POST',
+      headers: {
+          'Content-Type': 'application/json'
+      }
+    })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+          // return response.json();
+        }
+        return response.json();
+      })
+      .then(data => {
+        setQues(data.ques);
 
+        const mArray = data.mArray;
+        const map = new Map(mArray);
+        setM(map);
+
+        // console.log(ques);
+        // console.log(map);
+        // window.location.reload();
+
+      })
+      .catch(error => {
+        console.error('Error:', error);
+      });
   }, []); // Empty dependency array to fetch data once on component mount
+
+  function deleteQuestionFromList(key)
+  {
+    const newQues = ques.filter(question => question._id !== key);
+    setQues(newQues);
+    setToastVisible(true);
+          setToastMessage("Question deleted successfully!");
+          setToastType("success");
+          setTimeout(() => {
+            setToastVisible(false)
+            // window.location.reload();
+          }, 4000);
+  }
+
+
 
   // function MakeDiscussion(disc) {
   //   // console.log(disc);
@@ -40,8 +84,11 @@ function ForumGenerator(props) {
 
   return (
     <>
+  
 
-        <hr style={{width: '83%', height: '2.5px', backgroundColor: 'white', marginTop: '0px', marginLeft: '130px',marginRight: '130px', marginBottom: '2.5vh'}}/>
+  {toastVisible ? <ToastComponent message={toastMessage} type={toastType} /> : null}
+
+        <hr style={{width: '83%', height: '2.5px', backgroundColor: 'white', marginLeft: '130px',marginRight: '130px', marginBottom: '2.5vh'}}/>
 			
       {ques.map((disc, idx) => (
           <Discussion_block
@@ -54,6 +101,7 @@ function ForumGenerator(props) {
           date={disc.askDate}
           _id={disc.asker}
           q_id={disc._id}
+          deleteQuestionFromList={deleteQuestionFromList}
         />
       ))}
     </>

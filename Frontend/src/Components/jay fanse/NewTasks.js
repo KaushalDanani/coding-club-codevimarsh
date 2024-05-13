@@ -1,4 +1,5 @@
 import React from 'react'
+import RecentHeading from './RecentHeading.js'
 import { Link } from 'react-router-dom'
 import "./RecentHeading.css"
 import RecentTasksPanel from './RecentTasksPanel.js'

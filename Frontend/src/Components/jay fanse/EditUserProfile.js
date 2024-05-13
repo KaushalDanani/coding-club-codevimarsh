@@ -10,6 +10,7 @@ import useUser from "../../store/userContext.js";
 import { useLocation } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { Button } from "react-scroll";
+import ToastComponent from "./toastComponent.js";
 import HashLoader from "react-spinners/HashLoader.js";
 
 function EditUserProfile(props) {
@@ -19,6 +20,12 @@ function EditUserProfile(props) {
   const [showhideforconfirm, setShowhideforconfirm] = useState('true');
   const [showhideforreconfirm, setShowhideforreconfirm] = useState('true');
   const [userID, setUserID] = useState("");
+
+  const [toastVisible,setToastVisible] = useState(false);
+  const [toastMessage,setToastMessage] = useState("");
+  const [toastType,setToastType] = useState("");
+
+  const [currPassMessage,setCurrPassMessage] = useState();
 
   useEffect(() => {
     if (props.user != null) {
@@ -154,7 +161,11 @@ function EditUserProfile(props) {
       .then(response => response.json())
       .then(data => {
         if (data.message !== undefined)
-          alert(data.message);
+
+          setToastVisible(true);
+          setToastMessage(data.message);
+          setToastType("warning");
+          setTimeout(() => setToastVisible(false), 4000);
       });
   }
 
@@ -256,7 +267,6 @@ function EditUserProfile(props) {
       />
     );
   }
-  
   function onSelection(name) {
     setSelectedTags(prev => {
       if (prev.includes(name)) {
@@ -311,7 +321,12 @@ function EditUserProfile(props) {
       .then(response => response.json())
       .then(data => {
         console.log("personal", data);
-        alert("Profile Updated Successfully!!")
+
+        setToastVisible(true);
+        setToastMessage("Profile Updated Successfully!!");
+        setToastType("success");
+
+        setTimeout(() => setToastVisible(false), 4000);
       })
       .catch(err => {
         console.log(err);
@@ -335,12 +350,19 @@ function EditUserProfile(props) {
       .then(response => response.json())
       .then(data => {
         if (data.error) {
-          alert(data.error)
+          setToastVisible(true);
+          setToastMessage(data.error);
+          setToastType("warning");
+          setTimeout(() => setToastVisible(false), 4000);
+
           setUsername(userData.username);
           setEmail(userData.email);
         }
         else {
-          alert(data.message);
+          setToastVisible(true);
+          setToastMessage(data.message);
+          setToastType("success");
+          setTimeout(() => setToastVisible(false), 4000);
           setUsernameTitle(username);
         }
       })
@@ -352,20 +374,57 @@ function EditUserProfile(props) {
     event.preventDefault();
   }
 
-  function savePassword(event) {
+  async function savePassword(event) {
 
-    if (currentPass == newPass) {
-      alert("New Password cannot be same as current password!");
+    event.preventDefault();
+
+
+    const currentPwd = {
+      'currentPassword': currentPass
+    }
+
+    const response = await fetch('/check/current/password', {
+      method: 'POST',
+      body: JSON.stringify(currentPwd),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+    const data=await response.json();  
+    
+        //setCurrPassMessage(data.message);
+             
+    if(data.message !== "")
+    {
+      setToastVisible(true);
+          setToastMessage("Wrong password");
+          setToastType("warning");
+          setTimeout(() => setToastVisible(false), 4000);
+    }
+    else if (currentPass == newPass) {
+      setToastVisible(true);
+      setToastMessage("New Password cannot be same as current password!");
+      setToastType("warning");
+      setTimeout(() => setToastVisible(false), 4000);
+
       setConfirmNewPass("");
       setNewPass("");
     }
     else if (newPass.length < 8 || confirmNewPass.length < 8) {
-      alert("Please, keep your password minimum 8 character!!");
+      setToastVisible(true);
+      setToastMessage("Please, keep your password minimum 8 character!!");
+      setToastType("warning");
+      setTimeout(() => setToastVisible(false), 4000);
+
       setNewPass("");
       setConfirmNewPass("");
     }
     else if (newPass != confirmNewPass) {
-      alert("Re-Enter new password!!");
+      setToastVisible(true);
+      setToastMessage("Re-Enter new password!!");
+      setToastType("warning");
+      setTimeout(() => setToastVisible(false), 4000);
+
       setConfirmNewPass("");
     }
     else {
@@ -374,7 +433,7 @@ function EditUserProfile(props) {
         'currentPassword': currentPass
       }
 
-      fetch('/editprofile/password', {
+      fetch(`/editprofile/password/?userID=${userID}`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -383,20 +442,31 @@ function EditUserProfile(props) {
       })
         .then(response => response.json())
         .then(data => {
-          alert("Password updated successfully!")
+          setToastVisible(true);
+        setToastMessage("Password updated successfully!");
+        setToastType("success");
+        setTimeout(() => setToastVisible(false), 4000);
+
           setCurrentPass("");
           setNewPass("");
           setConfirmNewPass("");
         })
     }
-
-    event.preventDefault();
+  
   }
 
   function toggleAddSkills(event) {
     setaddSkillDisplay(!addSkillDisplay);
     sendDataToBackend(selectedTags);
     setUserSkills(selectedTags);
+
+    if(addSkillDisplay===true)
+    {
+      setToastVisible(true);
+        setToastMessage("Skills Updated Successfully!!");
+        setToastType("success");
+        setTimeout(() => setToastVisible(false), 4000);
+    }
 
     event.preventDefault();
   }
@@ -434,7 +504,14 @@ function EditUserProfile(props) {
         })
           .then(response => response.json())
           .then(data => {
-
+            setToastVisible(true);
+                    setToastMessage(data.message);
+                    setToastType("success");
+                    setTimeout(() => 
+                    {
+                      setToastVisible(false)
+                    }, 4000);
+                    
             // console.log(base64String);
           })
       };
@@ -447,6 +524,7 @@ function EditUserProfile(props) {
 
   // const base64Img = ;
 
+ 
   if (isLoadingEditProfile)
     return <>
       {/* <Navbar_after_login /> */}
@@ -464,6 +542,8 @@ function EditUserProfile(props) {
 
   return (
     <div className="EditUserProfile">
+    {toastVisible ? <ToastComponent message={toastMessage} type={toastType} /> : null}
+
       <Link to={'/profile'}> <div className="EditUserProfileBack"> </div> </Link>
       <div className="EditProfilePhotoPanel">
         <div
@@ -694,10 +774,10 @@ function EditUserProfile(props) {
                   value={year}
                   onChange={yearChangeHandler}
                 >
-                  <option>"2023"</option>
-                  <option>"2024"</option>
-                  <option>"2025"</option>
-                  <option>"2026"</option>
+                  <option>2023</option>
+                  <option>2024</option>
+                  <option>2025</option>
+                  <option>2026</option>
                 </select>
                 <div className="EditSaveButtonDiv">
                   <button onClick={saveUserProfile}>Save</button>

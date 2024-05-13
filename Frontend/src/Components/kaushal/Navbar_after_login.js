@@ -10,6 +10,7 @@ function Navbar_after_login(props) {
     const [userData,setUserData] = useState('');
     const [base64Img,setBase64Img] = useState('');
 
+
     useEffect( () => {
         fetch('/navbar/profileImg/dataset')
         .then(response => response.json())
@@ -22,8 +23,9 @@ function Navbar_after_login(props) {
 
     function removeUserAuth() {
         (async () => {
-    
+          
           setUser(null);
+
           await fetch('/remove/user/auth', {
             method: "GET",
             headers: {
