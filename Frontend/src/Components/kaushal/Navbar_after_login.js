@@ -6,6 +6,7 @@ import useUser from '../../store/userContext.js';
 
 function Navbar_after_login(props) {
     const navigate=useNavigate();
+    const { user, setUser } = useUser();
     const [userData,setUserData] = useState('');
     const [base64Img,setBase64Img] = useState('');
 
@@ -22,6 +23,7 @@ function Navbar_after_login(props) {
     function removeUserAuth() {
         (async () => {
     
+          setUser(null);
           await fetch('/remove/user/auth', {
             method: "GET",
             headers: {

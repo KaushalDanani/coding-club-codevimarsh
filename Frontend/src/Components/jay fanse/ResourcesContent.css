@@ -40,7 +40,7 @@
 
   .ResourcesContentFrame {
     padding: 30px 40px;
-    background-color: #2D003B;
+    /* background-color: #2D003B; */
     /* border: 2px solid pink; */
     box-sizing: border-box;
     /* height: 100%; */
@@ -64,7 +64,7 @@
 
   .ResourcesContentMain {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: start;
     /* border: 2px solid white; */
     height: 80vh;
@@ -75,7 +75,9 @@
     flex-direction: column;
     position: relative;
     width: 20%;
-    margin-right: 50px;
+    margin: 0px 50px;
+    backdrop-filter: blur(2px);
+    background-color: rgba(255, 255, 255, 0.1);
   }
 
   .ResourcesContentList label {
@@ -165,7 +167,7 @@
     top: 0px;
     font-weight: 500;
     z-index: 5;
-    background-color: #2D003B;
+    /* background-color: #2D003B; */
   }
 
   .ResourcesContentFrame .text p {
