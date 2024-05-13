@@ -176,9 +176,7 @@ app.post("/deleteproject",async (req,res) => {
   res.send({message : 'Project deleted successfully!'});
 })
 
-const imageBuffer = fs.readFileSync(
-  "C:/Users/Jay/OneDrive/Desktop/Projects/CodeVimarsh_Website/codeVimarsh/coding-club-codevimarsh/Frontend/public/images/profile.jpeg"
-);
+const imageBuffer = "https://ezylink.vercel.app/20";
 const base64Image = imageBuffer.toString("base64");
 
 app.get(`/projectDisplay/userData/`, async (req, res) => {
