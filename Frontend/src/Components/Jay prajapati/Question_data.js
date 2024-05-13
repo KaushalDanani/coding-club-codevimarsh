@@ -11,19 +11,22 @@ import ToastComponent from '../jay fanse/toastComponent.js';
 export default function Question_data(props) {
 
     const location = useLocation();
-    const [user, setUser] = useState();
-    const [userID, setUserID] = useState();
+    // const [user, setUser] = useState();
+    // const [userID, setUserID] = useState();
+
+    const {user,setUser} = useUser();
+    const userID = user ? user._id : null;
 
     const [toastVisible, setToastVisible] = useState(false);
     const [toastMessage, setToastMessage] = useState("");
     const [toastType, setToastType] = useState("");
 
-    useEffect(() => {
-        if (props.user != null) {
-            setUser(props.user);
-            setUserID(props.user._id);
-        }
-    }, [props.user])
+    // useEffect(() => {
+    //     if (props.user != null) {
+    //         setUser(props.user);
+    //         setUserID(props.user._id);
+    //     }
+    // }, [props.user])
 
 
     const searchParams = new URLSearchParams(location.search);

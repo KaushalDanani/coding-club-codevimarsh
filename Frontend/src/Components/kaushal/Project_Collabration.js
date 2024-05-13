@@ -22,7 +22,7 @@ function Project_Collabration() {
 
   useEffect(() => {
     fetch('/projectcollabration', {
-      method: 'GET',
+      method: 'POST',
       headers: {
           'Content-Type': 'application/json'
       }

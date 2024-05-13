@@ -90,12 +90,8 @@ function ProjectCollabrationCard(props) {
                     </a>
                   </div>
                   <div>
-                    <a href={`https://mail.google.com/mail/?view=cm&to=${props.userDetails.email}`}
-                      target="_blank">
-                      <input type="button" value="Contact" className="project_collab_btn" />
-                    </a>
                     {sameUser || isAdmin ?
-                      (<input type="button" value="Delete" className="project_collab_del_btn" onClick={ProjectCollabrationCardDelete} />)
+                      (<input type="button" className="project_collab_del_btn" onClick={ProjectCollabrationCardDelete} />)
                       : null
                     }
                   </div>
