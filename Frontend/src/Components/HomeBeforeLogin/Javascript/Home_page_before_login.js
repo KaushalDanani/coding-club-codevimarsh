@@ -147,7 +147,7 @@ function Home_page_before_login(props) {
                 <div className='quoteContainer'>
                     <div style={{ display: 'flex', justifyContent: 'space-between' }}>
                         <h3 className='quoteTitle'>Quote</h3>
-                        <input type="button" className="new_quote_btn" onClick={changeQuoteHandler} />
+                        <input type="button" className="new_quote_btn" onClick={changeQuoteHandler} title='Change Quote' />
                     </div>
                     <hr />
                     <div className='quoteDiv'>

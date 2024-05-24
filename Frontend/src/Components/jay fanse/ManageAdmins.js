@@ -122,16 +122,16 @@ function ManageAdmins() {
                 <div className='manageAdminsBody'>
                     <div className='manageAdminsBodyRow'
                         style={{ 'marginBottom': '1.5vh' }}>
-                        <div>Name</div>
-                        <div>username</div>
-                        <div></div>
+                        <div className='manageAdminsBodyRowHeader'>NAME</div>
+                        <div className='manageAdminsBodyRowHeader'>USERNAME</div>
+                        <div className='manageAdminsBodyRowHeader'></div>
                     </div>
                     <div className='manageAdminsList'>
                         {adminList.map(listAdmins)}
 
                     </div>
 
-                    <div className='addAdminTitle'>Register new Admin :</div>
+                    <div className='addAdminTitle'>Register New Admin</div>
                     <div className='addAdminBody'>
                         <input type='text' id='newAdmin' placeholder='Enter username...' />
                         <button onClick={addAdmin}>Register Admin</button>

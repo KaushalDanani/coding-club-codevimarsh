@@ -16,6 +16,8 @@ export default function Forums() {
   const [ques, setQues] = useState([]);
   const [map, setMap] = useState(new Map());
   const [isLoadingDiscussion, setIsLoadingDiscussion] = useState(false);
+  const [userData,setUserData] = useState('');
+  const [base64Img,setBase64Img] = useState('');
 
   useEffect(() => {
     (async () => { 
@@ -33,6 +35,10 @@ export default function Forums() {
         const map = new Map(mArray);
         setMap(map);
 
+        const response2 = await fetch('/navbar/profileImg/dataset')
+        const data2 = await response2.json();
+        setUserData(data2.data);
+        setBase64Img(`data:image/png;base64,${data2.data.profileImg}`);
       }
       catch(err)
       {
@@ -59,7 +65,7 @@ export default function Forums() {
  
   return (
     <>
-      <Navbar_after_login />
+      <Navbar_after_login imgData={base64Img} />
       {/* <div className='projectHeader'>
                 <div className='imageConatainer'> <img id='proj_image' src="/images/projdis3.jpg" alt='discC' /> </div>
                 <h2 className='projTitle'>Discussion Forums</h2>

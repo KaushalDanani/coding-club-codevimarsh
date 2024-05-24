@@ -2,12 +2,17 @@ import React, { useEffect } from "react";
 import Card from './Res_Card.js'
 import { useState } from "react";
 import HashLoader from "react-spinners/HashLoader.js";
+import ToastComponent from "../jay fanse/toastComponent.js";
 
 function Res_data(props) {
    
     const [V,setVar] = useState(props.source);
+    const [toastVisible,setToastVisible] = useState(false);
+    const [toastMessage,setToastMessage] = useState("");
+    const [toastType,setToastType] = useState("");
 
     function deleteTopic(id){
+
         const conf = window.confirm("Are you sure you want to remove this topic??");
         if(conf){
             const updatedTopics = V.filter(topic => topic._id !== id);
@@ -21,7 +26,11 @@ function Res_data(props) {
             })
             .then(response=>response.json())
             .then((data)=>{
-                alert("Topic Deleted....!!");
+                // alert("Topic Deleted....!!");
+                setToastVisible(true);
+                setToastMessage("Subject deleted successfully!");
+                setToastType("success");
+                setTimeout(() => setToastVisible(false), 3000);
             })
             .catch(err => {
                 console.error("Error deleting the topic..!");
@@ -49,6 +58,7 @@ function Res_data(props) {
     // console.log(V);
     return (
         <>
+            {toastVisible ? <ToastComponent message={toastMessage} type={toastType} /> : null}
             {V.map(subjectGenerator)}
         </>
     );

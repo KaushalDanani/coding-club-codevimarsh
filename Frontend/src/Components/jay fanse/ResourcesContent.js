@@ -47,7 +47,7 @@ function ResourcesContent(props) {
     }
 
     // const subjectRes = location.state.resources[0];
-    
+    // console.log("❔❔❔❔❔❔❓  "+location.state.resources[0])
     const [subjectRes,setSubjectRes] = useState(location.state.resources[0]);
     // useEffect(()=>{
     //     if(subjectRes.length == 0)
@@ -170,13 +170,13 @@ function ResourcesContent(props) {
     return (
         <>
             {toastVisible ? <ToastComponent message={toastMessage} type={toastType} /> : null}
-            <Navbar_after_login/>
+            <Navbar_after_login />
             <div className="ResourcesContentFrame">
                 <div className="ResourcesContentTopic">Resources for {subject}</div>
                 <div className="ResourcesContentMain">
                     <input type="radio" name="slider" id="books" onClick={() => {
                         changeType("books");
-                    }} />
+                    }} defaultChecked/>
                     <input type="radio" name="slider" id="videos" onClick={() => {
                         changeType("videos");
                     }} />

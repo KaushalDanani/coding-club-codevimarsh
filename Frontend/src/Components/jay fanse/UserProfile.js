@@ -13,6 +13,7 @@ function UserProfile(props) {
   const location = useLocation();
   // const {user, setUser} = useUser();
   const [userID,setUserID] = useState("");
+  const [base64Img,setBase64Img] = useState('');
 
   useEffect( () => {
     if(props.user!=null)
@@ -48,6 +49,11 @@ function UserProfile(props) {
           const data = await response.json();
           setUserData(data[0]);
         }
+
+        const response2 = await fetch('/navbar/profileImg/dataset')
+        const data2 = await response2.json();
+        setUserData(data2.data);
+        setBase64Img(`data:image/png;base64,${data2.data.profileImg}`);
       }
       catch(err)
       {
@@ -79,7 +85,7 @@ function UserProfile(props) {
 
   return (
     <>
-    <Navbar_after_login/>
+    <Navbar_after_login imgData={base64Img} />
     {/* {console.log(user,"💣💣")} */}
     <div className="userProfile">
       {/* <div className="searchProfile">

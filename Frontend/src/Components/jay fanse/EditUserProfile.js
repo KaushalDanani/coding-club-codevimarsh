@@ -12,27 +12,27 @@ import { Link } from "react-router-dom";
 import { Button } from "react-scroll";
 import ToastComponent from "./toastComponent.js";
 import HashLoader from "react-spinners/HashLoader.js";
+import $ from "jquery";
 
 function EditUserProfile(props) {
   const location = useLocation();
   const { user, setUser } = useUser();
-  const [showhide, setShowhide] = useState('true');
-  const [showhideforconfirm, setShowhideforconfirm] = useState('true');
-  const [showhideforreconfirm, setShowhideforreconfirm] = useState('true');
+  const [showhide, setShowhide] = useState("true");
+  const [showhideforconfirm, setShowhideforconfirm] = useState("true");
+  const [showhideforreconfirm, setShowhideforreconfirm] = useState("true");
   const [userID, setUserID] = useState("");
 
-  const [toastVisible,setToastVisible] = useState(false);
-  const [toastMessage,setToastMessage] = useState("");
-  const [toastType,setToastType] = useState("");
+  const [toastVisible, setToastVisible] = useState(false);
+  const [toastMessage, setToastMessage] = useState("");
+  const [toastType, setToastType] = useState("");
 
-  const [currPassMessage,setCurrPassMessage] = useState();
+  const [currPassMessage, setCurrPassMessage] = useState();
 
   useEffect(() => {
     if (props.user != null) {
       setUserID(props.user._id);
     }
-  }, [props.user])
-
+  }, [props.user]);
 
   // const searchParams = new URLSearchParams(location.search);
   // const userID = searchParams.get('userID');
@@ -62,42 +62,43 @@ function EditUserProfile(props) {
 
   const [selectedTags, setSelectedTags] = useState([]);
 
+  function changeEditSection(active) {
+    document.getElementById("personalInfo").checked = false;
+    document.getElementById("collegeDetails").checked = false;
+    document.getElementById("account").checked = false;
+    document.getElementById("changePassword").checked = false;
+    document.getElementById(active).checked = true;
+  }
+
   const currentPasswordVisibilityHandler = (e) => {
     setShowhide(!showhide);
 
     let x = document.getElementById("editprofile_currentpass");
-    if (showhide)
-      x.type = 'text';
-    else
-      x.type = 'password';
-  }
+    if (showhide) x.type = "text";
+    else x.type = "password";
+  };
 
   const confirmPasswordVisibilityHandler = (e) => {
     setShowhideforconfirm(!showhideforconfirm);
 
     let x = document.getElementById("editprofile_newpass");
-    if (showhideforconfirm)
-      x.type = 'text';
-    else
-      x.type = 'password';
-  }
+    if (showhideforconfirm) x.type = "text";
+    else x.type = "password";
+  };
 
   const reConfirmPasswordVisibilityHandler = (e) => {
     setShowhideforreconfirm(!showhideforreconfirm);
 
     let x = document.getElementById("editprofile_newpass_conf");
-    if (showhideforreconfirm)
-      x.type = 'text';
-    else
-      x.type = 'password';
-  }
+    if (showhideforreconfirm) x.type = "text";
+    else x.type = "password";
+  };
 
   useEffect(() => {
-
     (async () => {
       setIsLoadingEditProfile(true);
       try {
-        const response = await fetch(`/profile/user/?userID=${userID}`)
+        const response = await fetch(`/profile/user/?userID=${userID}`);
         const data = await response.json();
         setUserData(data[0]);
         setBase64Img(`data:image/png;base64,${data[0].profileImg}`);
@@ -115,60 +116,52 @@ function EditUserProfile(props) {
         setUsername(data[0].username);
         setUsernameTitle(data[0].username);
         setEmail(data[0].email);
-      }
-      catch(err)
-      {
+      } catch (err) {
         console.error(err, err.response);
       }
 
       setIsLoadingEditProfile(false);
     })();
-  }, [userID])
-
+  }, [userID]);
 
   function removeUserAuth() {
     (async () => {
-
       setUser(null);
-      await fetch('/remove/user/auth', {
+      await fetch("/remove/user/auth", {
         method: "GET",
         headers: {
-          'Content-Type': 'application/json'
-        }
+          "Content-Type": "application/json",
+        },
       })
-        .then(response => response.json())
-        .then(data => {
+        .then((response) => response.json())
+        .then((data) => {
           // window.location.reload();
         });
       // window.location.reload();
       // window.location.reload();
-    })()
+    })();
   }
-
 
   function checkCurrentPassword() {
     const currentPwd = {
-      'currentPassword': currentPass
-    }
+      currentPassword: currentPass,
+    };
 
-    fetch('/check/current/password', {
-      method: 'POST',
+    fetch("/check/current/password", {
+      method: "POST",
       body: JSON.stringify(currentPwd),
       headers: {
-        'Content-Type': 'application/json'
-      }
+        "Content-Type": "application/json",
+      },
     })
-      .then(response => response.json())
-      .then(data => {
-        if (data.message !== undefined)
-
-          setToastVisible(true);
-          setToastMessage(data.message);
-          setToastType("warning");
-          setTimeout(() => setToastVisible(false), 4000);
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.message !== undefined) setToastVisible(true);
+        setToastMessage(data.message);
+        setToastType("warning");
+        setTimeout(() => setToastVisible(false), 4000);
       });
   }
-
 
   const ToggleStyle = {
     display: "flex",
@@ -177,10 +170,8 @@ function EditUserProfile(props) {
   const EditSelectionStyle = {
     backgroundColor: "rgb(253,138,22)",
     color: "black",
-    fontWeight: 500
+    fontWeight: 500,
   };
-
-
 
   const [showEdit, setShowEdit] = useState(false);
   const [isEditSelected, setEditSelected] = useState({
@@ -246,15 +237,10 @@ function EditUserProfile(props) {
   }
 
   function addSkillTags(tagElement) {
-
-    return <UserProfileSkillTagElement
-      tag={tagElement}
-      click={false}
-    />
+    return <UserProfileSkillTagElement tag={tagElement} click={false} />;
   }
 
   function addAllSkillsTags(tagElement) {
-
     return (
       <UserProfileSkillTagElement
         userSkills={userSkills}
@@ -268,37 +254,35 @@ function EditUserProfile(props) {
     );
   }
   function onSelection(name) {
-    setSelectedTags(prev => {
+    setSelectedTags((prev) => {
       if (prev.includes(name)) {
-        return prev.filter(tag => tag !== name);
+        return prev.filter((tag) => tag !== name);
       } else {
         return [...prev, name];
       }
     });
-    console.log('fff');
+    console.log("fff");
     console.log(selectedTags);
   }
 
-
   const sendDataToBackend = (data) => {
     fetch(`/editprofile/userSkills/?userID=${userID}`, {
-      method: 'POST',
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
       body: JSON.stringify({ userSkills: data }),
     })
-      .then(response => response.json())
-      .then(data => {
-        console.log('Success:', data);
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("Success:", data);
       })
       .catch((error) => {
-        console.error('Error:', error);
+        console.error("Error:", error);
       });
   };
 
   function saveUserProfile(event) {
-
     const personalData = {
       fname: fname,
       lname: lname,
@@ -308,18 +292,18 @@ function EditUserProfile(props) {
       codechef: codechef,
       programme: programme,
       department: department,
-      year: year
-    }
+      year: year,
+    };
 
     fetch(`/editprofile/personal/?userID=${userID}`, {
-      method: 'POST',
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
-      body: JSON.stringify(personalData)
+      body: JSON.stringify(personalData),
     })
-      .then(response => response.json())
-      .then(data => {
+      .then((response) => response.json())
+      .then((data) => {
         console.log("personal", data);
 
         setToastVisible(true);
@@ -328,27 +312,27 @@ function EditUserProfile(props) {
 
         setTimeout(() => setToastVisible(false), 4000);
       })
-      .catch(err => {
+      .catch((err) => {
         console.log(err);
-      })
+      });
     event.preventDefault();
   }
 
   function saveAccount(event) {
     const accountData = {
       username: username,
-      email: email
-    }
+      email: email,
+    };
 
     fetch(`/editprofile/account/?userID=${userID}`, {
-      method: 'POST',
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
       },
-      body: JSON.stringify(accountData)
+      body: JSON.stringify(accountData),
     })
-      .then(response => response.json())
-      .then(data => {
+      .then((response) => response.json())
+      .then((data) => {
         if (data.error) {
           setToastVisible(true);
           setToastMessage(data.error);
@@ -357,8 +341,7 @@ function EditUserProfile(props) {
 
           setUsername(userData.username);
           setEmail(userData.email);
-        }
-        else {
+        } else {
           setToastVisible(true);
           setToastMessage(data.message);
           setToastType("success");
@@ -366,42 +349,37 @@ function EditUserProfile(props) {
           setUsernameTitle(username);
         }
       })
-      .catch(err => {
+      .catch((err) => {
         console.log(err);
-      })
-
+      });
 
     event.preventDefault();
   }
 
   async function savePassword(event) {
-
     event.preventDefault();
 
-
     const currentPwd = {
-      'currentPassword': currentPass
-    }
+      currentPassword: currentPass,
+    };
 
-    const response = await fetch('/check/current/password', {
-      method: 'POST',
+    const response = await fetch("/check/current/password", {
+      method: "POST",
       body: JSON.stringify(currentPwd),
       headers: {
-        'Content-Type': 'application/json'
-      }
-    })
-    const data=await response.json();  
-    
-        //setCurrPassMessage(data.message);
-             
-    if(data.message !== "")
-    {
+        "Content-Type": "application/json",
+      },
+    });
+    const data = await response.json();
+
+    //setCurrPassMessage(data.message);
+
+    if (data.message !== "") {
       setToastVisible(true);
-          setToastMessage("Wrong password");
-          setToastType("warning");
-          setTimeout(() => setToastVisible(false), 4000);
-    }
-    else if (currentPass == newPass) {
+      setToastMessage("Wrong password");
+      setToastType("warning");
+      setTimeout(() => setToastVisible(false), 4000);
+    } else if (currentPass == newPass) {
       setToastVisible(true);
       setToastMessage("New Password cannot be same as current password!");
       setToastType("warning");
@@ -409,8 +387,7 @@ function EditUserProfile(props) {
 
       setConfirmNewPass("");
       setNewPass("");
-    }
-    else if (newPass.length < 8 || confirmNewPass.length < 8) {
+    } else if (newPass.length < 8 || confirmNewPass.length < 8) {
       setToastVisible(true);
       setToastMessage("Please, keep your password minimum 8 character!!");
       setToastType("warning");
@@ -418,41 +395,38 @@ function EditUserProfile(props) {
 
       setNewPass("");
       setConfirmNewPass("");
-    }
-    else if (newPass != confirmNewPass) {
+    } else if (newPass != confirmNewPass) {
       setToastVisible(true);
       setToastMessage("Re-Enter new password!!");
       setToastType("warning");
       setTimeout(() => setToastVisible(false), 4000);
 
       setConfirmNewPass("");
-    }
-    else {
+    } else {
       const passwordData = {
         newPass: newPass,
-        'currentPassword': currentPass
-      }
+        currentPassword: currentPass,
+      };
 
       fetch(`/editprofile/password/?userID=${userID}`, {
-        method: 'POST',
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
-        body: JSON.stringify(passwordData)
+        body: JSON.stringify(passwordData),
       })
-        .then(response => response.json())
-        .then(data => {
+        .then((response) => response.json())
+        .then((data) => {
           setToastVisible(true);
-        setToastMessage("Password updated successfully!");
-        setToastType("success");
-        setTimeout(() => setToastVisible(false), 4000);
+          setToastMessage("Password updated successfully!");
+          setToastType("success");
+          setTimeout(() => setToastVisible(false), 4000);
 
           setCurrentPass("");
           setNewPass("");
           setConfirmNewPass("");
-        })
+        });
     }
-  
   }
 
   function toggleAddSkills(event) {
@@ -460,12 +434,11 @@ function EditUserProfile(props) {
     sendDataToBackend(selectedTags);
     setUserSkills(selectedTags);
 
-    if(addSkillDisplay===true)
-    {
+    if (addSkillDisplay === true) {
       setToastVisible(true);
-        setToastMessage("Skills Updated Successfully!!");
-        setToastType("success");
-        setTimeout(() => setToastVisible(false), 4000);
+      setToastMessage("Skills Updated Successfully!!");
+      setToastType("success");
+      setTimeout(() => setToastVisible(false), 4000);
     }
 
     event.preventDefault();
@@ -481,39 +454,37 @@ function EditUserProfile(props) {
     setYear(event.target.value);
   }
 
-
   // const [showEdit, setShowEdit] = useState(false);
 
   const handleImageChange = (id) => {
-    const input = document.createElement('input');
-    input.type = 'file';
-    input.accept = 'image/*';
+    const input = document.createElement("input");
+    input.type = "file";
+    input.accept = "image/*";
     input.onchange = (event) => {
       const file = event.target.files[0];
       const reader = new FileReader();
       reader.onload = () => {
         setBase64Img(reader.result);
-        const base64String = reader.result.split(',')[1];
+        const base64String = reader.result.split(",")[1];
         console.log(base64String);
         fetch(`/editprofile/profileImg/?userID=${userID}`, {
-          method: 'POST',
+          method: "POST",
           headers: {
-            'Content-Type': 'application/json'
+            "Content-Type": "application/json",
           },
-          body: JSON.stringify({ profileImg: base64String })
+          body: JSON.stringify({ profileImg: base64String }),
         })
-          .then(response => response.json())
-          .then(data => {
+          .then((response) => response.json())
+          .then((data) => {
             setToastVisible(true);
-                    setToastMessage(data.message);
-                    setToastType("success");
-                    setTimeout(() => 
-                    {
-                      setToastVisible(false)
-                    }, 4000);
-                    
+            setToastMessage(data.message);
+            setToastType("success");
+            setTimeout(() => {
+              setToastVisible(false);
+            }, 4000);
+
             // console.log(base64String);
-          })
+          });
       };
       if (file) {
         reader.readAsDataURL(file);
@@ -524,27 +495,33 @@ function EditUserProfile(props) {
 
   // const base64Img = ;
 
- 
   if (isLoadingEditProfile)
-    return <>
-      {/* <Navbar_after_login /> */}
-      <div className='loadingPage'>
-        <HashLoader
-            color={'#ffffff'}
+    return (
+      <>
+        {/* <Navbar_after_login /> */}
+        <div className="loadingPage">
+          <HashLoader
+            color={"#ffffff"}
             loading={isLoadingEditProfile}
             // cssOverride={override}
             size={70}
             aria-label="Loading Spinner"
             data-testid="loader"
-        />
-      </div>
-    </>
+          />
+        </div>
+      </>
+    );
 
   return (
     <div className="EditUserProfile">
-    {toastVisible ? <ToastComponent message={toastMessage} type={toastType} /> : null}
+      {toastVisible ? (
+        <ToastComponent message={toastMessage} type={toastType} />
+      ) : null}
 
-      <Link to={'/profile'}> <div className="EditUserProfileBack"> </div> </Link>
+      <Link to={"/profile"}>
+        {" "}
+        <div className="EditUserProfileBack"> </div>{" "}
+      </Link>
       <div className="EditProfilePhotoPanel">
         <div
           className="EditProfileImg"
@@ -559,7 +536,8 @@ function EditUserProfile(props) {
           >
             <button
               onClick={() => handleImageChange("dp")}
-              className="EditProfileImgChangeButton">
+              className="EditProfileImgChangeButton"
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="30"
@@ -581,13 +559,45 @@ function EditUserProfile(props) {
       </div>
 
       <div className="EditProfileGrid">
-
         <div className="EditProfileSelectionPanel">
-          <div
+          <input
+            type="radio"
+            name="slider"
+            id="personalInfo"
+            onClick={() => {
+              changeEditSection("personalInfo");
+            }}
+            defaultChecked
+          />
+          <input
+            type="radio"
+            name="slider"
+            id="collegeDetails"
+            onClick={() => {
+              changeEditSection("collegeDetails");
+            }}
+          />
+          <input
+            type="radio"
+            name="slider"
+            id="account"
+            onClick={() => {
+              changeEditSection("account");
+            }}
+          />
+          <input
+            type="radio"
+            name="slider"
+            id="changePassword"
+            onClick={() => {
+              changeEditSection("changePassword");
+            }}
+          />
+          {/* <div
             name="ProfileInfo"
-            style={
-              isEditSelected.PersonalInfo == "true" ? EditSelectionStyle : null
-            }
+            // style={
+            //   isEditSelected.PersonalInfo == "true" ? EditSelectionStyle : null
+            // }
             onClick={() => {
               return changeEditSelected("PersonalInfo");
             }}
@@ -596,9 +606,9 @@ function EditUserProfile(props) {
           </div>
           <div
             name="CollegeInfo"
-            style={
-              isEditSelected.CollegeInfo == "true" ? EditSelectionStyle : null
-            }
+            // style={
+            //   isEditSelected.CollegeInfo == "true" ? EditSelectionStyle : null
+            // }
             onClick={() => {
               return changeEditSelected("CollegeInfo");
             }}
@@ -626,7 +636,29 @@ function EditUserProfile(props) {
             }}
           >
             Change Password
-          </div>
+          </div> */}
+          <label htmlFor="personalInfo" className="personalInfo" onClick={() => {
+              return changeEditSelected("PersonalInfo");
+            }}>
+            <span>Personal Info</span>
+          </label>
+          <label htmlFor="collegeDetails" className="collegeDetails" onClick={() => {
+              return changeEditSelected("CollegeInfo");
+            }}>
+            <span>College Details</span>
+          </label>
+          <label htmlFor="account" className="account" onClick={() => {
+              return changeEditSelected("AccountInfo");
+            }}>
+            <span>Account</span>
+          </label>
+          <label htmlFor="changePassword" className="changePassword" onClick={() => {
+              return changeEditSelected("PasswordInfo");
+            }}>
+            <span>Change Password</span>
+          </label>
+
+          <div className="slider2"></div>
         </div>
         <div className="EditProfileMainPanel">
           <div
@@ -637,7 +669,7 @@ function EditUserProfile(props) {
                 : { display: "none" }
             }
           >
-            <h3>Perosnal Info</h3>
+            <h3>Perosnal Information</h3>
             <form>
               <div className="EditFormFrame">
                 <span>First Name</span>
@@ -673,35 +705,57 @@ function EditUserProfile(props) {
                 ></textarea>
                 <span>LinkedIn Profile</span>
                 <span>:</span>{" "}
-                <input type="text" value={linkedIn} onChange={changeLinkedIn} name="linkedIn" />
+                <input
+                  type="text"
+                  value={linkedIn}
+                  onChange={changeLinkedIn}
+                  name="linkedIn"
+                />
                 <span>LeetCode Profile</span>
                 <span>:</span>{" "}
-                <input type="text" value={leetcode} onChange={changeLeetcode} name="codechef" />
+                <input
+                  type="text"
+                  value={leetcode}
+                  onChange={changeLeetcode}
+                  name="codechef"
+                />
                 <span>Codechef Profile</span>
                 <span>:</span>{" "}
-                <input type="text" value={codechef} onChange={changeCodechef} name="leetcode" />
-
-
+                <input
+                  type="text"
+                  value={codechef}
+                  onChange={changeCodechef}
+                  name="leetcode"
+                />
                 <span style={{ border: "none" }}>Skills</span>
                 <span style={{ border: "none" }}>:</span>{" "}
-                <div className="skillTagContainer"
-                  style={addSkillDisplay ? { display: "none" } : { display: "flex" }}>
+                <div
+                  className="skillTagContainer"
+                  style={
+                    addSkillDisplay ? { display: "none" } : { display: "flex" }
+                  }
+                >
                   {userSkills.map(addSkillTags)}
-                  <button className='UserProfileAddSkillTag'
+                  <button
+                    className="UserProfileAddSkillTag"
                     onClick={toggleAddSkills}
                   >
                     Edit skills
                   </button>
                 </div>
-                <div className="allSkillsTagContainer"
-                  style={addSkillDisplay ? { display: "flex" } : { display: "none" }}>
+                <div
+                  className="allSkillsTagContainer"
+                  style={
+                    addSkillDisplay ? { display: "flex" } : { display: "none" }
+                  }
+                >
                   {tagCollection.map(addAllSkillsTags)}
-                  <button className='UserProfileAddSkillTag'
+                  <button
+                    className="UserProfileAddSkillTag"
                     onClick={toggleAddSkills}
                   >
                     Done
                   </button>
-
                 </div>
                 <div className="EditSaveButtonDiv">
                   <button onClick={saveUserProfile}>Save</button>
@@ -730,8 +784,12 @@ function EditUserProfile(props) {
                   className="EditSaveButtonDiv"
                   style={{ justifyContent: "space-between" }}
                 >
-                  <Link to="/"><button onClick={removeUserAuth}>Logout</button></Link>
-                  <button type="submit" onClick={saveAccount}>Save</button>
+                  <Link to="/">
+                    <button onClick={removeUserAuth}>Logout</button>
+                  </Link>
+                  <button type="submit" onClick={saveAccount}>
+                    Save
+                  </button>
                 </div>
               </div>
             </form>
@@ -749,10 +807,7 @@ function EditUserProfile(props) {
               <div className="EditFormFrame">
                 <span>Programme</span>
                 <span>:</span>
-                <select
-                  value={programme}
-                  onChange={programmeChangeHandler}
-                >
+                <select value={programme} onChange={programmeChangeHandler}>
                   <option>Bachelor's of Engineering</option>
                   <option>Master's of Engineering</option>
                   <option>Bachelor's of Computer Applications</option>
@@ -760,20 +815,14 @@ function EditUserProfile(props) {
                 </select>
                 <span>Department</span>
                 <span>:</span>
-                <select
-                  value={department}
-                  onChange={departmentChangeHandler}
-                >
+                <select value={department} onChange={departmentChangeHandler}>
                   <option>Computer Science and Engineering</option>
                   <option>Electronics and Communication Engineering</option>
                   <option>Electrical Engineering</option>
                 </select>
                 <span>Graduation Year</span>
                 <span>:</span>
-                <select
-                  value={year}
-                  onChange={yearChangeHandler}
-                >
+                <select value={year} onChange={yearChangeHandler}>
                   <option>2023</option>
                   <option>2024</option>
                   <option>2025</option>
@@ -797,16 +846,57 @@ function EditUserProfile(props) {
               <div className="EditFormFrame">
                 <span>Current Password</span>
                 <span>:</span>
-                <div id="pwd_icon" className={showhide ? "show_pwd_edit_profile" : "hide_pwd_edit_profile"} onClick={currentPasswordVisibilityHandler}></div>
-                <input type="password" value={currentPass} id="editprofile_currentpass" onChange={changeCurrentPass} onBlur={checkCurrentPassword} placeholder="Enter current password" />
+                <div
+                  id="pwd_icon"
+                  className={
+                    showhide ? "show_pwd_edit_profile" : "hide_pwd_edit_profile"
+                  }
+                  onClick={currentPasswordVisibilityHandler}
+                ></div>
+                <input
+                  type="password"
+                  value={currentPass}
+                  id="editprofile_currentpass"
+                  onChange={changeCurrentPass}
+                  onBlur={checkCurrentPassword}
+                  placeholder="Enter current password"
+                />
                 <span>New Password</span>
                 <span>:</span>
-                <div id="confirmPwd_icon" className={showhideforconfirm ? "show_pwd_edit_profile" : "hide_pwd_edit_profile"} onClick={confirmPasswordVisibilityHandler} />
-                <input type="password" value={newPass} id="editprofile_newpass" onChange={changeNewPass} placeholder="Enter new password" />
+                <div
+                  id="confirmPwd_icon"
+                  className={
+                    showhideforconfirm
+                      ? "show_pwd_edit_profile"
+                      : "hide_pwd_edit_profile"
+                  }
+                  onClick={confirmPasswordVisibilityHandler}
+                />
+                <input
+                  type="password"
+                  value={newPass}
+                  id="editprofile_newpass"
+                  onChange={changeNewPass}
+                  placeholder="Enter new password"
+                />
                 <span>Confirm Password</span>
                 <span>:</span>
-                <div id="reconfirmPwd_icon" className={showhideforreconfirm ? "show_pwd_edit_profile" : "hide_pwd_edit_profile"} onClick={reConfirmPasswordVisibilityHandler} />
-                <input type="password" value={confirmNewPass} id="editprofile_newpass_conf" onChange={changeConfirmNewPass} placeholder="Re-enter new password" />
+                <div
+                  id="reconfirmPwd_icon"
+                  className={
+                    showhideforreconfirm
+                      ? "show_pwd_edit_profile"
+                      : "hide_pwd_edit_profile"
+                  }
+                  onClick={reConfirmPasswordVisibilityHandler}
+                />
+                <input
+                  type="password"
+                  value={confirmNewPass}
+                  id="editprofile_newpass_conf"
+                  onChange={changeConfirmNewPass}
+                  placeholder="Re-enter new password"
+                />
                 <div className="EditSaveButtonDiv">
                   <button onClick={savePassword}>Save</button>
                 </div>

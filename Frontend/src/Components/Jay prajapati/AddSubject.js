@@ -16,7 +16,21 @@ export default function AddSubject() {
     function subName(){
         const name = document.getElementById("title_text").value;
 
-        addMySubject(name);
+        if(name == "") {
+            setToastVisible(true);
+            setToastMessage("Please fill details of subject!");
+            setToastType("warning");
+            setTimeout(() => setToastVisible(false), 4000);
+        }
+        else if(logo == "") {
+            setToastVisible(true);
+            setToastMessage("Please select logo for subject!");
+            setToastType("warning");
+            setTimeout(() => setToastVisible(false), 4000);
+        }
+        else
+            addMySubject(name);
+
     }
 
     async function logoMaker(e) {
@@ -33,8 +47,6 @@ export default function AddSubject() {
         reader.readAsDataURL(image);
     }
     
-    
-
    
     function addMySubject(name) {
 
@@ -57,41 +69,64 @@ export default function AddSubject() {
         {
             setToastVisible(false)
             navigate('/resources');
-        }, 1000);
+        }, 1500);
         });
     }
+
+    function clearData() {
+        document.getElementById("title_text").value = "";
+        document.getElementById("img_text").value = null;
+        setLogo("");
+    }
+
     return (
         <>
             {toastVisible ? <ToastComponent message={toastMessage} type={toastType} /> : null}
-            <Navbar_after_login />
+            {/* <Navbar_after_login /> */}
+            <Link to={'/resources'}>
+                <div className='contestBackBtn'></div>
+            </Link>
             <div className="addSubjectContainer">
                 <div className="addSubjectHeader">
-                    <h1><p className="subject">Add Subject</p></h1>
+                    <h1>Add Subject</h1>
                 </div>
-                <hr style={{ height: '2.5px', width: '100%', backgroundColor: 'white', margin: '0px' }} />
-                <div className="formDiv">
-                    <form className="" id="Subject_main">
+                {/* <hr style={{ height: '2.5px', width: '100%', backgroundColor: 'white', margin: '0px' }} /> */}
+                <div className="addSubjectBody">
+                    
 
-                        <div className="q_tital">
+                        {/* <div className="q_tital">
                             <label htmlFor="tital_text">Subject :</label>
                             <p></p>
                             <input type="text" name="tital_text" id="title_text"></input>
+                        </div> */}
+
+                        <div className="addSubjectRow">
+                            <div>Subject</div>
+                            <div>:</div>
+                            <input style={{'padding': '3px 10px'}} type="text" name="tital_text" id="title_text"></input>
                         </div>
                         
-                        <div className="q_code">
+                        {/* <div className="q_code">
                             <label htmlFor="code_text">Subject Logo :</label>
                             <p></p>
+                            <input className="fileInput" type="file" name="code_text" id="img_text" onChange={(e) => { logoMaker(e) }}  cols="" rows="2"></input>
+                        </div> */}
+
+                        <div className="addSubjectRow">
+                            <div>Subject Logo</div>
+                            <div>:</div>
                             <input className="fileInput" type="file" name="code_text" id="img_text" onChange={(e) => { logoMaker(e) }}  cols="" rows="2"></input>
                         </div>
 
 
-                        <div className='buttonSection'>
-                            <Link to={'/resources'}> <button id='pc_cancelbtn' className='addProjectCollabrationBtn'> Cancel </button> </Link>
+                        <div className='addSubjectBtn'>
+                            {/* <Link to={'/resources'}> <button id='pc_cancelbtn' className='addProjectCollabrationBtn'> Cancel </button> </Link> */}
 
-                            <Link><input type="button" value={"Submit"} onClick={subName} className="q_submit" /></Link>
+                            <button onClick={clearData}> Clear </button>
+                            <button onClick={subName}> Add </button>
                         </div>
 
-                    </form>
+                    
                 </div>
             </div>
         </>

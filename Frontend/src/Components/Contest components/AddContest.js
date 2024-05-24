@@ -124,7 +124,7 @@ function AddContest() {
                 <div className='contestBackBtn'></div>
             </Link>
             <div className='addContestDiv'>
-                <div className='addContestHeader'>Contest Registration</div>
+                <div className= 'addContestHeader'>Contest Registration</div>
                 <div className='addContestBody'>
                     <div className="addContestRow">
                         <div>Contest Name</div>
@@ -176,7 +176,7 @@ function AddContest() {
                     </div>
                     <div className='addContestBtn'>
                         <button onClick={clearHandler}>Clear</button>
-                        <button onClick={registerContest}>Submit</button>
+                        <button onClick={registerContest}>Add</button>
                     </div>
 
                 </div>

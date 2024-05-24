@@ -18,7 +18,6 @@ export default function AddBooks() {
 
     const [subj, setSubj] = useState({});
 
-
     const [logo, setLogo] = useState("");
 
     function bookName() {
@@ -41,7 +40,14 @@ export default function AddBooks() {
         return edition;
     }
 
-
+    function clearBookData() {
+        document.getElementById("book_title_text").value = "";
+        document.getElementById("book_link_text").value = "";
+        document.getElementById("book_author_text").value = "";
+        document.getElementById("book_edition_text").value = "";
+        document.getElementById("book_img_text").value = null;
+        setLogo("");
+    }
 
     async function logoMaker(e) {
         const image = e.target.files[0];
@@ -103,59 +109,88 @@ export default function AddBooks() {
         {
             setToastVisible(false)
             navigate('/resources');
-        }, 3000);
+        }, 1500);
         });
     }
     return (
         <>
             {toastVisible ? <ToastComponent message={toastMessage} type={toastType} /> : null}
-            <Navbar_after_login />
+            {/* <Navbar_after_login /> */}
+            <Link to={'/resources'}>
+                <div className='contestBackBtn'></div>
+            </Link>
             <div className="addBookContainer">
                 <div className="addBookHeader">
-                    <h1><p className="Book">Add Book</p></h1>
+                    <h1>Add Book</h1>
                 </div>
-                <hr style={{ height: '2.5px', width: '100%', backgroundColor: 'white', margin: '0px' }} />
-                <div className="formDiv">
-                    <form className="" id="Book_main">
+                <div className="addBookBody">
 
-                        <div className="q_tital">
+                        {/* <div className="q_tital">
                             <label htmlFor="tital_text">Title :</label>
                             <p></p>
                             <input type="text" name="tital_text" id="book_title_text"></input>
+                        </div> */}
+                        <div className="addSubjectRow">
+                            <div>Title</div>
+                            <div>:</div>
+                            <input style={{'padding': '3px 10px'}} type="text" name="tital_text" id="book_title_text"></input>
                         </div>
 
-                        <div className="q_tital">
+
+                        {/* <div className="q_tital">
                             <label htmlFor="tital_text">Link :</label>
                             <p></p>
                             <input type="text" name="tital_text" id="book_link_text"></input>
+                        </div> */}
+                        <div className="addSubjectRow">
+                            <div>Link</div>
+                            <div>:</div>
+                            <input style={{'padding': '3px 10px'}} type="text" name="tital_text" id="book_link_text"></input>
                         </div>
 
-                        <div className="q_tital">
+
+                        {/* <div className="q_tital">
                             <label htmlFor="tital_text">Author :</label>
                             <p></p>
                             <input type="text" name="tital_text" id="book_author_text"></input>
+                        </div> */}
+                        <div className="addSubjectRow">
+                            <div>Author</div>
+                            <div>:</div>
+                            <input style={{'padding': '3px 10px'}} type="text" name="tital_text" id="book_author_text"></input>
                         </div>
 
-                        <div className="q_tital">
+
+                        {/* <div className="q_tital">
                             <label htmlFor="tital_text">Edition :</label>
                             <p></p>
                             <input type="text" name="tital_text" id="book_edition_text"></input>
+                        </div> */}
+                        <div className="addSubjectRow">
+                            <div>Edition</div>
+                            <div>:</div>
+                            <input style={{'padding': '3px 10px'}} type="text" name="tital_text" id="book_edition_text"></input>
                         </div>
 
-                        <div className="q_code">
+
+                        {/* <div className="q_code">
                             <label htmlFor="code_text">Thumbnail :</label>
                             <p></p>
                             <input type="file" name="code_text" id="img_text" onChange={(e) => { logoMaker(e) }} cols="" rows="2"></input>
+                        </div> */}
+                        <div className="addSubjectRow">
+                            <div>Thumbnail</div>
+                            <div>:</div>
+                            <input className="fileInput" type="file" name="code_text" id="book_img_text" onChange={(e) => { logoMaker(e) }}  cols="" rows="2"></input>
                         </div>
 
 
-                        <div className='buttonSection'>
-                            <Link to={'/resources'}> <button className='addFormButton'> Cancel </button> </Link>
+                        <div className='addSubjectBtn'>
+                            <button onClick={clearBookData}> Clear </button>
 
-                            <Link><button onClick={addMyBook} className="addFormButton">Submit</button></Link>
+                            <button onClick={addMyBook} className="addFormButton">Submit</button>
                         </div>
 
-                    </form>
                 </div>
             </div>
         </>
