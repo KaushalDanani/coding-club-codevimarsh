@@ -17,7 +17,9 @@ export default function ProjectMain(props){
     const [admin,setAdmin] = useState('');
     const [userID,setUserID] = useState('');
     const [changeImage, setChangeImage] = useState('true');
-    const [Projectinfo, setProjectinfo] = useState([]);
+    const [Projectinfo, setProjectinfo] = useState([{}]);
+    const [userData,setUserData] = useState('');
+    const [base64Img,setBase64Img] = useState('');
 
     useEffect( ()=> {
         if(props.user!=null)
@@ -40,6 +42,11 @@ export default function ProjectMain(props){
                 })
                 const data = await response.json();
                 setProjectinfo(data);
+
+                const response2 = await fetch('/navbar/profileImg/dataset')
+                const data2 = await response2.json();
+                setUserData(data2.data);
+                setBase64Img(`data:image/png;base64,${data2.data.profileImg}`);
             }
             catch(err)
             {
@@ -52,7 +59,6 @@ export default function ProjectMain(props){
 
     if (isLoadingProject)
     return <>
-      {/* <Navbar_after_login /> */}
       <div className='loadingPage'>
         <HashLoader
             color={'#ffffff'}
@@ -67,7 +73,7 @@ export default function ProjectMain(props){
 
     return(
         <>  
-            <Navbar_after_login/>
+            <Navbar_after_login imgData={base64Img} />
             {/* <div className='projectHeader'>
                 <div className='imageConatainer'> <img id='proj_image' src="/images/projdis3.jpg" alt='discC' /> </div>
                 <h2 className='projTitle'>Projects</h2>
@@ -80,7 +86,7 @@ export default function ProjectMain(props){
           <p className='project_collabration_oneliner'>The aim of argument, or of discussion, should not be victory, but progress.</p>
         </div>
         <div className='addProjCollab' style={{width: '85%'}}>
-          <Link to={'/project_collab/addpost'}> <button className={changeImage ? 'ProjectCollabrationBtn changeAddImage' : 'ProjectCollabrationBtn'} 
+          <Link to={'/project/add_project'}> <button className={changeImage ? 'ProjectCollabrationBtn changeAddImage' : 'ProjectCollabrationBtn'} 
             onMouseOut={() => setChangeImage(true)}
             onMouseOver={()=> setChangeImage(false)}> Add </button> </Link>
         </div>

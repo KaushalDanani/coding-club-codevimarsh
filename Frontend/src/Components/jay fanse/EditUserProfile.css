@@ -1,7 +1,7 @@
 .EditUserProfile{
     box-sizing: border-box;
-    background-image: url(/public/images/pxfuel.jpg);
-    background-attachment: fixed;
+    /* background-image: url(/public/images/pxfuel.jpg); */
+    /* background-attachment: fixed; */
     /* background-color: #2D033B; */
     /* background-color: #e9bbf8; */
     width: 100%;
@@ -26,7 +26,7 @@
 .EditProfileImg{
     position: relative;
     /* background-image: url("../images/profile.jpeg"); */
-    box-shadow: 0 0 30px 1px black;
+    box-shadow: 0 0 20px 1px black;
     background-size: contain;
     border-radius: 100%;
     width: 25vh;
@@ -37,7 +37,7 @@
 .EditProfilePhotoPanel{
     display: flex;
     /* background-color: blueviolet; */
-    padding: 5% 15%;
+    padding: 5% 14%;
     padding-top: 3%;
     /* padding-left: 18%; */
 }
@@ -66,9 +66,9 @@
 
 .EditProfileUsernameDisplay{
     font-size: 3.4rem;
-    margin: 2% 6.8%;
+    margin: 4% 0% 0% 7%;
     font-weight: bold;
-    color: rgb(253, 138, 22);
+    color: rgb(255, 255, 255);
 }
 
 @media (width<1270px) {
@@ -91,7 +91,11 @@
     margin: auto;
     width: fit-content;
     top: -50px;
-    gap: 0px 20px;
+    gap: 0px 35px;
+}
+
+.EditProfileGrid input[type=radio] {
+    display: none;
 }
 
 .EditProfileMainPanel{
@@ -105,9 +109,53 @@
     backdrop-filter: blur(6px);
     background-color: rgba(255, 255, 255, 0.1);
     border-radius: 3vh;
-    box-shadow: 0px 0px 20px 3px rgb(0, 0, 0);
+    box-shadow: 0px 0px 12px 2px rgb(0, 0, 0);
     padding: 3vh 4vh;
 }
+
+.EditProfileMainPanel h3 {
+    margin: 1% 0% 3% 0%;
+    font-weight: 700;
+    text-transform: uppercase;
+    /* color: rgb(253, 138, 22); */
+}
+
+.EditProfileSelectionPanel .slider2 {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 60px;
+    width: 100%;
+    border-radius: 15px;
+    transition: all 0.8s ease;
+    /* color: black; */
+    background: rgb(253, 138, 22);
+    z-index: -1;
+    /* background: yellow; */
+  }
+  
+#personalInfo:checked~label.personalInfo,
+#collegeDetails:checked~label.collegeDetails,
+#account:checked~label.account,
+#changePassword:checked~label.changePassword {
+    color: black;
+    font-weight: 600;
+}
+
+#personalInfo:checked~.slider2 {
+    top: 0px;
+}
+
+#collegeDetails:checked~.slider2 {
+    top: 60px;
+}
+#account:checked~.slider2 {
+    top: 120px;
+}
+#changePassword:checked~.slider2 {
+    top: 180px;
+}
+
 
 .EditProfileSelectionPanel{
     /* border: 2px solid pink; */
@@ -115,29 +163,34 @@
     /* top : 38vh; */
     width: fit-content;
     /* margin-left: 8vw; */
+    backdrop-filter: blur(6px);
+    background-color: rgba(255, 255, 255, 0.1);
     margin: 0px auto;
-    margin-top: 65px;
-    
-}
-
-.EditProfileSelectionPanel div{
-    font-size: 1.8rem;
-    display: flex;
-    justify-content: left;
-    /* border: 2px solid red; */
-    /* background-color: rgb(101, 5, 150); */
-    /* margin: 2vh 4vh; */
+    height: fit-content;
+    padding: 1px;
+    margin-top: 3%;
     border-radius: 15px;
-    padding:  10px 15px;
-    box-sizing: border-box;
-    /* background-color: #2D033B; */
-    transition: all 0.3s;
 }
 
-.EditProfileSelectionPanel div:hover{
+.EditProfileSelectionPanel label {
     cursor: pointer;
-    scale: 1.03;
+    display: flex;
+    justify-content: center;
+    height: 60px;
+    line-height: 60px;
+    /* font-size: 22px; */
+    font-size: 1.4rem;
+    font-weight: 500;
+    color: rgb(255, 255, 255);
+    padding: 0px 25px;
+    transition: all 0.8s ease;
+    z-index: 10;
 }
+
+.EditProfileSelectionPanel label:hover {
+    color: rgb(253, 138, 22);
+}
+
 
 .EditFormFrame{
     margin-top: 4vh;
@@ -149,9 +202,10 @@
 
 .EditFormFrame>span{
     font-size: 1.3rem;
+    font-weight: 500;
     border-bottom: 2px solid white;
     padding-bottom: 2vh;
-    font-weight: bold;
+    /* font-weight: bold; */
 }
 
 .EditFormFrame textarea,.EditFormFrame input, .EditFormFrame select{
@@ -177,19 +231,26 @@
 }
 
 .EditSaveButtonDiv button{
-    font-size: 1.2rem;
-    background-color: #2D033B;
-    border-radius: 12px;
-    border: 2px solid white;
-    padding: 6px 25px;
+    font-size: 0.9rem;
+    position: relative;
+    /* bottom: 0vh; */
+    height: fit-content;
     width: fit-content;
-    color: white;
+    color: rgb(0, 0, 0);
+    padding: 1.1vh 1.4vw;
+    letter-spacing: 1px;
+    /* border: 2px solid white; */
+    border: none;
+    background-color: rgb(253, 138, 22);
+    align-self: flex-end;
+    border-radius: 8px;
 }
 
 .EditSaveButtonDiv button:hover {
-    color: black !important;
-    border: 2px solid rgb(0, 0, 0);
-    background-color: rgb(226, 226, 226);
+    cursor: pointer;
+    color: #ffffff;
+    /* border: 2px solid white; */
+    background-color: rgb(189, 95, 0);
 }
 
 .skillTagContainer{

@@ -6,8 +6,9 @@ function ResourcesBookElement(props) {
   const base64Img = `data:image/png;base64,${props.thumbnail}`;
 
   return (
-    <a href={props.link} target='_blank'>
-      <div className="BookElement">
+    <div className="BookElement">
+      <button id='resElemDelt' className='off' onClick={()=>{ props.deleteBook(props.id)}}/>
+      <a href={props.link} target='_blank'>
         <div className="BookImageDiv">
           <img src={base64Img} alt="" />
         </div>
@@ -17,8 +18,8 @@ function ResourcesBookElement(props) {
           {props.edition}
         </div>
         <div className="BookElementBy">~{props.author}</div>
-      </div>
-    </a>
+      </a>
+    </div>
   )
 }
 

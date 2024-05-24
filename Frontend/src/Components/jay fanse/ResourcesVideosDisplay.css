@@ -1,6 +1,6 @@
 .ResourcesVideosDisplay{
     /* border: 2px solid green; */
-    padding: 2vh;
+    padding: 2% 0vh;
     display: grid;
     grid-template-columns: 1fr;
     gap: 3vh 0px;

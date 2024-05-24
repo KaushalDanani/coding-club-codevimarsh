@@ -9,25 +9,33 @@
 .UPProfile{
     /* border: 2px solid rgb(235, 255, 18); */
     padding: 45px 0px;
-    backdrop-filter: blur(2px);
+    backdrop-filter: blur(5px);
     background-color: rgba(255, 255, 255, 0.1);
-    border: 1.25px solid rgb(193, 193, 193);
+    /* border: 1.25px solid rgb(193, 193, 193); */
+    box-shadow: 0 0 7px 1px rgb(0, 0, 0);
     /* background-color: #333; */
     border-radius: 25px;
 }
 
-.ProfileImg{
+.ProfileImg {
     position: relative;
     /* background-image: url("../images/profile.jpeg"); */
     box-shadow: 0 0 30px 2px black;
-    background-size: contain;
     border-radius: 100%;
     width: 25vh;
     height: 25vh;
     display: flex;
     margin: auto;
     justify-content: center;
+    background-size: contain;
+    box-sizing: border-box;
     /* border: 2px solid red; */
+}
+
+.ProfileImg img {
+    width: 25vh;
+    height: 25vh;
+    box-sizing: border-box;
 }
 
 .UPProfile img{
@@ -87,9 +95,10 @@
 .UPSkills{
     /* border: 2px solid rgb(21, 24, 215); */
     margin-top: 20px;
-    backdrop-filter: blur(2px);
+    backdrop-filter: blur(5px);
     background-color: rgba(255, 255, 255, 0.1);
-    border: 1.25px solid rgb(193, 193, 193);
+    /* border: 1.25px solid rgb(193, 193, 193); */
+    box-shadow: 0 0 7px 1px rgb(0, 0, 0);
     /* background-color: #333; */
     border-radius: 25px;
     /* height: 30vh; */

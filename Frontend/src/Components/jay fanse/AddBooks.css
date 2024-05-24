@@ -5,24 +5,24 @@
 }
 
 .addBookContainer {
-    width: 75%;
-    margin: auto;
-    margin-top: 10vh;
-    margin-bottom: 10vh;
+    height: 100vh;
     border-radius: 18px;
     display: flex;
     align-items: center;
+    justify-content: center;
     flex-direction: column;
-    background-color: #333;
-    overflow: hidden;
+    /* overflow: hidden; */
 }
 
 .addBookHeader {
-    width: 100%;
+    width: 60%;
     display: flex;
-    padding-top: 10px;
     justify-content: center;
-    background-color: rgb(105, 19, 191);
+    padding: 10px 0px;
+    border-top-right-radius: 20px;
+    border-top-left-radius: 20px;
+    color: white;
+    background-color: rgb(253, 138, 22);
 }
 
 .askQuestionContainer h1 {
@@ -31,24 +31,33 @@
     font-family: sans-serif;
 }
 
-.formDiv {
-    width: 80%;
-    margin-top: 15px;
+.addBookBody {
+    color: white;
+    width: 60%;
+    /* background-color: #363636; */
+    backdrop-filter: blur(10px);
+    background-color: rgba(255, 255, 255, 0.1);
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    padding: 3vh 4vw;  
 }
 
-.formDiv form label {
+/* .addBookBody label {
     color: rgb(215, 215, 215);
     font-size: 1.3rem;
     margin-top: 20px;
     letter-spacing: 0.5px;
     font-family: sans-serif;
-}
-.formDiv form input {
+} */
+.addBookBody input {
     width: 100%;
     font-size: 1.1rem;
-    color: rgb(255, 255, 255);
-    background-color: #5a5a5a;
-    padding: 3px 10px;
+    color: white;
+    /* color: rgb(255, 255, 255); */
+    /* background-color: rgba(255, 255, 255, 0.3); */
+    background-color: rgba(0, 0, 0, 0.3);
+    /* filter: invert(1); */
+    /* padding: 3px 10px; */
     border-radius: 10px;
     border: none;
 }
@@ -66,14 +75,6 @@
     z-index: 10;
     box-shadow: 0px 0px 15px black;
 }
-
-.Book{
-    display: flex;
-    justify-content: center;
-    font-size: 2rem;
-    color: white;
-}
-
 
 .addFormButton{
     font-size: 2.3vh;

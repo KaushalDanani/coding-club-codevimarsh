@@ -58,7 +58,7 @@ export default function AddNotes() {
         // const bauthor = noteAuthor();
         // const bedition = noteEdition();
         const sub_id = searchParams.get('sub_id');
-
+        
         fetch("/addmynote", {
             method: 'POST',
             body: JSON.stringify({
@@ -108,7 +108,7 @@ export default function AddNotes() {
                         <div className='buttonSection'>
                             <Link to={'/resources'}> <button className='addFormButton'> Cancel </button> </Link>
 
-                            <Link to={'/resources'}><button onClick={addMynote} className="addFormButton">Submit</button></Link>
+                            <Link><button onClick={addMynote} className="addFormButton">Submit</button></Link>
                         </div>
 
                     </form>

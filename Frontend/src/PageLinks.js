@@ -109,17 +109,16 @@ function PageLinks() {
             </div>
         </>
 
-
     return (
         <>
             <Router>
                 <Routes>
                     <Route path='/' element={<Home_page_before_login user={user} />} />
-                    <Route path='/home' element={<LoginHomePage />} />
                     <Route path='/signin' element={<Sign_in_page />} />
                     <Route path='/signup/step-1' element={<Sign_up_first_page />} />
                     <Route path='/signup/step-2' element={<Sign_up_second_page />} />
                     <Route path='/signup/step-3' element={<Sign_up_third_page />} />
+                    <Route path='/home' element={<LoginHomePage />} />
                     <Route path='/manageAdmins' element={<ManageAdmins />} />
                     <Route path='/contest' element={<Contest_main user={user} />} />
                     <Route path='/addContest' element={<AddContest />} />

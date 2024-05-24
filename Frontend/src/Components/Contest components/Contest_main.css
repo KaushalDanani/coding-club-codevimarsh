@@ -33,11 +33,11 @@
 
 .upcoming_contest p{
     position: relative;
-    font-size: 1.5rem;
+    font-size: 1.25rem;
     font-family: newFont;
     color: aliceblue;
     padding-bottom: 1.5%;
-    letter-spacing: 0.1rem;
+    letter-spacing: 0.15rem;
     /* border: 2px solid red; */
 }
 
@@ -56,12 +56,12 @@
 }
 
 .runnig_contest p{
-    font-size: 1.5rem;
+    font-size: 1.25rem;
     font-family: newFont;
     color: aliceblue;
     padding-bottom: 1.5%;
     padding-left: 4.4%;
-    letter-spacing: 0.1rem;
+    letter-spacing: 0.15rem;
 }
 
 .past_contest{
@@ -71,12 +71,12 @@
 }
 
 .past_contest p{
-    font-size: 1.5rem;
+    font-size: 1.25rem;
     font-family: newFont;
     color: aliceblue;
     padding-bottom: 1.5%;
     padding-left: 4.4%;
-    letter-spacing: 0.1rem;
+    letter-spacing: 0.15rem;
 }
 
 .PastContestGrid {
@@ -114,7 +114,8 @@
 }
 
 .AddContestBtn{
-    font-size: 2.3vh;
+    font-size: 0.9rem;
+    /* font-size: 1.8vh; */
     position: relative;
     /* bottom:0px; */
     height: fit-content;
@@ -123,7 +124,7 @@
     letter-spacing: 1px;
     padding: 1.1vh 1.4vw;
     /* border: 2px solid white; */
-    background-color: rgb(105, 19, 191);
+    background-color: rgb(253, 138, 22);
     /* align-self: flex-end; */
     border-radius: 10px;
 }
@@ -132,5 +133,5 @@
     cursor: pointer;
     color: #ffffff;
     /* border: 2px solid white; */
-    background-color: #8e31ec;
+    background-color: rgb(189, 95, 0);
 }

@@ -1,13 +1,19 @@
 .addContestDiv{
     /* border: 2px solid red; */
-    margin: 4vh 20vw;
+    /* margin: 4vh 20vw; */
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 .addContestHeader{
-    background-color: #6913BF;
+    background-color: rgb(253, 138, 22);
     color: white;
     font-size: 2rem;
     display: flex;
+    width: 60%;
     justify-content: center;
     border-top-right-radius: 20px;
     border-top-left-radius: 20px;
@@ -16,7 +22,10 @@
 
 .addContestBody{
     color: white;
-    background-color: #363636;
+    width: 60%;
+    /* background-color: #363636; */
+    backdrop-filter: blur(10px);
+    background-color: rgba(255, 255, 255, 0.1);
     border-bottom-left-radius: 20px;
     border-bottom-right-radius: 20px;
     padding: 3vh 4vw;  
@@ -41,30 +50,33 @@
 .addContestRow input,
 .addContestRow select,
 .addContestDateRow input{
-    padding: 5px 5px;
+    padding: 5px 9px;
     border-radius: 10px;
     font-size: 1.1rem;
-    background-color: rgb(105, 105, 105);
-    color: white;
+    /* background-color: rgba(255, 255, 255, 0.3); */
+    background-color: rgba(0, 0, 0, 0.18);
+    filter: invert(1);
+    /* color: white; */
     border: none;    
 }
 
 .addContestBtn{
     display: flex;
     justify-content: space-between;
+    margin: 4% 0% 0.7% 0%;
 }
 
 .addContestBtn button{
     border-radius: 10px;
     font-size: 1.3rem;
-    background-color: rgb(105, 19, 191);
+    background-color: rgb(253, 138, 22);
     color: white;
     border: none;
     padding: 5px 17px;
 }
 
 .addContestBtn button:hover{
-    background-color: #8e31ec;
+    background-color: rgb(189, 95, 0);
 }
 
 

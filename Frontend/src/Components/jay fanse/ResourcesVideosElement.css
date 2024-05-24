@@ -9,6 +9,17 @@
     box-shadow: 0px 8px 16px #000000;
 }
 
+.ResourcesVideosElement #resElemDelt{
+    background-image: url("/public/images/delete2.png");
+    width: 32px;
+    height: 32px;
+    border: none;
+    background-color: transparent;
+    position: absolute;
+    right: 3%;
+    
+}
+
 @media (width<900px) {
     .ResourcesVideosElement{
         grid-template-columns: 1fr;

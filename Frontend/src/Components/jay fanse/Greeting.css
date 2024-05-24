@@ -6,20 +6,21 @@
 .greet{
     color: white;
     margin-top: 0px;
-    font-size: 5.2vh;
+    font-size: 1.35rem;
     /* padding-left: 8vh; */
     margin-top: 18%;
     /* padding-top: 13%; */
     /* border: 2px solid green; */
-    /* font-family: newFont; */
+    font-family: newFont;
 }
 
 .greetName{
+    font-family: newFont;
     /* border: 2px solid red; */
 }
 
 .greetName:hover{
-    color: rgb(255, 145, 0);
+    color: rgb(253, 138, 22);
     cursor: pointer;
     transition: all 0.3s;
 }
@@ -34,16 +35,16 @@
 }
 
 .AddAdminBtn{
-    font-size: 100%;
+    font-size: 0.9rem;
     position: relative;
-    bottom: 1vh;
+    /* bottom: 0vh; */
     height: fit-content;
     width: fit-content;
     color: white;
-    padding: 10px 15px;
+    padding: 1.1vh 1.4vw;
     letter-spacing: 1px;
     /* border: 2px solid white; */
-    background-color: #6913BF;
+    background-color: rgb(253, 138, 22);
     align-self: flex-end;
     border-radius: 8px;
 }
@@ -52,7 +53,7 @@
     cursor: pointer;
     color: #ffffff;
     /* border: 2px solid white; */
-    background-color: #8e31ec
+    background-color: rgb(189, 95, 0);
 }
 
 

@@ -17,30 +17,33 @@ function Project_Collabration() {
   const [map, setMap] = useState(new Map())
 
   const [toastVisible, setToastVisible] = useState(false);
-    const [toastMessage, setToastMessage] = useState("");
-    const [toastType, setToastType] = useState("");
+  const [toastMessage, setToastMessage] = useState("");
+  const [toastType, setToastType] = useState("");
 
-  useEffect(() => {
-    fetch('/projectcollabration', {
-      method: 'POST',
-      headers: {
-          'Content-Type': 'application/json'
-      }
-    })
-    .then(response => response.json())
-    .then(data => {
-      // console.log(data);
-      setCollabrationData(data[0]);
-      // setArray(data[1]);
-      const dataMap = new Map(data[1]);
-      setMap(dataMap);
+  const [userData,setUserData] = useState('');
+  const [base64Img,setBase64Img] = useState('');
 
-    })
-    .catch((err) => {
-        alert(`Error : ${err}`)
-    })
+  // useEffect(() => {
+  //   fetch('/projectcollabration', {
+  //     method: 'POST',
+  //     headers: {
+  //         'Content-Type': 'application/json'
+  //     }
+  //   })
+  //   .then(response => response.json())
+  //   .then(data => {
+  //     // console.log(data);
+  //     setCollabrationData(data[0]);
+  //     // setArray(data[1]);
+  //     const dataMap = new Map(data[1]);
+  //     setMap(dataMap);
 
-  }, [])
+  //   })
+  //   .catch((err) => {
+  //       alert(`Error : ${err}`)
+  //   })
+
+  // }, [])
 
   function deleteCollabCard(key){
     const newCollabData = collabrationData.filter(collabElement => collabElement._id !== key)
@@ -71,6 +74,11 @@ function Project_Collabration() {
         // setArray(data[1]);
         const dataMap = new Map(data[1]);
         setMap(dataMap);
+
+        const response2 = await fetch('/navbar/profileImg/dataset')
+        const data2 = await response2.json();
+        setUserData(data2.data);
+        setBase64Img(`data:image/png;base64,${data2.data.profileImg}`);
       }
       catch(err)
       {
@@ -82,7 +90,6 @@ function Project_Collabration() {
 
   if (isLoadingProjectCollaboration)
     return <>
-      {/* <Navbar_after_login /> */}
       <div className='loadingPage'>
         <HashLoader
             color={'#ffffff'}
@@ -111,20 +118,20 @@ function Project_Collabration() {
 
   return (
     <>
-                {toastVisible ? <ToastComponent message={toastMessage} type={toastType} /> : null}
+      {toastVisible ? <ToastComponent message={toastMessage} type={toastType} /> : null}
 
-    <Navbar_after_login />
-    <div className='projectCollabrationContainer'>
-      <div className='projectCollabrationHeader'>
-        <div className='imageConatainer'> <img id='pc_image' src="/images/project-collab.png" alt='PC' /> </div>
-        <h2 className='projectTitle'>Project Collaboration</h2>
-        <p className='project_collabration_oneliner'>Talent wins games, but teamwork and intelligence win championships.</p>
-      </div>
-      <div className='addProjCollab' style={{width: '85%'}}>
-        <Link to={'/project_collab/addpost'}> <button className={changeImage ? 'ProjectCollabrationBtn changeAddImage' : 'ProjectCollabrationBtn'} 
-          onMouseOut={() => setChangeImage(true)}
-          onMouseOver={()=> setChangeImage(false)}> Add </button> </Link>
-      </div>
+      <Navbar_after_login imgData={base64Img} />
+      <div className='projectCollabrationContainer'>
+        <div className='projectCollabrationHeader'>
+          <div className='imageConatainer'> <img id='pc_image' src="/images/project-collab.png" alt='PC' /> </div>
+          <h2 className='projectTitle'>Project Collaboration</h2>
+          <p className='project_collabration_oneliner'>Talent wins games, but teamwork and intelligence win championships.</p>
+        </div>
+        <div className='addProjCollab' style={{width: '85%'}}>
+          <Link to={'/project_collab/addpost'}> <button className={changeImage ? 'ProjectCollabrationBtn changeAddImage' : 'ProjectCollabrationBtn'} 
+            onMouseOut={() => setChangeImage(true)}
+            onMouseOver={()=> setChangeImage(false)}> Add </button> </Link>
+        </div>
 
         <hr style={{width: '85%', height: '2.5px', backgroundColor: 'white', margin: '0px', marginBottom: '2.5vh'}}/>
         

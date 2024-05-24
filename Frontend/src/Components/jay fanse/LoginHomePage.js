@@ -26,6 +26,8 @@ function LoginHomePage(props) {
   const [articlesData, setArticlesData] = useState([]);
   const [quote, setQuote] = useState("");
   const [author, setAuthor] = useState("");
+  const [userData,setUserData] = useState('');
+  const [base64Img,setBase64Img] = useState('');
 
   const { user, setUser } = useUser();
   // console.log(user, '💣💣💣💣💣💣');
@@ -86,6 +88,11 @@ function LoginHomePage(props) {
         // const articleData = await response4.json();
         // setArticlesData(articleData.articles);
 
+        const response3 = await fetch('/navbar/profileImg/dataset')
+        const data3 = await response3.json();
+        setUserData(data3.data);
+        setBase64Img(`data:image/png;base64,${data3.data.profileImg}`);
+
         setIsLoadingHome(false);
       } catch (err) {
         console.error(err, err.response);
@@ -112,7 +119,7 @@ function LoginHomePage(props) {
 
   return (
     <>
-      <Navbar_after_login />
+      <Navbar_after_login imgData={base64Img} />
       <div className="background-color-LoginHome">
         <Greeting fname={fname} userID={userID} isAdmin={admin} />
         <div className="quoteContainerAfterLogin">
@@ -122,6 +129,7 @@ function LoginHomePage(props) {
               type="button"
               className="new_quote_btn"
               onClick={changeQuoteHandler}
+              title='Change Quote'
             />
           </div>
           <hr />

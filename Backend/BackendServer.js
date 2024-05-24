@@ -176,9 +176,7 @@ app.post("/deleteproject",async (req,res) => {
   res.send({message : 'Project deleted successfully!'});
 })
 
-const imageBuffer = fs.readFileSync(
-  "D:/code_minions-web/Frontend/public/images/profile.jpeg"
-);
+const imageBuffer = "https://ezylink.vercel.app/20";
 const base64Image = imageBuffer.toString("base64");
 
 app.get(`/projectDisplay/userData/`, async (req, res) => {
@@ -424,6 +422,98 @@ app.post('/addmyvideo',async (req,res)=>{
   // console.log(a);
   res.send({message : "Video added successfully!"});
 })
+
+
+app.delete('/resources/delTopic/:id', async (req, res) => {
+  try {
+    const id = req.params.id;
+    const result = await resModel.deleteOne({ _id: id });
+
+    if (result.deletedCount === 1) {
+      return res.json({ message: 'Deleted successfully' });
+    } else {
+      return res.status(404).json({ error: 'Question not found' });
+    }
+  } catch (error) {
+    console.error('Error deleting question:', error);
+    return res.status(500).json({ error: 'Internal server error' });
+  }
+});
+
+app.post('/resources/delBook/:sub_id', async (req, res) => {
+  try {
+      const id = req.params.sub_id;
+      const updatedbooks = req.body.updatedbooks;
+
+      console.log("Received request:");
+      console.log("ID:", id);
+      console.log("Updated books:", updatedbooks);
+
+      const result = await resModel.updateOne({ _id: id }, { $set: { books: updatedbooks } });
+      
+      console.log("Database update result:", result);
+
+      if (result.nModified === 1) {
+          return res.json({ message: 'books updated successfully' });
+      } else {
+          return res.status(404).json({ error: 'book not found or no changes were made' });
+      }
+  } catch (error) {
+      console.error('Error updating books:', error);
+      return res.status(500).json({ error: 'Internal server error' });
+  }
+});
+
+app.post('/resources/delVideo/:sub_id', async (req, res) => {
+  try {
+      const id = req.params.sub_id;
+      const updatedvideos = req.body.updatedvideos;
+
+      console.log("Received request:");
+      console.log("ID:", id);
+      console.log("Updated videos:", updatedvideos);
+
+      const result = await resModel.updateOne({ _id: id }, { $set: { videos: updatedvideos } });
+      
+      console.log("Database update result:", result);
+
+      if (result.nModified === 1) {
+          return res.json({ message: 'videos updated successfully' });
+      } else {
+          return res.status(404).json({ error: 'video not found or no changes were made' });
+      }
+  } catch (error) {
+      console.error('Error updating videos:', error);
+      return res.status(500).json({ error: 'Internal server error' });
+  }
+});
+
+app.post('/resources/delNote/:sub_id', async (req, res) => {
+  try {
+      const id = req.params.sub_id;
+      const updatedNotes = req.body.updatednotes;
+
+      console.log("Received request:");
+      console.log("ID:", id);
+      console.log("Updated Notes:", updatedNotes);
+
+      const result = await resModel.updateOne({ _id: id }, { $set: { notes: updatedNotes } });
+      
+      console.log("Database update result:", result);
+
+      if (result.nModified === 1) {
+          return res.json({ message: 'Notes updated successfully' });
+      } else {
+          return res.status(404).json({ error: 'Note not found or no changes were made' });
+      }
+  } catch (error) {
+      console.error('Error updating notes:', error);
+      return res.status(500).json({ error: 'Internal server error' });
+  }
+});
+
+
+
 
 // app.post('/resources/content', (req, resp) => {
 //   const data = req.body;

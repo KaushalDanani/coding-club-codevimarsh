@@ -25,9 +25,10 @@
     display: flex;
     flex-direction: column;
     /* border: 2px solid purple; */
-    backdrop-filter: blur(2px);
+    backdrop-filter: blur(5px);
     background-color: rgba(255, 255, 255, 0.1);
-    border: 1.25px solid rgb(193, 193, 193);
+    /* border: 1px solid rgb(193, 193, 193); */
+    box-shadow: 0 0 7px 1px rgb(0, 0, 0);
     border-radius: 25px;
     padding: 10px 20px;
 }
@@ -87,9 +88,10 @@
     display: flex;
     flex-direction: column;
     /* border: 2px solid firebrick; */
-    backdrop-filter: blur(2px);
+    backdrop-filter: blur(5px);
     background-color: rgba(255, 255, 255, 0.1);
-    border: 1.25px solid rgb(193, 193, 193);
+    /* border: 1.25px solid rgb(193, 193, 193); */
+    box-shadow: 0 0 7px 1px rgb(0, 0, 0);
     border-radius: 25px;
     padding: 10px 20px;
 }
@@ -97,9 +99,10 @@
 .UPMainActivity{
     /* border: 2px solid black; */
     margin-top: 20px;
-    backdrop-filter: blur(2px);
+    backdrop-filter: blur(5px);
     background-color: rgba(255, 255, 255, 0.1);
-    border: 1.25px solid rgb(193, 193, 193);
+    /* border: 1.25px solid rgb(193, 193, 193); */
+    box-shadow: 0 0 7px 1px rgb(0, 0, 0);
     border-radius: 25px;
     padding: 10px 20px;
 }
