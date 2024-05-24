@@ -128,7 +128,15 @@ function Project_Collabration() {
 
         <hr style={{width: '85%', height: '2.5px', backgroundColor: 'white', margin: '0px', marginBottom: '2.5vh'}}/>
         
-        {mapDataCards(collabrationData)}
+
+        { collabrationData.length!==0 ?
+        mapDataCards(collabrationData)
+        :
+        <div className="discussionNullContent">
+
+        <div className="nullContentInfo">No Active projects right now :)
+          </div>
+      </div>}
 
       </div>
       <MyfooterAfterLogin />

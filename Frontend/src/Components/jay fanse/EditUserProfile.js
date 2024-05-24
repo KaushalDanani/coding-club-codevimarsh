@@ -257,6 +257,7 @@ function EditUserProfile(props) {
 
     return (
       <UserProfileSkillTagElement
+        isEditting={true}
         userSkills={userSkills}
         tag={tagElement.name}
         use={userSkills.includes(tagElement.name)}

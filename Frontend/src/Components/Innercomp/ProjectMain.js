@@ -17,7 +17,7 @@ export default function ProjectMain(props){
     const [admin,setAdmin] = useState('');
     const [userID,setUserID] = useState('');
     const [changeImage, setChangeImage] = useState('true');
-    const [Projectinfo, setProjectinfo] = useState([{}]);
+    const [Projectinfo, setProjectinfo] = useState([]);
 
     useEffect( ()=> {
         if(props.user!=null)
@@ -92,6 +92,7 @@ export default function ProjectMain(props){
             {/* {cardGenerator(Projectinfo)} */}
             {/* {console.log("length: " + Projectinfo.length)} */}
             {
+                Projectinfo.length!==0 ? 
                 
                 Projectinfo.map(
                     (proj) => {
@@ -111,6 +112,12 @@ export default function ProjectMain(props){
                         );
                     }
                 )
+
+                :
+                <div className="discussionNullContent">
+                    <div className="nullContentInfo">No Projects to display :)
+                    <br></br>Be the first one to share your project!</div>
+                </div>
             }
             
             <MyfooterAfterLogin/>
