@@ -157,5 +157,28 @@
         width: 100%;
       }
     }
-  }
   
+}
+
+.discussionNullContent{
+    position: relative;
+    height: 50vh;
+    width: 100%;
+    background-position: center top;
+    background-image: url("/public/images/profileProjects.png");
+    /* background-color: #0cf; */
+    background-size: 50vh;
+    background-repeat: no-repeat;
+
+    display: flex;
+    justify-content: center;
+}
+
+.discussionNullContent .nullContentInfo{
+    position: absolute;
+    bottom: 0px;
+    color: white;
+    font-weight: 600;
+    font-size: 4vh;
+    text-align: center;
+}  

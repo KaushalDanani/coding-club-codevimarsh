@@ -13,8 +13,24 @@
     font-weight: 500;
     /* flex-grow: 2; */
 }
+.UserProfileEditSkillTag{
 
-.UserProfileSkillTag label{
+    justify-content: center;
+    border: 2px solid black;
+    border-radius: 20px;
+    background-color: rgb(255, 255, 255);
+
+    display: flex;
+    color: black;
+    font-weight: 500;
+    /* flex-grow: 2; */
+}
+.UserProfileEditSkillTag :hover{    
+    cursor: pointer;
+}
+
+.UserProfileSkillTag label,
+.UserProfileEditSkillTag label{
     padding: 5px 15px;
     border-radius: 20px;
     /* border: 2px solid yellow; */

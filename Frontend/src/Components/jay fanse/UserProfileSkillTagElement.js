@@ -58,7 +58,7 @@ function UserProfileSkillTagElement(props) {
 
 
   return (
-    <div className='UserProfileSkillTag'
+    <div className={props.isEditting ? 'UserProfileEditSkillTag' : 'UserProfileSkillTag'}
     style={isTagSelected ? selectedTagStyle : null}
     >
     <label htmlFor={props.id}

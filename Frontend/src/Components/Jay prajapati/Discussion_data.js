@@ -40,7 +40,7 @@ function ForumGenerator() {
         const mArray = data.mArray;
         const map = new Map(mArray);
         setM(map);
-
+         
         // console.log(ques);
         // console.log(map);
         // window.location.reload();
@@ -90,7 +90,9 @@ function ForumGenerator() {
 
         <hr style={{width: '83%', height: '2.5px', backgroundColor: 'white', marginLeft: '130px',marginRight: '130px', marginBottom: '2.5vh'}}/>
 			
-      {ques.map((disc, idx) => (
+      {ques.length!==0 ? 
+
+      ques.map((disc, idx) => (
           <Discussion_block
           key={idx}
           pfp={m.get(disc._id).profileImg}
@@ -103,7 +105,16 @@ function ForumGenerator() {
           q_id={disc._id}
           deleteQuestionFromList={deleteQuestionFromList}
         />
-      ))}
+      ))
+    
+      :
+      <div className="discussionNullContent">
+
+        <div className="nullContentInfo">No Discussions for now :)
+        <br></br>Why not start one!?</div>
+        
+      </div>
+      }
     </>
   );
 }

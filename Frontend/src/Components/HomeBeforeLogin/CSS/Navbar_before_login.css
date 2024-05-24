@@ -22,7 +22,7 @@
     display: flex;
     justify-content: space-between;
     letter-spacing: 1.5px;
-    background: transparent;
+    /* background: transparent; */
     backdrop-filter: blur(15px);
     /* background-color: transparent; */
     border-bottom: 3px solid rgb(255, 255, 255);
