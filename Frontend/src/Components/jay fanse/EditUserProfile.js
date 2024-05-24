@@ -12,7 +12,6 @@ import { Link } from "react-router-dom";
 import { Button } from "react-scroll";
 import ToastComponent from "./toastComponent.js";
 import HashLoader from "react-spinners/HashLoader.js";
-import $ from "jquery";
 
 function EditUserProfile(props) {
   const location = useLocation();

@@ -17,7 +17,7 @@ export default function ProjectMain(props){
     const [admin,setAdmin] = useState('');
     const [userID,setUserID] = useState('');
     const [changeImage, setChangeImage] = useState('true');
-    const [Projectinfo, setProjectinfo] = useState([{}]);
+    const [Projectinfo, setProjectinfo] = useState([]);
     const [userData,setUserData] = useState('');
     const [base64Img,setBase64Img] = useState('');
 

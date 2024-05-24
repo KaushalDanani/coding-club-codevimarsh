@@ -13,8 +13,7 @@
     width: 100%;
     position: sticky;
     top: 0;
-    z-index: 10;
-    
+    z-index: 10;    
 }
 .navigation_bar {   
     width: 100%;
@@ -93,9 +92,6 @@ LinkScroll {
     color: rgb(255, 255, 255);
 }
 
-.navigation_bar:hover {
-    /* background-color: black; */
-}
 .horizontal_bar:hover .liComponent:not(:hover) {
     /* color: rgb(171, 171, 171); */
     color: rgb(210, 195, 195);
