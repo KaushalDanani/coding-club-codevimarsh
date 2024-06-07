@@ -176,9 +176,6 @@ app.post("/deleteproject",async (req,res) => {
   res.send({message : 'Project deleted successfully!'});
 })
 
-const imageBuffer = "https://ezylink.vercel.app/20";
-const base64Image = imageBuffer.toString("base64");
-
 app.get(`/projectDisplay/userData/`, async (req, res) => {
   try {
     const userID = req.query.userID;

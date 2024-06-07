@@ -17,39 +17,39 @@ import AddProjectCollabration from './Components/kaushal/ProjectCollaboration/Ad
 import NotFoundPage from './Components/kaushal/PageNotFound/NotFoundPage.js';
 
 // jay fanse
-import LoginHomePage from './Components/jay fanse/LoginHomePage.js';
-import ArticlesNewsHomePage from './Components/jay fanse/ArticlesNewsHomePage.js';
-import EditUserProfile from './Components/jay fanse/EditUserProfile.js';
-import ResourcesContent from './Components/jay fanse/ResourcesContent.js';
-import UserProfile from './Components/jay fanse/UserProfile.js';
+import LoginHomePage from './Components/HomeAfterLogin/LoginHomePage.js';
+import ArticlesNewsHomePage from './Components/ArticleAndNews/ArticlesNewsHomePage.js';
+import EditUserProfile from './Components/EditUserProfile/EditUserProfile.js';
+import ResourcesContent from './Components/ResourcesContent/ResourcesContent.js';
+import UserProfile from './Components/UserProfile/UserProfile.js';
 
 
 // jay prajapati
-import ResourcesHome from './Components/Jay prajapati/ResourcesHome.js';
-import Discussion_Forums from './Components/Jay prajapati/Discussion_Forums.js';
-import Question_data from './Components/Jay prajapati/Question_data.js';
-import ProjectMain from './Components/Innercomp/ProjectMain.js';
+import ResourcesHome from './Components/Resources/ResourcesHome.js';
+import Discussion_Forums from './Components/Discussion/Discussion_Forums.js';
+import Question_data from './Components/DiscussionDetails/Question_data.js';
+import ProjectMain from './Components/Projects components/ProjectMain.js';
 
 
 
-import ManageAdmins from './Components/jay fanse/ManageAdmins.js';
+import ManageAdmins from './Components/HomeAfterLogin/ManageAdmins.js';
 import Ask_Question from './Components/Question_answer_jp/Ask_Question.js';
 import Give_answer from './Components/Question_answer_jp/Give_answer.js';
 import AddContest from './Components/Contest components/AddContest.js';
 import Home_page_before_login from './Components/HomeBeforeLogin/Javascript/Home_page_before_login.js';
-import AddSubject from './Components/Jay prajapati/AddSubject.js';
-import AddBooks from './Components/jay fanse/AddBooks.js';
-import AddVideos from './Components/jay fanse/AddVideos.js';
-import AddNotes from './Components/jay fanse/AddNotes.js';
+import AddSubject from './Components/Resources/AddSubject.js';
+import AddBooks from './Components/ResourcesContent/AddBooks.js';
+import AddVideos from './Components/ResourcesContent/AddVideos.js';
+import AddNotes from './Components/ResourcesContent/AddNotes.js';
 
 
 import useUser from './store/userContext.js';
-import AddProject from './Components/Innercomp/AddProject.js';
+import AddProject from './Components/Projects components/AddProject.js';
 function PageLinks() {
 
     const [isLoading, setIsLoading] = useState(false);
     const { user, setUser } = useUser();
-
+    const [imgData, setImgData] = useState("");
     useEffect(() => {
         (async () => {
             try {
@@ -62,6 +62,7 @@ function PageLinks() {
                 });
                 const [data] = await response.json();
                 setUser(data);
+                setImgData(data.profileImg);
                 console.log('-----------------------------USER-------------------------', data);
                 setIsLoading(false);
                 
@@ -132,7 +133,7 @@ function PageLinks() {
 
                     <Route path='/discussion' element={<Discussion_Forums />} />
                     <Route path='/discussion/addQuestion' element={<Ask_Question />} />
-                    <Route path='/discussion/question' element={<Question_data />} />
+                    <Route path='/discussion/question' element={<Question_data imgData={imgData}/>} />
                     <Route path='/discussion/question/addReply' element={<Give_answer />} />
                     <Route path='/project' element={<ProjectMain user={user}/>} />
                     <Route path='/project/add_project' element={<AddProject />} />

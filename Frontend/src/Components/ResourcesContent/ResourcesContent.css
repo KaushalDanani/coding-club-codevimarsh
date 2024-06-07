@@ -1,0 +1,179 @@
+@font-face {
+  font-family: myFont;
+  src: url("/public/fonts/Cyborg\ Punk.ttf");
+}
+
+  ::selection {
+    background: rgba(110, 0, 244, 0.5);
+    color: #FFF;
+  }
+
+  .addResBut {
+    font-size: 0.9rem;
+    position: relative;
+    height: fit-content;
+    width: fit-content;
+    color: white;
+    padding: 1.1vh 1.4vw;
+    margin: 0 0rem 0 1.25rem;
+    letter-spacing: 1px;
+    background-color: rgb(253, 138, 22);
+    align-self: flex-end;
+    border: none;
+    border-radius: 8px;
+  }
+  .addResBut:hover{
+    cursor: pointer;
+    color: #ffffff;
+    background-color: rgb(189, 95, 0);
+  }
+
+  .addRes {
+    position: absolute;
+    top: -10%;
+    right: 1.2%;
+  }
+
+  .ResourcesContentFrame {
+    padding: 30px 40px;
+    box-sizing: border-box;
+  }
+
+  .ResourcesContentTopic {
+    font-size: 1.7rem;
+    font-weight: 500;
+    margin-left: 3.6%;
+    margin-bottom: 2%;
+    color: rgba(255, 255, 255);
+  }
+
+  .ResourcesContentMain input {
+    display: none;
+  }
+
+  .ResourcesContentMain {
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    height: 80vh;
+  }
+
+  .ResourcesContentList {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    width: 20%;
+    margin: 0px 50px;
+    border-radius: 12px;
+    backdrop-filter: blur(2px);
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+
+  .ResourcesContentList label {
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    height: 60px;
+    line-height: 60px;
+    font-size: 22px;
+    font-weight: 500;
+    color: rgb(255, 255, 255);
+    padding: 0px 25px;
+    transition: all 0.8s ease;
+    z-index: 10;
+  }
+
+  #books:checked~.ResourcesContentList label.books,
+  #videos:checked~.ResourcesContentList label.videos,
+  #notes:checked~.ResourcesContentList label.notes {
+    color: #000000;
+    font-weight: 600;
+  }
+
+  .ResourcesContentMain .slider {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 60px;
+    width: 100%;
+    border-radius: 12px;
+    transition: all 0.8s ease;
+
+    background: rgb(253, 138, 22);
+  }
+
+  #books:checked~.ResourcesContentList .slider {
+    top: 0;
+  }
+
+  #videos:checked~.ResourcesContentList .slider {
+    top: 60px;
+  }
+
+  #notes:checked~.ResourcesContentList .slider {
+    top: 120px;
+  }
+
+
+  .ResourcesContentMain .text-content {
+    width: 80%;
+    height: 100%;
+    color: rgba(255, 255, 255, 0.7);
+    position: relative;
+    display: flex;
+    padding: 1.5% 3% 0% 3%;
+    border-radius: 12px;
+    backdrop-filter: blur(5px);
+    background-color: rgba(255, 255, 255, 0.1);
+    box-shadow: 0px 0px 12px 2px rgb(0, 0, 0);
+    max-height: 100%;
+    overflow: auto;
+  }
+
+  .ResourcesContentMain .text-content::-webkit-scrollbar {
+    background-color: #2D003B;
+    width: 4px;
+  }
+
+  .ResourcesContentMain .text-content::-webkit-scrollbar-thumb {
+    background-color: rgb(253, 138, 22);
+    border-radius: 20px;
+  }
+
+  .ResourcesContentMain .text {
+    display: none;
+    width: 100%;
+  }
+
+  .ResourcesContentMain .text .title {
+    display: flex;
+    font-size: 2rem;
+    position: sticky;
+    top: 0px;
+    font-weight: 500;
+    z-index: 5;
+    color: white;
+  }
+
+  .ResourcesContentFrame .text p {
+    text-align: justify;
+  }
+
+  .ResourcesContentMain .text-content .books {
+    display: block;
+  }
+
+  #books:checked~.text-content .books,
+  #videos:checked~.text-content .videos,
+  #notes:checked~.text-content .notes {
+    display: block;
+  }
+
+  #videos:checked~.text-content .books,
+  #notes:checked~.text-content .books {
+    display: none;
+  }
+
+  .ResourcesContentMain .ResourcesContentList label:hover {
+    color: rgb(253, 138, 22);
+  }

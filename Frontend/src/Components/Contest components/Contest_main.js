@@ -8,14 +8,12 @@ import MyfooterAfterLogin from "../MyfooterAfterLogin.js";
 import { Link } from "react-router-dom";
 import HashLoader from "react-spinners/HashLoader.js";
 import useUser from "../../store/userContext.js";
-// import { set } from "mongoose";
+
 
 export default function Contest_main(props) {
 
     const [pastcontestinfo, setPastContestinfo] = useState([{}]);
-    // const {user,setUser} = useUser();
-    // const userID = user._id;
-    // const isAdmin = user.isAdmin;
+   
     const [isAdmin,setAdmin] = useState('');
     const [currentcontestinfo, setCurrentContestinfo] = useState([{}]);
     const [upcomingcontestinfo, setUpcomingContestinfo] = useState([{}]);
@@ -75,7 +73,7 @@ export default function Contest_main(props) {
 
         <>
         <div className="contest_main">
-            {/* {// console.log("ok")} */}
+            
             <Navbar_after_login imgData={base64Img} />
 
             {/* {upcoming contest} */}

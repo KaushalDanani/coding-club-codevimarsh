@@ -2,9 +2,8 @@ import React from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useState } from 'react'
 import './AddProjectCollabration.css'
-import Navbar_after_login from '../Navbar_after_login.js'
-import useUser from '../../../store/userContext.js'
-import ToastComponent from '../../jay fanse/toastComponent.js'
+import useUser from '../../store/userContext.js'
+import ToastComponent from '../Toast/toastComponent.js'
 
 function AddProjectCollabration() {
 

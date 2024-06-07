@@ -1,0 +1,140 @@
+@font-face {
+    font-family: newFont;
+    src: url("/public/fonts/Cyborg\ Punk.ttf");
+}
+
+#discussionbody{
+    margin: 1vw 8vw;
+    border-radius: 3vh;
+    border: 1px solid white;
+    padding: 0vh 0vh 0vh 0vh; 
+    background:linear-gradient(to right,rgb(35,23,85),rgb(22,13,72));
+    box-shadow: 0px 0px 40px 8px black;
+}
+
+.discbanner{
+    background-image: url('/public/images/discuss.jpg');
+    background-repeat:round;
+    border-radius: 3vh;
+    display: flex;
+    height: 43vh;
+}
+
+#disc_header h1{
+    font-family: 'Trebuchet MS';
+    width: 15vw;
+    font-size: 2.7rem !important;
+    margin: 6vh 5vw;
+    color: azure;
+    font-family: newFont !important;
+    line-height: 2;
+}
+
+.del_discussion{
+    position: absolute;
+    border: none;
+    right: 20px;
+    top: 20px;
+    background-image: url("/public/images/delete.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    height: 22px;
+    width: 22px;
+    background-color:transparent;
+    box-sizing:content-box;
+}
+
+
+#discussion_block{
+    margin: 2vw;
+    padding: 1vw;
+    border: 1px solid crimson;
+    border-radius: 2vw;
+    background-color: darkslateblue;
+}
+
+.asker{
+    display: flex;
+    height: min-content;
+    background-color: rgb(255,139,22);
+    padding-left: 1vw;
+}
+
+.asker a{
+    /* color: rgba(0, 0, 0, 0.75) !important; */
+    letter-spacing: 0.06vw;
+    font-weight: 700;
+    font-size: 1.23rem !important;
+    color: white;
+}
+.asker a:hover {
+    color: black !important;
+}
+
+#pfp_div{
+    height: 8vh;
+    width: 8vh;
+    border-radius: 4vh;
+    margin: 0.5vw;
+}
+#pfpic{
+    height: 8vh;
+    width: 8vh;
+    border-radius: 4vh;
+}
+#asker_id{
+    /* font-size: 1.2rem; */
+    margin: 1vw;
+    color: white;
+}
+
+#ques{
+    color: white;
+    font-size: 1.05rem;
+    text-align: justify;
+    padding: 20px 2.5vw !important;
+}
+
+#ques_tags{
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    color: white;
+    padding: 0.5vw;
+    padding-left: 2.5vw !important;
+}
+
+.q_tag{
+    background-color: rgb(255,139,22);
+    color: rgb(0, 0, 0);
+    border: 0.5px solid rgb(0, 0, 0);
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    font-size: 0.95rem !important;
+    height: auto;
+    border-radius: 2.2vh;
+    padding: 0.2vw 2.2vh !important;
+    margin-right: 0.8vw;
+}
+
+.all_que_tag {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+}
+
+#q_date{
+    display: flex;
+    align-items: center;
+    padding-right: 2vw;
+}
+
+@media (max-width:900px){
+    #ques{
+        font-size: 1rem;
+    }
+    .q_tag{
+        font-size: 0.5rem;
+    }
+}
