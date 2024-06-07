@@ -10,31 +10,24 @@
 }
 
 .Addprojectmain{
-
-    /* width: 100vw;
-    background: white;
-    background-color: rgb(60, 8, 73); */
     padding: 70px 0px;
 }
 
 .AddProject{
-    /* position: absolute; */
+    
     width: 80vw;
     overflow: hidden;
     margin-left: 10vw;
     justify-content: center;
     background-color: #710ec9;
     color: white;
-    /* padding: 20px; */
-    /* top: 30px; */
-    /* display: none; */
+   
     border-radius: 20px;
-    /* margin-top: 70px;
-    margin-bottom: 70px; */
+    
 }
 
 .AddProject h1{
-    /* margin-bottom: 10px; */
+    
     display: flex;
     justify-content: center;
 }

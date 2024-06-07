@@ -11,14 +11,13 @@
 
 
 .projectmain{
-    /* color: white; */
+ 
     color: black;
     padding: 20px 100px;
 }
 .projdisplay{
     width: 100%;
     height: 100%;
-    /* background-color: #363636; */
     background: #E5DCE8;
     padding: 55px 30px;
     padding-left: 50px;
@@ -35,9 +34,7 @@
 }
 
 .projectname:hover{
-    /* color: #3c3c3c ; */
     text-decoration: underline;
-    /* font-weight: bold; */
 }
 
 .linkImg{
@@ -46,10 +43,7 @@
     background-size: contain;
     padding: 2.2vh;
     background-repeat: no-repeat;
-    /* border: 2px solid red; */
     margin-left: 0.8vh;
-    /* background-position: center; */
-    /* margin-top: 1px; */
     top: 0.8vh;
 }
 
@@ -67,12 +61,7 @@
 }
 
 .projdispbutton{
-    /* padding: 5px 20px;
-    background: #0c73e2;
-    border: 0ch;
-    border-radius: 25px;
-    color: white;
-    cursor: pointer; */
+   
     float: right;
     margin-right: 10px;
     height: 5.5vh;
@@ -85,8 +74,7 @@
     color: rgb(255, 255, 255);
     background-color: #6913BF ;
     border: none;
-    /* border: 2px solid #2D033B;; */
-    /* border: 2px solid white; */
+  
 }
 
 .projbtn{
@@ -106,7 +94,7 @@
     width: 200px;
     height: 200px;
     border-radius: 50%;
-    /* margin-left: 20px; */
+  
 }
 
 .video_info{
@@ -128,7 +116,7 @@
 }
 
 .teaminfo li{
-    /* list-style: ; */
+    
     font-size: 1.15rem;
 }
 

@@ -10,14 +10,11 @@
 }
 
 .completed_contest_main{
-    /* margin: 0% 0% 2% 0%; */
     padding: 1% 0%;
     border-radius: 10px;
     backdrop-filter: blur(6px);
     background-color: rgba(255, 255, 255, 0.11);
-    /* background-color: transparent; */
-    /* background: linear-gradient(45deg, rgba(4, 26, 93, 0.808) 0%, rgb(118, 91, 236) 130%); */
-    /* padding: 5px; */
+   
     border: 2px dotted #e5dce8;
     box-shadow: 0 0 20px 5px black;
     overflow: hidden;
@@ -25,12 +22,11 @@
 }
 .completed_contest_main:hover {
     scale: 1.017 ;
-    /* filter: brightness(4.2); */
     background-color: rgb(253, 138, 22);
     filter: contrast(3);
     filter: hue-rotate(5);
     border: 2px solid #e5dce8;
-    /* box-shadow: 0 0 20px 5px rgb(0, 0, 0); */
+    
 }
 
 .completed_contest_main:hover .completed_contest_name p{
@@ -41,7 +37,6 @@
     color: black;
     font-family: dateFont;
     letter-spacing: 1px;
-    /* font-weight: 900; */
 }
 .completed_contest_main:hover .completed_contest_btn button {
     border: 3px solid rgb(0, 0, 0);
@@ -68,11 +63,6 @@
         transition: 1.2s all;
     }
     &:hover{
-        /* border: 1px solid #ffffff44; */
-        /* box-shadow: 0 7px 50px 10px #000000aa; */
-        /* transform: scale(1.02);
-        transition: 1.0s all; */
-        /* filter: brightness(1.7); */
         ::before{
           filter: brightness(1);
           top: -100%;
@@ -111,7 +101,7 @@
 
 .completed_contest_btn button{
     color: rgb(0, 0, 0);
-    /* background-color: transparent; */
+   
     border: 2px solid white;
     letter-spacing: 1px;
     margin-top: 0.8vh;
@@ -130,7 +120,7 @@
 
 .completed_contest_btn button:hover,
 .completed_contest_btn button a:hover{
-    /* scale: 1.05; */
+ 
     color: rgb(255, 255, 255);
     background-color: rgba(0, 0, 0, 0.85);
     border: 2px solid black;

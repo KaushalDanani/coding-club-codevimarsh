@@ -5,14 +5,12 @@
 }
 
 .running_contest_main{
-    /* margin: 0% 0% 2% 0%; */
+   
     padding: 1% 0%;
     border-radius: 10px;
     backdrop-filter: blur(6px);
     background-color: rgba(255, 255, 255, 0.11);
-    /* background-color: transparent; */
-    /* background: linear-gradient(45deg, rgba(4, 26, 93, 0.808) 0%, rgb(118, 91, 236) 130%); */
-    /* padding: 5px; */
+    
     border: 2px dotted #e5dce8;
     box-shadow: 0 0 20px 5px black;
     overflow: hidden;
@@ -20,7 +18,7 @@
 }
 .running_contest_main:hover {
     scale: 1.017 ;
-    /* filter: brightness(4.2); */
+   
     background-color: rgb(253, 138, 22);
     filter: contrast(3);
     filter: hue-rotate(5);
@@ -35,7 +33,7 @@
     color: black;
     font-family: dateFont;
     letter-spacing: 1px;
-    /* font-weight: 900; */
+  
 }
 .running_contest_main:hover .contest_start_btn button {
     border: 3px solid rgb(0, 0, 0);
@@ -80,7 +78,7 @@
 
 .contest_start_btn button{
     color: rgb(0, 0, 0);
-    /* background-color: transparent; */
+  
     border: 2px solid white;
     letter-spacing: 1px;
     margin-top: 0.8vh;
@@ -94,7 +92,7 @@
 
 .contest_start_btn button:hover,
 .contest_start_btn button a:hover{
-    /* scale: 1.05; */
+   
     color: rgb(255, 255, 255);
     background-color: rgba(0, 0, 0, 0.85);
     border: 2px solid black;
@@ -104,7 +102,7 @@
 
 @media only screen and (max-width: 600px) {
     .contest_start_btn button{
-        /* margin-left: 10px; */
+       
         margin-right: 10px;
     }
     .running_contest_main {

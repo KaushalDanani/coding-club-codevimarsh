@@ -109,7 +109,7 @@ function AddContest() {
             }
         }
         else {
-            // alert("Please fill all required details!");
+            
             setToastVisible(true);
             setToastMessage("Please fill all required details!");
             setToastType("warning");

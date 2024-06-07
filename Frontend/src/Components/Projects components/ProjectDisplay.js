@@ -1,26 +1,17 @@
 import React, { useEffect, useState } from "react";
-import { Link, Navigate, useLocation, useNavigate } from 'react-router-dom'
-// import UserProfileSkillTagElement from "../jay fanse/UserProfileSkillTagElement";
 import './ProjectDisplay.css'
 import TechTag from "../kaushal/TechTag.js";
-import useUser from "../../store/userContext.js";
-import ToastComponent from "../jay fanse/toastComponent.js";
+
 
 export default function ProjectDisplay(props) {
     
-    // const [admin,setAdmin] = useState('false');
-    // const {user,setUser} = useUser();
-    // const userID = user._id;
-    // const admin = user.isAdmin;
+
 
     const [admin,setAdmin] = useState('');
     const [userID,setUserID] = useState('');
     const [hover,setHover] = useState(false);
 
-    const [toastVisible,setToastVisible] = useState(false);
-    const [toastMessage,setToastMessage] = useState("");
-    const [toastType,setToastType] = useState("");
-                
+
 
     useEffect(  () => {
         if(props.userID!=null)
@@ -32,27 +23,18 @@ export default function ProjectDisplay(props) {
         setAdmin(props.admin);
     },[props.admin])
 
-    // useEffect(() => {
-          
-    //     fetch(`/projectDisplay/userData/?userID=${userID}`)
-    //     .then(response => response.json())
-    //     .then(data => {
-         
-    //         setAdmin(data.admin);
-    //         // console.log("admin : "+data.admin);
-    //     })
-    // },[]);
+
 
     function deletebtn(){
         var b = false;
         console.log(admin);
-        // console.log("user : "+userID);
+        
         for(let i=0;i<=props.team.length;i++){
             if(admin===true || props.team[i]===userID ){
                 b = true;
             }
         }
-        // console.log(b + "okokok");
+        
         if(b == false){
             const closebtn = document.getElementById("btnname" + props.name + "dlt");
             closebtn.style.display = "none";
@@ -100,7 +82,7 @@ export default function ProjectDisplay(props) {
                 });
 
                 
-                // alert("Refesh tha page to see the change")
+                
         }
 
         function video(){
@@ -172,7 +154,7 @@ export default function ProjectDisplay(props) {
 
                 <div className="projdispheader">
                     <div>
-                        {/* <img src={image()}    alt="project image"></img> */}
+                       
                         <a href={props.projectlink} target="_blank" >
                         {image()}
                         </a>
@@ -191,7 +173,7 @@ export default function ProjectDisplay(props) {
                 <div className="video_info" id={"video_info"+props.name}>
                     <div>
                         <video controls>
-                            {/* {console.log(props.video)} */}
+                            
                             {video()}
                         </video>
                     </div>
@@ -203,7 +185,7 @@ export default function ProjectDisplay(props) {
                         <h2>Team Member</h2>
                         <ul>
                             {Fnamelname.map((data)=>{
-                                // console.log(data);
+                                
                                 return(
                                     <li>{data.fname} {data.lname}</li>
                                 )

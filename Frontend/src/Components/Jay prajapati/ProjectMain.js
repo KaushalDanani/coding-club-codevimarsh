@@ -54,8 +54,8 @@ export default function ProjectMain(props) {
 
     return (
         <>
+        
                 {toastVisible ? <ToastComponent message={toastMessage} type={toastType} /> : null}
-
             <Navbar_after_login />
             <h1 className="projectLib">Project Library</h1>
             <Filter_bar_Project />

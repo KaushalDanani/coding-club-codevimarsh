@@ -39,15 +39,6 @@ export default function AddProject() {
 
     const navigate = useNavigate();
 
-    // useEffect(() => {
-    //     if(Image)
-    //         uploadFile(Image, "imgURL");
-    // }, [Image])
-
-    // useEffect(() => {
-    //     if(Video)
-    //         uploadFile(Video, "videoURL");
-    // }, [Video])
 
     const uploadFile = async (file, fileType) => {
         const storage = getStorage(app)
@@ -59,7 +50,6 @@ export default function AddProject() {
         uploadTask.on('state_changed',
         (snapshot) => {
             const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-            // console.log('Upload is ' + progress + '% done');
             if(fileType == "imgURL")
                 setImgPercentage(Math.round(progress))
             else
@@ -209,13 +199,11 @@ export default function AddProject() {
                 <form className="AddProject" id="AddProject">
 
                     <div className="titaldiv">
-                        {/* <div className="addpro_close" onClick={addproject_close}>
-                    <img src="/images/close_image.webp"></img>
-            </div> */}
+                       
                         <h1>Add Your Project</h1>
                     </div>
 
-                    {/* <hr></hr>   */}
+                    
 
                     <div className="fillinfodiv">
                         <div className="addprospace">
@@ -260,9 +248,7 @@ export default function AddProject() {
                             <input type='file' accept="video/*" name='datafile' onChange={(e) => { addVideo(e) }} /><br />
                         </div>
 
-                        {/* <div className="addprospace " >
-            <input type="button" value="Add My Project" id="addproject" onClick={add}/>
-            </div> */}
+                      
 
 
                         <div className="addprojbtndiv">
@@ -271,9 +257,7 @@ export default function AddProject() {
                                 Cancel
                             </div></Link>
 
-                            {/* <div class="text-box">
-                    <a href="#" class="btn btn-white btn-        animate">click me</a>
-                </div> */}
+                         
 
                             <div className="addproj_btn" onClick={add}>
                                 Add My Project

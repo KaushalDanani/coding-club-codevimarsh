@@ -1,6 +1,4 @@
-// import Projects from "./Projects.js"
-// import Filter_bar from "../Jay prajapati/Filter_bar.js"
-// import { Link } from "react-router-dom"
+
 import Navbar_after_login from "../kaushal/Navbar_after_login.js"
 import ProjectDisplay from "../Innercomp/ProjectDisplay.js"
 import React, { useEffect, useState } from "react";
@@ -63,7 +61,6 @@ export default function ProjectMain(props){
         <HashLoader
             color={'#ffffff'}
             loading={isLoadingProject}
-            // cssOverride={override}
             size={70}
             aria-label="Loading Spinner"
             data-testid="loader"
@@ -73,6 +70,7 @@ export default function ProjectMain(props){
 
     return(
         <>  
+            
             <Navbar_after_login imgData={base64Img} />
             {/* <div className='projectHeader'>
                 <div className='imageConatainer'> <img id='proj_image' src="/images/projdis3.jpg" alt='discC' /> </div>
@@ -91,12 +89,10 @@ export default function ProjectMain(props){
             onMouseOver={()=> setChangeImage(false)}> Add </button> </Link>
         </div>
         </div>
-            {/* <Filter_bar_Project /> */}
+            
             <hr style={{width: '85%', height: '2.5px', backgroundColor: 'white', margin: 'auto', marginBottom: '2.5vh'}}/>
 
-            {/* <AddProject/> */}
-            {/* {cardGenerator(Projectinfo)} */}
-            {/* {console.log("length: " + Projectinfo.length)} */}
+            
             {
                 Projectinfo.length!==0 ? 
                 

@@ -11,6 +11,7 @@ export default function Projects(props) {
 
     return (
         <div className='card-body project'>
+            
             <div>
                 <img src="/images/html-5.png" className='thumbnail'/>
             </div>
