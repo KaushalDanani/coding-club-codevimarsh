@@ -34,7 +34,7 @@ function UserProfileLeftPanel(props) {
       />
   }
 
-  const base64Img = props.userData.profileImg;
+  const base64Img = `data:image/png;base64,${props.userData.profileImg}`;
 
   return (
     <div className="UPleftPanel">

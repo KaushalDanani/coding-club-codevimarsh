@@ -7,11 +7,17 @@ import Navbar_after_login from '../kaushal/Navbar_after_login.js';
 import useUser from '../../store/userContext.js';
 import ToastComponent from '../Toast/toastComponent.js';
 
-export default function Question_data() {
+export default function Question_data(props) {
 
     const location = useLocation();
     const {user} = useUser();
     const userID = user ? user._id : null;
+
+    const [imgData,setImgData] = useState("");
+    useEffect(()=>{
+        if(props.imgData !== null)
+        setImgData(props.imgData);
+    },[props.imgData])
 
     const [toastVisible, setToastVisible] = useState(false);
     const [toastMessage, setToastMessage] = useState("");
@@ -126,9 +132,7 @@ export default function Question_data() {
     return (
         <>
             {toastVisible ? <ToastComponent message={toastMessage} type={toastType} /> : null}
-
-            <Navbar_after_login />
-            {console.log(R_data)}
+            <Navbar_after_login imgData={`data:image/png;base64,${imgData}`}/>
             {questionHead()}
             {commentsGenerator()}
 

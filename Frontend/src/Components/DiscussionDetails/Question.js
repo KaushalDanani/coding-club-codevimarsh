@@ -16,7 +16,6 @@ export default function Question(props) {
     },[props.code])
 
     let bool = props.value;
-    console.log('at sender :' + props.value);
 
     return (
         <>

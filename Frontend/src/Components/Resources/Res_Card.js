@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import './Card.css'
 import { useNavigate } from 'react-router-dom'
 
@@ -10,7 +10,11 @@ export default function Res_Card(props) {
     let books = [];
     let notes = [];
     let videos = [];
-
+    const [imgData,setImgData] = useState("");
+    useEffect(()=>{
+        if(props.imgData !== null)
+        setImgData(props.imgData);
+    },[props.imgData])
     async function ViewContent() {
 
         
@@ -23,8 +27,7 @@ export default function Res_Card(props) {
             })
             const data = await response.json();
             const filtered = data.filter(subElement => subElement.subject === props.topic);
-            // console.log("⚜⚜⚜⚜⚜ "+filtered[0])
-            navigate(props.sub_link, { state: { resources: filtered } })
+            navigate(props.sub_link, { state: { resources: filtered , imgData : imgData} })
         }
         catch(err)
         {

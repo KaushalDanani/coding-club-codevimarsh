@@ -176,8 +176,6 @@ app.post("/deleteproject",async (req,res) => {
   res.send({message : 'Project deleted successfully!'});
 })
 
-const imageBuffer = "https://i.pinimg.com/564x/89/90/48/899048ab0cc455154006fdb9676964b3.jpg";
-
 app.get(`/projectDisplay/userData/`, async (req, res) => {
   try {
     const userID = req.query.userID;

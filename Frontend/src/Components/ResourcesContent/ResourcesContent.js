@@ -10,14 +10,13 @@ import ToastComponent from '../Toast/toastComponent.js';
 
 function ResourcesContent(props) {
     const navigate = useNavigate();
-    const location = useLocation();
     
     const [toastVisible, setToastVisible] = useState(false);
     const [toastMessage, setToastMessage] = useState("");
     const [toastType, setToastType] = useState("");
-
+    
     const [admin,setAdmin] = useState(false);
-
+    
     useEffect( ()=>{
         if(props.user)
         {
@@ -25,23 +24,24 @@ function ResourcesContent(props) {
         }
     },[props.user])
 
-
+    
     function adminCheck(){
         return (admin === true)
     }
-
+    
     function EditElemOption(){
         let comps = document.querySelectorAll('#resElemDelt');
         for (const c of comps) {
-        if (c.classList.contains('off'))
+            if (c.classList.contains('off'))
             c.classList.remove('off');
-        else
+            else
             c.classList.add('off');
         }
     }
-
-    const [subjectRes,setSubjectRes] = useState(location.state.resources[0]);
     
+    const location = useLocation();
+    const [subjectRes,setSubjectRes] = useState(location.state.resources[0]);
+    const [imgData, setImgData] = useState(location.state.imgData);
     
     const sub_id = subjectRes._id;
     const subject = subjectRes.subject;
@@ -152,7 +152,7 @@ function ResourcesContent(props) {
     return (
         <>
             {toastVisible ? <ToastComponent message={toastMessage} type={toastType} /> : null}
-            <Navbar_after_login />
+            <Navbar_after_login imgData = {imgData}/>
             <div className="ResourcesContentFrame">
                 <div className="ResourcesContentTopic">Resources for {subject}</div>
                 <div className="ResourcesContentMain">

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Card from './Res_Card.js'
 import { useState } from "react";
 import ToastComponent from "../Toast/toastComponent.js";
@@ -9,6 +9,12 @@ function Res_data(props) {
     const [toastVisible,setToastVisible] = useState(false);
     const [toastMessage,setToastMessage] = useState("");
     const [toastType,setToastType] = useState("");
+
+    const [imgData, setImgData] = useState("");
+    useEffect(()=>{
+        if(props.imgData !== null)
+        setImgData(props.imgData);
+    },[props.imgData])
 
     function deleteTopic(id){
 
@@ -25,7 +31,6 @@ function Res_data(props) {
             })
             .then(response=>response.json())
             .then((data)=>{
-                // alert("Topic Deleted....!!");
                 setToastVisible(true);
                 setToastMessage("Subject deleted successfully!");
                 setToastType("success");
@@ -38,8 +43,8 @@ function Res_data(props) {
     }
 
     function subjectGenerator(props){
-    return (
-
+    
+        return (
         <Card
             resimg = {props.logo}
             topic = {props.subject}
@@ -48,6 +53,7 @@ function Res_data(props) {
             b_count = {props.books[0]}  
             id = {props._id}
             deleteOption = {deleteTopic}
+            imgData = {imgData}
             sub_link = {`rescontent?subject=${props.subject}`} />
         )
     }

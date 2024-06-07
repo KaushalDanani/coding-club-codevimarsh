@@ -120,7 +120,7 @@ export default function Resources(props) {
       
       <div className="res_card_container">
         <div id='cardgrid'>
-          <Res_data userID={userID} source={resources} />
+          <Res_data userID={userID} source={resources} imgData={base64Img}/>
         </div>
       </div>
       <MyfooterAfterLogin />

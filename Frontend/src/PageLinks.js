@@ -49,7 +49,7 @@ function PageLinks() {
 
     const [isLoading, setIsLoading] = useState(false);
     const { user, setUser } = useUser();
-
+    const [imgData, setImgData] = useState("");
     useEffect(() => {
         (async () => {
             try {
@@ -62,6 +62,7 @@ function PageLinks() {
                 });
                 const [data] = await response.json();
                 setUser(data);
+                setImgData(data.profileImg);
                 console.log('-----------------------------USER-------------------------', data);
                 setIsLoading(false);
                 
@@ -132,7 +133,7 @@ function PageLinks() {
 
                     <Route path='/discussion' element={<Discussion_Forums />} />
                     <Route path='/discussion/addQuestion' element={<Ask_Question />} />
-                    <Route path='/discussion/question' element={<Question_data />} />
+                    <Route path='/discussion/question' element={<Question_data imgData={imgData}/>} />
                     <Route path='/discussion/question/addReply' element={<Give_answer />} />
                     <Route path='/project' element={<ProjectMain user={user}/>} />
                     <Route path='/project/add_project' element={<AddProject />} />

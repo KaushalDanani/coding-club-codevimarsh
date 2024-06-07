@@ -49,7 +49,7 @@ function UserProfile(props) {
         const response2 = await fetch('/navbar/profileImg/dataset')
         const data2 = await response2.json();
         setUserData(data2.data);
-        setBase64Img(data2.data.profileImg);
+        setBase64Img(`data:image/png;base64,${data2.data.profileImg}`);
       }
       catch(err)
       {
