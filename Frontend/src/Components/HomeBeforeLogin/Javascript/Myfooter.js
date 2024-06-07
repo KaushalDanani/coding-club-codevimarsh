@@ -13,11 +13,11 @@ export default function Myfooter() {
                 <h2>Our Content</h2>
 
                 <ul>
-                    <li> <Link to="resourcesSource" spy={true} smooth={true} offset={-185}> Upcoming Coding Contests </Link> </li>
-                    <li> <Link to="resourcesSource" spy={true} smooth={true} offset={-185}> Resources </Link> </li>
-                    <li> <Link to="discussionSource" spy={true} smooth={true} offset={-185}> Discussion </Link> </li>
-                    <li> <Link to="projectCollabSources" spy={true} smooth={true} offset={-105}> Project Collaboration </Link> </li>
-                    <li> <Link to="projectSources" spy={true} smooth={true} offset={-185}> Projects </Link> </li>
+                    <li> <Link to="resourcesSource" spy={true} smooth={true} offset={-170}> Upcoming Coding Contests </Link> </li>
+                    <li> <Link to="resourcesSource" spy={true} smooth={true} offset={-170}> Resources </Link> </li>
+                    <li> <Link to="discussionSource" spy={true} smooth={true} offset={-170}> Discussion </Link> </li>
+                    <li> <Link to="projectCollabSources" spy={true} smooth={true} offset={-170}> Project Collaboration </Link> </li>
+                    <li> <Link to="projectSources" spy={true} smooth={true} offset={-170}> Projects </Link> </li>
                 </ul>
             </div>
             <div className="box LR">
@@ -35,7 +35,7 @@ export default function Myfooter() {
                 <h2>More</h2>
 
                 <ul>
-                    <li> <Link to="AboutUS" smooth={true} offset={-250}> About Us </Link> </li>
+                    <li> <Link to="AboutUS" smooth={true} offset={-90}> About Us </Link> </li>
                     <li><a href="https://mail.google.com/mail/?view=cm&to=codingclub-cse@msubaroda.ac.in" target="_blank" >Contact Us</a></li>
                 </ul>
             </div>
