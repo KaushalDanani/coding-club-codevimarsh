@@ -1,20 +1,9 @@
-import React, { useEffect, useState } from "react";
-import { useSearchParams } from 'react-router-dom';
+import React, { useState } from "react";
 import { Link, useNavigate } from 'react-router-dom'
 import './Ask_Question.css';
-import Navbar_after_login from "../kaushal/Navbar_after_login.js";
 import useUser from "../../store/userContext.js";
-import ToastComponent from "../jay fanse/toastComponent.js";
-// function question_close(){
-//     const closebtn = document.getElementById("question_main");
-//     closebtn.style.display = "none";
-// }
+import ToastComponent from "../Toast/toastComponent.js";
 
-// export function question_open(){
-//     const closebtn = document.getElementById("question_main");
-//     // console.log(closebtn);
-//     closebtn.style.display = "block";
-// }
 
 export default function Ask_Question() {
 
@@ -35,25 +24,25 @@ export default function Ask_Question() {
     function addTital() {
         const tital = document.getElementById("tital_text").value;
         setTital(tital);
-        // console.log(tital);
+        
     }
 
     function addTags() {
         const tags = document.getElementById("tegs_text").value;
         setTags(tags.split(","));
-        // console.log(tags.split(","));
+        
     }
 
     function addDescription() {
         const description = document.getElementById("description_text").value;
         setDescription(description);
-        // console.log(description);
+        
     }
 
     function addCode() {
         const code = document.getElementById("code_text").value;
         setCode(code);
-        // console.log(code);
+        
     }
 
     function addMyQuestion() {
@@ -80,7 +69,7 @@ export default function Ask_Question() {
                     navigate("/discussion");
                 }, 1000);
             });
-        // question_close();
+        
     }
 
 

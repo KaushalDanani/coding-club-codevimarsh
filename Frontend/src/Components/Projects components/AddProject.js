@@ -3,7 +3,7 @@ import { getStorage, ref, uploadBytesResumable, getDownloadURL } from "firebase/
 import app from "../../Firebase.js"
 import './AddProject.css'
 import { Link, useNavigate } from "react-router-dom";
-import ToastComponent from "../jay fanse/toastComponent";
+import ToastComponent from "../Toast/toastComponent.js";
 
 
 function addproject_close() {
