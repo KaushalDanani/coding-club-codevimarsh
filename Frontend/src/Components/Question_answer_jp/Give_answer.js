@@ -1,21 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-// import { useLocation } from 'react-router-dom'
+
 import './Give_answer.css';
 import useUser from "../../store/userContext.js";
 import ToastComponent from "../jay fanse/toastComponent.js";
-
-// export function reply_close() {
-//     const closebtn = document.getElementById("reply_main");
-//     // console.log(closebtn);
-//     closebtn.style.display = "none";
-// }
-
-// export function reply_open() {
-//     const closebtn = document.getElementById("reply_main");
-//     // console.log(closebtn);
-//     closebtn.style.display = "block";
-// }
 
 function Give_answer() {
 
@@ -36,13 +24,13 @@ function Give_answer() {
     function addReply() {
         const reply = document.getElementById("reply_text").value;
         setReply(reply);
-        // console.log(description);
+        
     }
 
     function addCode() {
         const code = document.getElementById("code_text").value;
         setCode(code);
-        // console.log(code);
+        
     }
 
     function addMyReply() {
@@ -68,7 +56,7 @@ function Give_answer() {
                     navigate(`/discussion/question/?q_id=${q_id}`);
                 }, 1000);
             });
-        // reply_close();
+        
     }
 
 

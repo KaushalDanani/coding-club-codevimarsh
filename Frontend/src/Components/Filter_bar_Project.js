@@ -1,7 +1,7 @@
 import React from 'react'
 import { useState } from 'react';
 import './Filter_bar.css'
-import { addproject_open ,  } from '../Innercomp/AddProject.js';
+import { addproject_open ,  } from './Innercomp/AddProject.js';
 import { Link } from 'react-router-dom';
 
 // import {question_open} from '../Question_answer/Ask_Question';

@@ -6,9 +6,7 @@ import ToastComponent from '../jay fanse/toastComponent.js'
 
 export default function Comment(props) {
     const [qDate, setQDate] = useState("");
-
-    // const userID = sessionStorage.getItem('userID');
-    // const admin = sessionStorage.getItem('isAdmin');
+        
 
     const [userID, setUserID] = useState("");
     const [admin, setAdmin] = useState("");
@@ -33,8 +31,7 @@ export default function Comment(props) {
             setCommenterID(props.commenter_id);
     }, [props.commenter_id])
 
-    const delCheck = (userID === commenter_id || admin === true);
-    //console.log(delCheck + "frr?");
+    const delCheck = (userID === commenter_id || admin === true);    
 
     function deleteRep(r_id) {
         const conf = window.confirm('Are you sure you want to delete this reply?');
@@ -71,15 +68,7 @@ export default function Comment(props) {
             {toastVisible ? <ToastComponent message={toastMessage} type={toastType} /> : null}
 
             <div className='c_class'>
-                {/* <button type='button'
-                className='del'
-                id={props.q_id}
-                onClick={() => deleteRep(props._id)}
-                style={{ display: (delCheck ? 'block' : 'none') }}
-            >
-
-            </button> */}
-
+                
             <div id='commenter'>
                 <a href={`../profile?visitID=${props.commenter_id}`}><div id='pfp_div'><img src={`data:Image/jpeg;base64,${props.pfp}`} alt="" id='pfpic' /></div></a>
                 <div id='commenter_id'><a href={`../profile?visitID=${props.commenter_id}`}>{props.commenter}</a>
@@ -102,7 +91,6 @@ export default function Comment(props) {
             <div id='feed_bar'>
                 <div id='upvote_div'>
                     <Upvote value={props.value} Id={props._id} type='r' count={props.up_count} user={props.userID} />
-                    {/* {props.up_count} */}
                 </div>
 
                 <div id='date_div'>

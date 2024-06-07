@@ -9,7 +9,6 @@
     padding: 2.2rem 0;
     font-family: newFont;
     line-height: 2.5;
-    /* margin-top: 5vw; */
 }
 
 .subject_header_line {
@@ -22,7 +21,6 @@
 .addSub{
     font-size: 2.3vh;
     position: relative;
-    /* bottom:0px; */
     height: fit-content;
     width: fit-content;
     color: white;
@@ -37,12 +35,10 @@
 .addSub:hover{
     cursor: pointer;
     color: #ffffff;
-    /* border: 2px solid white; */
     background-color: #8e31ec
 }
 
 #addButton{
-    /* position: relative; */
     margin-bottom: 1rem;
 }
 
@@ -56,8 +52,6 @@
 #cardgrid{
     width: 95%;
     display: grid;
-    /* justify-content: center; */
-    /* justify-content: space-around; */
     grid-template-columns: repeat(4,1fr);
     gap: 3vw 5.5vw;
     padding: 3vw;

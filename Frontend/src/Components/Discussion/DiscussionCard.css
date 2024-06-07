@@ -5,9 +5,6 @@
     justify-content: center;
     width: 100%;
     padding: 2.5vh 0vh;
-    /* height: 300px; */
-    /* border: 2px solid aliceblue; */
-    /* background-color: blue; */
     box-sizing: border-box;
 }
 
@@ -16,9 +13,7 @@
     width: 3.7vw;
     aspect-ratio: 1/1;
     margin-top: 1vh;
-    /* margin-right: 0.85vw; */
     border-radius: 100%;
-    /* background-color: rgb(217, 255, 0); */
     box-shadow: 0 0 50px black;
     overflow: hidden;
     left: 8.5vw;
@@ -31,13 +26,10 @@
 
 .discussion_c_card .innercontentDisc {
     position: relative;
-    /* margin-top: 0.2vh; */
     width: 77.5vw;
     margin: 0px;
-    /* padding-left: 2.5vw; */
     padding-bottom: 3.4vh;
     border-radius: 1.5vh;
-    /* background-color: #3d3d3d; */
     background-color: #363636;
     box-shadow: 0 0 20px black;
     overflow: hidden;
@@ -53,7 +45,6 @@
     padding-left: 2vw;
     margin-left: -2.5vw;
     background-color: rgb(105, 19, 191);
-    /* background-color: #b29a00; */
     overflow: hidden;
 }
 
@@ -76,8 +67,6 @@
     position: relative;
     display: contents;
     width: 90%;
-    /* top: 8.9vh; */
-    /* left: 2.65vw; */
     font-size: 2.15vh;
     color: white;
     letter-spacing: 0.05vw;

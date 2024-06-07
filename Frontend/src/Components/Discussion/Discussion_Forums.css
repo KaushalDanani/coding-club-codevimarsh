@@ -1,32 +1,18 @@
- 
-/* .discbanner{
-    background-image: url('/public/images/discuss.jpg');
-    aspect-ratio: 6/1;
-    background-repeat: round;
-    border-radius: 3vh 3vh 0 0;
-    display: flex;
-    height: 60vh;
-    border: 2px solid green;
-} */
-
 #discussion_block{
     margin: 2vw;
     padding: 1vw;
-    /* border: 1px solid crimson; */
     border-radius: 2vw;
     background-color: darkslateblue;
 }
 
 #asker{
     display: flex;
-    /* border: 1px solid salmon; */
 }
 
 #pfp_div{
     height: 8vh;
     width: 8vh;
     border-radius: 4vh;
-    /* border: 1px solid white; */
     margin: 0.5vw;
 }
 #pfpic{
@@ -35,7 +21,6 @@
 }
 #asker_id{
     font-size: 2vw;
-    /* border: 1px solid maroon; */
     margin: 1vw;
     color: white;
 }
@@ -43,7 +28,6 @@
 .AddDiscBtn {
     height: 5vh;
     padding: 0vw 1.8vw 0vw 3.2vw;
-    /* margin-left: 7.8vw; */
     margin-top: 0vh;
     margin-bottom: 2.9vh;
     font-weight: 700;
@@ -78,7 +62,6 @@
     color: white;
     font-size: 1.7vw;
     text-align: justify;
-    /* border: 1px solid salmon; */
     padding: 0.5vw;
 }
 
@@ -86,7 +69,6 @@
     position: relative;
     display: flex;
     color: white;
-    /* border: 1px solid salmon; */
     padding: 0.5vw;
 }
 
@@ -106,8 +88,6 @@
 
 #q_date{
     position: absolute;
-    /* display: inline; */
-    /* border: 2px solid yellow; */
     right: 0.1vw;
 }
 

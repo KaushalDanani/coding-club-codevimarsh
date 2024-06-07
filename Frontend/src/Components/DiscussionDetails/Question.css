@@ -6,7 +6,6 @@
     margin-bottom: 0 !important;
     margin-top: 4vw !important;
     border-radius: 2vw;
-    /* border: 1px solid teal; */
     box-shadow: 0 0 20px black;
     text-align: justify;
 }
@@ -36,7 +35,6 @@
 #Que_statement{
     margin: 1vw;
     font-size: 1.4rem;
-    /* text-decoration: solid; */
 }
 
 #des_div{
@@ -46,7 +44,6 @@
 
 #asker{
     display: flex;
-    /* border: 1px solid salmon; */
 }
 
 #pfp_div{
@@ -55,8 +52,6 @@
     height: 8vh;
     width: 8vh;
     border-radius: 4vh;
-    /* border: 1px solid white; */
-    /* margin: 0.5vw; */
 }
 #pfpic{
     height: 8vh;
@@ -64,7 +59,6 @@
 }
 #asker_id a{
     font-size: 1.8rem;
-    /* border: 1px solid maroon; */
     margin: auto;
     color: white;
 }
@@ -92,7 +86,6 @@
     border: 1px solid transparent;
     border-radius: 1vw;
     font-size: 1.5rem;
-    /* font-size: 1rem; */
 }
 
 #com_button:hover{
@@ -105,7 +98,6 @@
 }
 
 #feed_bar{
-    /* border-top: 1px solid teal; */
     font-size: 1.6vw;
     border-radius: 1vw;
 }

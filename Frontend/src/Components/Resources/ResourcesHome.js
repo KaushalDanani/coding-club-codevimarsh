@@ -1,22 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import './Resources.css';
 import Navbar_after_login from '../kaushal/Navbar_after_login.js';
-import { useLocation } from 'react-router-dom';
 import { Link } from 'react-router-dom'
-import useUser from '../../store/userContext.js';
 import Res_data from './Res_data.js';
 import HashLoader from 'react-spinners/HashLoader.js';
 import MyfooterAfterLogin from '../MyfooterAfterLogin.js';
 
 
 export default function Resources(props) {
-
-  // const location=useLocation();
-  // const searchParams = new URLSearchParams(location.search);
-  // const {user,setUser} = useUser();
-  // const userID = user._id;
-  // const isAdmin = user.isAdmin;
-
   const [isAdmin,setAdmin] = useState(false);
   const [userID,setUserID] = useState("");
   const [resources,setResources] = useState([]);
@@ -72,7 +63,7 @@ export default function Resources(props) {
           <HashLoader
               color={'#ffffff'}
               loading={isLoading}
-              // cssOverride={override}
+
               size={70}
               aria-label="Loading Spinner"
               data-testid="loader"
@@ -97,7 +88,6 @@ export default function Resources(props) {
       
       <div className="res_card_container">
         <div id='cardgrid'>
-        {/* {resouorceGenerator(userID)} */}
           <Res_data userID={userID} source={resources} />
         </div>
       </div>

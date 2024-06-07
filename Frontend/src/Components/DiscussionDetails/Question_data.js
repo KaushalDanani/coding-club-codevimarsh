@@ -1,34 +1,22 @@
-import Question from './Question.js'
-// import pfp from './res/pfp.png'
+import Question from './Question.js';
+
 import Comment from './Comment.js'
 import { useEffect, useState } from 'react'
 import { useLocation } from 'react-router-dom'
 import Navbar_after_login from '../kaushal/Navbar_after_login.js';
 import useUser from '../../store/userContext.js';
-// import { ObjectId } from 'mongoose'
+
 import ToastComponent from '../jay fanse/toastComponent.js';
 
-export default function Question_data(props) {
+export default function Question_data() {
 
     const location = useLocation();
-    // const [user, setUser] = useState();
-    // const [userID, setUserID] = useState();
-
-    const {user,setUser} = useUser();
+    const {user} = useUser();
     const userID = user ? user._id : null;
 
     const [toastVisible, setToastVisible] = useState(false);
     const [toastMessage, setToastMessage] = useState("");
     const [toastType, setToastType] = useState("");
-
-    // useEffect(() => {
-    //     if (props.user != null) {
-    //         setUser(props.user);
-    //         setUserID(props.user._id);
-    //     }
-    // }, [props.user])
-
-
     const searchParams = new URLSearchParams(location.search);
     const q_id = searchParams.get('q_id');
 
@@ -38,8 +26,6 @@ export default function Question_data(props) {
     const [R_data, setRData] = useState([]);
     const [rMap, setrMap] = useState(new Map());
     const [upMap, setupMap] = useState(new Map());
-
-    const [userData, setUserData] = useState();
 
     useEffect(() => {
         if(userID!=null)
@@ -58,7 +44,6 @@ export default function Question_data(props) {
                 setQUp(data[2]);
                 setRData(data[3]);
 
-                const rArr = data[4];
                 const m1 = new Map(data[4]);
                 const uArr = data[5];
                 const m2 = new Map(uArr);
@@ -66,7 +51,7 @@ export default function Question_data(props) {
                 setrMap(m1);
                 setupMap(m2);
 
-                // console.log(Asker);
+                
             })
             .catch(error => {
                 console.error('Error:', error);
@@ -78,7 +63,7 @@ export default function Question_data(props) {
 
     function questionHead() {
 
-        // console.log(user); //This prints true..
+        
         return (
             <Question
                 _id={Q_data._id}
@@ -91,7 +76,7 @@ export default function Question_data(props) {
                 code={Q_data.code}
                 up_count={Q_data.upvotes}
                 date={Q_data.AskDate}
-                value={Q_upvote} //this does not effect the component as true.
+                value={Q_upvote} 
             />
         )
     }
@@ -105,15 +90,15 @@ export default function Question_data(props) {
         setToastType("success");
         setTimeout(() => {
             setToastVisible(false)
-            // window.location.reload();
+            
         }, 4000);
     }
 
     function commentsGenerator() {
         function commentGenerator(comment) {
-            // if (R_data.length > 0 && R_data[0].replier) {
-            // console.log(R_data[0]); // This prints and field replier is also there.
-            // console.log(R_data[0].replier); // This should work without errors now
+            
+            
+            
 
             return (
                 <Comment

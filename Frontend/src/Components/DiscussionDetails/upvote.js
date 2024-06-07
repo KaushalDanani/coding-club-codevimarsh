@@ -9,7 +9,6 @@ const Upvote = (props) => {
     setIsUpvoted(props.value);
   }, [props.value, props.count]);
 
-  // console.log("Count :" + upCount);
   const toggleUpvote = () => {
     const newIsUpvoted = !isUpvoted;
     const newUpCount = newIsUpvoted ? upCount + 1 : upCount - 1;

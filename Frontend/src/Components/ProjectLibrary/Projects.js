@@ -1,6 +1,5 @@
 import React from 'react'
 import './Projects.css'
-// import img from './res/html-5.png'
 
 export default function Projects(props) {
     function getTag(tag) {

@@ -1,10 +1,6 @@
-// import Projects from "./Projects.js"
-import Filter_bar from "./Filter_bar.js"
-// import { Link } from "react-router-dom"
 import Navbar_after_login from "../kaushal/Navbar_after_login.js"
 import ProjectDisplay from "../Innercomp/ProjectDisplay.js"
 import React, { useEffect, useState } from "react";
-import AddProject from "../Innercomp/AddProject.js";
 import Filter_bar_Project from "./Filter_bar_Project.js"
 import "./ProjectMain.css"
 import MyfooterAfterLogin from "../MyfooterAfterLogin.js";
@@ -60,8 +56,6 @@ export default function ProjectMain(props) {
             <h1 className="projectLib">Project Library</h1>
             <Filter_bar_Project />
 
-            {/* {cardGenerator(Projectinfo)} */}
-            {/* {console.log("length: " + Projectinfo.length)} */}
             {
                 Projectinfo.map(
                     (proj) => {

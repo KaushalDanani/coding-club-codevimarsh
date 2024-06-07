@@ -25,9 +25,9 @@ import UserProfile from './Components/jay fanse/UserProfile.js';
 
 
 // jay prajapati
-import ResourcesHome from './Components/Jay prajapati/ResourcesHome.js';
-import Discussion_Forums from './Components/Jay prajapati/Discussion_Forums.js';
-import Question_data from './Components/Jay prajapati/Question_data.js';
+import ResourcesHome from './Components/Resources/ResourcesHome.js';
+import Discussion_Forums from './Components/Discussion/Discussion_Forums.js';
+import Question_data from './Components/DiscussionDetails/Question_data.js'
 import ProjectMain from './Components/Innercomp/ProjectMain.js';
 
 
@@ -37,7 +37,7 @@ import Ask_Question from './Components/Question_answer_jp/Ask_Question.js';
 import Give_answer from './Components/Question_answer_jp/Give_answer.js';
 import AddContest from './Components/Contest components/AddContest.js';
 import Home_page_before_login from './Components/HomeBeforeLogin/Javascript/Home_page_before_login.js';
-import AddSubject from './Components/Jay prajapati/AddSubject.js';
+import AddSubject from './Components/Resources/AddSubject.js';
 import AddBooks from './Components/jay fanse/AddBooks.js';
 import AddVideos from './Components/jay fanse/AddVideos.js';
 import AddNotes from './Components/jay fanse/AddNotes.js';

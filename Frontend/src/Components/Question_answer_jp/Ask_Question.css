@@ -89,7 +89,6 @@
 .addFormButton:hover{
     cursor: pointer;
     color: #ffffff;
-    /* border: 2px solid white; */
     background-color: #8e31ec
 }
 
