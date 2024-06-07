@@ -1,12 +1,12 @@
 
-import Navbar_after_login from "../kaushal/Navbar_after_login.js"
+import Navbar_after_login from "../NavbarAfterLogin/Navbar_after_login.js"
 import ProjectDisplay from "./ProjectDisplay.js";
 import React, { useEffect, useState } from "react";
 
 import { Link } from 'react-router-dom';
 // import Filter_bar from "../ProjectLibrary/Filter_bar_Project.js";
 import "./ProjectMain.css"
-import MyfooterAfterLogin from "../MyfooterAfterLogin.js";
+import MyfooterAfterLogin from "../FooterAfterLogin/MyfooterAfterLogin.js";
 import HashLoader from "react-spinners/HashLoader.js";
 
 export default function ProjectMain(props){

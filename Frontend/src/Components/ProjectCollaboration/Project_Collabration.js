@@ -2,11 +2,9 @@ import React, { useEffect, useState } from 'react'
 import "./Project_Collabration.css";
 import { Link } from 'react-router-dom';
 import ProjectCollabrationCard from './ProjectCollabrationCard.js';
-import Navbar_after_login from './Navbar_after_login.js';
+import Navbar_after_login from '../NavbarAfterLogin/Navbar_after_login.js';
 import ToastComponent from '../Toast/toastComponent.js';
-
-
-import MyfooterAfterLogin from '../../MyfooterAfterLogin.js';
+import MyfooterAfterLogin from '../FooterAfterLogin/MyfooterAfterLogin.js';
 import HashLoader from 'react-spinners/HashLoader.js';
 
 function Project_Collabration() {

@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useState } from 'react';
-import TechTag from '../TechTag.js';
+import TechTag from '../Tags/TechTag.js';
 import "./ProjectCollabrationCard.css";
 import "./../Toast/toastComponent.css"
 

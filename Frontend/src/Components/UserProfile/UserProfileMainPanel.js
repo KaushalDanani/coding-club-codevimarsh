@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./UserProfileMainPanel.css";
-import ProjectDisplay from "../Projects components/ProjectDisplay";
+import ProjectDisplay from "../ProjectComponent/ProjectDisplay";
 import { Link } from "react-router-dom";
 
 function UserProfileMainPanel(props) {

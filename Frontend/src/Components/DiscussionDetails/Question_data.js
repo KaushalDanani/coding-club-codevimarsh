@@ -3,7 +3,7 @@ import Question from './Question.js';
 import Comment from './Comment.js'
 import { useEffect, useState } from 'react'
 import { useLocation } from 'react-router-dom'
-import Navbar_after_login from '../kaushal/Navbar_after_login.js';
+import Navbar_after_login from '../NavbarAfterLogin/Navbar_after_login.js';
 import useUser from '../../store/userContext.js';
 import ToastComponent from '../Toast/toastComponent.js';
 

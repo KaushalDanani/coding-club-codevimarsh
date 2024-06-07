@@ -4,9 +4,9 @@ import Myfooter from "../../Components/HomeBeforeLogin/CSS/Myfooter.css";
 import Greeting from "./Greeting.js";
 import NewTasks from "./NewTasks.js";
 import NewUpdates from "./NewUpdates.js";
-import Navbar_after_login from "../kaushal/Navbar_after_login.js";
+import Navbar_after_login from "../NavbarAfterLogin/Navbar_after_login.js";
 import useUser from "../../store/userContext.js";
-import MyfooterAfterLogin from "../MyfooterAfterLogin.js";
+import MyfooterAfterLogin from "../FooterAfterLogin/MyfooterAfterLogin.js";
 import HashLoader from "react-spinners/HashLoader.js";
 import { useLocation } from "react-router-dom";
 

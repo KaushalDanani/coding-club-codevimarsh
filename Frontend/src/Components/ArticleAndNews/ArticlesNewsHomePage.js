@@ -1,8 +1,8 @@
 import React, {useState} from "react";
 import ArticleNewsLatestDiv from './ArticleNewsLatestDiv.js';
 import ArticleNewsTopBanner from './ArticleNewsTopBanner.js';
-import Navbar_after_login from "../kaushal/Navbar_after_login.js";
-import MyfooterAfterLogin from "../MyfooterAfterLogin.js";
+import Navbar_after_login from "../NavbarAfterLogin/Navbar_after_login.js";
+import MyfooterAfterLogin from "../FooterAfterLogin/MyfooterAfterLogin.js";
 import { useLocation } from "react-router-dom";
 import "./ArticlesNewsHomePage.css"
 

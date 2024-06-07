@@ -3,7 +3,7 @@ import "./ResourcesContent.css";
 import ResourcesBooksDisplay from './ResourcesBooksDisplay.js';
 import ResourcesVideosDisplay from './ResourcesVideosDisplay.js';
 import ResourcesNotesDisplay from './ResourcesNotesDisplay.js';
-import Navbar_after_login from '../kaushal/Navbar_after_login.js';
+import Navbar_after_login from '../NavbarAfterLogin/Navbar_after_login.js';
 import { Link,useNavigate , useLocation } from 'react-router-dom';
 import useUser from '../../store/userContext.js';
 import ToastComponent from '../Toast/toastComponent.js';

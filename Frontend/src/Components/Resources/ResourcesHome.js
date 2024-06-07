@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import './ResourcesHome.css';
-import Navbar_after_login from '../kaushal/Navbar_after_login.js';
+import Navbar_after_login from '../NavbarAfterLogin/Navbar_after_login.js';
 import { Link } from 'react-router-dom'
 import Res_data from './Res_data.js';
 import HashLoader from 'react-spinners/HashLoader.js';
-import MyfooterAfterLogin from '../MyfooterAfterLogin.js';
+import MyfooterAfterLogin from '../FooterAfterLogin/MyfooterAfterLogin.js';
 
 
 export default function Resources(props) {

@@ -1,8 +1,6 @@
-import React, { useEffect, useState } from "react";
-import { useSearchParams } from 'react-router-dom';
+import React, { useState } from "react";
 import { Link, useNavigate, useLocation } from 'react-router-dom'
 import './AddNotes.css';
-import Navbar_after_login from "../kaushal/Navbar_after_login.js";
 import ToastComponent from "../Toast/toastComponent.js";
 
 export default function AddNotes() {

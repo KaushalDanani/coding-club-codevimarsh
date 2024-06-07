@@ -1,5 +1,5 @@
 import React from "react";
-import '../Components/HomeBeforeLogin/CSS/Myfooter.css';
+import '../HomeBeforeLogin/CSS/Myfooter.css';
 import { Link } from "react-router-dom";
 
 export default function MyfooterAfterLogin() {
@@ -15,7 +15,6 @@ export default function MyfooterAfterLogin() {
                 <ul>
                     <li><Link to={`/contest`}>Upcoming Coding Contests</Link></li>
                     <li><Link to={`/resources`}>Resources</Link></li>
-                    <li><Link to={`/article&news`}>Articles/News</Link></li>
                     <li><Link to={`/discussion`}>Discussion</Link></li>
                     <li><Link to={`/project_collab`}>Project Collab</Link></li>
                     <li><Link to={`/project`}>Projects</Link></li>
@@ -44,8 +43,7 @@ export default function MyfooterAfterLogin() {
                 <h2>Usage Policy</h2>
 
                 <ul>
-                    <li><a href="#">Privacy policy</a></li>
-                    <li><a href="#">Terms</a></li>
+                    <li><a href="#">Privacy policy & Terms</a></li>
                 </ul>
             </div>
         </footer>

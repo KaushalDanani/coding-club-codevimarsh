@@ -1,4 +1,4 @@
-import Navbar_after_login from "../kaushal/Navbar_after_login.js"
+import Navbar_after_login from "../NavbarAfterLogin/Navbar_after_login.js"
 import ProjectDisplay from "../Innercomp/ProjectDisplay.js"
 import React, { useEffect, useState } from "react";
 import Filter_bar_Project from "./Filter_bar_Project.js"

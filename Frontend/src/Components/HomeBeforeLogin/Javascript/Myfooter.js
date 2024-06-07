@@ -15,7 +15,6 @@ export default function Myfooter() {
                 <ul>
                     <li> <Link to="resourcesSource" spy={true} smooth={true} offset={-185}> Upcoming Coding Contests </Link> </li>
                     <li> <Link to="resourcesSource" spy={true} smooth={true} offset={-185}> Resources </Link> </li>
-                    <li> <Link to="newsSource" spy={true} smooth={true} offset={-185}> Articles/News </Link> </li>
                     <li> <Link to="discussionSource" spy={true} smooth={true} offset={-185}> Discussion </Link> </li>
                     <li> <Link to="projectCollabSources" spy={true} smooth={true} offset={-105}> Project Collaboration </Link> </li>
                     <li> <Link to="projectSources" spy={true} smooth={true} offset={-185}> Projects </Link> </li>

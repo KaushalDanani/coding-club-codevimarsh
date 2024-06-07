@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import "./DiscussionCard.css";
-import "./Forums.css";
+import "./Discussion_Forums.css";
 import useUser from '../../store/userContext.js';
 import ToastComponent from '../Toast/toastComponent.js';
 

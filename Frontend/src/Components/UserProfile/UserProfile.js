@@ -2,8 +2,8 @@ import React, { useEffect, useState } from "react";
 import "./UserProfile.css";
 import UserProfileLeftPanel from "./UserProfileLeftPanel.js";
 import UserProfileMainPanel from "./UserProfileMainPanel.js";
-import Navbar_after_login from "../kaushal/Navbar_after_login.js";
-import MyfooterAfterLogin from "../MyfooterAfterLogin.js";
+import Navbar_after_login from "../NavbarAfterLogin/Navbar_after_login.js";
+import MyfooterAfterLogin from "../FooterAfterLogin/MyfooterAfterLogin.js";
 import { useLocation } from "react-router-dom";
 import HashLoader from "react-spinners/HashLoader.js";
 

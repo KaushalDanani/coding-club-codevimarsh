@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Navigate, useSearchParams } from 'react-router-dom';
 import { Link, useNavigate } from 'react-router-dom'
 import './AddSubject.css';
-import Navbar_after_login from "../kaushal/Navbar_after_login.js";
+import Navbar_after_login from "../NavbarAfterLogin/Navbar_after_login.js";
 import ToastComponent from "../Toast/toastComponent.js";
 
 export default function AddSubject() {

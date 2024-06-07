@@ -7,14 +7,13 @@ import './PageLinks.css'
 import Contest_main from './Components/Contest components/Contest_main.js';
 
 //Kaushal Danani
-import Sign_in_page from './Components/kaushal/Sign_in_page.js';
-import Sign_up_first_page from './Components/kaushal/Sign_up_first_page.js';
-import Sign_up_second_page from './Components/kaushal/Sign_up_second_page.js';
-import Sign_up_third_page from './Components/kaushal/Sign_up_third_page.js';
-import Project_Collabration from './Components/kaushal/ProjectCollaboration/Project_Collabration.js';
-import Navbar_after_login from './Components/kaushal/Navbar_after_login.js';
-import AddProjectCollabration from './Components/kaushal/ProjectCollaboration/AddProjectCollabration.js';
-import NotFoundPage from './Components/kaushal/PageNotFound/NotFoundPage.js';
+import Sign_in_page from './Components/SignIn/Sign_in_page.js';
+import Sign_up_first_page from './Components/SignIn/Sign_up_first_page.js';
+import Sign_up_second_page from './Components/SignIn/Sign_up_second_page.js';
+import Sign_up_third_page from './Components/SignIn/Sign_up_third_page.js';
+import Project_Collabration from './Components/ProjectCollaboration/Project_Collabration.js';
+import AddProjectCollabration from './Components/ProjectCollaboration/AddProjectCollabration.js';
+import NotFoundPage from './Components/PageNotFound/NotFoundPage.js';
 
 // jay fanse
 import LoginHomePage from './Components/HomeAfterLogin/LoginHomePage.js';
@@ -28,7 +27,7 @@ import UserProfile from './Components/UserProfile/UserProfile.js';
 import ResourcesHome from './Components/Resources/ResourcesHome.js';
 import Discussion_Forums from './Components/Discussion/Discussion_Forums.js';
 import Question_data from './Components/DiscussionDetails/Question_data.js';
-import ProjectMain from './Components/Projects components/ProjectMain.js';
+import ProjectMain from './Components/ProjectComponent/ProjectMain.js';
 
 
 
@@ -44,7 +43,7 @@ import AddNotes from './Components/ResourcesContent/AddNotes.js';
 
 
 import useUser from './store/userContext.js';
-import AddProject from './Components/Projects components/AddProject.js';
+import AddProject from './Components/ProjectComponent/AddProject.js';
 function PageLinks() {
 
     const [isLoading, setIsLoading] = useState(false);
