@@ -1,0 +1,34 @@
+.UserProfileSkillTagCheckbox{
+    display: none;
+}
+
+.UserProfileSkillTag{
+
+    justify-content: center;
+    border: 2px solid black;
+    border-radius: 20px;
+    background-color: rgb(255,139,22);
+    display: flex;
+    color: black;
+    font-weight: 500;
+}
+.UserProfileEditSkillTag{
+
+    justify-content: center;
+    border: 2px solid black;
+    border-radius: 20px;
+    background-color: rgb(255, 255, 255);
+
+    display: flex;
+    color: black;
+    font-weight: 500;
+}
+.UserProfileEditSkillTag :hover{    
+    cursor: pointer;
+}
+
+.UserProfileSkillTag label,
+.UserProfileEditSkillTag label{
+    padding: 5px 15px;
+    border-radius: 20px;
+}

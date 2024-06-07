@@ -3,7 +3,7 @@ import { Link, Navigate } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom'
 import "./AddContest.css"
 import { toast } from "react-toastify";
-import ToastComponent from '../jay fanse/toastComponent';
+import ToastComponent from '../Toast/toastComponent';
 
 function AddContest() {
 

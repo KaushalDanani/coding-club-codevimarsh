@@ -6,7 +6,7 @@ import "./Discussion_Forums.css"
 import { Link } from 'react-router-dom';
 import { question_open } from '../Question_answer_jp/Ask_Question.js';
 import useUser from "../../store/userContext.js";
-import ToastComponent from "../jay fanse/toastComponent.js";
+import ToastComponent from "../Toast/toastComponent.js";
 
 function ForumGenerator() {
   const [ques, setQues] = useState([]);

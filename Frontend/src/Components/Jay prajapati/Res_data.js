@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import Card from './Res_Card.js'
 import { useState } from "react";
 import HashLoader from "react-spinners/HashLoader.js";
-import ToastComponent from "../jay fanse/toastComponent.js";
+import ToastComponent from "../Toast/toastComponent.js";
 
 function Res_data(props) {
    

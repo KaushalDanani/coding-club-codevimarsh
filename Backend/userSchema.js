@@ -4,7 +4,7 @@ const fs = require('fs');
 const { ObjectId } = require('mongodb');
 const jwt = require('jsonwebtoken')
 
-const imageBuffer = "https://ezylink.vercel.app/20";
+const imageBuffer = "https://drive.google.com/file/d/1-DoEfEaxfPyJhkhKilVgoFFS6GxygWh7/view";
 const base64Image = imageBuffer.toString("base64");
 
 const userSchema = new mongoose.Schema({

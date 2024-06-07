@@ -1,0 +1,118 @@
+.manageAdminsDiv{
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.manageAdminsHeader{
+    background-color: rgb(253, 138, 22);
+    color: white;
+    font-size: 2rem;
+    display: flex;
+    width: 50%;
+    letter-spacing: 1px;
+    justify-content: center;
+    border-top-right-radius: 20px;
+    border-top-left-radius: 20px;
+    padding: 10px 0px;
+}
+
+.manageAdminsBody{
+    color: white;
+    width: 50%;
+    backdrop-filter: blur(10px);
+    background-color: rgba(255, 255, 255, 0.1);
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    padding: 30px 40px;  
+    padding-top: 15px;
+}
+
+.manageAdminsList{
+    height: 40vh;
+    font-weight: 400;
+    margin-bottom: 2.5vh;
+    overflow: auto;
+}
+
+.manageAdminsBodyRow{
+    display: grid;
+    grid-template-columns: 2fr 2fr 1fr;
+    justify-content: center;
+    padding: 5px;
+}
+
+.manageAdminsBodyRowHeader {
+    font-weight: 700;
+    letter-spacing: 1px;
+    margin: 1.5% 0%;
+}
+
+.manageAdminsBodyRow div{
+    font-size: 1.1rem;
+    display: flex;
+    justify-content: center;
+}
+
+.deleteAdminBtn{
+    border: none;
+    background-image: url("/public/images/deleteAdmin.png");
+    background-repeat: no-repeat;
+    height: 18px;
+    width: 18px;
+    background-size: contain;
+    background-color:transparent;
+    box-sizing:content-box;
+}
+
+.addAdminTitle{
+    letter-spacing: 0.5px;
+    font-size: 1.3rem;
+}
+
+.addAdminBody{
+    display: grid;
+    grid-template-columns: 5fr 2fr;
+    gap: 15px;
+    margin-top: 1vh;
+
+}
+
+.addAdminBody input{
+    padding: 5px 10px;
+    border-radius: 10px;
+    font-size: 1.1rem;
+    background-color: rgba(255, 255, 255, 0.3);
+    filter: invert(1);
+    border: none;    
+}
+
+.addAdminBody input::placeholder{
+    color: rgb(0, 0, 0);
+}
+
+.addAdminBody button{
+    border-radius: 10px;
+    font-size: 1.1rem;
+    background-color: rgb(253, 138, 22);
+    color: white;
+    border: none;
+    padding: 5px 17px;
+}
+
+.addAdminBody button:hover{
+    background-color: rgb(189, 95, 0);
+}
+
+.adminBackBtn{
+    position: absolute;
+    top: 1vh;
+    left: 1vw;
+    height: 6vh;
+    width: 6vw;
+    background: url('/public/images/back-btn-white.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+}

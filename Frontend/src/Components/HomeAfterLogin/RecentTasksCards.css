@@ -1,0 +1,69 @@
+.recentCards{
+    color: white;
+    border-radius: 15px;
+    height: 250px;
+    background-color: rgb(105, 19, 191);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    transition: all 0.3s;
+    position: relative;
+    box-shadow: 0px 0px 20px black;
+}
+
+.recentCards:hover{
+    background-size: 120%;
+    scale: 1.02;
+}
+
+.Heading{
+    font-size: 3.5vh;
+    position: absolute;
+    top: 2vh;
+    left: 3vh;
+    width: 90%;
+    display: flex;
+    flex-wrap: wrap;
+    z-index: 2;
+}
+
+.subHeading{
+    font-size: 2.5vh;
+    position: absolute;
+
+    bottom: 4vh;
+    left: 3vh;
+    width: 60%;
+    z-index: 2;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.cardButton{
+    position: absolute;
+    bottom: 3vh;
+    right: 3vh;
+    z-index: 2;
+    padding: 6px 10px;
+    display: flex;
+    flex-wrap: wrap;
+    background-color: white;
+    color: black;
+    border-radius: 8px;
+    font-size: 2.5vh;
+    border: none;
+    
+}
+
+.cardButton:hover{
+    cursor: pointer;
+}
+
+.cardIcon{
+    position: absolute;
+    height: 50%;
+    width: 35%;
+    top: 15%;
+    left: 65%;
+    z-index: 0;
+}

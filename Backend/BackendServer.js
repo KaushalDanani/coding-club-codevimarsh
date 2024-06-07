@@ -176,7 +176,7 @@ app.post("/deleteproject",async (req,res) => {
   res.send({message : 'Project deleted successfully!'});
 })
 
-const imageBuffer = "https://ezylink.vercel.app/20";
+const imageBuffer = "https://drive.google.com/file/d/1-DoEfEaxfPyJhkhKilVgoFFS6GxygWh7/view";
 const base64Image = imageBuffer.toString("base64");
 
 app.get(`/projectDisplay/userData/`, async (req, res) => {
