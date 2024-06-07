@@ -59,7 +59,7 @@ function Navbar_after_login(props) {
                     </div>
                     
                     <ul className={mobileMenu ? "horizontal_bar" : "horizontal_bar mobile-menu-icon"}>
-                        <li className={mobileMenu ? "liComponent" : "mobile-li"} id="home"><Link to={`/home`}></Link></li>
+                        <li className={mobileMenu ? "liComponent" : "mobile-li"} id="home"><Link to={`/home`}>CodeVimarsh</Link></li>
                         <li className={mobileMenu ? "liComponent" : "mobile-li"} id="contest"><Link to={`/contest`}>CONTEST</Link></li>
                         <li className={mobileMenu ? "liComponent" : "mobile-li"} id="resources"><Link to={`/resources`}>RESOURCES</Link></li>
                         {/* <li className={mobileMenu ? "liComponent" : "mobile-li"} id="articles/news"><Link to={`/article&news`}>ARTICLES/NEWS</Link></li> */}

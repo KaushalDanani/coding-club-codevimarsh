@@ -211,9 +211,9 @@ export default function ProjectDisplay(props) {
                         </ul>
                     </div>
                 </div>
-                <div className="projbtndlt">
+                {/* <div className="projbtndlt">
                     
-                </div>
+                </div> */}
                 <div className="projbtn">
                     <button className="projdispbutton" id={"btnname" + props.name} onClick={f}>Show More</button>
                     <button className="projdispbutton" id={"btnname" + props.name + "dlt"} onClick={() => {delete_project(props.name)}}>Delete</button>

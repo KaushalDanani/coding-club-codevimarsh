@@ -4,9 +4,11 @@
     border-radius: 20px;
     padding: 5px 15px;
     text-transform: uppercase;
-    background-color: rgb(105, 19, 191);
-    margin: 6px;
-    border: 1px solid white;
+    background-color: rgb(253, 138, 22);
+    margin: 0vh 0.6vh;
+    border: 1px solid black;
+    color: rgb(0, 0, 0);
+    font-weight: 500;
     font-size: small;
-    color: white;
+    letter-spacing: 0.05vw;
 }

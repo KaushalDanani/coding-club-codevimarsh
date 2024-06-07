@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react';
 import { useState } from 'react';
-import TechTag from './TechTag.js';
+import TechTag from '../TechTag.js';
 import "./ProjectCollabrationCard.css";
-import ToastComponent from '../jay fanse/toastComponent.js';
-import "./../jay fanse/toastComponent.css"
+import ToastComponent from '../../jay fanse/toastComponent.js';
+import "../../jay fanse/toastComponent.css"
 
 function ProjectCollabrationCard(props) {
 
@@ -86,7 +86,7 @@ function ProjectCollabrationCard(props) {
                 <div className='project_coll_header'>
                   <div>
                     <a href={`profile?visitID=${props.data.collabrationLeader}`}> 
-                      <strong> {props.userDetails.username} </strong> 
+                      {props.userDetails.username}
                     </a>
                   </div>
                   <div>
@@ -96,7 +96,7 @@ function ProjectCollabrationCard(props) {
                     }
                   </div>
                 </div> 
-                <hr style={{margin: '0vh 0vh 2vh -2.5vw', height:'0.25vh', border: 'none', backgroundColor: 'black'}}/>
+                {/* <hr style={{margin: '0vh 0vh 2vh -2.5vw', height:'0.25vh', border: 'none', backgroundColor: 'black'}}/> */}
 
                 <div className='project_coll_Title'> <strong> Project Title : </strong> 
                   <p className='project_col_title_content'> {props.data.collabrationTitle} </p> 

@@ -1,7 +1,6 @@
 import Discussion_block from "./Discussion_block.js";
 // import pfp from './res/pfp.png';
 import { useEffect, useState, React } from "react";
-import "./Discussion_Forums.css"
 // import {Link} from 'react-router-dom'
 import { Link } from 'react-router-dom';
 import { question_open } from '../Question_answer_jp/Ask_Question.js';
@@ -85,10 +84,9 @@ function ForumGenerator() {
   return (
     <>
   
+      {toastVisible ? <ToastComponent message={toastMessage} type={toastType} /> : null}
 
-  {toastVisible ? <ToastComponent message={toastMessage} type={toastType} /> : null}
-
-        <hr style={{width: '83%', height: '2.5px', backgroundColor: 'white', marginLeft: '130px',marginRight: '130px', marginBottom: '2.5vh'}}/>
+      <hr style={{width: '85%', height: '2.5px', backgroundColor: 'white', margin: '0px 0px 2.5vh'}}/>
 			
       {ques.length!==0 ? 
 

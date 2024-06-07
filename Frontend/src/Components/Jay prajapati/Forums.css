@@ -43,8 +43,9 @@
     top: 20px;
     background-image: url("/public/images/delete.png");
     background-repeat: no-repeat;
-    height: 32px;
-    width: 32px;
+    background-size: contain;
+    height: 22px;
+    width: 22px;
     background-color:transparent;
     /* padding: 0.3vw; */
     box-sizing:content-box;
@@ -61,14 +62,23 @@
 
 .asker{
     display: flex;
-    background-color: #6913BF;
+    height: min-content;
+    background-color: rgb(255,139,22);
     padding-left: 1vw;
     /* border: 1px solid salmon; */
 }
-.asker a{
 
-    font-size: 1.7rem !important;
+.asker a{
+    /* color: rgba(0, 0, 0, 0.75) !important; */
+    letter-spacing: 0.06vw;
+    font-weight: 700;
+    font-size: 1.23rem !important;
+    color: white;
 }
+.asker a:hover {
+    color: black !important;
+}
+
 #pfp_div{
     height: 8vh;
     width: 8vh;
@@ -82,7 +92,7 @@
     border-radius: 4vh;
 }
 #asker_id{
-    font-size: 2vw;
+    /* font-size: 1.2rem; */
     /* border: 1px solid maroon; */
     margin: 1vw;
     color: white;
@@ -90,16 +100,17 @@
 
 #ques{
     color: white;
-    font-size: 1.3rem !important;
+    font-size: 1.05rem;
     text-align: justify;
     /* border: 1px solid salmon; */
-    padding:20px 2.5vw !important;
+    padding: 20px 2.5vw !important;
     /* padding-left: 2.5vw !important; */
 }
 
 #ques_tags{
     position: relative;
     display: flex;
+    justify-content: space-between;
     color: white;
     /* border: 1px solid salmon; */
     padding: 0.5vw;
@@ -107,24 +118,32 @@
 }
 
 .q_tag{
-    background-color: rgb(35,23,85);
-    color: white;
-    border: 0.5px solid white;
+    background-color: rgb(255,139,22);
+    color: rgb(0, 0, 0);
+    border: 0.5px solid rgb(0, 0, 0);
     display: flex;
     text-align: center;
     justify-content: center;
-    font-size: 1rem !important;
+    font-size: 0.95rem !important;
     height: auto;
     border-radius: 2.2vh;
     padding: 0.2vw 2.2vh !important;
-    margin-right: 1vw;
+    margin-right: 0.8vw;
+}
+
+.all_que_tag {
+    display: flex;
+    text-align: center;
+    justify-content: center;
 }
 
 #q_date{
-    position: absolute;
+    display: flex;
+    align-items: center;
+    /* position: absolute; */
     /* display: inline; */
     /* border: 2px solid yellow; */
-    right: 2vw !important;
+    padding-right: 2vw;
 }
 
 @media (max-width:900px){

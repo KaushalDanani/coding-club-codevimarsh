@@ -86,7 +86,7 @@ export default function ProjectMain(props){
           <p className='project_collabration_oneliner'>The aim of argument, or of discussion, should not be victory, but progress.</p>
         </div>
         <div className='addProjCollab' style={{width: '85%'}}>
-          <Link to={'/project/add_project'}> <button className={changeImage ? 'ProjectCollabrationBtn changeAddImage' : 'ProjectCollabrationBtn'} 
+          <Link to={'/project/add_project'}> <button className='ProjectCollabrationBtn'
             onMouseOut={() => setChangeImage(true)}
             onMouseOver={()=> setChangeImage(false)}> Add </button> </Link>
         </div>

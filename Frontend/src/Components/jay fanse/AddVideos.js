@@ -5,7 +5,7 @@ import './AddVideos.css';
 import Navbar_after_login from "../kaushal/Navbar_after_login.js";
 import ToastComponent from "./toastComponent.js";
 
-export default function AddBooks() {
+export default function AddVideos() {
 
     const navigate = useNavigate();
     const [toastVisible, setToastVisible] = useState(false);
@@ -17,9 +17,6 @@ export default function AddBooks() {
     const sub_id = searchParams.get('sub_id');
 
     const [subj, setSubj] = useState({});
-
-
-    const [logo, setLogo] = useState("");
 
     function vidName() {
         const name = document.getElementById("vid_title_text").value;
@@ -62,27 +59,34 @@ export default function AddBooks() {
     //     getVideoName();
     // }, []); // Empty dependency array ensures the effect runs once when the component mounts
 
-    async function getVideoName() {
-        try {
-            const response = await fetch(`/videoName?sub_id=${sub_id}`, {
-                headers: {
-                    'Content-type': 'application/json',
-                },
-            });
-            const data = await response.json();
-            setSubj(data);
-            console.log(data);
-        } catch (error) {
-            console.error('Error fetching Video name:', error);
-        }
-    }
+    // async function getVideoName() {
+    //     try {
+    //         const response = await fetch(`/videoName?sub_id=${sub_id}`, {
+    //             headers: {
+    //                 'Content-type': 'application/json',
+    //             },
+    //         });
+    //         const data = await response.json();
+    //         setSubj(data);
+    //         // console.log(data);
+    //     } catch (error) {
+    //         console.error('Error fetching Video name:', error);
+    //     }
+    // }
 
     // function setsub(){
     //     getVideoName();
     //     return subj.Video;
     // }
 
-    function addMyBook(name) {
+    function clearVideoData() {
+        document.getElementById("vid_title_text").value = "";
+        document.getElementById("vid_link_text").value = "";
+        document.getElementById("vid_channel_text").value = "";
+        document.getElementById("vid_source_text").value = "";
+    }
+
+    function addMyVideo() {
 
         const vname = vidName();
         const vlink = vidLink();
@@ -118,8 +122,7 @@ export default function AddBooks() {
         <>
             {toastVisible ? <ToastComponent message={toastMessage} type={toastType} /> : null}
 
-            <Navbar_after_login />
-            <div className="addVideoContainer">
+            {/* <div className="addVideoContainer">
                 <div className="addVideoHeader">
                     <h1><p className="Video">Add Video</p></h1>
                 </div>
@@ -151,11 +154,11 @@ export default function AddBooks() {
                             <input type="text" name="tital_text" id="vid_source_text"></input>
                         </div>
 
-                        {/* <div className="q_code">
+                        <div className="q_code">
                             <label htmlFor="code_text">Thumbnail :</label>
                             <p></p>
                             <input type="file" name="code_text" id="img_text" onChange={(e) => { logoMaker(e) }} cols="" rows="2"></input>
-                        </div> */}
+                        </div>
 
 
                         <div className='buttonSection'>
@@ -165,6 +168,47 @@ export default function AddBooks() {
                         </div>
 
                     </form>
+                </div>
+            </div> */}
+
+            <Link to={'/resources'}>
+                <div className='contestBackBtn'></div>
+            </Link>
+            <div className="addBookContainer">
+                <div className="addBookHeader">
+                    <h1>Add Video</h1>
+                </div>
+                <div className="addBookBody">
+
+                        <div className="addSubjectRow">
+                            <div>Title</div>
+                            <div>:</div>
+                            <input style={{'padding': '3px 10px'}} type="text" name="tital_text" id="vid_title_text"></input>
+                        </div>
+
+                        <div className="addSubjectRow">
+                            <div>Link</div>
+                            <div>:</div>
+                            <input style={{'padding': '3px 10px'}} type="text" name="tital_text" id="vid_link_text"></input>
+                        </div>
+
+                        <div className="addSubjectRow">
+                            <div>Channel</div>
+                            <div>:</div>
+                            <input style={{'padding': '3px 10px'}} type="text" name="tital_text" id="vid_channel_text"></input>
+                        </div>
+
+                        <div className="addSubjectRow">
+                            <div>Source</div>
+                            <div>:</div>
+                            <input style={{'padding': '3px 10px'}} type="text" name="tital_text" id="vid_source_text"></input>
+                        </div>
+
+                        <div className='addSubjectBtn'>
+                            <button onClick={clearVideoData}> Clear </button>
+                            <button onClick={addMyVideo} className="addFormButton">Submit</button>
+                        </div>
+
                 </div>
             </div>
         </>

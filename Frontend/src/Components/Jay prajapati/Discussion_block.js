@@ -89,7 +89,7 @@ export default function Discussion_block(props) {
               {props.question}
             </div>
             <div id="ques_tags">
-              {tag.map(getTag)}
+              <div className="all_que_tag">{tag.map(getTag)}</div>
               <div id='q_date'>{qDate}</div>
             </div>
           </a>

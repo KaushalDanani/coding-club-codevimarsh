@@ -31,27 +31,33 @@ export default function AddNotes() {
         return link;
     }
 
-    async function getnoteName() {
-        try {
-            const response = await fetch(`/noteName?sub_id=${sub_id}`,{
-                headers: {
-                    'Content-type': 'application/json',
-                  },
-            });
-            const data = await response.json();
-            // setSubj(data);
-            console.log(data);
-        } catch (error) {
-            console.error('Error fetching note name:', error);
-        }
-    }
+    // async function getnoteName() {
+    //     try {
+    //         const response = await fetch(`/noteName?sub_id=${sub_id}`,{
+    //             headers: {
+    //                 'Content-type': 'application/json',
+    //               },
+    //         });
+    //         const data = await response.json();
+    //         // setSubj(data);
+    //         console.log(data);
+    //     } catch (error) {
+    //         console.error('Error fetching note name:', error);
+    //     }
+    // }
 
     // function setsub(){
     //     getnoteName();
     //     return subj.note;
     // }
 
-    function addMynote(name) {
+    function clearNoteData() {
+        document.getElementById("note_title_text").value = "";
+        document.getElementById("note_link_text").value = "";
+    }
+
+
+    function addMyNote() {
 
         const nname = noteName();
         const nlink = noteLink();
@@ -84,8 +90,8 @@ export default function AddNotes() {
     return (
         <>
             {toastVisible ? <ToastComponent message={toastMessage} type={toastType} /> : null}
-            <Navbar_after_login />
-            <div className="addNoteContainer">
+            {/* <Navbar_after_login /> */}
+            {/* <div className="addNoteContainer">
                 <div className="addNoteHeader">
                     <h1><p className="Note">Add note</p></h1>
                 </div>
@@ -112,6 +118,35 @@ export default function AddNotes() {
                         </div>
 
                     </form>
+                </div>
+            </div> */}
+
+            <Link to={'/resources'}>
+                <div className='contestBackBtn'></div>
+            </Link>
+            <div className="addBookContainer">
+                <div className="addBookHeader">
+                    <h1>Add Note</h1>
+                </div>
+                <div className="addBookBody">
+
+                        <div className="addSubjectRow">
+                            <div>Title</div>
+                            <div>:</div>
+                            <input style={{'padding': '3px 10px'}} type="text" name="tital_text" id="note_title_text"></input>
+                        </div>
+
+                        <div className="addSubjectRow">
+                            <div>Link</div>
+                            <div>:</div>
+                            <input style={{'padding': '3px 10px'}} type="text" name="tital_text" id="note_link_text"></input>
+                        </div>
+
+                        <div className='addSubjectBtn'>
+                            <button onClick={clearNoteData}> Clear </button>
+                            <button onClick={addMyNote} className="addFormButton">Submit</button>
+                        </div>
+
                 </div>
             </div>
         </>

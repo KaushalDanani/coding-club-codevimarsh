@@ -2,8 +2,8 @@
     /* border: 2px solid green; */
     padding: 2% 0vh;
     display: grid;
-    grid-template-columns: 1fr;
-    gap: 3vh 0px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3vh 4vh;
     background-image: url(/public/images/profileProjects.png);
     background-position: center center; 
     background-repeat: no-repeat;

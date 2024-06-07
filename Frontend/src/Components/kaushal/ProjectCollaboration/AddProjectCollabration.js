@@ -2,9 +2,9 @@ import React from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useState } from 'react'
 import './AddProjectCollabration.css'
-import Navbar_after_login from './Navbar_after_login.js'
-import useUser from '../../store/userContext.js'
-import ToastComponent from '../jay fanse/toastComponent.js'
+import Navbar_after_login from '../Navbar_after_login.js'
+import useUser from '../../../store/userContext.js'
+import ToastComponent from '../../jay fanse/toastComponent.js'
 
 function AddProjectCollabration() {
 
@@ -32,14 +32,18 @@ function AddProjectCollabration() {
         setPc_description(e.target.value)
     }
 
-
+    function clearProjectCollaboration() {
+        setPc_title("");
+        setPc_tags("");
+        setPc_description("");
+    }
 
     async function submitHandler(){
 
         const formData = {
             userID: userID,
             collabrationTitle: pc_title,
-            collabrationTags: pc_tags.split(','),
+            collabrationTags: pc_tags.split(',').map(tag => tag.trim()),
             collabrationDescription: pc_description
         }
 
@@ -87,32 +91,47 @@ function AddProjectCollabration() {
             </Link>
             <div className='addprojectCollabrationContainer'>
                 <div className='addProjectCollabrationHeader'>
-                    <h1> Add Project Collaboration Details </h1>
+                    <h1> Add Project Collaboration </h1>
                 </div>
-                <hr style={{ height: '2.5px', width: '100%', backgroundColor: 'white', margin: '0px' }} />
+                {/* <hr style={{ height: '2.5px', width: '100%', backgroundColor: 'white', margin: '0px' }} /> */}
                 <div className='formContainer'>
-                    <form>
-                        <label htmlFor='title'> Title: </label>
+                        {/* <label htmlFor='title'> Title: </label>
                         <div className='formLabels'>
                             <input id='title' name='collabrationTitle' type="text" value={pc_title} onChange={titleChangeHandler} required />
+                        </div> */}
+                        <div className="addSubjectRow">
+                            <div>Title</div>
+                            <div>:</div>
+                            <input style={{'padding': '3px 10px'}} type="text" name="collabrationTitle"
+                            value={pc_title} onChange={titleChangeHandler} required></input>
                         </div>
 
-                        <label htmlFor='tags'> Tags: </label>
+                        {/* <label htmlFor='tags'> Tags: </label>
                         <div className='formLabels'>
                             <input id='tags' name='tags' placeholder='Enter tags i.e. Java,C,DSA... ' type="text" value={pc_tags} onChange={tagsChangeHandler} required />
+                        </div> */}
+                        <div className="addSubjectRow">
+                            <div>Tags</div>
+                            <div>:</div>
+                            <input style={{'padding': '3px 10px'}} type="text"
+                            name='tags' placeholder='Enter tags i.e. Java, C, DSA... ' value={pc_tags} onChange={tagsChangeHandler} required></input>
                         </div>
 
-                        <label htmlFor='pc_desc'> Description: </label>
+                        {/* <label htmlFor='pc_desc'> Description: </label>
                         <div className='formLabels'>
                             <input id='pc_desc' name='description' type="text" value={pc_description} onChange={descriptionChangeHandler} required />
+                        </div> */}
+                        <div className="addSubjectRow">
+                            <div>Description</div>
+                            <div>:</div>
+                            <input style={{'padding': '3px 10px'}} type="text" name="description" value={pc_description} onChange={descriptionChangeHandler} required></input>
                         </div>
 
-                        <div className='buttonSection'>
-                            <Link to={'/project_collab'}> <button className='addFormButton'> Cancel </button> </Link>
+                        <div className='addSubjectBtn'>
+                            <button onClick={clearProjectCollaboration}> Clear </button>
 
-                            <Link><button onClick={submitHandler} className="addFormButton">Submit</button></Link>
+                            <button onClick={submitHandler} >Add</button>
                         </div>
-                    </form>
                 </div>
             </div>
 

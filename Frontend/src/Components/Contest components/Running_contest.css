@@ -73,7 +73,7 @@
 .running_date_time p{
     color: white;
     font-family: 'Courier New', Courier, monospace;
-    font-weight: 600;
+    /* font-weight: 600; */
     font-size: 1rem;
     margin: 5px 20px 0px 20px;
 }

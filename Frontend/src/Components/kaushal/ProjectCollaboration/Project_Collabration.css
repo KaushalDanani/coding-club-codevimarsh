@@ -73,34 +73,31 @@
 }
 
 .ProjectCollabrationBtn {
-    height: 5vh;
-    padding: 0vw 1.8vw 0vw 3.2vw;
+    padding: 0.5rem 1.6rem 0.5rem 2.6rem;
     margin-top: 3.5vh;
-    margin-bottom: 3.4vh;
-    font-weight: 700;
-    border-radius: 50px;
-    background: transparent;
+    margin-bottom: 3.3vh;
     letter-spacing: 1px;
-    text-transform: uppercase;
-    background-image: url("/public/images/add-project-collabration-black.png");
-    background-repeat: no-repeat;
-    background-position: 22% 50%;
-    background-size: 17% 50%;
-    font-size: 1.25rem;
-    font-family: sans-serif;
-    color: white;
-    border: 2px solid #ffffff;
-}
-.changeAddImage {
     background-image: url("/public/images/add-project-collabration.png");
     background-repeat: no-repeat;
     background-size: 17% 50%;
     background-position: 22% 50%;
+
+    font-size: 0.9rem;
+    position: relative;
+    /* bottom: 0vh; */
+    height: -moz-fit-content;
+    height: fit-content;
+    width: -moz-fit-content;
+    width: fit-content;
+    color: white;
+    /* padding: 1.1vh 1.4vw; */
+    /* margin: 0 0.18rem 0 1.25rem; */
+    /* border: 2px solid white; */
+    background-color: rgb(253, 138, 22);
+    align-self: flex-end;
+    border: none;
+    border-radius: 8px;
 }
 .ProjectCollabrationBtn:hover {
-    color: rgb(0, 0, 0);
-    background-color: #ffffff;
-    box-shadow: 0px 0px 15px 30px #000000;
-    box-shadow: none;
-    border: 1px solid black;
+    background-color: rgb(189, 95, 0);
 }

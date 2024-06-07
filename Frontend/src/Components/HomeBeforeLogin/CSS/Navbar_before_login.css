@@ -47,10 +47,14 @@
     /* border: 2px solid white; */
 }
 .horizontal_bar #home {
-    margin-left: 20px;
-    width: 40px;
+    margin-left: 2rem;
+    padding-left: 2rem;
+    letter-spacing: 2px;
+    /* width: 40px; */
     background-position: 50% 45%;
-    background-image: url(/public/images/home-24.png);
+    background-image: url(/public/images/CodingClubLogo.png);
+    background-position: left;
+    background-size: 30%;
     background-repeat: no-repeat;
 }
 .navigation_bar a {
@@ -74,8 +78,9 @@ LinkScroll {
 }
 
 .liComponent#home:hover {
-    background-position-y: 23.5px;
-    /* border-bottom: none; */
+    /* background-position-y: 17.5px; */
+    height: 75px;
+    border-bottom: none;
 }
 .liComponent:hover{
     /* position: relative; */

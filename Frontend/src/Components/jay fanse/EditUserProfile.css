@@ -237,8 +237,9 @@
     height: fit-content;
     width: fit-content;
     color: rgb(0, 0, 0);
+    font-weight: 600;
     padding: 1.1vh 1.4vw;
-    letter-spacing: 1px;
+    letter-spacing: 0.55px;
     /* border: 2px solid white; */
     border: none;
     background-color: rgb(253, 138, 22);

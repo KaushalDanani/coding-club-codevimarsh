@@ -2,11 +2,11 @@ import React, { useEffect, useState } from 'react'
 import "./Project_Collabration.css";
 import { Link } from 'react-router-dom';
 import ProjectCollabrationCard from './ProjectCollabrationCard.js';
-import Navbar_after_login from './Navbar_after_login.js';
-import ToastComponent from '../jay fanse/toastComponent.js';
+import Navbar_after_login from '../Navbar_after_login.js';
+import ToastComponent from '../../jay fanse/toastComponent.js';
 
 
-import MyfooterAfterLogin from '../MyfooterAfterLogin.js';
+import MyfooterAfterLogin from '../../MyfooterAfterLogin.js';
 import HashLoader from 'react-spinners/HashLoader.js';
 
 function Project_Collabration() {
@@ -128,7 +128,7 @@ function Project_Collabration() {
           <p className='project_collabration_oneliner'>Talent wins games, but teamwork and intelligence win championships.</p>
         </div>
         <div className='addProjCollab' style={{width: '85%'}}>
-          <Link to={'/project_collab/addpost'}> <button className={changeImage ? 'ProjectCollabrationBtn changeAddImage' : 'ProjectCollabrationBtn'} 
+          <Link to={'/project_collab/addpost'}> <button className='ProjectCollabrationBtn' 
             onMouseOut={() => setChangeImage(true)}
             onMouseOver={()=> setChangeImage(false)}> Add </button> </Link>
         </div>

@@ -1,6 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
 
-
 *{
     margin: 0%;
     padding: 0%;
@@ -8,30 +7,46 @@
     font-family: 'Poppins', sans-serif;
 }
 
-
-
 .projectmain{
     /* color: white; */
-    color: black;
-    padding: 20px 100px;
+    color: rgb(255, 255, 255);
+    /* padding: 20px 100px; */
+    padding: 1.35rem 7rem;
 }
 .projdisplay{
     width: 100%;
     height: 100%;
-    /* background-color: #363636; */
-    background: #E5DCE8;
-    padding: 55px 30px;
-    padding-left: 50px;
+    background-color: #363636;
+    /* background: #363636; */
+    padding: 1.3rem 0.5rem;
+    padding-left: 2rem;
     border-radius: 2.5vh;
     box-shadow: 0px 0px 20px black;
+    animation: showProjectAnimation linear;
+    animation-timeline: view();
+    animation-range: entry 0 cover 42.5%;
+}
 
+@keyframes showProjectAnimation {
+    0% {
+        opacity: 0;
+        scale: 0;
+    }
+    50% {
+        opacity: 0;
+        scale: 0.5;
+    }
+    100% {
+        opacity: 1;
+        scale: 1;
+    }
 }
 
 .projectname{
-    font-size: 2.5rem !important;
+    font-size: 2rem !important;
     margin: 10px 0px 10px 0px;
     font-weight: 500;
-    color: black;
+    color: rgb(255, 255, 255);
 }
 
 .projectname:hover{
@@ -55,15 +70,14 @@
 
 .projdispheader{
     display: flex;
-    column-gap: 100px;
-    color: black;
+    column-gap: 3.4rem;
 }
 
 
 .projdispheader p{
     margin: 5px 0px 5px 0px;
-    font-size: 1.2rem !important;
-    color: black;
+    font-size: 1.1rem !important;
+    color: rgb(255, 255, 255);
 }
 
 .projdispbutton{
@@ -74,10 +88,10 @@
     color: white;
     cursor: pointer; */
     float: right;
-    margin-right: 10px;
-    height: 5.5vh;
-    padding: 0% 1.5vw;
-    font-size: 2.2vh;
+    /* margin-right: 10px; */
+    /* height: 5.5vh; */
+    padding: 0.5% 1.5vw;
+    font-size: 1rem;
     font-weight: 600;
     border-radius: 5vh;
     letter-spacing: 1px;
@@ -90,7 +104,7 @@
 }
 
 .projbtn{
-    padding: 15px 0px;
+    padding: 0rem 0rem 0.25rem 0rem;
 }
 
 .projdispbutton:hover{

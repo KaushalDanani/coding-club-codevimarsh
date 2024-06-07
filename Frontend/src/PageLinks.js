@@ -11,10 +11,10 @@ import Sign_in_page from './Components/kaushal/Sign_in_page.js';
 import Sign_up_first_page from './Components/kaushal/Sign_up_first_page.js';
 import Sign_up_second_page from './Components/kaushal/Sign_up_second_page.js';
 import Sign_up_third_page from './Components/kaushal/Sign_up_third_page.js';
-import Project_Collabration from './Components/kaushal/Project_Collabration.js';
+import Project_Collabration from './Components/kaushal/ProjectCollaboration/Project_Collabration.js';
 import Navbar_after_login from './Components/kaushal/Navbar_after_login.js';
-import AddProjectCollabration from './Components/kaushal/AddProjectCollabration.js';
-import NotFoundPage from './Components/kaushal/NotFoundPage.js';
+import AddProjectCollabration from './Components/kaushal/ProjectCollaboration/AddProjectCollabration.js';
+import NotFoundPage from './Components/kaushal/PageNotFound/NotFoundPage.js';
 
 // jay fanse
 import LoginHomePage from './Components/jay fanse/LoginHomePage.js';
