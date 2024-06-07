@@ -2,8 +2,8 @@ import React, { useEffect } from 'react';
 import { useState } from 'react';
 import TechTag from './TechTag.js';
 import "./ProjectCollabrationCard.css";
-import ToastComponent from '../jay fanse/toastComponent.js';
-import "./../jay fanse/toastComponent.css"
+import ToastComponent from '../Toast/toastComponent.js';
+import "./../Toast/toastComponent.css"
 
 function ProjectCollabrationCard(props) {
 

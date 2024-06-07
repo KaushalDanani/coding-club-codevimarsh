@@ -17,11 +17,11 @@ import AddProjectCollabration from './Components/kaushal/AddProjectCollabration.
 import NotFoundPage from './Components/kaushal/NotFoundPage.js';
 
 // jay fanse
-import LoginHomePage from './Components/jay fanse/LoginHomePage.js';
-import ArticlesNewsHomePage from './Components/jay fanse/ArticlesNewsHomePage.js';
-import EditUserProfile from './Components/jay fanse/EditUserProfile.js';
-import ResourcesContent from './Components/jay fanse/ResourcesContent.js';
-import UserProfile from './Components/jay fanse/UserProfile.js';
+import LoginHomePage from './Components/HomeAfterLogin/LoginHomePage.js';
+import ArticlesNewsHomePage from './Components/ArticleAndNews/ArticlesNewsHomePage.js';
+import EditUserProfile from './Components/EditUserProfile/EditUserProfile.js';
+import ResourcesContent from './Components/ResourcesContent/ResourcesContent.js';
+import UserProfile from './Components/UserProfile/UserProfile.js';
 
 
 // jay prajapati
@@ -32,15 +32,15 @@ import ProjectMain from './Components/Innercomp/ProjectMain.js';
 
 
 
-import ManageAdmins from './Components/jay fanse/ManageAdmins.js';
+import ManageAdmins from './Components/HomeAfterLogin/ManageAdmins.js';
 import Ask_Question from './Components/Question_answer_jp/Ask_Question.js';
 import Give_answer from './Components/Question_answer_jp/Give_answer.js';
 import AddContest from './Components/Contest components/AddContest.js';
 import Home_page_before_login from './Components/HomeBeforeLogin/Javascript/Home_page_before_login.js';
 import AddSubject from './Components/Jay prajapati/AddSubject.js';
-import AddBooks from './Components/jay fanse/AddBooks.js';
-import AddVideos from './Components/jay fanse/AddVideos.js';
-import AddNotes from './Components/jay fanse/AddNotes.js';
+import AddBooks from './Components/ResourcesContent/AddBooks.js';
+import AddVideos from './Components/ResourcesContent/AddVideos.js';
+import AddNotes from './Components/ResourcesContent/AddNotes.js';
 
 
 import useUser from './store/userContext.js';

@@ -3,7 +3,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 // import { useLocation } from 'react-router-dom'
 import './Give_answer.css';
 import useUser from "../../store/userContext.js";
-import ToastComponent from "../jay fanse/toastComponent.js";
+import ToastComponent from "../Toast/toastComponent.js";
 
 // export function reply_close() {
 //     const closebtn = document.getElementById("reply_main");

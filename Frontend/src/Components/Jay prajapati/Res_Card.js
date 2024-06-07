@@ -2,7 +2,7 @@ import React, { useEffect, useState, useContext } from 'react'
 import './Card.css'
 import { Link, useNavigate } from 'react-router-dom'
 import HashLoader from 'react-spinners/HashLoader.js';
-import ResourcesContent from '../jay fanse/ResourcesContent.js';
+import ResourcesContent from '../ResourcesContent/ResourcesContent.js';
 import { DataContext } from './DataContext.js';
 
 

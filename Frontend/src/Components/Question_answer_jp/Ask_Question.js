@@ -4,7 +4,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import './Ask_Question.css';
 import Navbar_after_login from "../kaushal/Navbar_after_login.js";
 import useUser from "../../store/userContext.js";
-import ToastComponent from "../jay fanse/toastComponent.js";
+import ToastComponent from "../Toast/toastComponent.js";
 // function question_close(){
 //     const closebtn = document.getElementById("question_main");
 //     closebtn.style.display = "none";

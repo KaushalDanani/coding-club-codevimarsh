@@ -1,0 +1,173 @@
+.UPMainPanel{
+    margin-left: 20px;
+    height: 100%;
+}
+
+.UPMainDetails{
+    display: grid;
+    grid-template-columns: 6fr 5fr;
+    gap: 0px 20px;
+}
+
+@media (width<800px) {
+    .UPMainDetails{
+        gap: 20px 0px;
+        grid-template-columns: 1fr;
+    }
+    .UPMainPanel{
+        margin-left: 0px;
+        margin-top: 20px;
+    }
+}
+
+.UPBio{
+    display: flex;
+    flex-direction: column;
+    backdrop-filter: blur(5px);
+    background-color: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 0 7px 1px rgb(0, 0, 0);
+    border-radius: 25px;
+    padding: 10px 20px;
+}
+
+.UPBioTitle{
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.8rem;
+    font-weight: 650;
+    margin-bottom: 20px;
+    height: 6vh;
+}
+
+.UPBioTitle{
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.8rem;
+    font-weight: 650;
+    margin-bottom: 20px;
+    height: 6vh;
+}
+
+.UPBioInfo textarea{
+    width: 100%;
+    height: 100%;
+    background: none;
+    border: none;
+    resize: none;
+    font-size: 1.1rem;
+    scroll-behavior: none;
+}
+
+.UPBioInfo div{
+    padding: 3px 0px;
+    font-size: 1.1rem;
+}
+
+.UPBioInfo div span{
+    font-weight: 700;
+}
+
+.UPBioInfo img{
+    width: 30px;
+}
+.UPBioInfo a{
+    color: rgb(255,139,22);
+}
+
+.UPBioInfo a:hover{
+    text-decoration: underline !important;
+}
+
+.UPPersonalInfo{
+    display: flex;
+    flex-direction: column;
+    backdrop-filter: blur(5px);
+    background-color: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 0 7px 1px rgb(0, 0, 0);
+    border-radius: 25px;
+    padding: 10px 20px;
+}
+
+.UPMainActivity{
+    margin-top: 20px;
+    backdrop-filter: blur(5px);
+    background-color: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 0 7px 1px rgb(0, 0, 0);
+    border-radius: 25px;
+    padding: 10px 20px;
+}
+
+.UPMainActivityInfo{
+    display: flex; 
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    position: relative;
+}
+
+.UPMainNoActivity{
+    height: 40vh;
+    width: 55vh;
+    margin: auto;
+    background-image: url("/public/images/profileProjects.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center top;
+    padding-top: 35vh;
+    font-size: 1.4rem;
+    font-weight: 700;
+    text-align: center;
+}
+
+.saveAbout{
+    background: none;
+    border: 2px solid white;
+    border-radius: 30px;
+    font-size: 1.2rem;
+    padding: 3px 15px;
+    height: fit-content;
+    display: none;
+}
+
+
+.contactGrid{
+    display: grid;
+    margin: 2vh 0vh;
+    grid-template-columns: repeat(4,1fr);
+    border-top: 2px solid white;
+}
+
+.contactGrid a{
+    display: flex;
+    justify-content: center;
+    padding-top: 1vh;
+}
+
+.editLink{
+    text-decoration: none !important;
+}
+
+.aboutPlaceHolder button{
+    justify-content: center;
+    text-decoration: none !important;
+    width: 5vw;
+    border: 2px solid black;
+    padding:5px 15px;
+    border-radius: 20px;
+    background-color: rgb(76, 7, 146);
+    display: flex;
+}
+
+.aboutPlaceHolder button:hover{
+    justify-content: center;
+    border: 2px solid black;
+    padding:5px 15px;
+    border-radius: 20px;
+    background-color: rgb(107, 41, 174) !important;
+    display: flex;
+}
+
+.noPlaceHolder{
+    display: none;
+}

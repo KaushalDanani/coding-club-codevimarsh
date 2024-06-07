@@ -3,7 +3,7 @@ import "./Project_Collabration.css";
 import { Link } from 'react-router-dom';
 import ProjectCollabrationCard from './ProjectCollabrationCard.js';
 import Navbar_after_login from './Navbar_after_login.js';
-import ToastComponent from '../jay fanse/toastComponent.js';
+import ToastComponent from '../Toast/toastComponent.js';
 
 
 import MyfooterAfterLogin from '../MyfooterAfterLogin.js';

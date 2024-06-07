@@ -48,7 +48,7 @@
     margin-right: 1.1rem; */
     background-color: transparent;
     /* overflow: hidden; */
-    background-image: url(/public/images/logout.png);
+    background-image: url("/public/images/logout.png");
     /* background-position: 50% 45%; */
     background-repeat: no-repeat;
     background-position: center;
