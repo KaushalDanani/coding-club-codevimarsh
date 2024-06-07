@@ -3,8 +3,13 @@ body{
     /* background-color: #2d033bf3 !important; */
     /* background-color: rgb(1, 0, 74) !important; */
     /* background-color: #0f0f32 !important; */
-    background: url(/public/images/pxfuel.jpg);
+    /* background: url(/public/images/black-background.jpg);
     background-repeat: no-repeat;
     background-size: 100% 100%;
-    background-attachment: fixed;
+    background-attachment: fixed; */
+}
+
+#bg_video {
+    position: fixed;
+    z-index: -1;
 }

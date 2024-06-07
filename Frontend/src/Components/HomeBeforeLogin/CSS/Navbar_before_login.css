@@ -22,7 +22,7 @@
     display: flex;
     justify-content: space-between;
     letter-spacing: 1.5px;
-    background: transparent;
+    /* background: transparent; */
     backdrop-filter: blur(15px);
     /* background-color: transparent; */
     border-bottom: 3px solid rgb(255, 255, 255);
@@ -130,16 +130,16 @@ LinkScroll {
     background: transparent;
     /* border: none; */
     /* box-shadow: 0 0 20px #db00ef; */
-    border: 2.5px solid #b44fd9;
+    border: 2.5px solid rgb(253, 138, 22);
     transition: ease 0.2s; 
 }
 
 .signin_btn:hover {
     color: black;
     /* border: none; */
-    background-color: rgb(192, 100, 225);
-    border: 2.5px solid #cb65f0;
-    box-shadow: 0px 0px 15px 3px #db00ef;
+    background-color: rgb(253, 138, 22);
+    border: 2.5px solid rgb(253, 138, 22);
+    box-shadow: 0px 0px 15px 3px rgb(189, 95, 0);
 }
 
 .NavBt {

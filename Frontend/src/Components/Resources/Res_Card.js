@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom'
 export default function Res_Card(props) {
 
     const navigate = useNavigate();
+    let onDelete = false;
     const [isLoadingResourceCardData, setIsLoadingResourceCardData] = useState(false)
     let books = [];
     let notes = [];
@@ -22,6 +23,7 @@ export default function Res_Card(props) {
             })
             const data = await response.json();
             const filtered = data.filter(subElement => subElement.subject === props.topic);
+            // console.log("⚜⚜⚜⚜⚜ "+filtered[0])
             navigate(props.sub_link, { state: { resources: filtered } })
         }
         catch(err)
@@ -32,20 +34,24 @@ export default function Res_Card(props) {
     }
 
     return (
-        <div className="card">
+        <>
+        <div>
+            <button id='resdelt' className='off' onClick={ () => { props.deleteOption(props.id) } }></button>
+            <div id='resCardForEdit' className={onDelete ? "card resCardOnEditOptionBackground" : "card"}>
 
-                <button id='resdelt' className='off' onClick={ () => { props.deleteOption(props.id) } }></button>
-            <div className="card-body" onClick={ViewContent}>
-                <img src={`data:Image/jpeg;base64,${props.resimg}`} className='lg' />
-                <div id='imgcont'>
-                    <span id='topic'>{props.topic}</span>
-                    <div id="details">
-                        <div className="cardDesc">Notes : {props.n_count} <br /> Videos : {props.vd_count} <br /> Books : {props.b_count} </div>
+                <div id='wholeResourceCard' className={onDelete ? "card-body onDeleteResCard" : "card-body"} onClick={ViewContent}>
+                    <img src={`data:Image/jpeg;base64,${props.resimg}`} className='lg' />
+                    <div id='imgcont'>
+                        <span id='topic'>{props.topic}</span>
+                        <div id="details">
+                            <div className="cardDesc">Notes : {props.n_count} <br /> Videos : {props.vd_count} <br /> Books : {props.b_count} </div>
+                        </div>
+
                     </div>
-
                 </div>
             </div>
         </div>
+        </>
     )
 }
 

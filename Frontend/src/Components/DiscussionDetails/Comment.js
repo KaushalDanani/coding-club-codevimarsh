@@ -2,7 +2,7 @@ import React from 'react'
 import { useEffect, useState } from 'react'
 import './Comment.css'
 import Upvote from './upvote.js'
-import ToastComponent from '../jay fanse/toastComponent.js'
+import ToastComponent from '../Toast/toastComponent.js'
 
 export default function Comment(props) {
     const [qDate, setQDate] = useState("");

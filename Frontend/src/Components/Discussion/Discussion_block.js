@@ -3,7 +3,7 @@ import { useLocation } from 'react-router-dom';
 import "./DiscussionCard.css";
 import "./Forums.css";
 import useUser from '../../store/userContext.js';
-import ToastComponent from '../jay fanse/toastComponent.js';
+import ToastComponent from '../Toast/toastComponent.js';
 
 export default function Discussion_block(props) {
   function getTag(tag) {

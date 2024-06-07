@@ -1,27 +1,53 @@
 .head{
     display: flex;
 }
+
 .card{
     color: rgb(230, 230, 230);
     margin: auto;
-    backdrop-filter: blur(3px);
+    backdrop-filter: blur(6px);
     background-color: rgba(255, 255, 255, 0.1);
-    border: 2px solid rgb(230, 230, 230);
+    border: 2px dotted rgb(230, 230, 230);
     border-radius: 1vw;
     box-shadow: 0px 0px 25px black;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    height: 94%;
+    /* height: 94%; */
     width: 100%;
 }
 .card:hover{
-    margin: auto;
-    filter: brightness(2.3);
-    color: rgb(255, 255, 255);
+    /* margin: auto;
+    filter: brightness(2.3); */
+    /* pointer-events: none; */
+    cursor: pointer;
+    color: rgb(0, 0, 0);
     transform: scale3d(1.02,1.02,1.02);
+    scale: 1.017 ;
+    /* filter: brightness(4.2); */
+    background-color: rgb(253, 138, 22);
+    /* filter: contrast(3); */
+    filter: hue-rotate(5);
+    border: 2px solid #e5dce8;
 }
 
 .card:hover .lg {
-    filter: brightness(0.57);
+    /* filter: brightness(0.57); */
+    filter: brightness(1.4);
+}
+
+.card_body {
+    padding: 16px;
+}
+
+.onDeleteResCard {
+    /* backdrop-filter: blur(3px); */
+    filter: blur(2px);
+    /* background-color: blue; */
+    pointer-events: none;
+
+}
+
+.resCardOnEditOptionBackground {
+    pointer-events: none;
 }
 
 .off{
@@ -29,14 +55,15 @@
 }
 
 #resdelt{
-    background-image: url("/public/images/delete2.png");
+    background-image: url("/public/images/delete.png");
     width: 32px;
     height: 32px;
     border: none;
     background-color: transparent;
-    position: absolute;
-    right: 4%;
-    top: 6%;
+    position: relative;
+    left: 80%;
+    top: 27%;
+    z-index: 10;
 }
 
 .cardDesc{
@@ -50,11 +77,12 @@
     margin: 3vh;
 }
 #imgcont{
+    /* margin-top: 1vh; */
     margin-left: 2rem;
 }
 #details{
-    margin: 3vh;
-    margin-top: 0;
+    margin: 1vh 3vh 3vh 3vh;
+    /* margin-top: 0; */
     padding-left: 0%;
 }
 a{
@@ -62,15 +90,15 @@ a{
     color: aliceblue;
 }
 .lg{
-    height: 5.5vw;
+    height: auto;
     width: 5.5vw;
     border: 1px solid white;
     border-radius: 1vw;
     background-color: rgb(225, 225, 225);
-    padding: 0.5vw;
+    padding: 0.4vw;
     position: absolute;
-    top: 5.6vh;
-    left: -3vw;
+    top: 26.5%;
+    left: -16%;
 }
 
 @media (max-width: 1300px) {

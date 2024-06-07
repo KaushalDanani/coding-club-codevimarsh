@@ -1,30 +1,36 @@
 import React, { useEffect, useState } from 'react'
 import { Link, Navigate, useLocation, useNavigate } from 'react-router-dom'
+// import "../HomeBeforeLogin/CSS/Navbar_before_login.css"
 import "../HomeBeforeLogin/CSS/Navbar_before_login.css"
 import "./Navbar_after_login.css";
 import useUser from '../../store/userContext.js';
 
 function Navbar_after_login(props) {
-    const navigate=useNavigate();
+    const { user, setUser } = useUser();
     const [userData,setUserData] = useState('');
-    const [base64Img,setBase64Img] = useState('');
-    const {user,setUser} = useUser();
+    const [base64Img,setBase64Img] = useState(props.imgData);
 
-    useEffect( () => {
-        fetch('/navbar/profileImg/dataset')
-        .then(response => response.json())
-        .then(data => {
-            setUserData(data.data);
-            setBase64Img(`data:image/png;base64,${data.data.profileImg}`);
-            // console.log('aaa',data[0].profileImg);
-        });
-    },[])
+    // console.log("📢📢📢📢📢  "+props.imgData);
+
+    useEffect(() => {
+      if(props.imgData != undefined)
+        setBase64Img(props.imgData);
+    }, [props.imgData])
+
+    // useEffect( () => {
+    //     fetch('/navbar/profileImg/dataset')
+    //     .then(response => response.json())
+    //     .then(data => {
+    //         setUserData(data.data);
+    //         setBase64Img(`data:image/png;base64,${data.data.profileImg}`);
+    //         // console.log('aaa',data[0].profileImg);
+    //     });
+    // },[])
 
     function removeUserAuth() {
         (async () => {
           
           setUser(null);
-
           await fetch('/remove/user/auth', {
             method: "GET",
             headers: {
@@ -35,7 +41,6 @@ function Navbar_after_login(props) {
             .then(data => {
               // window.location.reload();
             });
-          // window.location.reload();
           // window.location.reload();
         })()
       }
@@ -65,7 +70,7 @@ function Navbar_after_login(props) {
                     </ul>
                     <ul className={mobileMenu ? "horizontal_bar" : "horizontal_bar mobile-menu-icon"}>
                         <li className={mobileMenu ? "liComponent2" : "mobile-li"} id="profile">
-                            <Link to={`/profile`}><div className='loginDP' title='Profile'> <img src={base64Img}></img> </div></Link>
+                            <Link to={`/profile`}><div className='loginDP' title='Profile'> <img id='profileImage' src={base64Img}></img> </div></Link>
                         </li>
                         <li className={mobileMenu ? "liComponent2" : "mobile-li"} id='profile'>
                             <Link to={`/`}> <div className='logoutNavbar' title='Logout' onClick={removeUserAuth}> </div> </Link>

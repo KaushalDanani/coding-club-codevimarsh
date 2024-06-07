@@ -2,7 +2,7 @@ import Discussion_block from "./Discussion_block.js";
 import { useEffect, useState, React } from "react";
 import "./Discussion_Forums.css"
 import useUser from "../../store/userContext.js";
-import ToastComponent from "../jay fanse/toastComponent.js";
+import ToastComponent from "../Toast/toastComponent.js";
 
 function ForumGenerator() {
   const [ques, setQues] = useState([]);
@@ -34,7 +34,6 @@ function ForumGenerator() {
         const mArray = data.mArray;
         const map = new Map(mArray);
         setM(map);
-
       })
       .catch(error => {
         console.error('Error:', error);
@@ -61,7 +60,9 @@ function ForumGenerator() {
 
         <hr style={{width: '83%', height: '2.5px', backgroundColor: 'white', marginLeft: '130px',marginRight: '130px', marginBottom: '2.5vh'}}/>
 			
-      {ques.map((disc, idx) => (
+      {ques.length!==0 ? 
+
+      ques.map((disc, idx) => (
           <Discussion_block
           key={idx}
           pfp={m.get(disc._id).profileImg}
@@ -74,7 +75,16 @@ function ForumGenerator() {
           q_id={disc._id}
           deleteQuestionFromList={deleteQuestionFromList}
         />
-      ))}
+      ))
+    
+      :
+      <div className="discussionNullContent">
+
+        <div className="nullContentInfo">No Discussions for now :)
+        <br></br>Why not start one!?</div>
+        
+      </div>
+      }
     </>
   );
 }

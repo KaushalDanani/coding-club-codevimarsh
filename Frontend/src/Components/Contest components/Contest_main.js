@@ -20,6 +20,8 @@ export default function Contest_main(props) {
     const [currentcontestinfo, setCurrentContestinfo] = useState([{}]);
     const [upcomingcontestinfo, setUpcomingContestinfo] = useState([{}]);
     const [isLoading, setIsLoading] = useState(false)
+    const [userData,setUserData] = useState('');
+    const [base64Img,setBase64Img] = useState('');
 
     useEffect(() => {
 
@@ -29,8 +31,8 @@ export default function Contest_main(props) {
 
     useEffect(() => {
 
-        setIsLoading(true);
         (async () => {
+            setIsLoading(true);
 
             const response = await fetch("/contest/past")
             const data = await response.json();
@@ -44,8 +46,13 @@ export default function Contest_main(props) {
             const data2 = await response2.json();
             setUpcomingContestinfo(data2)
 
+            const response3 = await fetch('/navbar/profileImg/dataset')
+            const data3 = await response3.json();
+            setUserData(data3.data);
+            setBase64Img(`data:image/png;base64,${data3.data.profileImg}`);
+
+            setIsLoading(false);
         })();
-        setIsLoading(false);
 
     }, []);
 
@@ -69,7 +76,7 @@ export default function Contest_main(props) {
         <>
         <div className="contest_main">
             {/* {// console.log("ok")} */}
-            <Navbar_after_login/>
+            <Navbar_after_login imgData={base64Img} />
 
             {/* {upcoming contest} */}
             <div className="upcoming_contest">

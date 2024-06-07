@@ -5,8 +5,7 @@ import { useEffect, useState } from 'react'
 import { useLocation } from 'react-router-dom'
 import Navbar_after_login from '../kaushal/Navbar_after_login.js';
 import useUser from '../../store/userContext.js';
-
-import ToastComponent from '../jay fanse/toastComponent.js';
+import ToastComponent from '../Toast/toastComponent.js';
 
 export default function Question_data() {
 

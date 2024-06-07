@@ -176,10 +176,7 @@ app.post("/deleteproject",async (req,res) => {
   res.send({message : 'Project deleted successfully!'});
 })
 
-const imageBuffer = fs.readFileSync(
-  "C:/Users/Jay/OneDrive/Desktop/Projects/CodeVimarsh_Website/codeVimarsh/coding-club-codevimarsh/Frontend/public/images/profile.jpeg"
-);
-const base64Image = imageBuffer.toString("base64");
+const imageBuffer = "https://i.pinimg.com/564x/89/90/48/899048ab0cc455154006fdb9676964b3.jpg";
 
 app.get(`/projectDisplay/userData/`, async (req, res) => {
   try {
