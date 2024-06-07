@@ -27,8 +27,8 @@ import UserProfile from './Components/UserProfile/UserProfile.js';
 // jay prajapati
 import ResourcesHome from './Components/Resources/ResourcesHome.js';
 import Discussion_Forums from './Components/Discussion/Discussion_Forums.js';
-import Question_data from './Components/DiscussionDetails/Question_data.js'
-import ProjectMain from './Components/Innercomp/ProjectMain.js';
+import Question_data from './Components/DiscussionDetails/Question_data.js';
+import ProjectMain from './Components/Projects components/ProjectMain.js';
 
 
 
@@ -44,7 +44,7 @@ import AddNotes from './Components/ResourcesContent/AddNotes.js';
 
 
 import useUser from './store/userContext.js';
-import AddProject from './Components/Innercomp/AddProject.js';
+import AddProject from './Components/Projects components/AddProject.js';
 function PageLinks() {
 
     const [isLoading, setIsLoading] = useState(false);
