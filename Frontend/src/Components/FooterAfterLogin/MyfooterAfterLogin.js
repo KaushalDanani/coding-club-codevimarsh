@@ -36,7 +36,7 @@ export default function MyfooterAfterLogin() {
 
                 <ul>
                     <li><a href="#AboutUS">About Us</a></li>
-                    <li><a href="https://mail.google.com/mail/?view=cm&to=sohamzadafiya@gmail.com" target="_blank" >Contact Us</a></li>
+                    <li><a href="https://mail.google.com/mail/?view=cm&to=codingclub-cse@msubaroda.ac.in" target="_blank" >Contact Us</a></li>
                 </ul>
             </div>
             <div className="box UL">

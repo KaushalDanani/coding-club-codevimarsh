@@ -36,7 +36,7 @@ export default function Myfooter() {
 
                 <ul>
                     <li> <Link to="AboutUS" smooth={true} offset={-250}> About Us </Link> </li>
-                    <li><a href="https://mail.google.com/mail/?view=cm&to=sohamzadafiya@gmail.com" target="_blank" >Contact Us</a></li>
+                    <li><a href="https://mail.google.com/mail/?view=cm&to=codingclub-cse@msubaroda.ac.in" target="_blank" >Contact Us</a></li>
                 </ul>
             </div>
             <div className="box UL">
