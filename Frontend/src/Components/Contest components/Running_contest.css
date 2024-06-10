@@ -1,0 +1,111 @@
+*{
+    margin: 0;
+    padding: 0%;
+    box-sizing: border-box;
+}
+
+.running_contest_main{
+   
+    padding: 1% 0%;
+    border-radius: 10px;
+    backdrop-filter: blur(6px);
+    background-color: rgba(255, 255, 255, 0.11);
+    
+    border: 2px dotted #e5dce8;
+    box-shadow: 0 0 20px 5px black;
+    overflow: hidden;
+    transition: 0.5s all;
+}
+.running_contest_main:hover {
+    scale: 1.017 ;
+   
+    background-color: rgb(253, 138, 22);
+    filter: contrast(3);
+    filter: hue-rotate(5);
+    border: 2px solid #e5dce8;
+}
+
+.running_contest_main:hover .runnig_contest_name p{
+    color: black;
+    font-weight: 900;
+}
+.running_contest_main:hover .running_date_time p{
+    color: black;
+    font-family: dateFont;
+    letter-spacing: 1px;
+  
+}
+.running_contest_main:hover .contest_start_btn button {
+    border: 3px solid rgb(0, 0, 0);
+    background-color: black;
+    color: white;
+    font-weight: 400;
+}
+.running_contest_main:hover .contest_start_btn button:hover {
+    color: rgb(255, 255, 255);
+    border: 3px solid rgb(104, 104, 104);
+    background-color: rgb(104, 104, 104);
+}
+
+
+.runnig_contest_name{
+    width: 55%;
+    padding: 4px 15px 0px 20px;
+    word-wrap: break-word;
+}
+
+.runnig_contest_name p{
+    color: white;
+    word-wrap: break-word;
+    font-weight: 700;
+    letter-spacing: 1px;
+    font-size: 1.5rem;
+}
+
+.contest_flex{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.running_date_time p{
+    color: white;
+    font-family: 'Courier New', Courier, monospace;
+    /* font-weight: 600; */
+    font-size: 1rem;
+    margin: 5px 20px 0px 20px;
+}
+
+.contest_start_btn button{
+    color: rgb(0, 0, 0);
+  
+    border: 2px solid white;
+    letter-spacing: 1px;
+    margin-top: 0.8vh;
+    border-radius: 15px;
+    margin-right: 25px;
+    padding: 4px 16px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 1.07rem;
+}
+
+.contest_start_btn button:hover,
+.contest_start_btn button a:hover{
+   
+    color: rgb(255, 255, 255);
+    background-color: rgba(0, 0, 0, 0.85);
+    border: 2px solid black;
+    transition: 0.2s;
+}
+
+
+@media only screen and (max-width: 600px) {
+    .contest_start_btn button{
+       
+        margin-right: 10px;
+    }
+    .running_contest_main {
+        margin-bottom: 6%;
+    }
+  }

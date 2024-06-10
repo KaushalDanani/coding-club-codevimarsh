@@ -1,0 +1,185 @@
+*{
+    margin: 0%;
+    padding: 0%;
+    box-sizing: border-box;
+}
+
+.titaldiv{
+    padding: 20px;
+    border-bottom: 3px solid #777;
+}
+
+.Addprojectmain{
+    padding: 70px 0px;
+}
+
+.AddProject{
+    
+    width: 80vw;
+    overflow: hidden;
+    margin-left: 10vw;
+    justify-content: center;
+    background-color: #710ec9;
+    color: white;
+   
+    border-radius: 20px;
+    
+}
+
+.AddProject h1{
+    
+    display: flex;
+    justify-content: center;
+}
+
+.addpro_close{
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    right: 20px;
+    border: 1.5px solid black;
+    border-radius: 4px;
+    padding: 1px;
+    cursor: pointer;
+    display: inline-block;
+}
+
+.addpro_close:hover{
+    scale: 1.05;
+}
+
+.addpro_close img{
+    width: 100%;
+}
+
+.addprospace{
+    margin: 20px 20px;
+    font-size: 1.2rem;
+}
+
+.addprospace label{
+    font-size: 1.3rem;
+}
+
+.AddProject input,textarea{
+    width: 100%;
+    border-radius: 8px;
+    background-color: #555;
+    padding: 5px 8px;
+    border: 0px;
+}
+.AddProject label{
+    margin-right: 30px;
+}
+
+#addproject{
+    border: 0ch;
+    padding: 4px 5px;
+    border-radius: 2px;
+    cursor: pointer;
+}
+
+.fillinfodiv{
+    background: #333;
+    padding: 15px 30px;
+}
+
+.addprojbtndiv{
+    display: flex;
+    padding: 20px;
+    justify-content: space-between
+}
+
+.addproj_btn{
+    border-radius: 35px;
+    padding: 5px 20px;
+    font-size: 1.2rem;
+    font-weight: 500;
+    background-color: transparent;
+    color: white;
+    border: 2px solid white;
+    cursor: pointer;
+}
+
+.addproj_btn:hover{
+    color: black;
+    background-color: white;
+}
+
+
+
+.btn:link,
+.btn:visited {
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 15px 40px;
+    display: inline-block;
+    border-radius: 100px;
+    transition: all .2s;
+    position: absolute;
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.btn:active {
+    transform: translateY(-1px);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+.btn-white {
+    background-color: #fff;
+    color: #777;
+}
+
+.btn::after {
+    content: "";
+    display: inline-block;
+    height: 100%;
+    width: 100%;
+    border-radius: 100px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    transition: all .4s;
+}
+
+.btn-white::after {
+    background-color: #fff;
+}
+
+.btn:hover::after {
+    transform: scaleX(1.4) scaleY(1.6);
+    opacity: 0;
+}
+
+.btn-animated {
+    animation: moveInBottom 5s ease-out;
+    animation-fill-mode: backwards;
+}
+
+@keyframes moveInBottom {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0px);
+    }
+}
+
+.projBackBtn{
+    position: absolute;
+    top: 1vh;
+    left: 1vw;
+    height: 6vh;
+    width: 6vw;
+    background: url('/public/images/back-btn-white.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+}

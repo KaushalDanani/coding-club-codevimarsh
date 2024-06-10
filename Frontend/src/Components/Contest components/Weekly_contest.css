@@ -1,0 +1,112 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.weekly_main{
+     
+     padding: 1% 0%;
+     border-radius: 10px;
+     backdrop-filter: blur(6px);
+     background-color: rgba(255, 255, 255, 0.11);
+     
+     border: 2px dotted #e5dce8;
+     box-shadow: 0 0 20px 5px black;
+     overflow: hidden;
+     transition: 0.5s all;
+}
+.weekly_main:hover {
+    scale: 1.017 ;
+    
+    background-color: rgb(253, 138, 22);
+    filter: contrast(3);
+    filter: hue-rotate(5);
+    border: 2px solid #e5dce8;
+}
+
+.weekly_main:hover .upcoming_contest_name p{
+    color: black;
+    font-weight: 900;
+}
+.weekly_main:hover .upcoming_date_time p{
+    color: black;
+    font-family: dateFont;
+    letter-spacing: 1px;
+    
+}
+.weekly_main:hover .contest_start_btn button {
+    border: 3px solid rgb(0, 0, 0);
+    background-color: black;
+    color: white;
+    font-weight: 400;
+}
+.weekly_main:hover .contest_start_btn button:hover {
+    color: rgb(255, 255, 255);
+    border: 3px solid rgb(104, 104, 104);
+    background-color: rgb(104, 104, 104);
+}
+
+
+.main_upcoming_container {
+    padding: 1.7%;
+    ::before{
+        position: fixed;
+        content: "";
+        box-shadow: 0 0 40px 20px #ffffff08;
+        top: -10%;
+        left: -100%;
+        transform: rotate(-45deg);
+        height: 34rem;
+        transition: 1.2s all;
+    }
+    &:hover{
+        
+        ::before{
+          filter: brightness(1);
+          top: -100%;
+          left: 120%;
+        }
+    }
+}
+
+
+.upcoming_contest_name{
+    width: 55%;
+    padding: 4px 0px 15px 20px;
+    word-wrap: break-word;
+}
+
+.upcoming_contest_name p{
+    color: white;
+    word-wrap: break-word;
+    font-weight: 700;
+    letter-spacing: 1px;
+    font-size: 1.5rem;
+}
+
+.upcoming_date_time p{
+    color: white;
+    font-family: 'Courier New', Courier, monospace;
+    /* font-weight: 600; */
+    font-size: 1rem;
+    margin: 5px 20px 0px 20px;
+}
+
+
+
+@media only screen and (max-width: 600px) {
+    .weekly_main{
+        width: auto;
+        margin-bottom: 4.5%;
+    }
+    .contest_type p {
+        font-size: 2rem !important;
+    }
+    .bulb_image_weekly_contest{
+        float: left;
+        width: 10rem;
+        margin-top: 0.5rem;
+        margin-left: 1rem;
+    }
+  }

@@ -1,0 +1,89 @@
+.addContestDiv{
+    
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.addContestHeader{
+    background-color: rgb(253, 138, 22);
+    color: white;
+    font-size: 2rem;
+    display: flex;
+    width: 60%;
+    justify-content: center;
+    border-top-right-radius: 20px;
+    border-top-left-radius: 20px;
+    padding: 10px 0px;
+}
+
+.addContestBody{
+    color: white;
+    width: 60%;
+    backdrop-filter: blur(10px);
+    background-color: rgba(255, 255, 255, 0.1);
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    padding: 3vh 4vw;  
+}
+
+.addContestRow{
+    display: grid;
+    grid-template-columns: 6fr 1fr 20fr;
+    margin: 4vh 0vh;
+}
+
+.addContestDateRow{
+    display: grid;
+    grid-template-columns: 8fr 2fr 6fr;
+}
+
+.addContestRow div,
+.addContestDateRow div{
+    font-size: 1.3rem;
+}
+
+.addContestRow input,
+.addContestRow select,
+.addContestDateRow input{
+    padding: 5px 9px;
+    border-radius: 10px;
+    font-size: 1.1rem;
+    background-color: rgba(0, 0, 0, 0.18);
+    filter: invert(1);
+    /* color: white; */
+    border: none;    
+}
+
+.addContestBtn{
+    display: flex;
+    justify-content: space-between;
+    margin: 4% 0% 0.7% 0%;
+}
+
+.addContestBtn button{
+    border-radius: 10px;
+    font-size: 1.3rem;
+    background-color: rgb(253, 138, 22);
+    color: white;
+    border: none;
+    padding: 5px 17px;
+}
+
+.addContestBtn button:hover{
+    background-color: rgb(189, 95, 0);
+}
+
+
+.contestBackBtn{
+    position: absolute;
+    top: 1vh;
+    left: 1vw;
+    height: 6vh;
+    width: 6vw;
+    background: url('/public/images/back-btn-white.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+}

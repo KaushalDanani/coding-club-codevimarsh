@@ -1,0 +1,209 @@
+.project_c_card {
+    margin: 0%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    width: 100%;
+    padding: 2.5vh 0vh 1vh 0vh;
+    /* height: 300px; */
+    /* border: 2px solid aliceblue; */
+    /* background-color: blue; */
+    box-sizing: border-box;
+    animation: scrollAnimation linear;
+    animation-timeline: view();
+    animation-range: entry 0 cover 42.5%;
+}
+
+@keyframes scrollAnimation {
+    0% {
+        opacity: 0;
+        scale: 0;
+    }
+    50% {
+        opacity: 0;
+        scale: 0.5;
+    }
+    100% {
+        opacity: 1;
+        scale: 1;
+    }
+}
+
+.avtar {
+    width: 4vw;
+    aspect-ratio: 1/1;
+    margin-top: 0.5vh;
+    margin-right: 0.85vw;
+    border-radius: 100%;
+    background-color: rgb(0, 0, 0);
+    box-shadow: 0 0 50px black;
+    overflow: hidden;
+}
+.avtar:hover {
+    box-shadow: 0 0 0 3px white;
+}
+
+.avtar img {
+    width: 100%;
+    height: 100%;
+}
+
+.project_c_card .innercontent {
+    position: relative;
+    /* margin-top: 0.2vh; */
+    width: 80%;
+    /* padding-left: 2.5vw; */
+    padding-bottom: 2vh;
+    border-radius: 1.5vh;
+    /* background-color: #3d3d3d; */
+    background-color: #363636;
+    box-shadow: 0 0 20px black;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+.project_coll_header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1vw 1.3vw 1vw 2vw;
+    /* padding-right: 2vw;
+    padding-left: 2vw; */
+    /* margin-top: 1.8vh;
+    margin-bottom: 2.7vh; */
+    /* margin-left: -2.5vw; */
+    background-color: rgb(253, 138, 22) !important;
+    /* background-color: #b29a00; */
+    overflow: hidden;
+}
+
+.project_coll_header a {
+    /* padding-top: 1vh; */
+    font-weight: 700;
+    font-size: 1.23rem;
+    letter-spacing: 0.06vw;
+    color: white;
+}
+.project_coll_header a:hover {
+    color: rgb(0, 0, 0);
+}
+
+.project_collab_del_btn {
+    border: none;
+    display: flex;
+    align-items: center;
+    background-image: url("/public/images/delete.png");
+    background-repeat: no-repeat;
+    height: 22px;
+    width: 22px;
+    background-size: cover;
+    background-position: center;
+    background-color:transparent;
+    /* padding: 0.3vw; */
+    box-sizing:content-box;
+    /* box-shadow: 0 0 20px 5px black; */
+    /* filter: drop-shadow(5px 5px 5.5px black); */
+}
+
+.project_coll_Title {
+    position: relative;
+    display: flex;
+    margin: 2.3vh 0vh 0vh 2vw;
+    gap: 1%;
+    /* width: 90%; */
+    /* top: 8.9vh; */
+    /* left: 2.65vw; */
+    font-size: 1rem;
+    color: white;
+    letter-spacing: 0.05vw;
+}
+
+.project_coll_Title strong {
+    /* font-style: italic; */
+    letter-spacing: 0.08vw;
+    font-size: 1rem;
+    margin-bottom: 0%;
+}
+
+.project_col_title_content {
+    position: relative;
+    text-align: justify;
+    /* width: 97%; */
+    /* margin-top: 0.5%; */
+    margin-bottom: 2vh;
+}
+
+.contact_lessbtn {
+    /* margin-top: 2.5vh; */
+}
+
+.project_collab_btn {
+    float: right;
+    /* height: 4.5vh; */
+    padding: 0.4vh 1.4vw;
+    margin-right: 1vw;
+    font-size: 1.05rem;
+    /* font-weight: 600; */
+    border-radius: 5vh;
+    letter-spacing: 0.5px;
+    text-transform: capitalize;
+    color: rgb(255, 255, 255) !important;
+    background-color: rgb(253, 138, 22) !important;
+    border: 1.5px solid #2D033B;
+    /* box-shadow: 0 3.5px black; */
+}
+.project_collab_btn:hover {
+    color: rgb(0, 0, 0) !important;
+    background-color: #ffffff !important;
+    border: 2px solid #ffffff !important;
+    /* box-shadow: none; */
+    /* box-shadow: 0 0 10px rgb(0, 0, 0); */
+}
+
+.project_coll_more_btn {
+    float: right;
+    padding: 0.5vh 1.4vw !important;
+    border-radius: 5.5vh;
+    font-size: 1.05rem;
+    /* margin-top: 0.8vw; */
+    letter-spacing: 0.5px;
+    margin-right: 1.2vw !important;
+    color: white;
+    border: 1.5px solid #000000f3;
+    background-color: rgb(253, 138, 22);
+}
+.project_coll_more_btn:hover {
+    color: black;
+    background-color: #ffffff !important;
+    border: 1.5px solid #ffffff !important;
+}
+
+.project_more_btn_show {
+    display: block !important;
+}
+
+.project_coll_tags {
+    position: relative;
+    color: white;
+    /* font-style: italic; */
+    margin-left: 2vw;
+    font-size: 1rem;
+    letter-spacing: 0.08vw;
+}
+
+.project_coll_description {
+    display: none;
+    color: white;
+    /* font-style: italic; */
+    margin-left: 2vw;
+    font-size: 1rem;
+    margin-top: 2.2vh !important;
+    letter-spacing: 0.08vw;
+}
+.project_coll_description_content {
+    margin-top: 0.45%;
+    margin-bottom: 0.4%;
+    letter-spacing: 0.05vw;
+    text-align: justify;
+    width: 97%;
+}

@@ -1,0 +1,14 @@
+
+.techtag{
+    display: inline-block;
+    border-radius: 20px;
+    padding: 5px 15px;
+    text-transform: uppercase;
+    background-color: rgb(253, 138, 22);
+    margin: 0vh 0.6vh;
+    border: 1px solid black;
+    color: rgb(0, 0, 0);
+    font-weight: 500;
+    font-size: small;
+    letter-spacing: 0.05vw;
+}

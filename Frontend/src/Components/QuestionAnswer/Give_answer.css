@@ -1,0 +1,171 @@
+*{
+    margin: 0%;
+    padding: 0%;
+    box-sizing: border-box;
+}
+
+.addReplyContainer {
+    width: 75%;
+    margin: auto;
+    margin-top: 10vh;
+    margin-bottom: 10vh;
+    border-radius: 18px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    background-color: #333;
+    overflow: hidden;
+}
+
+.addReplyHeader {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    background-color: rgb(105, 19, 191);
+}
+
+.addReplyContainer h1 {
+    margin: 10px 0px;
+    color: rgb(204, 204, 204);
+    font-family: sans-serif;
+}
+
+.formDivRep {
+    width: 80%;
+}
+
+.formDivRep form label {
+    color: rgb(215, 215, 215);
+    font-size: 1.3rem;
+    margin-top: 20px;
+    letter-spacing: 0.5px;
+    font-family: sans-serif;
+}
+
+.formDivRep form input {
+    font-size: 1.1rem;
+    color: rgb(255, 255, 255);
+    background-color: #5a5a5a;
+    padding: 3px 10px;
+    border-radius: 10px;
+    border: none;
+}
+
+.addFormButton{
+    font-size: 2.3vh;
+    position: relative;
+    height: fit-content;
+    width: fit-content;
+    color: white;
+    padding: 1.1vh 1.4vw;
+    border: none;
+    background-color: rgb(105, 19, 191);
+    align-self: flex-end;
+    border-radius: 10px;
+}
+.addFormButton:hover{
+    cursor: pointer;
+    color: #ffffff;
+    background-color: #8e31ec
+}
+
+.buttonSection {
+    display: flex;
+    justify-content: space-between;
+}
+
+
+.reply_main{
+    position: relative;
+    top: 10%;
+    border-radius: 8px;
+}
+
+.reply{
+    display: flex;
+    justify-content: center;
+    font-size: 2rem;
+    color: white;
+}
+
+.r_close{
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    right: 20px;
+    border: 1.5px solid black;
+    border-radius: 4px;
+    padding: 1px;
+    cursor: pointer;
+    display: inline-block;
+}
+
+.r_close:hover{
+    scale: 1.05;
+}
+
+.r_close img{
+    width: 100%;
+}
+
+.r_reply,.r_code{
+    margin-top: 10px;
+}
+
+.r_reply label{
+    color: white;
+    font-size: 1.2rem;
+}
+
+.r_reply textarea{
+    width: 100%;
+}
+.r_code label{
+    color: white;
+    font-size: 1.2rem;
+}
+
+.r_code textarea{
+    width: 100%;
+}
+
+.r_submit{
+    margin-top: 20px;
+    font-size: 1.1rem;
+    background-color: #61017b;
+    padding: 5px;
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;   
+}
+
+.r_cancel{
+    position: absolute;
+    right: 2%;
+    margin-top: 20px;
+    font-size: 1.1rem;
+    background-color: #61017b;
+    padding: 5px;
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;   
+}
+
+
+@media only screen and (max-width: 300px) {
+    .reply_main{
+        width: 80%;
+        left: 10%;
+    }
+}
+
+.replyBackBtn{
+    position: absolute;
+    top: 1vh;
+    left: 1vw;
+    height: 6vh;
+    width: 6vw;
+    background: url('/public/images/back-btn-white.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+}

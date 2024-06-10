@@ -1,0 +1,18 @@
+.recentPanel{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    margin-right: 5vh;
+    gap: 6vh;
+}
+
+@media (width<1100px){
+    .recentPanel{
+        grid-template-columns: repeat(2,1fr);
+        grid-template-rows: repeat(3,1fr);
+    }
+}
+@media (width<700px){
+    .recentPanel{
+        grid-template-columns: repeat(1,1fr);
+    }
+}

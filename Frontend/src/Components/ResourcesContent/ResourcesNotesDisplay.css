@@ -1,0 +1,15 @@
+.ResourcesNotesDisplay{
+    display: flex;
+    gap: 1.5rem;
+    width: 100%;
+    padding: 2rem 0vh;
+    padding-right: 0.75rem;
+    margin : 0px;
+    padding: auto;
+    flex-wrap: wrap;
+    background-image: url(/public/images/profileProjects.png);
+    background-position: center center;
+    background-repeat: no-repeat;
+    height: 100%;
+
+}

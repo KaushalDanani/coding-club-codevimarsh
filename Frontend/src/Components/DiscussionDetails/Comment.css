@@ -1,0 +1,90 @@
+.c_class{
+    color: white;
+    background-color:#333;
+    margin: 0vw 6vw 2vw 6vw;
+    padding: 1vw;
+    border-radius: 2vw;
+    box-shadow: 0 0 20px black;
+    text-align: justify;
+}
+
+#com_div{
+    margin: 1vw;
+    font-size: 1.2rem;
+}
+
+#commenter{        
+    margin-top: 0;
+    font-size: 1rem;    
+}
+
+#pfp_div{
+    height: 8vh;
+    width: 8vh;
+    border-radius: 4vh;    
+    margin: 0.5vw;
+}
+#pfpic{
+    height: 8vh;
+    width: 8vh;
+}
+#commenter_id{
+    font-size: 1.5rem;    
+    margin: 1vw;
+    color: white;
+}
+
+#upvote_div, #comment_div{
+    margin: 1vw;
+    font-size: 1.5rem;
+    text-align: center;
+    padding: 1px;
+}
+
+#date_div{    
+    position: absolute;    
+    right: 7vw;
+}
+
+#feed_bar{    
+    font-size: 1.6vw;
+    display: flex;
+}
+
+@media (max-width:920px){
+    .c_class{
+        margin: 0 10vw 2vw 10vw;
+    }
+    #date_div{
+        right:11vw;
+    }
+    #commenter_id a{
+        font-size: 1.5rem !important;
+    }
+}
+
+@media (max-width:600px){
+    .c_class{
+        margin: 0 14vw 2vw 14vw;
+    }
+    #date_div{
+        margin-top: 3vw;
+        right:15vw;
+    }
+    #commenter_id a{
+        font-size: 1.5rem !important;
+    }
+}
+
+.deleteRep{
+     float: right;    
+    border: none;
+    right: 10px;    
+    background-image: url("/public/images/delete.png");
+    background-repeat: no-repeat;
+    height: 32px;
+    width: 32px;
+    background-color:transparent;
+    padding: 0.3vw;
+    box-sizing:content-box;
+}
