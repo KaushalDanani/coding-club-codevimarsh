@@ -3,8 +3,10 @@ const bcrypt = require('bcryptjs')
 const fs = require('fs');
 const { ObjectId } = require('mongodb');
 const jwt = require('jsonwebtoken')
+const path = require('path');
+require('dotenv').config({ path: path.resolve(__dirname, '../.env') });
 
-const imageBuffer = "https://i.pinimg.com/564x/89/90/48/899048ab0cc455154006fdb9676964b3.jpg";
+const imageBuffer = process.env.REACT_APP_PROFILE_IMAGE;
 const base64Image = imageBuffer.toString("base64");
 
 const userSchema = new mongoose.Schema({
@@ -108,7 +110,8 @@ userSchema.pre(["updateOne", "findByIdAndUpdate", "findOneAndUpdate"], async fun
 
 userSchema.methods.generateAuthToken = async function() {
     try {
-        const token = jwt.sign({_id:this._id.toString(), email:this.email}, "OurProjectIsOnCodingWebToCreateCodingCultureInMSU");
+        const token = jwt.sign({_id:this._id.toString(), email:this.email}, process.env.REACT_APP_SECRET_TOKEN_KEY);
+
         this.tokens = this.tokens.concat({token: token});
         await this.save();
         // console.log(tk);

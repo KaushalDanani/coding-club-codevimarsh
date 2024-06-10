@@ -6,19 +6,17 @@ const port = 5000;
 var bodyParser = require("body-parser");
 var jsonParser = bodyParser.json();
 const path = require("path");
-app.use(express.json({ limit: "1000mb" }));
+require('dotenv').config({ path: path.resolve(__dirname, '../.env') });
 const User = require('./userSchema')
 const bcrypt = require("bcryptjs");
 const cookieParser = require("cookie-parser");
 
 
-app.use(bodyParser.json({ limit: "1000mb" }));
-app.use(bodyParser.urlencoded({ limit: "1000mb", extended: true }));
 app.use(cookieParser());
 
 const mongoose = require("mongoose");
 const { log } = require("console");
-mongoose.connect("mongodb://127.0.0.1:27017/CodingClubDB");
+mongoose.connect(process.env.REACT_APP_MONGODB_CONNECTION_URL);
 
 const Contest = mongoose.model(
   "contest",
