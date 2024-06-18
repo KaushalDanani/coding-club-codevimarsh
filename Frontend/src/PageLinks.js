@@ -34,7 +34,7 @@ import ProjectMain from './Components/ProjectComponent/ProjectMain.js';
 import ManageAdmins from './Components/HomeAfterLogin/ManageAdmins.js';
 import Ask_Question from './Components/QuestionAnswer/Ask_Question.js';
 import Give_answer from './Components/QuestionAnswer/Give_answer.js';
-import AddContest from './Components/Contest components/AddContest.js';
+import AddContest from './Components/Contest/AddContest.js';
 import Home_page_before_login from './Components/HomeBeforeLogin/Javascript/Home_page_before_login.js';
 import AddSubject from './Components/SubjectResources/AddSubject.js';
 import AddBooks from './Components/ResourcesContent/AddBooks.js';
