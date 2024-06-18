@@ -6,13 +6,10 @@ const jwt = require('jsonwebtoken')
 const path = require('path');
 require('dotenv').config({ path: path.resolve(__dirname, '../.env') });
 
-const imageBuffer = process.env.REACT_APP_PROFILE_IMAGE;
-const base64Image = imageBuffer.toString("base64");
-
 const userSchema = new mongoose.Schema({
     profileImg: {
         type : String,
-        default : base64Image
+        default : null
     },
 
     about: String,
@@ -116,8 +113,8 @@ userSchema.methods.generateAuthToken = async function() {
 
         return token;
     } catch (err) {
-        res.send("The error is "+err)
-        // console.log(err)
+        // res.send("The error is "+err)
+        console.log(err)
     }
 }
 

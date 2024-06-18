@@ -1,6 +1,7 @@
 const express = require("express");
 const app = express();
 const fs = require("fs");
+const axios = require('axios');
 const path = require("path");
 require('dotenv').config({ path: path.resolve(__dirname, '../.env') });
 const { ObjectId } = require("mongodb");
@@ -16,7 +17,7 @@ app.use(bodyParser.urlencoded({ limit: "20mb", extended: true }));
 app.use(cookieParser());
 
 const mongoose = require("mongoose");
-const { log } = require("console");
+const { log, Console } = require("console");
 mongoose.connect(process.env.REACT_APP_MONGODB_CONNECTION_URL);
 
 const Contest = mongoose.model(
@@ -1120,6 +1121,17 @@ app.post('/usersignin', async (req, res) => {
   }
 })
 
+const imageBuffer = process.env.REACT_APP_PROFILE_IMAGE;
+async function urlToBase64(url) {
+  try {
+      const response = await axios.get(url, { responseType: 'arraybuffer' });
+      const base64Image = Buffer.from(response.data, 'binary').toString('base64');
+      return base64Image;
+  } catch (error) {
+      console.error('Error fetching the image:', error);
+      return null;
+  }
+}
 app.post('/usersignup', async (req, res) => {
 try {
     const userData = req.body;
@@ -1132,7 +1144,8 @@ try {
     if (existingData) {
         res.status(400).send({ error: "Username or email already exists!" });
     } else {
-        const signupUser = new User(userData);
+        const base64Image = await urlToBase64(imageBuffer);
+        const signupUser = new User({...userData, profileImg: base64Image});
 
         const token = await signupUser.generateAuthToken();
 
