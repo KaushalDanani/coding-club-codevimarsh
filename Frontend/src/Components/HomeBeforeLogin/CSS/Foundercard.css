@@ -29,10 +29,12 @@
         height: 100%;
         /* backface-visibility: hidden;  */
         color: white;
-        background-image: url(/public/images/founderInfoBG2.jpg);
+        /* background-image: url(/public/images/founderInfoBG2.jpg);
         background-repeat: no-repeat;
-        background-size: cover;
-        background-color: rgba(255, 255, 255, 0.1);
+        background-size: cover; */
+        background-color: rgba(255, 255, 255, 0.13);
+        /* background-color: rgb(253, 138, 22, 0.15); */
+        /* backdrop-filter: blur(8px); */
         border-radius: 7%;
     }
 

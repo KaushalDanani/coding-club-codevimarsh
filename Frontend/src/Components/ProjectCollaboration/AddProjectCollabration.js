@@ -1,11 +1,10 @@
 import React from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import { useState } from 'react'
-import './AddProjectCollabration.css'
+import { useState , useEffect} from 'react'
 import useUser from '../../store/userContext.js'
 import ToastComponent from '../Toast/toastComponent.js'
 
-function AddProjectCollabration() {
+function AddProjectCollabration(props) {
 
     const navigate = useNavigate();
 
@@ -17,9 +16,12 @@ function AddProjectCollabration() {
     const [toastMessage, setToastMessage] = useState("");
     const [toastType, setToastType] = useState("");
 
-    const { user, setUser } = useUser();
+    const [userID, setUserID] = useState();
 
-    const [userID, setUserID] = useState(user._id)
+    useEffect(() => {
+        if(props.user)
+            setUserID(props.user._id);
+    },[props.user])
 
     const titleChangeHandler = (e) => {
         setPc_title(e.target.value)
@@ -37,8 +39,9 @@ function AddProjectCollabration() {
         setPc_description("");
     }
 
-    async function submitHandler(){
+    async function submitHandler(e){
 
+        e.preventDefault();
         const formData = {
             userID: userID,
             collabrationTitle: pc_title,
@@ -86,22 +89,22 @@ function AddProjectCollabration() {
             {toastVisible ? <ToastComponent message={toastMessage} type={toastType} /> : null}
 
             <Link to={'/project_collab'}>
-                <div className='projCollabBackBtn'></div>
+                <div className='ObjectBackBtn'></div>
             </Link>
-            <div className='addprojectCollabrationContainer'>
-                <div className='addProjectCollabrationHeader'>
+            <div className='addObjectContainer'>
+                <div className='addObjectHeader'>
                     <h1> Add Project Collaboration </h1>
                 </div>
-                {/* <hr style={{ height: '2.5px', width: '100%', backgroundColor: 'white', margin: '0px' }} /> */}
-                <div className='formContainer'>
+                {/* <form> */}
+                <form className='addObjectBody' onSubmit={submitHandler}>
                         {/* <label htmlFor='title'> Title: </label>
                         <div className='formLabels'>
                             <input id='title' name='collabrationTitle' type="text" value={pc_title} onChange={titleChangeHandler} required />
                         </div> */}
-                        <div className="addSubjectRow">
+                        <div className="addObjectRow">
                             <div>Title</div>
                             <div>:</div>
-                            <input style={{'padding': '3px 10px'}} type="text" name="collabrationTitle"
+                            <input type="text" name="collabrationTitle"
                             value={pc_title} onChange={titleChangeHandler} required></input>
                         </div>
 
@@ -109,10 +112,10 @@ function AddProjectCollabration() {
                         <div className='formLabels'>
                             <input id='tags' name='tags' placeholder='Enter tags i.e. Java,C,DSA... ' type="text" value={pc_tags} onChange={tagsChangeHandler} required />
                         </div> */}
-                        <div className="addSubjectRow">
+                        <div className="addObjectRow">
                             <div>Tags</div>
                             <div>:</div>
-                            <input style={{'padding': '3px 10px'}} type="text"
+                            <input type="text"
                             name='tags' placeholder='Enter tags i.e. Java, C, DSA... ' value={pc_tags} onChange={tagsChangeHandler} required></input>
                         </div>
 
@@ -120,18 +123,19 @@ function AddProjectCollabration() {
                         <div className='formLabels'>
                             <input id='pc_desc' name='description' type="text" value={pc_description} onChange={descriptionChangeHandler} required />
                         </div> */}
-                        <div className="addSubjectRow">
+                        <div className="addObjectRow">
                             <div>Description</div>
                             <div>:</div>
-                            <input style={{'padding': '3px 10px'}} type="text" name="description" value={pc_description} onChange={descriptionChangeHandler} required></input>
+                            <input type="text" name="description" value={pc_description} onChange={descriptionChangeHandler} required></input>
                         </div>
 
-                        <div className='addSubjectBtn'>
+                        <div className='addObjectBtn'>
                             <button onClick={clearProjectCollaboration}> Clear </button>
 
-                            <button onClick={submitHandler} >Add</button>
+                            <button type='submit'> Add Project Collaboration </button>
                         </div>
-                </div>
+                {/* </div> */}
+                </form>
             </div>
 
         </>

@@ -1,17 +1,18 @@
 const express = require("express");
 const app = express();
 const fs = require("fs");
-const { ObjectId } = require("mongodb");
-const port = 5000;  
-var bodyParser = require("body-parser");
-var jsonParser = bodyParser.json();
 const path = require("path");
 require('dotenv').config({ path: path.resolve(__dirname, '../.env') });
+const { ObjectId } = require("mongodb");
+const port = process.env.REACT_APP_PORT || 5000;
+const bodyParser = require("body-parser");
+const jsonParser = bodyParser.json();
 const User = require('./userSchema')
 const bcrypt = require("bcryptjs");
 const cookieParser = require("cookie-parser");
 
-
+app.use(bodyParser.json({ limit: "20mb" }));
+app.use(bodyParser.urlencoded({ limit: "20mb", extended: true }));
 app.use(cookieParser());
 
 const mongoose = require("mongoose");
@@ -792,7 +793,7 @@ app.post("/profile/projects/members", async (req, res) => {
     }
   }
   // // console.log(memberDataArray);
-  res.send(memberDataArray);
+  res.json(memberDataArray);
 });
 
 // app.get("/signin/home", async (req, res) => {

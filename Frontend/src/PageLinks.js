@@ -4,7 +4,7 @@ import HashLoader from "react-spinners/HashLoader";
 import './PageLinks.css'
 
 //Soham Zadafiya
-import Contest_main from './Components/Contest components/Contest_main.js';
+import Contest_main from './Components/Contest/Contest_main.js';
 
 //Kaushal Danani
 import Sign_in_page from './Components/SignIn/Sign_in_page.js';
@@ -128,18 +128,18 @@ const PageLinks = () => {
                     <Route path='/resources/rescontent/addBook' element={<AddBooks/>} />
                     <Route path='/resources/rescontent/addVideo' element={<AddVideos/>} />
                     <Route path='/resources/rescontent/addNote' element={<AddNotes/>} />
-                    <Route path='/addSubject' element={<AddSubject/>} />
+                    <Route path='/addSubject' element={<AddSubject />} />
 
                     <Route path='/discussion' element={<Discussion_Forums />} />
-                    <Route path='/discussion/addQuestion' element={<Ask_Question />} />
+                    <Route path='/discussion/addQuestion' element={<Ask_Question user={user}/>} />
                     <Route path='/discussion/question' element={<Question_data imgData={imgData}/>} />
-                    <Route path='/discussion/question/addReply' element={<Give_answer />} />
+                    <Route path='/discussion/question/addReply' element={<Give_answer user={user} />} />
                     <Route path='/project' element={<ProjectMain user={user}/>} />
-                    <Route path='/project/add_project' element={<AddProject />} />
+                    <Route path='/project/add_project' element={<AddProject user={user}/>} />
                     <Route path='/profile' element={<UserProfile user={user}/>} />
                     <Route path='/profile/edit_profile' element={<EditUserProfile user={user}/>} />
                     <Route path='/project_collab' element={<Project_Collabration />} />
-                    <Route path='/project_collab/addpost' element={<AddProjectCollabration />} />
+                    <Route path='/project_collab/addpost' element={<AddProjectCollabration user={user}/>} />
                     <Route path='*' element={<NotFoundPage />} />
                 </Routes>
             </Router>

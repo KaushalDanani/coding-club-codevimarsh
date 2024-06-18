@@ -92,15 +92,15 @@
     }
 }
 
-/* .fade-in-section {
+.fade-in-section-left {
     opacity: 0;
-    transform: translateX(40vh);
+    transform: translateX(-100%);
     visibility: hidden;
-    transition: opacity 0.6s ease-out, transform 1.2s ease-out;
+    transition: opacity 1s ease-out, transform 1.5s ease-in;
     will-change: opacity, visibility;
-  }
-  .fade-in-section.is-visible {
+}
+.fade-in-section-left.is-visible-left {
     opacity: 1;
-    transform: none;
+    transform: translateX(0%);
     visibility: visible;
-  } */
+}

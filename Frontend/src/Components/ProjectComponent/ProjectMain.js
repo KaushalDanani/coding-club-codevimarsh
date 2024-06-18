@@ -2,7 +2,6 @@
 import Navbar_after_login from "../NavbarAfterLogin/Navbar_after_login.js"
 import ProjectDisplay from "./ProjectDisplay.js";
 import React, { useEffect, useState } from "react";
-
 import { Link } from 'react-router-dom';
 // import Filter_bar from "../ProjectLibrary/Filter_bar_Project.js";
 import "./ProjectMain.css"
@@ -100,14 +99,7 @@ export default function ProjectMain(props){
                     (proj) => {
                         return(
                             <ProjectDisplay 
-                                name = {proj.projectName}
-                                tech = {proj.tags}
-                                description = {proj.description}
-                                projectinfo = {proj.projectInfo}
-                                video = {proj.video}
-                                projectlink = {proj.projectLink}
-                                team = {proj.contributors}
-                                image = {proj.image}
+                                data = {proj}
                                 admin = {admin}
                                 userID = {userID} 
                             />

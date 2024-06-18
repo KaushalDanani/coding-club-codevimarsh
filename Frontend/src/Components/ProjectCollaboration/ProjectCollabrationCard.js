@@ -7,7 +7,6 @@ import "./../Toast/toastComponent.css"
 function ProjectCollabrationCard(props) {
 
   const [expand, setExpand] = useState('ture');
-  const [isDiplay, setIsDiplay] = useState('true');
   const [base64Img,setBase64Img] = useState("");
   const [sameUser, setSameUser] = useState(true);
   const [isAdmin,setIsAdmin] = useState(false);
@@ -58,7 +57,7 @@ function ProjectCollabrationCard(props) {
         'Content-Type': 'application/json'
       }
     })
-    .then(data => {
+    .then(() => {
       props.deleteCollabCard(props.id);
 
     });
@@ -114,7 +113,7 @@ function ProjectCollabrationCard(props) {
                 </div>
                 
                 <div className='contact_lessbtn'>
-                  <button className='project_coll_more_btn' onClick={() => setExpand(!expand)}> {expand ? 'More' : 'Less'} </button>
+                  <button className='project_collab_btn' onClick={() => setExpand(!expand)}> {expand ? 'Show More' : 'Show Less'} </button>
                   { !expand ? <a href={`https://mail.google.com/mail/?view=cm&to=${props.userDetails.email}`}
                       target="_blank"> <input type="button" value="Contact" className="project_collab_btn"/> </a> : null }
                 </div>

@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { Link, Navigate } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom'
 import "./AddContest.css"
+import "../SubjectResources/AddObjectForm.css"
 import { toast } from "react-toastify";
 import ToastComponent from '../Toast/toastComponent';
 
@@ -63,8 +64,9 @@ function AddContest() {
         setSolutionLink("");
     }
 
-    function registerContest() {
+    function registerContest(e) {
 
+        e.preventDefault();
         if (cName !== "" && cType !== "" && startDate !== "" && startTime !== "" && endDate !== "" && endTime !== "" && contestLink !== "" && resultLink !== "") {
             if (startDate > endDate || (startDate == endDate && startTime > endTime)) {
                 // alert("End Date can't be before Start Date");
@@ -121,21 +123,23 @@ function AddContest() {
         <>
             {toastVisible ? <ToastComponent message={toastMessage} type={toastType} /> : null}
             <Link to={'/contest'}>
-                <div className='contestBackBtn'></div>
+                <div className='ObjectBackBtn'></div>
             </Link>
-            <div className='addContestDiv'>
-                <div className= 'addContestHeader'>Contest Registration</div>
-                <div className='addContestBody'>
+            <div className='addObjectContainer'>
+                <div className= 'addObjectHeader'>
+                    <h1>Contest Registration</h1>
+                </div>
+                <form className='addContestBody' onSubmit={registerContest}>
                     <div className="addContestRow">
                         <div>Contest Name</div>
                         <div>:</div>
-                        <input type='text' required value={cName} onChange={nameChangeHandler} />
+                        <input type='text' value={cName} onChange={nameChangeHandler} required/>
                     </div>
                     <div className="addContestRow">
                         <div>Contest Type</div>
                         <div>:</div>
-                        <select onChange={typeChangeHandler} value={cType}>
-                            <option value="">&lt; select Type &gt;</option>
+                        <select onChange={typeChangeHandler} value={cType} required>
+                            <option value="">&lt; Select type &gt;</option>
                             <option value="Daily">Daily</option>
                             <option value="weekly">Weekly</option>
                             <option value="Monthly">Monthly</option>
@@ -144,7 +148,7 @@ function AddContest() {
                     <div className="addContestRow">
                         <div>Start Date</div>
                         <div>:</div>
-                        <div className='addContestDateRow'>
+                        <div className='addObjectDateRow'>
                             <input type='date' value={startDate} onChange={sDateChangeHandler} required></input>
                             <div style={{ 'display': 'flex', 'justifyContent': 'center' }}>At</div>
                             <input type='time' value={startTime} onChange={sTimeChangeHandler} required></input>
@@ -153,7 +157,7 @@ function AddContest() {
                     <div className="addContestRow">
                         <div>End Date</div>
                         <div>:</div>
-                        <div className='addContestDateRow'>
+                        <div className='addObjectDateRow'>
                             <input type='date' value={endDate} onChange={eDateChangeHandler} required></input>
                             <div style={{ 'display': 'flex', 'justifyContent': 'center' }}>At</div>
                             <input type='time' value={endTime} onChange={eTimeChangeHandler} required></input>
@@ -170,16 +174,16 @@ function AddContest() {
                         <input type='text' value={resultLink} onChange={rLinkChangeHandler} required></input>
                     </div>
                     <div className="addContestRow">
-                        <div>solution Link (optional)</div>
+                        <div>solution Link <span style={{color: 'rgb(255, 55, 70)'}}>(Optional)</span></div>
                         <div>:</div>
                         <input type='text' value={solutionLink} onChange={sLinkChangeHandler}></input>
                     </div>
-                    <div className='addContestBtn'>
+                    <div className='addObjectBtn'>
                         <button onClick={clearHandler}>Clear</button>
-                        <button onClick={registerContest}>Add</button>
+                        <button type='submit'>Add Contest</button>
                     </div>
 
-                </div>
+                </form>
             </div>
         </>
     )

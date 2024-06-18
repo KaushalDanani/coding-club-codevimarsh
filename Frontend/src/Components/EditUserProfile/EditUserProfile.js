@@ -134,27 +134,6 @@ function EditUserProfile(props) {
     })();
   }
 
-  const checkCurrentPassword = () => {
-    const currentPwd = {
-      currentPassword: currentPass,
-    };
-
-    fetch("/check/current/password", {
-      method: "POST",
-      body: JSON.stringify(currentPwd),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        if (data.message !== undefined) setToastVisible(true);
-        setToastMessage(data.message);
-        setToastType("warning");
-        setTimeout(() => setToastVisible(false), 4000);
-      });
-  }
-
   const ToggleStyle = {
     display: "flex",
   };
@@ -286,7 +265,7 @@ function EditUserProfile(props) {
         setToastMessage("Profile Updated Successfully!!");
         setToastType("success");
 
-        setTimeout(() => setToastVisible(false), 4000);
+        setTimeout(() => setToastVisible(false), 3000);
       })
       .catch((err) => {
         console.log(err);
@@ -313,7 +292,7 @@ function EditUserProfile(props) {
           setToastVisible(true);
           setToastMessage(data.error);
           setToastType("warning");
-          setTimeout(() => setToastVisible(false), 4000);
+          setTimeout(() => setToastVisible(false), 3000);
 
           setUsername(userData.username);
           setEmail(userData.email);
@@ -321,7 +300,7 @@ function EditUserProfile(props) {
           setToastVisible(true);
           setToastMessage(data.message);
           setToastType("success");
-          setTimeout(() => setToastVisible(false), 4000);
+          setTimeout(() => setToastVisible(false), 3000);
           setUsernameTitle(username);
         }
       })
@@ -352,12 +331,12 @@ function EditUserProfile(props) {
       setToastVisible(true);
       setToastMessage("Wrong password");
       setToastType("warning");
-      setTimeout(() => setToastVisible(false), 4000);
+      setTimeout(() => setToastVisible(false), 3000);
     } else if (currentPass == newPass) {
       setToastVisible(true);
       setToastMessage("New Password cannot be same as current password!");
       setToastType("warning");
-      setTimeout(() => setToastVisible(false), 4000);
+      setTimeout(() => setToastVisible(false), 3000);
 
       setConfirmNewPass("");
       setNewPass("");
@@ -365,7 +344,7 @@ function EditUserProfile(props) {
       setToastVisible(true);
       setToastMessage("Please, keep your password minimum 8 character!!");
       setToastType("warning");
-      setTimeout(() => setToastVisible(false), 4000);
+      setTimeout(() => setToastVisible(false), 3000);
 
       setNewPass("");
       setConfirmNewPass("");
@@ -373,7 +352,7 @@ function EditUserProfile(props) {
       setToastVisible(true);
       setToastMessage("Re-Enter new password!!");
       setToastType("warning");
-      setTimeout(() => setToastVisible(false), 4000);
+      setTimeout(() => setToastVisible(false), 3000);
 
       setConfirmNewPass("");
     } else {
@@ -394,7 +373,7 @@ function EditUserProfile(props) {
           setToastVisible(true);
           setToastMessage("Password updated successfully!");
           setToastType("success");
-          setTimeout(() => setToastVisible(false), 4000);
+          setTimeout(() => setToastVisible(false), 3000);
 
           setCurrentPass("");
           setNewPass("");
@@ -412,7 +391,7 @@ function EditUserProfile(props) {
       setToastVisible(true);
       setToastMessage("Skills Updated Successfully!!");
       setToastType("success");
-      setTimeout(() => setToastVisible(false), 4000);
+      setTimeout(() => setToastVisible(false), 3000);
     }
 
     event.preventDefault();
@@ -796,7 +775,6 @@ function EditUserProfile(props) {
                   value={currentPass}
                   id="editprofile_currentpass"
                   onChange={changeCurrentPass}
-                  onBlur={checkCurrentPassword}
                   placeholder="Enter current password"
                 />
                 <span>New Password</span>

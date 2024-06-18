@@ -9,7 +9,6 @@
 .manageAdminsHeader{
     background-color: rgb(253, 138, 22);
     color: white;
-    font-size: 2rem;
     display: flex;
     width: 50%;
     letter-spacing: 1px;
@@ -17,6 +16,12 @@
     border-top-right-radius: 20px;
     border-top-left-radius: 20px;
     padding: 10px 0px;
+}
+
+.manageAdminsHeader h1 {
+    margin: 1% 0%;
+    font-size: 2rem;
+    letter-spacing: 1px;
 }
 
 .manageAdminsBody{

@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const path = require('path');
 require('dotenv').config({ path: path.resolve(__dirname, '../../.env') });
 
-const connectDB = async () => {
+const connectMongo = async () => {
     try {
         await mongoose.connect(process.env.REACT_APP_MONGODB_CONNECTION_URL);
         console.log('MongoDB connected...');
@@ -12,4 +12,4 @@ const connectDB = async () => {
     }
 };
 
-module.exports = connectDB;
+module.exports = connectMongo;

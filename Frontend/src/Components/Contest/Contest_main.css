@@ -111,24 +111,19 @@
 }
 
 .AddContestBtn{
-    font-size: 0.9rem;
-  
     position: relative;
-
     height: fit-content;
     width: fit-content;
+    font-size: 0.9rem;
     color: white;
     letter-spacing: 1px;
     padding: 1.1vh 1.4vw;
-
     background-color: rgb(253, 138, 22);
-    
     border-radius: 10px;
 }
 
 .AddContestBtn:hover{   
     cursor: pointer;
     color: #ffffff;
-
     background-color: rgb(189, 95, 0);
 }

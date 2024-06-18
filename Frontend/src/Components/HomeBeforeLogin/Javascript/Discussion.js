@@ -25,7 +25,7 @@ export default function Discussion(){
 
 
     return(
-        <div className={`discussion fade-in-section ${isVisible ? 'is-visible' : ''}`}
+        <div className={`discussion fade-in-section-left ${isVisible ? 'is-visible-left' : ''}`}
         ref={domRef} id="discussionSource">
             <div className="image">
                 <img src="/images/Discussion.jpg" alt="Discussion image"></img>

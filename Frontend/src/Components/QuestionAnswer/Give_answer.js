@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-
 import './Give_answer.css';
+import '../SubjectResources/AddObjectForm.css'
 import useUser from "../../store/userContext.js";
 import ToastComponent from "../Toast/toastComponent.js";
 
-function Give_answer() {
+function Give_answer(props) {
 
     const navigate = useNavigate();
     const location = useLocation();
@@ -13,9 +13,14 @@ function Give_answer() {
 
     const [Reply, setReply] = useState("");
     const [Code, setCode] = useState("");
-    const { user, setUser } = useUser();
-    const userID = user._id;
     const q_id = searchParams.get("q_id");
+
+    const [userID, setUserID] = useState();
+
+    useEffect(() => {
+        if(props.user)
+            setUserID(props.user._id);
+    },[props.user])
 
     const [toastVisible, setToastVisible] = useState(false);
     const [toastMessage, setToastMessage] = useState("");
@@ -24,16 +29,24 @@ function Give_answer() {
     function addReply() {
         const reply = document.getElementById("reply_text").value;
         setReply(reply);
-        
     }
 
     function addCode() {
         const code = document.getElementById("code_text").value;
         setCode(code);
-        
     }
 
-    function addMyReply() {
+    function clearReplyData() {
+        document.getElementById("reply_text").value = "";
+        setReply("");
+
+        document.getElementById("code_text").value = "";
+        setCode("");
+    }
+
+    function addMyReply(e) {
+
+        e.preventDefault();
         fetch("/addmyreply", {
             method: 'POST',
             body: JSON.stringify({
@@ -65,35 +78,41 @@ function Give_answer() {
             {toastVisible ? <ToastComponent message={toastMessage} type={toastType} /> : null}
 
             <Link to={`/discussion/question/?q_id=${q_id}`}>
-                <div className='replyBackBtn'></div>
+                <div className='ObjectBackBtn'></div>
             </Link>
-            <div className="addReplyContainer">
-                <div className="addReplyHeader">
-                    <h1><p className="reply">Add Your Reply</p></h1>
+            <div className="addObjectContainer">
+                <div className="addObjectHeader">
+                    <h1>Add Your Reply</h1>
                 </div>
-                <hr style={{ height: '2.5px', width: '100%', backgroundColor: 'white', margin: '0px' }} />
-                <div className="formDivRep">
+                <form className="addObjectBody" onSubmit={addMyReply}>
 
-                    <form action="/" className="reply_main" id="reply_main">
-
-                        <div className="r_reply">
+                        {/* <div className="r_reply">
                             <label htmlFor="reply_text">Reply :</label>
                             <p></p>
                             <textarea name="reply_text" id="reply_text" onChange={addReply} cols="" rows="2"></textarea>
+                        </div> */}
+                        <div style={{'gridTemplateColumns': '2.7fr 1fr 20fr'}} className="addObjectRow replyRow">
+                            <div>Reply</div>
+                            <div>:</div>
+                            <textarea name="reply_text" id="reply_text" onChange={addReply} cols="" rows="4" required></textarea>
                         </div>
-                        <div className="r_code">
+
+                        {/* <div className="r_code">
                             <label htmlFor="code_text">Code :</label>
                             <p></p>
                             <textarea name="code_text" id="code_text" onChange={addCode} cols="" rows="2"></textarea>
+                        </div> */}
+                        <div style={{'gridTemplateColumns': '2.7fr 1fr 20fr'}} className="addObjectRow replyRow">
+                            <div>Code</div>
+                            <div>:</div>
+                            <textarea name="code_text" id="code_text" onChange={addCode} cols="" rows="5" required></textarea>
                         </div>
 
-                        <div className="buttonSection">
-                            <Link to={`/discussion/question/?q_id=${q_id}`}> <button className='addFormButton'> Cancel </button> </Link>
-
-                            <Link><button onClick={addMyReply} className="addFormButton">Submit</button></Link>
+                        <div className="addObjectBtn">
+                            <button onClick={clearReplyData}> Clear </button>
+                            <button type="submit">Add Reply</button>
                         </div>
-                    </form>
-                </div>
+                </form>
             </div>
         </>
     );

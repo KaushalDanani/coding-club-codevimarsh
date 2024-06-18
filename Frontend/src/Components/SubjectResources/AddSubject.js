@@ -1,8 +1,6 @@
-import React, { useEffect, useState } from "react";
-import { Navigate, useSearchParams } from 'react-router-dom';
+import React, { useState } from "react";
 import { Link, useNavigate } from 'react-router-dom'
-import './AddSubject.css';
-import Navbar_after_login from "../NavbarAfterLogin/Navbar_after_login.js";
+import './AddObjectForm.css';
 import ToastComponent from "../Toast/toastComponent.js";
 
 export default function AddSubject() {
@@ -82,17 +80,15 @@ export default function AddSubject() {
     return (
         <>
             {toastVisible ? <ToastComponent message={toastMessage} type={toastType} /> : null}
-            {/* <Navbar_after_login /> */}
+
             <Link to={'/resources'}>
-                <div className='contestBackBtn'></div>
+                <div className='ObjectBackBtn'></div>
             </Link>
-            <div className="addSubjectContainer">
-                <div className="addSubjectHeader">
+            <div className="addObjectContainer">
+                <div className="addObjectHeader">
                     <h1>Add Subject</h1>
                 </div>
-                {/* <hr style={{ height: '2.5px', width: '100%', backgroundColor: 'white', margin: '0px' }} /> */}
-                <div className="addSubjectBody">
-                    
+                <div className="addObjectBody">
 
                         {/* <div className="q_tital">
                             <label htmlFor="tital_text">Subject :</label>
@@ -100,10 +96,10 @@ export default function AddSubject() {
                             <input type="text" name="tital_text" id="title_text"></input>
                         </div> */}
 
-                        <div className="addSubjectRow">
+                        <div className="addObjectRow">
                             <div>Subject</div>
                             <div>:</div>
-                            <input style={{'padding': '3px 10px'}} type="text" name="tital_text" id="title_text"></input>
+                            <input type="text" name="tital_text" id="title_text" required></input>
                         </div>
                         
                         {/* <div className="q_code">
@@ -112,18 +108,18 @@ export default function AddSubject() {
                             <input className="fileInput" type="file" name="code_text" id="img_text" onChange={(e) => { logoMaker(e) }}  cols="" rows="2"></input>
                         </div> */}
 
-                        <div className="addSubjectRow">
+                        <div className="addObjectRow">
                             <div>Subject Logo</div>
                             <div>:</div>
-                            <input className="fileInput" type="file" name="code_text" id="img_text" onChange={(e) => { logoMaker(e) }}  cols="" rows="2"></input>
+                            <input className="fileInput" type="file" name="subLogo" id="img_text" onChange={(e) => { logoMaker(e) }} required></input>
                         </div>
 
 
-                        <div className='addSubjectBtn'>
+                        <div className='addObjectBtn'>
                             {/* <Link to={'/resources'}> <button id='pc_cancelbtn' className='addProjectCollabrationBtn'> Cancel </button> </Link> */}
 
                             <button onClick={clearData}> Clear </button>
-                            <button onClick={subName}> Add </button>
+                            <button onClick={subName}> Add Subject </button>
                         </div>
 
                     

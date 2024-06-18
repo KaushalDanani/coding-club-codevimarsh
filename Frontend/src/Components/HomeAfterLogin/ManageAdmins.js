@@ -106,11 +106,11 @@ function ManageAdmins() {
     return (
         <>
             {toastVisible ? <ToastComponent message={toastMessage} type={toastType} /> : null}
-            <Link to={'/'}>
+            <Link to={'/home'}>
                 <div className='adminBackBtn'></div>
             </Link>
             <div className='manageAdminsDiv'>
-                <div className='manageAdminsHeader'>Admin List</div>
+                <div className='manageAdminsHeader'><h1>Admin List</h1></div>
                 <div className='manageAdminsBody'>
                     <div className='manageAdminsBodyRow'
                         style={{ 'marginBottom': '1.5vh' }}>

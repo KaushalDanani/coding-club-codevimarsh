@@ -7,6 +7,7 @@ import Navbar_after_login from '../NavbarAfterLogin/Navbar_after_login.js';
 import { Link,useNavigate , useLocation } from 'react-router-dom';
 import useUser from '../../store/userContext.js';
 import ToastComponent from '../Toast/toastComponent.js';
+import MyFooterAfterLogin from '../FooterAfterLogin/MyfooterAfterLogin.js'
 
 function ResourcesContent(props) {
     const navigate = useNavigate();
@@ -217,6 +218,7 @@ function ResourcesContent(props) {
                     </div>
                 </div>
             </div>
+            <MyFooterAfterLogin />
         </>
     );
 }

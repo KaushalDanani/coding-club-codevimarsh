@@ -141,7 +141,7 @@
     float: right;
     /* height: 4.5vh; */
     padding: 0.4vh 1.4vw;
-    margin-right: 1vw;
+    margin-right: 1.1rem;
     font-size: 1.05rem;
     /* font-weight: 600; */
     border-radius: 5vh;
@@ -153,29 +153,11 @@
     /* box-shadow: 0 3.5px black; */
 }
 .project_collab_btn:hover {
-    color: rgb(0, 0, 0) !important;
-    background-color: #ffffff !important;
-    border: 2px solid #ffffff !important;
+    color: rgb(255, 255, 255);
+    background-color: rgb(189, 95, 0) !important;
+    border: 1.5px solid rgb(189, 95, 0);
     /* box-shadow: none; */
     /* box-shadow: 0 0 10px rgb(0, 0, 0); */
-}
-
-.project_coll_more_btn {
-    float: right;
-    padding: 0.5vh 1.4vw !important;
-    border-radius: 5.5vh;
-    font-size: 1.05rem;
-    /* margin-top: 0.8vw; */
-    letter-spacing: 0.5px;
-    margin-right: 1.2vw !important;
-    color: white;
-    border: 1.5px solid #000000f3;
-    background-color: rgb(253, 138, 22);
-}
-.project_coll_more_btn:hover {
-    color: black;
-    background-color: #ffffff !important;
-    border: 1.5px solid #ffffff !important;
 }
 
 .project_more_btn_show {

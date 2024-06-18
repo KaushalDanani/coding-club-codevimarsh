@@ -30,5 +30,4 @@ const projectCollabrationSchema = new mongoose.Schema({
 })
 
 const projectCollabration = mongoose.model("projectCollabrations", projectCollabrationSchema)
-
 module.exports = projectCollabration;

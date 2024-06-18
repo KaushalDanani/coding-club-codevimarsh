@@ -55,7 +55,7 @@
     display: flex;
     justify-content: center;
     align-items: start;
-    height: 80vh;
+    height: 96vh;
   }
 
   .ResourcesContentList {
@@ -121,18 +121,20 @@
     color: rgba(255, 255, 255, 0.7);
     position: relative;
     display: flex;
-    padding: 1.5% 3% 0% 3%;
+    padding: 1.5% 3% 2% 3%;
     border-radius: 12px;
     backdrop-filter: blur(5px);
     background-color: rgba(255, 255, 255, 0.1);
     box-shadow: 0px 0px 12px 2px rgb(0, 0, 0);
     max-height: 100%;
     overflow: auto;
+    scrollbar-width: thin;
+    scrollbar-color: rgb(253, 138, 22) #1e1e1e;
   }
 
   .ResourcesContentMain .text-content::-webkit-scrollbar {
-    background-color: #2D003B;
-    width: 4px;
+    background-color: #1e1e1e;
+    width: 6px;
   }
 
   .ResourcesContentMain .text-content::-webkit-scrollbar-thumb {
@@ -149,7 +151,7 @@
     display: flex;
     font-size: 2rem;
     position: sticky;
-    top: 0px;
+    /* top: 0px; */
     font-weight: 500;
     z-index: 5;
     color: white;

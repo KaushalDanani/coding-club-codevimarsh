@@ -1,6 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
 import "./LoginHomePage.css";
-import Myfooter from "../../Components/HomeBeforeLogin/CSS/Myfooter.css";
 import Greeting from "./Greeting.js";
 import NewTasks from "./NewTasks.js";
 import NewUpdates from "./NewUpdates.js";
@@ -11,6 +10,7 @@ import HashLoader from "react-spinners/HashLoader.js";
 import { useLocation } from "react-router-dom";
 
 function LoginHomePage(props) {
+  const api_key = process.env.REACT_APP_QUOTE_API_KEY;
   const [isLoadingHome, setIsLoadingHome] = useState(false);
   const [fname, setFname] = useState("");
   const [userID, setUserID] = useState("");
@@ -25,13 +25,22 @@ function LoginHomePage(props) {
   const { user, setUser } = useUser();
 
   useEffect(() => {
-    fetch("https://api.quotable.io/random")
+    fetch(api_key)
       .then((response) => response.json())
       .then((quote) => {
         setQuote(quote.content);
         setAuthor(quote.author);
       });
   }, []);
+
+  const changeQuoteHandler = () => {
+    fetch(api_key)
+      .then((response) => response.json())
+      .then((quote) => {
+        setQuote(quote.content);
+        setAuthor(quote.author);
+      });
+  };
 
   useEffect(() => {
     (async () => {
@@ -84,16 +93,6 @@ function LoginHomePage(props) {
     })();
   }, []);
 
-  const changeQuoteHandler = () => {
-    fetch("https://api.quotable.io/random")
-      .then((response) => response.json())
-      .then((quote) => {
-        setQuote(quote.content);
-        setAuthor(quote.author);
-      });
-  };
-
-  
 
   if (isLoadingHome)
     return (

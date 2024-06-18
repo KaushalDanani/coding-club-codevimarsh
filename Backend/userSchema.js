@@ -106,8 +106,6 @@ userSchema.pre(["updateOne", "findByIdAndUpdate", "findOneAndUpdate"], async fun
 });
 
 
-
-
 userSchema.methods.generateAuthToken = async function() {
     try {
         const token = jwt.sign({_id:this._id.toString(), email:this.email}, process.env.REACT_APP_SECRET_TOKEN_KEY);
