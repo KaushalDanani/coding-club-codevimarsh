@@ -89,7 +89,7 @@ function AddContest() {
                     sLink: solutionLink,
                 }
 
-                fetch("/registerContest/", {
+                fetch("/contest/registerContest/", {
                     method: "POST",
                     body: JSON.stringify(contestData),
                     headers: {

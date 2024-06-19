@@ -10,11 +10,11 @@ app.use(express.json());
 
 // profile/edit profile also in user
 app.use('/user', require('./routes/userRoutes.js'))
-app.use('/contest', require('./routes/'))
+app.use('/contest', require('./routes/contestRoutes.js'))
 app.use('/resources', require('./routes/'))
 app.use('/disscusion', require('./routes/'))
 app.use('/projectCollaboration', require('./routes/'))
-app.use('/project', require('./routes/'))
+app.use('/project', require('./routes/projectRoutes.js'))
 
 app.use(errorHandler);
 
