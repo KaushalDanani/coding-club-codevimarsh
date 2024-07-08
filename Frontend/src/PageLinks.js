@@ -113,7 +113,7 @@ const PageLinks = () => {
         <>
             <Router>
                 <Routes>
-                    <Route path='/' element={<Home_page_before_login />} />
+                    <Route path='/' element={<Home_page_before_login user={user} />} />
                     <Route path='/signin' element={<Sign_in_page />} />
                     <Route path='/signup/step-1' element={<Sign_up_first_page />} />
                     <Route path='/signup/step-2' element={<Sign_up_second_page />} />
