@@ -43,7 +43,6 @@ function EditUserProfile(props) {
   const [isEditSelected, setEditSelected] = useState({
     PersonalInfo: "true",
     AccountInfo: "false",
-    CollegeInfo: "false",
     PasswordInfo: "false",
   });
 
@@ -88,7 +87,6 @@ function EditUserProfile(props) {
 
   const changeEditSection = (active) => {
     document.getElementById("personalInfo").checked = false;
-    document.getElementById("collegeDetails").checked = false;
     document.getElementById("account").checked = false;
     document.getElementById("changePassword").checked = false;
     document.getElementById(active).checked = true;
@@ -153,7 +151,6 @@ function EditUserProfile(props) {
     setEditSelected({
       PersonalInfo: "false",
       AccountInfo: "false",
-      CollegeInfo: "false",
       PasswordInfo: "false",
       [name]: "true",
     });
@@ -518,14 +515,14 @@ function EditUserProfile(props) {
             }}
             defaultChecked
           />
-          <input
+          {/* <input
             type="radio"
             name="slider"
             id="collegeDetails"
             onClick={() => {
               changeEditSection("collegeDetails");
             }}
-          />
+          /> */}
           <input
             type="radio"
             name="slider"
@@ -548,11 +545,11 @@ function EditUserProfile(props) {
           }}>
             <span>Personal Info</span>
           </label>
-          <label htmlFor="collegeDetails" className="collegeDetails" onClick={() => {
+          {/* <label htmlFor="collegeDetails" className="collegeDetails" onClick={() => {
             return changeEditSelected("CollegeInfo");
           }}>
             <span>College Details</span>
-          </label>
+          </label> */}
           <label htmlFor="account" className="account" onClick={() => {
             return changeEditSelected("AccountInfo");
           }}>
@@ -709,7 +706,7 @@ function EditUserProfile(props) {
           </div>
 
           {/* College Info Section */}
-          <div
+          {/* <div
             className="EditCollegeInfoDisplay"
             style={
               isEditSelected.CollegeInfo == "true"
@@ -748,7 +745,7 @@ function EditUserProfile(props) {
                 </div>
               </div>
             </form>
-          </div>
+          </div> */}
 
           {/* Change Password Section */}
           <div

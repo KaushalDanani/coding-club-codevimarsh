@@ -1,57 +1,25 @@
-.first_lastname_field {
-    display: flex;
-    gap: 15px;
+.sign-up_section .container .form .final_signup .final_signupButton {
+    width: 45%;
+    /* box-sizing: border-box; */
+    float: right;
+    text-transform: uppercase;
+    background-color: transparent;
+    border: 2px solid #db00ef;
+    font-size: 19px;
+    color: #ffffff;
+    padding: 8px;
+    border-radius: 20px;
+    /* border: 2px solid #db00ef; */
+}
+.sign-up_section .container .form .final_signup .final_signupButton:hover {
+    background-color: #db00ef;
 }
 
-.sign-up_section .container .form .inputbox #g_year {
-    width: 100%;
-    box-sizing: border-box;
-    background-color: #333;
-    /* outline: #cb3131; */
-    font-size: 17.5px;
-    color: #ffffff;
-    padding: 12px 17px 12px 17px;
-    border-radius: 20px;
-    appearance: none;
-    background-image: url(/public/images/options-expand-arrow.png);
-    background-repeat: no-repeat;
-    background-size: 6% 35%;
-    background-position: 95%;
-    border: 2px solid #db00ef;
-}
-
-.sign-up_section .container .form .inputbox #dept {
-    width: 100%;
-    box-sizing: border-box;
-    background-color: #333;
-    /* outline: #cb3131; */
-    font-size: 17.5px;
-    color: #ffffff;
-    padding: 12px 17px 12px 17px;
-    border-radius: 20px;
-    appearance: none;
-    background-image: url(/public/images/options-expand-arrow.png);
-    background-repeat: no-repeat;
-    background-size: 6% 35%;
-    background-position: 95%;
-    border: 2px solid #db00ef;
-}
-
-.sign-up_section .container .form .inputbox #programme {
-    width: 100%;
-    box-sizing: border-box;
-    background-color: #333;
-    /* outline: #cb3131; */
-    font-size: 17.5px;
-    color: #ffffff;
-    padding: 12px 17px 12px 17px;
-    border-radius: 20px;
-    appearance: none;
-    background-image: url(/public/images/options-expand-arrow.png);
-    background-repeat: no-repeat;
-    background-size: 6% 35%;
-    background-position: 95%;
-    border: 2px solid #db00ef;
+.trackbar {
+    width: 33%;
+    height: 100%;
+    margin-top: 3.5%;
+    background-color: bisque;
 }
 
 .sign-up_section .container .form .backbox .backButtonDiv {
@@ -74,36 +42,4 @@
     background-repeat: no-repeat;
     background-size: 13% 50%;
     background-position: 2.4vw;
-}
-
-.trackbar {
-    width: 33%;
-    height: 100%;
-    margin-top: 3.5%;
-    background-color: bisque;
-}
-#secondbar {
-    transform: skew(-45deg);
-    background-color: #db00ef;
-}
-
-@media (max-width: 500px) {
-    .sign-up_section .container .form .inputbox #g_year,
-    .sign-up_section .container .form .inputbox #dept,
-    .sign-up_section .container .form .inputbox #programme {
-        padding: 9px 20px 9px 13px;
-        border-radius: 15px !important;
-    }
-
-    .sign-up_section .container .form .backbox input:hover {
-        background-position: 8px;
-        padding: 8px 0px 8px 13px;
-    }
-
-    .first_lastname_field {
-        display: inline-block !important;
-    }
-    #lastNameContainer {
-        margin-top: 19px;
-    }
 }

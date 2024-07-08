@@ -7,28 +7,25 @@ function Sign_up_first_page() {
 
     const navigate = useNavigate();
     
-    const [email, setEmail] = useState('')
+    const [prn, setPrn] = useState('')
     const [uname, setUname] = useState('')
     const [pwd, setPwd] = useState('')
-    const [cpwd, setCpwd] = useState('')
     const [showhide, setShowhide] = useState('true');
     const [showhideforconfirm, setShowhideforconfirm] = useState('true')
 
     useEffect(() => {
         
-            if(sessionStorage.getItem('email_id') != null)
-                setEmail(sessionStorage.getItem('email_id'))
+            if(sessionStorage.getItem('prn') != null)
+                setPrn(sessionStorage.getItem('prn'))
             if(sessionStorage.getItem('username') != null)
                 setUname(sessionStorage.getItem('username'))
             if(sessionStorage.getItem('password') != null)
                 setPwd(sessionStorage.getItem('password'))
-            if(sessionStorage.getItem('confirm_password') != null)
-                setCpwd(sessionStorage.getItem('confirm_password'))
     }, []);
 
 
-    const emailChangeHandler = (event) => {
-        setEmail(event.target.value)
+    const prnChangeHandler = (event) => {
+        setPrn(event.target.value)
     }
     const usernameChangeHandler = (event) => {
         setUname(event.target.value)
@@ -36,10 +33,7 @@ function Sign_up_first_page() {
     const pwdChangeHandler = (event) => {
         setPwd(event.target.value)
     }
-    const cpwdChangeHandler = (event) => {
-        setCpwd(event.target.value)
-    }
-
+    
     const passwordVisibilityHandler = (e) => {
         setShowhide(!showhide);
 
@@ -61,14 +55,13 @@ function Sign_up_first_page() {
     }
 
     function data() {
-        sessionStorage.setItem('email_id', email);
+        sessionStorage.setItem('prn', prn);
         sessionStorage.setItem('username', uname);
         sessionStorage.setItem('password', pwd);
-        sessionStorage.setItem('confirm_password', cpwd);
     }
 
     function validationData () {
-        if ((email !== '') && (uname !== '') && (cpwd === pwd) && (pwd.length > 7))
+        if ((prn !== '') && (uname  !== '') && (pwd.length > 7))
             navigate('/signup/step-2')
         else
             alert("Please, fill all required information...")
@@ -88,6 +81,7 @@ function Sign_up_first_page() {
 
   return (
         <section className='sign-up_section'>
+            <>
             <span></span>
             <span></span>
             <span></span>
@@ -313,7 +307,7 @@ function Sign_up_first_page() {
             <span></span>
             <span></span>
             <span></span>
-
+            </>
 
         
             <div className="signup">
@@ -322,9 +316,9 @@ function Sign_up_first_page() {
                     <form>
                         <div className="form">
                             <div className="inputbox">
-                                <input type="text" name='email_id' value={email} onChange={emailChangeHandler} required />
-                                <label> E-mail ID </label>
-                                { (email === '') && (<div className='requireSuggestion'> *Email ID is required. </div>) }
+                                <input type="text" name='prn' value={prn} onChange={prnChangeHandler} required />
+                                <label> PRN </label>
+                                { (prn === '') && (<div className='requireSuggestion'> *PRN ID is required. </div>) }
                             </div>
                             
                             <div className="inputbox"> 
@@ -339,19 +333,13 @@ function Sign_up_first_page() {
                                 { (pwd === '') && (<div className='requireSuggestion'> *Password is required. </div>) }
                                 { (pwd.length < 8 && pwd !== '') && (<div className='requireSuggestion'> *Length must be &gt;= 8 Characters. </div>) }
                             </div>
-                            <div className="inputbox">
-                                <div className={showhideforconfirm ? "show_pwd_signup" : "hide_pwd_signup"} onClick={confirmPasswordVisibilityHandler}/>
-                                <input id='confirmPwd' type="password" name='confirm_password' value={cpwd} onChange={cpwdChangeHandler} required />
-                                <label> Confirm Password </label>
-                                { (pwd !== cpwd || cpwd === '') && (<div className='requireSuggestion'> *Confirm Password isn't match. </div>) }
-                            </div>
+                            
                             <div className="signupbox">
                                 <button className='signupButton' onClick={submitHandler}> Next </button>
                             </div>
 
-                            <div style={{display: 'flex', height: '10px', gap: '5%'}}>
+                            <div style={{display: 'flex', height: '10px', gap: '5%',justifyContent: 'center'}}>
                                 <div className="trackbar" id='firstbar'></div>
-                                <div className="trackbar"></div>
                                 <div className="trackbar"></div>
                             </div>
                         </div>
