@@ -253,9 +253,9 @@ function Home_page_before_login(props) {
                 </div>
                 <Myfooter />
             </>
-            )
-        
-    );
+            
+        )
+    )
 }
 
 export default Home_page_before_login;

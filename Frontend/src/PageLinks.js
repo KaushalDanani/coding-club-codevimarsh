@@ -10,7 +10,6 @@ import Contest_main from './Components/Contest/Contest_main.js';
 import Sign_in_page from './Components/SignIn/Sign_in_page.js';
 import Sign_up_first_page from './Components/SignIn/Sign_up_first_page.js';
 import Sign_up_second_page from './Components/SignIn/Sign_up_second_page.js';
-import Sign_up_third_page from './Components/SignIn/Sign_up_third_page.js';
 import Project_Collabration from './Components/ProjectCollaboration/Project_Collabration.js';
 import AddProjectCollabration from './Components/ProjectCollaboration/AddProjectCollabration.js';
 import NotFoundPage from './Components/PageNotFound/NotFoundPage.js';
@@ -61,7 +60,7 @@ const PageLinks = () => {
                 });
                 const [data] = await response.json();
                 setUser(data);
-                setImgData(data.profileImg);
+                // setImgData(data.profileImg);
                 console.log('-----------------------------USER-------------------------', data);
                 setIsLoading(false);
                 
@@ -119,7 +118,6 @@ const PageLinks = () => {
                     <Route path='/signin' element={<Sign_in_page />} />
                     <Route path='/signup/step-1' element={<Sign_up_first_page />} />
                     <Route path='/signup/step-2' element={<Sign_up_second_page />} />
-                    <Route path='/signup/step-3' element={<Sign_up_third_page />} />
                     <Route path='/manageAdmins' element={<ManageAdmins />} />
                     <Route path='/contest' element={<Contest_main user={user} />} />
                     <Route path='/addContest' element={<AddContest />} />

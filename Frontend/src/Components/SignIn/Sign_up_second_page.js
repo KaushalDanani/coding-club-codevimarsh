@@ -1,73 +1,98 @@
 import React from 'react'
-import { Link, useNavigate } from 'react-router-dom'
-import { useState, useEffect } from 'react';
-import "./Sign_up_first_page.css";
-import "./Sign_up_second_page.css";
+import { useNavigate } from 'react-router-dom'
+import { useState, useEffect } from 'react'
+import "./Sign_up_first_page.css"
+import "./Sign_up_second_page.css"
+import useUser from '../../store/userContext.js'
+
 
 function Sign_up_second_page() {
 
-    const navigate = useNavigate()
+    const {user, setUser} = useUser();
+    const navigate = useNavigate();
 
-    const [fname, setFname] = useState('')
-    const [lname, setLname] = useState('')
-    const [selectedG_yearOption, setSelectedG_yearOption] = useState('');
-    const [selectedDeptOption, setSelectedDeptOption] = useState('');
-    const [selectedProgrammeOption, setSelectedProgrammeOption] = useState('');
+    const [linkedIn, setLinkedIn] = useState('')
+    const [codeChef, setCodeChef] = useState('')
+    const [leetCode, setLeetCode] = useState('')
 
     useEffect(() => {
-        if(sessionStorage.getItem('first_name') != null)
-            setFname(sessionStorage.getItem('first_name'))
-        if(sessionStorage.getItem('last_name') != null)
-            setLname(sessionStorage.getItem('last_name'))
-        if(sessionStorage.getItem('graduation_year') != null)  
-            setSelectedG_yearOption(sessionStorage.getItem('graduation_year'))
-        if(sessionStorage.getItem('programme') != null)
-            setSelectedProgrammeOption(sessionStorage.getItem('programme'))
-        if(sessionStorage.getItem('department') != null)
-            setSelectedDeptOption(sessionStorage.getItem('department'))
+        if(sessionStorage.getItem('linkedin_id') != null)
+            setLinkedIn(sessionStorage.getItem('linkedin_id'))
+        if(sessionStorage.getItem('codechef_id') != null)
+            setCodeChef(sessionStorage.getItem('codechef_id'))
+        if(sessionStorage.getItem('leetcode_id') != null)
+            setLeetCode(sessionStorage.getItem('leetcode_id'))   
     }, []);
 
-    const fnameChangeHandler = (e) => {
-        setFname(e.target.value)
+    const linkedInChangeHandler = (e) => {
+        setLinkedIn(e.target.value)
     }
-    const lnameChangeHandler = (e) => {
-        setLname(e.target.value)
+    const codeChefChangeHandler = (e) => {
+        setCodeChef(e.target.value)
     }
-    const g_yearChangeHandler = (e) => {
-        setSelectedG_yearOption(e.target.value);
-    }
-    const deptChangeHandler = (e) => {
-        setSelectedDeptOption(e.target.value);
-    }
-    const programmeChangeHandler = (e) => {
-        setSelectedProgrammeOption(e.target.value);
+    const leetCodeChangeHandler = (e) => {
+        setLeetCode(e.target.value)
     }
 
-    const submitHandler = (e) => {
+    const submitHandle = async (e) => {
         e.preventDefault();
 
-        if(fname !== '' && lname !== '' && selectedG_yearOption !== '' && selectedDeptOption !== '' && selectedProgrammeOption !== '')
-            navigate('/signup/step-3')
-        else
-            alert("Please, fill all required information...")
+        sessionStorage.setItem('linkedin_id', linkedIn)
+        sessionStorage.setItem('codechef_id', codeChef)
+        sessionStorage.setItem('leetcode_id', leetCode)
 
-        sessionStorage.setItem('first_name', fname)
-        sessionStorage.setItem('last_name', lname)
-        sessionStorage.setItem('graduation_year', selectedG_yearOption)
-        sessionStorage.setItem('programme', selectedProgrammeOption)
-        sessionStorage.setItem('department', selectedDeptOption)
+        const formData = {
+            prn: sessionStorage.getItem('prn'),
+            username: sessionStorage.getItem('username'),
+            password: sessionStorage.getItem('password'),
+            linkedin: sessionStorage.getItem('linkedin_id'),
+            codechef: sessionStorage.getItem('codechef_id'),
+            leetcode: sessionStorage.getItem('leetcode_id')
+        }
 
-        // document.cookie = 'first_name=' + fname + ';' + 'expires=' + new Date(3000, 0, 1).toUTCString();
-        // document.cookie = 'last_name=' + lname + ';' + 'expires=' + new Date(3000, 0, 1).toUTCString();
-        // document.cookie = 'graduation=' + selectedG_yearOption + ';' + 'expires=' + new Date(3000, 0, 1).toUTCString();
-        // document.cookie = 'programme=' + selectedProgrammeOption + ';' + 'expires=' + new Date(3000, 0, 1).toUTCString();
-        // document.cookie = 'department=' + selectedDeptOption + ';' + 'expires=' + new Date(3000, 0, 1).toUTCString();
-        // navigate('/signup/step-3')
-    }
+        // document.cookie = 'linkedin_id=' + linkedIn + ';' + 'expires=' + new Date(3000, 0, 1).toUTCString();
+        // document.cookie = 'codechef_id=' + codeChef + ';' + 'expires=' + new Date(3000, 0, 1).toUTCString();
+        // document.cookie = 'leetcode_id=' + leetCode + ';' + 'expires=' + new Date(3000, 0, 1).toUTCString();
     
+        fetch("/usersignup", {
+            method: "POST",
+            body: JSON.stringify(formData),
+            headers: { 
+                'Content-Type': 'application/json' 
+            }
+        })
+        .then(response => response.json())
+        .then(data => {
+            // console.log(data.error);
+            // alert(data.userID);
+            if(data.error === undefined){
+
+                sessionStorage.removeItem('prn');
+                sessionStorage.removeItem('username');
+                sessionStorage.removeItem('password');
+                sessionStorage.removeItem('linkedin_id');
+                sessionStorage.removeItem('codechef_id');
+                sessionStorage.removeItem('leetcode_id');
+
+                // sessionStorage.setItem('userID', data.userID)
+                setUser(data.user);
+                navigate("/home")
+            }
+            else{
+                alert(data.error)
+            }
+            
+            // console.log(data);
+        })
+          .catch((error) => {
+            // Handle network errors
+            console.log(error)
+          });
+    }
 
   return (
-        <section className='sign-up_section'>
+    <section className='sign-up_section'>
+        <>
             <span></span>
             <span></span>
             <span></span>
@@ -293,69 +318,39 @@ function Sign_up_second_page() {
             <span></span>
             <span></span>
             <span></span>
-
+            </>
 
         
             <div className="signup">
                 <div className="container">
                     <h2> Sign Up </h2>
-                    <form>
+                    <form action="/userSignup" method='POST'>
                         <div className="form">
-                            <div className='first_lastname_field'>
-                                <div className="inputbox">
-                                    <input type="text" name='first_name' value={fname} onChange={fnameChangeHandler} required={true} />
-                                    <label> First Name </label>
-                                    { (fname === '') && (<div className='requireSuggestion'> *First name is required. </div>) }
-                                </div>
-                                <div id='lastNameContainer' className="inputbox"> 
-                                    <input type="text" name='last_name' value={lname} onChange={lnameChangeHandler} required={true} />
-                                    <label> Last Name </label>
-                                    { (lname === '') && (<div className='requireSuggestion'> *Last name is required. </div>) }
-                                </div>
-                            </div>
-                            <div className="inputbox" >
-                                <select name='graduation' id='g_year' value={selectedG_yearOption} onChange={g_yearChangeHandler}>
-                                    <option value="" disabled hidden>Select a Graduation Year</option>
-                                    <option value="2024">2024</option>
-                                    <option value="2025">2025</option>
-                                    <option value="2026">2026</option>
-                                    <option value="2027">2027</option>
-                                    <option value="2028">2028</option>
-                                </select>
-                                { (selectedG_yearOption === '') && (<div className='requireSuggestion'> *Graduation year is required. </div>) }
-                            </div>
                             <div className="inputbox">
-                                <select name='programme' id='programme' value={selectedProgrammeOption} onChange={programmeChangeHandler}>
-                                    <option value="" disabled hidden>Select a Programme</option>
-                                    <option value="Bachelor's of Engineering">Bachelor's of Engineering</option>
-                                    <option value="Bachelor's of Computer Application">Bachelor's of Computer Application</option>
-                                    <option value="Masters of Computer Application">Masters of Computer Application</option>
-                                </select>
-                                { (selectedProgrammeOption === '') && (<div className='requireSuggestion'> *Programme is required. </div>) }
+                                <input name='linkedin_id' value={linkedIn} onChange={linkedInChangeHandler} type="text" required />
+                                <label> Linked-in ID </label>
                             </div>
-                            <div className="inputbox">
-                                <select name='department' id='dept' value={selectedDeptOption} onChange={deptChangeHandler}>
-                                    <option value="" disabled hidden>Select a Department</option>
-                                    <option value="Computer Science & Engg.">Computer Science & Engg.</option>
-                                    <option value="Electrical Engineering">Electrical Engineering</option>
-                                    <option value="Electronic Engineering">Electronic Engineering</option>
-                                    <option value="Mechanical Engineering">Mechanical Engineering</option>
-                                </select>
-                                { (selectedDeptOption === '') && (<div className='requireSuggestion'> *Department is required. </div>) }
+                            <div className="inputbox"> 
+                                <input name='codechef_id'  value={codeChef} onChange={codeChefChangeHandler} type="text" required />
+                                <label> Code-Chef ID </label>
                             </div>
+                            <div className="inputbox"> 
+                                <input name='leetcode_id'  value={leetCode} onChange={leetCodeChangeHandler} type="text" required />
+                                <label> LeetCode ID </label>
+                            </div>
+                            
                             <div style={{display: 'inline', gap: '15px'}}>
                                 <div className="backbox">
-                                    <Link to={'/signup/step-1'}> <button className='backButtonDiv'>Back</button> </Link>
+                                    <button className='backButtonDiv' onClick={() => navigate('/signup/step-1')}>Back</button>
                                 </div>
-                                <div className="signupbox">
-                                    <button className='signupButton' onClick={submitHandler}> Next </button>
+                                <div className="final_signup">
+                                    <button className='final_signupButton' onClick={submitHandle}> Sign Up </button>
                                 </div>
                             </div>
 
-                            <div style={{display: 'flex', height: '10px', gap: '5%'}}>
+                            <div style={{display: 'flex', height: '10px', gap: '5%', justifyContent: 'center'}}>
                                 <div className="trackbar" id='firstbar'></div>
                                 <div className="trackbar" id='secondbar'></div>
-                                <div className="trackbar"></div>
                             </div>
                         </div>
                     </form>

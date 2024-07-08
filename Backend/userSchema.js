@@ -7,6 +7,10 @@ const path = require('path');
 require('dotenv').config({ path: path.resolve(__dirname, '../.env') });
 
 const userSchema = new mongoose.Schema({
+    prn: {
+        type: Number,
+        required: true
+    },
     profileImg: {
         type : String,
         default : null
@@ -43,7 +47,7 @@ const userSchema = new mongoose.Schema({
         required: true,
         uppercase: true
     },
-    year: {
+    enrollmentYear: {
         type: String,
         required: true
     },
@@ -51,7 +55,7 @@ const userSchema = new mongoose.Schema({
         type : String,
         required: true
     },
-    department: {
+    branchName: {
         type: String,
         required: true
     },
@@ -64,12 +68,10 @@ const userSchema = new mongoose.Schema({
     leetcode: {
         type: String,
     },
-    tokens: [{
-        token: {
-            type: String,
-            required: true
-        }
-    }],
+    token: {
+        type: String,
+        required: true
+    },
     isAdmin: {
         type: Boolean,
     }
@@ -107,7 +109,7 @@ userSchema.methods.generateAuthToken = async function() {
     try {
         const token = jwt.sign({_id:this._id.toString(), email:this.email}, process.env.REACT_APP_SECRET_TOKEN_KEY);
 
-        this.tokens = this.tokens.concat({token: token});
+        this.token = token;
         await this.save();
         // console.log(tk);
 

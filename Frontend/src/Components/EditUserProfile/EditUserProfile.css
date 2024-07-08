@@ -130,14 +130,11 @@
     top: 0px;
 }
 
-#collegeDetails:checked~.slider2 {
+#account:checked~.slider2 {
     top: 60px;
 }
-#account:checked~.slider2 {
-    top: 120px;
-}
 #changePassword:checked~.slider2 {
-    top: 180px;
+    top: 120px;
 }
 
 
