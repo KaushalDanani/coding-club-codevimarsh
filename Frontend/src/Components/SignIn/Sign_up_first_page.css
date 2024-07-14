@@ -156,9 +156,11 @@
     background-color: bisque;
     transform: skew(-45deg);
 }
+
 #firstbar {
     background-color: #db00ef;
 }
+
 
 .show_pwd_signup {
     width: 2.8vw !important;

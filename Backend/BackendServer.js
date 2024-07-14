@@ -749,7 +749,7 @@ app.post("/resources/rescontent", async (req, res) => {
 app.get("/home/user/dataset", async (req,res) => {
   const jwt = req.cookies.jwtAuth;
   try {
-    const resData = await User.find({'tokens.token' : jwt});
+    const resData = await User.find({'token' : jwt});
     res.send(resData);
   } catch (err) {
     res.status(500).send(err.message);
@@ -1135,29 +1135,58 @@ async function urlToBase64(url) {
 app.post('/usersignup', async (req, res) => {
 try {
     const userData = req.body;
+
     const existingData = await User.findOne({
         $and: [
-            { $or: [{ username: userData.username }, { email: userData.email }] }
+            { $or: [{ prn: userData.prn },{username: userData.username}] }
         ]
     });
 
     if (existingData) {
         res.status(400).send({ error: "Username or email already exists!" });
     } else {
-        const base64Image = await urlToBase64(imageBuffer);
-        const signupUser = new User({...userData, profileImg: base64Image});
+      
+      const vidhyarthiUserData = {
+        PRN: req.body.prn,
+        Password: req.body.password
+      }
+  
+      const url = process.env.REACT_APP_MSU_VIDHYARTHI_SIGNUP;
+      const response = await axios.post(url,vidhyarthiUserData);
+  
+      const data = response.data.obj[0];
+      const base64Image = await urlToBase64(imageBuffer);
+      const name = data.NameAsPerMarksheet.split(" ");
+      
+      const user = new User({
+        prn: userData.prn,
+        profileImg: base64Image,
+        email: data.EmailId,
+        username: userData.username,
+        password: userData.password,
+        fname: name[0],
+        lname: name[2],
+        enrollmentYear: data.EnrollmentYear,
+        programme: data.ProgrammeName,
+        branchName: data.BranchName,
+        linkedin: userData.linkedin,
+        codechef: userData.codechef,
+        leetcode: userData.leetcode,
+        isAdmin: false
+      })
 
-        const token = await signupUser.generateAuthToken();
+
+        const token = await user.generateAuthToken();
 
         res.cookie("jwtAuth", token, {
           expires: new Date(Date.now() + 31536000), 
           httpOnly: true
         });
 
-        const signup_done = await signupUser.save();
-        const user = await User.findOne({ username: userData.username });
+        const signup_done = await user.save();
+        
 
-        res.status(200).send({ userID: user._id });
+        res.status(200).send({ userID: signup_done._id });
     }
 } catch (err) {
     console.error(err);
@@ -1168,7 +1197,7 @@ try {
 app.get('/navbar/profileImg/dataset', async (req, res) => {
   const jwt = req.cookies.jwtAuth;
   try {
-    const resData = await User.findOne({'tokens.token' : jwt});
+    const resData = await User.findOne({'token' : jwt});
     res.send({data : resData});
     // console.log(resData);
   } catch (err) {
