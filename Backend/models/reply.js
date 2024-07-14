@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 const { ObjectId } = require('mongodb');
 
-const replySchema = new mongoose.model({
+const replySchema = new mongoose.Schema({
 
       replier: ObjectId,
       description: String,

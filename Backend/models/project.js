@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 const { ObjectId } = require('mongodb');
 
-const projectSchema = new mongoose.model({
+const projectSchema = new mongoose.Schema({
 
       projectName: String,
       description: String,
