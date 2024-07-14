@@ -12,7 +12,7 @@ app.use('/user', require('./routes/userRoutes.js'));
 app.use('/admin',require('./routes/adminRoutes.js'));
 app.use('/resources', require('./routes/resourceRoutes.js'))
 app.use('/discussion', require('./routes/discussionRoutes.js'))
-app.use('/contest', require('./routes/contestRoutes.js'))
+app.use('/projectCollaboration', require('./routes/projectCollaborationRoutes.js'))
 app.use('/project', require('./routes/projectRoutes.js'))
 
 app.use(errorHandler);

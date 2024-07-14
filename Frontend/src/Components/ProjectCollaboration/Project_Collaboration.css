@@ -1,4 +1,4 @@
-.projectCollabrationContainer {
+.projectCollaborationContainer {
     margin: 0%;
     padding: 0%;
     margin-bottom: 5vh;
@@ -9,7 +9,7 @@
     box-sizing: border-box;
 }
 
-.projectCollabrationHeader {
+.projectCollaborationHeader {
     width: 85%;
     height: 38vh;
     padding-left: 1vw;
@@ -22,7 +22,7 @@
 }
 
 @font-face {
-    font-family: projectCollabrationFont;
+    font-family: projectCollaborationFont;
     src: url("/public/fonts/Cyborg\ Punk.ttf");
 }
 
@@ -41,7 +41,7 @@
     left: 35vw;
     font-size: 7.8vh;
     letter-spacing: 2px;
-    font-family: projectCollabrationFont;
+    font-family: projectCollaborationFont;
 } */
 
 .projectTitle {
@@ -51,7 +51,7 @@
     font-size: 4.8vh;
     letter-spacing: 1px;
     color: rgb(255, 255, 255);
-    font-family: projectCollabrationFont;
+    font-family: projectCollaborationFont;
     z-index: 2;
 }
 
@@ -62,7 +62,7 @@
     /* border: 2px solid white; */
 }
 
-.project_collabration_oneliner {
+.project_collaboration_oneliner {
     position: relative;
     top: 16.5vh;
     left: 2.5vw;
@@ -72,12 +72,12 @@
     /* border: 2px solid red; */
 }
 
-.ProjectCollabrationBtn {
+.ProjectCollaborationBtn {
     padding: 0.5rem 1.6rem 0.5rem 2.6rem;
     margin-top: 3.5vh;
     margin-bottom: 3.3vh;
     letter-spacing: 1px;
-    background-image: url("/public/images/add-project-collabration.png");
+    background-image: url("/public/images/add-project-collaboration.png");
     background-repeat: no-repeat;
     background-size: 17% 50%;
     background-position: 22% 50%;
@@ -98,6 +98,6 @@
     border: none;
     border-radius: 8px;
 }
-.ProjectCollabrationBtn:hover {
+.ProjectCollaborationBtn:hover {
     background-color: rgb(189, 95, 0);
 }

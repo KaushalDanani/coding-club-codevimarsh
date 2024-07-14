@@ -31,7 +31,7 @@ function Navbar_after_login(props) {
         (async () => {
           
           setUser(null);
-          await fetch('/remove/user/auth', {
+          await fetch('/user/remove/auth', {
             method: "GET",
             headers: {
               'Content-Type': 'application/json'

@@ -924,22 +924,22 @@ app.post("/editprofile/profileImg", async (req, res) => {
 
 //kaushal
 
-const projectCollabrationSchema = new mongoose.Schema({
+const projectCollaborationSchema = new mongoose.Schema({
   avtar: {
     type: String,
   },
-  collabrationLeader: {
+  collaborationLeader: {
     type: ObjectId,
     ref: "users",
   },
-  collabrationPostUsername: {
+  collaborationPostUsername: {
     type: String,
   },
-  collabrationTitle: {
+  collaborationTitle: {
     type: String,
   },
-  collabrationTags: [],
-  collabrationDescription: {
+  collaborationTags: [],
+  collaborationDescription: {
     type: String,
   },
   contact: {
@@ -951,61 +951,61 @@ const projectCollabrationSchema = new mongoose.Schema({
   },
 });
 
-const projectCollabration = mongoose.model(
-  "projectCollabrations",
-  projectCollabrationSchema
+const projectCollaboration = mongoose.model(
+  "projectCollaborations",
+  projectCollaborationSchema
 );
 
-// app.get("/projectcollabration", async (req, res) => {
-//   const projectCollabData = await projectCollabration.find({});
+// app.get("/projectcollaboration", async (req, res) => {
+//   const projectCollabData = await projectCollaboration.find({});
 //   res.send(projectCollabData);
 // });
 
-app.post('/projectcollabration', async (req, res) => {
-  const projectCollabData = await projectCollabration.find({});
+app.post('/projectcollaboration', async (req, res) => {
+  const projectCollabData = await projectCollaboration.find({});
 
   let realData = new Map();
   
   for(const element of projectCollabData) {
-    const realtimeData = await User.findOne({_id: element.collabrationLeader}, 'profileImg username email');
+    const realtimeData = await User.findOne({_id: element.collaborationLeader}, 'profileImg username email');
     realData.set(element._id, realtimeData);
   }
 
   const arr = Array.from(realData);
-  res.send([projectCollabData, arr]);
+  res.status(200).send([projectCollabData, arr]);
 })
 
-// app.post('/addprojectcollabration', async (req, res) => {
+// app.post('/addprojectcollaboration', async (req, res) => {
 //   const data = req.body;
 
 //   const userData = await User.findOne({_id: data.userID})
-//   const collabrationData = {collabrationLeader: data.userID, ...data};
-//   const addProjectCollab = new projectCollabration(collabrationData);
+//   const collaborationData = {collaborationLeader: data.userID, ...data};
+//   const addProjectCollab = new projectCollaboration(collaborationData);
 
-//   // // console.log(collabrationData)
+//   // // console.log(collaborationData)
 //   const addDone = await addProjectCollab.save();
-//   // res.sendFile("Project_Collabration.js", {root: '../Frontend/src/components/kaushal'})
+//   // res.sendFile("Project_Collaboration.js", {root: '../Frontend/src/components/kaushal'})
 // })
 
 
-app.post("/addprojectcollabration", async (req, res) => {
+app.post("/addprojectcollaboration", async (req, res) => {
   const data = req.body;
 
   const userData = await User.findOne({ _id: data.userID });
-  const collabrationPostUsername = userData.username;
+  const collaborationPostUsername = userData.username;
   const avtar = userData.profileImg;
   const contact = userData.email;
-  const collabrationLeader = userData._id;
-  const collabrationData = {
+  const collaborationLeader = userData._id;
+  const collaborationData = {
     avtar: avtar,
     ...data,
-    collabrationPostUsername: collabrationPostUsername,
+    collaborationPostUsername: collaborationPostUsername,
     contact: contact,
-    collabrationLeader: collabrationLeader,
+    collaborationLeader: collaborationLeader,
   };
-  const addProjectCollab = new projectCollabration(collabrationData);
+  const addProjectCollab = new projectCollaboration(collaborationData);
 
-  // // console.log(collabrationData)
+  // // console.log(collaborationData)
   const addDone = await addProjectCollab.save();
   res.send({message : "Collaboration uploaded successfully!"});
 });
@@ -1257,11 +1257,11 @@ const userDetail = await User.findOne({'tokens.token': jwt});
 res.send({username: userDetail.username,userData : userDetail});
 })
 
-app.post('/delete/projectCollabration/data', async (req, res) => {
+app.post('/delete/projectCollaboration/data', async (req, res) => {
 const data = req.body;
 
-const done = await projectCollabration.deleteOne({
- _id: data.projectCollabrationCardId
+const done = await projectCollaboration.deleteOne({
+ _id: data.projectCollaborationCardId
 });
 
 res.send();

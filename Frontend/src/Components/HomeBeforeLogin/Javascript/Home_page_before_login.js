@@ -22,28 +22,45 @@ function Home_page_before_login(props) {
     const [displayedQuote, setDisplayedQuote] = useState("");
 
     useEffect(() => {
-        fetch(api_key)
-            .then((response) => response.json())
-            .then((quote) => {
-                setQuote(quote.content);
-                setAuthor(quote.author);
-            });
+        try {
+            fetch(api_key)
+                .then((response) => 
+                    {
+                        if(!response.ok)
+                            throw new Error('QUOTE API IS NOT WORKING');
+                        return response.json()
+                    })
+                .then((quote) => {
+                    setQuote(quote.content);
+                    setAuthor(quote.author);
+                });
+        } catch (error) {
+            console.error("QUOTE API IS NOT WORKING");
+        }
     }, []);
 
     const changeQuoteHandler = () => {
         setDisplayedQuote("");
-        fetch(api_key)
-            .then((response) => response.json())
-            .then((quote) => {
-                setQuote(quote.content);
-                setAuthor(quote.author);
-                setDisplayedQuote("");
-            });
+        try {    
+            fetch(api_key)
+                .then((response) => {
+                    if(!response.ok)
+                        throw new Error('QUOTE API IS NOT WORKING');
+                    return response.json()
+                })
+                .then((quote) => {
+                    setQuote(quote.content);
+                    setAuthor(quote.author);
+                    setDisplayedQuote("");
+                });
+        } catch (error) {
+            console.error("QUOTE API IS NOT WORKING");
+        }
     };
 
     return (
-        
-            (props.user) ? (
+
+        (props.user) ? (
             <>
                 {navigate("/home")}
                 {/* {window.location.reload()} */}
@@ -54,7 +71,6 @@ function Home_page_before_login(props) {
                 <div style={{ display: "flex" }}>
                     <div className="welcomeContainer">
                         <div className="typewriterContainer">
-                            {/* <h2 className="welcomeToCode">Welcome to <span> Coding Club,<br></br>MSU... </span> </h2> */}
                             <span className="welcomeToCode">
                                 <Typewriter
                                     words={[
@@ -70,7 +86,6 @@ function Home_page_before_login(props) {
                                     deleteSpeed={100}
                                 />
                             </span>
-                            {/* <TypeWriter /> */}
                             <h4 className="oneLiner">
                                 Start your coding journey with codeMinions by joining us...
                             </h4>
@@ -86,28 +101,28 @@ function Home_page_before_login(props) {
                         <div className="newDesign">
                             <ul className="designUL">
                                 {/* <li className='newLi'>
-                                    <a href='https://react.dev/' target='_blank' onclick="kevin()">
-                                        <span className='designSpan'></span>
-                                        <span className='designSpan'></span>
-                                        <span className='designSpan'></span>
-                                        <span className='designSpan'></span>
-                                        <span> <a href='https://react.dev/' target='_blank'> <img src='/images/reactLogo.png'
-                                            height="44px" width="44px"
-                                        ></img> </a> </span>
-                                    </a>
-                                </li>
+                                        <a href='https://react.dev/' target='_blank' onclick="kevin()">
+                                            <span className='designSpan'></span>
+                                            <span className='designSpan'></span>
+                                            <span className='designSpan'></span>
+                                            <span className='designSpan'></span>
+                                            <span> <a href='https://react.dev/' target='_blank'> <img src='/images/reactLogo.png'
+                                                height="44px" width="44px"
+                                            ></img> </a> </span>
+                                        </a>
+                                    </li>
 
-                                <li className='newLi'>
-                                    <a href='https://dev.java/learn/' target='_blank' onclick="kevin()">
-                                        <span className='designSpan'></span>
-                                        <span className='designSpan'></span>
-                                        <span className='designSpan'></span>
-                                        <span className='designSpan'></span>
-                                        <span> <a href='https://dev.java/learn/' target='_blank'> <img src='/images/java.png'
-                                            height="44px" width="44px"
-                                        ></img> </a> </span>
-                                    </a>
-                                </li> */}
+                                    <li className='newLi'>
+                                        <a href='https://dev.java/learn/' target='_blank' onclick="kevin()">
+                                            <span className='designSpan'></span>
+                                            <span className='designSpan'></span>
+                                            <span className='designSpan'></span>
+                                            <span className='designSpan'></span>
+                                            <span> <a href='https://dev.java/learn/' target='_blank'> <img src='/images/java.png'
+                                                height="44px" width="44px"
+                                            ></img> </a> </span>
+                                        </a>
+                                    </li> */}
 
                                 <li className="newLi">
                                     <a
@@ -253,9 +268,8 @@ function Home_page_before_login(props) {
                 </div>
                 <Myfooter />
             </>
-            
         )
-    )
+    );
 }
 
 export default Home_page_before_login;

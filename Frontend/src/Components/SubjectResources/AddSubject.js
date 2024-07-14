@@ -116,7 +116,7 @@ export default function AddSubject() {
 
 
                         <div className='addObjectBtn'>
-                            {/* <Link to={'/resources'}> <button id='pc_cancelbtn' className='addProjectCollabrationBtn'> Cancel </button> </Link> */}
+                            {/* <Link to={'/resources'}> <button id='pc_cancelbtn' className='addProjectCollaborationBtn'> Cancel </button> </Link> */}
 
                             <button onClick={clearData}> Clear </button>
                             <button onClick={subName}> Add Subject </button>

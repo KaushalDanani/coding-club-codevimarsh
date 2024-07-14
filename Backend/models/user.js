@@ -63,12 +63,6 @@ const userSchema = new mongoose.Schema({
     leetcode: {
         type: String,
     },
-    tokens: [{
-        token: {
-            type: String,
-            required: true
-        }
-    }],
     isAdmin: {
         type: Boolean,
     }

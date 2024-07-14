@@ -1,17 +1,17 @@
 import React, { useEffect, useState } from 'react'
-import "./Project_Collabration.css";
+import "./Project_Collaboration.css";
 import { Link } from 'react-router-dom';
-import ProjectCollabrationCard from './ProjectCollabrationCard.js';
+import ProjectCollaborationCard from './ProjectCollaborationCard.js';
 import Navbar_after_login from '../NavbarAfterLogin/Navbar_after_login.js';
 import ToastComponent from '../Toast/toastComponent.js';
 import MyfooterAfterLogin from '../FooterAfterLogin/MyfooterAfterLogin.js';
 import HashLoader from 'react-spinners/HashLoader.js';
 
-function Project_Collabration() {
+function Project_Collaboration() {
 
   const [isLoadingProjectCollaboration, setIsLoadingProjectCollaboration] = useState(false);
   const [changeImage, setChangeImage] = useState('true');
-  const [collabrationData, setCollabrationData] = useState([]);
+  const [collaborationData, setCollaborationData] = useState([]);
   const [map, setMap] = useState(new Map())
 
   const [toastVisible, setToastVisible] = useState(false);
@@ -22,7 +22,7 @@ function Project_Collabration() {
   const [base64Img,setBase64Img] = useState('');
 
   // useEffect(() => {
-  //   fetch('/projectcollabration', {
+  //   fetch('/projectcollaboration', {
   //     method: 'POST',
   //     headers: {
   //         'Content-Type': 'application/json'
@@ -31,7 +31,7 @@ function Project_Collabration() {
   //   .then(response => response.json())
   //   .then(data => {
   //     // console.log(data);
-  //     setCollabrationData(data[0]);
+  //     setCollaborationData(data[0]);
   //     // setArray(data[1]);
   //     const dataMap = new Map(data[1]);
   //     setMap(dataMap);
@@ -44,8 +44,8 @@ function Project_Collabration() {
   // }, [])
 
   function deleteCollabCard(key){
-    const newCollabData = collabrationData.filter(collabElement => collabElement._id !== key)
-    setCollabrationData(newCollabData);
+    const newCollabData = collaborationData.filter(collabElement => collabElement._id !== key)
+    setCollaborationData(newCollabData);
 
     setToastVisible(false);
     setToastVisible(true);
@@ -61,14 +61,14 @@ function Project_Collabration() {
     (async () => {
       setIsLoadingProjectCollaboration(true);
       try {
-        const response = await fetch('/projectcollabration', {
+        const response = await fetch('/projectcollaboration', {
           method: 'POST',
           headers: {
               'Content-Type': 'application/json'
           }
         })
         const data = await response.json();
-        setCollabrationData(data[0]);
+        setCollaborationData(data[0]);
         // setArray(data[1]);
         const dataMap = new Map(data[1]);
         setMap(dataMap);
@@ -100,12 +100,12 @@ function Project_Collabration() {
       </div>
     </>
 
-  function mapDataCards (collabrationData) {
-    if(collabrationData.size !== 0)
+  function mapDataCards (collaborationData) {
+    if(collaborationData.size !== 0)
     {
-      return(collabrationData.map((itemData) => (
+      return(collaborationData.map((itemData) => (
         // console.log("Helelo :  "+map.get(itemData._id)),
-        <ProjectCollabrationCard 
+        <ProjectCollaborationCard 
         id={itemData._id}
         data={itemData} userDetails={map.get(itemData._id)}
         deleteCollabCard={deleteCollabCard}
@@ -119,14 +119,14 @@ function Project_Collabration() {
       {toastVisible ? <ToastComponent message={toastMessage} type={toastType} /> : null}
 
       <Navbar_after_login imgData={base64Img} />
-      <div className='projectCollabrationContainer'>
-        <div className='projectCollabrationHeader'>
+      <div className='projectCollaborationContainer'>
+        <div className='projectCollaborationHeader'>
           <div className='imageConatainer'> <img id='pc_image' src="/images/project-collab.png" alt='PC' /> </div>
           <h2 className='projectTitle'>Project Collaboration</h2>
-          <p className='project_collabration_oneliner'>Talent wins games, but teamwork and intelligence win championships.</p>
+          <p className='project_collaboration_oneliner'>Talent wins games, but teamwork and intelligence win championships.</p>
         </div>
         <div className='addProjCollab' style={{width: '85%'}}>
-          <Link to={'/project_collab/addpost'}> <button className='ProjectCollabrationBtn' 
+          <Link to={'/project_collab/addpost'}> <button className='ProjectCollaborationBtn' 
             onMouseOut={() => setChangeImage(true)}
             onMouseOver={()=> setChangeImage(false)}> Add </button> </Link>
         </div>
@@ -134,8 +134,8 @@ function Project_Collabration() {
         <hr style={{width: '85%', height: '2.5px', backgroundColor: 'white', margin: '0px', marginBottom: '2.5vh'}}/>
         
 
-        { collabrationData.length!==0 ?
-        mapDataCards(collabrationData)
+        { collaborationData.length!==0 ?
+        mapDataCards(collaborationData)
         :
         <div className="discussionNullContent">
 
@@ -149,4 +149,4 @@ function Project_Collabration() {
   )
 }
 
-export default Project_Collabration
+export default Project_Collaboration

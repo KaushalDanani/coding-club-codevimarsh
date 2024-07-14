@@ -40,7 +40,7 @@ function Sign_in_page() {
                 'password' : enterdPassword
             }
 
-            fetch('/usersignin', {
+            fetch('/user/signin', {
                 method: 'POST',
                 body: JSON.stringify(loginData),
                 headers: {

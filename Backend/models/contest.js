@@ -10,4 +10,4 @@ const contestSchema = new mongoose.Schema({
     solutionLink: String,
   });
 
-  module.exports = mongoose.model("contest", contestSchema);
+module.exports = mongoose.model("contest", contestSchema);

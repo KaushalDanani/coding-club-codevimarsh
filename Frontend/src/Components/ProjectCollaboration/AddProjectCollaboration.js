@@ -4,7 +4,7 @@ import { useState , useEffect} from 'react'
 import useUser from '../../store/userContext.js'
 import ToastComponent from '../Toast/toastComponent.js'
 
-function AddProjectCollabration(props) {
+function AddProjectCollaboration(props) {
 
     const navigate = useNavigate();
 
@@ -44,14 +44,14 @@ function AddProjectCollabration(props) {
         e.preventDefault();
         const formData = {
             userID: userID,
-            collabrationTitle: pc_title,
-            collabrationTags: pc_tags.split(',').map(tag => tag.trim()),
-            collabrationDescription: pc_description
+            collaborationTitle: pc_title,
+            collaborationTags: pc_tags.split(',').map(tag => tag.trim()),
+            collaborationDescription: pc_description
         }
 
         if (pc_title !== '' && pc_tags !== '' && pc_description !== '') {
             try {
-            const response = await fetch('/addprojectcollabration', {
+            const response = await fetch('/projectCollaboration/add', {
                 method: 'POST',
                 body: JSON.stringify(formData),
                 headers: {
@@ -69,11 +69,10 @@ function AddProjectCollabration(props) {
                 // })
             }
             catch(err) {
-                // alert(`Error Bye 3 : ${err}`)-
+                // alert(`Error Bye 3 : ${err}`)
             }
         }
         else {
-            // alert("Please, Fill all information...")
             setToastVisible(true);
             setToastMessage("Please, Fill all information...");
             setToastType("warning");
@@ -99,12 +98,12 @@ function AddProjectCollabration(props) {
                 <form className='addObjectBody' onSubmit={submitHandler}>
                         {/* <label htmlFor='title'> Title: </label>
                         <div className='formLabels'>
-                            <input id='title' name='collabrationTitle' type="text" value={pc_title} onChange={titleChangeHandler} required />
+                            <input id='title' name='collaborationTitle' type="text" value={pc_title} onChange={titleChangeHandler} required />
                         </div> */}
                         <div className="addObjectRow">
                             <div>Title</div>
                             <div>:</div>
-                            <input type="text" name="collabrationTitle"
+                            <input type="text" name="collaborationTitle"
                             value={pc_title} onChange={titleChangeHandler} required></input>
                         </div>
 
@@ -142,4 +141,4 @@ function AddProjectCollabration(props) {
     )
 }
 
-export default AddProjectCollabration
+export default AddProjectCollaboration

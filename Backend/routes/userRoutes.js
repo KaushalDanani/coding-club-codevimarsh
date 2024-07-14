@@ -11,5 +11,8 @@ router.post('/editprofile/password',userController.editProfilePassword);
 router.post('editprofile/profileImg',userController.editProfileImage);
 router.get('/profile/projects',userController.profileProjects);
 router.get('/home/dataset',userController.homeDataset);
+router.get("/remove/auth", userController.removeUserAuth);
+router.post("/signup", userController.signUp);
+router.post("/signin", userController.signIn);
 
 module.exports = router;
