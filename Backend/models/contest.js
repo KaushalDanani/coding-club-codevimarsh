@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 
-const contestSchema = new mongoose.model({
+const contestSchema = new mongoose.Schema({
 
       name: String,
       type: String,
@@ -11,4 +11,4 @@ const contestSchema = new mongoose.model({
       solutionLink: String,
   });
 
-  export default mongoose.model("contest", contestSchema);
+  module.exports = mongoose.model("contest", contestSchema);

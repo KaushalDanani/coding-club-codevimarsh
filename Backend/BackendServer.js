@@ -238,7 +238,7 @@ app.get("/question", (req, res) => {
     });
 });
 
-app.post("/addmyquestion", jsonParser, function (req, res) {
+app.post("/discussion/addmyquestion", jsonParser, function (req, res) {
   const newquestion = new Question({
     asker: new ObjectId(req.body.questionasker),
     question: req.body.questiontital,
@@ -265,7 +265,7 @@ const Resplie = mongoose.model(
   })
 );
 
-app.post("/addmyreply", jsonParser, function (req, res) {
+app.post("/discussion/addmyreply", jsonParser, function (req, res) {
   const newreply = new Resplie({
     replier: new ObjectId(req.body.answerreplier),
     description: req.body.answerreply,
@@ -361,7 +361,7 @@ app.get("/resources", async (req, resp) => {
   resp.send(docs);
 });
 
-app.post('/addmysubject',(req,res)=>{
+app.post('/resources/addmysubject',(req,res)=>{
   const topic = req.body.subject;
   const logo = req.body.sublogo;
 
@@ -376,7 +376,7 @@ app.post('/addmysubject',(req,res)=>{
   // console.log(respons);
 })
 
-app.post('/addmybook',async (req,res)=>{
+app.post('/resources/addmybook',async (req,res)=>{
   const subject = req.body.sub_id;
   const book = {
     title : req.body.book,
@@ -392,7 +392,7 @@ app.post('/addmybook',async (req,res)=>{
   res.send({message : "Book added successfully!"});
 })
 
-app.post('/addmynote',async (req,res)=>{
+app.post('/resources/addmynote',async (req,res)=>{
   const subject = req.body.sub_id;
   const note = {
     title : req.body.note,
@@ -405,7 +405,7 @@ app.post('/addmynote',async (req,res)=>{
   res.send({message : "Note added successfully!"});
 })
 
-app.post('/addmyvideo',async (req,res)=>{
+app.post('/resources/addmyvideo',async (req,res)=>{
   const subject = req.body.sub_id;
   const video = {
     title : req.body.video,
@@ -601,8 +601,9 @@ app.post("/discussion/question", async (req, resp) => {
   // const Id = req.body.Id;
   // const count = req.body.count;
 
-  const ur = await User.findById(userID, "-_id repliesUpvotes").then((resp) => {
-    return resp.repliesUpvotes;
+  const ur = await User.findById(userID, "-_id repliesUpvotes").then(
+    (resp) => {
+      return resp.repliesUpvotes;
   });
   const uq = await User.findById(userID, "-_id questionUpvotes").then(
     (resp) => {

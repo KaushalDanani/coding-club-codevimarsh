@@ -29,4 +29,4 @@ const projectCollabrationSchema = new mongoose.Schema({
 
 })
 
-export default mongoose.model("projectCollabration", projectCollabrationSchema);
+module.exports = mongoose.model("projectCollabration", projectCollabrationSchema);

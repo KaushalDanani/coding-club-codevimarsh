@@ -5,7 +5,7 @@
   "main": "BackendServer.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon Backend/BackendServer"
+    "dev": "nodemon Backend/serverPort.js"
   },
   "keywords": [],
   "author": "",

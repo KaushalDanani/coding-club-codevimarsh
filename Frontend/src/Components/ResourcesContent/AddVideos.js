@@ -93,7 +93,7 @@ export default function AddVideos() {
         const vsource = vidSource();
         const sub_id = searchParams.get('sub_id');
 
-        fetch("/addmyvideo", {
+        fetch("/discussion/addmyvideo", {
             method: 'POST',
             body: JSON.stringify({
                 "video": vname,
