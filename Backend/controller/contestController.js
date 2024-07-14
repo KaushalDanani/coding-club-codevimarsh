@@ -19,6 +19,8 @@ exports.getPastContest = async (req, res) => {
 };
 
 
+
+
 exports.getCurrentContest = async (req, res) => {
     try {
 
@@ -113,3 +115,6 @@ exports.getPastContest = async (req, res) => {
         res.status(500).json({ error: err.message });
     }
 };
+
+
+module.exports

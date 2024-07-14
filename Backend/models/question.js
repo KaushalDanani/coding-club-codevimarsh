@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 const { ObjectId } = require('mongodb');
 
-const questionSchema = new mongoose.model({
+const questionSchema = new mongoose.Schema({
 
       asker: ObjectId,
       question: String,
