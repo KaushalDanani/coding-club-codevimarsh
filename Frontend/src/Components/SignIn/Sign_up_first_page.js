@@ -72,11 +72,6 @@ function Sign_up_first_page() {
         
         data();
         validationData();
-        
-        // document.cookie = 'email_id=' + email + ';' + 'expires=' + new Date(3000, 0, 1).toUTCString();
-        // document.cookie = 'username=' + uname + ';' + 'expires=' + new Date(3000, 0, 1).toUTCString();
-        // document.cookie = 'password=' + pwd + ';' + 'expires=' + new Date(3000, 0, 1).toUTCString();
-        // document.cookie = 'confirm_password=' + cpwd + ';' + 'expires=' + new Date(3000, 0, 1).toUTCString();
     }
 
   return (

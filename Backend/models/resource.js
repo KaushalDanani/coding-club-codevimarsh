@@ -8,4 +8,4 @@ const resourceSchema = new mongoose.Schema({
     notes: [],
 });
 
-export default mongoose.model("resource", resourceSchema);
+module.exports = mongoose.model("resource", resourceSchema);

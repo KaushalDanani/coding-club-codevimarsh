@@ -68,7 +68,7 @@ export default function ProjectDisplay(props) {
             if(conf)
             {
                 const deleteProjectData = {
-                    projectCollabrationCardId : props.data._id
+                    projectCollaborationCardId : props.data._id
                 }
             
                 fetch("/deleteproject",{

@@ -61,14 +61,14 @@ export default function Forums() {
     <>
       <Navbar_after_login imgData={base64Img} />
 
-      <div className='projectCollabrationContainer'>
-      <div className='projectCollabrationHeader'>
+      <div className='projectCollaborationContainer'>
+      <div className='projectCollaborationHeader'>
           <div className='imageConatainer'> <img id='pc_image' src="/images/discuss2main.jpg" alt='PC' /> </div>
           <h2 className='projectTitle'>Discussion Forums</h2>
-          <p className='project_collabration_oneliner'>The aim of argument, or of discussion, should not be victory, but progress.</p>
+          <p className='project_collaboration_oneliner'>The aim of argument, or of discussion, should not be victory, but progress.</p>
         </div>
         <div className='addProjCollab' style={{width: '85%'}}>
-          <Link to={'/discussion/addQuestion'}> <button className={changeImage ? 'ProjectCollabrationBtn changeAddImage' : 'ProjectCollabrationBtn'} 
+          <Link to={'/discussion/addQuestion'}> <button className={changeImage ? 'ProjectCollaborationBtn changeAddImage' : 'ProjectCollaborationBtn'} 
             onMouseOut={() => setChangeImage(true)}
             onMouseOver={()=> setChangeImage(false)}> Add </button> </Link>
         </div>

@@ -11,4 +11,4 @@ const contestSchema = new mongoose.model({
       solutionLink: String,
   });
 
-  export default mongoose.model("contest", contestSchema);
+module.exports = mongoose.model("contest", contestSchema);

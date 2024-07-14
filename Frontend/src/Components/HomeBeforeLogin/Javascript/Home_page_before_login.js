@@ -71,7 +71,6 @@ function Home_page_before_login(props) {
                 <div style={{ display: "flex" }}>
                     <div className="welcomeContainer">
                         <div className="typewriterContainer">
-                            {/* <h2 className="welcomeToCode">Welcome to <span> Coding Club,<br></br>MSU... </span> </h2> */}
                             <span className="welcomeToCode">
                                 <Typewriter
                                     words={[
@@ -87,7 +86,6 @@ function Home_page_before_login(props) {
                                     deleteSpeed={100}
                                 />
                             </span>
-                            {/* <TypeWriter /> */}
                             <h4 className="oneLiner">
                                 Start your coding journey with codeMinions by joining us...
                             </h4>

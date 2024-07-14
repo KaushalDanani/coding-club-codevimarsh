@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react';
 import { useState } from 'react';
 import TechTag from '../Tags/TechTag.js';
-import "./ProjectCollabrationCard.css";
+import "./ProjectCollaborationCard.css";
 import "./../Toast/toastComponent.css"
 
-function ProjectCollabrationCard(props) {
+function ProjectCollaborationCard(props) {
 
   const [expand, setExpand] = useState('ture');
   const [base64Img,setBase64Img] = useState("");
@@ -22,7 +22,7 @@ function ProjectCollabrationCard(props) {
       setBase64Img(`data:image/png;base64,${props.userDetails.profileImg}`);
     }
 
-    fetch('/getUser/whoUpload', {
+    fetch('/projectCollaboration/whoUploaded', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -41,16 +41,16 @@ function ProjectCollabrationCard(props) {
   },[props.userDetails.profileImg]);
 
 
-  function ProjectCollabrationCardDelete() {
+  function ProjectCollaborationCardDelete() {
 
     const conf = window.confirm('Are you sure you want to delete collaboration?');
     if(conf)
     {
     const allDeleteData = {
-      projectCollabrationCardId : props.data._id
+      projectCollaborationCardId : props.data._id
     }
 
-    fetch('/delete/projectCollabration/data', {
+    fetch('/projectCollaboration/delete/pcdata', {
       method: 'POST',
       body: JSON.stringify(allDeleteData),
       headers: {
@@ -79,17 +79,17 @@ function ProjectCollabrationCard(props) {
               : null}
 
         <div className='project_c_card'>
-            <div className='avtar'> <a href={`profile?visitID=${props.data.collabrationLeader}`}> <img src={base64Img} /> </a> </div>
+            <div className='avtar'> <a href={`profile?visitID=${props.data.collaborationLeader}`}> <img src={base64Img} /> </a> </div>
             <div className='innercontent'>
                 <div className='project_coll_header'>
                   <div>
-                    <a href={`profile?visitID=${props.data.collabrationLeader}`}> 
+                    <a href={`profile?visitID=${props.data.collaborationLeader}`}> 
                       {props.userDetails.username}
                     </a>
                   </div>
                   <div>
                     {sameUser || isAdmin ?
-                      (<input type="button" className="project_collab_del_btn" onClick={ProjectCollabrationCardDelete} />)
+                      (<input type="button" className="project_collab_del_btn" onClick={ProjectCollaborationCardDelete} />)
                       : null
                     }
                   </div>
@@ -97,19 +97,19 @@ function ProjectCollabrationCard(props) {
                 {/* <hr style={{margin: '0vh 0vh 2vh -2.5vw', height:'0.25vh', border: 'none', backgroundColor: 'black'}}/> */}
 
                 <div className='project_coll_Title'> <strong> Project Title : </strong> 
-                  <p className='project_col_title_content'> {props.data.collabrationTitle} </p> 
+                  <p className='project_col_title_content'> {props.data.collaborationTitle} </p> 
                 </div>
 
                 <div className='project_coll_tags'> <strong> Project Tags : </strong>
                   <div style={{display: 'inline'}}> 
-                    {(props.data.collabrationTags).map((tagname) => (
+                    {(props.data.collaborationTags).map((tagname) => (
                       <TechTag tagname={tagname} />
                     ))}
                   </div>
                 </div>
 
                 <div className={expand ? 'project_coll_description' : 'project_coll_description project_more_btn_show'}> <strong> Project Description : </strong> 
-                  <p className='project_coll_description_content'> {props.data.collabrationDescription} </p>
+                  <p className='project_coll_description_content'> {props.data.collaborationDescription} </p>
                 </div>
                 
                 <div className='contact_lessbtn'>
@@ -123,4 +123,4 @@ function ProjectCollabrationCard(props) {
   );
 }
 
-export default ProjectCollabrationCard;
+export default ProjectCollaborationCard;

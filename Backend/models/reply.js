@@ -10,4 +10,4 @@ const replySchema = new mongoose.model({
       replyDate: Date,
 });
 
-export default mongoose.model("reply", replySchema);
+module.exports = mongoose.model("reply", replySchema);

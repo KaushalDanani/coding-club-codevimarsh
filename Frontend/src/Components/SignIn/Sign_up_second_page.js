@@ -54,7 +54,7 @@ function Sign_up_second_page() {
         // document.cookie = 'codechef_id=' + codeChef + ';' + 'expires=' + new Date(3000, 0, 1).toUTCString();
         // document.cookie = 'leetcode_id=' + leetCode + ';' + 'expires=' + new Date(3000, 0, 1).toUTCString();
     
-        fetch("/usersignup", {
+        fetch("/user/signup", {
             method: "POST",
             body: JSON.stringify(formData),
             headers: { 
@@ -324,7 +324,7 @@ function Sign_up_second_page() {
             <div className="signup">
                 <div className="container">
                     <h2> Sign Up </h2>
-                    <form action="/userSignup" method='POST'>
+                    <form action="/user/Signup" method='POST'>
                         <div className="form">
                             <div className="inputbox">
                                 <input name='linkedin_id' value={linkedIn} onChange={linkedInChangeHandler} type="text" required />

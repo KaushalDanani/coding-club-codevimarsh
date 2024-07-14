@@ -13,4 +13,4 @@ const questionSchema = new mongoose.model({
       tags: [],
 });
 
-export default mongoose.model("question", questionSchema);
+module.exports = mongoose.model("question", questionSchema);

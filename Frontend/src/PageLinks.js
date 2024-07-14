@@ -1,17 +1,20 @@
-import { React, useState, useEffect } from 'react'
+import { React, useState, useEffect, lazy } from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import HashLoader from "react-spinners/HashLoader";
 import './PageLinks.css'
 
 //Soham Zadafiya
+// const Contest_main = lazy(() => import("./Components/Contest/Contest_main.js"))
 import Contest_main from './Components/Contest/Contest_main.js';
 
 //Kaushal Danani
+// const Sign_in_page = lazy(() => import("./Components/SignIn/Sign_in_page.js"))
 import Sign_in_page from './Components/SignIn/Sign_in_page.js';
+// const Sign_up_first_page = lazy(() => import("./Components/SignIn/Sign_up_first_page.js"))
 import Sign_up_first_page from './Components/SignIn/Sign_up_first_page.js';
 import Sign_up_second_page from './Components/SignIn/Sign_up_second_page.js';
-import Project_Collabration from './Components/ProjectCollaboration/Project_Collabration.js';
-import AddProjectCollabration from './Components/ProjectCollaboration/AddProjectCollabration.js';
+import Project_Collaboration from './Components/ProjectCollaboration/Project_Collaboration.js';
+import AddProjectCollaboration from './Components/ProjectCollaboration/AddProjectCollaboration.js';
 import NotFoundPage from './Components/PageNotFound/NotFoundPage.js';
 
 // jay fanse
@@ -136,8 +139,8 @@ const PageLinks = () => {
                     <Route path='/project/add_project' element={<AddProject user={user}/>} />
                     <Route path='/profile' element={<UserProfile user={user}/>} />
                     <Route path='/profile/edit_profile' element={<EditUserProfile user={user}/>} />
-                    <Route path='/project_collab' element={<Project_Collabration />} />
-                    <Route path='/project_collab/addpost' element={<AddProjectCollabration user={user}/>} />
+                    <Route path='/project_collab' element={<Project_Collaboration />} />
+                    <Route path='/project_collab/addpost' element={<AddProjectCollaboration user={user}/>} />
                     <Route path='*' element={<NotFoundPage />} />
                 </Routes>
             </Router>

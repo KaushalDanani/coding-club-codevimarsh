@@ -1,22 +1,22 @@
 const mongoose = require('mongoose')
 
-const projectCollabrationSchema = new mongoose.Schema({
+const projectCollaborationSchema = new mongoose.Schema({
 
     avtar : {
         type : String
     },
-    collabrationLeader : {
+    collaborationLeader : {
         type : mongoose.Schema.Types.ObjectId,
         ref : 'users'
     },
-    collabrationPostUsername: {
+    collaborationPostUsername: {
         type: String
     },
-    collabrationTitle : {
+    collaborationTitle : {
         type : String
     },
-    collabrationTags : [],
-    collabrationDescription : {
+    collaborationTags : [],
+    collaborationDescription : {
         type : String
     },
     contact : {
@@ -29,4 +29,4 @@ const projectCollabrationSchema = new mongoose.Schema({
 
 })
 
-export default mongoose.model("projectCollabration", projectCollabrationSchema);
+module.exports = mongoose.model("projectCollaboration", projectCollaborationSchema);

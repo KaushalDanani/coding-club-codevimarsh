@@ -13,4 +13,4 @@ const projectSchema = new mongoose.model({
       video: String,
 });
 
-export default mongoose.model("project", projectSchema);
+module.exports = mongoose.model("project", projectSchema);
