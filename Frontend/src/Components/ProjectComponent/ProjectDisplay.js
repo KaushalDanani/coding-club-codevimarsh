@@ -71,7 +71,7 @@ export default function ProjectDisplay(props) {
                     projectCollabrationCardId : props.data._id
                 }
             
-                fetch("/deleteproject",{
+                fetch("/project/deleteProject",{
                     method: 'POST',
                     body: JSON.stringify(deleteProjectData),
                     headers: {
