@@ -1,4 +1,5 @@
-import mongoose from "mongoose";
+// import mongoose from "mongoose";
+const mongoose = require('mongoose')
 const { ObjectId } = require('mongodb');
 
 const questionSchema = new mongoose.Schema({

@@ -1,5 +1,6 @@
 const mongoose = require('mongoose')
 const { ObjectId } = require('mongodb');
+// const process = require('../')
 
 const imageBuffer = process.env.REACT_APP_PROFILE_IMAGE;
 const base64Image = imageBuffer.toString("base64");
