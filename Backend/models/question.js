@@ -1,7 +1,8 @@
-import mongoose from "mongoose";
+// import mongoose from "mongoose";
+const mongoose = require('mongoose')
 const { ObjectId } = require('mongodb');
 
-const questionSchema = new mongoose.model({
+const questionSchema = new mongoose.Schema({
 
       asker: ObjectId,
       question: String,
@@ -13,4 +14,4 @@ const questionSchema = new mongoose.model({
       tags: [],
 });
 
-export default mongoose.model("question", questionSchema);
+module.exports = mongoose.model("question", questionSchema);

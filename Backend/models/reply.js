@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 const { ObjectId } = require('mongodb');
 
-const replySchema = new mongoose.model({
+const replySchema = new mongoose.Schema({
 
       replier: ObjectId,
       description: String,
@@ -10,4 +10,4 @@ const replySchema = new mongoose.model({
       replyDate: Date,
 });
 
-export default mongoose.model("reply", replySchema);
+module.exports = mongoose.model("reply", replySchema);

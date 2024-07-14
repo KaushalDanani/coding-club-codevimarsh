@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 const { ObjectId } = require('mongodb');
 
-const projectSchema = new mongoose.model({
+const projectSchema = new mongoose.Schema({
 
       projectName: String,
       description: String,
@@ -13,4 +13,4 @@ const projectSchema = new mongoose.model({
       video: String,
 });
 
-export default mongoose.model("project", projectSchema);
+module.exports = mongoose.model("project", projectSchema);
