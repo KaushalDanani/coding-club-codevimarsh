@@ -155,7 +155,7 @@ export default function AddProject() {
     useEffect(() => {
 
         if (imgDownloadUrl && videoDownloadUrl) {
-            fetch("/project/addProject", {
+            fetch("http://localhost:5000/project/addProject", {
                 method: 'POST',
                 body: JSON.stringify({
                     "projectname": ProjectName,

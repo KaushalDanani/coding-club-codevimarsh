@@ -35,18 +35,18 @@ function UserProfile(props) {
       try {
         if(visitID===null || visitID===userID)
         {
-          const response = await fetch(`/user/profile/?userID=${userID}`)
+          const response = await fetch(`http://localhost:5000/user/profile/?userID=${userID}`)
           const data = await response.json();
           setUserData(data[0]);
         }
         else
         {
-          const response = await fetch(`/user/profile/?userID=${visitID}`)
+          const response = await fetch(`http://localhost:5000/user/profile/?userID=${visitID}`)
           const data = await response.json();
           setUserData(data[0]);
         }
 
-        const response2 = await fetch('/navbar/profileImg/dataset')
+        const response2 = await fetch('http://localhost:5000/user/profileImg')
         const data2 = await response2.json();
         setUserData(data2.data);
         setBase64Img(`data:image/png;base64,${data2.data.profileImg}`);

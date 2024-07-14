@@ -36,7 +36,7 @@ export default function Question_data(props) {
         if(userID!=null)
         {
 
-        fetch(`/discussion/question?userID=${userID}&q_id=${q_id}`)
+        fetch(`http://localhost:5000/discussion/question?userID=${userID}&q_id=${q_id}`)
             .then((response) => {
                 if (!response.ok) {
                     throw new Error('Network response was not ok');

@@ -1,6 +1,7 @@
 const Question = require('../models/question.js')
 const User = require('../models/user.js')
 const Reply = require('../models/reply.js')
+const { ObjectId } = require('mongodb');
 
 exports.getAllDiscussions = async (req, resp) => {
     try {
@@ -143,7 +144,7 @@ exports.deleteQuestion = async (req, res) => {
 }
 
 exports.addReply = function (req, res) {
-  const newreply = new Resplie({
+  const newreply = new Reply({
     replier: new ObjectId(req.body.answerreplier),
     description: req.body.answerreply,
     code: req.body.answercode,

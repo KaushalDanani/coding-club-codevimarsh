@@ -61,7 +61,7 @@ function Project_Collaboration() {
     (async () => {
       setIsLoadingProjectCollaboration(true);
       try {
-        const response = await fetch('/projectcollaboration', {
+        const response = await fetch('http://localhost:5000/projectcollaboration', {
           method: 'POST',
           headers: {
               'Content-Type': 'application/json'
@@ -73,7 +73,7 @@ function Project_Collaboration() {
         const dataMap = new Map(data[1]);
         setMap(dataMap);
 
-        const response2 = await fetch('/navbar/profileImg/dataset')
+        const response2 = await fetch('http://localhost:5000/user/profileImg')
         const data2 = await response2.json();
         setUserData(data2.data);
         setBase64Img(`data:image/png;base64,${data2.data.profileImg}`);

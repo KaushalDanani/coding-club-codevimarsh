@@ -19,7 +19,7 @@ export default function Forums() {
     (async () => { 
       setIsLoadingDiscussion(true);
       try {
-        const response = await fetch('/discussion', {
+        const response = await fetch('http://localhost:5000/discussion', {
           method: 'POST',
           headers: {
               'Content-Type': 'application/json'
@@ -31,7 +31,7 @@ export default function Forums() {
         const map = new Map(mArray);
         setMap(map);
 
-        const response2 = await fetch('/navbar/profileImg/dataset')
+        const response2 = await fetch('http://localhost:5000/user/profileImg')
         const data2 = await response2.json();
         setUserData(data2.data);
         setBase64Img(`data:image/png;base64,${data2.data.profileImg}`);

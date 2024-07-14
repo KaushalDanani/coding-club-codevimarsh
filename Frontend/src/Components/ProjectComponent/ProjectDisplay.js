@@ -71,7 +71,7 @@ export default function ProjectDisplay(props) {
                     projectCollaborationCardId : props.data._id
                 }
             
-                fetch("/project/deleteProject",{
+                fetch("http://localhost:5000/project/deleteProject",{
                     method: 'POST',
                     body: JSON.stringify(deleteProjectData),
                     headers: {
@@ -105,7 +105,7 @@ export default function ProjectDisplay(props) {
         const [Fnamelname,setFnamelname] = useState([]);
         useEffect(() => {
             if(props.data.contributors){
-                    fetch("/profile/projects/members",{
+                    fetch("http://localhost:5000/profile/projects/members",{
                         method : 'POST',
                         headers : {
                             "Accept" : 'application/json',

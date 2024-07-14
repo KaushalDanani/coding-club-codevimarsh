@@ -93,7 +93,7 @@ export default function AddVideos() {
         const vsource = vidSource();
         const sub_id = searchParams.get('sub_id');
 
-        fetch("/resources/video/add", {
+        fetch("http://localhost:5000/resources/video/add", {
             method: 'POST',
             body: JSON.stringify({
                 "video": vname,

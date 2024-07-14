@@ -1,7 +1,7 @@
 const Resource = require('../models/resource');
 
 exports.getAllSubjects = async (req, resp) => {
-    let docs = await Resources.find();
+    let docs = await Resource.find();
     docs.forEach((element) => {
       element.books = element.books.length;
       element.videos = element.videos.length;
@@ -16,7 +16,7 @@ exports.addSubject = (req,res)=>{
   
     // console.log(topic);
   
-    const newSub = new Resources({
+    const newSub = new Resource({
       subject : topic,
       logo : logo,
     });
@@ -28,7 +28,7 @@ exports.addSubject = (req,res)=>{
 exports.deleteSubject = async (req, res) => {
     try {
       const id = req.params.id;
-      const result = await Resources.deleteOne({ _id: id });
+      const result = await Resource.deleteOne({ _id: id });
   
       if (result.deletedCount === 1) {
         return res.json({ message: 'Deleted successfully' });
@@ -159,7 +159,7 @@ exports.delNote = async(req,res) => {
 
 exports.resourceContent = async (req, res) => {
     try {
-      const resData = await Resources.find({});
+      const resData = await Resource.find({});
       res.send(resData);
     } catch (err) {
       res.status(500).send(err.message);

@@ -88,7 +88,7 @@ export default function AddBooks() {
         const bedition = bookEdition();
         const sub_id = searchParams.get('sub_id');
 
-        fetch("/resources/book/add", {
+        fetch("http://localhost:5000/resources/book/add", {
             method: 'POST',
             body: JSON.stringify({
                 "book": bname,

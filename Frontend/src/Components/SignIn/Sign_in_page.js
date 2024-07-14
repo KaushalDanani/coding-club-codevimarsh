@@ -40,12 +40,12 @@ function Sign_in_page() {
                 'password' : enterdPassword
             }
 
-            fetch('/user/signin', {
+            fetch('http://localhost:5000/user/signin', {
                 method: 'POST',
-                body: JSON.stringify(loginData),
                 headers: {
                     'Content-Type': 'application/json'
-                }
+                },
+                body: JSON.stringify(loginData),
             })
             .then(response => response.json())
             .then(data => {

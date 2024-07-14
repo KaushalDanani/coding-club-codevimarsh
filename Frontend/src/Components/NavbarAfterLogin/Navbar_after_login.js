@@ -18,7 +18,7 @@ function Navbar_after_login(props) {
     }, [props.imgData])
 
     // useEffect( () => {
-    //     fetch('/navbar/profileImg/dataset')
+    //     fetch('/user/profileImg')
     //     .then(response => response.json())
     //     .then(data => {
     //         setUserData(data.data);
@@ -31,7 +31,7 @@ function Navbar_after_login(props) {
         (async () => {
           
           setUser(null);
-          await fetch('/user/remove/auth', {
+          await fetch('http://localhost:5000/user/remove/auth', {
             method: "GET",
             headers: {
               'Content-Type': 'application/json'

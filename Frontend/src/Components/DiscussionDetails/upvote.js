@@ -25,7 +25,7 @@ const Upvote = (props) => {
 
     const fetchData = async () => {
       try {
-        const response = await fetch(`/discussion/question?userID=${props.user}`, {
+        const response = await fetch(`http://localhost:5000/discussion/question?userID=${props.user}`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',

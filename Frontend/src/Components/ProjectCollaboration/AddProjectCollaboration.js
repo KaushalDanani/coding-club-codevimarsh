@@ -51,7 +51,7 @@ function AddProjectCollaboration(props) {
 
         if (pc_title !== '' && pc_tags !== '' && pc_description !== '') {
             try {
-            const response = await fetch('/projectCollaboration/add', {
+            const response = await fetch('http://localhost:5000/projectCollaboration/add', {
                 method: 'POST',
                 body: JSON.stringify(formData),
                 headers: {

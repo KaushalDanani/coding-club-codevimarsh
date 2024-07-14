@@ -62,7 +62,7 @@ export default function Ask_Question(props) {
     function addMyQuestion(e) {
 
         e.preventDefault();
-        fetch("/discussion/addmyquestion", {
+        fetch("http://localhost:5000/discussion/addmyquestion", {
             method: 'POST',
             body: JSON.stringify({
                 "questiontital": Question,

@@ -55,7 +55,7 @@ const PageLinks = () => {
         (async () => {
             try {
                 setIsLoading(true);
-                const response = await fetch("/home/user/dataset", {
+                const response = await fetch("/user/home/dataset", {
                     method: "GET",
                     headers: {
                         'Content-Type': 'application/json'

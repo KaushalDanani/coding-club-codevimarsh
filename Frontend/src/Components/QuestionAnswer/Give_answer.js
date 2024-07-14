@@ -47,7 +47,7 @@ function Give_answer(props) {
     function addMyReply(e) {
 
         e.preventDefault();
-        fetch("/discussion/addmyreply", {
+        fetch("http://localhost:5000/discussion/addmyreply", {
             method: 'POST',
             body: JSON.stringify({
                 "answerreply": Reply,

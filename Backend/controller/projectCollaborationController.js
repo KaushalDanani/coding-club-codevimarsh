@@ -1,4 +1,6 @@
 const projectCollaboration = require("../models/projectCollaboration.js")
+const User = require('../models/user.js');
+const jwt = require('jsonwebtoken')
 
 exports.getAllProjectCollaboration = async (req, res) => {
     const projectCollabData = await projectCollaboration.find({});
@@ -25,8 +27,8 @@ exports.deleteProjectCollaborationData = async (req, res) => {
 }
 
 exports.getUserWhoUploaded = async (req, res) => {
-    // const jwt = req.cookies.jwtAuth;
-    // const userDetail = await User.findOne({'tokens.token': jwt});
+    const jwt = req.cookies.jwtAuth;
+    const userDetail = await User.findOne({'tokens.token': jwt});
 
     res.status(200).send({username: req.user.username, userData : req.user.userDetail});
 }

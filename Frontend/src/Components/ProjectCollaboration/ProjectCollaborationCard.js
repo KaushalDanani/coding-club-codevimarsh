@@ -22,7 +22,7 @@ function ProjectCollaborationCard(props) {
       setBase64Img(`data:image/png;base64,${props.userDetails.profileImg}`);
     }
 
-    fetch('/projectCollaboration/whoUploaded', {
+    fetch('http://localhost:5000/projectCollaboration/whoUploaded', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -30,12 +30,13 @@ function ProjectCollaborationCard(props) {
     })
     .then(response => response.json())
     .then(data => {
+      console.log(data);
       if(data.username == props.userDetails.username)
         setSameUser(true);
       else
         setSameUser(false);
 
-      if(data.userData.isAdmin != undefined)
+      if(data.userData.isAdmin !== undefined)
       setIsAdmin(data.userData.isAdmin);
     })
   },[props.userDetails.profileImg]);
@@ -50,7 +51,7 @@ function ProjectCollaborationCard(props) {
       projectCollaborationCardId : props.data._id
     }
 
-    fetch('/projectCollaboration/delete/pcdata', {
+    fetch('http://localhost:5000/projectCollaboration/delete/pcdata', {
       method: 'POST',
       body: JSON.stringify(allDeleteData),
       headers: {

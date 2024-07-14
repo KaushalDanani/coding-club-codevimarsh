@@ -46,7 +46,7 @@ function LoginHomePage(props) {
     (async () => {
       try {
         setIsLoadingHome(true);
-        const response = await fetch("/user/home/dataset", {
+        const response = await fetch("http://localhost:5000/user/home/dataset", {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
@@ -58,7 +58,7 @@ function LoginHomePage(props) {
         setUserID(data._id);
         setAdmin(data.isAdmin);
 
-        const response2 = await fetch(`/contest/upcoming`, {
+        const response2 = await fetch(`http://localhost:5000/contest/upcoming`, {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
@@ -81,7 +81,7 @@ function LoginHomePage(props) {
         // const articleData = await response4.json();
         // setArticlesData(articleData.articles);
 
-        const response3 = await fetch('/navbar/profileImg/dataset')
+        const response3 = await fetch('http://localhost:5000/user/profileImg')
         const data3 = await response3.json();
         setUserData(data3.data);
         setBase64Img(`data:image/png;base64,${data3.data.profileImg}`);

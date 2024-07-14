@@ -48,7 +48,7 @@ export default function AddSubject() {
    
     function addMySubject(name) {
 
-        fetch("/resources/subject/add", {
+        fetch("http://localhost:5000/resources/subject/add", {
             method: 'POST',
             body: JSON.stringify({
                 "subject": name,

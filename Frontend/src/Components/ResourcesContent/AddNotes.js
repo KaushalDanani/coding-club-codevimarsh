@@ -57,7 +57,7 @@ export default function AddNotes() {
         const nlink = noteLink();
         const sub_id = searchParams.get('sub_id');
         
-        fetch("/resources/note/add", {
+        fetch("http://localhost:5000/resources/note/add", {
             method: 'POST',
             body: JSON.stringify({
                 "note": nname,

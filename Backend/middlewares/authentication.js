@@ -1,5 +1,6 @@
-import User from "../models/user.js"
+const User = require("../models/user.js")
 const jwt = require('jsonwebtoken');
+const path = require('path');
 require('dotenv').config({ path: path.resolve(__dirname, '../../.env') });
 
 const auth = async (req, res, next) => {

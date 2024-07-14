@@ -12,7 +12,7 @@ function ManageAdmins() {
 
 
     useEffect(() => {
-        fetch('/admin/list', {
+        fetch('http://localhost:5000/admin/list', {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
@@ -53,7 +53,7 @@ function ManageAdmins() {
             setTimeout(() => setToastVisible(false), 4000);
         }
         else {
-            fetch(`/admin/delete/?username=${username}`)
+            fetch(`http://localhost:5000/admin/delete/?username=${username}`)
                 .then(response => response.json())
                 .then(data => {
                     setToastVisible(true);
@@ -77,7 +77,7 @@ function ManageAdmins() {
             setTimeout(() => setToastVisible(false), 4000);
         }
         else {
-            fetch(`/admin/add/?username=${newAdminUsername}`)
+            fetch(`http://localhost:5000/admin/add/?username=${newAdminUsername}`)
                 .then(response => response.json())
                 .then(data => {
 

@@ -5,7 +5,7 @@ const projectCollaborationController = require("../controller/projectCollaborati
 
 router.post("/", projectCollaborationController.getAllProjectCollaboration)
 router.post("/delete/pcdata", projectCollaborationController.deleteProjectCollaborationData)
-router.post("/whoUploaded", authentication.auth, projectCollaborationController.getUserWhoUploaded)
+router.post("/whoUploaded", authentication, projectCollaborationController.getUserWhoUploaded)
 router.post("/add", projectCollaborationController.addProjectCollaboration)
 
 module.exports = router;

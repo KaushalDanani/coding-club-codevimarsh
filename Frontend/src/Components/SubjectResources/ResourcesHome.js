@@ -20,12 +20,12 @@ export default function Resources(props) {
         (async () => {
 
             setIsLoading(true);
-            const response = await fetch('/resources')
+            const response = await fetch('http://localhost:5000/resources/')
             const data = await response.json();
             setResources(data);
 
 
-            const response2 = await fetch('/navbar/profileImg/dataset')
+            const response2 = await fetch('http://localhost:5000/user/profileImg')
             const data2 = await response2.json();
             setUserData(data2.data);
             setBase64Img(`data:image/png;base64,${data2.data.profileImg}`);

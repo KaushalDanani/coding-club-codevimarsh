@@ -1,6 +1,9 @@
 const User = require('../models/user.js')
+const Project = require('../models/project.js')
 const bcrypt = require("bcryptjs");
 const path = require("path");
+const jwt = require('jsonwebtoken')
+const generateAuthToken = require('../utils/generateTokens.js');
 require('dotenv').config({ path: path.resolve(__dirname, '../../.env') });
 
 exports.getProfile = async (req,res) => {
@@ -238,7 +241,7 @@ exports.signIn = async (req, res) => {
             res.send({message: "Invalid User Credential"});
           else
           {
-            const token = await userDetail.generateAuthToken();
+            const token = await generateAuthToken();
   
             res.cookie("jwtAuth", token, {
               expires: new Date(Date.now() + 31536000),
@@ -251,4 +254,15 @@ exports.signIn = async (req, res) => {
     } catch (err) {
         res.sendStatus(400)
     }
+}
+
+exports.profileImg = async(req,res) => {
+  const jwt = req.cookies.jwtAuth;
+  try {
+    const resData = await User.findOne({'token' : jwt});
+    res.send({data : resData});
+    // console.log(resData);
+  } catch (err) {
+    res.status(500).send(err.message);
+  }
 }
