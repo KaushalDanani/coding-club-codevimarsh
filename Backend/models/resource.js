@@ -1,5 +1,4 @@
-import mongoose from "mongoose";
-
+const mongoose = require('mongoose')
 const resourceSchema = new mongoose.Schema({
     subject: String,
     logo: String,
@@ -8,4 +7,4 @@ const resourceSchema = new mongoose.Schema({
     notes: [],
 });
 
-export default mongoose.model("resource", resourceSchema);
+module.exports = mongoose.model("resource", resourceSchema);

@@ -57,7 +57,7 @@ function EditUserProfile(props) {
     (async () => {
       setIsLoadingEditProfile(true);
       try {
-        const response = await fetch(`/profile/user/?userID=${userID}`);
+        const response = await fetch(`/user/profile?userID=${userID}`);
         const data = await response.json();
         setUserData(data[0]);
         setBase64Img(`data:image/png;base64,${data[0].profileImg}`);
@@ -219,7 +219,7 @@ function EditUserProfile(props) {
   }
 
   const sendDataToBackend = (data) => {
-    fetch(`/editprofile/userSkills/?userID=${userID}`, {
+    fetch(`/user/editSkills/?userID=${userID}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -247,7 +247,7 @@ function EditUserProfile(props) {
       year: year,
     };
 
-    fetch(`/editprofile/personal/?userID=${userID}`, {
+    fetch(`/user/editprofile/personal/?userID=${userID}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -276,7 +276,7 @@ function EditUserProfile(props) {
       email: email,
     };
 
-    fetch(`/editprofile/account/?userID=${userID}`, {
+    fetch(`/user/editprofile/account/?userID=${userID}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -315,7 +315,7 @@ function EditUserProfile(props) {
       currentPassword: currentPass,
     };
 
-    const response = await fetch("/check/current/password", {
+    const response = await fetch("user/checkCurrentPassword", {
       method: "POST",
       body: JSON.stringify(currentPwd),
       headers: {
@@ -358,7 +358,7 @@ function EditUserProfile(props) {
         currentPassword: currentPass,
       };
 
-      fetch(`/editprofile/password/?userID=${userID}`, {
+      fetch(`user/editprofile/password/?userID=${userID}`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -415,7 +415,7 @@ function EditUserProfile(props) {
         setBase64Img(reader.result);
         const base64String = reader.result.split(",")[1];
         console.log(base64String);
-        fetch(`/editprofile/profileImg/?userID=${userID}`, {
+        fetch(`user/editprofile/profileImg/?userID=${userID}`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

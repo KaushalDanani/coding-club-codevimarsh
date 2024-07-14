@@ -68,7 +68,7 @@ function ResourcesContent(props) {
             const updatedbooks = books.filter(book => (book.title + book.author + book.edition) !== id);
             SetBooks(updatedbooks);
             
-            fetch(`/resources/delBook/${sub_id}`,{
+            fetch(`/resources/book/delete/${sub_id}`,{
                 method: 'POST',
                 headers:{
                     'Content-type' : 'application/json'
@@ -97,7 +97,7 @@ function ResourcesContent(props) {
             const updatedvideos = videos.filter(video => (video.title + video.channel) !== id);
             SetVideos(updatedvideos);
             
-            fetch(`/resources/delVideo/${sub_id}`,{
+            fetch(`/resources/video/delete/${sub_id}`,{
                 method: 'POST',
                 headers:{
                     'Content-type' : 'application/json'
@@ -126,7 +126,7 @@ function ResourcesContent(props) {
             const updatednotes = notes.filter(note => (note.title + note.link) !== id);
             SetNotes(updatednotes);
             
-            fetch(`/resources/delNote/${sub_id}`,{
+            fetch(`/resources/note/delete/${sub_id}`,{
                 method: 'POST',
                 headers:{
                     'Content-type' : 'application/json'

@@ -14,7 +14,7 @@ function UserProfileMainPanel(props) {
     setProjects([]);
     if (props.userData._id) {
       console.log("user", props.userData._id);
-      fetch(`/profile/projects/?userID=${props.userData._id}`)
+      fetch(`user/profile/projects/?userID=${props.userData._id}`)
         .then(
           response => response.json()
         )

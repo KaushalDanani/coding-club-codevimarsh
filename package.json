@@ -2,10 +2,10 @@
   "name": "backend",
   "version": "1.0.0",
   "description": "",
-  "main": "BackendServer.js",
+  "main": "serverPort.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon Backend/BackendServer"
+    "dev": "nodemon Backend/serverPort.js"
   },
   "keywords": [],
   "author": "",

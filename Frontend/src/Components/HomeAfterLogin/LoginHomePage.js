@@ -46,7 +46,7 @@ function LoginHomePage(props) {
     (async () => {
       try {
         setIsLoadingHome(true);
-        const response = await fetch("/home/user/dataset", {
+        const response = await fetch("/user/home/dataset", {
           method: "GET",
           headers: {
             "Content-Type": "application/json",

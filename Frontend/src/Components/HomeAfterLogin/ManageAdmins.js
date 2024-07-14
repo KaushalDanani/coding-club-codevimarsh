@@ -12,8 +12,8 @@ function ManageAdmins() {
 
 
     useEffect(() => {
-        fetch('/adminList', {
-            method: 'POST',
+        fetch('/admin/list', {
+            method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
             }
@@ -53,7 +53,7 @@ function ManageAdmins() {
             setTimeout(() => setToastVisible(false), 4000);
         }
         else {
-            fetch(`deleteAdmin/?username=${username}`)
+            fetch(`/admin/delete/?username=${username}`)
                 .then(response => response.json())
                 .then(data => {
                     setToastVisible(true);
@@ -77,7 +77,7 @@ function ManageAdmins() {
             setTimeout(() => setToastVisible(false), 4000);
         }
         else {
-            fetch(`addAdmin/?username=${newAdminUsername}`)
+            fetch(`/admin/add/?username=${newAdminUsername}`)
                 .then(response => response.json())
                 .then(data => {
 

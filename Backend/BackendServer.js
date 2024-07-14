@@ -688,7 +688,7 @@ app.delete('/discussion/question/delRep/:r_id', async (req, res) => {
 
 // jay fanse
 
-app.post("/adminList", async (req, res) => {
+app.get("/adminList", async (req, res) => {
   const adminList = await User.find({isAdmin : true});
   res.send({admins : adminList});
   // console.log(adminList);

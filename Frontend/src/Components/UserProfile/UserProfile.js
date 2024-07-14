@@ -35,13 +35,13 @@ function UserProfile(props) {
       try {
         if(visitID===null || visitID===userID)
         {
-          const response = await fetch(`/profile/user/?userID=${userID}`)
+          const response = await fetch(`/user/profile/?userID=${userID}`)
           const data = await response.json();
           setUserData(data[0]);
         }
         else
         {
-          const response = await fetch(`/profile/user/?userID=${visitID}`)
+          const response = await fetch(`/user/profile/?userID=${visitID}`)
           const data = await response.json();
           setUserData(data[0]);
         }
