@@ -1,5 +1,46 @@
 const Resource = require('../models/resource');
 
+exports.getAllSubjects = async (req, resp) => {
+    let docs = await Resources.find();
+    docs.forEach((element) => {
+      element.books = element.books.length;
+      element.videos = element.videos.length;
+      element.notes = element.notes.length;
+    });
+    resp.send(docs);
+}
+
+exports.addSubject = (req,res)=>{
+    const topic = req.body.subject;
+    const logo = req.body.sublogo;
+  
+    // console.log(topic);
+  
+    const newSub = new Resources({
+      subject : topic,
+      logo : logo,
+    });
+    const respons = newSub.save();
+    res.send({message : "Subject added successfully!"});
+    // console.log(respons);
+}
+
+exports.deleteSubject = async (req, res) => {
+    try {
+      const id = req.params.id;
+      const result = await Resources.deleteOne({ _id: id });
+  
+      if (result.deletedCount === 1) {
+        return res.json({ message: 'Deleted successfully' });
+      } else {
+        return res.status(404).json({ error: 'Question not found' });
+      }
+    } catch (error) {
+      console.error('Error deleting question:', error);
+      return res.status(500).json({ error: 'Internal server error' });
+    }
+}
+
 exports.addBook = async(req,res) => {
     const subject = req.body.sub_id;
   const book = {
@@ -113,5 +154,14 @@ exports.delNote = async(req,res) => {
     } catch (error) {
         console.error('Error updating notes:', error);
         return res.status(500).json({ error: 'Internal server error' });
+    }
+}
+
+exports.resourceContent = async (req, res) => {
+    try {
+      const resData = await Resources.find({});
+      res.send(resData);
+    } catch (err) {
+      res.status(500).send(err.message);
     }
 }

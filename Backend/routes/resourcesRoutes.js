@@ -8,5 +8,9 @@ router.post('/note/add',resourcesController.addNote);
 router.post('/book/delete/:sub_id',resourcesController.delBook);
 router.post('/video/delete/:sub_id',resourcesController.delVideo);
 router.post('/note/delete/:sub_id',resourcesController.delNote);
+router.get('/',resourcesController.getAllSubjects)
+router.post('/subject/add',resourcesController.addSubject)
+router.delete('/delTopic/:id',resourcesController.deleteSubject)
+router.post('/rescontent',resourcesController.resourceContent)
 
 module.exports = router;

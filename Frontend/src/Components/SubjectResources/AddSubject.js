@@ -48,7 +48,7 @@ export default function AddSubject() {
    
     function addMySubject(name) {
 
-        fetch("/discussion/addmysubject", {
+        fetch("/resources/subject/add", {
             method: 'POST',
             body: JSON.stringify({
                 "subject": name,
