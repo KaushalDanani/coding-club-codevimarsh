@@ -9,21 +9,21 @@ import useUser from '../../store/userContext.js';
 import ToastComponent from '../Toast/toastComponent.js';
 import MyFooterAfterLogin from '../FooterAfterLogin/MyfooterAfterLogin.js'
 
-function ResourcesContent(props) {
+function ResourcesContent() {
     const navigate = useNavigate();
-    
+    const { user, setUser } = useUser();
+
     const [toastVisible, setToastVisible] = useState(false);
     const [toastMessage, setToastMessage] = useState("");
     const [toastType, setToastType] = useState("");
     
     const [admin,setAdmin] = useState(false);
     
-    useEffect( ()=>{
-        if(props.user)
-        {
-            setAdmin(props.user.isAdmin);
+    useEffect(() => {
+        if(user) {
+            setAdmin(user.isAdmin);
         }
-    },[props.user])
+    },[user])
 
     
     function adminCheck(){

@@ -26,13 +26,6 @@ exports.deleteProjectCollaborationData = async (req, res) => {
   res.status(200).send();
 }
 
-exports.getUserWhoUploaded = async (req, res) => {
-    const jwt = req.cookies.jwtAuth;
-    const userDetail = await User.findOne({'tokens.token': jwt});
-
-    res.status(200).send({username: req.user.username, userData : req.user.userDetail});
-}
-
 exports.addProjectCollaboration = async (req, res) => {
     const data = req.body;
   

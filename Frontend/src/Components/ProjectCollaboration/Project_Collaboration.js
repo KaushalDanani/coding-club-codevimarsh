@@ -6,20 +6,26 @@ import Navbar_after_login from '../NavbarAfterLogin/Navbar_after_login.js';
 import ToastComponent from '../Toast/toastComponent.js';
 import MyfooterAfterLogin from '../FooterAfterLogin/MyfooterAfterLogin.js';
 import HashLoader from 'react-spinners/HashLoader.js';
+import useUser from '../../store/userContext.js';
 
 function Project_Collaboration() {
+  const { user, setUser } = useUser();
 
   const [isLoadingProjectCollaboration, setIsLoadingProjectCollaboration] = useState(false);
   const [changeImage, setChangeImage] = useState('true');
   const [collaborationData, setCollaborationData] = useState([]);
   const [map, setMap] = useState(new Map())
+  const [base64Img,setBase64Img] = useState('');
 
   const [toastVisible, setToastVisible] = useState(false);
   const [toastMessage, setToastMessage] = useState("");
   const [toastType, setToastType] = useState("");
-
-  const [userData,setUserData] = useState('');
-  const [base64Img,setBase64Img] = useState('');
+  
+  useEffect(() => {
+    if(user) {
+      setBase64Img(`data:image/png;base64,${user.profileImg}`);
+    }
+  }, [user])
 
   // useEffect(() => {
   //   fetch('/projectcollaboration', {
@@ -72,11 +78,6 @@ function Project_Collaboration() {
         // setArray(data[1]);
         const dataMap = new Map(data[1]);
         setMap(dataMap);
-
-        const response2 = await fetch('http://localhost:5000/user/profileImg')
-        const data2 = await response2.json();
-        setUserData(data2.data);
-        setBase64Img(`data:image/png;base64,${data2.data.profileImg}`);
       }
       catch(err)
       {
@@ -104,11 +105,12 @@ function Project_Collaboration() {
     if(collaborationData.size !== 0)
     {
       return(collaborationData.map((itemData) => (
-        // console.log("Helelo :  "+map.get(itemData._id)),
+        // console.log("Helelo :  "+map.get(itemData._id))
         <ProjectCollaborationCard 
-        id={itemData._id}
-        data={itemData} userDetails={map.get(itemData._id)}
-        deleteCollabCard={deleteCollabCard}
+          key={itemData._id}
+          id={itemData._id}
+          data={itemData} userDetails={map.get(itemData._id)}
+          deleteCollabCard={deleteCollabCard}
         />
       )))
     }
@@ -135,13 +137,13 @@ function Project_Collaboration() {
         
 
         { collaborationData.length!==0 ?
-        mapDataCards(collaborationData)
-        :
-        <div className="discussionNullContent">
+            mapDataCards(collaborationData)
+          :
+            <div className="discussionNullContent">
 
-        <div className="nullContentInfo">No Active projects right now :)
-          </div>
-      </div>}
+              <div className="nullContentInfo">No Active projects right now :) </div>
+            </div>
+        }
 
       </div>
       <MyfooterAfterLogin />

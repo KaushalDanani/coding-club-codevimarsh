@@ -7,10 +7,11 @@ import { Link } from "react-router-dom";
 import ToastComponent from "../Toast/toastComponent.js";
 import HashLoader from "react-spinners/HashLoader.js";
 
-function EditUserProfile(props) {
+function EditUserProfile() {
+  
+  const { user, setUser } = useUser();
 
   // useState()
-  const { user, setUser } = useUser();
   const [showhide, setShowhide] = useState("true");
   const [showhideforconfirm, setShowhideforconfirm] = useState("true");
   const [showhideforreconfirm, setShowhideforreconfirm] = useState("true");
@@ -48,10 +49,10 @@ function EditUserProfile(props) {
 
   // useEffect()
   useEffect(() => {
-    if (props.user != null) {
-      setUserID(props.user._id);
+    if (user != null) {
+      setUserID(user._id);
     }
-  }, [props.user]);
+  }, [user]);
 
   useEffect(() => {
     (async () => {

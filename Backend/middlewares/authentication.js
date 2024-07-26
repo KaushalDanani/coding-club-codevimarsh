@@ -1,5 +1,6 @@
 const User = require("../models/user.js")
 const jwt = require('jsonwebtoken');
+const cookieParser = require('cookie-parser');
 const path = require('path');
 require('dotenv').config({ path: path.resolve(__dirname, '../../.env') });
 
@@ -7,7 +8,7 @@ const auth = async (req, res, next) => {
     const token = req.cookies.jwtAuth;
      
   if (!token) {
-    return res.status(401).json({ message: 'Access denied. No token provided.' });
+    return res.json({ message: 'Access denied. No token provided.' });
   }
   
   try {

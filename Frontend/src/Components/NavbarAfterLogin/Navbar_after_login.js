@@ -27,22 +27,21 @@ function Navbar_after_login(props) {
     //     });
     // },[])
 
-    function removeUserAuth() {
-        (async () => {
+    const removeUserAuth = async () => {
           
           setUser(null);
           await fetch('http://localhost:5000/user/remove/auth', {
             method: "GET",
             headers: {
               'Content-Type': 'application/json'
-            }
+            },
+            credentials: 'include'
           })
             .then(response => response.json())
             .then(data => {
               // window.location.reload();
             });
           // window.location.reload();
-        })()
       }
 
     // const userID= props.userID;

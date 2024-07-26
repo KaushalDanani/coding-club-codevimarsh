@@ -7,21 +7,25 @@ import Navbar_after_login from '../NavbarAfterLogin/Navbar_after_login.js';
 import useUser from '../../store/userContext.js';
 import ToastComponent from '../Toast/toastComponent.js';
 
-export default function Question_data(props) {
-
+export default function Question_data() {
+    const { user, setUser } = useUser();
+    
     const location = useLocation();
-    const {user} = useUser();
-    const userID = user ? user._id : null;
-
+    // const userID = user ? user._id : null;
+    const [userID, setUserID] = useState("");
     const [imgData,setImgData] = useState("");
+
     useEffect(()=>{
-        if(props.imgData !== null)
-        setImgData(props.imgData);
-    },[props.imgData])
+        if(user) {
+            setImgData(user.profileImg);
+            setUserID(user._id);
+        }
+    },[user])
 
     const [toastVisible, setToastVisible] = useState(false);
     const [toastMessage, setToastMessage] = useState("");
     const [toastType, setToastType] = useState("");
+
     const searchParams = new URLSearchParams(location.search);
     const q_id = searchParams.get('q_id');
 
@@ -35,32 +39,31 @@ export default function Question_data(props) {
     useEffect(() => {
         if(userID!=null)
         {
+            fetch(`http://localhost:5000/discussion/question?userID=${userID}&q_id=${q_id}`)
+                .then((response) => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.json();
+                })
+                .then((data) => {
+                    setQData(data[0]);
+                    setAsker(data[1]);
+                    setQUp(data[2]);
+                    setRData(data[3]);
 
-        fetch(`http://localhost:5000/discussion/question?userID=${userID}&q_id=${q_id}`)
-            .then((response) => {
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                return response.json();
-            })
-            .then((data) => {
-                setQData(data[0]);
-                setAsker(data[1]);
-                setQUp(data[2]);
-                setRData(data[3]);
+                    const m1 = new Map(data[4]);
+                    const uArr = data[5];
+                    const m2 = new Map(uArr);
 
-                const m1 = new Map(data[4]);
-                const uArr = data[5];
-                const m2 = new Map(uArr);
+                    setrMap(m1);
+                    setupMap(m2);
 
-                setrMap(m1);
-                setupMap(m2);
-
-                
-            })
-            .catch(error => {
-                console.error('Error:', error);
-            });
+                    
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
         }
     }, [userID, q_id]);
 

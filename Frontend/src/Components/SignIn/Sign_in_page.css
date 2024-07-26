@@ -1,4 +1,4 @@
-.signin_section {
+/* .signin {
     position: absolute;
     display: flex;
     align-items: center;
@@ -9,25 +9,25 @@
     background-color: #000000;
     gap: 2.5px;
     overflow: hidden;
-}
+} */
 
-.signin_section::before {
+/* .signin::before {
     content: '';
     position: absolute;
     width: 100%;
     height: 100%;
     background: linear-gradient(black, rgb(253, 138, 22), black);
     animation: animate 6s linear infinite;
-}
-@keyframes animate {
+} */
+/* @keyframes animate {
     0%{
         transform: translateY(-100%);
     }
     100%{
         transform: translateY(100%);
     }
-}
-.signin_section span {
+} */
+/* .signin span {
     position: relative;
     display: block;
     width: calc(5.47vw - 0.4vw);
@@ -37,76 +37,84 @@
     border: 2px solid rgb(0, 0, 0);
     transition: 1.5s;
 }
-.signin_section span:hover {
+.signin span:hover {
     background: rgb(253, 138, 22);
     transition: 0s;
-}
+} */
 
-.signin_section .signin {
-    position: absolute;
+.signin_body {
+    height: 100vh;
     display: flex;
     align-items: center;
-    width: 29%;
     justify-content: center;
-    background: rgb(30, 30, 30);
-    padding: 30px;
-    border-radius: 50px;
-    border: 2.5px solid rgb(253, 138, 22);
-    box-shadow: 0 0 40px rgb(253, 138, 22);
-    z-index: 2;
 }
-.signin_section .container
+
+.signin {
+    /* position: absolute; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.signin .container
 { 
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    width: 75%;
+    width: 29%;
+    /* background: rgb(30, 30, 30); */
+    background-color: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(3px);
+    padding: 2% 5%;
+    border-radius: 50px;
+    border-top: 2px solid rgba(255, 255, 255, 0.5);
+    border-left: 2px solid rgba(255, 255, 255, 0.5);
+    /* border: 2px solid rgb(253, 138, 22); */
+    /* box-shadow: 0 0 15px 1px rgb(253, 138, 22); */
+    /* z-index: 2; */
 }
-.signin_section .container h2 {
+
+.signin .container h2 {
     font-family:'Times New Roman', Times, serif;
     /* text-transform: uppercase; */
     font-size: 35px;
-    color: rgb(194, 194, 194);
+    color: rgb(255, 255, 255);
+    font-weight: 600;
+    letter-spacing: 0.05rem;
     margin-top: 0%;
     margin-bottom: 3.3%;
     padding-bottom: 10.5%;
 }
-.signin_section .container .form {
+.signin .container .form {
     width: 100%;
     display: flex;
     flex-direction: column;
     margin-bottom: 6%;
     gap: 32px;
 }
-.signin_section .container .form .inputbox {
+.signin .container .form .inputbox {
     position: relative;
     width: 100%;
-    color: #ffffff;     
+    color: #ffffff;  
 }
-.signin_section .container .form .inputbox input {
+.signin .container .form .inputbox input {
     width: 100%;
     box-sizing: border-box;
-    background-color: #333;
-    /* outline: #cb3131; */
+    /* background-color: #333; */
+    background-color: rgba(255, 255, 255, 0.17);
+    outline: none;
     font-size: 17.5px;
     color: #ffffff;
     padding: 15px 17px 13px 17px;
     border-radius: 20px;
-    border: 2px solid rgb(253, 138, 22);
+    border: none;
+    border-top: 2px solid rgba(255, 255, 255, 0.5);
+    border-left: 2px solid rgba(255, 255, 255, 0.5);
+    /* border: 2px solid rgb(253, 138, 22); */
 }
-.signin_section .container .form .loginbox input {
-    width: 100%;
-    /* box-sizing: border-box; */
-    text-transform: uppercase;
-    background-color: #db00ef;
-    font-size: 19px;
-    color: #ffffff;
-    padding: 12px;
-    border-radius: 20px;
-    /* border: 2px solid #db00ef; */
-}
-.signin_section .container .form .loginbox button {
+.signin .container .form .loginbox button {
     width: 100%;
     /* box-sizing: border-box; */
     text-transform: uppercase;
@@ -115,12 +123,16 @@
     color: #ffffff;
     padding: 12px;
     border-radius: 20px;
+    border: none;
     /* border: 2px solid #db00ef; */
 }
+.signin .container .form .loginbox button:hover {
+    background-color: rgb(189, 95, 0);
+}
 
-.signin_section .container .form .inputbox label {
+.signin .container .form .inputbox label {
     position: absolute;
-    color: #aaa;
+    color: #d6d6d6;
     margin-left: 17px;
     top: 22%;
     left: 0;
@@ -130,44 +142,54 @@
     transition: 0.6s;
     z-index: 4;
 }
-.signin_section .container .form .inputbox input:valid ~label,
-.signin_section .container .form .inputbox input:focus ~label {
-    transform: translateY(-29px);
-    font-size: 18.5px;
-    background-color: rgb(30, 30, 30);
+.signin .container .form .inputbox input:valid ~label,
+.signin .container .form .inputbox input:focus ~label {
+    transform: translateY(-1.67rem);
+    font-size: 1.15rem;
+    color: #d6d6d6;
+    /* background-color: rgb(113, 113, 113); */
+    /* background-color: rgba(255, 255, 255, 0.1); */
+    backdrop-filter: blur(4px);
     background-image: none;
-    padding-left: 7px;
-    padding-right: 7px;
-    padding-bottom: 2px;
-    border-radius: 10px;
+    padding: 0rem 0.25rem;
+    /* border-radius: 0.8rem; */
 }
-.signin_section .container .form .links_section {
+.signin .container .form .links_section {
     display: flex;
     justify-content:end;
 }
-.signin_section .container .form .links_section .links {
+.signin .container .form .links_section .links {
     text-decoration: none;
     color: rgb(208, 208, 208);
     margin-top: -20px;
     margin-right: 6px;
 }
-.signin_section .container .form .links_section .links:hover {
+.signin .container .form .links_section .links:hover {
     text-decoration: underline;
 }
-.signin_section .container .signup_form {
+.signin .container .signup_form {
     position: relative;
     width: 100%;
 }
-.signin_section .container .signup_form #or_span {
+.signin .container .signup_form .or-section {
+    display: flex;
+    justify-content: space-between;
+    /* grid-template-columns: 1fr 0.5fr 1fr; */
+}
+.signin .container .signup_form #or_span {
     position: absolute;
     color: #aaa;
-    margin-top: -3.65vh;
+    width: 10%;
+    margin-top: 0.3rem;
     margin-left: 42.5%;
     padding-left: 6px;
     padding-right: 6px;
-    background-color: rgb(30, 30, 30);
+    background: transparent;
+    /* background-color: rgb(30, 30, 30); */
+    /* background-color: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(3px); */
 }
-.signin_section .container .signup_form .loginbox input {
+.signin .container .signup_form .loginbox button {
     width: 100%;
     text-transform: uppercase;
     background-color: rgb(253, 138, 22);
@@ -177,6 +199,10 @@
     margin-bottom: 5%;
     padding: 11.5px;
     border-radius: 20px;
+    border: none;
+}
+.signin .container .signup_form .loginbox button:hover {
+    background-color: rgb(189, 95, 0);
 }
 
 .show_pwd {
@@ -212,13 +238,13 @@
 
 @media (max-width: 500px) {
 
-    .signin_section {
+    .signin {
         font-size: 14px;
         display: flex;
         align-items: center;
         justify-content: center;
     }
-    .signin_section::before {
+    .signin::before {
         background: linear-gradient( black 50%, rgb(253, 138, 22), black);
         animation: animate 6s linear infinite;
     }
@@ -231,46 +257,46 @@
         }
     }
     
-    .signin_section span {
+    .signin span {
         width: calc(16vw - 4.2px);
         height: calc(16vw);
     }
 
-    .signin_section .signin {
+    .signin .signin {
         width: 57%;
         top: 13%;
     }
 
-    .signin_section .container {
+    .signin .container {
         width: 100%;
     }
 
-    .signin_section .container .form .inputbox input {
+    .signin .container .form .inputbox input {
         height: 90%;
         border: 1px solid #db00ef;
     }
-    .signin_section .container .form .inputbox label {
+    .signin .container .form .inputbox label {
         top: 22%;
     }
 
-    .signin_section .container .form .inputbox input:valid ~label,
-    .signin_section .container .form .inputbox input:focus ~label {
+    .signin .container .form .inputbox input:valid ~label,
+    .signin .container .form .inputbox input:focus ~label {
         transform: translateY(-25.5px);
     }
 
-    .signin_section .container .form {
+    .signin .container .form {
         gap: 23px;
     }
 
-    .signin_section .container .form .links_section .links {
+    .signin .container .form .links_section .links {
         margin-top: -18px;
     }
 
-    .signin_section .container h2 {
+    .signin .container h2 {
         font-size: 30px;
         margin-bottom: 5.7%;
     }
-    .signin_section .container .signup_form #or_span {
+    .signin .container .signup_form #or_span {
         margin-left: 41.38%;
         top: 23%;
     }
@@ -279,13 +305,13 @@
 
 @media (min-width:501px) and (max-width:650px) {
     
-    .signin_section {
+    .signin {
         font-size: 14px;
         display: flex;
         align-items: center;
         justify-content: center;
     }
-    .signin_section::before {
+    .signin::before {
         width: 155%;
         background: linear-gradient( black 40%, #db00ef, black);
         animation: animate 5s linear infinite;
@@ -299,36 +325,36 @@
         }
     }
 
-    .signin_section span {
+    .signin span {
         width: calc(13vw + 1px);
         height: calc(12vw + 2.8px);
     }
 
-    .signin_section .signin {
+    .signin .signin {
         width: 35%;
         top: 18%;
     }
 
-    .signin_section .signin {
+    .signin .signin {
         width: 52%;
         /* top: 13%; */
     }
     
-    .signin_section .container {
+    .signin .container {
         width: 85%;
         margin-bottom: 3%;
     }
     
-    .signin_section .container .form {
+    .signin .container .form {
         gap: 30px;
     }
     
-    .signin_section .signin .container .signup_form hr {
+    .signin .signin .container .signup_form hr {
         margin-top: 6.5%;
         margin-bottom: 6.5%;
     }
     
-    .signin_section .container .signup_form #or_span {
+    .signin .container .signup_form #or_span {
         margin-left: 43.38%;
         top: 26.5%;
     }
@@ -337,13 +363,13 @@
 
 @media (min-width:651px) and (max-width:800px) {
     
-    .signin_section {
+    .signin {
         font-size: 14px;
         display: flex;
         align-items: center;
         justify-content: center;
     }
-    .signin_section::before {
+    .signin::before {
         width: 155%;
         background: linear-gradient( black 30%, #db00ef, black);
         animation: animate 5s linear infinite;
@@ -357,12 +383,12 @@
         }
     }
 
-    .signin_section span {
+    .signin span {
         width: calc(9vw + 1.7px);
         height: calc(9vw + 1px);
     }
 
-    .signin_section .signin {
+    .signin .signin {
         width: 45%;
         top: 14.5%;
         display: flex;
@@ -370,21 +396,21 @@
         justify-content: center
     }
     
-    .signin_section .container {
+    .signin .container {
         width: 85%;
         margin-bottom: 3%;
     }
     
-    .signin_section .container .form {
+    .signin .container .form {
         gap: 30px;
     }
     
-    .signin_section .signin .container .signup_form hr {
+    .signin .signin .container .signup_form hr {
         margin-top: 6.5%;
         margin-bottom: 6.5%;
     }
     
-    .signin_section .container .signup_form #or_span {
+    .signin .container .signup_form #or_span {
         margin-left: 43.38%;
         top: 26.5%;
     }
@@ -393,24 +419,24 @@
 
 @media (min-width:800px) and (max-width:1024px) {
     
-    .signin_section {
+    .signin {
         font-size: 14px;
         display: flex;
         align-items: center;
         justify-content: center;
     }
-    .signin_section::before {
+    .signin::before {
         width: 155%;
         background: linear-gradient( black 50%, #db00ef, black);
         animation: animate 6s linear infinite;
     }
 
-    .signin_section span {
+    .signin span {
         width: calc(8vw - 2.8px);
         height: calc(8vw - 2px);
     }
     
-    .signin_section .signin {
+    .signin .signin {
         width: 35%;
         top: 15%;
         display: flex;
@@ -418,21 +444,21 @@
         justify-content: center
     }
 
-    .signin_section .container {
+    .signin .container {
         width: 80%;
         margin-bottom: 3%;
     }
 
-    .signin_section .container .form {
+    .signin .container .form {
         gap: 30px;
     }
 
-    .signin_section .signin .container .signup_form hr {
+    .signin .signin .container .signup_form hr {
         margin-top: 5%;
         margin-bottom: 5%;
     }
 
-    .signin_section .container .signup_form #or_span {
+    .signin .container .signup_form #or_span {
         margin-left: 43.38%;
         top: 26.5%;
     }
@@ -441,24 +467,24 @@
 
 @media (min-width:1025px) and (max-width:1200px) {
     
-    .signin_section {
+    .signin {
         font-size: 16px;
         display: flex;
         align-items: center;
         justify-content: center;
     }
-    .signin_section::before {
+    .signin::before {
         width: 155%;
         background: linear-gradient( black 50%, #db00ef, black);
         animation: animate 6s linear infinite;
     }
 
-    .signin_section span {
+    .signin span {
         width: calc(7vw - 4.5px);
         height: calc(7vw - 2px);
     }
 
-    .signin_section .signin {
+    .signin .signin {
         width: 30%;
         top: 14.5%;
         display: flex;
@@ -466,21 +492,21 @@
         justify-content: center
     }
 
-    .signin_section .container {
+    .signin .container {
         width: 80%;
         margin-bottom: 3%;
     }
 
-    .signin_section .container .form {
+    .signin .container .form {
         gap: 30px;
     }
 
-    .signin_section .signin .container .signup_form hr {
+    .signin .signin .container .signup_form hr {
         margin-top: 3.5%;
         margin-bottom: 3.5%;
     }
 
-    .signin_section .container .signup_form #or_span {
+    .signin .container .signup_form #or_span {
         margin-left: 43.38%;
         top: 21%;
     }
@@ -489,24 +515,24 @@
 
 @media (min-width:1201px) and (max-width:1376px) {
     
-    .signin_section {
+    .signin {
         font-size: 16px;
         display: flex;
         align-items: center;
         justify-content: center;
     }
-    .signin_section::before {
+    .signin::before {
         width: 155%;
         background: linear-gradient( black 50%, #db00ef, black);
         animation: animate 6s linear infinite;
     }
 
-    .signin_section span {
+    .signin span {
         width: calc(6vw - 3px);
         height: calc(6vw - 3px);
     }
 
-    .signin_section .signin {
+    .signin .signin {
         width: 27%;
         top: 14.5%;
         display: flex;
@@ -514,21 +540,21 @@
         justify-content: center
     }
 
-    .signin_section .container {
+    .signin .container {
         width: 82%;
         margin-bottom: 3%;
     }
 
-    .signin_section .container .form {
+    .signin .container .form {
         gap: 30px;
     }
 
-    .signin_section .signin .container .signup_form hr {
+    .signin .signin .container .signup_form hr {
         margin-top: 3.5%;
         margin-bottom: 3.5%;
     }
 
-    .signin_section .container .signup_form #or_span {
+    .signin .container .signup_form #or_span {
         margin-left: 43.38%;
         top: 21%;
     }

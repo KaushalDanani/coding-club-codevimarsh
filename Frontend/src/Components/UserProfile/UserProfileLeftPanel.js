@@ -20,9 +20,10 @@ function UserProfileLeftPanel(props) {
     display: "flex",
   };
 
-  console.log(props.userData.skills);
+  // console.log(props.userData.skills);
 
   const [showEdit, setShowEdit] = useState(false);
+  const base64Img = `data:image/png;base64,${props.userData.profileImg}`;
   
   function EditDP() {
     setShowEdit(!showEdit);
@@ -34,7 +35,6 @@ function UserProfileLeftPanel(props) {
       />
   }
 
-  const base64Img = `data:image/png;base64,${props.userData.profileImg}`;
 
   return (
     <div className="UPleftPanel">

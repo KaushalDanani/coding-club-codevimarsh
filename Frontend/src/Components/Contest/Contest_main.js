@@ -9,11 +9,11 @@ import { Link } from "react-router-dom";
 import HashLoader from "react-spinners/HashLoader.js";
 import useUser from "../../store/userContext.js";
 
-
-export default function Contest_main(props) {
+export default function Contest_main() {
 
     const [pastcontestinfo, setPastContestinfo] = useState([{}]);
    
+    const { user, setUser } = useUser();
     const [isAdmin,setAdmin] = useState('');
     const [currentcontestinfo, setCurrentContestinfo] = useState([{}]);
     const [upcomingcontestinfo, setUpcomingContestinfo] = useState([{}]);
@@ -23,9 +23,11 @@ export default function Contest_main(props) {
 
     useEffect(() => {
 
-        if(props.user!=null)
-        setAdmin(props.user.isAdmin);
-    },[props.user])
+        if(user!=null) {
+            setAdmin(user.isAdmin);
+            setBase64Img(`data:image/png;base64,${user.profileImg}`);
+        }
+    },[user])
 
     useEffect(() => {
 
@@ -44,10 +46,10 @@ export default function Contest_main(props) {
             const data2 = await response2.json();
             setUpcomingContestinfo(data2)
 
-            const response3 = await fetch('http://localhost:5000/user/profileImg')
-            const data3 = await response3.json();
-            setUserData(data3.data);
-            setBase64Img(`data:image/png;base64,${data3.data.profileImg}`);
+            // const response3 = await fetch('http://localhost:5000/user/profileImg')
+            // const data3 = await response3.json();
+            // setUserData(data3.data);
+            // setBase64Img(`data:image/png;base64,${data3.data.profileImg}`);
 
             setIsLoading(false);
         })();

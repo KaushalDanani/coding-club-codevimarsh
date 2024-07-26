@@ -5,7 +5,8 @@ import '../SubjectResources/AddObjectForm.css'
 import useUser from "../../store/userContext.js";
 import ToastComponent from "../Toast/toastComponent.js";
 
-function Give_answer(props) {
+function Give_answer() {
+    const { user, setUser } = useUser();
 
     const navigate = useNavigate();
     const location = useLocation();
@@ -18,9 +19,9 @@ function Give_answer(props) {
     const [userID, setUserID] = useState();
 
     useEffect(() => {
-        if(props.user)
-            setUserID(props.user._id);
-    },[props.user])
+        if(user)
+            setUserID(user._id);
+    },[user])
 
     const [toastVisible, setToastVisible] = useState(false);
     const [toastMessage, setToastMessage] = useState("");

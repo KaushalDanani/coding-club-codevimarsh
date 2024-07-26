@@ -4,8 +4,8 @@ import '../SubjectResources/AddObjectForm.css'
 import useUser from "../../store/userContext.js";
 import ToastComponent from "../Toast/toastComponent.js";
 
-
-export default function Ask_Question(props) {
+export default function Ask_Question() {
+    const { user, setUser } = useUser();
 
     const [Question, setQuestion] = useState("");
     const [Tags, setTags] = useState([]);
@@ -19,9 +19,9 @@ export default function Ask_Question(props) {
     const [userID, setUserID] = useState();
 
     useEffect(() => {
-        if(props.user)
-            setUserID(props.user._id);
-    },[props.user])
+        if(user)
+            setUserID(user._id);
+    },[user])
 
     const navigate = useNavigate();
 
@@ -144,7 +144,7 @@ export default function Ask_Question(props) {
                         <div className="addObjectRow">
                             <div>Code</div>
                             <div>:</div>
-                            <textarea name="code_text" id="code_text" onChange={addCode} cols="" rows="4" required></textarea>
+                            <textarea name="code_text" id="code_text" onChange={addCode} cols="" rows="4" ></textarea>
                         </div>
 
                         <div className='addObjectBtn'>

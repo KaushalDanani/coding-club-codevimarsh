@@ -5,7 +5,6 @@ import './AddProject.css'
 import { Link, useNavigate } from "react-router-dom";
 import ToastComponent from "../Toast/toastComponent.js";
 
-
 function addproject_close() {
     const closebtn = document.getElementById("AddProject");
     closebtn.style.display = "none";
@@ -106,23 +105,23 @@ export default function AddProject() {
     }
 
     function addTeam() {
-        var team = document.getElementById("teamInfo").value;
+        const team = document.getElementById("teamInfo").value;
         team = team.split(",").map(tag => tag.trim());
         setTeam(team);
     }
 
     function addProjectName() {
-        var projectName = document.getElementById("projectName").value;
+        const projectName = document.getElementById("projectName").value;
         setProjectName(projectName);
     }
 
     function addProjectDescription() {
-        var projectDescription = document.getElementById("projectDescription").value;
+        const projectDescription = document.getElementById("projectDescription").value;
         setProjectDescription(projectDescription);
     }
 
     function addProjectTags() {
-        var projectTags = document.getElementById("projectTags").value;
+        const projectTags = document.getElementById("projectTags").value;
         projectTags = projectTags.split(",").map(tag => tag.trim());
         if (projectTags.length == 1 && projectTags[0] == "") {
             setProjectTags([])
@@ -133,12 +132,12 @@ export default function AddProject() {
     }
 
     function addProjectLink() {
-        var projectLink = document.getElementById("projectLink").value;
+        const projectLink = document.getElementById("projectLink").value;
         setProjectLink(projectLink);
     }
 
     function addProjectInfo() {
-        var projectInfo = document.getElementById("projectInfo").value;
+        const projectInfo = document.getElementById("projectInfo").value;
         setProjectInfo(projectInfo);
     }
 
@@ -284,12 +283,12 @@ export default function AddProject() {
                     </div>
 
                     <div className="addProjectRow">
-                        <label>Project Image (Thumbnail) </label> {imgPercentage > 0 ? "Uploading: " + imgPercentage + "%" : ""}
+                        <label>Project Image (Thumbnail) </label> {imgPercentage > 0 ? <><span className="loadingPercentage"> Uploading: {imgPercentage} % </span></> : ""}
                         <input className="fileInput" type='file' accept="image/*" name='datafile' onChange={(e) => { addImage(e) }} required/>
                     </div>
 
                     <div className="addProjectRow">
-                        <label>Project Video </label> {videoPercentage > 0 ? "Uploading: " + videoPercentage + "%" : ""}
+                        <label>Project Video </label> {videoPercentage > 0 ? <><span className="loadingPercentage"> Uploading: {videoPercentage} % </span></> : ""}
                         <input className="fileInput" type='file' accept="video/*" name='datafile' onChange={(e) => { addVideo(e) }} required/>
                     </div>
 

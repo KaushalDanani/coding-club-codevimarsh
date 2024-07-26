@@ -4,8 +4,9 @@ import { useState , useEffect} from 'react'
 import useUser from '../../store/userContext.js'
 import ToastComponent from '../Toast/toastComponent.js'
 
-function AddProjectCollaboration(props) {
+function AddProjectCollaboration() {
 
+    const { user, setuser } = useUser();
     const navigate = useNavigate();
 
     const [pc_title, setPc_title] = useState('')
@@ -19,9 +20,9 @@ function AddProjectCollaboration(props) {
     const [userID, setUserID] = useState();
 
     useEffect(() => {
-        if(props.user)
-            setUserID(props.user._id);
-    },[props.user])
+        if(user)
+            setUserID(user._id);
+    },[user])
 
     const titleChangeHandler = (e) => {
         setPc_title(e.target.value)

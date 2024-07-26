@@ -6,14 +6,25 @@ import { useEffect, useState } from "react";
 import ForumGenerator from './Discussion_data.js'
 import MyfooterAfterLogin from '../FooterAfterLogin/MyfooterAfterLogin.js'
 import HashLoader from 'react-spinners/HashLoader.js'
+import useUser from '../../store/userContext.js';
 
 export default function Forums() {
+  const { user, setUser } = useUser();
+
 	const [changeImage, setChangeImage] = useState('true');
   const [ques, setQues] = useState([]);
   const [map, setMap] = useState(new Map());
   const [isLoadingDiscussion, setIsLoadingDiscussion] = useState(false);
   const [userData,setUserData] = useState('');
   const [base64Img,setBase64Img] = useState('');
+
+  useEffect(() => {
+    if (user != null) {
+      // setAdmin(user.isAdmin);
+      setUserData(user);
+      setBase64Img(`data:image/png;base64,${user.profileImg}`);
+    }
+  }, [user])
 
   useEffect(() => {
     (async () => { 
@@ -31,10 +42,6 @@ export default function Forums() {
         const map = new Map(mArray);
         setMap(map);
 
-        const response2 = await fetch('http://localhost:5000/user/profileImg')
-        const data2 = await response2.json();
-        setUserData(data2.data);
-        setBase64Img(`data:image/png;base64,${data2.data.profileImg}`);
       }
       catch(err)
       {

@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./LoginHomePage.css";
 import Greeting from "./Greeting.js";
 import NewTasks from "./NewTasks.js";
@@ -11,6 +12,7 @@ import { useLocation } from "react-router-dom";
 
 function LoginHomePage(props) {
   const api_key = process.env.REACT_APP_QUOTE_API_KEY;
+  const navigate = useNavigate()
   const [isLoadingHome, setIsLoadingHome] = useState(false);
   const [fname, setFname] = useState("");
   const [userID, setUserID] = useState("");
@@ -51,12 +53,21 @@ function LoginHomePage(props) {
           headers: {
             "Content-Type": "application/json",
           },
+          credentials: "include"
         });
-        const [data] = await response.json();
-        setUser(data);
-        setFname(data.fname);
-        setUserID(data._id);
-        setAdmin(data.isAdmin);
+        const data = await response.json();
+        if(data.message == undefined)
+          {
+              setUser(data.userData);
+              setFname(data.userData.fname);
+              setUserID(data.userData._id);
+              setAdmin(data.userData.isAdmin);
+              setBase64Img(`data:image/png;base64,${data.userData.profileImg}`);
+          }
+          else {
+              // alert(data.message)
+              setUser(null);
+          }
 
         const response2 = await fetch(`http://localhost:5000/contest/upcoming`, {
           method: "GET",
@@ -81,10 +92,10 @@ function LoginHomePage(props) {
         // const articleData = await response4.json();
         // setArticlesData(articleData.articles);
 
-        const response3 = await fetch('http://localhost:5000/user/profileImg')
-        const data3 = await response3.json();
-        setUserData(data3.data);
-        setBase64Img(`data:image/png;base64,${data3.data.profileImg}`);
+        // const response3 = await fetch('http://localhost:5000/user/profileImg')
+        // const data3 = await response3.json();
+        // setUserData(data3.data);
+        // setBase64Img(`data:image/png;base64,${data3.data.profileImg}`);
 
         setIsLoadingHome(false);
       } catch (err) {
@@ -110,7 +121,13 @@ function LoginHomePage(props) {
     );
 
   return (
-    <>
+    (!user) ? (
+      <>
+        {navigate("/")}
+        {/* {window.location.reload()} */}
+      </>
+    ) : (
+      <>
       <Navbar_after_login imgData={base64Img} />
       <div className="background-color-LoginHome">
         <Greeting fname={fname} userID={userID} isAdmin={admin} />
@@ -147,7 +164,8 @@ function LoginHomePage(props) {
       </div>
       <MyfooterAfterLogin />
     </>
-  );
+  )
+  )
 }
 
 export default LoginHomePage;

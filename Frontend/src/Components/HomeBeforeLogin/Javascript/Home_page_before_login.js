@@ -12,16 +12,53 @@ import News from "./News.js";
 import ProjCollab from "./ProjCollab.js";
 import Discussion from "./Discussion.js";
 import Navbar_before_login from "./Navbar_before_login.js";
+import useUser from '../../../store/userContext.js';
 import TypeWriter from "./TypeWriter.js";
 
-function Home_page_before_login(props) {
+function Home_page_before_login() {
     const navigate = useNavigate();
+    const { user, setUser } = useUser();
     const api_key = process.env.REACT_APP_QUOTE_API_KEY;
+    const [isLoading, setIsLoading] = useState(false);
+    const [imgData, setImgData] = useState("");
     const [quote, setQuote] = useState("");
     const [author, setAuthor] = useState("");
     const [displayedQuote, setDisplayedQuote] = useState("");
 
+    const userCradential = async () => {
+        try {
+            setIsLoading(true);
+            const response = await fetch("http://localhost:5000/user/home/dataset", {
+                method: "GET",
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                credentials: 'include'
+            });
+            const data = await response.json();
+            // console.log(data.message)
+            if(data.message == undefined)
+            {
+                setUser(data.userData);
+                setImgData(data.userData.profileImg);
+                console.log('-----------------------------USER-------------------------', data);
+            }
+            else {
+                // alert(data.message)
+                setUser(null);
+            }
+            setIsLoading(false);
+            
+        }
+        catch (err) {
+            console.error(err, err.response);
+        }
+    
+    }
+
     useEffect(() => {
+        userCradential();
+
         try {
             fetch(api_key)
                 .then((response) => 
@@ -36,7 +73,8 @@ function Home_page_before_login(props) {
                 });
         } catch (error) {
             console.error("QUOTE API IS NOT WORKING");
-        }
+        } 
+
     }, []);
 
     const changeQuoteHandler = () => {
@@ -60,7 +98,7 @@ function Home_page_before_login(props) {
 
     return (
 
-        (props.user) ? (
+        (user) ? (
             <>
                 {navigate("/home")}
                 {/* {window.location.reload()} */}
@@ -87,7 +125,7 @@ function Home_page_before_login(props) {
                                 />
                             </span>
                             <h4 className="oneLiner">
-                                Start your coding journey with codeMinions by joining us...
+                                Start your coding journey with code-vimarsh by joining us...
                             </h4>
                             <Link to={"signin"}>
                                 {" "}
@@ -252,7 +290,7 @@ function Home_page_before_login(props) {
                 <ProjCollab />
                 <Discussion />
                 <div className="founderinfo" id="AboutUS">
-                    <h1 className="foundercardline">The Initiators Of CodeVimarsh</h1>
+                    <h1 className="foundercardline">The Initiators Of Code-Vimarsh</h1>
                     <div className="founderGrid">
                         {founderinfo.map(function Founderinfocard(element) {
                             return (

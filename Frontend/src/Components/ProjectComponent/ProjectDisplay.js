@@ -44,7 +44,7 @@ export default function ProjectDisplay(props) {
 
     useEffect(() => {
         if(props.team){
-                deletebtn();
+            deletebtn();
         }
     }, [props.team,userID]);
 
@@ -105,7 +105,7 @@ export default function ProjectDisplay(props) {
         const [Fnamelname,setFnamelname] = useState([]);
         useEffect(() => {
             if(props.data.contributors){
-                    fetch("http://localhost:5000/profile/projects/members",{
+                    fetch("http://localhost:5000/project/members",{
                         method : 'POST',
                         headers : {
                             "Accept" : 'application/json',

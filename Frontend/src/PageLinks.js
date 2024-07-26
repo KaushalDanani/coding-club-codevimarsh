@@ -50,52 +50,36 @@ const PageLinks = () => {
 
     const [isLoading, setIsLoading] = useState(false);
     const { user, setUser } = useUser();
-    const [imgData, setImgData] = useState("");
+    const userCradential = async () => {
+        try {
+            setIsLoading(true);
+            const response = await fetch("http://localhost:5000/user/home/dataset", {
+                method: "GET",
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                credentials: 'include'
+            });
+            const data = await response.json();
+            if(data.message == undefined)
+                setUser(data.userData);
+                // console.log('-----------------------------USER-------------------------', data);
+            else 
+                setUser(null);
+            
+            setIsLoading(false);
+            
+        }
+        catch (err) {
+            console.error(err, err.response);
+        }
+    
+    }
+
     useEffect(() => {
-        (async () => {
-            try {
-                setIsLoading(true);
-                const response = await fetch("/user/home/dataset", {
-                    method: "GET",
-                    headers: {
-                        'Content-Type': 'application/json'
-                    }
-                });
-                const [data] = await response.json();
-                setUser(data);
-                // setImgData(data.profileImg);
-                console.log('-----------------------------USER-------------------------', data);
-                setIsLoading(false);
-                
-            }
-            catch (err) {
-                console.error(err, err.response);
-            }
-        })();
+        userCradential();
+            
     }, [])
-
-    // useEffect(() => {
-    //     fetch('/checkUser', {
-    //         method: "GET",
-    //         headers: {
-    //             'Content-Type': 'application/json'
-    //         }
-    //     })
-    //         .then(response => response.json())
-    //         .then(data => {
-
-    //             if (data.error === undefined) {
-    //                 console.log(data.Token);
-    //                 if (data.Token === undefined)
-    //                     setCheckAuth(false);
-    //                 else
-    //                     setCheckAuth(true);
-    //             }
-    //             else {
-    //                 alert(data.error)
-    //             }
-    //         })
-    // }, []);
 
     if (isLoading)
         return <>
@@ -115,32 +99,32 @@ const PageLinks = () => {
         <>
             <Router>
                 <Routes>
-                    <Route path='/' element={<Home_page_before_login user={user} />} />
-                    <Route path='/home' element={<LoginHomePage user={user} />} />
+                    <Route path='/' element={<Home_page_before_login />} />
+                    <Route path='/home' element={<LoginHomePage />} />
                     <Route path='/signin' element={<Sign_in_page />} />
                     <Route path='/signup/step-1' element={<Sign_up_first_page />} />
                     <Route path='/signup/step-2' element={<Sign_up_second_page />} />
                     <Route path='/manageAdmins' element={<ManageAdmins />} />
-                    <Route path='/contest' element={<Contest_main user={user} />} />
+                    <Route path='/contest' element={<Contest_main />} />
                     <Route path='/addContest' element={<AddContest />} />
-                    <Route path='/article&news' element={<ArticlesNewsHomePage />} />
-                    <Route path='/resources' element={<ResourcesHome user={user}/>} />
-                    <Route path='/resources/rescontent' element={<ResourcesContent user={user} />} />
+                    {/* <Route path='/article&news' element={<ArticlesNewsHomePage />} /> */}
+                    <Route path='/resources' element={<ResourcesHome />} />
+                    <Route path='/resources/rescontent' element={<ResourcesContent />} />
                     <Route path='/resources/rescontent/addBook' element={<AddBooks/>} />
                     <Route path='/resources/rescontent/addVideo' element={<AddVideos/>} />
                     <Route path='/resources/rescontent/addNote' element={<AddNotes/>} />
                     <Route path='/addSubject' element={<AddSubject />} />
 
                     <Route path='/discussion' element={<Discussion_Forums />} />
-                    <Route path='/discussion/addQuestion' element={<Ask_Question user={user}/>} />
-                    <Route path='/discussion/question' element={<Question_data imgData={imgData}/>} />
-                    <Route path='/discussion/question/addReply' element={<Give_answer user={user} />} />
-                    <Route path='/project' element={<ProjectMain user={user}/>} />
-                    <Route path='/project/add_project' element={<AddProject user={user}/>} />
-                    <Route path='/profile' element={<UserProfile user={user}/>} />
-                    <Route path='/profile/edit_profile' element={<EditUserProfile user={user}/>} />
+                    <Route path='/discussion/addQuestion' element={<Ask_Question />} />
+                    <Route path='/discussion/question' element={<Question_data />} />
+                    <Route path='/discussion/question/addReply' element={<Give_answer />} />
                     <Route path='/project_collab' element={<Project_Collaboration />} />
-                    <Route path='/project_collab/addpost' element={<AddProjectCollaboration user={user}/>} />
+                    <Route path='/project_collab/addpost' element={<AddProjectCollaboration />} />
+                    <Route path='/project' element={<ProjectMain />} />
+                    <Route path='/project/add_project' element={<AddProject />} />
+                    <Route path='/profile' element={<UserProfile />} />
+                    <Route path='/profile/edit_profile' element={<EditUserProfile />} />
                     <Route path='*' element={<NotFoundPage />} />
                 </Routes>
             </Router>

@@ -6,27 +6,30 @@ import Navbar_after_login from "../NavbarAfterLogin/Navbar_after_login.js";
 import MyfooterAfterLogin from "../FooterAfterLogin/MyfooterAfterLogin.js";
 import { useLocation } from "react-router-dom";
 import HashLoader from "react-spinners/HashLoader.js";
+import useUser from "../../store/userContext.js";
 
 function UserProfile(props) {
-
+  
+  const { user, setUser } = useUser();
+  
   const location = useLocation();
   const [userID,setUserID] = useState("");
   const [base64Img,setBase64Img] = useState('');
-
-  useEffect( () => {
-    if(props.user!=null)
-    {
-      setUserID(props.user._id);
-    }
-  },[props.user])
-
-  const searchParams = new URLSearchParams(location.search);
-   
-  const [isLoadingProfile, setIsLoadingProfile] = useState(false);
-  const visitID = searchParams.get('visitID');
-
   const [searchValue, setSearchValue] = useState("");
   const [userData,setUserData] = useState([]);
+  const [isLoadingProfile, setIsLoadingProfile] = useState(false);
+
+  useEffect(() => {
+    if(user!=null)
+    {
+      setUserID(user._id);
+      setBase64Img(`data:image/png;base64,${user.profileImg}`);
+      setUserData(user);
+    }
+  },[user])
+
+  const searchParams = new URLSearchParams(location.search);
+  const visitID = searchParams.get('visitID');
 
   useEffect( () => {
 
@@ -45,11 +48,6 @@ function UserProfile(props) {
           const data = await response.json();
           setUserData(data[0]);
         }
-
-        const response2 = await fetch('http://localhost:5000/user/profileImg')
-        const data2 = await response2.json();
-        setUserData(data2.data);
-        setBase64Img(`data:image/png;base64,${data2.data.profileImg}`);
       }
       catch(err)
       {

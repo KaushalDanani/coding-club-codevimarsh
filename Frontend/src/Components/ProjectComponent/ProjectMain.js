@@ -7,8 +7,10 @@ import { Link } from 'react-router-dom';
 import "./ProjectMain.css"
 import MyfooterAfterLogin from "../FooterAfterLogin/MyfooterAfterLogin.js";
 import HashLoader from "react-spinners/HashLoader.js";
+import useUser from "../../store/userContext.js";
 
-export default function ProjectMain(props){
+export default function ProjectMain(){
+    const { user, setUser } = useUser();
 
     const [isLoadingProject, setIsLoadingProject] = useState(false);
     const [admin,setAdmin] = useState('');
@@ -19,12 +21,13 @@ export default function ProjectMain(props){
     const [base64Img,setBase64Img] = useState('');
 
     useEffect( ()=> {
-        if(props.user!=null)
+        if(user!=null)
         {
-            setAdmin(props.user.isAdmin);
-            setUserID(props.user._id);
+            setAdmin(user.isAdmin);
+            setUserID(user._id);
+            setBase64Img(`data:image/png;base64,${user.profileImg}`);
         }
-    },[props.user])
+    },[user])
     
     useEffect(() => {
 
@@ -39,11 +42,6 @@ export default function ProjectMain(props){
                 })
                 const data = await response.json();
                 setProjectinfo(data);
-
-                const response2 = await fetch('http://localhost:5000/user/profileImg')
-                const data2 = await response2.json();
-                setUserData(data2.data);
-                setBase64Img(`data:image/png;base64,${data2.data.profileImg}`);
             }
             catch(err)
             {
@@ -90,7 +88,6 @@ export default function ProjectMain(props){
         </div>
             
             <hr style={{width: '85%', height: '2.5px', backgroundColor: 'white', margin: 'auto', marginBottom: '2.5vh'}}/>
-
             
             {
                 Projectinfo.length!==0 ? 

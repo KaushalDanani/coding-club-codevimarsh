@@ -123,7 +123,7 @@ exports.editProfilePassword = async (req,res) => {
 
 exports.editProfileImage = async (req,res) => {
     const profileImg = req.body.profileImg;
-  const userID = req.query.userID;
+    const userID = req.query.userID;
 
   // // console.log(profileImg);
   // // console.log(userID);
@@ -146,10 +146,9 @@ exports.profileProjects = async (req,res) => {
 }
 
 exports.homeDataset = async (req,res) => {
-  const jwt = req.cookies.jwtAuth;
+  // const jwt = req.cookies.jwtAuth;
   try {
-    const resData = await User.find({'token' : jwt});
-    res.send(resData);
+    res.send({userData: req.user});
   } catch (err) {
     res.status(500).send(err.message);
   }
@@ -204,8 +203,7 @@ exports.signUp = async (req, res) => {
             isAdmin: false
           })
     
-    
-            const token = await user.generateAuthToken();
+            const token = await user.generateAuthToken(existingData);
     
             res.cookie("jwtAuth", token, {
               expires: new Date(Date.now() + 31536000), 
@@ -213,7 +211,6 @@ exports.signUp = async (req, res) => {
             });
     
             const signup_done = await user.save();
-            
     
             res.status(200).send({ userID: signup_done._id });
         }
@@ -241,28 +238,27 @@ exports.signIn = async (req, res) => {
             res.send({message: "Invalid User Credential"});
           else
           {
-            const token = await generateAuthToken();
-  
+            const token = await generateAuthToken(userDetail);
+
             res.cookie("jwtAuth", token, {
               expires: new Date(Date.now() + 31536000),
               httpOnly: true
             })
   
+            // console.log("USER 😼: "+userDetail);
             res.status(200).send({ userID: userDetail._id });
           }
         }
     } catch (err) {
-        res.sendStatus(400)
+        res.status(400).send({message: "ERROR: "+err})
     }
 }
 
-exports.profileImg = async(req,res) => {
-  const jwt = req.cookies.jwtAuth;
-  try {
-    const resData = await User.findOne({'token' : jwt});
-    res.send({data : resData});
-    // console.log(resData);
-  } catch (err) {
-    res.status(500).send(err.message);
-  }
-}
+// exports.profileImg = async(req,res) => {
+//   // const jwt = req.cookies.jwtAuth;
+//   try {
+//     res.send({userData: req.user});
+//   } catch (err) {
+//     res.status(500).send(err.message);
+//   }
+// }
