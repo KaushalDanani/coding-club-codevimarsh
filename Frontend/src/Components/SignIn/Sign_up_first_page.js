@@ -75,240 +75,240 @@ function Sign_up_first_page() {
     }
 
   return (
-        <section className='sign-up_section'>
-            <>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            </>
+        // <section className='sign-up_section'>
+        //     <>
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        //     <span></span>
+        //     </>
 
-        
+        <>
+        <div className='signup_body'>
             <div className="signup">
                 <div className="container">
                     <h2> Sign Up </h2>
-                    <form>
                         <div className="form">
                             <div className="inputbox">
                                 <input type="text" name='prn' value={prn} onChange={prnChangeHandler} required />
@@ -322,7 +322,7 @@ function Sign_up_first_page() {
                                 { (uname === '') && (<div className='requireSuggestion'> *Username is required. </div>) }
                             </div>
                             <div className="inputbox">
-                                <div className={showhide ? "show_pwd_signup" : "hide_pwd_signup"} onClick={passwordVisibilityHandler}/>
+                                <div className={showhide ? "show_pwd_signup" : "hide_pwd_signup"} onClick={passwordVisibilityHandler} onMouseDown={(event) => event.preventDefault()} />
                                 <input id='pwd' type="password" name='password' value={pwd} onChange={pwdChangeHandler} required />
                                 <label> Password </label>
                                 { (pwd === '') && (<div className='requireSuggestion'> *Password is required. </div>) }
@@ -338,10 +338,11 @@ function Sign_up_first_page() {
                                 <div className="trackbar"></div>
                             </div>
                         </div>
-                    </form>
                 </div>
             </div>
-        </section>
+        </div>
+    </>
+        // </section>
   )
 }
 

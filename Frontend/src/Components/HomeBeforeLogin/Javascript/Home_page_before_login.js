@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import "../CSS/Home_page_before_login.css";
 import { Typewriter, Cursor } from "react-simple-typewriter";
 import { Link, useNavigate } from "react-router-dom";
+import Skeleton from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
 import "../../../App.css";
 import Myfooter from "./Myfooter.js";
 import Foundercard from "./Foundercard.js";
@@ -12,133 +14,125 @@ import News from "./News.js";
 import ProjCollab from "./ProjCollab.js";
 import Discussion from "./Discussion.js";
 import Navbar_before_login from "./Navbar_before_login.js";
-import useUser from '../../../store/userContext.js';
+import useUser from "../../../store/userContext.js";
 import TypeWriter from "./TypeWriter.js";
 
 function Home_page_before_login() {
-    const navigate = useNavigate();
-    const { user, setUser } = useUser();
-    const api_key = process.env.REACT_APP_QUOTE_API_KEY;
-    const [isLoading, setIsLoading] = useState(false);
-    const [imgData, setImgData] = useState("");
-    const [quote, setQuote] = useState("");
-    const [author, setAuthor] = useState("");
-    const [displayedQuote, setDisplayedQuote] = useState("");
+  const navigate = useNavigate();
+  const { user, setUser } = useUser();
+  const api_key = process.env.REACT_APP_QUOTE_API_KEY;
+  const [isLoading, setIsLoading] = useState(false);
+  const [imgData, setImgData] = useState("");
+  const [quote, setQuote] = useState("");
+  const [author, setAuthor] = useState("");
+  const [displayedQuote, setDisplayedQuote] = useState("");
 
-    const userCradential = async () => {
-        try {
-            setIsLoading(true);
-            const response = await fetch("http://localhost:5000/user/home/dataset", {
-                method: "GET",
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                credentials: 'include'
-            });
-            const data = await response.json();
-            // console.log(data.message)
-            if(data.message == undefined)
-            {
-                setUser(data.userData);
-                setImgData(data.userData.profileImg);
-                console.log('-----------------------------USER-------------------------', data);
-            }
-            else {
-                // alert(data.message)
-                setUser(null);
-            }
-            setIsLoading(false);
-            
-        }
-        catch (err) {
-            console.error(err, err.response);
-        }
-    
+  const userCradential = async () => {
+    try {
+      setIsLoading(true);
+      const response = await fetch("http://localhost:5000/user/home/dataset", {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        credentials: "include",
+      });
+      const data = await response.json();
+      // console.log(data.message)
+      if (data.message == undefined) {
+        setUser(data.userData);
+        setImgData(data.userData.profileImg);
+        console.log(
+          "-----------------------------USER-------------------------",
+          data
+        );
+      } else {
+        // alert(data.message)
+        setUser(null);
+      }
+      setIsLoading(false);
+    } catch (err) {
+      console.error(err, err.response);
     }
+  };
 
-    useEffect(() => {
-        userCradential();
+  useEffect(() => {
+    userCradential();
 
-        try {
-            fetch(api_key)
-                .then((response) => 
-                    {
-                        if(!response.ok)
-                            throw new Error('QUOTE API IS NOT WORKING');
-                        return response.json()
-                    })
-                .then((quote) => {
-                    setQuote(quote.content);
-                    setAuthor(quote.author);
-                });
-        } catch (error) {
-            console.error("QUOTE API IS NOT WORKING");
-        } 
+    try {
+      fetch(api_key)
+        .then((response) => {
+          if (!response.ok) throw new Error("QUOTE API IS NOT WORKING");
+          return response.json();
+        })
+        .then((quote) => {
+          setQuote(quote.content);
+          setAuthor(quote.author);
+        });
+    } catch (error) {
+      console.error("QUOTE API IS NOT WORKING");
+    }
+  }, []);
 
-    }, []);
+  const changeQuoteHandler = () => {
+    setDisplayedQuote("");
+    try {
+      fetch(api_key)
+        .then((response) => {
+          if (!response.ok) throw new Error("QUOTE API IS NOT WORKING");
+          return response.json();
+        })
+        .then((quote) => {
+          setQuote(quote.content);
+          setAuthor(quote.author);
+          setDisplayedQuote("");
+        });
+    } catch (error) {
+      console.error("QUOTE API IS NOT WORKING");
+    }
+  };
 
-    const changeQuoteHandler = () => {
-        setDisplayedQuote("");
-        try {    
-            fetch(api_key)
-                .then((response) => {
-                    if(!response.ok)
-                        throw new Error('QUOTE API IS NOT WORKING');
-                    return response.json()
-                })
-                .then((quote) => {
-                    setQuote(quote.content);
-                    setAuthor(quote.author);
-                    setDisplayedQuote("");
-                });
-        } catch (error) {
-            console.error("QUOTE API IS NOT WORKING");
-        }
-    };
-
-    return (
-
-        (user) ? (
-            <>
-                {navigate("/home")}
-                {/* {window.location.reload()} */}
-            </>
-            ) : (
-            <>
-                <Navbar_before_login />
-                <div style={{ display: "flex" }}>
-                    <div className="welcomeContainer">
-                        <div className="typewriterContainer">
-                            <span className="welcomeToCode">
-                                <Typewriter
-                                    words={[
-                                        "Welcome to Coding Club, MSU...",
-                                        "Welcome to Code-Vimarsh...",
-                                        "Let's grow together in coding...!",
-                                    ]}
-                                    loop={true}
-                                    cursor
-                                    cursorStyle="</>"
-                                    cursorBlinking={false}
-                                    typeSpeed={150}
-                                    deleteSpeed={100}
-                                />
-                            </span>
-                            <h4 className="oneLiner">
-                                Start your coding journey with code-vimarsh by joining us...
-                            </h4>
-                            <Link to={"signin"}>
-                                {" "}
-                                <input
-                                    type="button"
-                                    value="Get Started"
-                                    className="get_start"
-                                />{" "}
-                            </Link>
-                        </div>
-                        <div className="newDesign">
-                            <ul className="designUL">
-                                {/* <li className='newLi'>
+  return user ? (
+    <>
+      {navigate("/home")}
+      {/* {window.location.reload()} */}
+    </>
+  ) : (
+    <>
+      <Navbar_before_login />
+      <div style={{ display: "flex" }}>
+        <div className="welcomeContainer">
+          <div className="typewriterContainer">
+            <span className="welcomeToCode">
+              <Typewriter
+                words={[
+                  "Welcome to Coding Club, MSU...",
+                  "Welcome to Code-Vimarsh...",
+                  "Let's grow together in coding...!",
+                ]}
+                loop={true}
+                cursor
+                cursorStyle="</>"
+                cursorBlinking={false}
+                typeSpeed={150}
+                deleteSpeed={100}
+              />
+            </span>
+            <h4 className="oneLiner">
+              Start your coding journey with code-vimarsh by joining us...
+            </h4>
+            <Link to={"signin"}>
+              {" "}
+              <input
+                type="button"
+                value="Get Started"
+                className="get_start"
+              />{" "}
+            </Link>
+          </div>
+          <div className="newDesign">
+            <ul className="designUL">
+              {/* <li className='newLi'>
                                         <a href='https://react.dev/' target='_blank' onclick="kevin()">
                                             <span className='designSpan'></span>
                                             <span className='designSpan'></span>
@@ -162,152 +156,159 @@ function Home_page_before_login() {
                                         </a>
                                     </li> */}
 
-                                <li className="newLi">
-                                    <a
-                                        href="https://www.geeksforgeeks.org/"
-                                        onclick="kevin()"
-                                        target="_blank"
-                                    >
-                                        <span className="designSpan"></span>
-                                        <span className="designSpan"></span>
-                                        <span className="designSpan"></span>
-                                        <span className="designSpan"></span>
-                                        <span>
-                                            {" "}
-                                            <a href="https://www.geeksforgeeks.org/" target="_blank">
-                                                {" "}
-                                                <img
-                                                    src="/images/geeksforgeeksLogo.svg"
-                                                    height="44px"
-                                                    width="44px"
-                                                ></img>{" "}
-                                            </a>{" "}
-                                        </span>
-                                    </a>
-                                </li>
+              <li className="newLi">
+                <a
+                  href="https://www.geeksforgeeks.org/"
+                  onclick="kevin()"
+                  target="_blank"
+                >
+                  <span className="designSpan"></span>
+                  <span className="designSpan"></span>
+                  <span className="designSpan"></span>
+                  <span className="designSpan"></span>
+                  <span>
+                    {" "}
+                    <a href="https://www.geeksforgeeks.org/" target="_blank">
+                      {" "}
+                      <img
+                        src="/images/geeksforgeeksLogo.svg"
+                        height="44px"
+                        width="44px"
+                      ></img>{" "}
+                    </a>{" "}
+                  </span>
+                </a>
+              </li>
 
-                                <li className="newLi">
-                                    <a
-                                        href="https://www.w3schools.com/"
-                                        target="_blank"
-                                        onclick="kevin()"
-                                    >
-                                        <span className="designSpan"></span>
-                                        <span className="designSpan"></span>
-                                        <span className="designSpan"></span>
-                                        <span className="designSpan"></span>
-                                        <span>
-                                            {" "}
-                                            <a href="https://www.w3schools.com/" target="_blank">
-                                                {" "}
-                                                <img
-                                                    src="/images/w3schoolsLogo.png"
-                                                    height="44px"
-                                                    width="44px"
-                                                ></img>{" "}
-                                            </a>{" "}
-                                        </span>
-                                    </a>
-                                </li>
+              <li className="newLi">
+                <a
+                  href="https://www.w3schools.com/"
+                  target="_blank"
+                  onclick="kevin()"
+                >
+                  <span className="designSpan"></span>
+                  <span className="designSpan"></span>
+                  <span className="designSpan"></span>
+                  <span className="designSpan"></span>
+                  <span>
+                    {" "}
+                    <a href="https://www.w3schools.com/" target="_blank">
+                      {" "}
+                      <img
+                        src="/images/w3schoolsLogo.png"
+                        height="44px"
+                        width="44px"
+                      ></img>{" "}
+                    </a>{" "}
+                  </span>
+                </a>
+              </li>
 
-                                <li className="newLi">
-                                    <a
-                                        href="https://leetcode.com/"
-                                        target="_blank"
-                                        onclick="kevin()"
-                                    >
-                                        <span className="designSpan"></span>
-                                        <span className="designSpan"></span>
-                                        <span className="designSpan"></span>
-                                        <span className="designSpan"></span>
-                                        <span>
-                                            {" "}
-                                            <a href="https://leetcode.com/" target="_blank">
-                                                {" "}
-                                                <img
-                                                    src="/images/leetcodeLogo.png"
-                                                    height="44px"
-                                                    width="44px"
-                                                ></img>{" "}
-                                            </a>{" "}
-                                        </span>
-                                    </a>
-                                </li>
+              <li className="newLi">
+                <a
+                  href="https://leetcode.com/"
+                  target="_blank"
+                  onclick="kevin()"
+                >
+                  <span className="designSpan"></span>
+                  <span className="designSpan"></span>
+                  <span className="designSpan"></span>
+                  <span className="designSpan"></span>
+                  <span>
+                    {" "}
+                    <a href="https://leetcode.com/" target="_blank">
+                      {" "}
+                      <img
+                        src="/images/leetcodeLogo.png"
+                        height="44px"
+                        width="44px"
+                      ></img>{" "}
+                    </a>{" "}
+                  </span>
+                </a>
+              </li>
 
-                                <li className="newLi">
-                                    <a
-                                        href="https://www.codechef.com/"
-                                        target="_blank"
-                                        onclick="kevin()"
-                                    >
-                                        <span className="designSpan"></span>
-                                        <span className="designSpan"></span>
-                                        <span className="designSpan"></span>
-                                        <span className="designSpan"></span>
-                                        <span>
-                                            {" "}
-                                            <a href="https://www.codechef.com/" target="_blank">
-                                                {" "}
-                                                <img
-                                                    src="/images/codechef_logo.png"
-                                                    height="44px"
-                                                    width="41.5px"
-                                                ></img>{" "}
-                                            </a>{" "}
-                                        </span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div className="quoteContainer">
-                    <div style={{ display: "flex", justifyContent: "space-between" }}>
-                        <h3 className="quoteTitle">Quote</h3>
-                        <input
-                            type="button"
-                            className="new_quote_btn"
-                            onClick={changeQuoteHandler}
-                            title="Change Quote"
-                        />
-                    </div>
-                    <hr />
-                    <div className="quoteDiv">
-                        <div className="quoteDivInfo">
-                            <div id="openQuote" />
-                            <p className="quoteContent">{quote}</p>
-                            <div id="closeQuote" />
-                        </div>
-                        <div className="authorName">
-                            {" "}
-                            <span> ~ {author} </span>{" "}
-                        </div>
-                    </div>
-                </div>
+              <li className="newLi">
+                <a
+                  href="https://www.codechef.com/"
+                  target="_blank"
+                  onclick="kevin()"
+                >
+                  <span className="designSpan"></span>
+                  <span className="designSpan"></span>
+                  <span className="designSpan"></span>
+                  <span className="designSpan"></span>
+                  <span>
+                    {" "}
+                    <a href="https://www.codechef.com/" target="_blank">
+                      {" "}
+                      <img
+                        src="/images/codechef_logo.png"
+                        height="44px"
+                        width="41.5px"
+                      ></img>{" "}
+                    </a>{" "}
+                  </span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div className="quoteContainer">
+        <div style={{ display: "flex", justifyContent: "space-between" }}>
+          <h3 className="quoteTitle">Quote</h3>
+          <input
+            type="button"
+            className="new_quote_btn"
+            onClick={changeQuoteHandler}
+            title="Change Quote"
+          />
+        </div>
+        <hr />
+        <div className="quoteDiv">
+          <div className="quoteDivInfo">
+            {quote ? (
+              <>
+                <div id="openQuote" />
+                <p className="quoteContent">{quote}</p>
+                <div id="closeQuote" />
+              </>
+            ) : (
+              <>
+                <Skeleton />
+                <Skeleton width={"60%"} />
+              </>
+            )}
+          </div>
+          <div className="authorName">
+            {author ? <span className="authorNameContainer"> ~ {author} </span> : <Skeleton height={'1.2rem'} width={250}/>}
+          </div>
+        </div>
+      </div>
 
-                <Resources />
-                <Projects />
-                <ProjCollab />
-                <Discussion />
-                <div className="founderinfo" id="AboutUS">
-                    <h1 className="foundercardline">The Initiators Of Code-Vimarsh</h1>
-                    <div className="founderGrid">
-                        {founderinfo.map(function Founderinfocard(element) {
-                            return (
-                                <Foundercard
-                                    key={element.id}
-                                    name={element.name}
-                                    post={element.post}
-                                    image={element.image}
-                                ></Foundercard>
-                            );
-                        })}
-                    </div>
-                </div>
-                <Myfooter />
-            </>
-        )
-    );
+      <Resources />
+      <Projects />
+      <ProjCollab />
+      <Discussion />
+      <div className="founderinfo" id="AboutUS">
+        <h1 className="foundercardline">The Initiators Of Code-Vimarsh</h1>
+        <div className="founderGrid">
+          {founderinfo.map(function Founderinfocard(element) {
+            return (
+              <Foundercard
+                key={element.id}
+                name={element.name}
+                post={element.post}
+                image={element.image}
+              ></Foundercard>
+            );
+          })}
+        </div>
+      </div>
+      <Myfooter />
+    </>
+  );
 }
 
 export default Home_page_before_login;

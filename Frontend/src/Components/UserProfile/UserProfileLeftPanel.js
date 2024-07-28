@@ -38,7 +38,7 @@ function UserProfileLeftPanel(props) {
 
   return (
     <div className="UPleftPanel">
-      <Tilt options={{speed: 200, "glare": true, "max-glare": 0.2, max: 15}} className="UPProfile">
+      <Tilt options={{"speed": "200", "glare": "true", "max-glare": "0.2", "max": '8'}} className="UPProfile">
         <div className="ProfileImg" onMouseEnter={EditDP} onMouseLeave={EditDP}>
           <img src={base64Img} alt=""/>
         </div>
@@ -51,7 +51,7 @@ function UserProfileLeftPanel(props) {
         </div>
         {(props.visitID==null) ? 
         <div className="ProfileEditLink">
-          <Link to={`edit_profile/`}>Edit Profile</Link>
+          <Link to={`edit`}>Edit Profile</Link>
         </div>
         : null}
       </Tilt>

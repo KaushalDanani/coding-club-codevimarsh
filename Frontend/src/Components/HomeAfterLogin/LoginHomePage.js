@@ -1,5 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import Skeleton from 'react-loading-skeleton'
+import 'react-loading-skeleton/dist/skeleton.css'
 import "./LoginHomePage.css";
 import Greeting from "./Greeting.js";
 import NewTasks from "./NewTasks.js";
@@ -27,12 +29,15 @@ function LoginHomePage(props) {
   const { user, setUser } = useUser();
 
   useEffect(() => {
-    fetch(api_key)
+    // setTimeout(() => {
+      fetch(api_key)
       .then((response) => response.json())
       .then((quote) => {
         setQuote(quote.content);
         setAuthor(quote.author);
       });
+
+    // }, 3000)
   }, []);
 
   const changeQuoteHandler = () => {
@@ -92,11 +97,6 @@ function LoginHomePage(props) {
         // const articleData = await response4.json();
         // setArticlesData(articleData.articles);
 
-        // const response3 = await fetch('http://localhost:5000/user/profileImg')
-        // const data3 = await response3.json();
-        // setUserData(data3.data);
-        // setBase64Img(`data:image/png;base64,${data3.data.profileImg}`);
-
         setIsLoadingHome(false);
       } catch (err) {
         console.error(err, err.response);
@@ -144,14 +144,25 @@ function LoginHomePage(props) {
           <hr />
           <div className="quoteDiv">
             <div className="quoteDivInfo">
-              <div id="openQuote" />
-              <p className="quoteContent">{quote}</p>
-              <div id="closeQuote" />
+              {quote ? 
+              <>
+                <div id="openQuote" />
+                <p className="quoteContent">{quote}</p>
+                <div id="closeQuote" />
+              </>
+              : 
+              <> 
+                <Skeleton />
+                <Skeleton width={'60%'} />
+              </> }
             </div>
-            <div className="authorName">
-              {" "}
-              <span> ~ {author} </span>{" "}
-            </div>
+                <div className="authorName">
+                  {author ? 
+                      <span className="authorNameContainer"> ~ {author} </span>
+                    :
+                      <Skeleton height={'1.2rem'} width={250}/>
+                  }
+                </div>
           </div>
         </div>
         <NewTasks userID={userID}

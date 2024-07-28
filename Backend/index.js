@@ -9,11 +9,11 @@ const bodyParser = require("body-parser");
 
 const app = express();
 connectMongo();
-app.use(express.json());
+// app.use(express.json());
 app.use(cookieParser());
 app.use(cors);
-app.use(bodyParser.json({ limit: "20mb" }));
-app.use(bodyParser.urlencoded({ limit: "20mb", extended: true }));
+app.use(bodyParser.json({ limit: "15mb" }));
+app.use(bodyParser.urlencoded({ limit: "15mb", extended: true }));
 
 app.get('/', (req,res) => {
     res.send("Server is running");
@@ -27,6 +27,5 @@ app.use('/project', require('./routes/projectRoutes.js'))
 app.use('/contest',require('./routes/contestRoutes.js'));
 
 app.use(errorHandler);
-
 
 module.exports = app;

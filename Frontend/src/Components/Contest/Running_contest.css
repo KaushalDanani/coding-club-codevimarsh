@@ -8,8 +8,9 @@
    
     padding: 1% 0%;
     border-radius: 10px;
-    backdrop-filter: blur(6px);
-    background-color: rgba(255, 255, 255, 0.11);
+    /* backdrop-filter: blur(6px); */
+    background-color: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(3px);
     
     border: 2px dotted #e5dce8;
     box-shadow: 0 0 20px 5px black;
@@ -18,7 +19,6 @@
 }
 .running_contest_main:hover {
     scale: 1.017 ;
-   
     background-color: rgb(253, 138, 22);
     filter: contrast(3);
     filter: hue-rotate(5);
@@ -78,7 +78,6 @@
 
 .contest_start_btn button{
     color: rgb(0, 0, 0);
-  
     border: 2px solid white;
     letter-spacing: 1px;
     margin-top: 0.8vh;

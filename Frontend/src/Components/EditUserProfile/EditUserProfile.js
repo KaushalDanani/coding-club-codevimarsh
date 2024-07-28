@@ -415,23 +415,31 @@ function EditUserProfile() {
       reader.onload = () => {
         setBase64Img(reader.result);
         const base64String = reader.result.split(",")[1];
-        console.log(base64String);
+        // console.log(base64String);
         fetch(`http://localhost:5000/user/editprofile/profileImg/?userID=${userID}`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify({ profileImg: base64String }),
+          body: JSON.stringify({ profileImg: base64String })
         })
-          .then((response) => response.json())
-          .then((data) => {
-            setToastVisible(true);
-            setToastMessage(data.message);
-            setToastType("success");
-            setTimeout(() => {
-              setToastVisible(false);
-            }, 4000);
-          });
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+          }
+          return response.json();
+        })
+        .then((data) => {
+          setToastVisible(true);
+          setToastMessage(data.message);
+          setToastType("success");
+          setTimeout(() => {
+            setToastVisible(false);
+          }, 4000);
+        })
+        // .catch((error) => {
+        //   console.error("There was an error with the fetch operation:", error);
+        // });
       };
       if (file) {
         reader.readAsDataURL(file);

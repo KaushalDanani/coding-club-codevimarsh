@@ -123,7 +123,7 @@ function Project_Collaboration() {
       <Navbar_after_login imgData={base64Img} />
       <div className='projectCollaborationContainer'>
         <div className='projectCollaborationHeader'>
-          <div className='imageConatainer'> <img id='pc_image' src="/images/project-collab.png" alt='PC' /> </div>
+          <div className='imageConatainer'> <img id='pc_image' src="/images/project-collab-transperant.png" alt='PC' /> </div>
           <h2 className='projectTitle'>Project Collaboration</h2>
           <p className='project_collaboration_oneliner'>Talent wins games, but teamwork and intelligence win championships.</p>
         </div>

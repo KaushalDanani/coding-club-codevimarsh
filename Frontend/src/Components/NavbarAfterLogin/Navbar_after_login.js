@@ -63,7 +63,7 @@ function Navbar_after_login(props) {
                         <li className={mobileMenu ? "liComponent" : "mobile-li"} id="resources"><Link to={`/resources`}>RESOURCES</Link></li>
                         {/* <li className={mobileMenu ? "liComponent" : "mobile-li"} id="articles/news"><Link to={`/article&news`}>ARTICLES/NEWS</Link></li> */}
                         <li className={mobileMenu ? "liComponent" : "mobile-li"} id="discussion"><Link to={`/discussion`}>DISCUSSION</Link></li>
-                        <li className={mobileMenu ? "liComponent" : "mobile-li"} id="project_collaboration"><Link to={`/project_collab`}>PROJECT COLLABORATION</Link></li>
+                        <li className={mobileMenu ? "liComponent" : "mobile-li"} id="project_collaboration"><Link to={`/projectcollaboration`}>PROJECT COLLABORATION</Link></li>
                         <li className={mobileMenu ? "liComponent" : "mobile-li"} id="projects"><Link to={`/project`}>PROJECTS</Link></li>
                         {/* <li className={mobileMenu ? "liComponent" : "mobile-li"} id="contact"><Link>CONTACT US</Link></li> */}
                     </ul>

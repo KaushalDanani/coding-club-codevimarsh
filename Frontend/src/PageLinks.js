@@ -46,6 +46,7 @@ import AddNotes from './Components/ResourcesContent/AddNotes.js';
 
 import useUser from './store/userContext.js';
 import AddProject from './Components/ProjectComponent/AddProject.js';
+import { SkeletonTheme } from 'react-loading-skeleton';
 const PageLinks = () => {
 
     const [isLoading, setIsLoading] = useState(false);
@@ -97,37 +98,39 @@ const PageLinks = () => {
 
     return (
         <>
-            <Router>
-                <Routes>
-                    <Route path='/' element={<Home_page_before_login />} />
-                    <Route path='/home' element={<LoginHomePage />} />
-                    <Route path='/signin' element={<Sign_in_page />} />
-                    <Route path='/signup/step-1' element={<Sign_up_first_page />} />
-                    <Route path='/signup/step-2' element={<Sign_up_second_page />} />
-                    <Route path='/manageAdmins' element={<ManageAdmins />} />
-                    <Route path='/contest' element={<Contest_main />} />
-                    <Route path='/addContest' element={<AddContest />} />
-                    {/* <Route path='/article&news' element={<ArticlesNewsHomePage />} /> */}
-                    <Route path='/resources' element={<ResourcesHome />} />
-                    <Route path='/resources/rescontent' element={<ResourcesContent />} />
-                    <Route path='/resources/rescontent/addBook' element={<AddBooks/>} />
-                    <Route path='/resources/rescontent/addVideo' element={<AddVideos/>} />
-                    <Route path='/resources/rescontent/addNote' element={<AddNotes/>} />
-                    <Route path='/addSubject' element={<AddSubject />} />
+            <SkeletonTheme baseColor='#313131' highlightColor='#696969'>
+                <Router>
+                    <Routes>
+                        <Route path='/' element={<Home_page_before_login />} />
+                        <Route path='/home' element={<LoginHomePage />} />
+                        <Route path='/signin' element={<Sign_in_page />} />
+                        <Route path='/signup/step-1' element={<Sign_up_first_page />} />
+                        <Route path='/signup/step-2' element={<Sign_up_second_page />} />
+                        <Route path='/manageAdmins' element={<ManageAdmins />} />
+                        <Route path='/contest' element={<Contest_main />} />
+                        <Route path='/addContest' element={<AddContest />} />
+                        {/* <Route path='/article&news' element={<ArticlesNewsHomePage />} /> */}
+                        <Route path='/resources' element={<ResourcesHome />} />
+                        <Route path='/resources/rescontent' element={<ResourcesContent />} />
+                        <Route path='/resources/rescontent/addBook' element={<AddBooks/>} />
+                        <Route path='/resources/rescontent/addVideo' element={<AddVideos/>} />
+                        <Route path='/resources/rescontent/addNote' element={<AddNotes/>} />
+                        <Route path='/addSubject' element={<AddSubject />} />
 
-                    <Route path='/discussion' element={<Discussion_Forums />} />
-                    <Route path='/discussion/addQuestion' element={<Ask_Question />} />
-                    <Route path='/discussion/question' element={<Question_data />} />
-                    <Route path='/discussion/question/addReply' element={<Give_answer />} />
-                    <Route path='/project_collab' element={<Project_Collaboration />} />
-                    <Route path='/project_collab/addpost' element={<AddProjectCollaboration />} />
-                    <Route path='/project' element={<ProjectMain />} />
-                    <Route path='/project/add_project' element={<AddProject />} />
-                    <Route path='/profile' element={<UserProfile />} />
-                    <Route path='/profile/edit_profile' element={<EditUserProfile />} />
-                    <Route path='*' element={<NotFoundPage />} />
-                </Routes>
-            </Router>
+                        <Route path='/discussion' element={<Discussion_Forums />} />
+                        <Route path='/discussion/addQuestion' element={<Ask_Question />} />
+                        <Route path='/discussion/question' element={<Question_data />} />
+                        <Route path='/discussion/question/addReply' element={<Give_answer />} />
+                        <Route path='/projectcollaboration' element={<Project_Collaboration />} />
+                        <Route path='/projectcollaboration/addpost' element={<AddProjectCollaboration />} />
+                        <Route path='/project' element={<ProjectMain />} />
+                        <Route path='/project/add_project' element={<AddProject />} />
+                        <Route path='/profile' element={<UserProfile />} />
+                        <Route path='/profile/edit' element={<EditUserProfile />} />
+                        <Route path='*' element={<NotFoundPage />} />
+                    </Routes>
+                </Router>
+            </SkeletonTheme>
         </>
     )
 }

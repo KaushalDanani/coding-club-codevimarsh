@@ -80,7 +80,7 @@ function Sign_in_page() {
                             <label> Username </label>
                         </div>
                         <div className="inputbox"> 
-                            <div className={showhide ? "show_pwd" : "hide_pwd"} onClick={passwordVisibilityHandler}/>
+                            <div className={showhide ? "show_pwd" : "hide_pwd"} onClick={passwordVisibilityHandler} onMouseDown={(event) => event.preventDefault()} />
                             <input id='pwd' type="password" value={enterdPassword} onChange={passwordChangeHandler} required />
                             <label> Password </label>
                         </div>

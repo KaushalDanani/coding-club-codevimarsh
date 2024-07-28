@@ -65,7 +65,7 @@
     width: 20%;
     margin: 0px 50px;
     border-radius: 12px;
-    backdrop-filter: blur(2px);
+    backdrop-filter: blur(3px);
     background-color: rgba(255, 255, 255, 0.1);
   }
 
@@ -123,7 +123,7 @@
     display: flex;
     padding: 1.5% 3% 2% 3%;
     border-radius: 12px;
-    backdrop-filter: blur(5px);
+    backdrop-filter: blur(3px);
     background-color: rgba(255, 255, 255, 0.1);
     box-shadow: 0px 0px 12px 2px rgb(0, 0, 0);
     max-height: 100%;

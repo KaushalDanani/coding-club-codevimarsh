@@ -24,10 +24,6 @@ export default function Resources() {
       const data = await response.json();
       setResources(data);
 
-      // const response2 = await fetch('http://localhost:5000/user/profileImg')
-      // const data2 = await response2.json();
-      // setUserData(data2.data);
-
       setIsLoading(false);
     })();
   }, []);

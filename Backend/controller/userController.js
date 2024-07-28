@@ -124,9 +124,8 @@ exports.editProfilePassword = async (req,res) => {
 exports.editProfileImage = async (req,res) => {
     const profileImg = req.body.profileImg;
     const userID = req.query.userID;
-
-  // // console.log(profileImg);
-  // // console.log(userID);
+    // console.log(profileImg);
+    // console.log(userID);
 
   const updatedUser = await User.updateOne(
     { _id: userID },
@@ -135,7 +134,7 @@ exports.editProfileImage = async (req,res) => {
   );
 
   // console.log(updatedUser);
-  res.send({body : req.body,message : "Profile image updated sucessfully!"});
+  res.send({body : req.body, message : "Profile image updated sucessfully!"});
 
 }
 

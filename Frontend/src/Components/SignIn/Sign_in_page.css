@@ -145,14 +145,18 @@
 .signin .container .form .inputbox input:valid ~label,
 .signin .container .form .inputbox input:focus ~label {
     transform: translateY(-1.67rem);
+    min-width: 42%;
+    text-align: center;
     font-size: 1.15rem;
-    color: #d6d6d6;
+    font-weight: 500;
+    color: #000000;
     /* background-color: rgb(113, 113, 113); */
     /* background-color: rgba(255, 255, 255, 0.1); */
-    backdrop-filter: blur(4px);
+    background-color: #ffffff;
+    /* backdrop-filter: blur(4px); */
     background-image: none;
-    padding: 0rem 0.25rem;
-    /* border-radius: 0.8rem; */
+    padding: 0rem 0.6rem;
+    border-radius: 0.8rem;
 }
 .signin .container .form .links_section {
     display: flex;
@@ -206,11 +210,12 @@
 }
 
 .show_pwd {
-    width: 18% !important;
-    height: 75%;
+    width: 2.8vw !important;
+    height: 5.5vh;
     position: absolute;
-    top: 30%;
-    left: 83.5%;
+    top: 1.17rem;
+    left: 15.8rem;
+    outline: none;
     opacity: 0.8;
     border-radius: 0px !important;
     background-color: transparent !important;
@@ -221,11 +226,12 @@
 }
 
 .hide_pwd {
-    width: 18% !important;
-    height: 75%;
+    width: 2.8vw !important;
+    height: 5.5vh;
     position: absolute;
-    top: 30%;
-    left: 83.5%;
+    top: 1.17rem;
+    left: 15.8rem;
+    outline: none;
     opacity: 0.8;
     border-radius: 0px !important;
     background-color: transparent !important;

@@ -1,4 +1,5 @@
 import userSchema from '../models/user.js'
+const bcrypt = require("bcryptjs");
 
 userSchema.pre("save", async function (next) {
     if(this.isModified("password"))

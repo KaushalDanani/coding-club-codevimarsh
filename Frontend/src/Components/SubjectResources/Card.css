@@ -5,8 +5,9 @@
 .card{
     color: rgb(230, 230, 230);
     margin: auto;
-    backdrop-filter: blur(6px);
+    /* backdrop-filter: blur(6px); */
     background-color: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(3px);
     border: 2px dotted rgb(230, 230, 230);
     border-radius: 1vw;
     box-shadow: 0px 0px 25px black;
@@ -27,11 +28,17 @@
     /* filter: contrast(3); */
     filter: hue-rotate(5);
     border: 2px solid #e5dce8;
+    transition: 0.5s all;
 }
-
 .card:hover .lg {
     /* filter: brightness(0.57); */
     filter: brightness(1.4);
+}
+.card:hover #topic {
+    font-weight: 600;
+}
+.card:hover #details {
+    font-weight: 500;
 }
 
 .card_body {
@@ -75,6 +82,7 @@
     font-size: 1.9rem;
     text-decoration: underline;
     margin: 3vh;
+    letter-spacing: 0.5px;
 }
 #imgcont{
     /* margin-top: 1vh; */

@@ -76,7 +76,7 @@ export default function ProjectMain(){
             </div> */}
             <div className='projectsContainer'>
         <div className='projectCollaborationHeader'>
-          <div className='imageConatainer'> <img id='pc_image' src="/images/project-collab.png" alt='PC' /> </div>
+          <div className='imageConatainer'> <img id='pc_image' src="/images/project-collab-transperant.png" alt='PC' /> </div>
           <h2 className='projectTitle'>Projects</h2>
           <p className='project_collaboration_oneliner'>The aim of argument, or of discussion, should not be victory, but progress.</p>
         </div>
