@@ -1,5 +1,5 @@
-import { React, useState, useEffect, lazy } from 'react'
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { React, useState, useEffect, lazy, useLayoutEffect } from 'react'
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import HashLoader from "react-spinners/HashLoader";
 import './PageLinks.css'
 
@@ -47,6 +47,16 @@ import AddNotes from './Components/ResourcesContent/AddNotes.js';
 import useUser from './store/userContext.js';
 import AddProject from './Components/ProjectComponent/AddProject.js';
 import { SkeletonTheme } from 'react-loading-skeleton';
+const PrivateRoute = ({ children }) => {
+    const { user, setUser } = useUser();
+    return user ? children : <Navigate to="/" replace />
+};
+
+const AdminAccessRoute =({ children }) => {
+    const { user, setUser } = useUser();
+    return user ? children : <Navigate to="/" replace />
+}
+
 const PageLinks = () => {
 
     const [isLoading, setIsLoading] = useState(false);
@@ -78,9 +88,11 @@ const PageLinks = () => {
     }
 
     useEffect(() => {
-        userCradential();
+        if(!user)
+            userCradential()
             
     }, [])
+
 
     if (isLoading)
         return <>
@@ -102,31 +114,31 @@ const PageLinks = () => {
                 <Router>
                     <Routes>
                         <Route path='/' element={<Home_page_before_login />} />
-                        <Route path='/home' element={<LoginHomePage />} />
                         <Route path='/signin' element={<Sign_in_page />} />
                         <Route path='/signup/step-1' element={<Sign_up_first_page />} />
                         <Route path='/signup/step-2' element={<Sign_up_second_page />} />
-                        <Route path='/manageAdmins' element={<ManageAdmins />} />
-                        <Route path='/contest' element={<Contest_main />} />
-                        <Route path='/addContest' element={<AddContest />} />
+                        <Route path='/home' element={<PrivateRoute> <LoginHomePage /> </PrivateRoute>} />
+                        <Route path='/manageAdmins' element={<AdminAccessRoute> <ManageAdmins /> </AdminAccessRoute>} />
+                        <Route path='/contest' element={<PrivateRoute> <Contest_main /> </PrivateRoute>} />
+                        <Route path='/addContest' element={<AdminAccessRoute> <AddContest /> </AdminAccessRoute>} />
                         {/* <Route path='/article&news' element={<ArticlesNewsHomePage />} /> */}
-                        <Route path='/resources' element={<ResourcesHome />} />
-                        <Route path='/resources/rescontent' element={<ResourcesContent />} />
-                        <Route path='/resources/rescontent/addBook' element={<AddBooks/>} />
-                        <Route path='/resources/rescontent/addVideo' element={<AddVideos/>} />
-                        <Route path='/resources/rescontent/addNote' element={<AddNotes/>} />
-                        <Route path='/addSubject' element={<AddSubject />} />
+                        <Route path='/resources' element={<PrivateRoute> <ResourcesHome /> </PrivateRoute>} />
+                        <Route path='/resources/rescontent' element={<PrivateRoute> <ResourcesContent /> </PrivateRoute>} />
+                        <Route path='/resources/rescontent/addBook' element={<AdminAccessRoute> <AddBooks/> </AdminAccessRoute>}  />
+                        <Route path='/resources/rescontent/addVideo' element={<AdminAccessRoute> <AddVideos/> </AdminAccessRoute>} />
+                        <Route path='/resources/rescontent/addNote' element={<AdminAccessRoute> <AddNotes/> </AdminAccessRoute>} />
+                        <Route path='/addSubject' element={<AdminAccessRoute> <AddSubject /> </AdminAccessRoute>} />
 
-                        <Route path='/discussion' element={<Discussion_Forums />} />
-                        <Route path='/discussion/addQuestion' element={<Ask_Question />} />
-                        <Route path='/discussion/question' element={<Question_data />} />
-                        <Route path='/discussion/question/addReply' element={<Give_answer />} />
-                        <Route path='/projectcollaboration' element={<Project_Collaboration />} />
-                        <Route path='/projectcollaboration/addpost' element={<AddProjectCollaboration />} />
-                        <Route path='/project' element={<ProjectMain />} />
-                        <Route path='/project/add_project' element={<AddProject />} />
-                        <Route path='/profile' element={<UserProfile />} />
-                        <Route path='/profile/edit' element={<EditUserProfile />} />
+                        <Route path='/discussion' element={<PrivateRoute> <Discussion_Forums /> </PrivateRoute>} />
+                        <Route path='/discussion/addQuestion' element={<PrivateRoute> <Ask_Question /> </PrivateRoute>} />
+                        <Route path='/discussion/question' element={<PrivateRoute> <Question_data /> </PrivateRoute>} />
+                        <Route path='/discussion/question/addReply' element={<PrivateRoute> <Give_answer /> </PrivateRoute>} />
+                        <Route path='/projectcollaboration' element={<PrivateRoute> <Project_Collaboration /> </PrivateRoute>} />
+                        <Route path='/projectcollaboration/addpost' element={<PrivateRoute> <AddProjectCollaboration /> </PrivateRoute>} />
+                        <Route path='/project' element={<PrivateRoute> <ProjectMain /> </PrivateRoute>} />
+                        <Route path='/project/add_project' element={<PrivateRoute> <AddProject /> </PrivateRoute>} />
+                        <Route path='/profile' element={<PrivateRoute> <UserProfile /> </PrivateRoute>} />
+                        <Route path='/profile/edit' element={<PrivateRoute> <EditUserProfile /> </PrivateRoute>} />
                         <Route path='*' element={<NotFoundPage />} />
                     </Routes>
                 </Router>

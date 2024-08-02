@@ -37,10 +37,10 @@ function Navbar_after_login(props) {
             },
             credentials: 'include'
           })
-            .then(response => response.json())
-            .then(data => {
-              // window.location.reload();
-            });
+            // .then(response => response.json())
+            // .then(data => {
+            //   // window.location.reload();
+            // });
           // window.location.reload();
       }
 
@@ -69,7 +69,7 @@ function Navbar_after_login(props) {
                     </ul>
                     <ul className={mobileMenu ? "horizontal_bar" : "horizontal_bar mobile-menu-icon"}>
                         <li className={mobileMenu ? "liComponent2" : "mobile-li"} id="profile">
-                            <Link to={`/profile`}><div className='loginDP' title='Profile'> <img id='profileImage' src={base64Img}></img> </div></Link>
+                            <Link to={`/profile`}><div className='loginDP' title='Profile'> <img id='profileImage' src={base64Img} loading="lazy" alt='Profile'></img> </div></Link>
                         </li>
                         <li className={mobileMenu ? "liComponent2" : "mobile-li"} id='profile'>
                             <Link to={`/`}> <div className='logoutNavbar' title='Logout' onClick={removeUserAuth}> </div> </Link>

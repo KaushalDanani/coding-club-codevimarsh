@@ -75,7 +75,7 @@ function ProjectCollaborationCard(props) {
           {" "}
           <a href={`profile?visitID=${props.data.collaborationLeader}`}>
             {" "}
-            <img src={base64Img} />{" "}
+            <img src={base64Img} alt="Project Image" loading="lazy" />{" "}
           </a>{" "}
         </div>
         <div className="innercontent">

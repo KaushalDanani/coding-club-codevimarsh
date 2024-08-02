@@ -28,7 +28,7 @@ export default function Resources(){
         <div className={`resources fade-in-section ${isVisible ? 'is-visible' : ''}`}
         ref={domRef} id="resourcesSource">
             <div className="image">
-                <img src="/images/Resources.jpg" alt="Resources image"></img>
+                <img src="/images/Resources.jpg" alt="Resources" loading="lazy"></img>
             </div>
             <div className="description">
                 <p className="dischead">Get the Resources</p>

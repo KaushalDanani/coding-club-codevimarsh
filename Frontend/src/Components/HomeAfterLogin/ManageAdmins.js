@@ -1,15 +1,16 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useLayoutEffect, useState } from 'react';
 import "./ManageAdmins.css";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import ToastComponent from '../Toast/toastComponent';
+import useUser from '../../store/userContext';
 
 function ManageAdmins() {
+    const navigate = useNavigate();
+    const { user, setUser } = useUser(); 
     const [adminList, setAdminList] = useState([]);
     const [toastVisible, setToastVisible] = useState(false);
     const [toastType, setToastType] = useState("");
     const [toastMessage, setToastMessage] = useState("");
-
-
 
     useEffect(() => {
         fetch('http://localhost:5000/admin/list', {
@@ -25,7 +26,7 @@ function ManageAdmins() {
     }, [])
 
     function listAdmins(admin) {
-        return (
+        return (             
             <div className='manageAdminsBodyRow'>
                 <div>{admin.fname} {admin.lname}</div>
                 <div>{admin.username}</div>
@@ -105,31 +106,35 @@ function ManageAdmins() {
 
     return (
         <>
-            {toastVisible ? <ToastComponent message={toastMessage} type={toastType} /> : null}
-            <Link to={'/home'}>
-                <div className='adminBackBtn'></div>
-            </Link>
-            <div className='manageAdminsDiv'>
-                <div className='manageAdminsHeader'><h1>Admin List</h1></div>
-                <div className='manageAdminsBody'>
-                    <div className='manageAdminsBodyRow'
-                        style={{ 'marginBottom': '1.5vh' }}>
-                        <div className='manageAdminsBodyRowHeader'>NAME</div>
-                        <div className='manageAdminsBodyRowHeader'>USERNAME</div>
-                        <div className='manageAdminsBodyRowHeader'></div>
-                    </div>
-                    <div className='manageAdminsList'>
-                        {adminList.map(listAdmins)}
+        {(!user || !user.isAdmin) ? navigate(`/`) : 
+            <>
+                {toastVisible ? <ToastComponent message={toastMessage} type={toastType} /> : null}
+                <Link to={'/home'}>
+                    <div className='adminBackBtn'></div>
+                </Link>
+                <div className='manageAdminsDiv'>
+                    <div className='manageAdminsHeader'><h1>Admin List</h1></div>
+                    <div className='manageAdminsBody'>
+                        <div className='manageAdminsBodyRow'
+                            style={{ 'marginBottom': '1.5vh' }}>
+                            <div className='manageAdminsBodyRowHeader'>NAME</div>
+                            <div className='manageAdminsBodyRowHeader'>USERNAME</div>
+                            <div className='manageAdminsBodyRowHeader'></div>
+                        </div>
+                        <div className='manageAdminsList'>
+                            {adminList.map(listAdmins)}
 
-                    </div>
+                        </div>
 
-                    <div className='addAdminTitle'>Register New Admin</div>
-                    <div className='addAdminBody'>
-                        <input type='text' id='newAdmin' placeholder='Enter username...' />
-                        <button onClick={addAdmin}>Register Admin</button>
+                        <div className='addAdminTitle'>Register New Admin</div>
+                        <div className='addAdminBody'>
+                            <input type='text' id='newAdmin' placeholder='Enter username...' />
+                            <button onClick={addAdmin}>Register Admin</button>
+                        </div>
                     </div>
                 </div>
-            </div>
+            </>
+        }
         </>
     )
 }

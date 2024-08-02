@@ -40,7 +40,7 @@ function UserProfileLeftPanel(props) {
     <div className="UPleftPanel">
       <Tilt options={{"speed": "200", "glare": "true", "max-glare": "0.2", "max": '8'}} className="UPProfile">
         <div className="ProfileImg" onMouseEnter={EditDP} onMouseLeave={EditDP}>
-          <img src={base64Img} alt=""/>
+          <img src={base64Img} alt="Profile" loading="lazy" />
         </div>
         <div className="ProfileName">
           {props.userData.fname} {props.userData.lname}

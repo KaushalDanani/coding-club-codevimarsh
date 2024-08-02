@@ -482,7 +482,7 @@ function EditUserProfile() {
           onMouseEnter={EditDP}
           onMouseLeave={EditDP}
         >
-          <img src={base64Img} id="dp" className="EditProfileImg" />
+          <img src={base64Img} alt="Profile" loading="lazy" id="dp" className="EditProfileImg" />
           <div
             className="EditProfileImgChange"
             id="editDP"

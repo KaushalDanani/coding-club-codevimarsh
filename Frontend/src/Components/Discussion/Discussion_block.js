@@ -68,7 +68,7 @@ export default function Discussion_block(props) {
       <div className='discussion_c_card'>
         <div className='avtarDisc'>
           <a href={`profile?visitID=${props.asker_id}`}>
-            <img src={`data:Image/jpeg;base64,${props.pfp}`} alt={`Profile of ${props.asker_username}`} />
+            <img src={`data:Image/jpeg;base64,${props.pfp}`} alt={`Profile of ${props.asker_username}`} loading="lazy" />
           </a>
         </div>
         <div className='innercontentDisc'>

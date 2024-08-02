@@ -13,13 +13,13 @@ function Navbar_before_login() {
             <nav className="navigation_bar">
                 <div>
                     <div className={mobileMenu ? "NavBt" : "NavBt mobile-close-menubar"}>
-                        <a href='#' onClick={() => setMobileMenu(!mobileMenu)}></a>
+                        <Link to='/' onClick={() => setMobileMenu(!mobileMenu)}></Link>
                     </div>
 
                     <ul className={mobileMenu ? "horizontal_bar" : "horizontal_bar mobile-menu-icon"}>
-                        <li className={mobileMenu ? "liComponent" : "mobile-li"} id="home"><a href="">CodeVimarsh</a></li>
-                        <li className={mobileMenu ? "liComponent" : "mobile-li"} id="contact"><a href="https://mail.google.com/mail/?view=cm&to=codingclub-cse@msubaroda.ac.in" target="_blank" >CONTACT US</a></li>
-                        <li className={mobileMenu ? "liComponent" : "mobile-li"} id="about"> <LinkScroll to="AboutUS" style={{color: 'white'}} spy={true} smooth={true} offset={-85}> ABOUT US </LinkScroll> </li>
+                        <li className={mobileMenu ? "liComponent" : "mobile-li"} id="home"><Link to="/">CodeVimarsh</Link></li>
+                        <li className={mobileMenu ? "liComponent" : "mobile-li"} id="contact"><Link to="https://mail.google.com/mail/?view=cm&to=codingclub-cse@msubaroda.ac.in" target="_blank" >CONTACT US</Link></li>
+                        <li className={mobileMenu ? "liComponent" : "mobile-li"} id="about"> <LinkScroll to="AboutUS" href='#' style={{color: 'white'}} spy={true} smooth={true} offset={-85}> ABOUT US </LinkScroll> </li>
                     </ul>
                 </div>
 

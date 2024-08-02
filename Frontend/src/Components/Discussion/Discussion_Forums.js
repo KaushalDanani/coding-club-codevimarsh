@@ -70,7 +70,7 @@ export default function Forums() {
 
       <div className='projectCollaborationContainer'>
       <div className='projectCollaborationHeader'>
-          <div className='imageConatainer'> <img id='pc_image' src="/images/discuss2main-transperant.png" alt='PC' /> </div>
+          <div className='imageConatainer'> <img id='pc_image' src="/images/discuss2main-transperant.png" alt='Discussion Banner' loading="lazy" /> </div>
           <h2 className='projectTitle'>Discussion Forums</h2>
           <p className='project_collaboration_oneliner'>The aim of argument, or of discussion, should not be victory, but progress.</p>
         </div>

@@ -43,7 +43,7 @@ export default function Res_Card(props) {
             <div id='resCardForEdit' className={onDelete ? "card resCardOnEditOptionBackground" : "card"}>
 
                 <div id='wholeResourceCard' className={onDelete ? "card-body onDeleteResCard" : "card-body"} onClick={ViewContent}>
-                    <img src={`data:Image/jpeg;base64,${props.resimg}`} className='lg' />
+                    <img src={`data:Image/jpeg;base64,${props.resimg}`} alt='Subject Image' loading="lazy" className='lg' />
                     <div id='imgcont'>
                         <span id='topic'>{props.topic}</span>
                         <div id="details">

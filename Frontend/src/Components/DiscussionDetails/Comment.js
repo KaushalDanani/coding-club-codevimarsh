@@ -70,7 +70,7 @@ export default function Comment(props) {
             <div className='c_class'>
                 
             <div id='commenter'>
-                <a href={`../profile?visitID=${props.commenter_id}`}><div id='pfp_div'><img src={`data:Image/jpeg;base64,${props.pfp}`} alt="" id='pfpic' /></div></a>
+                <a href={`../profile?visitID=${props.commenter_id}`}><div id='pfp_div'><img src={`data:Image/jpeg;base64,${props.pfp}`} alt="Profile" id='pfpic' loading="lazy" /></div></a>
                 <div id='commenter_id'><a href={`../profile?visitID=${props.commenter_id}`}>{props.commenter}</a>
                     <button
                         className='deleteRep'

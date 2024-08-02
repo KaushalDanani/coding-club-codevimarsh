@@ -97,7 +97,7 @@ export default function ProjectDisplay(props) {
         function image(){
             if(props.data.image){
                 return(
-                    <img src={props.data.image}  alt="project image"></img>
+                    <img src={props.data.image}  alt="project image" loading="lazy" ></img>
                 )
             }
         }
@@ -156,7 +156,8 @@ export default function ProjectDisplay(props) {
                 <div className="projdispheader">
                     <div>
                         <a href={props.data.projectLink} target="_blank" >
-                        {image()}
+                        {/* {image()} */}
+                        <img src={props.data.image}  alt="Project Image" loading="lazy" ></img>
                         </a>
                     </div>
                     <div>

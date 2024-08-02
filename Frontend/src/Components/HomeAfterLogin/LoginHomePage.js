@@ -1,30 +1,30 @@
-import React, { useContext, useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Navigate, useNavigate } from "react-router-dom";
 import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
 import "./LoginHomePage.css";
 import Greeting from "./Greeting.js";
 import NewTasks from "./NewTasks.js";
-import NewUpdates from "./NewUpdates.js";
+// import NewUpdates from "./NewUpdates.js";
 import Navbar_after_login from "../NavbarAfterLogin/Navbar_after_login.js";
 import useUser from "../../store/userContext.js";
 import MyfooterAfterLogin from "../FooterAfterLogin/MyfooterAfterLogin.js";
 import HashLoader from "react-spinners/HashLoader.js";
 import { useLocation } from "react-router-dom";
 
-function LoginHomePage(props) {
+function LoginHomePage() {
   const api_key = process.env.REACT_APP_QUOTE_API_KEY;
-  const navigate = useNavigate()
+  // const navigate = useNavigate()
   const [isLoadingHome, setIsLoadingHome] = useState(false);
   const [fname, setFname] = useState("");
   const [userID, setUserID] = useState("");
   const [admin, setAdmin] = useState(false);
   const [contests, setContests] = useState([]);
-  const [newsData, setNewsData] = useState([]);
-  const [articlesData, setArticlesData] = useState([]);
+  // const [newsData, setNewsData] = useState([]);
+  // const [articlesData, setArticlesData] = useState([]);
   const [quote, setQuote] = useState("");
   const [author, setAuthor] = useState("");
-  const [userData,setUserData] = useState('');
+  // const [userData,setUserData] = useState('');
   const [base64Img,setBase64Img] = useState('');
   const { user, setUser } = useUser();
 
@@ -123,7 +123,8 @@ function LoginHomePage(props) {
   return (
     (!user) ? (
       <>
-        {navigate("/")}
+        {/* {navigate("/")} */}
+        <Navigate to={"/"} replace />
         {/* {window.location.reload()} */}
       </>
     ) : (

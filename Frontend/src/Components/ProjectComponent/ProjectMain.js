@@ -70,13 +70,13 @@ export default function ProjectMain(){
             
             <Navbar_after_login imgData={base64Img} />
             {/* <div className='projectHeader'>
-                <div className='imageConatainer'> <img id='proj_image' src="/images/projdis3.jpg" alt='discC' /> </div>
+                <div className='imageConatainer'> <img id='proj_image' src="/images/projdis3.jpg" alt='discC' loading="lazy" /> </div>
                 <h2 className='projTitle'>Projects</h2>
                 <p className='project_oneliner'>The aim of argument, or of discussion, should not be victory, but progress.</p>
             </div> */}
             <div className='projectsContainer'>
         <div className='projectCollaborationHeader'>
-          <div className='imageConatainer'> <img id='pc_image' src="/images/project-collab-transperant.png" alt='PC' /> </div>
+          <div className='imageConatainer'> <img id='pc_image' src="/images/project-collab-transperant.png" alt='Project Banner' loading="lazy" /> </div>
           <h2 className='projectTitle'>Projects</h2>
           <p className='project_collaboration_oneliner'>The aim of argument, or of discussion, should not be victory, but progress.</p>
         </div>

@@ -14,7 +14,7 @@ function ArticleNewsLatestElement(props) {
     <a href={props.url} target="_blank" alt="" className="ArticleNewsLink">
     <div className="ArticleNewsLatestElementFlex" style={props.right ? flexStyle : null} >
     <div className="ArticleImgDiv">
-        <img src={props.img} className="ArticleNewsLatestImg"></img>
+        <img src={props.img} alt="Latest Article" loading="lazy" className="ArticleNewsLatestImg"></img>
       </div>
       <div className="ArticleNewsLatestElementFlex2">
         <div className="ArticleNewsLatestElementTitle">{props.title}</div>

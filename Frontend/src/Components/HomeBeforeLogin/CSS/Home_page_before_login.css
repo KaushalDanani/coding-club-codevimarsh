@@ -1,6 +1,10 @@
+@font-face {
+    font-family: myFont;
+    src: url("/public/fonts/Cyborg\ Punk.ttf");
+}
 
 .get_start {
-    height: 5.5vh;
+    height: 2.7rem;
     font-size: 1.2vw;
     font-weight: 600;
     padding: 0vh 2vw;
@@ -135,7 +139,7 @@
     margin: 5% 5.2% 6% 5.2%;
     font-size: 1rem;
     line-height: 1.7;
-    color: aliceblue;
+    color: rgb(255, 255, 255);
     border-radius: 25px;
     box-sizing: border-box;
     backdrop-filter: blur(1.5px);
@@ -230,12 +234,8 @@
     background-color: aliceblue;
 }
 
-@import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap'); */
 
-@font-face {
-    font-family: myFont;
-    src: url("/public/fonts/Cyborg\ Punk.ttf");
-}
 
 *{
     margin: 0%;
