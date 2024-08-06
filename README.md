@@ -1,70 +1,30 @@
-# Getting Started with Create React App
+# Coding Club MSU - Community Website
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+**Tech Stack**: React, Express JS, Node JS, MongoDB
 
-## Available Scripts
+This website serves as a community portal for the Coding Club of the Maharaja Sayajirao University of Baroda. It offers various sections and functionalities, as described below:
 
-In the project directory, you can run:
+## Sections
 
-### `npm start`
+### Contests Section
+This page showcases coding contests organized by the club, along with the results and solutions of previous contests.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### Resources Section
+This section provides a variety of subject-wise study resources for students, including notes, videos, and books.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Discussion Section
+A space for discussing problems, doubts, code snippets, and more, allowing community members to help each other learn and grow.
 
-### `npm test`
+### Project Collaboration Section
+This section is for coders seeking team members for their projects. Users can share their projects and requirements, and students can contact project owners to join their teams.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Project Gallery
+Students can showcase their projects in this section, along with video demos.
 
-### `npm run build`
+### User Profile
+This section displays a user's description, skills, projects, LinkedIn or coding profiles, and contact information.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Additional Features
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- **Admin Access**: Users with administrative privileges can add resources, schedule contests, manage administrative access, and perform other administrative duties on the site.
+- **Dynamic Quotes/Proverbs**: Different quotes or proverbs are displayed on the homepage, refreshing either on demand or each time the page loads.
