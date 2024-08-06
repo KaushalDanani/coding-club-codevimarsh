@@ -65,7 +65,7 @@ function AddProjectCollaboration() {
                     setToastType("success");
                     setTimeout(() => {
                         setToastVisible(false)
-                        navigate('/project_collab');
+                        navigate('/projectcollaboration');
                     }, 1000);
                 // })
             }
@@ -88,7 +88,7 @@ function AddProjectCollaboration() {
         <>
             {toastVisible ? <ToastComponent message={toastMessage} type={toastType} /> : null}
 
-            <Link to={'/project_collab'}>
+            <Link to={'/projectcollaboration'}>
                 <div className='ObjectBackBtn'></div>
             </Link>
             <div className='addObjectContainer'>

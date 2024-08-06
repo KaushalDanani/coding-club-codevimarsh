@@ -47,6 +47,7 @@ import AddNotes from './Components/ResourcesContent/AddNotes.js';
 import useUser from './store/userContext.js';
 import AddProject from './Components/ProjectComponent/AddProject.js';
 import { SkeletonTheme } from 'react-loading-skeleton';
+
 const PrivateRoute = ({ children }) => {
     const { user, setUser } = useUser();
     return user ? children : <Navigate to="/" replace />
@@ -54,7 +55,7 @@ const PrivateRoute = ({ children }) => {
 
 const AdminAccessRoute =({ children }) => {
     const { user, setUser } = useUser();
-    return user ? children : <Navigate to="/" replace />
+    return (user && user.isAdmin) ? children : <Navigate to="/" replace />
 }
 
 const PageLinks = () => {

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import "./DiscussionCard.css";
 import "./Discussion_Forums.css";
 import useUser from '../../store/userContext.js';
@@ -83,7 +83,7 @@ export default function Discussion_block(props) {
               style={{ display: (delCheck ? 'block' : 'none') }}
             ></button>
           </div>
-          <a href={`discussion/question?q_id=${props.q_id}`}>
+          <Link to={`question?q_id=${props.q_id}`} href={`discussion/question?q_id=${props.q_id}`}>
             <div id='ques'>
               {props.question}
             </div>
@@ -91,7 +91,7 @@ export default function Discussion_block(props) {
               <div className="all_que_tag">{tag.map(getTag)}</div>
               <div id='q_date'>{qDate}</div>
             </div>
-          </a>
+          </Link>
         </div>
       </div>
     </>

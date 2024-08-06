@@ -128,7 +128,7 @@ function Project_Collaboration() {
           <p className='project_collaboration_oneliner'>Talent wins games, but teamwork and intelligence win championships.</p>
         </div>
         <div className='addProjCollab' style={{width: '85%'}}>
-          <Link to={'/project_collab/addpost'}> <button className='ProjectCollaborationBtn' 
+          <Link to={'/projectcollaboration/addpost'}> <button className='ProjectCollaborationBtn' 
             onMouseOut={() => setChangeImage(true)}
             onMouseOver={()=> setChangeImage(false)}> Add </button> </Link>
         </div>

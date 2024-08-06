@@ -4,6 +4,7 @@ import TechTag from "../Tags/TechTag.js";
 import "./ProjectCollaborationCard.css";
 import "./../Toast/toastComponent.css";
 import useUser from "../../store/userContext.js";
+import { Link } from "react-router-dom";
 
 function ProjectCollaborationCard(props) {
   const { user, setUser } = useUser();
@@ -73,17 +74,17 @@ function ProjectCollaborationCard(props) {
       <div className="project_c_card">
         <div className="avtar">
           {" "}
-          <a href={`profile?visitID=${props.data.collaborationLeader}`}>
+          <Link to={`/profile?visitID=${props.data.collaborationLeader}`} href={`profile?visitID=${props.data.collaborationLeader}`}>
             {" "}
             <img src={base64Img} alt="Project Image" loading="lazy" />{" "}
-          </a>{" "}
+          </Link>{" "}
         </div>
         <div className="innercontent">
           <div className="project_coll_header">
             <div>
-              <a href={`profile?visitID=${props.data.collaborationLeader}`}>
+              <Link to={`/profile?visitID=${props.data.collaborationLeader}`} href={`profile?visitID=${props.data.collaborationLeader}`}>
                 {props.userDetails.username}
-              </a>
+              </Link>
             </div>
             <div>
               {sameUser || isAdmin ? (
@@ -140,7 +141,8 @@ function ProjectCollaborationCard(props) {
               {expand ? "Show More" : "Show Less"}{" "}
             </button>
             {!expand ? (
-              <a
+              <Link
+                to={`https://mail.google.com/mail/?view=cm&to=${props.userDetails.email}`}
                 href={`https://mail.google.com/mail/?view=cm&to=${props.userDetails.email}`}
                 target="_blank"
               >
@@ -150,7 +152,7 @@ function ProjectCollaborationCard(props) {
                   value="Contact"
                   className="project_collab_btn"
                 />{" "}
-              </a>
+              </Link>
             ) : null}
           </div>
         </div>

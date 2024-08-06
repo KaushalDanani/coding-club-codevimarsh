@@ -169,7 +169,11 @@ function Home_page_before_login() {
               />{" "}
             </Link>
           </div>
+
           {/* <div className="newDesign">
+            <Spline scene="https://prod.spline.design/CDC-mcexNJJZUeKN/scene.splinecode" />
+          </div> */}
+          <div className="newDesign">
             <ul className="designUL">
               {/* <li className='newLi'>
                                         <a href='https://react.dev/' target='_blank' onClick="kevin()">
@@ -199,7 +203,7 @@ function Home_page_before_login() {
                                         </a>
                                     </li> */}
 
-              {/* <li className="newLi">
+              <li className="newLi">
                 <a
                   href="https://www.geeksforgeeks.org/"
                   // onClick="kevin()"
@@ -303,7 +307,7 @@ function Home_page_before_login() {
                 </a>
               </li>
             </ul>
-          </div> */}
+          </div>
         </div> 
       </div>
       <div className="quoteContainer">
