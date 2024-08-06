@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@700&family=Poppins:wght@300;600&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@700&family=Poppins:wght@300;600&display=swap'); */
 
 *{
     margin: 0%;
@@ -8,14 +8,14 @@
 
 footer{
     font-family: 'Poppins', sans-serif;
-    background-color: rgb(48, 47, 50);
+    background-color: rgb(30, 30, 31);
     /* width: 100%; */
     color: white;
     display: flex;
     margin-top: 5%;
     justify-content: space-between;
     padding: 1.5% 6%;
-    padding-bottom: 0px;
+    padding-bottom: 2%;
     /* position: absolute !important;
     bottom: 0; */
     font-size: 0.5rem;
@@ -49,6 +49,7 @@ footer{
     padding: 5px;
     padding-top: 18px;
     background-color: rgb(30, 30, 31);
+    border-top: 1.5px solid white;
     text-align: center;
     color: white;
     font-size: 0.9rem;

@@ -6,6 +6,9 @@ import RecentTasksPanel from './RecentTasksPanel.js'
 function NewTasks(props) {
   return (
     <div>
+      {
+        props.contests.length!=0?
+        <>
         <div className='recentHeading'>
         <h1>Test your Coding Skills</h1>
           <Link to={`/contest/?userID=${props.userID}`}>
@@ -14,6 +17,10 @@ function NewTasks(props) {
         </div>
 
         <RecentTasksPanel contests={props.contests}/>
+        </>
+      :
+      null}
+      
     </div>
   )
 }

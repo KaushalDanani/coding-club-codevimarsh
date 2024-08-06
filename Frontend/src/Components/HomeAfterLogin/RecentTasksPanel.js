@@ -36,7 +36,10 @@ function RecentTasksPanel(props) {
 
   return (
     <div className='recentPanel'>
-          {contests.map(addCards)}
+      {
+        contests.length!=0 ? contests.map(addCards) : null
+      }
+          
     </div>
   )
 }

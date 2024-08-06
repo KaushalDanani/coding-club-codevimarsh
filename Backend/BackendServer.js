@@ -1,24 +1,24 @@
 const express = require("express");
 const app = express();
 const fs = require("fs");
-const { ObjectId } = require("mongodb");
-const port = 5000;  
-var bodyParser = require("body-parser");
-var jsonParser = bodyParser.json();
+const axios = require('axios');
 const path = require("path");
-app.use(express.json({ limit: "1000mb" }));
+require('dotenv').config({ path: path.resolve(__dirname, '../.env') });
+const { ObjectId } = require("mongodb");
+const port = process.env.REACT_APP_PORT || 5000;
+const bodyParser = require("body-parser");
+const jsonParser = bodyParser.json();
 const User = require('./userSchema')
 const bcrypt = require("bcryptjs");
 const cookieParser = require("cookie-parser");
 
-
-app.use(bodyParser.json({ limit: "1000mb" }));
-app.use(bodyParser.urlencoded({ limit: "1000mb", extended: true }));
+app.use(bodyParser.json({ limit: "20mb" }));
+app.use(bodyParser.urlencoded({ limit: "20mb", extended: true }));
 app.use(cookieParser());
 
 const mongoose = require("mongoose");
-const { log } = require("console");
-mongoose.connect("mongodb://127.0.0.1:27017/CodingClubDB");
+const { log, Console } = require("console");
+mongoose.connect(process.env.REACT_APP_MONGODB_CONNECTION_URL);
 
 const Contest = mongoose.model(
   "contest",
@@ -238,7 +238,7 @@ app.get("/question", (req, res) => {
     });
 });
 
-app.post("/addmyquestion", jsonParser, function (req, res) {
+app.post("/discussion/addmyquestion", jsonParser, function (req, res) {
   const newquestion = new Question({
     asker: new ObjectId(req.body.questionasker),
     question: req.body.questiontital,
@@ -265,7 +265,7 @@ const Resplie = mongoose.model(
   })
 );
 
-app.post("/addmyreply", jsonParser, function (req, res) {
+app.post("/discussion/addmyreply", jsonParser, function (req, res) {
   const newreply = new Resplie({
     replier: new ObjectId(req.body.answerreplier),
     description: req.body.answerreply,
@@ -361,7 +361,7 @@ app.get("/resources", async (req, resp) => {
   resp.send(docs);
 });
 
-app.post('/addmysubject',(req,res)=>{
+app.post('/resources/addmysubject',(req,res)=>{
   const topic = req.body.subject;
   const logo = req.body.sublogo;
 
@@ -376,7 +376,7 @@ app.post('/addmysubject',(req,res)=>{
   // console.log(respons);
 })
 
-app.post('/addmybook',async (req,res)=>{
+app.post('/resources/addmybook',async (req,res)=>{
   const subject = req.body.sub_id;
   const book = {
     title : req.body.book,
@@ -392,7 +392,7 @@ app.post('/addmybook',async (req,res)=>{
   res.send({message : "Book added successfully!"});
 })
 
-app.post('/addmynote',async (req,res)=>{
+app.post('/resources/addmynote',async (req,res)=>{
   const subject = req.body.sub_id;
   const note = {
     title : req.body.note,
@@ -405,7 +405,7 @@ app.post('/addmynote',async (req,res)=>{
   res.send({message : "Note added successfully!"});
 })
 
-app.post('/addmyvideo',async (req,res)=>{
+app.post('/resources/addmyvideo',async (req,res)=>{
   const subject = req.body.sub_id;
   const video = {
     title : req.body.video,
@@ -601,8 +601,9 @@ app.post("/discussion/question", async (req, resp) => {
   // const Id = req.body.Id;
   // const count = req.body.count;
 
-  const ur = await User.findById(userID, "-_id repliesUpvotes").then((resp) => {
-    return resp.repliesUpvotes;
+  const ur = await User.findById(userID, "-_id repliesUpvotes").then(
+    (resp) => {
+      return resp.repliesUpvotes;
   });
   const uq = await User.findById(userID, "-_id questionUpvotes").then(
     (resp) => {
@@ -688,7 +689,7 @@ app.delete('/discussion/question/delRep/:r_id', async (req, res) => {
 
 // jay fanse
 
-app.post("/adminList", async (req, res) => {
+app.get("/adminList", async (req, res) => {
   const adminList = await User.find({isAdmin : true});
   res.send({admins : adminList});
   // console.log(adminList);
@@ -749,7 +750,7 @@ app.post("/resources/rescontent", async (req, res) => {
 app.get("/home/user/dataset", async (req,res) => {
   const jwt = req.cookies.jwtAuth;
   try {
-    const resData = await User.find({'tokens.token' : jwt});
+    const resData = await User.find({'token' : jwt});
     res.send(resData);
   } catch (err) {
     res.status(500).send(err.message);
@@ -794,7 +795,7 @@ app.post("/profile/projects/members", async (req, res) => {
     }
   }
   // // console.log(memberDataArray);
-  res.send(memberDataArray);
+  res.json(memberDataArray);
 });
 
 // app.get("/signin/home", async (req, res) => {
@@ -923,22 +924,22 @@ app.post("/editprofile/profileImg", async (req, res) => {
 
 //kaushal
 
-const projectCollabrationSchema = new mongoose.Schema({
+const projectCollaborationSchema = new mongoose.Schema({
   avtar: {
     type: String,
   },
-  collabrationLeader: {
+  collaborationLeader: {
     type: ObjectId,
     ref: "users",
   },
-  collabrationPostUsername: {
+  collaborationPostUsername: {
     type: String,
   },
-  collabrationTitle: {
+  collaborationTitle: {
     type: String,
   },
-  collabrationTags: [],
-  collabrationDescription: {
+  collaborationTags: [],
+  collaborationDescription: {
     type: String,
   },
   contact: {
@@ -950,61 +951,61 @@ const projectCollabrationSchema = new mongoose.Schema({
   },
 });
 
-const projectCollabration = mongoose.model(
-  "projectCollabrations",
-  projectCollabrationSchema
+const projectCollaboration = mongoose.model(
+  "projectCollaborations",
+  projectCollaborationSchema
 );
 
-// app.get("/projectcollabration", async (req, res) => {
-//   const projectCollabData = await projectCollabration.find({});
+// app.get("/projectcollaboration", async (req, res) => {
+//   const projectCollabData = await projectCollaboration.find({});
 //   res.send(projectCollabData);
 // });
 
-app.post('/projectcollabration', async (req, res) => {
-  const projectCollabData = await projectCollabration.find({});
+app.post('/projectcollaboration', async (req, res) => {
+  const projectCollabData = await projectCollaboration.find({});
 
   let realData = new Map();
   
   for(const element of projectCollabData) {
-    const realtimeData = await User.findOne({_id: element.collabrationLeader}, 'profileImg username email');
+    const realtimeData = await User.findOne({_id: element.collaborationLeader}, 'profileImg username email');
     realData.set(element._id, realtimeData);
   }
 
   const arr = Array.from(realData);
-  res.send([projectCollabData, arr]);
+  res.status(200).send([projectCollabData, arr]);
 })
 
-// app.post('/addprojectcollabration', async (req, res) => {
+// app.post('/addprojectcollaboration', async (req, res) => {
 //   const data = req.body;
 
 //   const userData = await User.findOne({_id: data.userID})
-//   const collabrationData = {collabrationLeader: data.userID, ...data};
-//   const addProjectCollab = new projectCollabration(collabrationData);
+//   const collaborationData = {collaborationLeader: data.userID, ...data};
+//   const addProjectCollab = new projectCollaboration(collaborationData);
 
-//   // // console.log(collabrationData)
+//   // // console.log(collaborationData)
 //   const addDone = await addProjectCollab.save();
-//   // res.sendFile("Project_Collabration.js", {root: '../Frontend/src/components/kaushal'})
+//   // res.sendFile("Project_Collaboration.js", {root: '../Frontend/src/components/kaushal'})
 // })
 
 
-app.post("/addprojectcollabration", async (req, res) => {
+app.post("/addprojectcollaboration", async (req, res) => {
   const data = req.body;
 
   const userData = await User.findOne({ _id: data.userID });
-  const collabrationPostUsername = userData.username;
+  const collaborationPostUsername = userData.username;
   const avtar = userData.profileImg;
   const contact = userData.email;
-  const collabrationLeader = userData._id;
-  const collabrationData = {
+  const collaborationLeader = userData._id;
+  const collaborationData = {
     avtar: avtar,
     ...data,
-    collabrationPostUsername: collabrationPostUsername,
+    collaborationPostUsername: collaborationPostUsername,
     contact: contact,
-    collabrationLeader: collabrationLeader,
+    collaborationLeader: collaborationLeader,
   };
-  const addProjectCollab = new projectCollabration(collabrationData);
+  const addProjectCollab = new projectCollaboration(collaborationData);
 
-  // // console.log(collabrationData)
+  // // console.log(collaborationData)
   const addDone = await addProjectCollab.save();
   res.send({message : "Collaboration uploaded successfully!"});
 });
@@ -1121,31 +1122,72 @@ app.post('/usersignin', async (req, res) => {
   }
 })
 
+const imageBuffer = process.env.REACT_APP_PROFILE_IMAGE;
+async function urlToBase64(url) {
+  try {
+      const response = await axios.get(url, { responseType: 'arraybuffer' });
+      const base64Image = Buffer.from(response.data, 'binary').toString('base64');
+      return base64Image;
+  } catch (error) {
+      console.error('Error fetching the image:', error);
+      return null;
+  }
+}
 app.post('/usersignup', async (req, res) => {
 try {
     const userData = req.body;
+
     const existingData = await User.findOne({
         $and: [
-            { $or: [{ username: userData.username }, { email: userData.email }] }
+            { $or: [{ prn: userData.prn },{username: userData.username}] }
         ]
     });
 
     if (existingData) {
         res.status(400).send({ error: "Username or email already exists!" });
     } else {
-        const signupUser = new User(userData);
+      
+      const vidhyarthiUserData = {
+        PRN: req.body.prn,
+        Password: req.body.password
+      }
+  
+      const url = process.env.REACT_APP_MSU_VIDHYARTHI_SIGNUP;
+      const response = await axios.post(url,vidhyarthiUserData);
+  
+      const data = response.data.obj[0];
+      const base64Image = await urlToBase64(imageBuffer);
+      const name = data.NameAsPerMarksheet.split(" ");
+      
+      const user = new User({
+        prn: userData.prn,
+        profileImg: base64Image,
+        email: data.EmailId,
+        username: userData.username,
+        password: userData.password,
+        fname: name[0],
+        lname: name[2],
+        enrollmentYear: data.EnrollmentYear,
+        programme: data.ProgrammeName,
+        branchName: data.BranchName,
+        linkedin: userData.linkedin,
+        codechef: userData.codechef,
+        leetcode: userData.leetcode,
+        isAdmin: false
+      })
 
-        const token = await signupUser.generateAuthToken();
+
+        const token = await user.generateAuthToken();
 
         res.cookie("jwtAuth", token, {
           expires: new Date(Date.now() + 31536000), 
           httpOnly: true
         });
 
-        const signup_done = await signupUser.save();
-        const user = await User.findOne({ username: userData.username });
+        const signup_done = await user.save();
+        
 
-        res.status(200).send({ userID: user._id });
+        res.status(200).send({ userID: signup_done._id });
     }
 } catch (err) {
     console.error(err);
@@ -1156,7 +1198,7 @@ try {
 app.get('/navbar/profileImg/dataset', async (req, res) => {
   const jwt = req.cookies.jwtAuth;
   try {
-    const resData = await User.findOne({'tokens.token' : jwt});
+    const resData = await User.findOne({'token' : jwt});
     res.send({data : resData});
     // console.log(resData);
   } catch (err) {
@@ -1215,11 +1257,11 @@ const userDetail = await User.findOne({'tokens.token': jwt});
 res.send({username: userDetail.username,userData : userDetail});
 })
 
-app.post('/delete/projectCollabration/data', async (req, res) => {
+app.post('/delete/projectCollaboration/data', async (req, res) => {
 const data = req.body;
 
-const done = await projectCollabration.deleteOne({
- _id: data.projectCollabrationCardId
+const done = await projectCollaboration.deleteOne({
+ _id: data.projectCollaborationCardId
 });
 
 res.send();

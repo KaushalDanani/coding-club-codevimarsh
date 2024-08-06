@@ -27,7 +27,7 @@ export default function ProjCollab(){
         <div className={`projcollab fade-in-section ${isVisible ? 'is-visible' : ''}`}
         ref={domRef} id="projectCollabSources">
             <div className="image">
-                <img src="/images/ProjCollab.jpg" alt="Project Collabration image"></img>
+                <img src="/images/ProjCollab.jpg" alt="Project Collaboration" loading="lazy" ></img>
             </div>
             <div className="PCdiscription">
                 <p className="PCdischead">Current Running Projects</p>

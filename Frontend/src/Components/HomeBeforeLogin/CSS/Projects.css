@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap'); */
 
 .projects{
     margin: 0%;
@@ -92,15 +92,15 @@
     }
 }
 
-/* .fade-in-section {
+.fade-in-section-left {
     opacity: 0;
-    transform: translateX(40vh);
+    transform: translateX(-100%);
     visibility: hidden;
-    transition: opacity 0.6s ease-out, transform 1.2s ease-out;
+    transition: opacity 1s ease-out, transform 1.5s ease-in;
     will-change: opacity, visibility;
-  }
-  .fade-in-section.is-visible {
+}
+.fade-in-section-left.is-visible-left {
     opacity: 1;
-    transform: none;
+    transform: translateX(0%);
     visibility: visible;
-  } */
+}

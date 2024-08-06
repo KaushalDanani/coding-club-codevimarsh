@@ -1,0 +1,37 @@
+.addContestBody{
+    color: white;
+    width: 60%;
+    backdrop-filter: blur(10px);
+    background-color: rgba(255, 255, 255, 0.1);
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    padding: 3vh 4vw;  
+}
+
+.addContestRow{
+    display: grid;
+    grid-template-columns: 6fr 1fr 20fr;
+    margin: 4vh 0vh;
+}
+
+.addObjectDateRow{
+    display: grid;
+    grid-template-columns: 8fr 2fr 6fr;
+}
+
+.addContestRow div,
+.addObjectDateRow div{
+    font-size: 1.3rem;
+}
+
+.addContestRow input,
+.addContestRow select,
+.addObjectDateRow input{
+    padding: 5px 9px;
+    border-radius: 10px;
+    font-size: 1.1rem;
+    background-color: rgba(0, 0, 0, 0.18);
+    filter: invert(1);
+    /* color: white; */
+    border: none;    
+}

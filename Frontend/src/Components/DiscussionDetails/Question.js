@@ -21,7 +21,7 @@ export default function Question(props) {
         <>
             <div className='q_class'>
                 <div id='asker'>
-                    <a href={`../profile?visitID=${props.asker_id}`}><div id='pfp_div'><img src={`data:Image/jpeg;base64,${props.pfp}`} alt="" id='pfpic' /></div></a>
+                    <a href={`../profile?visitID=${props.asker_id}`}><div id='pfp_div'><img src={`data:Image/jpeg;base64,${props.pfp}`} alt="Profile" id='pfpic' loading="lazy" /></div></a>
                     <div id='asker_id'><a href={`../profile?visitID=${props.asker_id}`}>{props.asker_username}</a></div>
                 </div>
                 <h2 id='Que_statement'>

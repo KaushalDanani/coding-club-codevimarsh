@@ -18,7 +18,7 @@ function Navbar_after_login(props) {
     }, [props.imgData])
 
     // useEffect( () => {
-    //     fetch('/navbar/profileImg/dataset')
+    //     fetch('/user/profileImg')
     //     .then(response => response.json())
     //     .then(data => {
     //         setUserData(data.data);
@@ -27,22 +27,21 @@ function Navbar_after_login(props) {
     //     });
     // },[])
 
-    function removeUserAuth() {
-        (async () => {
+    const removeUserAuth = async () => {
           
           setUser(null);
-          await fetch('/remove/user/auth', {
+          await fetch('http://localhost:5000/user/remove/auth', {
             method: "GET",
             headers: {
               'Content-Type': 'application/json'
-            }
+            },
+            credentials: 'include'
           })
-            .then(response => response.json())
-            .then(data => {
-              // window.location.reload();
-            });
+            // .then(response => response.json())
+            // .then(data => {
+            //   // window.location.reload();
+            // });
           // window.location.reload();
-        })()
       }
 
     // const userID= props.userID;
@@ -64,13 +63,13 @@ function Navbar_after_login(props) {
                         <li className={mobileMenu ? "liComponent" : "mobile-li"} id="resources"><Link to={`/resources`}>RESOURCES</Link></li>
                         {/* <li className={mobileMenu ? "liComponent" : "mobile-li"} id="articles/news"><Link to={`/article&news`}>ARTICLES/NEWS</Link></li> */}
                         <li className={mobileMenu ? "liComponent" : "mobile-li"} id="discussion"><Link to={`/discussion`}>DISCUSSION</Link></li>
-                        <li className={mobileMenu ? "liComponent" : "mobile-li"} id="project_collaboration"><Link to={`/project_collab`}>PROJECT COLLABORATION</Link></li>
+                        <li className={mobileMenu ? "liComponent" : "mobile-li"} id="project_collaboration"><Link to={`/projectcollaboration`}>PROJECT COLLABORATION</Link></li>
                         <li className={mobileMenu ? "liComponent" : "mobile-li"} id="projects"><Link to={`/project`}>PROJECTS</Link></li>
                         {/* <li className={mobileMenu ? "liComponent" : "mobile-li"} id="contact"><Link>CONTACT US</Link></li> */}
                     </ul>
                     <ul className={mobileMenu ? "horizontal_bar" : "horizontal_bar mobile-menu-icon"}>
                         <li className={mobileMenu ? "liComponent2" : "mobile-li"} id="profile">
-                            <Link to={`/profile`}><div className='loginDP' title='Profile'> <img id='profileImage' src={base64Img}></img> </div></Link>
+                            <Link to={`/profile`}><div className='loginDP' title='Profile'> <img id='profileImage' src={base64Img} loading="lazy" alt='Profile'></img> </div></Link>
                         </li>
                         <li className={mobileMenu ? "liComponent2" : "mobile-li"} id='profile'>
                             <Link to={`/`}> <div className='logoutNavbar' title='Logout' onClick={removeUserAuth}> </div> </Link>

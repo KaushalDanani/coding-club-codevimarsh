@@ -3,14 +3,17 @@ const bcrypt = require('bcryptjs')
 const fs = require('fs');
 const { ObjectId } = require('mongodb');
 const jwt = require('jsonwebtoken')
-
-const imageBuffer = "https://i.pinimg.com/564x/89/90/48/899048ab0cc455154006fdb9676964b3.jpg";
-const base64Image = imageBuffer.toString("base64");
+const path = require('path');
+require('dotenv').config({ path: path.resolve(__dirname, '../.env') });
 
 const userSchema = new mongoose.Schema({
+    prn: {
+        type: Number,
+        required: true
+    },
     profileImg: {
         type : String,
-        default : base64Image
+        default : null
     },
 
     about: String,
@@ -44,7 +47,7 @@ const userSchema = new mongoose.Schema({
         required: true,
         uppercase: true
     },
-    year: {
+    enrollmentYear: {
         type: String,
         required: true
     },
@@ -52,7 +55,7 @@ const userSchema = new mongoose.Schema({
         type : String,
         required: true
     },
-    department: {
+    branchName: {
         type: String,
         required: true
     },
@@ -65,12 +68,10 @@ const userSchema = new mongoose.Schema({
     leetcode: {
         type: String,
     },
-    tokens: [{
-        token: {
-            type: String,
-            required: true
-        }
-    }],
+    token: {
+        type: String,
+        required: true
+    },
     isAdmin: {
         type: Boolean,
     }
@@ -87,43 +88,37 @@ userSchema.pre("save", async function (next) {
 
 
 userSchema.pre(["updateOne", "findByIdAndUpdate", "findOneAndUpdate"], async function (next) {
-    console.log("Middleware triggered");
+    // console.log("Middleware triggered");
 
     const data = this.getUpdate();
     
     // Check if password is being modified
     if (data.password) {
 
-        
-
         const hashedPassword = await bcrypt.hash(data.password, 10);
 
         // Update the password in the update document
         data.password = hashedPassword;
-
     }
-    
     // Call next to proceed with the operation
     next();
 });
 
 
-
-
 userSchema.methods.generateAuthToken = async function() {
     try {
-        const tk = jwt.sign({_id:this._id.toString()}, "ourprojectisoncodingwebtocreatecodingculture");
-        this.tokens = this.tokens.concat({token: tk});
+        const token = jwt.sign({_id:this._id.toString(), email:this.email}, process.env.REACT_APP_SECRET_TOKEN_KEY);
+
+        this.token = token;
         await this.save();
         // console.log(tk);
 
-        return tk;
+        return token;
     } catch (err) {
-        res.send("The error is "+err)
-        // console.log(err)
+        // res.send("The error is "+err)
+        console.log(err)
     }
 }
 
 const User = mongoose.model("users", userSchema)
-
 module.exports = User;

@@ -30,7 +30,7 @@ export default function News(){
         <div className={`news fade-in-section ${isVisible ? 'is-visible' : ''}`}
         ref={domRef} id="newsSource">
             <div className="image">
-                <img src="/images/News.jpg" alt="News image"></img>
+                <img src="/images/News.jpg" alt="News Banner" loading="lazy" ></img>
             </div>
             <div className="newsdiscription">
                 <p className="newsdischead">Know The Latest News</p>

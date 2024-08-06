@@ -14,7 +14,7 @@ function UserProfileMainPanel(props) {
     setProjects([]);
     if (props.userData._id) {
       console.log("user", props.userData._id);
-      fetch(`/profile/projects/?userID=${props.userData._id}`)
+      fetch(`http://localhost:5000/user/profile/projects/?userID=${props.userData._id}`)
         .then(
           response => response.json()
         )
@@ -66,10 +66,10 @@ function UserProfileMainPanel(props) {
               <span>Programme</span> : {props.userData.programme}
             </div>
             <div>
-              <span>Department</span> : {props.userData.department}
+              <span>Department</span> : {props.userData.branchName}
             </div>
             <div>
-              <span>Year of Graduation</span> : {props.userData.year}
+              <span>Year of Graduation</span> : {props.userData.enrollmentYear}
             </div>
             <div className="contactGrid">
               <span>
