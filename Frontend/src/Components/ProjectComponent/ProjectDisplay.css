@@ -55,7 +55,7 @@
 }
 
 .linkImg{
-    background-image: url('/public/images/link.png');
+    background-image: url('/public/images/link-thin.png');
     background-size: contain;
     padding: 2.2vh;
     background-repeat: no-repeat;

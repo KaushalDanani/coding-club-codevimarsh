@@ -12,14 +12,6 @@
     box-shadow: 0px 0px 40px 8px black;
 }
 
-.discbanner{
-    background-image: url('/public/images/discuss.jpg');
-    background-repeat:round;
-    border-radius: 3vh;
-    display: flex;
-    height: 43vh;
-}
-
 #disc_header h1{
     font-family: 'Trebuchet MS';
     width: 15vw;
