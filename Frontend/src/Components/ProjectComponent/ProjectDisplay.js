@@ -4,26 +4,26 @@ import TechTag from "../Tags/TechTag.js";
 
 export default function ProjectDisplay(props) {
     
-    const [admin,setAdmin] = useState('');
+    const [admin,setAdmin] = useState(false);
     const [userID,setUserID] = useState('');
     const [hover,setHover] = useState(false);
     const [expand, setExpand] = useState('ture');
 
 
-    useEffect(  () => {
+    useEffect(() => {
         if(props.userID!=null)
-        setUserID(props.userID);
+            setUserID(props.userID);
     },[props.userID])
 
-    useEffect(  () => {
+    useEffect(() => {
         if(props.admin!=null)
-        setAdmin(props.admin);
+            setAdmin(props.admin);
     },[props.admin])
 
 
 
     function deletebtn(){
-        var b = false;
+        let b = false;
         // console.log(admin);
         
         for(let i=0;i<=props.team.length;i++){
@@ -32,12 +32,12 @@ export default function ProjectDisplay(props) {
             }
         }
         
-        if(b == false){
-            const closebtn = document.getElementById("btnname" + props.name + "dlt");
+        if(b === false){
+            const closebtn = document.getElementById("btnname" + props.data.projectName + "dlt");
             closebtn.style.display = "none";
         }
         else{
-            const closebtn = document.getElementById("btnname" + props.name + "dlt");
+            const closebtn = document.getElementById("btnname" + props.data.projectName + "dlt");
             closebtn.style.display = "block";
         }
     }
@@ -67,11 +67,12 @@ export default function ProjectDisplay(props) {
             const conf = window.confirm('Are you sure you want to delete Project?');
             if(conf)
             {
+                console.log(props.data._id);
                 const deleteProjectData = {
-                    projectCollaborationCardId : props.data._id
+                    projectCollaborationCardId: props.data._id
                 }
             
-                fetch("http://localhost:5000/project/deleteProject",{
+                fetch("http://localhost:5000/project/delete",{
                     method: 'POST',
                     body: JSON.stringify(deleteProjectData),
                     headers: {
@@ -199,7 +200,7 @@ export default function ProjectDisplay(props) {
 
                 <div className="projbtn">
                     <button className="projdispbutton"  onClick={() => setExpand(!expand)}> {expand ? 'Show More' : 'Show Less'}</button>
-                    <button className="projdispbutton" onClick={() => {delete_project(props.name)}}>Delete</button>
+                    <button id={`btnname${props.data.projectName}dlt`} className="projdispbutton" onClick={() => {delete_project(props.name)}}>Delete</button>
                 </div>
             </div>
         </div>

@@ -52,8 +52,7 @@ exports.addProject = async (req, res) => {
 
 exports.deleteProject = async (req, res) => {
   try {
-    await Project.deleteOne({ projectName: req.body.project_name });
-    // console.log( req.body.project_name);
+    await Project.deleteOne({ _id: req.body.projectCollaborationCardId });
 
     res.send({ message: "Project deleted successfully!" });
   } catch (err) {

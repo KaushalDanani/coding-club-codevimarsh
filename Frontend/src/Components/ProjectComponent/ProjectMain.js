@@ -8,6 +8,7 @@ import "./ProjectMain.css"
 import MyfooterAfterLogin from "../FooterAfterLogin/MyfooterAfterLogin.js";
 import HashLoader from "react-spinners/HashLoader.js";
 import useUser from "../../store/userContext.js";
+import ToastComponent from "../Toast/toastComponent.js";
 
 export default function ProjectMain(){
     const { user, setUser } = useUser();
@@ -19,6 +20,10 @@ export default function ProjectMain(){
     const [Projectinfo, setProjectinfo] = useState([]);
     const [userData,setUserData] = useState('');
     const [base64Img,setBase64Img] = useState('');
+
+    const [toastVisible, setToastVisible] = useState(false);
+    const [toastMessage, setToastMessage] = useState("");
+    const [toastType, setToastType] = useState("");
 
     useEffect( ()=> {
         if(user!=null)
@@ -52,6 +57,17 @@ export default function ProjectMain(){
 
     }, []);
 
+    function deleteProjectFromList(id, msg) {
+        const filterProjects = Projectinfo.filter((project) => project._id !== id );
+        setProjectinfo(filterProjects);
+        setToastVisible(true);
+        setToastMessage(msg);
+        setToastType("success");
+        setTimeout(() => {
+            setToastVisible(false)
+        }, 1500);
+    }
+
     if (isLoadingProject)
     return <>
       <div className='loadingPage'>
@@ -67,7 +83,8 @@ export default function ProjectMain(){
 
     return(
         <>  
-            
+            {toastVisible ? <ToastComponent message={toastMessage} type={toastType} /> : null}
+
             <Navbar_after_login imgData={base64Img} />
             {/* <div className='projectHeader'>
                 <div className='imageConatainer'> <img id='proj_image' src="/images/projdis3.jpg" alt='discC' loading="lazy" /> </div>
@@ -98,7 +115,9 @@ export default function ProjectMain(){
                             <ProjectDisplay 
                                 data = {proj}
                                 admin = {admin}
-                                userID = {userID} 
+                                userID = {userID}
+                                team = {proj.contributors} 
+                                deleteProjectFromList = {deleteProjectFromList}
                             />
                         );
                     }
