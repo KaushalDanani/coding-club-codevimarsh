@@ -7,7 +7,7 @@ function ArticleNewsMoreElement(props) {
       <a href={props.url} target='_blank'>
     <div className="ArticleNewsMoreElement">
         <div className="ArticleMoreImageDiv">
-        <img src={props.img} alt=""/>
+        <img src={props.img} alt="Article" loading="lazy"/>
         </div>
         <div className="ArticleNewsMoreElementTitle">{props.title}</div>
         <div className="ArticleNewsMoreElementInfo">

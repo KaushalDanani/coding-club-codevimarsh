@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link, useNavigate, useLocation } from 'react-router-dom'
-import './AddNotes.css';
+import '../SubjectResources/AddObjectForm.css';
 import ToastComponent from "../Toast/toastComponent.js";
 
 export default function AddNotes() {
@@ -50,13 +50,14 @@ export default function AddNotes() {
     }
 
 
-    function addMyNote() {
+    function addMyNote(e) {
 
+        e.preventDefault();
         const nname = noteName();
         const nlink = noteLink();
         const sub_id = searchParams.get('sub_id');
         
-        fetch("/addmynote", {
+        fetch("http://localhost:5000/resources/note/add", {
             method: 'POST',
             body: JSON.stringify({
                 "note": nname,
@@ -113,32 +114,32 @@ export default function AddNotes() {
             </div> */}
 
             <Link to={'/resources'}>
-                <div className='contestBackBtn'></div>
+                <div className='ObjectBackBtn'></div>
             </Link>
-            <div className="addBookContainer">
-                <div className="addBookHeader">
+            <div className="addObjectContainer">
+                <div className="addObjectHeader">
                     <h1>Add Note</h1>
                 </div>
-                <div className="addBookBody">
+                <form className="addObjectBody" onSubmit={addMyNote}>
 
-                        <div className="addSubjectRow">
+                        <div className="addObjectRow">
                             <div>Title</div>
                             <div>:</div>
-                            <input style={{'padding': '3px 10px'}} type="text" name="tital_text" id="note_title_text"></input>
+                            <input type="text" name="tital_text" id="note_title_text" required></input>
                         </div>
 
-                        <div className="addSubjectRow">
+                        <div className="addObjectRow">
                             <div>Link</div>
                             <div>:</div>
-                            <input style={{'padding': '3px 10px'}} type="text" name="tital_text" id="note_link_text"></input>
+                            <input type="text" name="tital_text" id="note_link_text" required></input>
                         </div>
 
-                        <div className='addSubjectBtn'>
+                        <div className='addObjectBtn'>
                             <button onClick={clearNoteData}> Clear </button>
-                            <button onClick={addMyNote} className="addFormButton">Submit</button>
+                            <button type="submit">Add Note</button>
                         </div>
 
-                </div>
+                </form>
             </div>
         </>
     );

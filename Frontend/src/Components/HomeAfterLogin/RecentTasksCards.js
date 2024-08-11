@@ -1,5 +1,5 @@
 import React from "react";
-import "../Contest components/Weekly_contest.css"
+import "../Contest/Weekly_contest.css"
 
 function RecentTasksCards(props) {
   var color1 = [

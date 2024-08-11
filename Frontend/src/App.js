@@ -1,13 +1,17 @@
 import {React,useState,useEffect} from 'react';
 import { UserProvider } from './store/userContext.js';
 import PageLinks from './PageLinks.js'
+import VantaBackground from './vantaBackground.js';
 
 function App() {
 
   return (
-    <UserProvider>
-      <PageLinks />
-    </UserProvider>
+    <>
+      <VantaBackground />
+      <UserProvider>
+        <PageLinks />
+      </UserProvider>
+    </>
   );
 }
 

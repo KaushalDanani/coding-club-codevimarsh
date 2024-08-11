@@ -25,10 +25,10 @@ export default function Projects(){
   }, []);
 
     return(
-        <div className={`projects fade-in-section ${isVisible ? 'is-visible' : ''}`}
+        <div className={`projects fade-in-section-left ${isVisible ? 'is-visible-left' : ''}`}
         ref={domRef} id="projectSources">
             <div className="image">
-                <img src="/images/Project.jpg" alt="Project image"></img>
+                <img src="/images/Project.jpg" alt="Project" loading="lazy" ></img>
             </div>
             <div className="discription">
                 <p className="dischead">All Previous Projects</p>

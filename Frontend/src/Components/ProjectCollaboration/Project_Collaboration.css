@@ -1,0 +1,108 @@
+.projectCollaborationContainer {
+    margin: 0%;
+    padding: 0%;
+    margin-bottom: 5vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+.projectCollaborationHeader {
+    width: 85%;
+    height: 38vh;
+    padding-left: 1vw;
+    margin-top: 10vh;
+    border-radius: 20px;
+    background-color: rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(3px);
+    box-shadow: 0px 0px 40px 8px black;
+    border: 1px solid white;
+    overflow: hidden;
+}
+
+@font-face {
+    font-family: projectCollaborationFont;
+    src: url("/public/fonts/Cyborg\ Punk.ttf");
+}
+
+#pc_image {
+    width: 28vw;
+    height: 37.7vh;
+    margin-right: 1rem;
+    float: right;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    /* box-shadow: 0 0 20px black; */
+}
+
+/* .projectTitle {
+    position: absolute;
+    top: 28.5vh;
+    left: 35vw;
+    font-size: 7.8vh;
+    letter-spacing: 2px;
+    font-family: projectCollaborationFont;
+} */
+
+.projectTitle {
+    width: 67%;
+    position: relative;
+    text-align: center;
+    top: 10vh;
+    left: 0.5rem;
+    font-size: 4.8vh;
+    letter-spacing: 1px;
+    color: rgb(255, 255, 255);
+    font-family: projectCollaborationFont;
+    z-index: 2;
+}
+
+.collabTitleDiv{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    /* border: 2px solid white; */
+}
+
+.project_collaboration_oneliner {
+    position: relative;
+    text-align: center;
+    top: 16.5vh;
+    /* left: 2.5vw; */
+    font-size: 3.2vh;
+    color: rgb(255, 255, 255);
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    /* border: 2px solid red; */
+}
+
+.ProjectCollaborationBtn {
+    padding: 0.5rem 1.6rem 0.5rem 2.6rem;
+    margin-top: 3.5vh;
+    margin-bottom: 3.3vh;
+    letter-spacing: 1px;
+    background-image: url("/public/images/add-project-collaboration.png");
+    background-repeat: no-repeat;
+    background-size: 17% 50%;
+    background-position: 22% 50%;
+
+    font-size: 0.9rem;
+    position: relative;
+    /* bottom: 0vh; */
+    height: -moz-fit-content;
+    height: fit-content;
+    width: -moz-fit-content;
+    width: fit-content;
+    color: white;
+    /* padding: 1.1vh 1.4vw; */
+    /* margin: 0 0.18rem 0 1.25rem; */
+    /* border: 2px solid white; */
+    background-color: rgb(253, 138, 22);
+    align-self: flex-end;
+    border: none;
+    border-radius: 8px;
+}
+.ProjectCollaborationBtn:hover {
+    background-color: rgb(189, 95, 0);
+}

@@ -12,14 +12,6 @@
     box-shadow: 0px 0px 40px 8px black;
 }
 
-.discbanner{
-    background-image: url('/public/images/discuss.jpg');
-    background-repeat:round;
-    border-radius: 3vh;
-    display: flex;
-    height: 43vh;
-}
-
 #disc_header h1{
     font-family: 'Trebuchet MS';
     width: 15vw;
@@ -137,4 +129,27 @@
     .q_tag{
         font-size: 0.5rem;
     }
+}
+
+.discussionNullContent{
+    position: relative;
+    height: 50vh;
+    width: 100%;
+    background-position: center top;
+    background-image: url("/public/images/profileProjects.png");
+    /* background-color: #0cf; */
+    background-size: 50vh;
+    background-repeat: no-repeat;
+
+    display: flex;
+    justify-content: center;
+}
+
+.discussionNullContent .nullContentInfo{
+    position: absolute;
+    bottom: 0px;
+    color: white;
+    font-weight: 600;
+    font-size: 4vh;
+    text-align: center;
 }

@@ -1,8 +1,6 @@
-import React, { useEffect, useState } from "react";
-import { useSearchParams } from 'react-router-dom';
+import React, { useState } from "react";
 import { Link, useNavigate, useLocation } from 'react-router-dom'
-import './AddBooks.css';
-import Navbar_after_login from "../NavbarAfterLogin/Navbar_after_login.js";
+import '../SubjectResources/AddObjectForm.css'
 import ToastComponent from "../Toast/toastComponent.js";
 
 export default function AddBooks() {
@@ -50,29 +48,47 @@ export default function AddBooks() {
     }
 
     async function logoMaker(e) {
-        const image = e.target.files[0];
-        const reader = new FileReader();
+        try{
+            const image = e.target.files[0];
+            const reader = new FileReader();
 
-        reader.onload = function (event) {
-            let base64String = event.target.result;
+            reader.onload = function (event) {
+                let base64String = event.target.result;
 
-            base64String = base64String.replace(/^data:image\/\w+;base64,/, '');
+                base64String = base64String.replace(/^data:image\/\w+;base64,/, '');
 
-            setLogo(base64String);
-        };
-        reader.readAsDataURL(image);
+                setLogo(base64String);
+            };
+
+            if (image) {
+                reader.readAsDataURL(image);
+            } else {
+                setToastVisible(true);
+                setToastMessage("No file selected");
+                setToastType("warning");
+                setTimeout(() => 
+                {
+                    setToastVisible(false)
+                }, 1800);
+            }
+        }
+        catch(err)
+        {
+            console.error("ADD IMAGE ERROR: "+err)
+        }
     }
 
 
-    function addMyBook(name) {
+    function addMyBook(e) {
 
+        e.preventDefault();
         const bname = bookName();
         const blink = bookLink();
         const bauthor = bookAuthor();
         const bedition = bookEdition();
         const sub_id = searchParams.get('sub_id');
 
-        fetch("/addmybook", {
+        fetch("http://localhost:5000/resources/book/add", {
             method: 'POST',
             body: JSON.stringify({
                 "book": bname,
@@ -102,56 +118,56 @@ export default function AddBooks() {
         <>
             {toastVisible ? <ToastComponent message={toastMessage} type={toastType} /> : null}
             <Link to={'/resources'}>
-                <div className='contestBackBtn'></div>
+                <div className='ObjectBackBtn'></div>
             </Link>
-            <div className="addBookContainer">
-                <div className="addBookHeader">
+            <div className="addObjectContainer">
+                <div className="addObjectHeader">
                     <h1>Add Book</h1>
                 </div>
-                <div className="addBookBody">
+                <form className="addObjectBody" onSubmit={addMyBook}>
 
-                        <div className="addSubjectRow">
+                        <div className="addObjectRow">
                             <div>Title</div>
                             <div>:</div>
-                            <input style={{'padding': '3px 10px'}} type="text" name="tital_text" id="book_title_text"></input>
+                            <input type="text" name="tital_text" id="book_title_text" required></input>
                         </div>
 
 
-                        <div className="addSubjectRow">
+                        <div className="addObjectRow">
                             <div>Link</div>
                             <div>:</div>
-                            <input style={{'padding': '3px 10px'}} type="text" name="tital_text" id="book_link_text"></input>
+                            <input type="text" name="tital_text" id="book_link_text" required></input>
                         </div>
 
 
-                        <div className="addSubjectRow">
+                        <div className="addObjectRow">
                             <div>Author</div>
                             <div>:</div>
-                            <input style={{'padding': '3px 10px'}} type="text" name="tital_text" id="book_author_text"></input>
+                            <input type="text" name="tital_text" id="book_author_text" required></input>
                         </div>
 
 
-                        <div className="addSubjectRow">
+                        <div className="addObjectRow">
                             <div>Edition</div>
                             <div>:</div>
-                            <input style={{'padding': '3px 10px'}} type="text" name="tital_text" id="book_edition_text"></input>
+                            <input type="text" name="tital_text" id="book_edition_text" required></input>
                         </div>
 
 
-                        <div className="addSubjectRow">
+                        <div className="addObjectRow">
                             <div>Thumbnail</div>
                             <div>:</div>
-                            <input className="fileInput" type="file" name="code_text" id="book_img_text" onChange={(e) => { logoMaker(e) }}  cols="" rows="2"></input>
+                            <input className="fileInput" type="file" name="bookThumbnail" id="book_img_text" onChange={(e) => { logoMaker(e) }} required></input>
                         </div>
 
 
-                        <div className='addSubjectBtn'>
+                        <div className='addObjectBtn'>
                             <button onClick={clearBookData}> Clear </button>
 
-                            <button onClick={addMyBook} className="addFormButton">Submit</button>
+                            <button type="submit">Add Book</button>
                         </div>
 
-                </div>
+                </form>
             </div>
         </>
     );

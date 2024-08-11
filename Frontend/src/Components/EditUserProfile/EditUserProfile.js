@@ -7,10 +7,11 @@ import { Link } from "react-router-dom";
 import ToastComponent from "../Toast/toastComponent.js";
 import HashLoader from "react-spinners/HashLoader.js";
 
-function EditUserProfile(props) {
+function EditUserProfile() {
+  
+  const { user, setUser } = useUser();
 
   // useState()
-  const { user, setUser } = useUser();
   const [showhide, setShowhide] = useState("true");
   const [showhideforconfirm, setShowhideforconfirm] = useState("true");
   const [showhideforreconfirm, setShowhideforreconfirm] = useState("true");
@@ -43,22 +44,21 @@ function EditUserProfile(props) {
   const [isEditSelected, setEditSelected] = useState({
     PersonalInfo: "true",
     AccountInfo: "false",
-    CollegeInfo: "false",
     PasswordInfo: "false",
   });
 
   // useEffect()
   useEffect(() => {
-    if (props.user != null) {
-      setUserID(props.user._id);
+    if (user != null) {
+      setUserID(user._id);
     }
-  }, [props.user]);
+  }, [user]);
 
   useEffect(() => {
     (async () => {
       setIsLoadingEditProfile(true);
       try {
-        const response = await fetch(`/profile/user/?userID=${userID}`);
+        const response = await fetch(`http://localhost:5000/user/profile?userID=${userID}`);
         const data = await response.json();
         setUserData(data[0]);
         setBase64Img(`data:image/png;base64,${data[0].profileImg}`);
@@ -88,7 +88,6 @@ function EditUserProfile(props) {
 
   const changeEditSection = (active) => {
     document.getElementById("personalInfo").checked = false;
-    document.getElementById("collegeDetails").checked = false;
     document.getElementById("account").checked = false;
     document.getElementById("changePassword").checked = false;
     document.getElementById(active).checked = true;
@@ -122,7 +121,7 @@ function EditUserProfile(props) {
   const removeUserAuth = () => {
     (async () => {
       setUser(null);
-      await fetch("/remove/user/auth", {
+      await fetch("http://localhost:5000/user/remove/auth", {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -132,27 +131,6 @@ function EditUserProfile(props) {
         .then((data) => {
         });
     })();
-  }
-
-  const checkCurrentPassword = () => {
-    const currentPwd = {
-      currentPassword: currentPass,
-    };
-
-    fetch("/check/current/password", {
-      method: "POST",
-      body: JSON.stringify(currentPwd),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        if (data.message !== undefined) setToastVisible(true);
-        setToastMessage(data.message);
-        setToastType("warning");
-        setTimeout(() => setToastVisible(false), 4000);
-      });
   }
 
   const ToggleStyle = {
@@ -174,7 +152,6 @@ function EditUserProfile(props) {
     setEditSelected({
       PersonalInfo: "false",
       AccountInfo: "false",
-      CollegeInfo: "false",
       PasswordInfo: "false",
       [name]: "true",
     });
@@ -243,7 +220,7 @@ function EditUserProfile(props) {
   }
 
   const sendDataToBackend = (data) => {
-    fetch(`/editprofile/userSkills/?userID=${userID}`, {
+    fetch(`http://localhost:5000/user/editSkills/?userID=${userID}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -271,7 +248,7 @@ function EditUserProfile(props) {
       year: year,
     };
 
-    fetch(`/editprofile/personal/?userID=${userID}`, {
+    fetch(`http://localhost:5000/user/editprofile/personal/?userID=${userID}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -286,7 +263,7 @@ function EditUserProfile(props) {
         setToastMessage("Profile Updated Successfully!!");
         setToastType("success");
 
-        setTimeout(() => setToastVisible(false), 4000);
+        setTimeout(() => setToastVisible(false), 3000);
       })
       .catch((err) => {
         console.log(err);
@@ -300,7 +277,7 @@ function EditUserProfile(props) {
       email: email,
     };
 
-    fetch(`/editprofile/account/?userID=${userID}`, {
+    fetch(`http://localhost:5000/user/editprofile/account/?userID=${userID}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -313,7 +290,7 @@ function EditUserProfile(props) {
           setToastVisible(true);
           setToastMessage(data.error);
           setToastType("warning");
-          setTimeout(() => setToastVisible(false), 4000);
+          setTimeout(() => setToastVisible(false), 3000);
 
           setUsername(userData.username);
           setEmail(userData.email);
@@ -321,7 +298,7 @@ function EditUserProfile(props) {
           setToastVisible(true);
           setToastMessage(data.message);
           setToastType("success");
-          setTimeout(() => setToastVisible(false), 4000);
+          setTimeout(() => setToastVisible(false), 3000);
           setUsernameTitle(username);
         }
       })
@@ -339,7 +316,7 @@ function EditUserProfile(props) {
       currentPassword: currentPass,
     };
 
-    const response = await fetch("/check/current/password", {
+    const response = await fetch("http://localhost:5000/user/checkCurrentPassword", {
       method: "POST",
       body: JSON.stringify(currentPwd),
       headers: {
@@ -352,12 +329,12 @@ function EditUserProfile(props) {
       setToastVisible(true);
       setToastMessage("Wrong password");
       setToastType("warning");
-      setTimeout(() => setToastVisible(false), 4000);
+      setTimeout(() => setToastVisible(false), 3000);
     } else if (currentPass == newPass) {
       setToastVisible(true);
       setToastMessage("New Password cannot be same as current password!");
       setToastType("warning");
-      setTimeout(() => setToastVisible(false), 4000);
+      setTimeout(() => setToastVisible(false), 3000);
 
       setConfirmNewPass("");
       setNewPass("");
@@ -365,7 +342,7 @@ function EditUserProfile(props) {
       setToastVisible(true);
       setToastMessage("Please, keep your password minimum 8 character!!");
       setToastType("warning");
-      setTimeout(() => setToastVisible(false), 4000);
+      setTimeout(() => setToastVisible(false), 3000);
 
       setNewPass("");
       setConfirmNewPass("");
@@ -373,7 +350,7 @@ function EditUserProfile(props) {
       setToastVisible(true);
       setToastMessage("Re-Enter new password!!");
       setToastType("warning");
-      setTimeout(() => setToastVisible(false), 4000);
+      setTimeout(() => setToastVisible(false), 3000);
 
       setConfirmNewPass("");
     } else {
@@ -382,7 +359,7 @@ function EditUserProfile(props) {
         currentPassword: currentPass,
       };
 
-      fetch(`/editprofile/password/?userID=${userID}`, {
+      fetch(`http://localhost:5000/user/editprofile/password/?userID=${userID}`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -394,7 +371,7 @@ function EditUserProfile(props) {
           setToastVisible(true);
           setToastMessage("Password updated successfully!");
           setToastType("success");
-          setTimeout(() => setToastVisible(false), 4000);
+          setTimeout(() => setToastVisible(false), 3000);
 
           setCurrentPass("");
           setNewPass("");
@@ -412,7 +389,7 @@ function EditUserProfile(props) {
       setToastVisible(true);
       setToastMessage("Skills Updated Successfully!!");
       setToastType("success");
-      setTimeout(() => setToastVisible(false), 4000);
+      setTimeout(() => setToastVisible(false), 3000);
     }
 
     event.preventDefault();
@@ -438,23 +415,31 @@ function EditUserProfile(props) {
       reader.onload = () => {
         setBase64Img(reader.result);
         const base64String = reader.result.split(",")[1];
-        console.log(base64String);
-        fetch(`/editprofile/profileImg/?userID=${userID}`, {
+        // console.log(base64String);
+        fetch(`http://localhost:5000/user/editprofile/profileImg/?userID=${userID}`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify({ profileImg: base64String }),
+          body: JSON.stringify({ profileImg: base64String })
         })
-          .then((response) => response.json())
-          .then((data) => {
-            setToastVisible(true);
-            setToastMessage(data.message);
-            setToastType("success");
-            setTimeout(() => {
-              setToastVisible(false);
-            }, 4000);
-          });
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+          }
+          return response.json();
+        })
+        .then((data) => {
+          setToastVisible(true);
+          setToastMessage(data.message);
+          setToastType("success");
+          setTimeout(() => {
+            setToastVisible(false);
+          }, 4000);
+        })
+        // .catch((error) => {
+        //   console.error("There was an error with the fetch operation:", error);
+        // });
       };
       if (file) {
         reader.readAsDataURL(file);
@@ -497,7 +482,7 @@ function EditUserProfile(props) {
           onMouseEnter={EditDP}
           onMouseLeave={EditDP}
         >
-          <img src={base64Img} id="dp" className="EditProfileImg" />
+          <img src={base64Img} alt="Profile" loading="lazy" id="dp" className="EditProfileImg" />
           <div
             className="EditProfileImgChange"
             id="editDP"
@@ -539,14 +524,14 @@ function EditUserProfile(props) {
             }}
             defaultChecked
           />
-          <input
+          {/* <input
             type="radio"
             name="slider"
             id="collegeDetails"
             onClick={() => {
               changeEditSection("collegeDetails");
             }}
-          />
+          /> */}
           <input
             type="radio"
             name="slider"
@@ -569,11 +554,11 @@ function EditUserProfile(props) {
           }}>
             <span>Personal Info</span>
           </label>
-          <label htmlFor="collegeDetails" className="collegeDetails" onClick={() => {
+          {/* <label htmlFor="collegeDetails" className="collegeDetails" onClick={() => {
             return changeEditSelected("CollegeInfo");
           }}>
             <span>College Details</span>
-          </label>
+          </label> */}
           <label htmlFor="account" className="account" onClick={() => {
             return changeEditSelected("AccountInfo");
           }}>
@@ -730,7 +715,7 @@ function EditUserProfile(props) {
           </div>
 
           {/* College Info Section */}
-          <div
+          {/* <div
             className="EditCollegeInfoDisplay"
             style={
               isEditSelected.CollegeInfo == "true"
@@ -769,7 +754,7 @@ function EditUserProfile(props) {
                 </div>
               </div>
             </form>
-          </div>
+          </div> */}
 
           {/* Change Password Section */}
           <div
@@ -796,7 +781,6 @@ function EditUserProfile(props) {
                   value={currentPass}
                   id="editprofile_currentpass"
                   onChange={changeCurrentPass}
-                  onBlur={checkCurrentPassword}
                   placeholder="Enter current password"
                 />
                 <span>New Password</span>

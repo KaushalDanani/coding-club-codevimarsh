@@ -7,12 +7,12 @@ function ResourcesBookElement(props) {
 
   return (
     <div className="BookElement">
-      <img src={base64Img} alt="" />
+      <img src={base64Img} alt="Book"  loading="lazy"/>
       <button id='resElemDelt' className='off' onClick={()=>{ props.deleteBook(props.id)}}/>
       <div className='bookDetails'>
         <a href={props.link} target='_blank'>
           {/* <div className="BookImageDiv">
-            <img src={base64Img} alt="" />
+            <img src={base64Img} alt="Book" loading="lazy" />
           </div> */}
           <div className="BookElementTitle">{props.title}</div>
           <div className="BookElementInfo">

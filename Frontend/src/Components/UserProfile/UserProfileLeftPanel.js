@@ -20,9 +20,10 @@ function UserProfileLeftPanel(props) {
     display: "flex",
   };
 
-  console.log(props.userData.skills);
+  // console.log(props.userData.skills);
 
   const [showEdit, setShowEdit] = useState(false);
+  const base64Img = `data:image/png;base64,${props.userData.profileImg}`;
   
   function EditDP() {
     setShowEdit(!showEdit);
@@ -34,13 +35,12 @@ function UserProfileLeftPanel(props) {
       />
   }
 
-  const base64Img = `data:image/png;base64,${props.userData.profileImg}`;
 
   return (
     <div className="UPleftPanel">
-      <Tilt options={{speed: 200, "glare": true, "max-glare": 0.2, max: 15}} className="UPProfile">
+      <Tilt options={{"speed": "200", "glare": "true", "max-glare": "0.2", "max": '8'}} className="UPProfile">
         <div className="ProfileImg" onMouseEnter={EditDP} onMouseLeave={EditDP}>
-          <img src={base64Img} alt=""/>
+          <img src={base64Img} alt="Profile" loading="lazy" />
         </div>
         <div className="ProfileName">
           {props.userData.fname} {props.userData.lname}
@@ -51,7 +51,7 @@ function UserProfileLeftPanel(props) {
         </div>
         {(props.visitID==null) ? 
         <div className="ProfileEditLink">
-          <Link to={`edit_profile/`}>Edit Profile</Link>
+          <Link to={`edit`}>Edit Profile</Link>
         </div>
         : null}
       </Tilt>

@@ -21,7 +21,7 @@ function RecentUpdatesCards(props) {
         <span className='Heading'>{props.heading}</span>
         <span className='subHeading'>{props.subheading}</span>
         <button className='cardButton'>{props.button}</button>
-        <img className='cardIcon' src={props.icon}alt="alt"/>
+        <img className='cardIcon' src={props.icon} alt="Icon" loading="lazy" />
     </div>
   )
 }

@@ -24,7 +24,7 @@
     letter-spacing: 1.5px;
     /* background: transparent; */
     backdrop-filter: blur(15px);
-    /* background-color: transparent; */
+    background-color: black;
     border-bottom: 3px solid rgb(255, 255, 255);
     /* box-shadow: 0 0 20vh 4vh rgb(255, 255, 255); */
     /* overflow: hidden; */

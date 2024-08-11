@@ -7,22 +7,23 @@ import Navbar_after_login from '../NavbarAfterLogin/Navbar_after_login.js';
 import { Link,useNavigate , useLocation } from 'react-router-dom';
 import useUser from '../../store/userContext.js';
 import ToastComponent from '../Toast/toastComponent.js';
+import MyFooterAfterLogin from '../FooterAfterLogin/MyfooterAfterLogin.js'
 
-function ResourcesContent(props) {
+function ResourcesContent() {
     const navigate = useNavigate();
-    
+    const { user, setUser } = useUser();
+
     const [toastVisible, setToastVisible] = useState(false);
     const [toastMessage, setToastMessage] = useState("");
     const [toastType, setToastType] = useState("");
     
     const [admin,setAdmin] = useState(false);
     
-    useEffect( ()=>{
-        if(props.user)
-        {
-            setAdmin(props.user.isAdmin);
+    useEffect(() => {
+        if(user) {
+            setAdmin(user.isAdmin);
         }
-    },[props.user])
+    },[user])
 
     
     function adminCheck(){
@@ -67,7 +68,7 @@ function ResourcesContent(props) {
             const updatedbooks = books.filter(book => (book.title + book.author + book.edition) !== id);
             SetBooks(updatedbooks);
             
-            fetch(`/resources/delBook/${sub_id}`,{
+            fetch(`http://localhost:5000/resources/book/delete/${sub_id}`,{
                 method: 'POST',
                 headers:{
                     'Content-type' : 'application/json'
@@ -96,7 +97,7 @@ function ResourcesContent(props) {
             const updatedvideos = videos.filter(video => (video.title + video.channel) !== id);
             SetVideos(updatedvideos);
             
-            fetch(`/resources/delVideo/${sub_id}`,{
+            fetch(`http://localhost:5000/resources/video/delete/${sub_id}`,{
                 method: 'POST',
                 headers:{
                     'Content-type' : 'application/json'
@@ -125,7 +126,7 @@ function ResourcesContent(props) {
             const updatednotes = notes.filter(note => (note.title + note.link) !== id);
             SetNotes(updatednotes);
             
-            fetch(`/resources/delNote/${sub_id}`,{
+            fetch(`http://localhost:5000/resources/note/delete/${sub_id}`,{
                 method: 'POST',
                 headers:{
                     'Content-type' : 'application/json'
@@ -217,6 +218,7 @@ function ResourcesContent(props) {
                     </div>
                 </div>
             </div>
+            <MyFooterAfterLogin />
         </>
     );
 }

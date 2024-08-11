@@ -1,13 +1,13 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from 'react-router-dom'
-import './Ask_Question.css';
+import '../SubjectResources/AddObjectForm.css'
 import useUser from "../../store/userContext.js";
 import ToastComponent from "../Toast/toastComponent.js";
 
-
 export default function Ask_Question() {
+    const { user, setUser } = useUser();
 
-    const [Tital, setTital] = useState("");
+    const [Question, setQuestion] = useState("");
     const [Tags, setTags] = useState([]);
     const [Description, setDescription] = useState("");
     const [Code, setCode] = useState("");
@@ -16,40 +16,56 @@ export default function Ask_Question() {
     const [toastMessage,setToastMessage] = useState("");
     const [toastType,setToastType] = useState("");
 
-    const { user, setUser } = useUser();
-    const userID = user._id;
+    const [userID, setUserID] = useState();
+
+    useEffect(() => {
+        if(user)
+            setUserID(user._id);
+    },[user])
 
     const navigate = useNavigate();
 
-    function addTital() {
-        const tital = document.getElementById("tital_text").value;
-        setTital(tital);
-        
+    function addQuestion() {
+        const question = document.getElementById("question_text").value;
+        setQuestion(question);
     }
 
     function addTags() {
         const tags = document.getElementById("tegs_text").value;
-        setTags(tags.split(","));
-        
+        setTags(tags.split(",").map(tag => tag.trim()));
     }
 
     function addDescription() {
         const description = document.getElementById("description_text").value;
         setDescription(description);
-        
     }
 
     function addCode() {
         const code = document.getElementById("code_text").value;
         setCode(code);
-        
     }
 
-    function addMyQuestion() {
-        fetch("/addmyquestion", {
+    function clearAskQuestionData() {
+        document.getElementById("question_text").value = "";
+        setQuestion("");
+    
+        document.getElementById("tegs_text").value = "";
+        setTags("");
+
+        document.getElementById("description_text").value = "";
+        setDescription("");
+    
+        document.getElementById("code_text").value = "";
+        setCode("");
+    }
+
+    function addMyQuestion(e) {
+
+        e.preventDefault();
+        fetch("http://localhost:5000/discussion/addmyquestion", {
             method: 'POST',
             body: JSON.stringify({
-                "questiontital": Tital,
+                "questiontital": Question,
                 "questiontags": Tags,
                 "questiondescription": Description,
                 "questioncode": Code,
@@ -73,53 +89,71 @@ export default function Ask_Question() {
     }
 
 
-
-
     return (
         <>
             {toastVisible ? <ToastComponent message={toastMessage} type={toastType} /> : null}
 
             <Link to={'/discussion'}>
-                <div className='discussionBackBtn'></div>
+                <div className='ObjectBackBtn'></div>
             </Link>
-            <div className="askQuestionContainer">
-                <div className="askQuestionHeader">
-                    <h1><p className="question">Ask Your Question</p></h1>
+            <div className="addObjectContainer">
+                <div className="addObjectHeader">
+                    <h1>Ask Your Question</h1>
                 </div>
-                <hr style={{ height: '2.5px', width: '100%', backgroundColor: 'white', margin: '0px' }} />
-                <div className="formDiv">
-                    <form className="" id="question_main">
+                <form className="addObjectBody" onSubmit={addMyQuestion}>
+                    {/* <form className="" id="question_main"> */}
 
-                        <div className="q_tital">
+                        {/* <div className="q_tital">
                             <label htmlFor="tital_text">Question :</label>
                             <p></p>
-                            <textarea name="tital_text" id="tital_text" onChange={addTital} cols="" rows=""></textarea>
+                            <textarea name="tital_text" id="tital_text" onChange={addQuestion} cols="" rows=""></textarea>
+                        </div> */}
+                        <div className="addObjectRow">
+                            <div>Question</div>
+                            <div>:</div>
+                            <textarea name="tital_text" id="question_text" onChange={addQuestion} cols="" rows="2" required></textarea>
                         </div>
-                        <div className="q_tegs">
+
+                        {/* <div className="q_tegs">
                             <label htmlFor="tegs_text">Tags :</label>
                             <p></p>
                             <textarea name="tegs_text" id="tegs_text" onChange={addTags} cols="" rows=""></textarea>
+                        </div> */}
+                        <div className="addObjectRow">
+                            <div>Tags</div>
+                            <div>:</div>
+                            <input onChange={addTags} placeholder="Related technologies (separated by ',')" type="text" name="tegs_text" id="tegs_text" required></input>
                         </div>
-                        <div className="q_desc">
+
+                        {/* <div className="q_desc">
                             <label htmlFor="Description_text">Description :</label>
                             <p></p>
                             <textarea name="Description_text" id="description_text" onChange={addDescription} cols="" rows="2"></textarea>
+                        </div> */}
+                        <div className="addObjectRow">
+                            <div>Description</div>
+                            <div>:</div>
+                            <textarea name="Description_text" id="description_text" onChange={addDescription} cols="" rows="3" required></textarea>
                         </div>
-                        <div className="q_code">
+
+                        {/* <div className="q_code">
                             <label htmlFor="code_text">Code :</label>
                             <p></p>
                             <textarea name="code_text" id="code_text" onChange={addCode} cols="" rows="2"></textarea>
+                        </div> */}
+                        <div className="addObjectRow">
+                            <div>Code</div>
+                            <div>:</div>
+                            <textarea name="code_text" id="code_text" onChange={addCode} cols="" rows="4" ></textarea>
                         </div>
 
-
-                        <div className='buttonSection'>
-                            <Link to={'/discussion'}> <button className='addFormButton'> Cancel </button> </Link>
-
-                            <Link><button onClick={addMyQuestion} className="addFormButton">Submit</button></Link>
+                        <div className='addObjectBtn'>
+                            <button onClick={clearAskQuestionData}>Clear</button>
+                            <button type="submit">Add Question</button>
                         </div>
 
-                    </form>
-                </div>
+                    {/* </form> */}
+                </form>
             </div>
         </>
     );

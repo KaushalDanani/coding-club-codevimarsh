@@ -1,8 +1,6 @@
-import React, { useEffect, useState } from "react";
-import { useSearchParams } from 'react-router-dom';
+import React, { useState } from "react";
 import { Link, useNavigate, useLocation } from 'react-router-dom'
-import './AddVideos.css';
-import Navbar_after_login from "../NavbarAfterLogin/Navbar_after_login.js";
+import '../SubjectResources/AddObjectForm.css';
 import ToastComponent from "../Toast/toastComponent.js";
 
 export default function AddVideos() {
@@ -86,15 +84,16 @@ export default function AddVideos() {
         document.getElementById("vid_source_text").value = "";
     }
 
-    function addMyVideo() {
+    function addMyVideo(e) {
 
+        e.preventDefault();
         const vname = vidName();
         const vlink = vidLink();
         const vchannel = vidChannel();
         const vsource = vidSource();
         const sub_id = searchParams.get('sub_id');
 
-        fetch("/addmyvideo", {
+        fetch("http://localhost:5000/resources/video/add", {
             method: 'POST',
             body: JSON.stringify({
                 "video": vname,
@@ -121,95 +120,45 @@ export default function AddVideos() {
     return (
         <>
             {toastVisible ? <ToastComponent message={toastMessage} type={toastType} /> : null}
-
-            {/* <div className="addVideoContainer">
-                <div className="addVideoHeader">
-                    <h1><p className="Video">Add Video</p></h1>
-                </div>
-                <hr style={{ height: '2.5px', width: '100%', backgroundColor: 'white', margin: '0px' }} />
-                <div className="formDiv">
-                    <form className="" id="Video_main">
-
-                        <div className="q_tital">
-                            <label htmlFor="tital_text">Title :</label>
-                            <p></p>
-                            <input type="text" name="tital_text" id="vid_title_text"></input>
-                        </div>
-
-                        <div className="q_tital">
-                            <label htmlFor="tital_text">Link :</label>
-                            <p></p>
-                            <input type="text" name="tital_text" id="vid_link_text"></input>
-                        </div>
-
-                        <div className="q_tital">
-                            <label htmlFor="tital_text">Channel :</label>
-                            <p></p>
-                            <input type="text" name="tital_text" id="vid_channel_text"></input>
-                        </div>
-
-                        <div className="q_tital">
-                            <label htmlFor="tital_text">Source :</label>
-                            <p></p>
-                            <input type="text" name="tital_text" id="vid_source_text"></input>
-                        </div>
-
-                        <div className="q_code">
-                            <label htmlFor="code_text">Thumbnail :</label>
-                            <p></p>
-                            <input type="file" name="code_text" id="img_text" onChange={(e) => { logoMaker(e) }} cols="" rows="2"></input>
-                        </div>
-
-
-                        <div className='buttonSection'>
-                            <Link to={'/resources'}> <button className='addFormButton'> Cancel </button> </Link>
-
-                            <Link><button onClick={addMyBook} className="addFormButton">Submit</button></Link>
-                        </div>
-
-                    </form>
-                </div>
-            </div> */}
-
             <Link to={'/resources'}>
-                <div className='contestBackBtn'></div>
+                <div className='ObjectBackBtn'></div>
             </Link>
-            <div className="addBookContainer">
-                <div className="addBookHeader">
+            <div className="addObjectContainer">
+                <div className="addObjectHeader">
                     <h1>Add Video</h1>
                 </div>
-                <div className="addBookBody">
+                <form className="addObjectBody" onSubmit={addMyVideo}>
 
-                        <div className="addSubjectRow">
+                        <div className="addObjectRow">
                             <div>Title</div>
                             <div>:</div>
-                            <input style={{'padding': '3px 10px'}} type="text" name="tital_text" id="vid_title_text"></input>
+                            <input type="text" name="tital_text" id="vid_title_text" required></input>
                         </div>
 
-                        <div className="addSubjectRow">
+                        <div className="addObjectRow">
                             <div>Link</div>
                             <div>:</div>
-                            <input style={{'padding': '3px 10px'}} type="text" name="tital_text" id="vid_link_text"></input>
+                            <input type="text" name="tital_text" id="vid_link_text" required></input>
                         </div>
 
-                        <div className="addSubjectRow">
+                        <div className="addObjectRow">
                             <div>Channel</div>
                             <div>:</div>
-                            <input style={{'padding': '3px 10px'}} type="text" name="tital_text" id="vid_channel_text"></input>
+                            <input type="text" name="tital_text" id="vid_channel_text" required></input>
                         </div>
 
-                        <div className="addSubjectRow">
+                        <div className="addObjectRow">
                             <div>Source</div>
                             <div>:</div>
-                            <input style={{'padding': '3px 10px'}} type="text" name="tital_text" id="vid_source_text"></input>
+                            <input type="text" name="tital_text" id="vid_source_text" required></input>
                         </div>
 
-                        <div className='addSubjectBtn'>
+                        <div className='addObjectBtn'>
                             <button onClick={clearVideoData}> Clear </button>
-                            <button onClick={addMyVideo} className="addFormButton">Submit</button>
+                            <button type="submit">Add Video</button>
                         </div>
 
-                </div>
+                </form>
             </div>
         </>
     );

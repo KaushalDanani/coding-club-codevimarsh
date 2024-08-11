@@ -2,14 +2,16 @@
 import Navbar_after_login from "../NavbarAfterLogin/Navbar_after_login.js"
 import ProjectDisplay from "./ProjectDisplay.js";
 import React, { useEffect, useState } from "react";
-
 import { Link } from 'react-router-dom';
 // import Filter_bar from "../ProjectLibrary/Filter_bar_Project.js";
 import "./ProjectMain.css"
 import MyfooterAfterLogin from "../FooterAfterLogin/MyfooterAfterLogin.js";
 import HashLoader from "react-spinners/HashLoader.js";
+import useUser from "../../store/userContext.js";
+import ToastComponent from "../Toast/toastComponent.js";
 
-export default function ProjectMain(props){
+export default function ProjectMain(){
+    const { user, setUser } = useUser();
 
     const [isLoadingProject, setIsLoadingProject] = useState(false);
     const [admin,setAdmin] = useState('');
@@ -19,20 +21,25 @@ export default function ProjectMain(props){
     const [userData,setUserData] = useState('');
     const [base64Img,setBase64Img] = useState('');
 
+    const [toastVisible, setToastVisible] = useState(false);
+    const [toastMessage, setToastMessage] = useState("");
+    const [toastType, setToastType] = useState("");
+
     useEffect( ()=> {
-        if(props.user!=null)
+        if(user!=null)
         {
-            setAdmin(props.user.isAdmin);
-            setUserID(props.user._id);
+            setAdmin(user.isAdmin);
+            setUserID(user._id);
+            setBase64Img(`data:image/png;base64,${user.profileImg}`);
         }
-    },[props.user])
+    },[user])
     
     useEffect(() => {
 
         (async () => {
             setIsLoadingProject(true);
             try {
-                const response = await fetch("/project", {
+                const response = await fetch("http://localhost:5000/project", {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
@@ -40,11 +47,6 @@ export default function ProjectMain(props){
                 })
                 const data = await response.json();
                 setProjectinfo(data);
-
-                const response2 = await fetch('/navbar/profileImg/dataset')
-                const data2 = await response2.json();
-                setUserData(data2.data);
-                setBase64Img(`data:image/png;base64,${data2.data.profileImg}`);
             }
             catch(err)
             {
@@ -54,6 +56,17 @@ export default function ProjectMain(props){
         })();
 
     }, []);
+
+    function deleteProjectFromList(id, msg) {
+        const filterProjects = Projectinfo.filter((project) => project._id !== id );
+        setProjectinfo(filterProjects);
+        setToastVisible(true);
+        setToastMessage(msg);
+        setToastType("success");
+        setTimeout(() => {
+            setToastVisible(false)
+        }, 1500);
+    }
 
     if (isLoadingProject)
     return <>
@@ -70,28 +83,28 @@ export default function ProjectMain(props){
 
     return(
         <>  
-            
+            {toastVisible ? <ToastComponent message={toastMessage} type={toastType} /> : null}
+
             <Navbar_after_login imgData={base64Img} />
             {/* <div className='projectHeader'>
-                <div className='imageConatainer'> <img id='proj_image' src="/images/projdis3.jpg" alt='discC' /> </div>
+                <div className='imageConatainer'> <img id='proj_image' src="/images/projdis3.jpg" alt='discC' loading="lazy" /> </div>
                 <h2 className='projTitle'>Projects</h2>
                 <p className='project_oneliner'>The aim of argument, or of discussion, should not be victory, but progress.</p>
             </div> */}
             <div className='projectsContainer'>
-        <div className='projectCollabrationHeader'>
-          <div className='imageConatainer'> <img id='pc_image' src="/images/project-collab.png" alt='PC' /> </div>
+        <div className='projectCollaborationHeader'>
+          <div className='imageConatainer'> <img id='pc_image' src="/images/project-collab-transperant.png" alt='Project Banner' loading="lazy" /> </div>
           <h2 className='projectTitle'>Projects</h2>
-          <p className='project_collabration_oneliner'>The aim of argument, or of discussion, should not be victory, but progress.</p>
+          <p className='project_collaboration_oneliner'>The aim of argument, or of discussion, should not be victory, but progress.</p>
         </div>
         <div className='addProjCollab' style={{width: '85%'}}>
-          <Link to={'/project/add_project'}> <button className='ProjectCollabrationBtn'
+          <Link to={'/project/add_project'}> <button className='ProjectCollaborationBtn'
             onMouseOut={() => setChangeImage(true)}
             onMouseOver={()=> setChangeImage(false)}> Add </button> </Link>
         </div>
         </div>
             
             <hr style={{width: '85%', height: '2.5px', backgroundColor: 'white', margin: 'auto', marginBottom: '2.5vh'}}/>
-
             
             {
                 Projectinfo.length!==0 ? 
@@ -100,16 +113,11 @@ export default function ProjectMain(props){
                     (proj) => {
                         return(
                             <ProjectDisplay 
-                                name = {proj.projectName}
-                                tech = {proj.tags}
-                                description = {proj.description}
-                                projectinfo = {proj.projectInfo}
-                                video = {proj.video}
-                                projectlink = {proj.projectLink}
-                                team = {proj.contributors}
-                                image = {proj.image}
+                                data = {proj}
                                 admin = {admin}
-                                userID = {userID} 
+                                userID = {userID}
+                                team = {proj.contributors} 
+                                deleteProjectFromList = {deleteProjectFromList}
                             />
                         );
                     }

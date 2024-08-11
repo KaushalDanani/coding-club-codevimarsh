@@ -41,10 +41,10 @@ function ArticleNewsTopBanner(props) {
         <div id="carouselExample" className="carousel slide CarouselStyle">
           <div className="carousel-inner">
             <div className="carousel-item active">
-              <img src="/images/articles.jpg" className="d-block BannerIcon" alt="..." />
+              <img src="/images/articles.jpg" className="d-block BannerIcon" alt="Article Banner" loading="lazy" />
             </div>
             <div className="carousel-item">
-              <img src="/images/news.png" className="d-block BannerIcon " alt="..." />
+              <img src="/images/news.png" className="d-block BannerIcon " alt="News Banner" loading="lazy" />
             </div>
           </div>
           <button
