@@ -56,14 +56,10 @@ function Home_page_before_login() {
         credentials: "include",
       });
       const data = await response.json();
-      // console.log(data.message)
       if (data.message == undefined) {
         setUser(data.userData);
         setImgData(data.userData.profileImg);
-        // console.log(
-        //   "-----------------------------USER-------------------------",
-        //   data
-        // );
+        // console.log("-----------------------------USER-------------------------",data);
       } else {
         // alert(data.message)
         setUser(null);
