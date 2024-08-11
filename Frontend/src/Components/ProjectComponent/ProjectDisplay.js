@@ -62,7 +62,7 @@ export default function ProjectDisplay(props) {
         }
     }
     
-        function delete_project(proj_name){
+        function delete_project(){
 
             const conf = window.confirm('Are you sure you want to delete Project?');
             if(conf)
@@ -138,9 +138,7 @@ export default function ProjectDisplay(props) {
         
         function techtags(tag){
             return(
-                <TechTag
-                    tagname = {tag}
-                />
+                <TechTag tagname = {tag} />
             )
         }
 
@@ -200,7 +198,7 @@ export default function ProjectDisplay(props) {
 
                 <div className="projbtn">
                     <button className="projdispbutton"  onClick={() => setExpand(!expand)}> {expand ? 'Show More' : 'Show Less'}</button>
-                    <button id={`btnname${props.data.projectName}dlt`} className="projdispbutton" onClick={() => {delete_project(props.name)}}>Delete</button>
+                    <button id={`btnname${props.data.projectName}dlt`} className="projdispbutton" onClick={() => {delete_project()}}>Delete</button>
                 </div>
             </div>
         </div>

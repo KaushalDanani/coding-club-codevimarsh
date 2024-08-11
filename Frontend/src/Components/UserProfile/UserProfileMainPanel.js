@@ -13,7 +13,7 @@ function UserProfileMainPanel(props) {
   useEffect(() => {
     setProjects([]);
     if (props.userData._id) {
-      console.log("user", props.userData._id);
+      // console.log("user", props.userData._id);
       fetch(`http://localhost:5000/user/profile/projects/?userID=${props.userData._id}`)
         .then(
           response => response.json()
@@ -29,14 +29,16 @@ function UserProfileMainPanel(props) {
   function addProjects(element) {
     return (
       <ProjectDisplay
-        name={element.projectName}
-        description={element.description}
-        tech={element.tags}
-        image={element.image}
-        video={element.video}
-        projectinfo={element.projectInfo}
-        projectlink={element.projectLink}
-        team={element.contributors}
+        data = {{
+          projectName: element.projectName,
+          description: element.description,
+          tags: element.tags,
+          image: element.image,
+          video: element.video,
+          projectInfo: element.projectInfo,
+          projectlink: element.projectLink,
+          contributors: element.contributors
+        }}
         userID={props.userData._id}
         admin={props.userData.isAdmin}
       />
@@ -55,7 +57,7 @@ function UserProfileMainPanel(props) {
             {props.userData.about}
             <div className={((props.userData.about == null) || (props.userData.about == "")) ? "aboutPlaceHolder" : "noPlaceHolder"}>
               
-              <Link className="editLink" to={`edit_profile/`}>Edit profile</Link> to add about yourself...
+              <Link className="editLink" to={`edit/`}>Edit profile</Link> to add about yourself...
             </div>
           </div>
         </div>

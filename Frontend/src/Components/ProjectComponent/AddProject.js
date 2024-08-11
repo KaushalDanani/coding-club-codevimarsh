@@ -104,7 +104,7 @@ export default function AddProject() {
     }
 
     function addTeam() {
-        const team = document.getElementById("teamInfo").value;
+        let team = document.getElementById("teamInfo").value;
         team = team.split(",").map(tag => tag.trim());
         setTeam(team);
     }
@@ -120,7 +120,7 @@ export default function AddProject() {
     }
 
     function addProjectTags() {
-        const projectTags = document.getElementById("projectTags").value;
+        let projectTags = document.getElementById("projectTags").value;
         projectTags = projectTags.split(",").map(tag => tag.trim());
         if (projectTags.length == 1 && projectTags[0] == "") {
             setProjectTags([])

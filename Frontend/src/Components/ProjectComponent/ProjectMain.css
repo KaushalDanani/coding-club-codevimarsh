@@ -62,3 +62,9 @@
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     /* border: 2px solid red; */
 }
+
+.displayAllProjectsContainer {
+    margin-top: 3rem;
+    max-height: 70rem;
+    overflow-y: scroll;
+}

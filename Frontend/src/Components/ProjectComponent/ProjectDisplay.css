@@ -22,7 +22,7 @@
     box-shadow: 0px 0px 20px black;
     animation: showProjectAnimation linear;
     animation-timeline: view();
-    animation-range: entry 0 cover 42.5%;
+    animation-range: entry 0 cover 15.5%;
 }
 
 @keyframes showProjectAnimation {
