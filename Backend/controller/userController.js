@@ -207,8 +207,8 @@ exports.signUp = async (req, res) => {
             res.cookie("jwtAuth", token, {
               expires: new Date(Date.now() + 31536000), 
               httpOnly: true,
-              secure: process.env.NODE_ENV !== 'devlopment',
-              sameSite: process.env.NODE_ENV === 'devlopment' ? 'lax' : 'None'
+              secure: process.env.NODE_ENV !== 'development',
+              sameSite: process.env.NODE_ENV === 'development' ? 'lax' : 'None'
             });
     
             const signup_done = await user.save();
@@ -244,8 +244,8 @@ exports.signIn = async (req, res) => {
             res.cookie("jwtAuth", token, {
               expires: new Date(Date.now() + 31536000),
               httpOnly: true,
-              secure: process.env.NODE_ENV === 'devlopment',
-              sameSite: process.env.NODE_ENV === 'devlopment' ? 'lax' : 'None'
+              secure: process.env.NODE_ENV === 'development',
+              sameSite: process.env.NODE_ENV === 'development' ? 'lax' : 'None'
             })
   
             // console.log("USER 😼: "+userDetail);
