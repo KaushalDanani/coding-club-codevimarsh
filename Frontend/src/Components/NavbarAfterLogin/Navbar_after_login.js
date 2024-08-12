@@ -72,7 +72,7 @@ function Navbar_after_login(props) {
                             <Link to={`/profile`}><div className='loginDP' title='Profile'> <img id='profileImage' src={base64Img} loading="lazy" alt='Profile'></img> </div></Link>
                         </li>
                         <li className={mobileMenu ? "liComponent2" : "mobile-li"} id='profile'>
-                            <Link to={`/`}> <div className='logoutNavbar' title='Logout' onClick={removeUserAuth}> </div> </Link>
+                            <Link to={`/`}> <div className='logoutNavbar' title='Signout' onClick={removeUserAuth}> </div> Signout </Link>
                         </li>
                     </ul>
                 </div>

@@ -14,7 +14,7 @@ export default function Resources() {
   const [userID, setUserID] = useState("");
   const [resources, setResources] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-  const [userData, setUserData] = useState("");
+  // const [userData, setUserData] = useState("");
   const [base64Img, setBase64Img] = useState("");
 
   useEffect(() => {

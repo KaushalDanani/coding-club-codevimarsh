@@ -61,7 +61,7 @@ function UserProfileLeftPanel(props) {
         </div>
         <div className="UPSkillsContent">
           {(props.userData.skills || []).map(displayTags)}
-          <div className={((props.userData.skills || []).length == 0)?"skillPlaceHolder":"noPlaceHolder"}>
+          <div className={((props.userData.skills || []).length === 0)?"skillPlaceHolder":"noPlaceHolder"}>
             <Link className="editLink" to={`edit_profile/`}>Edit profile</Link> to add your skills here...
           </div>
         </div>

@@ -134,7 +134,7 @@ function LoginHomePage() {
         <Greeting fname={fname} userID={userID} isAdmin={admin} />
         <div className="quoteContainerAfterLogin">
           <div style={{ display: "flex", justifyContent: "space-between" }}>
-            <h3 className="quoteTitle">Quote</h3>
+            <h2 className="quoteTitle">Quote</h2>
             <input
               type="button"
               className="new_quote_btn"

@@ -37,6 +37,7 @@ const Discussion = lazy(() => import("./Discussion.js"))
 
 function Home_page_before_login() {
   const navigate = useNavigate();
+  const oneLinerToStart = "Start your coding journey with code-vimarsh by joining us...";
   const { user, setUser } = useUser();
   const api_key = process.env.REACT_APP_QUOTE_API_KEY;
   const [isLoadingBeforeHome, setIsLoadingBeforeHome] = useState(false);
@@ -154,7 +155,7 @@ function Home_page_before_login() {
               />
             </span>
             <h4 className="oneLiner">
-              Start your coding journey with code-vimarsh by joining us...
+              {oneLinerToStart}
             </h4>
             <Link to={"signin"}>
               {" "}
@@ -210,17 +211,17 @@ function Home_page_before_login() {
                   <span className="designSpan"></span>
                   <span className="designSpan"></span>
                   <span>
-                    {" "}
+                    {/* {" "}
                     <a href="https://www.geeksforgeeks.org/" target="_blank">
-                      {" "}
+                      {" "} */}
                       <img
                         src="/images/geeksforgeeksLogo.svg"
                         height="44px"
                         width="44px"
                         loading="lazy"
                         alt="Geeksforgeeks"
-                      ></img>{" "}
-                    </a>{" "}
+                      ></img>
+                    {/* </a>{" "} */}
                   </span>
                 </a>
               </li>
@@ -236,17 +237,17 @@ function Home_page_before_login() {
                   <span className="designSpan"></span>
                   <span className="designSpan"></span>
                   <span>
-                    {" "}
+                    {/* {" "}
                     <a href="https://www.w3schools.com/" target="_blank">
-                      {" "}
+                      {" "} */}
                       <img
                         src="/images/w3schoolsLogo.png"
                         height="44px"
                         width="44px"
                         loading="lazy"
                         alt="W3Schools"
-                      ></img>{" "}
-                    </a>{" "}
+                      ></img>
+                    {/* </a>{" "} */}
                   </span>
                 </a>
               </li>
@@ -262,17 +263,17 @@ function Home_page_before_login() {
                   <span className="designSpan"></span>
                   <span className="designSpan"></span>
                   <span>
-                    {" "}
+                    {/* {" "}
                     <a href="https://leetcode.com/" target="_blank">
-                      {" "}
+                      {" "} */}
                       <img
                         src="/images/leetcodeLogo.png"
                         height="44px"
                         width="44px"
                         loading="lazy"
                         alt="LeetCode"
-                      ></img>{" "}
-                    </a>{" "}
+                      ></img>
+                    {/* </a>{" "} */}
                   </span>
                 </a>
               </li>
@@ -288,17 +289,17 @@ function Home_page_before_login() {
                   <span className="designSpan"></span>
                   <span className="designSpan"></span>
                   <span>
-                    {" "}
+                    {/* {" "}
                     <a href="https://www.codechef.com/" target="_blank">
-                      {" "}
+                      {" "} */}
                       <img
                         src="/images/codechef_logo.png"
                         height="44px"
                         width="41.5px"
                         loading="lazy"
                         alt="CodeChef"
-                      ></img>{" "}
-                    </a>{" "}
+                      ></img>
+                    {/* </a>{" "} */}
                   </span>
                 </a>
               </li>

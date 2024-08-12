@@ -93,7 +93,8 @@ export default function Contest_main() {
                     const endDate = new Date(element.endDate);
                     return(
                         <Weekly_contest
-                            type = {element.type}
+                            key={element._id}
+                            type={element.type}
                             name={element.name}
                             startdate={`${startdate.getDate().toString().padStart(2,'0')}-${(startdate.getMonth() + 1).toString().padStart(2,'0')}-${startdate.getFullYear().toString().padStart(2,'0')} `}
                             enddate={`${endDate.getDate().toString().padStart(2,'0')}-${(endDate.getMonth() + 1).toString().padStart(2,'0')}-${endDate.getFullYear().toString().padStart(2,'0')} `}
@@ -119,7 +120,8 @@ export default function Contest_main() {
                         const endDate = new Date(element.endDate);
                         return (
                             <Running_contest
-                                type = {element.type}
+                                key={element._id}
+                                type={element.type}
                                 name={element.name}
                                 startdate={`${startdate.getDate().toString().padStart(2,'0')}-${(startdate.getMonth() + 1).toString().padStart(2,'0')}-${startdate.getFullYear().toString().padStart(2,'0')} `}
                                 enddate={`${endDate.getDate().toString().padStart(2,'0')}-${(endDate.getMonth() + 1).toString().padStart(2,'0')}-${endDate.getFullYear().toString().padStart(2,'0')} `}
@@ -146,6 +148,7 @@ export default function Contest_main() {
                         const endDate = new Date(element.endDate);
                         return (
                             <Completed_contest
+                                key={element._id}
                                 type = {element.type}
                                 name={element.name}
                                 startdate={`${startdate.getDate().toString().padStart(2,'0')}-${(startdate.getMonth() + 1).toString().padStart(2,'0')}-${startdate.getFullYear().toString().padStart(2,'0')} `}
