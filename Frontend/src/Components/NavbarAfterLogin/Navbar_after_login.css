@@ -21,8 +21,9 @@
 .loginDP {
     /* height: 2.95vw;
     width: 2.95vw; */
-    aspect-ratio: 1.3;
-    width: 3.55rem;
+    aspect-ratio: 1.15;
+    width: 3rem;
+    /* width: auto; */
     position: relative;
     /* margin-top: 0.5vh; */
     /* margin-right: 0.85vw; */
