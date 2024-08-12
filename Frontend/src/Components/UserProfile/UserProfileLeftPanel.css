@@ -58,21 +58,21 @@
 .ProfileName{
     position: relative;
     display: flex;
-    font-size: 180%;
+    font-size: 1.4rem;
     font-weight: 650;
     height: 6vh;
     width: fit-content;
     margin: auto;
-    margin-top: 6%;
+    margin-top: 9%;
     padding-bottom: 0px;
 }
 
 .ProfileUsername{
     display: flex; 
     justify-content: center;
-    font-size: 110%;
+    font-size: 1.15rem;
     height: 3vh;
-    width: fit-content;
+    /* width: fit-content; */
     margin: auto;
 }
 
@@ -128,6 +128,7 @@
 .editLink{
     text-decoration: none;
     color: aqua;
+    color: rgb(255,139,22);
 }
 
 .editLink:hover{

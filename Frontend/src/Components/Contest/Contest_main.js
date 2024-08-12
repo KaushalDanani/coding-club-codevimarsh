@@ -79,77 +79,96 @@ export default function Contest_main() {
             <Navbar_after_login imgData={base64Img} />
 
             {/* {upcoming contest} */}
-            <div className="upcoming_contest">
-                <p>Up Coming Contest</p>
-                <Link 
-                style={isAdmin===true ? {"display":"block"} : {"display":"none"}}
-                className="AddContestBtn" to={`/addContest`}>Add Contest</Link>
-
-            </div>
-            <div className="upcomingContestGrid">
-            {upcomingcontestinfo.map(function upcomingcontest(element){
-                const startdate = new Date(element.startDate);
-                const endDate = new Date(element.endDate);
-                return(
-                    <Weekly_contest
-                        type = {element.type}
-                        name={element.name}
-                        startdate={`${startdate.getDate().toString().padStart(2,'0')}-${(startdate.getMonth() + 1).toString().padStart(2,'0')}-${startdate.getFullYear().toString().padStart(2,'0')} `}
-                        enddate={`${endDate.getDate().toString().padStart(2,'0')}-${(endDate.getMonth() + 1).toString().padStart(2,'0')}-${endDate.getFullYear().toString().padStart(2,'0')} `}
-                        time={`${startdate.getHours().toString().padStart(2,'0')}:${startdate.getMinutes().toString().padStart(2,'0')} to ${endDate.getHours().toString().padStart(2,'0')}:${endDate.getMinutes().toString().padStart(2,'0')}`}
-                        link={element.contestLink}
-                    />
-                    
-                );
-            })}
-            </div>
-
-            {/* {Current running contest} */}
-            <div className="runnig_contest">
-                <p>Running Contest</p>
-            </div>
-            <div className="RunningContestGrid">
-                {currentcontestinfo.map(function currentcontest(element) {
+            {upcomingcontestinfo.length !== 0 ? 
+            <>
+                <div className="upcoming_contest">
+                    <p>Up Coming Contest</p>
+                    <Link 
+                    style={isAdmin===true ? {"display":"block"} : {"display":"none"}}
+                    className="AddContestBtn" to={`/addContest`}>Add Contest</Link>
+                </div>
+                <div className="upcomingContestGrid">
+                {upcomingcontestinfo.map(function upcomingcontest(element){
                     const startdate = new Date(element.startDate);
                     const endDate = new Date(element.endDate);
-                    return (
-                        <Running_contest
+                    return(
+                        <Weekly_contest
                             type = {element.type}
                             name={element.name}
                             startdate={`${startdate.getDate().toString().padStart(2,'0')}-${(startdate.getMonth() + 1).toString().padStart(2,'0')}-${startdate.getFullYear().toString().padStart(2,'0')} `}
                             enddate={`${endDate.getDate().toString().padStart(2,'0')}-${(endDate.getMonth() + 1).toString().padStart(2,'0')}-${endDate.getFullYear().toString().padStart(2,'0')} `}
                             time={`${startdate.getHours().toString().padStart(2,'0')}:${startdate.getMinutes().toString().padStart(2,'0')} to ${endDate.getHours().toString().padStart(2,'0')}:${endDate.getMinutes().toString().padStart(2,'0')}`}
-
-                            start={element.contestLink}
+                            link={element.contestLink}
                         />
+                        
                     );
                 })}
-            </div>
+                </div>
+            </>
+            : null }
+
+            {/* {Current running contest} */}
+            {currentcontestinfo.length !== 0 ? 
+            <>
+                <div className="runnig_contest">
+                    <p>Running Contest</p>
+                </div>
+                <div className="RunningContestGrid">
+                    {currentcontestinfo.map(function currentcontest(element) {
+                        const startdate = new Date(element.startDate);
+                        const endDate = new Date(element.endDate);
+                        return (
+                            <Running_contest
+                                type = {element.type}
+                                name={element.name}
+                                startdate={`${startdate.getDate().toString().padStart(2,'0')}-${(startdate.getMonth() + 1).toString().padStart(2,'0')}-${startdate.getFullYear().toString().padStart(2,'0')} `}
+                                enddate={`${endDate.getDate().toString().padStart(2,'0')}-${(endDate.getMonth() + 1).toString().padStart(2,'0')}-${endDate.getFullYear().toString().padStart(2,'0')} `}
+                                time={`${startdate.getHours().toString().padStart(2,'0')}:${startdate.getMinutes().toString().padStart(2,'0')} to ${endDate.getHours().toString().padStart(2,'0')}:${endDate.getMinutes().toString().padStart(2,'0')}`}
+
+                                start={element.contestLink}
+                            />
+                        );
+                    })}
+                </div>
+            </>
+            : null }
 
 
             {/* {past contest} */}
-            <div className="past_contest">
-                <p>Past Contest</p>
-            </div>
-            <div className="PastContestGrid">
-                {pastcontestinfo.map(function pastcontest(element) {
-                    const startdate = new Date(element.startDate);
-                    const endDate = new Date(element.endDate);
-                    return (
-                        <Completed_contest
-                            type = {element.type}
-                            name={element.name}
-                            startdate={`${startdate.getDate().toString().padStart(2,'0')}-${(startdate.getMonth() + 1).toString().padStart(2,'0')}-${startdate.getFullYear().toString().padStart(2,'0')} `}
-                            enddate={`${endDate.getDate().toString().padStart(2,'0')}-${(endDate.getMonth() + 1).toString().padStart(2,'0')}-${endDate.getFullYear().toString().padStart(2,'0')} `}
-                            time={`${startdate.getHours().toString().padStart(2,'0')}:${startdate.getMinutes().toString().padStart(2,'0')} to ${endDate.getHours().toString().padStart(2,'0')}:${endDate.getMinutes().toString().padStart(2,'0')}`}
+            {pastcontestinfo.length !== 0 ? 
+            <>
+                <div className="past_contest">
+                    <p>Past Contest</p>
+                </div>
+                <div className="PastContestGrid">
+                    {pastcontestinfo.map(function pastcontest(element) {
+                        const startdate = new Date(element.startDate);
+                        const endDate = new Date(element.endDate);
+                        return (
+                            <Completed_contest
+                                type = {element.type}
+                                name={element.name}
+                                startdate={`${startdate.getDate().toString().padStart(2,'0')}-${(startdate.getMonth() + 1).toString().padStart(2,'0')}-${startdate.getFullYear().toString().padStart(2,'0')} `}
+                                enddate={`${endDate.getDate().toString().padStart(2,'0')}-${(endDate.getMonth() + 1).toString().padStart(2,'0')}-${endDate.getFullYear().toString().padStart(2,'0')} `}
+                                time={`${startdate.getHours().toString().padStart(2,'0')}:${startdate.getMinutes().toString().padStart(2,'0')} to ${endDate.getHours().toString().padStart(2,'0')}:${endDate.getMinutes().toString().padStart(2,'0')}`}
 
-                            result={element.resultLink}
-                            solution={element.solutionLink} >
-                        </Completed_contest>
-                    );
-                })}
-            </div>
-
+                                result={element.resultLink}
+                                solution={element.solutionLink} >
+                            </Completed_contest>
+                        );
+                    })}
+                </div>
+            </>
+            : 
+            <>
+                <div className="past_contest">
+                    <p>Past Contest</p>
+                </div>
+                <div className="discussionNullContent">
+                    <div className="nullContentInfo">No contest history available :)</div>
+                </div>
+            </>
+            }
         </div>
         <MyfooterAfterLogin/>
         </>

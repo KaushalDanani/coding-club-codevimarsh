@@ -118,11 +118,20 @@ export default function Resources() {
         </nav>
       </div>
 
+      {resources.length !== 0 ?
       <div className="res_card_container">
         <div id="cardgrid">
           <Res_data userID={userID} source={resources} imgData={base64Img} />
         </div>
       </div>
+      :
+        <div className="discussionNullContent">
+
+          <div className="nullContentInfo">No Resources available right now :)
+          <br />Check again later...!</div>
+        
+        </div>
+      }
       <MyfooterAfterLogin />
     </>
   );

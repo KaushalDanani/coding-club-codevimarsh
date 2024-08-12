@@ -46,7 +46,7 @@ function UserProfileLeftPanel(props) {
           {props.userData.fname} {props.userData.lname}
         </div>
         <div className="ProfileUsername">
-          @{props.userData.username}
+          @ {props.userData.username}
           {props.userData.isAdmin ? " (Admin)" : ""}
         </div>
         {(props.visitID==null) ? 
