@@ -13,7 +13,7 @@ function ManageAdmins() {
     const [toastMessage, setToastMessage] = useState("");
 
     useEffect(() => {
-        fetch('http://localhost:5000/admin/list', {
+        fetch(`${process.env.REACT_APP_BACKEND_URL}/admin/list`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
@@ -54,7 +54,7 @@ function ManageAdmins() {
             setTimeout(() => setToastVisible(false), 4000);
         }
         else {
-            fetch(`http://localhost:5000/admin/delete/?username=${username}`)
+            fetch(`${process.env.REACT_APP_BACKEND_URL}/admin/delete/?username=${username}`)
                 .then(response => response.json())
                 .then(data => {
                     setToastVisible(true);
@@ -78,7 +78,7 @@ function ManageAdmins() {
             setTimeout(() => setToastVisible(false), 4000);
         }
         else {
-            fetch(`http://localhost:5000/admin/add/?username=${newAdminUsername}`)
+            fetch(`${process.env.REACT_APP_BACKEND_URL}/admin/add/?username=${newAdminUsername}`)
                 .then(response => response.json())
                 .then(data => {
 

@@ -36,7 +36,7 @@ export default function ProjectMain() {
     (async () => {
       setIsLoadingProject(true);
       try {
-        const response = await fetch("http://localhost:5000/project", {
+        const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/project`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

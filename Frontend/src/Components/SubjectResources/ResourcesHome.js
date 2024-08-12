@@ -20,7 +20,7 @@ export default function Resources() {
   useEffect(() => {
     (async () => {
       setIsLoading(true);
-      const response = await fetch("http://localhost:5000/resources/");
+      const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/resources/`);
       const data = await response.json();
       setResources(data);
 

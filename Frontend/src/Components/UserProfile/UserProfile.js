@@ -38,13 +38,13 @@ function UserProfile(props) {
       try {
         if(visitID===null || visitID===userID)
         {
-          const response = await fetch(`http://localhost:5000/user/profile/?userID=${userID}`)
+          const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/user/profile/?userID=${userID}`)
           const data = await response.json();
           setUserData(data[0]);
         }
         else
         {
-          const response = await fetch(`http://localhost:5000/user/profile/?userID=${visitID}`)
+          const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/user/profile/?userID=${visitID}`)
           const data = await response.json();
           setUserData(data[0]);
         }

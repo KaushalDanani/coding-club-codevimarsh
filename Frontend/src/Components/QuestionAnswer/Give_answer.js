@@ -48,7 +48,7 @@ function Give_answer() {
     function addMyReply(e) {
 
         e.preventDefault();
-        fetch("http://localhost:5000/discussion/addmyreply", {
+        fetch(`${process.env.REACT_APP_BACKEND_URL}/discussion/addmyreply`, {
             method: 'POST',
             body: JSON.stringify({
                 "answerreply": Reply,

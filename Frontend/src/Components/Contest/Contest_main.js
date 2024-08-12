@@ -34,19 +34,19 @@ export default function Contest_main() {
         (async () => {
             setIsLoading(true);
 
-            const response = await fetch("http://localhost:5000/contest/past")
+            const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/contest/past`)
             const data = await response.json();
             setPastContestinfo(data)
 
-            const response1 = await fetch("http://localhost:5000/contest/current")
+            const response1 = await fetch(`${process.env.REACT_APP_BACKEND_URL}/contest/current`)
             const data1 = await response1.json();
             setCurrentContestinfo(data1)
 
-            const response2 = await fetch("http://localhost:5000/contest/upcoming")
+            const response2 = await fetch(`${process.env.REACT_APP_BACKEND_URL}/contest/upcoming`)
             const data2 = await response2.json();
             setUpcomingContestinfo(data2)
 
-            // const response3 = await fetch('http://localhost:5000/user/profileImg')
+            // const response3 = await fetch('${process.env.REACT_APP_BACKEND_URL}/user/profileImg')
             // const data3 = await response3.json();
             // setUserData(data3.data);
             // setBase64Img(`data:image/png;base64,${data3.data.profileImg}`);

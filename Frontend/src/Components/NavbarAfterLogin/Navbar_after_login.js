@@ -30,7 +30,7 @@ function Navbar_after_login(props) {
     const removeUserAuth = async () => {
           
           setUser(null);
-          await fetch('http://localhost:5000/user/remove/auth', {
+          await fetch(`${process.env.REACT_APP_BACKEND_URL}/user/remove/auth`, {
             method: "GET",
             headers: {
               'Content-Type': 'application/json'

@@ -17,7 +17,7 @@ function ForumGenerator() {
   const { user }= useUser();
 
   useEffect(() => {
-    fetch('http://localhost:5000/discussion', {
+    fetch(`${process.env.REACT_APP_BACKEND_URL}/discussion`, {
       method: 'POST',
       headers: {
           'Content-Type': 'application/json'

@@ -68,7 +68,7 @@ function ResourcesContent() {
             const updatedbooks = books.filter(book => (book.title + book.author + book.edition) !== id);
             SetBooks(updatedbooks);
             
-            fetch(`http://localhost:5000/resources/book/delete/${sub_id}`,{
+            fetch(`${process.env.REACT_APP_BACKEND_URL}/resources/book/delete/${sub_id}`,{
                 method: 'POST',
                 headers:{
                     'Content-type' : 'application/json'
@@ -97,7 +97,7 @@ function ResourcesContent() {
             const updatedvideos = videos.filter(video => (video.title + video.channel) !== id);
             SetVideos(updatedvideos);
             
-            fetch(`http://localhost:5000/resources/video/delete/${sub_id}`,{
+            fetch(`${process.env.REACT_APP_BACKEND_URL}/resources/video/delete/${sub_id}`,{
                 method: 'POST',
                 headers:{
                     'Content-type' : 'application/json'
@@ -126,7 +126,7 @@ function ResourcesContent() {
             const updatednotes = notes.filter(note => (note.title + note.link) !== id);
             SetNotes(updatednotes);
             
-            fetch(`http://localhost:5000/resources/note/delete/${sub_id}`,{
+            fetch(`${process.env.REACT_APP_BACKEND_URL}/resources/note/delete/${sub_id}`,{
                 method: 'POST',
                 headers:{
                     'Content-type' : 'application/json'

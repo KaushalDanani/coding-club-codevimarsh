@@ -58,7 +58,7 @@ function EditUserProfile() {
     (async () => {
       setIsLoadingEditProfile(true);
       try {
-        const response = await fetch(`http://localhost:5000/user/profile?userID=${userID}`);
+        const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/user/profile?userID=${userID}`);
         const data = await response.json();
         setUserData(data[0]);
         setBase64Img(`data:image/png;base64,${data[0].profileImg}`);
@@ -121,7 +121,7 @@ function EditUserProfile() {
   const removeUserAuth = () => {
     (async () => {
       setUser(null);
-      await fetch("http://localhost:5000/user/remove/auth", {
+      await fetch(`${process.env.REACT_APP_BACKEND_URL}/user/remove/auth`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -220,7 +220,7 @@ function EditUserProfile() {
   }
 
   const sendDataToBackend = (data) => {
-    fetch(`http://localhost:5000/user/editSkills/?userID=${userID}`, {
+    fetch(`${process.env.REACT_APP_BACKEND_URL}/user/editSkills/?userID=${userID}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -248,7 +248,7 @@ function EditUserProfile() {
       year: year,
     };
 
-    fetch(`http://localhost:5000/user/editprofile/personal/?userID=${userID}`, {
+    fetch(`${process.env.REACT_APP_BACKEND_URL}/user/editprofile/personal/?userID=${userID}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -277,7 +277,7 @@ function EditUserProfile() {
       email: email,
     };
 
-    fetch(`http://localhost:5000/user/editprofile/account/?userID=${userID}`, {
+    fetch(`${process.env.REACT_APP_BACKEND_URL}/user/editprofile/account/?userID=${userID}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -316,7 +316,7 @@ function EditUserProfile() {
       currentPassword: currentPass,
     };
 
-    const response = await fetch("http://localhost:5000/user/checkCurrentPassword", {
+    const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/user/checkCurrentPassword`, {
       method: "POST",
       body: JSON.stringify(currentPwd),
       headers: {
@@ -359,7 +359,7 @@ function EditUserProfile() {
         currentPassword: currentPass,
       };
 
-      fetch(`http://localhost:5000/user/editprofile/password/?userID=${userID}`, {
+      fetch(`${process.env.REACT_APP_BACKEND_URL}/user/editprofile/password/?userID=${userID}`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -416,7 +416,7 @@ function EditUserProfile() {
         setBase64Img(reader.result);
         const base64String = reader.result.split(",")[1];
         // console.log(base64String);
-        fetch(`http://localhost:5000/user/editprofile/profileImg/?userID=${userID}`, {
+        fetch(`${process.env.REACT_APP_BACKEND_URL}/user/editprofile/profileImg/?userID=${userID}`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

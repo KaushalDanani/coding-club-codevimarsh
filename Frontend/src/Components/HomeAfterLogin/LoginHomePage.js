@@ -53,7 +53,7 @@ function LoginHomePage() {
     (async () => {
       try {
         setIsLoadingHome(true);
-        const response = await fetch("http://localhost:5000/user/home/dataset", {
+        const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/user/home/dataset`, {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
@@ -74,7 +74,7 @@ function LoginHomePage() {
               setUser(null);
           }
 
-        const response2 = await fetch(`http://localhost:5000/contest/upcoming`, {
+        const response2 = await fetch(`${process.env.REACT_APP_BACKEND_URL}/contest/upcoming`, {
           method: "GET",
           headers: {
             "Content-Type": "application/json",

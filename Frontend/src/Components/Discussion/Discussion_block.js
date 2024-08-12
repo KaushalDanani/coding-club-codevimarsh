@@ -45,7 +45,7 @@ export default function Discussion_block(props) {
   function deleteQue(q_id) {
     const conf = window.confirm('Are you sure you want to delete this reply?');
     if(conf){
-      fetch(`http://localhost:5000/discussion/delQue/${q_id}`, {
+      fetch(`${process.env.REACT_APP_BACKEND_URL}/discussion/delQue/${q_id}`, {
         method: 'DELETE',
         headers: {
           'Content-type': 'application/json',

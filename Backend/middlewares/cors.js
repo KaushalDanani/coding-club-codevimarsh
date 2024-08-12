@@ -1,7 +1,7 @@
 const cors = require('cors');
 
 const corsOptions = {
-    origin: 'http://localhost:3000', // Replace with your React app's origin
+    origin: `${process.env.REACT_APP_FRONTEND_URL}`, // Replace with your React app's origin
     optionsSuccessStatus: 200,
     credentials: true
 };

@@ -48,7 +48,7 @@ export default function AddSubject() {
    
     function addMySubject(name) {
 
-        fetch("http://localhost:5000/resources/subject/add", {
+        fetch(`${process.env.REACT_APP_BACKEND_URL}/resources/subject/add`, {
             method: 'POST',
             body: JSON.stringify({
                 "subject": name,

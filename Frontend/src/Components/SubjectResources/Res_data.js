@@ -23,7 +23,7 @@ function Res_data(props) {
             const updatedTopics = V.filter(topic => topic._id !== id);
             setVar(updatedTopics);
             
-            fetch(`http://localhost:5000/resources/delTopic/${id}`,{
+            fetch(`${process.env.REACT_APP_BACKEND_URL}/resources/delTopic/${id}`,{
                 method: 'DELETE',
                 headers:{
                     'Content-type' : 'application/json'

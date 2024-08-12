@@ -38,7 +38,7 @@ export default function Question_data() {
     useEffect(() => {
         if(userID!=null)
         {
-            fetch(`http://localhost:5000/discussion/question?userID=${userID}&q_id=${q_id}`)
+            fetch(`${process.env.REACT_APP_BACKEND_URL}/discussion/question?userID=${userID}&q_id=${q_id}`)
                 .then((response) => {
                     if (!response.ok) {
                         throw new Error('Network response was not ok');

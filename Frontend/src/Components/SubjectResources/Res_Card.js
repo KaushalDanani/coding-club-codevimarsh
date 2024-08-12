@@ -19,7 +19,7 @@ export default function Res_Card(props) {
 
         
         try {
-            const response = await fetch("http://localhost:5000/resources/rescontent/", {
+            const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/resources/rescontent/`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

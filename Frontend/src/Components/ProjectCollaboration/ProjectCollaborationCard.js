@@ -41,7 +41,7 @@ function ProjectCollaborationCard(props) {
         projectCollaborationCardId: props.data._id,
       };
 
-      fetch("http://localhost:5000/projectCollaboration/delete/pcdata", {
+      fetch(`${process.env.REACT_APP_BACKEND_URL}/projectCollaboration/delete/pcdata`, {
         method: "POST",
         body: JSON.stringify(allDeleteData),
         headers: {

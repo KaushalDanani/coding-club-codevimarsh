@@ -62,7 +62,7 @@ export default function Ask_Question() {
     function addMyQuestion(e) {
 
         e.preventDefault();
-        fetch("http://localhost:5000/discussion/addmyquestion", {
+        fetch(`${process.env.REACT_APP_BACKEND_URL}/discussion/addmyquestion`, {
             method: 'POST',
             body: JSON.stringify({
                 "questiontital": Question,

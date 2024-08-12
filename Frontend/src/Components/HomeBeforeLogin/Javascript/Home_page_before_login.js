@@ -47,8 +47,8 @@ function Home_page_before_login() {
 
   const userCradential = async () => {
     try {
-      
-      const response = await fetch("http://localhost:5000/user/home/dataset", {
+      // console.log(process.env.REACT_APP_BACKEND_URL);
+      const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/user/home/dataset`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
