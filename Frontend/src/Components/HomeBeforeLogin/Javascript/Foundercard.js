@@ -27,7 +27,7 @@ function CreateFounderCard(props) {
                         <p className="username">{props.name}</p>
                         <p>MSU CSE</p>
                         <p>{props.post}</p>
-                        <p> <strong> Batch : 2021 </strong> </p>
+                        <p> <strong> Batch : 2025 </strong> </p>
                     </div>
                            
                 </div>

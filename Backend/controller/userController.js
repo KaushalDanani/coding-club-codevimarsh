@@ -244,8 +244,8 @@ exports.signIn = async (req, res) => {
             res.cookie("jwtAuth", token, {
               expires: new Date(Date.now() + 31536000),
               httpOnly: true,
-              secure: process.env.NODE_ENV === 'development',
-              sameSite: process.env.NODE_ENV === 'development' ? 'lax' : 'None'
+              secure: process.env.NODE_ENV !== 'development',
+              sameSite: process.env.NODE_ENV === 'development' ? 'Lax' : 'None'
             })
   
             // console.log("USER 😼: "+userDetail);
