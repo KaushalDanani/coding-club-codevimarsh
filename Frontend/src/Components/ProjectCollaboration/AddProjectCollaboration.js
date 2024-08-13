@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useState , useEffect} from 'react'
+import './AddProjectCollaboration.css'
 import useUser from '../../store/userContext.js'
 import ToastComponent from '../Toast/toastComponent.js'
 
