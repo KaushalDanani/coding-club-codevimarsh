@@ -79,7 +79,7 @@ function ForumGenerator() {
     
       :
       <div className="discussionNullContent">
-
+        <img src="/images/profileProjects.png" alt="No Data" loading="lazy"></img>
         <div className="nullContentInfo">No Discussions for now :)
         <br></br>Why not start one!?</div>
         

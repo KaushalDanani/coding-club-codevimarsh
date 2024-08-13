@@ -140,8 +140,9 @@ function Project_Collaboration() {
             mapDataCards(collaborationData)
           :
             <div className="discussionNullContent">
-
-              <div className="nullContentInfo">No Active projects right now :) </div>
+              <img src="/images/profileProjects.png" alt="No Data" loading="lazy"></img>
+              <div className="nullContentInfo">No Active opportunities right now :) <br/> 
+              Why not help others to find opportunities...!</div>
             </div>
         }
 

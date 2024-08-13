@@ -126,7 +126,7 @@ export default function Resources() {
       </div>
       :
         <div className="discussionNullContent">
-
+          <img src="/images/profileProjects.png" alt="No Data" loading="lazy"></img>
           <div className="nullContentInfo">No Resources available right now :)
           <br />Check again later...!</div>
         

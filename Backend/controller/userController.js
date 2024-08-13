@@ -18,16 +18,20 @@ exports.getProfile = async (req,res) => {
 
 exports.editSkills = async (req,res) => {
     const skills = req.body.userSkills;
+    console.log(skills);
   const userID = req.query.userID;
+  console.log(userID);
 
   try {
-    const user = await User.findOne({ _id: userID });
-    user.skills = skills;
+    const user = await User.findOneAndUpdate(
+      { _id: userID }, // Find the user by ID
+      { $set: { skills: skills } }, // Set the skills field
+      { new: true } // Optionally return the updated document
+    );
 
-    await user.save();
     res.send(user);
   } catch (err) {
-    // console.log(err);
+    console.log("SKILLS ERROR:",err);
   }
 }
 
@@ -155,8 +159,8 @@ exports.homeDataset = async (req,res) => {
 
 
 exports.removeUserAuth = async (req, res) => {
-    res.cookie("jwtAuth", '', { expires: new Date(0) });
-    res.redirect('/');
+  res.cookie("jwtAuth", '', { expires: new Date(0) });
+  res.redirect('/');
 }
 
 exports.signUp = async (req, res) => {

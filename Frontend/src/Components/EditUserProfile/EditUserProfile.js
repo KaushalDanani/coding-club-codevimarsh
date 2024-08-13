@@ -220,6 +220,7 @@ function EditUserProfile() {
   }
 
   const sendDataToBackend = (data) => {
+    console.log("SKILLS: ",data)
     fetch(`${process.env.REACT_APP_BACKEND_URL}/user/editSkills/?userID=${userID}`, {
       method: "POST",
       headers: {

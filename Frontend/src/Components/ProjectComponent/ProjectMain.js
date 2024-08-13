@@ -147,6 +147,7 @@ export default function ProjectMain() {
         </div>
       ) : (
         <div className="discussionNullContent">
+          <img src="/images/profileProjects.png" alt="No Data" loading="lazy"></img>
           <div className="nullContentInfo">
             No Projects to display :)
             <br></br>Be the first one to share your project!

@@ -168,6 +168,7 @@ export default function Contest_main() {
                     <p>Past Contest</p>
                 </div>
                 <div className="discussionNullContent">
+                    <img src="/images/profileProjects.png" alt="No Data" loading="lazy"></img>
                     <div className="nullContentInfo">No contest history available :)</div>
                 </div>
             </>
