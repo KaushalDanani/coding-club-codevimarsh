@@ -159,7 +159,12 @@ exports.homeDataset = async (req,res) => {
 
 
 exports.removeUserAuth = async (req, res) => {
-  res.cookie("jwtAuth", '', { expires: new Date(0) });
+  res.cookie("jwtAuth", '', { 
+      expires: new Date(0),
+      httpOnly: true,
+      secure: process.env.NODE_ENV !== 'development',
+      sameSite: process.env.NODE_ENV === 'development' ? 'Lax' : 'None'
+  });
   res.redirect('/');
 }
 
