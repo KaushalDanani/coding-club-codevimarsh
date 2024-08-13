@@ -42,19 +42,19 @@
     height: 100%;
 }
 
+.signout-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .logoutNavbar {
-    width: 2.5vw;
-    height: 75px;
+    width: 2.4rem;
+    height: auto;
     margin: 0vh 0.3rem 0vh -0.7rem;
     /* margin-top: 2.2vh;
     margin-right: 1.1rem; */
-    background-color: transparent;
     /* overflow: hidden; */
-    background-image: url("/public/images/logout.png");
-    /* background-position: 50% 45%; */
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: contain;
 }
 
 #id:hover{
