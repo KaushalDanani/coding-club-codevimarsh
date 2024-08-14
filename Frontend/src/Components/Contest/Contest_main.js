@@ -78,14 +78,14 @@ export default function Contest_main() {
             
             <Navbar_after_login imgData={base64Img} />
 
+            <Link 
+            style={isAdmin===true ? {"display":"block"} : {"display":"none"}}
+            className="AddContestBtn" to={`/addContest`}>Add Contest</Link>
             {/* {upcoming contest} */}
             {upcomingcontestinfo.length !== 0 ? 
             <>
                 <div className="upcoming_contest">
                     <p>Up Coming Contest</p>
-                    <Link 
-                    style={isAdmin===true ? {"display":"block"} : {"display":"none"}}
-                    className="AddContestBtn" to={`/addContest`}>Add Contest</Link>
                 </div>
                 <div className="upcomingContestGrid">
                 {upcomingcontestinfo.map(function upcomingcontest(element){

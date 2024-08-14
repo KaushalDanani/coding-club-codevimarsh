@@ -93,9 +93,7 @@ exports.checkCurrentPassword = async (req,res) => {
       
         const currentPwd = req.body.currentPassword;
         const isSame = await bcrypt.compare(currentPwd, userDetail.password);
-        
-        console.log(isSame);
-      
+              
         if(!isSame)
           res.send({message: "Wrong Current Password..."});
         else
@@ -109,15 +107,18 @@ exports.checkCurrentPassword = async (req,res) => {
 
 exports.editProfilePassword = async (req,res) => {
     try {
-        const newPass = req.body.newPass;
+        const newPass = req.password;
         const userID = req.query.userID;
-    
+
+        console.log(newPass);
     
         const updatedUser = await User.findOneAndUpdate(
           { _id: userID },
           { password: newPass }
         );
     
+        // await updatedUser.save();
+
         res.send({message : "Updated successfully!"});
       } catch (error) {
         console.error("Error updating password:", error);
@@ -184,7 +185,7 @@ exports.signUp = async (req, res) => {
           
           const vidhyarthiUserData = {
             PRN: req.body.prn,
-            Password: req.body.password
+            Password: req.password
           }
       
           const url = process.env.REACT_APP_MSU_VIDHYARTHI_SIGNUP;

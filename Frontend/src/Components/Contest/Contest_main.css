@@ -111,9 +111,11 @@
 }
 
 .AddContestBtn{
-    position: relative;
+    position: absolute;
     height: fit-content;
     width: fit-content;
+    top: 7.5rem;
+    right: 2rem;
     font-size: 0.9rem;
     color: white;
     letter-spacing: 1px;

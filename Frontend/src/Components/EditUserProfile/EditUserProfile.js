@@ -356,8 +356,7 @@ function EditUserProfile() {
       setConfirmNewPass("");
     } else {
       const passwordData = {
-        newPass: newPass,
-        currentPassword: currentPass,
+        password: newPass,
       };
 
       fetch(`${process.env.REACT_APP_BACKEND_URL}/user/editprofile/password/?userID=${userID}`, {
@@ -702,11 +701,11 @@ function EditUserProfile() {
                 <input type="text" value={email} onChange={changeEmail} />
                 <div
                   className="EditSaveButtonDiv"
-                  style={{ justifyContent: "space-between" }}
+                  style={{ justifyContent: "end" }}
                 >
-                  <Link to="/">
+                  {/* <Link to="/">
                     <button onClick={removeUserAuth}>Logout</button>
-                  </Link>
+                  </Link> */}
                   <button type="submit" onClick={saveAccount}>
                     Save
                   </button>
