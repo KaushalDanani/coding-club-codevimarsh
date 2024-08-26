@@ -586,7 +586,7 @@ function EditUserProfile() {
                 : { display: "none" }
             }
           >
-            <h3>Perosnal Information</h3>
+            <h3>Personal Information</h3>
             <form>
               <div className="EditFormFrame">
                 <span>First Name</span>
