@@ -89,7 +89,7 @@ function AddContest() {
                     sLink: solutionLink,
                 }
 
-                fetch("/contest/registerContest/", {
+                fetch(`${process.env.REACT_APP_BACKEND_URL}/contest/registerContest/`, {
                     method: "POST",
                     body: JSON.stringify(contestData),
                     headers: {
