@@ -65,7 +65,7 @@ function EditUserProfile() {
         setFname(data[0].fname);
         setLname(data[0].lname);
         setAbout(data[0].about);
-        setLinkedin(data[0].linkedIn);
+        setLinkedin(data[0].linkedin);
         setLeetcode(data[0].leetcode);
         setCodechef(data[0].codechef);
         setProgramme(data[0].programme);
