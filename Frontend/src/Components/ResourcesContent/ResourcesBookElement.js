@@ -26,4 +26,4 @@ function ResourcesBookElement(props) {
   )
 }
 
-export default ResourcesBookElement
+export default React.memo(ResourcesBookElement);

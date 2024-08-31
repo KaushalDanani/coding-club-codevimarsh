@@ -15,4 +15,4 @@ function toastComponent(props) {
   )
 }
 
-export default toastComponent
+export default React.memo(toastComponent);

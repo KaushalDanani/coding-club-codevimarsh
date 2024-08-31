@@ -27,4 +27,4 @@ function ResourcesNotesDisplay(props) {
   )
 }
 
-export default ResourcesNotesDisplay
+export default React.memo(ResourcesNotesDisplay);

@@ -21,4 +21,4 @@ function ResourcesVideosElement(props) {
   );
 }
 
-export default ResourcesVideosElement;
+export default React.memo(ResourcesVideosElement);

@@ -12,4 +12,4 @@ function ResourcesNotesElement(props) {
   )
 }
 
-export default ResourcesNotesElement
+export default React.memo(ResourcesNotesElement);

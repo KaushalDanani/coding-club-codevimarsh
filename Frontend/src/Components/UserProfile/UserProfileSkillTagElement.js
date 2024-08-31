@@ -3,7 +3,6 @@ import "./UserProfileSkillTagElement.css"
 
 function UserProfileSkillTagElement(props) {
 
-
   const [isTagSelected, setTagSelected] = useState(props.use);
   const [userSkillSet,setUserSkillSet] = useState(props.userSkills)
   
@@ -29,28 +28,23 @@ function UserProfileSkillTagElement(props) {
 
   };
 
-  
-
 
   return (
     <div className={props.isEditting ? 'UserProfileEditSkillTag' : 'UserProfileSkillTag'}
-    style={isTagSelected ? selectedTagStyle : null}
-    >
-    <label htmlFor={props.id}
-    
-    onClick={props.click ? toggleTagSelection : null}
-    >
-      {props.tag}
-    </label>
-    <input 
-    type='checkbox' 
-    hidden
-    className='UserProfileSkillTagCheckbox' 
-    value={props.tag}
-    id={props.id}
-    />
+        style={isTagSelected ? selectedTagStyle : null}>
+      
+      <label htmlFor={props.id}
+        onClick={props.click ? toggleTagSelection : null}>
+        {props.tag}
+      </label>
+
+      <input type='checkbox' 
+      hidden
+      className='UserProfileSkillTagCheckbox' 
+      value={props.tag}
+      id={props.id} />
     </div>
   )
 }
 
-export default UserProfileSkillTagElement
+export default React.memo(UserProfileSkillTagElement);

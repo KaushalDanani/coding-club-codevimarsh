@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import './Card.css'
 import { useNavigate } from 'react-router-dom'
 
-export default function Res_Card(props) {
+function Res_Card(props) {
 
     const navigate = useNavigate();
     let onDelete = false;
@@ -58,3 +58,4 @@ export default function Res_Card(props) {
     )
 }
 
+export default React.memo(Res_Card);

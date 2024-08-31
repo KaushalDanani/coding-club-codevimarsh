@@ -2,19 +2,22 @@ import React, { useState, useEffect } from "react";
 import "./UserProfileMainPanel.css";
 import ProjectDisplay from "../ProjectComponent/ProjectDisplay";
 import { Link } from "react-router-dom";
+import useUser from "../../store/userContext";
 
-function UserProfileMainPanel(props) {
+function UserProfileMainPanel() {
+
+  const { user, setUser } = useUser();
+  const [projects, setProjects] = useState([]);
+
   const noStyle = {
     display: "none"
   };
 
-  const [projects, setProjects] = useState([]);
-
   useEffect(() => {
     setProjects([]);
-    if (props.userData._id) {
-      // console.log("user", props.userData._id);
-      fetch(`${process.env.REACT_APP_BACKEND_URL}/user/profile/projects/?userID=${props.userData._id}`)
+    if (user._id) {
+      // console.log("user", user._id);
+      fetch(`${process.env.REACT_APP_BACKEND_URL}/user/profile/projects/?userID=${user._id}`)
         .then(
           response => response.json()
         )
@@ -24,7 +27,7 @@ function UserProfileMainPanel(props) {
           }
         )
     }
-  }, [props.userData._id])
+  }, [user._id])
 
   function addProjects(element) {
     return (
@@ -39,8 +42,8 @@ function UserProfileMainPanel(props) {
           projectlink: element.projectLink,
           contributors: element.contributors
         }}
-        userID={props.userData._id}
-        admin={props.userData.isAdmin}
+        userID={user._id}
+        admin={user.isAdmin}
       />
     )
   }
@@ -54,8 +57,8 @@ function UserProfileMainPanel(props) {
             About
           </div>
           <div className="UPBioInfo">
-            {props.userData.about}
-            <div className={((props.userData.about == null) || (props.userData.about == "")) ? "aboutPlaceHolder" : "noPlaceHolder"}>
+            {user.about}
+            <div className={((user.about == null) || (user.about == "")) ? "aboutPlaceHolder" : "noPlaceHolder"}>
               
               <Link className="editLink" to={`edit/`}>Edit profile</Link> to add about yourself...
             </div>
@@ -65,18 +68,18 @@ function UserProfileMainPanel(props) {
           <div className="UPBioTitle">Details</div>
           <div className="UPBioInfo">
             <div>
-              <span>Programme</span> : {props.userData.programme}
+              <span>Programme</span> : {user.programme}
             </div>
             <div>
-              <span>Department</span> : {props.userData.branchName}
+              <span>Department</span> : {user.branchName}
             </div>
             <div>
-              <span>Year of Graduation</span> : {props.userData.enrollmentYear}
+              <span>Year of Graduation</span> : {user.enrollmentYear}
             </div>
             <div className="contactGrid">
               <span>
                 <a
-                  href={`https://mail.google.com/mail/?view=cm&to=${props.userData.email}`}
+                  href={`https://mail.google.com/mail/?view=cm&to=${user.email}`}
                   target="_blank"
                 >
                   <svg
@@ -92,9 +95,9 @@ function UserProfileMainPanel(props) {
                 </a>
               </span>
               
-              <span style={props.userData.linkedin == "" ? noStyle : null}>
+              <span style={user.linkedin == "" ? noStyle : null}>
                 <a
-                  href={props.userData.linkedin}
+                  href={user.linkedin}
                   target="_blank"
                 >
                   <svg
@@ -110,9 +113,9 @@ function UserProfileMainPanel(props) {
                 </a>
               </span>
               
-              <span style={props.userData.leetcode == "" ? noStyle : null}>
+              <span style={user.leetcode == "" ? noStyle : null}>
                 <a
-                  href={props.userData.leetcode}
+                  href={user.leetcode}
                   target="_blank"
 
                 >
@@ -133,9 +136,9 @@ function UserProfileMainPanel(props) {
                 </a>
               </span>
              
-              <span style={props.userData.codechef == "" ? noStyle : null}>
+              <span style={user.codechef == "" ? noStyle : null}>
                 <a
-                  href={props.userData.codechef}
+                  href={user.codechef}
                   target="_blank"
                 >
                   <svg

@@ -95,4 +95,4 @@ function Navbar_after_login(props) {
   )
 }
 
-export default Navbar_after_login
+export default React.memo(Navbar_after_login);

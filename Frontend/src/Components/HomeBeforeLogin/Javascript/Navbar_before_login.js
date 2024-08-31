@@ -7,7 +7,7 @@ function Navbar_before_login() {
 
     const [mobileMenu, setMobileMenu] = useState('false');
 
-  return (
+    return (
     <>
         <header className="container_fluid">
             <nav className="navigation_bar">
@@ -24,7 +24,9 @@ function Navbar_before_login() {
                 </div>
 
                 <ul className='sign_in_container'>
-                    <li><Link to={"signin"}><input  type="button" value="Sign In" className="signin_btn" /></Link> </li>
+                    <li>
+                        <Link to={"signin"}><input  type="button" value="Sign In" className="signin_btn" /></Link>
+                    </li>
                 </ul>
             </nav>
         </header>

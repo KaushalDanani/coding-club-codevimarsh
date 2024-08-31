@@ -29,4 +29,4 @@ function ResourcesVideosDisplay(props) {
   )
 }
 
-export default ResourcesVideosDisplay
+export default React.memo(ResourcesVideosDisplay);

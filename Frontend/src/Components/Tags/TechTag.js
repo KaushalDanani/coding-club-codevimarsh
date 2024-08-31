@@ -1,10 +1,11 @@
 import React from 'react';
 import './TechTag.css';
 
-export default function TechTag(props){
+function TechTag(props){
 
     return(
         <span className='techtag'>{props.tagname}</span>
     )
-
 }
+
+export default React.memo(TechTag);

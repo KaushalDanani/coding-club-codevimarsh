@@ -1,7 +1,7 @@
 import React from "react";
 import './Weekly_contest.css';
 
-export default function Weekly_contest(props){
+function Weekly_contest(props){
 
     return(
         <div className="weekly_main">
@@ -24,3 +24,5 @@ export default function Weekly_contest(props){
         </div>
     );
 }
+
+export default React.memo(Weekly_contest);

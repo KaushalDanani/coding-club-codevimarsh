@@ -30,4 +30,4 @@ function ResourcesBooksDisplay(props) {
   )
 }
 
-export default ResourcesBooksDisplay
+export default React.memo(ResourcesBooksDisplay);

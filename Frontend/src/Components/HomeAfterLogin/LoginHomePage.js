@@ -10,7 +10,6 @@ import Navbar_after_login from "../NavbarAfterLogin/Navbar_after_login.js";
 import useUser from "../../store/userContext.js";
 import MyfooterAfterLogin from "../FooterAfterLogin/MyfooterAfterLogin.js";
 import HashLoader from "react-spinners/HashLoader.js";
-import { useLocation } from "react-router-dom";
 
 function LoginHomePage() {
   const api_key = process.env.REACT_APP_QUOTE_API_KEY;

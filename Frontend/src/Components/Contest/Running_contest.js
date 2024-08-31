@@ -1,7 +1,7 @@
 import React from "react";
 import './Running_contest.css';
 
-export default function Running_contest(props){
+function Running_contest(props){
     return(
         <div className="running_contest_main">
             <div className="main_container">
@@ -20,3 +20,5 @@ export default function Running_contest(props){
         </div>
     );
 }
+
+export default React.memo(Running_contest);

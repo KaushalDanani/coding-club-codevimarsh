@@ -1,7 +1,6 @@
-import React, {useState} from "react";
+import React from "react";
 import "./Greeting.css";
 import { Link } from "react-router-dom";
-import ManageAdmins from "./ManageAdmins.js";
 import useUser from "../../store/userContext.js";
 
 function Greeting(props){
@@ -19,4 +18,4 @@ function Greeting(props){
     )
 }
 
-export default Greeting;
+export default React.memo(Greeting);

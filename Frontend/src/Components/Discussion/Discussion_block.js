@@ -5,15 +5,7 @@ import "./Discussion_Forums.css";
 import useUser from '../../store/userContext.js';
 import ToastComponent from '../Toast/toastComponent.js';
 
-export default function Discussion_block(props) {
-  function getTag(tag) {
-    return (
-      <div className="q_tag" key={tag}>
-        {tag}
-      </div>
-    );
-  }
-
+function Discussion_block(props) {
   const [tag, setTags] = useState([]);
 
   const [toastVisible, setToastVisible] = useState(false);
@@ -25,6 +17,14 @@ export default function Discussion_block(props) {
       setTags(props.tags);
     }
   }, [props.tags]);
+
+  function getTag(tag) {
+    return (
+      <div className="q_tag" key={tag}>
+        {tag}
+      </div>
+    );
+  }
 
   const [qDate, setQDate] = useState("");
 
@@ -97,3 +97,6 @@ export default function Discussion_block(props) {
     </>
   );
 }
+
+
+export default React.memo(Discussion_block);

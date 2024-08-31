@@ -161,4 +161,4 @@ function ProjectCollaborationCard(props) {
   );
 }
 
-export default ProjectCollaborationCard;
+export default React.memo(ProjectCollaborationCard);

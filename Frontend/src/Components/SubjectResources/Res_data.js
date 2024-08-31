@@ -46,6 +46,7 @@ function Res_data(props) {
     
         return (
         <Card
+            key = {props._id}
             resimg = {props.logo}
             topic = {props.subject}
             n_count = {props.notes[0]}
@@ -66,4 +67,4 @@ function Res_data(props) {
     );
 }
 
-export default Res_data;
+export default React.memo(Res_data);

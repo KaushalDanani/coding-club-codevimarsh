@@ -25,4 +25,4 @@ function NewTasks(props) {
   )
 }
 
-export default NewTasks
+export default React.memo(NewTasks);

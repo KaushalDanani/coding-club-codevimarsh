@@ -8,7 +8,7 @@ import { useLocation } from "react-router-dom";
 import HashLoader from "react-spinners/HashLoader.js";
 import useUser from "../../store/userContext.js";
 
-function UserProfile(props) {
+function UserProfile() {
   
   const { user, setUser } = useUser();
   
@@ -82,10 +82,10 @@ function UserProfile(props) {
       
       <div className="UPouterFrame">
         <div>
-          <UserProfileLeftPanel userData={userData} visitID={visitID!=userID ? visitID : null}/>
+          <UserProfileLeftPanel visitID={visitID!=userID ? visitID : null}/>
         </div>
         <div>
-          <UserProfileMainPanel userData={userData}/>
+          <UserProfileMainPanel />
         </div>
       </div>
     </div>

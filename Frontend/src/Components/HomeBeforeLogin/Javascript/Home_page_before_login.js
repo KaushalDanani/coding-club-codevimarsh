@@ -36,7 +36,6 @@ const Discussion = lazy(() => import("./Discussion.js"))
 // import TypeWriter from "./TypeWriter.js";
 
 function Home_page_before_login() {
-  const navigate = useNavigate();
   const oneLinerToStart = "Start your coding journey with code-vimarsh by joining us...";
   const { user, setUser } = useUser();
   const api_key = process.env.REACT_APP_QUOTE_API_KEY;
@@ -71,24 +70,23 @@ function Home_page_before_login() {
     }
   };
 
+  const fetchQuote = async () => {
+    try {
+      const response = await fetch(api_key);
+      if (!response.ok) {
+        throw new Error('QUOTE API IS NOT WORKING');
+      }
+      const quote = await response.json();
+      setQuote(quote.content);
+      setAuthor(quote.author);
+    } catch (error) {
+      console.error(error.message);
+    }
+  };
+
   useEffect(() => {
     setIsLoadingBeforeHome(true);
     userCradential();
-
-    const fetchQuote = async () => {
-      try {
-        const response = await fetch(api_key);
-        if (!response.ok) {
-          throw new Error('QUOTE API IS NOT WORKING');
-        }
-        const quote = await response.json();
-        setQuote(quote.content);
-        setAuthor(quote.author);
-      } catch (error) {
-        console.error(error.message);
-      }
-    };
-
     fetchQuote();
     setIsLoadingBeforeHome(false);
   }, []);

@@ -3,6 +3,7 @@ import "./UserProfileLeftPanel.css";
 import VanillaTilt from 'vanilla-tilt';
 import UserProfileSkillTagElement from "./UserProfileSkillTagElement.js";
 import { Link } from "react-router-dom";
+import useUser from "../../store/userContext.js";
 
 function Tilt(props) {
   const { options, ...rest } = props;
@@ -16,14 +17,10 @@ function Tilt(props) {
 }
 
 function UserProfileLeftPanel(props) {
-  const ToggleStyle = {
-    display: "flex",
-  };
-
-  // console.log(props.userData.skills);
-
+  
+  const { user, setUser } = useUser();
   const [showEdit, setShowEdit] = useState(false);
-  const base64Img = `data:image/png;base64,${props.userData.profileImg}`;
+  const base64Img = `data:image/png;base64,${user.profileImg}`;
   
   function EditDP() {
     setShowEdit(!showEdit);
@@ -43,11 +40,11 @@ function UserProfileLeftPanel(props) {
           <img src={base64Img} alt="Profile" loading="lazy" />
         </div>
         <div className="ProfileName">
-          {props.userData.fname} {props.userData.lname}
+          {user.fname} {user.lname}
         </div>
         <div className="ProfileUsername">
-          @ {props.userData.username}
-          {props.userData.isAdmin ? " (Admin)" : ""}
+          @ {user.username}
+          {user.isAdmin ? " (Admin)" : ""}
         </div>
         {(props.visitID==null) ? 
         <div className="ProfileEditLink">
@@ -60,8 +57,8 @@ function UserProfileLeftPanel(props) {
           Skills
         </div>
         <div className="UPSkillsContent">
-          {(props.userData.skills || []).map(displayTags)}
-          <div className={((props.userData.skills || []).length === 0)?"skillPlaceHolder":"noPlaceHolder"}>
+          {(user.skills || []).map(displayTags)}
+          <div className={((user.skills || []).length === 0)?"skillPlaceHolder":"noPlaceHolder"}>
             <Link className="editLink" to={`edit/`}>Edit profile</Link> to add your skills here...
           </div>
         </div>
@@ -70,4 +67,4 @@ function UserProfileLeftPanel(props) {
   );
 }
 
-export default UserProfileLeftPanel;
+export default React.memo(UserProfileLeftPanel);

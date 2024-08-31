@@ -1,8 +1,7 @@
 import React from "react";
 import './Completed_contest.css';
 
-export default function Completed_contest(props){
-
+function Completed_contest(props){
 
     return(
         <div className="completed_contest_main">
@@ -23,3 +22,5 @@ export default function Completed_contest(props){
         </div>
     );
 }
+
+export default React.memo(Completed_contest);

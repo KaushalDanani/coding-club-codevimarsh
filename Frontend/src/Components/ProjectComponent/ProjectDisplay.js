@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import './ProjectDisplay.css'
 import TechTag from "../Tags/TechTag.js";
 
-export default function ProjectDisplay(props) {
+function ProjectDisplay(props) {
     
     const [admin,setAdmin] = useState(false);
     const [userID,setUserID] = useState('');
@@ -206,4 +206,4 @@ export default function ProjectDisplay(props) {
     );
 }
 
-
+export default React.memo(ProjectDisplay);
