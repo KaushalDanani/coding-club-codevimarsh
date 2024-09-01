@@ -5,7 +5,7 @@ function ForumGeneratorSkeleton() {
   return Array(4).fill(0).map((skeleton, idx) => (
     <div className='discussion_c_card' key={idx}>
         <div className='avtarDisc'>
-            <Skeleton circle width={60} height={60} />
+            <Skeleton circle width={65} height={65} />
         </div>
         <div className='innercontentDisc'>
           <div className='asker'>

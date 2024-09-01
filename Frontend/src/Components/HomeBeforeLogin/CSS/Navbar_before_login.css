@@ -98,9 +98,6 @@ LinkScroll {
     color: rgb(255, 255, 255);
 }
 
-.navigation_bar:hover {
-    /* background-color: black; */
-}
 .horizontal_bar:hover .liComponent:not(:hover) {
     /* color: rgb(171, 171, 171); */
     color: rgb(210, 195, 195);

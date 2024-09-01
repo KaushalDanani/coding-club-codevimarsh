@@ -1,21 +1,20 @@
-.c_class{
-    color: white;
-    background-color:#333;
-    margin: 0vw 6vw 2vw 6vw;
-    padding: 1vw;
-    border-radius: 2vw;
-    box-shadow: 0 0 20px black;
-    text-align: justify;
+#com_div{
+    margin: 1vw 1.9vw;
+    font-size: 1.2rem;
+    word-wrap: break-word;
+    color: whitesmoke;
+    
 }
 
-#com_div{
-    margin: 1vw;
-    font-size: 1.2rem;
+.objectDescription {
+    max-height: 22rem;
+    overflow: auto;
+    margin-bottom: 0%;
 }
 
 #commenter{        
     margin-top: 0;
-    font-size: 1rem;    
+    font-size: 1rem;
 }
 
 #pfp_div{
@@ -34,17 +33,17 @@
     color: white;
 }
 
-#upvote_div, #comment_div{
+/* #upvote_div, #comment_div{
     margin: 1vw;
     font-size: 1.5rem;
     text-align: center;
     padding: 1px;
-}
+} */
 
-#date_div{    
+/* #date_div{    
     position: absolute;    
     right: 7vw;
-}
+} */
 
 #feed_bar{    
     font-size: 1.6vw;
@@ -77,14 +76,15 @@
 }
 
 .deleteRep{
-     float: right;    
+    position: absolute;
     border: none;
-    right: 10px;    
+    right: 20px;
+    top: 20px;
     background-image: url("/public/images/delete.png");
     background-repeat: no-repeat;
-    height: 32px;
-    width: 32px;
-    background-color:transparent;
-    padding: 0.3vw;
-    box-sizing:content-box;
+    background-size: contain;
+    height: 22px;
+    width: 22px;
+    background-color: transparent;
+    box-sizing: content-box;
 }

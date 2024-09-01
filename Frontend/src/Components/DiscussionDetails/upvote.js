@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import "./upvote.css"
 
 const Upvote = (props) => {
   const [isUpvoted, setIsUpvoted] = useState(props.value);
@@ -65,8 +66,8 @@ const Upvote = (props) => {
         onClick={toggleUpvote}
       >
         {isUpvoted ? upvotedIcon() : upvoteIcon()}
+        <span className='upVoteCount'>{upCount}</span>
       </button>
-      {upCount}
     </>
   );
 };

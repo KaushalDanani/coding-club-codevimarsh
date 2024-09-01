@@ -7,7 +7,6 @@ import ToastComponent from '../Toast/toastComponent.js'
 function Comment(props) {
     const [qDate, setQDate] = useState("");
         
-
     const [userID, setUserID] = useState("");
     const [admin, setAdmin] = useState("");
     const [commenter_id, setCommenterID] = useState("");
@@ -67,38 +66,50 @@ function Comment(props) {
         <>
             {toastVisible ? <ToastComponent message={toastMessage} type={toastType} /> : null}
 
-            <div className='c_class'>
-                
-            <div id='commenter'>
-                <a href={`../profile?visitID=${props.commenter_id}`}><div id='pfp_div'><img src={`data:Image/jpeg;base64,${props.pfp}`} alt="Profile" id='pfpic' loading="lazy" /></div></a>
-                <div id='commenter_id'><a href={`../profile?visitID=${props.commenter_id}`}>{props.commenter}</a>
-                    <button
-                        className='deleteRep'
-                        id={props._id}
-                        onClick={() => deleteRep(props._id)}
-                        style={{ display: (delCheck ? 'block' : 'none') }}
-                    ></button>
-                </div>
-            </div>
-            <div id="com_div">
-                {props.comment}
-            </div>
-            <div className={(props.code == "" || props.code == null) ? 'noSnippet' : 'snippet'}>
-                <pre>
-                    {props.code}
-                </pre>
-            </div>
-            <div id='feed_bar'>
-                <div id='upvote_div'>
-                    <Upvote value={props.value} Id={props._id} type='r' count={props.up_count} user={props.userID} />
-                </div>
+            <div className='discussion_c_card'>
 
-                <div id='date_div'>
-                    {qDate}
+                <div className="avtarDisc">
+                    <a href={`profile?visitID=${props.commenter_id}`}>
+                        <img
+                        src={`data:Image/jpeg;base64,${props.pfp}`}
+                        alt={`Profile of ${props.commenter}`}
+                        loading="lazy"
+                        />
+                    </a>
+                </div>
+                <div className="innercontentDisc">
+                    <div className="asker" id={props._id}>
+                        <div id="commenter_id">
+                            <a href={`profile?visitID=${props.commenter_id}`}>
+                                {props.commenter}
+                            </a>
+                        </div>
+                        <button
+                            className='deleteRep'
+                            id={props._id}
+                            onClick={() => deleteRep(props._id)}
+                            style={{ display: (delCheck ? 'block' : 'none') }}>
+                        </button>
+                    </div>
+                
+                    <div id="com_div">
+                        <pre className='objectDescription'>{props.comment}</pre>
+                    </div>
+                    <div className={(props.code == "" || props.code == null) ? 'noSnippet' : 'snippet'}>
+                        <pre className='objectDescription'>{props.code}</pre>
+                    </div>
+                    <div id='feed_bar'>
+                        <div id='upvote_div'>
+                            <Upvote value={props.value} Id={props._id} type='r' count={props.up_count} user={props.userID} />
+                        </div>
+
+                        <div id='date_div'>
+                            {qDate}
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </>
+        </>
     );
 }
 

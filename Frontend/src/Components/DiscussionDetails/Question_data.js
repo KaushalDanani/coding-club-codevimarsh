@@ -5,11 +5,14 @@ import { useLocation } from 'react-router-dom'
 import Navbar_after_login from '../NavbarAfterLogin/Navbar_after_login.js';
 import useUser from '../../store/userContext.js';
 import ToastComponent from '../Toast/toastComponent.js';
+import QuestionSkeleton from './QuestionSkeleton.js';
+import CommentSkeleton from './CommentSkeleton.js';
 
 export default function Question_data() {
     const { user, setUser } = useUser();
     
     const location = useLocation();
+    const [isQuestionDataFetch, setIsQuestionDataFetch] = useState(true);
     const [userID, setUserID] = useState("");
     const [imgData,setImgData] = useState("");
 
@@ -34,6 +37,8 @@ export default function Question_data() {
     const [upMap, setupMap] = useState(new Map());
 
     useEffect(() => {
+        setIsQuestionDataFetch(true);
+        setTimeout(() => {
         if(userID!=null)
         {
             fetch(`${process.env.REACT_APP_BACKEND_URL}/discussion/question?userID=${userID}&q_id=${q_id}`)
@@ -56,12 +61,14 @@ export default function Question_data() {
                     setrMap(m1);
                     setupMap(m2);
 
-                    
+                    setIsQuestionDataFetch(false);
                 })
                 .catch(error => {
                     console.error('Error:', error);
                 });
+                
         }
+    }, 5000);
     }, [userID, q_id]);
 
 
@@ -79,7 +86,7 @@ export default function Question_data() {
                 description={Q_data.description}
                 code={Q_data.code}
                 up_count={Q_data.upvotes}
-                date={Q_data.AskDate}
+                date={Q_data.askDate}
                 value={Q_upvote} 
             />
         )
@@ -123,8 +130,8 @@ export default function Question_data() {
         <>
             {toastVisible ? <ToastComponent message={toastMessage} type={toastType} /> : null}
             <Navbar_after_login imgData={`data:image/png;base64,${imgData}`}/>
-            {questionHead()}
-            {R_data.map(commentGenerator)}
+            {isQuestionDataFetch ? <QuestionSkeleton /> : questionHead()}
+            {isQuestionDataFetch ? <CommentSkeleton /> : <>{R_data.map(commentGenerator)}</> }
 
         </>
     )

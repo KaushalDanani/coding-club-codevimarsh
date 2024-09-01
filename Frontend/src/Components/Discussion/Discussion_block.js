@@ -6,7 +6,9 @@ import useUser from '../../store/userContext.js';
 import ToastComponent from '../Toast/toastComponent.js';
 
 function Discussion_block(props) {
+  const { user, setUser } = useUser();
   const [tag, setTags] = useState([]);
+  const [qDate, setQDate] = useState("");
 
   const [toastVisible, setToastVisible] = useState(false);
   const [toastMessage, setToastMessage] = useState("");
@@ -26,7 +28,6 @@ function Discussion_block(props) {
     );
   }
 
-  const [qDate, setQDate] = useState("");
 
   useEffect(() => {
     if (props.date) {
@@ -35,7 +36,6 @@ function Discussion_block(props) {
     }
   }, [props.date]);
 
-  const {user} = useUser();
 
   
   const isAdmin = user.isAdmin;

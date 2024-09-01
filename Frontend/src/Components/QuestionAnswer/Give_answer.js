@@ -106,7 +106,7 @@ function Give_answer() {
                         <div style={{'gridTemplateColumns': '2.7fr 1fr 20fr'}} className="addObjectRow replyRow">
                             <div>Code</div>
                             <div>:</div>
-                            <textarea name="code_text" id="code_text" onChange={addCode} cols="" rows="5" required></textarea>
+                            <textarea name="code_text" id="code_text" onChange={addCode} cols="" rows="5"></textarea>
                         </div>
 
                         <div className="addObjectBtn">
