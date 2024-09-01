@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Link, Navigate, useLocation, useNavigate } from 'react-router-dom'
+import { Link, Navigate, NavLink, useLocation, useNavigate } from 'react-router-dom'
 // import "../HomeBeforeLogin/CSS/Navbar_before_login.css"
 import "../HomeBeforeLogin/CSS/Navbar_before_login.css"
 import "./Navbar_after_login.css";
@@ -58,13 +58,13 @@ function Navbar_after_login(props) {
                     </div>
                     
                     <ul className={mobileMenu ? "horizontal_bar" : "horizontal_bar mobile-menu-icon"}>
-                        <li className={mobileMenu ? "liComponent" : "mobile-li"} id="home"><Link to={`/home`}>CodeVimarsh</Link></li>
-                        <li className={mobileMenu ? "liComponent" : "mobile-li"} id="contest"><Link to={`/contest`}>CONTEST</Link></li>
-                        <li className={mobileMenu ? "liComponent" : "mobile-li"} id="resources"><Link to={`/resources`}>RESOURCES</Link></li>
+                        <li className={mobileMenu ? "liComponent" : "mobile-li"} id="home"><NavLink to={`/home`} className={({ isActive }) => (isActive ? "activeNavLogo" : "")}>CodeVimarsh</NavLink></li>
+                        <NavLink to={`/contest`} className={({ isActive }) => (isActive ? "activeNav" : "liComponent")}>CONTEST</NavLink>
+                        <NavLink to={`/resources`} className={({ isActive }) => (isActive ? "activeNav" : "liComponent")}>RESOURCES</NavLink>
                         {/* <li className={mobileMenu ? "liComponent" : "mobile-li"} id="articles/news"><Link to={`/article&news`}>ARTICLES/NEWS</Link></li> */}
-                        <li className={mobileMenu ? "liComponent" : "mobile-li"} id="discussion"><Link to={`/discussion`}>DISCUSSION</Link></li>
-                        <li className={mobileMenu ? "liComponent" : "mobile-li"} id="project_collaboration"><Link to={`/projectcollaboration`}>PROJECT COLLABORATION</Link></li>
-                        <li className={mobileMenu ? "liComponent" : "mobile-li"} id="projects"><Link to={`/project`}>PROJECTS</Link></li>
+                        <NavLink to={`/discussion`} className={({ isActive }) => (isActive ? "activeNav" : "liComponent")}>DISCUSSION</NavLink>
+                        <NavLink to={`/projectcollaboration`} className={({ isActive }) => (isActive ? "activeNav" : "liComponent")}>PROJECT COLLABORATION</NavLink>
+                        <NavLink to={`/project`} className={({ isActive }) => (isActive ? "activeNav" : "liComponent")}>PROJECTS</NavLink>
                         {/* <li className={mobileMenu ? "liComponent" : "mobile-li"} id="contact"><Link>CONTACT US</Link></li> */}
                     </ul>
                     <ul className={mobileMenu ? "horizontal_bar" : "horizontal_bar mobile-menu-icon"}>

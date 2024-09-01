@@ -1,5 +1,4 @@
 import Question from './Question.js';
-
 import Comment from './Comment.js'
 import { useEffect, useState } from 'react'
 import { useLocation } from 'react-router-dom'
@@ -11,7 +10,6 @@ export default function Question_data() {
     const { user, setUser } = useUser();
     
     const location = useLocation();
-    // const userID = user ? user._id : null;
     const [userID, setUserID] = useState("");
     const [imgData,setImgData] = useState("");
 
@@ -69,7 +67,6 @@ export default function Question_data() {
 
 
     function questionHead() {
-
         
         return (
             <Question
@@ -101,33 +98,24 @@ export default function Question_data() {
         }, 4000);
     }
 
-    function commentsGenerator() {
-        function commentGenerator(comment) {
-            
-            
-            
-
-            return (
-                <Comment
-                    _id={comment._id}
-                    userID={userID}
-                    pfp={rMap.get(comment._id).profileImg}
-                    commenter={rMap.get(comment._id).username}
-                    commenter_id={rMap.get(comment._id)._id}
-                    comment={comment.description}
-                    code={comment.code}
-                    up_count={comment.upvotes}
-                    date={comment.replyDate}
-                    value={upMap.get(comment._id)}
-                    admin={user.isAdmin}
-                    deleteReplyFromList={deleteReplyFromList}
-                />
-            )
-
-        }
-
+    function commentGenerator(comment) {
+        
         return (
-            R_data.map(commentGenerator)
+            <Comment
+                key={comment._id}
+                _id={comment._id}
+                userID={userID}
+                pfp={rMap.get(comment._id).profileImg}
+                commenter={rMap.get(comment._id).username}
+                commenter_id={rMap.get(comment._id)._id}
+                comment={comment.description}
+                code={comment.code}
+                up_count={comment.upvotes}
+                date={comment.replyDate}
+                value={upMap.get(comment._id)}
+                admin={user.isAdmin}
+                deleteReplyFromList={deleteReplyFromList}
+            />
         )
     }
 
@@ -136,7 +124,7 @@ export default function Question_data() {
             {toastVisible ? <ToastComponent message={toastMessage} type={toastType} /> : null}
             <Navbar_after_login imgData={`data:image/png;base64,${imgData}`}/>
             {questionHead()}
-            {commentsGenerator()}
+            {R_data.map(commentGenerator)}
 
         </>
     )

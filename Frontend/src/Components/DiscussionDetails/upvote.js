@@ -37,7 +37,7 @@ const Upvote = (props) => {
           throw new Error('Network response was not ok');
         }
 
-        console.log("Updated count: " + newUpCount);
+        // console.log("Updated count: " + newUpCount);
       } catch (error) {
         console.error('Error:', error);
       }

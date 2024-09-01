@@ -4,7 +4,7 @@ import './Comment.css'
 import Upvote from './upvote.js'
 import ToastComponent from '../Toast/toastComponent.js'
 
-export default function Comment(props) {
+function Comment(props) {
     const [qDate, setQDate] = useState("");
         
 
@@ -101,3 +101,5 @@ export default function Comment(props) {
     </>
     );
 }
+
+export default React.memo(Comment);

@@ -3,7 +3,7 @@ import './Question.css'
 import Upvote from './upvote.js';
 import { Link } from 'react-router-dom'
 
-export default function Question(props) {
+function Question(props) {
         
     const [x, setX] = useState("");
     const [t, setT] = useState("");
@@ -55,3 +55,5 @@ export default function Question(props) {
         </>
     )
 }
+
+export default React.memo(Question);

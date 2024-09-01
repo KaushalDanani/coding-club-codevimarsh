@@ -85,9 +85,9 @@ LinkScroll {
 .liComponent:hover{
     /* position: relative; */
     /* height: 7.1vh; */
-    height: 56px;
     /* border-bottom: 3.5px solid #1eff00; */
-    border-bottom: 3.5px solid #ffffff;
+    /* border-bottom: 3.5px solid #ffffff; */
+    background-image: linear-gradient(transparent 88%, whitesmoke);
 }
 .mobile-li:hover {
     list-style: none;

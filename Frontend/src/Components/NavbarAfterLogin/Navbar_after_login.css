@@ -1,4 +1,3 @@
-
 .container_fluid {
     box-shadow:none !important;
 }
@@ -11,6 +10,15 @@
     display: flex;
     width: 100%;
     justify-content: space-between;
+} 
+
+a.activeNavLogo {
+    color: rgb(255, 139, 22);
+}
+a.activeNav {
+    color: rgb(255, 139, 22);
+    /* border-bottom: 3.5px solid rgb(255, 139, 22); */
+    /* background-image: linear-gradient(transparent 75%,rgb(255, 139, 22)); */
 }
 
 .liComponent2 {
