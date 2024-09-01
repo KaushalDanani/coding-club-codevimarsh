@@ -4,6 +4,7 @@ import "./DiscussionCard.css";
 import "./Discussion_Forums.css";
 import useUser from '../../store/userContext.js';
 import ToastComponent from '../Toast/toastComponent.js';
+import TechTag from '../Tags/TechTag.js';
 
 function Discussion_block(props) {
   const { user, setUser } = useUser();
@@ -20,12 +21,13 @@ function Discussion_block(props) {
     }
   }, [props.tags]);
 
-  function getTag(tag) {
-    return (
-      <div className="q_tag" key={tag}>
-        {tag}
-      </div>
-    );
+  function getTag() {
+    if(tag.length!=1 || tag[0]!="")
+    {
+      return(
+          tag.map((tag) => <TechTag tagname = {tag} />)
+      )
+    }
   }
 
 
@@ -88,7 +90,7 @@ function Discussion_block(props) {
               {props.question}
             </div>
             <div id="ques_tags">
-              <div className="all_que_tag">{tag.map(getTag)}</div>
+              <div className="all_que_tag">{getTag()}</div>
               <div id='q_date'>{qDate}</div>
             </div>
           </Link>

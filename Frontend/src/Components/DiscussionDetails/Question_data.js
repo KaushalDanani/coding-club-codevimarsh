@@ -38,7 +38,6 @@ export default function Question_data() {
 
     useEffect(() => {
         setIsQuestionDataFetch(true);
-        setTimeout(() => {
         if(userID!=null)
         {
             fetch(`${process.env.REACT_APP_BACKEND_URL}/discussion/question?userID=${userID}&q_id=${q_id}`)
@@ -68,7 +67,6 @@ export default function Question_data() {
                 });
                 
         }
-    }, 5000);
     }, [userID, q_id]);
 
 

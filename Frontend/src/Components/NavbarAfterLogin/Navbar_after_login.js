@@ -71,13 +71,13 @@ function Navbar_after_login(props) {
                         <li className={mobileMenu ? "liComponent2" : "mobile-li"} id="profile">
                             <Link to={`/profile`}><div className='loginDP' title='Profile'> <img id='profileImage' src={base64Img} loading="lazy" alt='Profile'></img> </div></Link>
                         </li>
-                        <li className={mobileMenu ? "liComponent2" : "mobile-li"} id='profile'>
+                        <li className={mobileMenu ? "liComponent3" : "mobile-li"} id='profile'>
                             <Link to={`/`}>
                               <div className='signout-container' onClick={removeUserAuth}>
                                 <div className='logoutNavbar' title='Signout'> 
                                   <img src="/images/logout.png" style={{width: '2.4rem'}} alt="Signout" loading='lazy'></img>
                                 </div>
-                                <div style={{fontFamily: 'Trebuchet MS,Lucida Sans Unicode,Lucida Grande,Lucida Sans,Arial,sans-serif'}}>Signout</div>
+                                <div className='signout-text'>Signout</div>
                               </div>
                             </Link>
                         </li>

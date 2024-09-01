@@ -1,10 +1,9 @@
-.question-card {
-    margin-top: 1.5rem;
+.questionCard {
+    margin-top: 1.5rem !important;
 }
 
 #reply_head{
     margin: 2vw 8.5vw 1.5vw 8.5vw;
-    /* background-color:rgba(40, 40, 40, 0.606); */
     padding: 1vw;
     color: white;
     font-family: 'Trebuchet MS';
@@ -13,7 +12,7 @@
     border-radius: 0.8rem;
     background-color: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(3px);
-    font-size: 1.8vw;
+    font-size: 1.6vw;
 }
 
 .snippet{

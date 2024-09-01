@@ -25,13 +25,13 @@ function QuestionSkeleton() {
           </div>
           <div id="feed_bar" className="d-flex" style={{marginTop: '1rem'}}>
             <div id="upvote_div">
-              <Skeleton width={50} />
+              <Skeleton width={52} />
             </div>
             <div id="comment_div">
               <Skeleton width={120} />
             </div>
             <div id="date_div">
-                <Skeleton width={170} />
+                <Skeleton width={170} style={{borderRadius: '1rem'}} />
             </div>
           </div>
         </div>

@@ -8,6 +8,7 @@ import MyfooterAfterLogin from "../FooterAfterLogin/MyfooterAfterLogin.js";
 import HashLoader from "react-spinners/HashLoader.js";
 import useUser from "../../store/userContext.js";
 import ToastComponent from "../Toast/toastComponent.js";
+import ProjectSkeleton from "./ProjectSkeleton.js";
 
 export default function ProjectMain() {
   const { user, setUser } = useUser();
@@ -32,23 +33,25 @@ export default function ProjectMain() {
     }
   }, [user]);
 
-  useEffect(() => {
-    (async () => {
-      setIsLoadingProject(true);
-      try {
-        const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/project`, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-        });
-        const data = await response.json();
-        setProjectinfo(data);
-      } catch (err) {
-        console.error(err, err.response);
-      }
+  const projedtDataFetch = async () => {
+    try {
+      const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/project`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      const data = await response.json();
+      setProjectinfo(data);
       setIsLoadingProject(false);
-    })();
+    } catch (err) {
+      console.error(err, err.response);
+    }
+  }
+
+  useEffect(() => {
+      setIsLoadingProject(true);
+      projedtDataFetch();
   }, []);
 
   function deleteProjectFromList(id, msg) {
@@ -62,20 +65,6 @@ export default function ProjectMain() {
     }, 1500);
   }
 
-  if (isLoadingProject)
-    return (
-      <>
-        <div className="loadingPage">
-          <HashLoader
-            color={"#ffffff"}
-            loading={isLoadingProject}
-            size={70}
-            aria-label="Loading Spinner"
-            data-testid="loader"
-          />
-        </div>
-      </>
-    );
 
   return (
     <>
@@ -131,29 +120,33 @@ export default function ProjectMain() {
         }}
       />
 
-
-    {Projectinfo.length !== 0 ? (
-        <div className="displayAllProjectsContainer scroll-container">
-            {Projectinfo.map((proj) => (
-                <ProjectDisplay
-                    key={proj._id}
-                    data={proj}
-                    admin={admin}
-                    userID={userID}
-                    team={proj.contributors}
-                    deleteProjectFromList={deleteProjectFromList}
-                />
-            ))}
-        </div>
-      ) : (
-        <div className="discussionNullContent">
-          <img src="/images/profileProjects.png" alt="No Data" loading="lazy"></img>
-          <div className="nullContentInfo">
-            No Projects to display :)
-            <br></br>Be the first one to share your project!
+    {isLoadingProject ? <ProjectSkeleton />
+    :
+      <>
+      {Projectinfo.length !== 0 ? (
+          <div className="displayAllProjectsContainer scroll-container">
+              {Projectinfo.map((proj) => (
+                  <ProjectDisplay
+                      key={proj._id}
+                      data={proj}
+                      admin={admin}
+                      userID={userID}
+                      team={proj.contributors}
+                      deleteProjectFromList={deleteProjectFromList}
+                  />
+              ))}
           </div>
-        </div>
-      )}
+        ) : (
+          <div className="discussionNullContent">
+            <img src="/images/profileProjects.png" alt="No Data" loading="lazy"></img>
+            <div className="nullContentInfo">
+              No Projects to display :)
+              <br></br>Be the first one to share your project!
+            </div>
+          </div>
+        )}
+      </>
+    }
 
       <MyfooterAfterLogin />
     </>

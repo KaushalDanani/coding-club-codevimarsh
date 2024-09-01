@@ -56,6 +56,10 @@ a.activeNav {
     align-items: center;
 }
 
+.signout-text {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
+}
+
 .logoutNavbar {
     width: 2.4rem;
     height: auto;

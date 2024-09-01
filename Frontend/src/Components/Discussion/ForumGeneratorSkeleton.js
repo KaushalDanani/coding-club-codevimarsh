@@ -19,11 +19,12 @@ function ForumGeneratorSkeleton() {
             </div>
             <div id="ques_tags">
               <div className="all_que_tag">
-                <Skeleton width={70} style={{marginRight: "1rem"}} />
-                <Skeleton width={70} />
+                <Skeleton width={90} height={23} style={{marginRight: "1rem", borderRadius: '1rem'}} />
+                <Skeleton width={90} height={23} style={{marginRight: "1rem", borderRadius: '1rem'}} />
+                <Skeleton width={90} height={23} style={{borderRadius: '1rem'}} />
               </div>
               <div id='q_date'>
-                <Skeleton width={150} />
+                <Skeleton width={150} style={{borderRadius: '1rem'}} />
               </div>
             </div>
         </div>

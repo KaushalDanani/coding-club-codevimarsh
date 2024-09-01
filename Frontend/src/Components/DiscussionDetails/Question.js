@@ -17,7 +17,7 @@ function Question(props) {
 
   return (
     <>
-      <div className="discussion_c_card question-card">
+      <div className="discussion_c_card questionCard">
         <div className="avtarDisc">
           <a href={`profile?visitID=${props.asker_id}`}>
             <img

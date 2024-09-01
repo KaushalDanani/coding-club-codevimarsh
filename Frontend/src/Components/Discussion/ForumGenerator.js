@@ -8,7 +8,6 @@ import ForumGeneratorSkeleton from "./ForumGeneratorSkeleton.js";
 function ForumGenerator() {
   const [ques, setQues] = useState(null);
   const [m, setM] = useState(new Map());
-	const [changeImage, setChangeImage] = useState('true');
 
   const [toastVisible,setToastVisible] = useState(false);
   const [toastMessage,setToastMessage] = useState("");
@@ -36,9 +35,9 @@ function ForumGenerator() {
     }
   }
 
-  useEffect(() => { 
-    fetchDiscussionData();
-}, []);
+  useEffect(() => {
+      fetchDiscussionData();
+  }, []);
 
 
   function deleteQuestionFromList(key)

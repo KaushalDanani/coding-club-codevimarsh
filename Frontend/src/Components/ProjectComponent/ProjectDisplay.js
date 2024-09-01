@@ -4,10 +4,12 @@ import TechTag from "../Tags/TechTag.js";
 
 function ProjectDisplay(props) {
     
+    const [isProjectDataFetching, setIsProjectDataFetching] = useState(true);
     const [admin,setAdmin] = useState(false);
     const [userID,setUserID] = useState('');
     const [hover,setHover] = useState(false);
     const [expand, setExpand] = useState('ture');
+    const [Fnamelname,setFnamelname] = useState([]);
 
 
     useEffect(() => {
@@ -48,19 +50,19 @@ function ProjectDisplay(props) {
         }
     }, [props.team,userID]);
 
-    function showProjectData(){
-        var x = document.getElementById("video_info"+props.name);
-        var y = document.getElementById("btnname" + props.name);
-        if (x.style.display === "none" || x.style.display === "") {
+    // function showProjectData(){
+    //     var x = document.getElementById("video_info"+props.name);
+    //     var y = document.getElementById("btnname" + props.name);
+    //     if (x.style.display === "none" || x.style.display === "") {
 
-            x.style.display = "block";
-            y.innerHTML = "Show Less";
+    //         x.style.display = "block";
+    //         y.innerHTML = "Show Less";
 
-        } else {
-            x.style.display = "none";
-            y.innerHTML = "Show More";
-        }
-    }
+    //     } else {
+    //         x.style.display = "none";
+    //         y.innerHTML = "Show More";
+    //     }
+    // }
     
         function delete_project(){
 
@@ -103,8 +105,8 @@ function ProjectDisplay(props) {
             }
         }
 
-        const [Fnamelname,setFnamelname] = useState([]);
         useEffect(() => {
+            setIsProjectDataFetching(true);
             if(props.data.contributors){
                     fetch(`${process.env.REACT_APP_BACKEND_URL}/project/members`,{
                         method : 'POST',
@@ -120,6 +122,7 @@ function ProjectDisplay(props) {
                     ).then(
                         (data) => {
                             setFnamelname(data);
+                            setIsProjectDataFetching(false);
                         }
                     )
                 }
