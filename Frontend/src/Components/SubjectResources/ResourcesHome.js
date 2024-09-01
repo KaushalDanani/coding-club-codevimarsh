@@ -6,6 +6,7 @@ import Res_data from "./Res_data.js";
 import HashLoader from "react-spinners/HashLoader.js";
 import MyfooterAfterLogin from "../FooterAfterLogin/MyfooterAfterLogin.js";
 import useUser from "../../store/userContext.js";
+import ResourceCardSkeleton from "./ResourceCardSkeleton.js";
 
 export default function Resources() {
   const { user, setUser } = useUser();
@@ -13,19 +14,20 @@ export default function Resources() {
   const [isAdmin, setAdmin] = useState(false);
   const [userID, setUserID] = useState("");
   const [resources, setResources] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isResourceDataFetching, setIsResourceDataFetching] = useState(true);
   // const [userData, setUserData] = useState("");
   const [base64Img, setBase64Img] = useState("");
 
-  useEffect(() => {
-    (async () => {
-      setIsLoading(true);
-      const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/resources/`);
-      const data = await response.json();
-      setResources(data);
+  const fetchResourceData = async () => {
+    const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/resources/`);
+    const data = await response.json();
+    setResources(data);
+    setIsResourceDataFetching(false);
+  }
 
-      setIsLoading(false);
-    })();
+  useEffect(() => {
+      setIsResourceDataFetching(true);
+      fetchResourceData();
   }, []);
 
   useEffect(() => {
@@ -74,20 +76,20 @@ export default function Resources() {
     else return false;
   }
 
-  if (isLoading)
-    return (
-      <>
-        <div className="loadingPage">
-          <HashLoader
-            color={"#ffffff"}
-            loading={isLoading}
-            size={70}
-            aria-label="Loading Spinner"
-            data-testid="loader"
-          />
-        </div>
-      </>
-    );
+  // if (isLoading)
+  //   return (
+  //     <>
+  //       <div className="loadingPage">
+  //         <HashLoader
+  //           color={"#ffffff"}
+  //           loading={isLoading}
+  //           size={70}
+  //           aria-label="Loading Spinner"
+  //           data-testid="loader"
+  //         />
+  //       </div>
+  //     </>
+  //   );
 
   return (
     <>
@@ -118,19 +120,32 @@ export default function Resources() {
         </nav>
       </div>
 
-      {resources.length !== 0 ?
-      <div className="res_card_container">
+      {isResourceDataFetching ?
+      
+      <>
+      <div className="res_card_container" id='index'>
         <div id="cardgrid">
-          <Res_data userID={userID} source={resources} imgData={base64Img} />
+          <ResourceCardSkeleton />
         </div>
       </div>
+      </>
       :
-        <div className="discussionNullContent">
-          <img src="/images/profileProjects.png" alt="No Data" loading="lazy"></img>
-          <div className="nullContentInfo">No Resources available right now :)
-          <br />Check again later...!</div>
-        
+      <>
+        {resources.length !== 0 ?
+        <div className="res_card_container">
+          <div id="cardgrid">
+            <Res_data userID={userID} source={resources} imgData={base64Img} />
+          </div>
         </div>
+        :
+          <div className="discussionNullContent">
+            <img src="/images/profileProjects.png" alt="No Data" loading="lazy"></img>
+            <div className="nullContentInfo">No Resources available right now :)
+            <br />Check again later...!</div>
+          
+          </div>
+        }
+        </>
       }
       <MyfooterAfterLogin />
     </>

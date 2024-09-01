@@ -98,12 +98,12 @@ a{
     color: aliceblue;
 }
 .lg{
-    height: auto;
+    height: 5.5vw;
     width: 5.5vw;
     border: 1px solid white;
     border-radius: 1vw;
     background-color: rgb(225, 225, 225);
-    padding: 0.4vw;
+    /* padding: 0.4vw; */
     position: absolute;
     top: 26.5%;
     left: -16%;
