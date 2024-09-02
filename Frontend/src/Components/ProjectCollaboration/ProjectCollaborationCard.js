@@ -73,11 +73,9 @@ function ProjectCollaborationCard(props) {
 
       <div className="project_c_card">
         <div className="avtar">
-          {" "}
           <Link to={`/profile?visitID=${props.data.collaborationLeader}`} href={`profile?visitID=${props.data.collaborationLeader}`}>
-            {" "}
             <img src={base64Img} alt="Project Image" loading="lazy" />{" "}
-          </Link>{" "}
+          </Link>
         </div>
         <div className="innercontent">
           <div className="project_coll_header">
@@ -99,16 +97,13 @@ function ProjectCollaborationCard(props) {
           {/* <hr style={{margin: '0vh 0vh 2vh -2.5vw', height:'0.25vh', border: 'none', backgroundColor: 'black'}}/> */}
 
           <div className="project_coll_Title">
-            {" "}
             <strong> Project Title : </strong>
             <p className="project_col_title_content">
-              {" "}
               {props.data.collaborationTitle}{" "}
             </p>
           </div>
 
           <div className="project_coll_tags">
-            {" "}
             <strong> Project Tags : </strong>
             <div style={{ display: "inline" }}>
               {props.data.collaborationTags.map((tagname) => (
@@ -124,10 +119,8 @@ function ProjectCollaborationCard(props) {
                 : "project_coll_description project_more_btn_show"
             }
           >
-            {" "}
             <strong> Project Description : </strong>
             <p className="project_coll_description_content">
-              {" "}
               {props.data.collaborationDescription}{" "}
             </p>
           </div>
@@ -137,7 +130,6 @@ function ProjectCollaborationCard(props) {
               className="project_collab_btn"
               onClick={() => setExpand(!expand)}
             >
-              {" "}
               {expand ? "Show More" : "Show Less"}{" "}
             </button>
             {!expand ? (
@@ -146,12 +138,11 @@ function ProjectCollaborationCard(props) {
                 href={`https://mail.google.com/mail/?view=cm&to=${props.userDetails.email}`}
                 target="_blank"
               >
-                {" "}
                 <input
                   type="button"
                   value="Contact"
                   className="project_collab_btn"
-                />{" "}
+                />
               </Link>
             ) : null}
           </div>

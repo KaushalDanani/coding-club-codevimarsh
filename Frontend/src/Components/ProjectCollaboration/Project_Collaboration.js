@@ -7,11 +7,12 @@ import ToastComponent from '../Toast/toastComponent.js';
 import MyfooterAfterLogin from '../FooterAfterLogin/MyfooterAfterLogin.js';
 import HashLoader from 'react-spinners/HashLoader.js';
 import useUser from '../../store/userContext.js';
+import ProjectCollaborationCardSkeleton from './ProjectCollaborationCardSkeleton.js';
 
 function Project_Collaboration() {
   const { user, setUser } = useUser();
 
-  const [isLoadingProjectCollaboration, setIsLoadingProjectCollaboration] = useState(false);
+  const [isLoadingProjectCollaboration, setIsLoadingProjectCollaboration] = useState(true);
   const [changeImage, setChangeImage] = useState('true');
   const [collaborationData, setCollaborationData] = useState([]);
   const [map, setMap] = useState(new Map())
@@ -62,44 +63,46 @@ function Project_Collaboration() {
       // window.location.reload()
     }, 4000);
   }
-  useEffect(() => {
-    
-    (async () => {
-      setIsLoadingProjectCollaboration(true);
-      try {
-        const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/projectcollaboration`, {
-          method: 'POST',
-          headers: {
-              'Content-Type': 'application/json'
-          }
-        })
-        const data = await response.json();
-        setCollaborationData(data[0]);
-        // setArray(data[1]);
-        const dataMap = new Map(data[1]);
-        setMap(dataMap);
-      }
-      catch(err)
-      {
-        console.error(err, err.response);
-      }
+
+  const fetchProjectCollaborationData = async () => {
+    try {
+      const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/projectcollaboration`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+      })
+      const data = await response.json();
+      setCollaborationData(data[0]);
+      // setArray(data[1]);
+      const dataMap = new Map(data[1]);
+      setMap(dataMap);
       setIsLoadingProjectCollaboration(false);
-    })();
+    }
+    catch(err)
+    {
+      console.error(err, err.response);
+    }
+  }
+
+  useEffect(() => {
+      setIsLoadingProjectCollaboration(true);
+      fetchProjectCollaborationData();
   }, [])
 
-  if (isLoadingProjectCollaboration)
-    return <>
-      <div className='loadingPage'>
-        <HashLoader
-            color={'#ffffff'}
-            loading={isLoadingProjectCollaboration}
-            // cssOverride={override}
-            size={70}
-            aria-label="Loading Spinner"
-            data-testid="loader"
-        />
-      </div>
-    </>
+  // if (isLoadingProjectCollaboration)
+  //   return <>
+  //     <div className='loadingPage'>
+  //       <HashLoader
+  //           color={'#ffffff'}
+  //           loading={isLoadingProjectCollaboration}
+  //           // cssOverride={override}
+  //           size={70}
+  //           aria-label="Loading Spinner"
+  //           data-testid="loader"
+  //       />
+  //     </div>
+  //   </>
 
   function mapDataCards (collaborationData) {
     if(collaborationData.size !== 0)
@@ -135,15 +138,19 @@ function Project_Collaboration() {
 
         <hr style={{width: '85%', height: '2.5px', backgroundColor: 'white', margin: '0px', marginBottom: '2.5vh'}}/>
         
-
-        { collaborationData.length!==0 ?
-            mapDataCards(collaborationData)
-          :
-            <div className="discussionNullContent">
-              <img src="/images/profileProjects.png" alt="No Data" loading="lazy"></img>
-              <div className="nullContentInfo">No Active opportunities right now :) <br/> 
-              Why not help others to find opportunities...!</div>
-            </div>
+        {isLoadingProjectCollaboration ? <ProjectCollaborationCardSkeleton />
+        :
+        <>
+          { collaborationData.length!==0 ?
+              mapDataCards(collaborationData)
+            :
+              <div className="discussionNullContent">
+                <img src="/images/profileProjects.png" alt="No Data" loading="lazy"></img>
+                <div className="nullContentInfo">No Active opportunities right now :) <br/> 
+                Why not help others to find opportunities...!</div>
+              </div>
+          }
+        </>
         }
 
       </div>
