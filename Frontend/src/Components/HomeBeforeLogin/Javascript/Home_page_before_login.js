@@ -77,7 +77,7 @@ function Home_page_before_login() {
         throw new Error('QUOTE API IS NOT WORKING');
       }
       const quote = await response.json();
-      setQuote(quote.content);
+      setQuote(quote.quote);
       setAuthor(quote.author);
     } catch (error) {
       console.error(error.message);
@@ -100,7 +100,7 @@ function Home_page_before_login() {
           return response.json();
         })
         .then((quote) => {
-          setQuote(quote.content);
+          setQuote(quote.quote);
           setAuthor(quote.author);
           setDisplayedQuote("");
         });
@@ -125,7 +125,7 @@ function Home_page_before_login() {
     );
 
 
-  return user ? (
+  return user ? ( 
     <>
       {/* {navigate(`/home`)} */}
       <Navigate to={`/home`} replace />

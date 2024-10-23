@@ -32,7 +32,7 @@ function LoginHomePage() {
       fetch(api_key)
       .then((response) => response.json())
       .then((quote) => {
-        setQuote(quote.content);
+        setQuote(quote.quote);
         setAuthor(quote.author);
       });
 
@@ -43,7 +43,7 @@ function LoginHomePage() {
     fetch(api_key)
       .then((response) => response.json())
       .then((quote) => {
-        setQuote(quote.content);
+        setQuote(quote.quote);
         setAuthor(quote.author);
       });
   };
