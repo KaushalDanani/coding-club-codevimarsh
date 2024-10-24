@@ -4,14 +4,15 @@ import UserProfileLeftPanel from "./UserProfileLeftPanel.js";
 import UserProfileMainPanel from "./UserProfileMainPanel.js";
 import Navbar_after_login from "../NavbarAfterLogin/Navbar_after_login.js";
 import MyfooterAfterLogin from "../FooterAfterLogin/MyfooterAfterLogin.js";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import HashLoader from "react-spinners/HashLoader.js";
 import useUser from "../../store/userContext.js";
 
 function UserProfile() {
   
   const { user, setUser } = useUser();
-  
+  const navigate = useNavigate();
+
   const location = useLocation();
   const [userID,setUserID] = useState("");
   const [base64Img,setBase64Img] = useState('');
@@ -58,8 +59,18 @@ function UserProfile() {
   },[visitID,userID]);
 
 
-  function changeSearchValue(event) {
-    setSearchValue(event.target.value);
+  const searchUser = async () => {
+    const username = document.getElementById('searchUser').value;
+
+    const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/user/search/?username=${username}`);
+    const data = await response.json();
+    if(data.userID!==undefined){
+      alert(data.userID);
+      navigate(`/profile?visitID=${data.userID}`); 
+    }
+    else{
+      alert("User does not exist!");
+    }
   }
 
   if (isLoadingProfile)
@@ -79,7 +90,10 @@ function UserProfile() {
     <>
     <Navbar_after_login imgData={base64Img} />
     <div className="userProfile">
-      
+      <div className="searchBarDiv">
+        <input id='searchUser' type="text" placeholder="search username"></input>
+        <button onClick={searchUser}></button>
+      </div>
       <div className="UPouterFrame">
         <div>
           <UserProfileLeftPanel visitID={visitID!=userID ? visitID : null}/>

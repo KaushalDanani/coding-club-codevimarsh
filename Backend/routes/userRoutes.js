@@ -5,6 +5,7 @@ const password = require('../middlewares/password.js');
 const userController = require('../controller/userController.js');
 
 router.get('/profile',userController.getProfile);
+router.get('/search',userController.search);
 router.post('/editSkills',userController.editSkills);
 router.post('/editprofile/personal',userController.editPersonalProfile);
 router.post('/editprofile/account',userController.editAccountProfile);
