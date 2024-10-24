@@ -4,19 +4,32 @@ const Reply = require('../models/reply.js')
 const { ObjectId } = require('mongodb');
 
 exports.getAllDiscussions = async (req, resp) => {
-    try {
+  try {
+      const userID = req.query.userID;
       let ques = await Question.find();
       let m = new Map();
+      let qUps = new Map();
   
+      const Q_upvotes = await User.findOne(
+        { _id: userID },
+        "-_id questionUpvotes"
+      ).then((obj) => {
+        return obj.questionUpvotes;
+      });
+
       for (const element of ques) {
+        let bool = Q_upvotes.includes(element._id)
+        qUps.set(element._id,bool);
+
         let U = await User.findById(element.asker, "username profileImg");
         m.set(element._id, U);
-      }
-        
+      }  
       const mArray = Array.from(m);
+      const qUpArray = Array.from(qUps);
   
-      resp.json({'ques' : ques, 'mArray' : mArray});
+      resp.json({'ques' : ques, 'mArray' : mArray, 'qUpArray' : qUpArray});
     } catch (error) {
+      console.log(error)
       resp.status(500).json({ error: "An error occurred" });
     }
 }
@@ -66,24 +79,19 @@ exports.getQuestionData = async (req, resp) => {
 }
 
 exports.updateUpvotes = async (req, resp) => {
+  try{
     const userID = req.query.userID;
     const type = req.body.type;
     const Id = req.body.Id;
     const state = req.body.state;
-    const count = req.body.count;                
-  
-    const ur = await User.findById(userID, "-_id repliesUpvotes").then(
-      (resp) => {
-        return resp.repliesUpvotes;
-    });
-    const uq = await User.findById(userID, "-_id questionUpvotes").then(
-      (resp) => {
-        return resp.questionUpvotes;
-      }
-    );
+    const count = req.body.count;                 
   
     if (type === "r") {
-      const updated = await Reply.updateOne({ _id: Id }, { upvotes: count });      
+      const ur = await User.findById(userID, "-_id repliesUpvotes").then(
+        (resp) => {
+          return resp.repliesUpvotes;
+      });
+      await Reply.updateOne({ _id: Id }, { upvotes: count });      
       if (state) {
         ur.push(Id);
       } else {        
@@ -96,7 +104,12 @@ exports.updateUpvotes = async (req, resp) => {
       );      
     }
   
-    if (type === "q") {      
+    if (type === "q") {    
+      const uq = await User.findById(userID, "-_id questionUpvotes").then(
+        (resp) => {
+          return resp.questionUpvotes;
+        }
+      );  
       const updated = await Question.updateOne({ _id: Id }, { upvotes: count });      
       if (state) {
         uq.push(Id);        
@@ -109,6 +122,9 @@ exports.updateUpvotes = async (req, resp) => {
         { questionUpvotes: uq }
       );      
     }
+  } catch(error){
+      console.error(error)
+  }
 }
 
 exports.addQuestion = function (req, res) {

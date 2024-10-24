@@ -69,7 +69,7 @@ function ProjectDisplay(props) {
             const conf = window.confirm('Are you sure you want to delete Project?');
             if(conf)
             {
-                console.log(props.data._id);
+                // console.log(props.data._id);
                 const deleteProjectData = {
                     projectCollaborationCardId: props.data._id
                 }

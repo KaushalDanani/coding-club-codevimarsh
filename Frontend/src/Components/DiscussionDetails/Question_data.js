@@ -13,7 +13,7 @@ export default function Question_data() {
     
     const location = useLocation();
     const [isQuestionDataFetch, setIsQuestionDataFetch] = useState(true);
-    const [userID, setUserID] = useState("");
+    const [userID, setUserID] = useState();
     const [imgData,setImgData] = useState("");
 
     useEffect(()=>{
@@ -25,7 +25,7 @@ export default function Question_data() {
 
     const [toastVisible, setToastVisible] = useState(false);
     const [toastMessage, setToastMessage] = useState("");
-    const [toastType, setToastType] = useState("");
+    const [toastType, setToastType] = useState();
     const searchParams = new URLSearchParams(location.search);
     const q_id = searchParams.get('q_id');
 
@@ -38,7 +38,7 @@ export default function Question_data() {
 
     useEffect(() => {
         setIsQuestionDataFetch(true);
-        if(userID!=null)
+        if(userID!=undefined)
         {
             fetch(`${process.env.REACT_APP_BACKEND_URL}/discussion/question?userID=${userID}&q_id=${q_id}`)
                 .then((response) => {

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import "./DiscussionCard.css";
 import "./Discussion_Forums.css";
+import Upvote from '../DiscussionDetails/upvote.js';
 import useUser from '../../store/userContext.js';
 import ToastComponent from '../Toast/toastComponent.js';
 import TechTag from '../Tags/TechTag.js';
@@ -14,12 +15,17 @@ function Discussion_block(props) {
   const [toastVisible, setToastVisible] = useState(false);
   const [toastMessage, setToastMessage] = useState("");
   const [toastType, setToastType] = useState("");
+  const [isAdmin, setAdminVal] = useState(false)
+  const [userID,setUserID] = useState()
+  const [delCheck, setDelCheck] = useState(false)
 
   useEffect(() => {
     if (props.tags) {
       setTags(props.tags);
     }
   }, [props.tags]);
+
+  // console.log(props);
 
   function getTag() {
     if(tag.length!=1 || tag[0]!="")
@@ -39,10 +45,11 @@ function Discussion_block(props) {
   }, [props.date]);
 
 
-  
-  const isAdmin = user.isAdmin;
-  const userID = user._id;
-  const delCheck = (userID === props.asker_id || isAdmin===true);
+  useEffect(()=>{
+    setAdminVal(user.isAdmin);
+    setUserID(user._id);
+    setDelCheck(userID === props.asker_id || isAdmin===true);
+  },[user])
 
   function deleteQue(q_id) {
     const conf = window.confirm('Are you sure you want to delete this reply?');
@@ -89,11 +96,12 @@ function Discussion_block(props) {
             <div id='ques'>
               {props.question}
             </div>
+          </Link>
             <div id="ques_tags">
+              <Upvote value={props.value} Id={props.q_id} type='q' count={props.up_count} user={userID}/>
               <div className="all_que_tag">{getTag()}</div>
               <div id='q_date'>{qDate}</div>
             </div>
-          </Link>
         </div>
       </div>
     </>

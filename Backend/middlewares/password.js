@@ -11,15 +11,15 @@ const bcrypt = require("bcryptjs");
 
 const hashPassword = async (req,res,next) => {
     const data = req.body;
-    console.log(data)
+    // console.log(data)
     
     // Check if password is being modified
     if (data.password) {
 
-        console.log('data',data.password)
+        // console.log('data',data.password)
         const hashedPassword = await bcrypt.hash(data.password, 10);
 
-        console.log('heashed',hashPassword);
+        // console.log('heashed',hashPassword);
         // Update the password in the update document
         data.password = hashedPassword;
         req.password = hashedPassword;
