@@ -1,5 +1,5 @@
 import React from 'react'
-function comment_icon() {
+function CommentIcon() {
   return (
     
     <svg
@@ -7,6 +7,7 @@ function comment_icon() {
   height="32px"
   viewBox="0 0 24 24"
   fill="none"
+  style={{ marginRight: '0.3rem' }}
   xmlns="http://www.w3.org/2000/svg"
   stroke="#ffffff"
 >
@@ -33,4 +34,4 @@ function comment_icon() {
     
   )
 }
-export default comment_icon
+export default CommentIcon
