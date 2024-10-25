@@ -48,6 +48,7 @@ function UserProfile() {
           const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/user/profile/?userID=${visitID}`)
           const data = await response.json();
           setUserData(data[0]);
+          console.log(data[0]);
         }
       }
       catch(err)
@@ -65,7 +66,7 @@ function UserProfile() {
     const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/user/search/?username=${username}`);
     const data = await response.json();
     if(data.userID!==undefined){
-      alert(data.userID);
+      // alert(data.userID);
       navigate(`/profile?visitID=${data.userID}`); 
     }
     else{
@@ -96,10 +97,10 @@ function UserProfile() {
       </div>
       <div className="UPouterFrame">
         <div>
-          <UserProfileLeftPanel visitID={visitID!=userID ? visitID : null}/>
+          <UserProfileLeftPanel visitID={visitID!=userID ? visitID : null } userData={userData}/>
         </div>
         <div>
-          <UserProfileMainPanel />
+          <UserProfileMainPanel userData={userData}/>
         </div>
       </div>
     </div>

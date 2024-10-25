@@ -4,9 +4,9 @@ import ProjectDisplay from "../ProjectComponent/ProjectDisplay";
 import { Link } from "react-router-dom";
 import useUser from "../../store/userContext";
 
-function UserProfileMainPanel() {
+function UserProfileMainPanel(props) {
 
-  const { user, setUser } = useUser();
+  const [user, setUser] = useState(props.userData);
   const [projects, setProjects] = useState([]);
 
   const noStyle = {
