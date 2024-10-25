@@ -39,7 +39,7 @@ function Home_page_before_login() {
   const oneLinerToStart = "Start your coding journey with code-vimarsh by joining us...";
   const { user, setUser } = useUser();
   const api_key = process.env.REACT_APP_QUOTE_API_KEY;
-  const [isLoadingBeforeHome, setIsLoadingBeforeHome] = useState(false);
+  const [isLoadingBeforeHome, setIsLoadingBeforeHome] = useState(true);
   const [imgData, setImgData] = useState("");
   const [quote, setQuote] = useState("");
   const [author, setAuthor] = useState("");
@@ -64,6 +64,8 @@ function Home_page_before_login() {
         // alert(data.message)
         setUser(null);
       }
+
+      setIsLoadingBeforeHome(false);
      
     } catch (err) {
       console.error(err, err.response);
@@ -88,7 +90,7 @@ function Home_page_before_login() {
     setIsLoadingBeforeHome(true);
     userCradential();
     fetchQuote();
-    setIsLoadingBeforeHome(false);
+    // setIsLoadingBeforeHome(false);
   }, []);
 
   const changeQuoteHandler = () => {
