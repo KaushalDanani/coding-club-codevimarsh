@@ -19,7 +19,7 @@ import NotFoundPage from './Components/PageNotFound/NotFoundPage.js';
 
 // jay fanse
 import LoginHomePage from './Components/HomeAfterLogin/LoginHomePage.js';
-// import ArticlesNewsHomePage from './Components/ArticleAndNews/ArticlesNewsHomePage.js';
+import ArticlesNewsHomePage from './Components/ArticleAndNews/ArticlesNewsHomePage.js';
 import EditUserProfile from './Components/EditUserProfile/EditUserProfile.js';
 import ResourcesContent from './Components/ResourcesContent/ResourcesContent.js';
 import UserProfile from './Components/UserProfile/UserProfile.js';
