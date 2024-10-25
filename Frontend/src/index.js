@@ -7,12 +7,12 @@ import reportWebVitals from './reportWebVitals.js';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
-    {/* <video autoPlay loop muted id='bg_video'>
-      <source src={backgound_video} type='video/mp4' />
-    </video> */}
+  // <React.StrictMode>
+    // {/* <video autoPlay loop muted id='bg_video'>
+    //   <source src={backgound_video} type='video/mp4' />
+    // </video> */}
       <App />
-  </React.StrictMode>
+  // </React.StrictMode>
 );
 
 reportWebVitals();

@@ -14,7 +14,7 @@ import HashLoader from "react-spinners/HashLoader.js";
 function LoginHomePage() {
   const api_key = process.env.REACT_APP_QUOTE_API_KEY;
   // const navigate = useNavigate()
-  const [isLoadingHome, setIsLoadingHome] = useState(false);
+  const [isLoadingHome, setIsLoadingHome] = useState(true);
   const [fname, setFname] = useState("");
   const [userID, setUserID] = useState("");
   const [admin, setAdmin] = useState(false);
