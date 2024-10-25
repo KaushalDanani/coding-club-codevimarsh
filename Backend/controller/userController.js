@@ -16,6 +16,17 @@ exports.getProfile = async (req,res) => {
   }
 }
 
+exports.search = async (req,res) => {
+  const username = req.query.username;
+  try{
+    const resData = await User.findOne({username: username});
+    res.status(200).json({'userID' : resData._id.toString()});
+  }
+  catch(err){
+    res.status(400).json({'error' : err.message});
+  }
+}
+
 exports.editSkills = async (req,res) => {
     const skills = req.body.userSkills;
     console.log(skills);

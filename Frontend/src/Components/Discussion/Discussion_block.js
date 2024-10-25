@@ -69,14 +69,14 @@ function Discussion_block(props) {
 
       <div className='discussion_c_card'>
         <div className='avtarDisc'>
-          <a href={`profile?visitID=${props.asker_id}`}>
+          <Link to={`/profile?visitID=${props.asker_id}`} href={`profile?visitID=${props.asker_id}`}>
             <img src={`data:Image/jpeg;base64,${props.pfp}`} alt={`Profile of ${props.asker_username}`} loading="lazy" />
-          </a>
+          </Link>
         </div>
         <div className='innercontentDisc'>
           <div className='asker' id={props._id}>
             <div id='asker_id'>
-              <a href={`profile?visitID=${props.asker_id}`}>{props.asker_username}</a>
+              <Link to={`/profile?visitID=${props.asker_id}`} href={`profile?visitID=${props.asker_id}`}>{props.asker_username}</Link>
             </div>
             <button
               className='del_discussion'
