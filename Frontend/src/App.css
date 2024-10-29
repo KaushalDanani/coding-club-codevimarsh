@@ -4,3 +4,25 @@
     margin: 0%;
     padding: 0%;
 }
+
+/* For WebKit-based browsers (Chrome, Safari, Edge) */
+::-webkit-scrollbar {
+    width: 0.35rem;
+    height: 0.4rem;
+}
+
+::-webkit-scrollbar-track {
+    background: #000000;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: rgb(253, 138, 22);
+    border-radius: 15px;
+}
+
+/* For Mozilla Firefox */
+/* html {
+    scrollbar-width: thin;
+    scroll-padding: 1rem;
+    scrollbar-color: rgb(253, 138, 22) #363636;
+} */

@@ -124,6 +124,15 @@
     max-width: 100%;
     overflow-x: auto;
 }
+.all_que_tag::-webkit-scrollbar {
+    height: 0.9rem;
+}
+.all_que_tag::-webkit-scrollbar-thumb {
+    border: 5px solid #363636;
+}
+.all_que_tag::-webkit-scrollbar-track {
+    background: #363636 !important;
+}
 
 #q_date{
     display: flex;
