@@ -13,7 +13,8 @@ const userSchema = new mongoose.Schema({
     about: String,
     skills: [],
     questionUpvotes: [ObjectId],
-    repliesUpvotes: [ObjectId],  
+    repliesUpvotes: [ObjectId], 
+    projectUpvotes: [ObjectId], 
   
     email: {
         type: String,

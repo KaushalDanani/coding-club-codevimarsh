@@ -34,7 +34,7 @@ export default function Question_data() {
     const [Q_upvote, setQUp] = useState(false);
     const [R_data, setRData] = useState([]);
     const [rMap, setrMap] = useState(new Map());
-    const [upMap, setupMap] = useState(new Map());
+    const [userUps, setuserUps] = useState([]);
 
     useEffect(() => {
         setIsQuestionDataFetch(true);
@@ -52,13 +52,9 @@ export default function Question_data() {
                     setAsker(data[1]);
                     setQUp(data[2]);
                     setRData(data[3]);
-
                     const m1 = new Map(data[4]);
-                    const uArr = data[5];
-                    const m2 = new Map(uArr);
-
                     setrMap(m1);
-                    setupMap(m2);
+                    setuserUps(data[5]);
 
                     setIsQuestionDataFetch(false);
                 })
@@ -117,7 +113,7 @@ export default function Question_data() {
                 code={comment.code}
                 up_count={comment.upvotes}
                 date={comment.replyDate}
-                value={upMap.get(comment._id)}
+                value={userUps.includes(comment._id)}
                 admin={user.isAdmin}
                 deleteReplyFromList={deleteReplyFromList}
             />

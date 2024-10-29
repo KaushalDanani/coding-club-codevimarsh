@@ -11,7 +11,7 @@ function ForumGenerator() {
 
   const [ques, setQues] = useState(null);
   const [m, setM] = useState(new Map());
-  const [qUps, setQUps] = useState(new Map());
+  const [qUps, setQUps] = useState([]);
 
   const [toastVisible,setToastVisible] = useState(false);
   const [toastMessage,setToastMessage] = useState("");
@@ -36,16 +36,12 @@ function ForumGenerator() {
           }
         })
           
-        // console.log("got it..."+ response)
         const data = await response.json();
         setQues(data.ques);
         const mArray = data.mArray;
         const map = new Map(mArray);
         setM(map);
-        const qUpArray = data.qUpArray;
-        const qUpMap = new Map(qUpArray);
-        setQUps(qUpMap);
-        // console.log("😭😭😭😭😭 "+ data);
+        setQUps(data.qUpArray);
       }
       catch(err)
       {
@@ -96,7 +92,7 @@ function ForumGenerator() {
               q_id={disc._id}
               userID={userID}
               up_count={disc.upvotes}
-              value={qUps.get(disc._id)}
+              value={qUps.includes(disc._id)}
               deleteQuestionFromList={deleteQuestionFromList}
             />
         ))
