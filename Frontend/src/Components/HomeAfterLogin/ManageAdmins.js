@@ -109,7 +109,7 @@ function ManageAdmins() {
         {(!user || !user.isAdmin) ? navigate(`/`) : 
             <>
                 {toastVisible ? <ToastComponent message={toastMessage} type={toastType} /> : null}
-                <Link to={'/home'}>
+                <Link to={'/'}>
                     <div className='adminBackBtn'></div>
                 </Link>
                 <div className='manageAdminsDiv'>

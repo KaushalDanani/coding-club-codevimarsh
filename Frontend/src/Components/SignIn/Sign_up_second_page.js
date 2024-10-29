@@ -76,7 +76,7 @@ function Sign_up_second_page() {
 
                 // sessionStorage.setItem('userID', data.userID)
                 setUser(data.user);
-                navigate("/home")
+                navigate("/")
             }
             else{
                 alert(data.error)

@@ -39,7 +39,7 @@ function Home_page_before_login() {
   const oneLinerToStart = "Start your coding journey with code-vimarsh by joining us...";
   const { user, setUser } = useUser();
   const api_key = process.env.REACT_APP_QUOTE_API_KEY;
-  const [isLoadingBeforeHome, setIsLoadingBeforeHome] = useState(false);
+  const [isLoadingBeforeHome, setIsLoadingBeforeHome] = useState(true);
   const [imgData, setImgData] = useState("");
   const [quote, setQuote] = useState("");
   const [author, setAuthor] = useState("");
@@ -64,6 +64,8 @@ function Home_page_before_login() {
         // alert(data.message)
         setUser(null);
       }
+
+      setIsLoadingBeforeHome(false);
      
     } catch (err) {
       console.error(err, err.response);
@@ -77,7 +79,7 @@ function Home_page_before_login() {
         throw new Error('QUOTE API IS NOT WORKING');
       }
       const quote = await response.json();
-      setQuote(quote.content);
+      setQuote(quote.quote);
       setAuthor(quote.author);
     } catch (error) {
       console.error(error.message);
@@ -88,7 +90,7 @@ function Home_page_before_login() {
     setIsLoadingBeforeHome(true);
     userCradential();
     fetchQuote();
-    setIsLoadingBeforeHome(false);
+    // setIsLoadingBeforeHome(false);
   }, []);
 
   const changeQuoteHandler = () => {
@@ -100,7 +102,7 @@ function Home_page_before_login() {
           return response.json();
         })
         .then((quote) => {
-          setQuote(quote.content);
+          setQuote(quote.quote);
           setAuthor(quote.author);
           setDisplayedQuote("");
         });
@@ -125,13 +127,7 @@ function Home_page_before_login() {
     );
 
 
-  return user ? (
-    <>
-      {/* {navigate(`/home`)} */}
-      <Navigate to={`/home`} replace />
-      {/* {window.location.reload()} */}
-    </>
-  ) : (
+  return(
     <>
       <Navbar_before_login />
       <div style={{ display: "flex" }}>

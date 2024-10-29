@@ -1,5 +1,6 @@
 import { React, useState, useEffect, lazy, useLayoutEffect } from 'react'
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import "bootstrap/dist/css/bootstrap.css";
 import HashLoader from "react-spinners/HashLoader";
 import './PageLinks.css'
 
@@ -19,7 +20,7 @@ import NotFoundPage from './Components/PageNotFound/NotFoundPage.js';
 
 // jay fanse
 import LoginHomePage from './Components/HomeAfterLogin/LoginHomePage.js';
-import ArticlesNewsHomePage from './Components/ArticleAndNews/ArticlesNewsHomePage.js';
+// import ArticlesNewsHomePage from './Components/ArticleAndNews/ArticlesNewsHomePage.js';
 import EditUserProfile from './Components/EditUserProfile/EditUserProfile.js';
 import ResourcesContent from './Components/ResourcesContent/ResourcesContent.js';
 import UserProfile from './Components/UserProfile/UserProfile.js';
@@ -60,11 +61,11 @@ const AdminAccessRoute =({ children }) => {
 
 const PageLinks = () => {
 
-    const [isLoading, setIsLoading] = useState(false);
+    const [isLoading, setIsLoading] = useState(true);
     const { user, setUser } = useUser();
     const userCradential = async () => {
         try {
-            setIsLoading(true);
+            
             const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/user/home/dataset`, {
                 method: "GET",
                 headers: {
@@ -90,6 +91,7 @@ const PageLinks = () => {
 
     useEffect(() => {
         if(!user)
+            setIsLoading(true);
             userCradential()
             
     }, [])
@@ -114,11 +116,14 @@ const PageLinks = () => {
             <SkeletonTheme baseColor='#313131' highlightColor='#696969'>
                 <Router>
                     <Routes>
-                        <Route path='/' element={<Home_page_before_login />} />
+                        { user ? 
+                            <Route path='/' element={<PrivateRoute> <LoginHomePage /> </PrivateRoute>} />
+                        :
+                            <Route path='/' element={<Home_page_before_login />} />
+                        }
                         <Route path='/signin' element={<Sign_in_page />} />
                         <Route path='/signup/step-1' element={<Sign_up_first_page />} />
                         <Route path='/signup/step-2' element={<Sign_up_second_page />} />
-                        <Route path='/home' element={<PrivateRoute> <LoginHomePage /> </PrivateRoute>} />
                         <Route path='/manageAdmins' element={<AdminAccessRoute> <ManageAdmins /> </AdminAccessRoute>} />
                         <Route path='/contest' element={<PrivateRoute> <Contest_main /> </PrivateRoute>} />
                         <Route path='/addContest' element={<AdminAccessRoute> <AddContest /> </AdminAccessRoute>} />

@@ -14,7 +14,7 @@ import HashLoader from "react-spinners/HashLoader.js";
 function LoginHomePage() {
   const api_key = process.env.REACT_APP_QUOTE_API_KEY;
   // const navigate = useNavigate()
-  const [isLoadingHome, setIsLoadingHome] = useState(false);
+  const [isLoadingHome, setIsLoadingHome] = useState(true);
   const [fname, setFname] = useState("");
   const [userID, setUserID] = useState("");
   const [admin, setAdmin] = useState(false);
@@ -32,7 +32,7 @@ function LoginHomePage() {
       fetch(api_key)
       .then((response) => response.json())
       .then((quote) => {
-        setQuote(quote.content);
+        setQuote(quote.quote);
         setAuthor(quote.author);
       });
 
@@ -43,7 +43,7 @@ function LoginHomePage() {
     fetch(api_key)
       .then((response) => response.json())
       .then((quote) => {
-        setQuote(quote.content);
+        setQuote(quote.quote);
         setAuthor(quote.author);
       });
   };
