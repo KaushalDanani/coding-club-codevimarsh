@@ -111,11 +111,17 @@
     margin-right: 0.8vw;
 }
 
+.upvote-tags-container {
+    display: flex;
+    gap: 1rem;
+    max-width: 88.7%;
+}
+
 .all_que_tag {
     display: flex;
     text-align: center;
     justify-content: flex-start;
-    max-width: 85%;
+    max-width: 100%;
     overflow-x: auto;
 }
 

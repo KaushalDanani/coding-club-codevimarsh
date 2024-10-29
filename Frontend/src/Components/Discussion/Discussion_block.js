@@ -98,8 +98,10 @@ function Discussion_block(props) {
             </div>
           </Link>
             <div id="ques_tags">
-              <Upvote value={props.value} Id={props.q_id} type='q' count={props.up_count} user={userID}/>
-              <div className="all_que_tag">{getTag()}</div>
+              <div className='upvote-tags-container'>
+                <Upvote value={props.value} Id={props.q_id} type='q' count={props.up_count} user={userID}/>
+                <div className="all_que_tag">{getTag()}</div>
+              </div>
               <div id='q_date'>{qDate}</div>
             </div>
         </div>
