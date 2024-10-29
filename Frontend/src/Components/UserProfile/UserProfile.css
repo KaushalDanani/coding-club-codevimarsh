@@ -55,10 +55,11 @@
     background-color: rgba(255, 255, 255, 0.1);
     padding: 5px;
     padding-left: 10px;
-    backdrop-filter: blur(3px);
+    backdrop-filter: blur(4px);
     width: 20%;
     color: white;
     border: none;
+    outline: none;
     border-top: 2px solid rgba(255, 255, 255, 0.5);
     border-left: 2px solid rgba(255, 255, 255, 0.5);
     border-top-left-radius: 8px;
@@ -67,9 +68,11 @@
 
 .searchBarDiv button{
     background-image: url('/public/images/search.png');
-    background-size: 2.5vh;
+    background-size: 1.3rem;
+    /* background-size: 2.5vh; */
     background-repeat: no-repeat;
     background-position: center;
+    backdrop-filter: blur(4px);
     background-color: rgba(255, 255, 255, 0.1);
     padding-right: 5vh;
     border: none;

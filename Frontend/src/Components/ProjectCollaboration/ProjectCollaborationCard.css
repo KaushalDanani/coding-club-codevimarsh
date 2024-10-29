@@ -149,13 +149,14 @@
     text-transform: capitalize;
     color: rgb(255, 255, 255) !important;
     background-color: rgb(253, 138, 22) !important;
-    border: 1.5px solid #2D033B;
+    /* border: 1.5px solid #2D033B; */
+    border: none;
     /* box-shadow: 0 3.5px black; */
 }
 .project_collab_btn:hover {
     color: rgb(255, 255, 255);
     background-color: rgb(189, 95, 0) !important;
-    border: 1.5px solid rgb(189, 95, 0);
+    border: none;
     /* box-shadow: none; */
     /* box-shadow: 0 0 10px rgb(0, 0, 0); */
 }

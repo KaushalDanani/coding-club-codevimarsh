@@ -5,14 +5,23 @@ import { useEffect, useState, React } from "react";
 import ToastComponent from "../Toast/toastComponent.js";
 import ForumGeneratorSkeleton from "./ForumGeneratorSkeleton.js";
 
-function ForumGenerator() {
+function ForumGenerator(props) {
   const [ques, setQues] = useState(null);
+  const [filteredQuestions, setFilteredQuestions] = useState(null)
   const [m, setM] = useState(new Map());
 
   const [toastVisible,setToastVisible] = useState(false);
   const [toastMessage,setToastMessage] = useState("");
   const [toastType,setToastType] = useState("");
 
+  useEffect(() => {
+    if(props.search != "") {
+        const filterQuestionsRelativeTags = ques.filter((question) =>
+          question.tags.toString().toLowerCase().includes(props.search.toLowerCase()));
+
+        setFilteredQuestions(filterQuestionsRelativeTags);
+      }
+  }, [props.search])
 
   const fetchDiscussionData = async () => {
     try {
@@ -24,6 +33,7 @@ function ForumGenerator() {
       })
       const data = await response.json();
       setQues(data.ques);
+      setFilteredQuestions(data.ques);
       const mArray = data.mArray;
       const map = new Map(mArray);
       setM(map);
@@ -62,11 +72,11 @@ function ForumGenerator() {
       {ques === null ? <ForumGeneratorSkeleton /> : 
       
       <>
-        {ques.length!==0 ? 
+        {filteredQuestions.length!==0 ? 
 
-        ques.map((disc, idx) => (
+        filteredQuestions.map((disc, idx) => (
             <Discussion_block
-              key={idx}
+              key={disc._id}
               pfp={m.get(disc._id).profileImg}
               asker_username={m.get(disc._id).username}
               asker_id={m.get(disc._id)._id}

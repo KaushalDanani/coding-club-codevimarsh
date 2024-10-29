@@ -25,7 +25,7 @@ function Discussion_block(props) {
     if(tag.length!=1 || tag[0]!="")
     {
       return(
-          tag.map((tag) => <TechTag tagname = {tag} />)
+          tag.map((tag, idx) => <TechTag key={idx} tagname = {tag} />)
       )
     }
   }

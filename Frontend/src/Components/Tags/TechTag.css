@@ -1,6 +1,9 @@
 
 .techtag{
-    display: inline-block;
+    height: fit-content;
+    width: max-content;
+    display: inline-flex;
+    flex-shrink: 0;
     border-radius: 20px;
     padding: 5px 15px;
     text-transform: uppercase;

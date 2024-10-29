@@ -8,13 +8,19 @@ import ForumGeneratorSkeleton from './ForumGeneratorSkeleton.js';
 import MyfooterAfterLogin from '../FooterAfterLogin/MyfooterAfterLogin.js'
 import HashLoader from 'react-spinners/HashLoader.js'
 import useUser from '../../store/userContext.js';
+import SearchBar from '../SearchBox/SearchBar.js';
 
 export default function Forums() {
   const { user, setUser } = useUser();
 
+  const [searchValue, setSearchValue] = useState("")
 	const [changeImage, setChangeImage] = useState('true');
   const [userData,setUserData] = useState('');
   const [base64Img,setBase64Img] = useState('');
+
+  const handleSearch = (searchVal) => {
+    setSearchValue(searchVal);
+  }
 
   useEffect(() => {
     if (user != null) {
@@ -36,14 +42,16 @@ export default function Forums() {
           <h2 className='projectTitle'>Discussion Forums</h2>
           <p className='project_collaboration_oneliner'>The aim of argument, or of discussion, should not be victory, but progress.</p>
       </div>
-      <div className='addProjCollab' style={{width: '85%'}}>
+      <div className='operationsOnDiscussionData'>
         <Link to={'/discussion/addQuestion'}> 
           <button className={changeImage ? 'ProjectCollaborationBtn changeAddImage' : 'ProjectCollaborationBtn'} 
           onMouseOut={() => setChangeImage(true)}
           onMouseOver={()=> setChangeImage(false)}> Add </button> 
         </Link>
+        <SearchBar sendBackSearchValue={handleSearch} />
       </div>
-      <ForumGenerator />
+      
+      <ForumGenerator search={searchValue} />
     </div>
     <MyfooterAfterLogin />
   </>
