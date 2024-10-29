@@ -7,6 +7,7 @@ import useUser from "../../store/userContext";
 function UserProfileMainPanel(props) {
 
   const [user, setUser] = useState(props.userData);
+  const [userUps,setUserUps] = useState([]);
   const [projects, setProjects] = useState([]);
 
   const noStyle = {
@@ -23,7 +24,8 @@ function UserProfileMainPanel(props) {
         )
         .then(
           data => {
-            setProjects(data);
+            setProjects(data.projects);
+            setUserUps(data.userUps);
           }
         )
     }
@@ -32,17 +34,9 @@ function UserProfileMainPanel(props) {
   function addProjects(element) {
     return (
       <ProjectDisplay
-        data = {{
-          projectName: element.projectName,
-          description: element.description,
-          tags: element.tags,
-          image: element.image,
-          video: element.video,
-          projectInfo: element.projectInfo,
-          projectlink: element.projectLink,
-          contributors: element.contributors
-        }}
+        data = {element}
         userID={user._id}
+        value={userUps.includes(element._id)}
         admin={user.isAdmin}
       />
     )

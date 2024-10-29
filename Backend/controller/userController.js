@@ -157,7 +157,13 @@ exports.editProfileImage = async (req,res) => {
 exports.profileProjects = async (req,res) => {
   const userID = req.query.userID;
   const projData = await Project.find({ contributors: { $in: [userID] } });
-  res.send(projData);
+  const userUps = await User.findOne(
+    { _id: userID },
+    "-_id projectUpvotes"
+  ).then((obj) => {
+    return obj.projectUpvotes;
+  });
+  res.json({'projects': projData, 'userUps': userUps})
 }
 
 exports.homeDataset = async (req,res) => {
