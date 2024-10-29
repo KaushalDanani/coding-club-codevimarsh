@@ -3,13 +3,40 @@ const User = require("../models/user.js");
 
 exports.getAllProject = async (req, res) => {
   try {
-    Project.find({}).then((projectinfo) => {
-      res.send(projectinfo);
+    const userID = req.body.uID;
+    const userUps = await User.findOne(
+      { _id: userID },
+      "-_id projectUpvotes"
+    ).then((obj) => {
+      return obj.projectUpvotes;
     });
+    const projectinfo = await Project.find();
+    
+    res.json({'projects': projectinfo, 'userUps': userUps})
   } catch (err) {
     res.status(500).json({ error: err.message });
   }
 };
+
+exports.updateUpvotes = async (req, res) => {
+  try{  
+    const userID = req.query.userID;
+    const Id = req.body.Id;
+    const state = req.body.state;
+    const count = req.body.count;
+
+    await Project.updateOne({ _id: Id }, { $inc: { upvotes: count } });
+
+    await User.updateOne(
+      {_id : userID},
+        state 
+          ? { $addToSet : { projectUpvotes : Id}}
+          : { $pull : { projectUpvotes : Id}}
+    )
+  } catch(err){
+    console.error(err);
+  }
+}
 
 exports.addProject = async (req, res) => {
   try {

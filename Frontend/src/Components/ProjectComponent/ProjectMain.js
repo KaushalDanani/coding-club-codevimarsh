@@ -15,9 +15,10 @@ export default function ProjectMain() {
 
   const [isLoadingProject, setIsLoadingProject] = useState(false);
   const [admin, setAdmin] = useState("");
-  const [userID, setUserID] = useState("");
+  const [userID, setUserID] = useState(null);
   const [changeImage, setChangeImage] = useState("true");
   const [Projectinfo, setProjectinfo] = useState([]);
+  const [userUps, setUserUps] = useState([]);
   const [userData, setUserData] = useState("");
   const [base64Img, setBase64Img] = useState("");
 
@@ -34,25 +35,32 @@ export default function ProjectMain() {
   }, [user]);
 
   const projedtDataFetch = async () => {
-    try {
-      const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/project`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
-      const data = await response.json();
-      setProjectinfo(data);
-      setIsLoadingProject(false);
-    } catch (err) {
-      console.error(err, err.response);
+    if(userID != null){
+      const reqBody = {
+        uID: userID 
+      }
+      try {
+        const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/project`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(reqBody),
+        });
+        const data = await response.json();
+        setProjectinfo(data.projects);
+        setUserUps(data.userUps);
+        setIsLoadingProject(false);
+      } catch (err) {
+        console.error(err, err.response);
+      }
     }
   }
 
   useEffect(() => {
       setIsLoadingProject(true);
       projedtDataFetch();
-  }, []);
+  }, [userID]);
 
   function deleteProjectFromList(id, msg) {
     const filterProjects = Projectinfo.filter((project) => project._id !== id);
@@ -132,6 +140,7 @@ export default function ProjectMain() {
                       admin={admin}
                       userID={userID}
                       team={proj.contributors}
+                      value={userUps.includes(proj._id)}
                       deleteProjectFromList={deleteProjectFromList}
                   />
               ))}

@@ -2,17 +2,22 @@ import Discussion_block from "./Discussion_block.js";
 import { useEffect, useState, React } from "react";
 // import {Link} from 'react-router-dom'
 // import "./Discussion_Forums.css"
+import useUser from "../../store/userContext.js";
 import ToastComponent from "../Toast/toastComponent.js";
 import ForumGeneratorSkeleton from "./ForumGeneratorSkeleton.js";
 
 function ForumGenerator(props) {
+  const { user, setUser } = useUser();
+
   const [ques, setQues] = useState(null);
   const [filteredQuestions, setFilteredQuestions] = useState(null)
   const [m, setM] = useState(new Map());
+  const [qUps, setQUps] = useState([]);
 
   const [toastVisible,setToastVisible] = useState(false);
   const [toastMessage,setToastMessage] = useState("");
   const [toastType,setToastType] = useState("");
+  const [userID, setUserID] = useState(null);
 
   useEffect(() => {
     if(props.search != "") {
@@ -24,30 +29,39 @@ function ForumGenerator(props) {
   }, [props.search])
 
   const fetchDiscussionData = async () => {
-    try {
-      const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/discussion`, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        }
-      })
-      const data = await response.json();
-      setQues(data.ques);
-      setFilteredQuestions(data.ques);
-      const mArray = data.mArray;
-      const map = new Map(mArray);
-      setM(map);
-
-    }
-    catch(err)
+    if(userID != null)
     {
-      console.error(err, err.response);
+      try {
+        const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/discussion?userID=${userID}`, {
+          method: 'POST',
+          headers: {
+              'Content-Type': 'application/json'
+          }
+        })
+        const data = await response.json();
+        setQues(data.ques);
+        setFilteredQuestions(data.ques);
+        const mArray = data.mArray;
+        const map = new Map(mArray);
+        setM(map);
+        setQUps(data.qUpArray);
+      }
+      catch(err)
+      {
+        console.error(err, err.response);
+      }
     }
   }
+    
+    useEffect(()=>{
+        if(user) {
+            setUserID(user._id);
+        }
+    },[])
 
   useEffect(() => {
       fetchDiscussionData();
-  }, []);
+  }, [userID]);
 
 
   function deleteQuestionFromList(key)
@@ -85,6 +99,9 @@ function ForumGenerator(props) {
               date={disc.askDate}
               _id={disc.asker}
               q_id={disc._id}
+              userID={userID}
+              up_count={disc.upvotes}
+              value={qUps.includes(disc._id)}
               deleteQuestionFromList={deleteQuestionFromList}
             />
         ))
@@ -102,6 +119,5 @@ function ForumGenerator(props) {
     </>
   );
 }
-
 
 export default ForumGenerator;

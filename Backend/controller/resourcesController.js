@@ -90,13 +90,13 @@ exports.delBook = async(req,res) => {
         const id = req.params.sub_id;
         const updatedbooks = req.body.updatedbooks;
   
-        console.log("Received request:");
-        console.log("ID:", id);
-        console.log("Updated books:", updatedbooks);
+        // console.log("Received request:");
+        // console.log("ID:", id);
+        // console.log("Updated books:", updatedbooks);
   
         const result = await Resource.updateOne({ _id: id }, { $set: { books: updatedbooks } });
         
-        console.log("Database update result:", result);
+        // console.log("Database update result:", result);
   
         if (result.nModified === 1) {
             return res.json({ message: 'books updated successfully' });
@@ -114,13 +114,13 @@ exports.delVideo = async(req,res) => {
         const id = req.params.sub_id;
         const updatedvideos = req.body.updatedvideos;
   
-        console.log("Received request:");
-        console.log("ID:", id);
-        console.log("Updated videos:", updatedvideos);
+        // console.log("Received request:");
+        // console.log("ID:", id);
+        // console.log("Updated videos:", updatedvideos);
   
         const result = await Resource.updateOne({ _id: id }, { $set: { videos: updatedvideos } });
         
-        console.log("Database update result:", result);
+        // console.log("Database update result:", result);
   
         if (result.nModified === 1) {
             return res.json({ message: 'videos updated successfully' });
@@ -138,13 +138,13 @@ exports.delNote = async(req,res) => {
         const id = req.params.sub_id;
         const updatedNotes = req.body.updatednotes;
   
-        console.log("Received request:");
-        console.log("ID:", id);
-        console.log("Updated Notes:", updatedNotes);
+        // console.log("Received request:");
+        // console.log("ID:", id);
+        // console.log("Updated Notes:", updatedNotes);
   
         const result = await Resource.updateOne({ _id: id }, { $set: { notes: updatedNotes } });
         
-        console.log("Database update result:", result);
+        // console.log("Database update result:", result);
   
         if (result.nModified === 1) {
             return res.json({ message: 'Notes updated successfully' });

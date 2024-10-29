@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import './ProjectDisplay.css'
 import TechTag from "../Tags/TechTag.js";
+import Upvote from "../DiscussionDetails/upvote.js";
 
 function ProjectDisplay(props) {
     
@@ -69,7 +70,7 @@ function ProjectDisplay(props) {
             const conf = window.confirm('Are you sure you want to delete Project?');
             if(conf)
             {
-                console.log(props.data._id);
+                // console.log(props.data._id);
                 const deleteProjectData = {
                     projectCollaborationCardId: props.data._id
                 }
@@ -200,8 +201,11 @@ function ProjectDisplay(props) {
                 </div> : null }
 
                 <div className="projbtn">
-                    <button className="projdispbutton"  onClick={() => setExpand(!expand)}> {expand ? 'Show More' : 'Show Less'}</button>
-                    <button id={`btnname${props.data.projectName}dlt`} className="projdispbutton" onClick={() => {delete_project()}}>Delete</button>
+                    <Upvote className="projdispbutton" value={props.value} Id={props.data._id} type='p' count={props.data.upvotes} user={props.userID} />
+                    <div>
+                        <button className="projdispbutton"  onClick={() => setExpand(!expand)}> {expand ? 'Show More' : 'Show Less'}</button>
+                        <button id={`btnname${props.data.projectName}dlt`} className="projdispbutton" onClick={() => {delete_project()}}>Delete</button>
+                    </div>
                 </div>
             </div>
         </div>
