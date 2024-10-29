@@ -4,19 +4,27 @@ const Reply = require('../models/reply.js')
 const { ObjectId } = require('mongodb');
 
 exports.getAllDiscussions = async (req, resp) => {
-    try {
+  try {
+      const userID = req.query.userID;
       let ques = await Question.find();
       let m = new Map();
   
+      const Q_upvotes = await User.findOne(
+        { _id: userID },
+        "-_id questionUpvotes"
+      ).then((obj) => {
+        return obj.questionUpvotes;
+      });
+
       for (const element of ques) {
         let U = await User.findById(element.asker, "username profileImg");
         m.set(element._id, U);
-      }
-        
+      }  
       const mArray = Array.from(m);
   
-      resp.json({'ques' : ques, 'mArray' : mArray});
+      resp.json({'ques' : ques, 'mArray' : mArray, 'qUpArray' : Q_upvotes});
     } catch (error) {
+      console.log(error)
       resp.status(500).json({ error: "An error occurred" });
     }
 }
@@ -25,90 +33,63 @@ exports.getQuestionData = async (req, resp) => {
     try {
       const q_id = req.query.q_id;
       const userID = req.query.userID;
-  
       const replierMap = new Map();
-      const upvoteMap = new Map();
-              
-  
+
       const Q_data = await Question.findById(q_id);
+      
       const Asker = await User.findById(Q_data.asker, "username profileImg");
-      const Q_upvote = await User.findOne(
+      
+      const upvoteData = await User.findOne(
         { _id: userID },
-        "-_id questionUpvotes"
+        "-_id questionUpvotes repliesUpvotes"
       ).then((obj) => {
-        return obj.questionUpvotes.includes(q_id);
+        return [obj.questionUpvotes.includes(q_id), obj.repliesUpvotes];
       });
   
       const R_data = await Reply.find({ _id: { $in: Q_data.replies } });
-      const R_upvotes = await User.findOne(
-        { _id: userID },
-        "-_id repliesUpvotes"
-      ).then((obj) => {
-        return obj.repliesUpvotes;
-      });
-      for (const element of R_data) {
-        let bool = R_upvotes.includes(element._id);
-        upvoteMap.set(element._id, bool);
-      }
-      const uArr = Array.from(upvoteMap);
-  
+
       for (const element of R_data) {
         let U = await User.findById(element.replier, "username profileImg");
         replierMap.set(element._id, U);
       }
       const rArr = Array.from(replierMap);
-              
-  
-      resp.send([Q_data, Asker, Q_upvote, R_data, rArr, uArr]);
+                
+      resp.send([Q_data, Asker, upvoteData[0], R_data, rArr, upvoteData[1]]);
     } catch (err) {
       console.error(err);
     }
 }
 
 exports.updateUpvotes = async (req, resp) => {
+  try{
     const userID = req.query.userID;
     const type = req.body.type;
     const Id = req.body.Id;
     const state = req.body.state;
-    const count = req.body.count;                
-  
-    const ur = await User.findById(userID, "-_id repliesUpvotes").then(
-      (resp) => {
-        return resp.repliesUpvotes;
-    });
-    const uq = await User.findById(userID, "-_id questionUpvotes").then(
-      (resp) => {
-        return resp.questionUpvotes;
-      }
-    );
+    const count = req.body.count;                 
   
     if (type === "r") {
-      const updated = await Reply.updateOne({ _id: Id }, { upvotes: count });      
-      if (state) {
-        ur.push(Id);
-      } else {        
-        let ind = ur.indexOf(Id);
-        ur.splice(ind, 1);        
-      }
-      const UserUps = await User.updateOne(
-        { _id: userID },
-        { repliesUpvotes: ur }
-      );      
+      await Reply.updateOne({ _id: Id }, { $inc: { upvotes: count } });
+      await User.updateOne(
+        {_id : userID},
+        state 
+          ? { $addToSet : {repliesUpvotes : Id}}
+          : { $pull : { repliesUpvotes : Id}}
+      )     
     }
   
-    if (type === "q") {      
-      const updated = await Question.updateOne({ _id: Id }, { upvotes: count });      
-      if (state) {
-        uq.push(Id);        
-      } else {                
-        let ind = uq.indexOf(Id);
-        uq.splice(ind, 1);        
-      }
-      const UserUps = await User.updateOne(
+    if (type === "q") {    
+      await Question.updateOne({ _id: Id }, { $inc: { upvotes: count } });
+      await User.updateOne(
         { _id: userID },
-        { questionUpvotes: uq }
-      );      
+        state
+          ? { $addToSet: { questionUpvotes: Id } }  // Adds `Id` only if it doesn't already exist in the array
+          : { $pull: { questionUpvotes: Id } }      // Removes `Id` if it exists in the array
+      );            
     }
+  } catch(error){
+      console.error(error)
+  }
 }
 
 exports.addQuestion = function (req, res) {

@@ -29,9 +29,9 @@ exports.search = async (req,res) => {
 
 exports.editSkills = async (req,res) => {
     const skills = req.body.userSkills;
-    console.log(skills);
+    // console.log(skills);
   const userID = req.query.userID;
-  console.log(userID);
+  // console.log(userID);
 
   try {
     const user = await User.findOneAndUpdate(
@@ -42,7 +42,7 @@ exports.editSkills = async (req,res) => {
 
     res.send(user);
   } catch (err) {
-    console.log("SKILLS ERROR:",err);
+     console.log("SKILLS ERROR:",err);
   }
 }
 
@@ -121,7 +121,7 @@ exports.editProfilePassword = async (req,res) => {
         const newPass = req.password;
         const userID = req.query.userID;
 
-        console.log(newPass);
+        // console.log(newPass);
     
         const updatedUser = await User.findOneAndUpdate(
           { _id: userID },

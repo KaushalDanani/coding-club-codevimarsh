@@ -220,7 +220,7 @@ function EditUserProfile() {
   }
 
   const sendDataToBackend = (data) => {
-    console.log("SKILLS: ",data)
+    // console.log("SKILLS: ",data)
     fetch(`${process.env.REACT_APP_BACKEND_URL}/user/editSkills/?userID=${userID}`, {
       method: "POST",
       headers: {
@@ -258,7 +258,7 @@ function EditUserProfile() {
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log("personal", data);
+        // console.log("personal", data);
 
         setToastVisible(true);
         setToastMessage("Profile Updated Successfully!!");
