@@ -29,7 +29,10 @@ function ForumGenerator() {
           question.tags.toString().toLowerCase().includes(searchValue.toLowerCase()));
 
         setFilteredQuestions(filterQuestionsRelativeTags);
-      }
+    }
+    else
+      setFilteredQuestions(ques);
+    
   }, [searchValue])
 
   const handleSortOperation = () => {
@@ -104,7 +107,7 @@ function ForumGenerator() {
         </Link>
         <div className='sort-search-operations'>
           <button className='SortByUpvotesBtn' onClick={handleSortOperation}>Sort by Upvotes</button>
-          <SearchBar sendBackSearchValue={handleSearch} />
+          <SearchBar sendBackSearchValue={handleSearch} type='discussion' />
         </div>
       </div>
 

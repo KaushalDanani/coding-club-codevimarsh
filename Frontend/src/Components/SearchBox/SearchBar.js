@@ -1,7 +1,7 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import './SearchBar.css'
 
-const SearchBar = ({ sendBackSearchValue }) => {
+const SearchBar = ({ sendBackSearchValue, type }) => {
   const [searchValue, setSearchValue] = useState("");
   const [searchList, setSearchList] = useState([]);
   const [suggestions, setSuggestions] = useState();
@@ -9,7 +9,7 @@ const SearchBar = ({ sendBackSearchValue }) => {
 
   const handleFocus = async () => {
     if(searchList.length == 0) {
-      const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/discussion/searchList`, {
+      const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/${type}/searchList`, {
         method: "GET",
         headers: {
             'Content-Type': 'application/json'
