@@ -111,6 +111,30 @@
     margin-right: 0.8vw;
 }
 
+.sort-search-operations {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.SortByUpvotesBtn {
+    padding: 0.5rem 1.4rem 0.5rem 1.4rem;
+    letter-spacing: 1px;
+    font-size: 0.9rem;
+    height: fit-content;
+    width: fit-content;
+    color: white;
+    /* border: 2px solid white; */
+    background-color: rgb(253, 138, 22);
+    align-self: flex-end;
+    border: none;
+    border-radius: 8px;
+}
+
+.SortByUpvotesBtn:hover {
+    background-color: rgb(189, 95, 0);
+}
+
 .upvote-tags-container {
     display: flex;
     gap: 1rem;

@@ -1,12 +1,13 @@
 import Discussion_block from "./Discussion_block.js";
 import { useEffect, useState, React } from "react";
-// import {Link} from 'react-router-dom'
-// import "./Discussion_Forums.css"
+import { Link } from 'react-router-dom'
+import "./Discussion_Forums.css"
 import useUser from "../../store/userContext.js";
 import ToastComponent from "../Toast/toastComponent.js";
 import ForumGeneratorSkeleton from "./ForumGeneratorSkeleton.js";
+import SearchBar from "../SearchBox/SearchBar.js";
 
-function ForumGenerator(props) {
+function ForumGenerator() {
   const { user, setUser } = useUser();
 
   const [ques, setQues] = useState(null);
@@ -19,14 +20,29 @@ function ForumGenerator(props) {
   const [toastType,setToastType] = useState("");
   const [userID, setUserID] = useState(null);
 
+  const [searchValue, setSearchValue] = useState("")
+	const [changeImage, setChangeImage] = useState('true');
+
   useEffect(() => {
-    if(props.search != "") {
+    if(searchValue != "") {
         const filterQuestionsRelativeTags = ques.filter((question) =>
-          question.tags.toString().toLowerCase().includes(props.search.toLowerCase()));
+          question.tags.toString().toLowerCase().includes(searchValue.toLowerCase()));
 
         setFilteredQuestions(filterQuestionsRelativeTags);
       }
-  }, [props.search])
+  }, [searchValue])
+
+  const handleSortOperation = () => {
+    if(ques.length != 0)
+    {
+      const sortByUpvotesQuestionList = [...filteredQuestions].sort((a,b) => b.upvotes - a.upvotes);
+      setFilteredQuestions(sortByUpvotesQuestionList);
+    }
+  }
+
+  const handleSearch = (searchVal) => {
+    setSearchValue(searchVal);
+  }
 
   const fetchDiscussionData = async () => {
     if(userID != null)
@@ -39,7 +55,7 @@ function ForumGenerator(props) {
           }
         })
         const data = await response.json();
-        setQues(data.ques);
+        setQues(data.ques.reverse());
         setFilteredQuestions(data.ques);
         const mArray = data.mArray;
         const map = new Map(mArray);
@@ -53,11 +69,11 @@ function ForumGenerator(props) {
     }
   }
     
-    useEffect(()=>{
-        if(user) {
-            setUserID(user._id);
-        }
-    },[])
+  useEffect(()=>{
+      if(user) {
+          setUserID(user._id);
+      }
+  },[])
 
   useEffect(() => {
       fetchDiscussionData();
@@ -78,8 +94,19 @@ function ForumGenerator(props) {
 
   return (
     <>
-  
       {toastVisible ? <ToastComponent message={toastMessage} type={toastType} /> : null}
+
+      <div className='operationsOnDiscussionData'>
+        <Link to={'/discussion/addQuestion'}> 
+          <button className={changeImage ? 'ProjectCollaborationBtn changeAddImage' : 'ProjectCollaborationBtn'} 
+          onMouseOut={() => setChangeImage(true)}
+          onMouseOver={()=> setChangeImage(false)}> Add </button> 
+        </Link>
+        <div className='sort-search-operations'>
+          <button className='SortByUpvotesBtn' onClick={handleSortOperation}>Sort by Upvotes</button>
+          <SearchBar sendBackSearchValue={handleSearch} />
+        </div>
+      </div>
 
       <hr style={{width: '85%', height: '2.5px', backgroundColor: 'white', margin: '0px 0px 2.5vh'}}/>
 			
