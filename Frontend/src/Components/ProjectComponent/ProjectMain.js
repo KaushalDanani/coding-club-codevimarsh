@@ -1,14 +1,14 @@
-import Navbar_after_login from "../NavbarAfterLogin/Navbar_after_login.js";
-import ProjectDisplay from "./ProjectDisplay.js";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-// import Filter_bar from "../ProjectLibrary/Filter_bar_Project.js";
 import "./ProjectMain.css";
-import MyfooterAfterLogin from "../FooterAfterLogin/MyfooterAfterLogin.js";
+import Navbar_after_login from "../NavbarAfterLogin/Navbar_after_login.js";
+import ProjectDisplay from "./ProjectDisplay.js";
+// import Filter_bar from "../ProjectLibrary/Filter_bar_Project.js";
 import useUser from "../../store/userContext.js";
 import ToastComponent from "../Toast/toastComponent.js";
 import ProjectSkeleton from "./ProjectSkeleton.js";
 import SearchBar from "../SearchBox/SearchBar.js";
+import Myfooter from "../Footer/Myfooter.js";
 
 export default function ProjectMain() {
   const { user, setUser } = useUser();
@@ -180,7 +180,7 @@ export default function ProjectMain() {
       </>
     }
 
-      <MyfooterAfterLogin />
+      <Myfooter />
     </>
   );
 }

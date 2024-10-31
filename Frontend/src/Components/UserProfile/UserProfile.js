@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import "./UserProfile.css";
 import UserProfileLeftPanel from "./UserProfileLeftPanel.js";
 import UserProfileMainPanel from "./UserProfileMainPanel.js";
 import Navbar_after_login from "../NavbarAfterLogin/Navbar_after_login.js";
-import MyfooterAfterLogin from "../FooterAfterLogin/MyfooterAfterLogin.js";
-import { useLocation, useNavigate } from "react-router-dom";
 import HashLoader from "react-spinners/HashLoader.js";
 import useUser from "../../store/userContext.js";
 import ToastComponent from "../Toast/toastComponent.js";
+import Myfooter from "../Footer/Myfooter.js";
 
 function UserProfile() {
 
@@ -111,7 +111,8 @@ function UserProfile() {
           </div>
         </div>
       </div>
-      <MyfooterAfterLogin />
+
+      <Myfooter />
     </>
   );
 }

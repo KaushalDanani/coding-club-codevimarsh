@@ -96,7 +96,6 @@
 }
 
 .displayAllProjectsContainer {
-    margin-top: 3rem;
     max-height: 70rem;
     overflow-y: auto;
 }

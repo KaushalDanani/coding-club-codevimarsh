@@ -1,14 +1,10 @@
 import React from 'react'
 import './Discussion_Forums.css'
 import Navbar_after_login from '../NavbarAfterLogin/Navbar_after_login.js'
-import { Link } from 'react-router-dom';
 import { useEffect, useState } from "react";
 import ForumGenerator from './ForumGenerator.js'
-import ForumGeneratorSkeleton from './ForumGeneratorSkeleton.js';
-import MyfooterAfterLogin from '../FooterAfterLogin/MyfooterAfterLogin.js'
-import HashLoader from 'react-spinners/HashLoader.js'
 import useUser from '../../store/userContext.js';
-import SearchBar from '../SearchBox/SearchBar.js';
+import Myfooter from '../Footer/Myfooter.js';
 
 export default function Forums() {
   const { user, setUser } = useUser();
@@ -36,7 +32,8 @@ export default function Forums() {
       
       <ForumGenerator />
     </div>
-    <MyfooterAfterLogin />
+    
+    <Myfooter />
   </>
   )
 }
