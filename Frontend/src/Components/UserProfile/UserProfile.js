@@ -17,7 +17,6 @@ function UserProfile() {
   const location = useLocation();
   const [userID, setUserID] = useState("");
   const [base64Img, setBase64Img] = useState('');
-  const [searchValue, setSearchValue] = useState("");
   const [userData, setUserData] = useState([]);
   const [isLoadingProfile, setIsLoadingProfile] = useState(false);
 
@@ -26,7 +25,7 @@ function UserProfile() {
   const [toastType, setToastType] = useState("");
 
   useEffect(() => {
-    if (user != null) {
+    if (user) {
       setUserID(user._id);
       setBase64Img(`data:image/png;base64,${user.profileImg}`);
       setUserData(user);
@@ -34,30 +33,31 @@ function UserProfile() {
   }, [user])
 
   const searchParams = new URLSearchParams(location.search);
-  const visitID = searchParams.get('visitID');
+  const visitID = searchParams.get('visitID') ?? null;
 
   useEffect(() => {
 
-    (async () => {
-      setIsLoadingProfile(true);
-      try {
-        if (visitID === null || visitID === userID) {
-          const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/user/profile/?userID=${userID}`)
-          const data = await response.json();
-          setUserData(data[0]);
+    if(userID) {
+      (async () => {
+        setIsLoadingProfile(true);
+        try {
+          if (visitID === null || visitID === userID) {
+            const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/user/profile/?userID=${userID}`)
+            const data = await response.json();
+            setUserData(data[0]);
+          }
+          else {
+            const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/user/profile/?userID=${visitID}`)
+            const data = await response.json();
+            setUserData(data[0]);
+          }
         }
-        else {
-          const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/user/profile/?userID=${visitID}`)
-          const data = await response.json();
-          setUserData(data[0]);
-          console.log(data[0]);
+        catch (err) {
+          console.error(err, err.response);
         }
-      }
-      catch (err) {
-        console.error(err, err.response);
-      }
-      setIsLoadingProfile(false);
-    })();
+        setIsLoadingProfile(false);
+      })();
+    }
   }, [visitID, userID]);
 
 

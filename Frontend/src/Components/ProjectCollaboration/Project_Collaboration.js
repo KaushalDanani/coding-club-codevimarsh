@@ -107,10 +107,9 @@ function Project_Collaboration() {
     if(collaborationData.size !== 0)
     {
       return(collaborationData.map((itemData) => (
-        // console.log("Helelo :  "+map.get(itemData._id))
         <ProjectCollaborationCard 
           key={itemData._id}
-          id={itemData._id}
+          projectCollaborationId={itemData._id}
           data={itemData} userDetails={map.get(itemData._id)}
           deleteCollabCard={deleteCollabCard}
         />

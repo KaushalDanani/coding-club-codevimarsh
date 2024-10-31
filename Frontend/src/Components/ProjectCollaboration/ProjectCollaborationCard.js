@@ -48,7 +48,7 @@ function ProjectCollaborationCard(props) {
           "Content-Type": "application/json",
         },
       }).then(() => {
-        props.deleteCollabCard(props.id);
+        props.deleteCollabCard(props.projectCollaborationId);
       });
     }
   }
@@ -71,7 +71,7 @@ function ProjectCollaborationCard(props) {
         </div>
       ) : null}
 
-      <div className="project_c_card">
+      <div className="project_c_card" key={props.projectCollaborationId}>
         <div className="avtar">
           <Link to={`/profile?visitID=${props.data.collaborationLeader}`} href={`profile?visitID=${props.data.collaborationLeader}`}>
             <img src={base64Img} alt="Project Image" loading="lazy" />{" "}
@@ -106,8 +106,8 @@ function ProjectCollaborationCard(props) {
           <div className="project_coll_tags">
             <strong> Project Tags : </strong>
             <div style={{ display: "inline" }}>
-              {props.data.collaborationTags.map((tagname) => (
-                <TechTag tagname={tagname} />
+              {props.data.collaborationTags.map((tagname, idx) => (
+                <TechTag key={idx} tagname={tagname} />
               ))}
             </div>
           </div>

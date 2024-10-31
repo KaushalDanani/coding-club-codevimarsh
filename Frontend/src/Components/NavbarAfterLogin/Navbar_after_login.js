@@ -6,16 +6,14 @@ import "./Navbar_after_login.css";
 import useUser from '../../store/userContext.js';
 
 function Navbar_after_login(props) {
-    const { user, setUser } = useUser();
-    const [userData,setUserData] = useState('');
-    const [base64Img,setBase64Img] = useState(props.imgData);
+  const { user, setUser } = useUser();
+  // const [userData,setUserData] = useState('');
+  const [base64Img,setBase64Img] = useState(props.imgData);
 
-    // console.log("📢📢📢📢📢  "+props.imgData);
-
-    useEffect(() => {
-      if(props.imgData != undefined)
-        setBase64Img(props.imgData);
-    }, [props.imgData])
+  useEffect(() => {
+    if(props.imgData != undefined)
+      setBase64Img(props.imgData);
+  }, [props.imgData])
 
     // useEffect( () => {
     //     fetch('/user/profileImg')
@@ -27,26 +25,20 @@ function Navbar_after_login(props) {
     //     });
     // },[])
 
-    const removeUserAuth = async () => {
-          
-          setUser(null);
-          await fetch(`${process.env.REACT_APP_BACKEND_URL}/user/remove/auth`, {
-            method: "GET",
-            headers: {
-              'Content-Type': 'application/json'
-            },
-            credentials: 'include'
-          })
-            // .then(response => response.json())
-            // .then(data => {
-            //   // window.location.reload();
-            // });
-          // window.location.reload();
-      }
+  const removeUserAuth = async () => {
+        
+    setUser(null);
+    await fetch(`${process.env.REACT_APP_BACKEND_URL}/user/remove/auth`, {
+      method: "GET",
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      credentials: 'include'
+    })
+  }
 
-    // const userID= props.userID;
-    const [mobileMenu, setMobileMenu] = useState('false');
-
+  // const userID= props.userID;
+  const [mobileMenu, setMobileMenu] = useState('false');
     
   return (
     <>
