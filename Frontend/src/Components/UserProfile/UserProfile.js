@@ -100,7 +100,7 @@ function UserProfile() {
       <div className="userProfile">
         <div className="searchBarDiv">
           <input id='searchUser' type="text" placeholder="search username"></input>
-          <button onClick={searchUser}></button>
+          <button aria-label="SearchIcon" onClick={searchUser}></button>
         </div>
         <div className="UPouterFrame">
           <div>

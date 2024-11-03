@@ -51,12 +51,12 @@ function Navbar_after_login(props) {
                     
                     <ul className={mobileMenu ? "horizontal_bar" : "horizontal_bar mobile-menu-icon"}>
                         <li className={mobileMenu ? "liComponent" : "mobile-li"} id="home"><NavLink to={`/`} className={({ isActive }) => (isActive ? "activeNavLogo" : "")}>CodeVimarsh</NavLink></li>
-                        <NavLink to={`/contest`} className={({ isActive }) => (isActive ? "activeNav" : "liComponent")}>CONTEST</NavLink>
-                        <NavLink to={`/resources`} className={({ isActive }) => (isActive ? "activeNav" : "liComponent")}>RESOURCES</NavLink>
+                        <li><NavLink to={`/contest`} className={({ isActive }) => (isActive ? "activeNav" : "liComponent")}>CONTEST</NavLink></li>
+                        <li><NavLink to={`/resources`} className={({ isActive }) => (isActive ? "activeNav" : "liComponent")}>RESOURCES</NavLink></li>
                         {/* <li className={mobileMenu ? "liComponent" : "mobile-li"} id="articles/news"><Link to={`/article&news`}>ARTICLES/NEWS</Link></li> */}
-                        <NavLink to={`/discussion`} className={({ isActive }) => (isActive ? "activeNav" : "liComponent")}>DISCUSSION</NavLink>
-                        <NavLink to={`/projectcollaboration`} className={({ isActive }) => (isActive ? "activeNav" : "liComponent")}>PROJECT COLLABORATION</NavLink>
-                        <NavLink to={`/project`} className={({ isActive }) => (isActive ? "activeNav" : "liComponent")}>PROJECTS</NavLink>
+                        <li><NavLink to={`/discussion`} className={({ isActive }) => (isActive ? "activeNav" : "liComponent")}>DISCUSSION</NavLink></li>
+                        <li><NavLink to={`/projectcollaboration`} className={({ isActive }) => (isActive ? "activeNav" : "liComponent")}>PROJECT COLLABORATION</NavLink></li>
+                        <li><NavLink to={`/project`} className={({ isActive }) => (isActive ? "activeNav" : "liComponent")}>PROJECTS</NavLink></li>
                         {/* <li className={mobileMenu ? "liComponent" : "mobile-li"} id="contact"><Link>CONTACT US</Link></li> */}
                     </ul>
                     <ul className={mobileMenu ? "horizontal_bar" : "horizontal_bar mobile-menu-icon"}>
@@ -67,7 +67,7 @@ function Navbar_after_login(props) {
                             <Link to={`/`}>
                               <div className='signout-container' onClick={removeUserAuth}>
                                 <div className='logoutNavbar' title='Signout'> 
-                                  <img src="/images/logout.png" style={{width: '2.4rem'}} alt="Signout" loading='lazy'></img>
+                                  <img src="/images/logout.png" style={{width: '2.4rem'}} alt="SignoutIcon" loading='lazy'></img>
                                 </div>
                                 <div className='signout-text'>Signout</div>
                               </div>

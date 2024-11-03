@@ -63,6 +63,7 @@ function UserProfileMainPanel(props) {
               <span>
                 <a
                   href={`https://mail.google.com/mail/?view=cm&to=${user.email}`}
+                  aria-label="EmailIcon"
                   target="_blank"
                 >
                   <svg
@@ -81,6 +82,7 @@ function UserProfileMainPanel(props) {
               <span style={user.linkedin == "" ? noStyle : null}>
                 <a
                   href={user.linkedin}
+                  aria-label="LinkedInIcon"
                   target="_blank"
                 >
                   <svg
@@ -99,8 +101,8 @@ function UserProfileMainPanel(props) {
               <span style={user.leetcode == "" ? noStyle : null}>
                 <a
                   href={user.leetcode}
+                  aria-label="LeetcodeIcon"
                   target="_blank"
-
                 >
                   <svg
                     style={{ color: "white" }}
@@ -122,6 +124,7 @@ function UserProfileMainPanel(props) {
               <span style={user.codechef == "" ? noStyle : null}>
                 <a
                   href={user.codechef}
+                  aria-label="CodechefIcon"
                   target="_blank"
                 >
                   <svg
