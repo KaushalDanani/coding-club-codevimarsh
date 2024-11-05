@@ -15,7 +15,7 @@ function Discussion_block(props) {
   const [toastVisible, setToastVisible] = useState(false);
   const [toastMessage, setToastMessage] = useState("");
   const [toastType, setToastType] = useState("");
-  const [isAdmin, setAdminVal] = useState(false)
+  // const [isAdmin, setAdminVal] = useState(false)
   const [userID,setUserID] = useState()
   const [delCheck, setDelCheck] = useState(false)
 
@@ -46,9 +46,9 @@ function Discussion_block(props) {
 
 
   useEffect(()=>{
-    setAdminVal(user.isAdmin);
+    // setAdminVal(user.isAdmin);
     setUserID(user._id);
-    setDelCheck(userID === props.asker_id || isAdmin===true);
+    setDelCheck(user._id === props.asker_id || user.isAdmin===true);
   },[user])
 
   function deleteQue(q_id) {
