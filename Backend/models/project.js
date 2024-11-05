@@ -11,7 +11,10 @@ const projectSchema = new mongoose.Schema({
       projectInfo: String,
       image: String,
       video: String,
-      upvotes: Number,
+      upvotes: {
+            type: Number,
+            default: 0
+      }
 });
 
 module.exports = mongoose.model("project", projectSchema);

@@ -3,7 +3,7 @@ import Skeleton from "react-loading-skeleton";
 
 function ProjectSkeleton() {
   return Array(4).fill(0).map((projectCard, index) => (
-    <div className="projectmain" id="index">
+    <div className="projectmain" key={index}>
       <div className="projdisplay">
         <div className="projdispheader">
           <div>

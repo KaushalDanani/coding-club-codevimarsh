@@ -90,9 +90,7 @@
     font-size: 0.9rem;
     position: relative;
     /* bottom: 0vh; */
-    height: -moz-fit-content;
     height: fit-content;
-    width: -moz-fit-content;
     width: fit-content;
     color: white;
     /* padding: 1.1vh 1.4vw; */

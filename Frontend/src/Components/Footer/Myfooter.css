@@ -1,11 +1,5 @@
 /* @import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@700&family=Poppins:wght@300;600&display=swap'); */
 
-*{
-    margin: 0%;
-    padding: 0%;
-    box-sizing: border-box;
-}
-
 footer{
     font-family: 'Poppins', sans-serif;
     background-color: rgb(30, 30, 31);

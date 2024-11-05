@@ -3,7 +3,7 @@ import Skeleton from 'react-loading-skeleton'
 
 function ProjectCollaborationCardSkeleton() {
   return Array(4).fill(0).map((projectCollaborationCard, index) => (
-    <div className="project_c_card" id='index'>
+    <div className="project_c_card" key={index}>
         <div className="avtar">
           <Skeleton circle width={65} height={65} />
         </div>

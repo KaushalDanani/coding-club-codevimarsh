@@ -18,6 +18,17 @@ exports.getAllProject = async (req, res) => {
   }
 };
 
+exports.getAllProjectsTags = async (req, res) => {
+  const ProjectTags = await Project.find({}, 'tags');
+  // Combination of flat() and map() function
+  // flat(): It willcreates a new array with all nested sub-arrays concatenated into it
+  const listOfTags = ProjectTags.flatMap((project) => project.tags);
+
+  const arrayOfTags = [...new Set(listOfTags)];
+
+  res.send({tagsList: arrayOfTags});
+}
+
 exports.updateUpvotes = async (req, res) => {
   try{  
     const userID = req.query.userID;

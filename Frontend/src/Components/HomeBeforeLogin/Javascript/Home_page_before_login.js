@@ -1,6 +1,6 @@
 import React, { lazy, Suspense, useEffect, useState } from "react";
 import "../CSS/Home_page_before_login.css";
-import { Typewriter, Cursor } from "react-simple-typewriter";
+import { Typewriter } from "react-simple-typewriter";
 import { Link, Navigate, useNavigate } from "react-router-dom";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
@@ -12,7 +12,7 @@ import HashLoader from "react-spinners/HashLoader.js";
 import Navbar_before_login from "./Navbar_before_login.js";
 
 // import founderinfo from "./Founderinfo.js";
-const Myfooter = lazy(() => import("./Myfooter.js"))
+const Myfooter = lazy(() => import("../../Footer/Myfooter.js"))
 // import Myfooter from "./Myfooter.js";
 
 const Foundercard = lazy(() => import("./Foundercard.js"))

@@ -31,7 +31,7 @@ function Discussion_block(props) {
     if(tag.length!=1 || tag[0]!="")
     {
       return(
-          tag.map((tag) => <TechTag tagname = {tag} />)
+          tag.map((tag, idx) => <TechTag key={idx} tagname = {tag} />)
       )
     }
   }
@@ -98,8 +98,10 @@ function Discussion_block(props) {
             </div>
           </Link>
             <div id="ques_tags">
-              <Upvote value={props.value} Id={props.q_id} type='q' count={props.up_count} user={userID}/>
-              <div className="all_que_tag">{getTag()}</div>
+              <div className='upvote-tags-container'>
+                <Upvote value={props.value} Id={props.q_id} type='q' count={props.up_count} user={userID}/>
+                <div className="all_que_tag">{getTag()}</div>
+              </div>
               <div id='q_date'>{qDate}</div>
             </div>
         </div>

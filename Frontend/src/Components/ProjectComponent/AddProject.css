@@ -31,16 +31,12 @@
 }
 
 .scroll-container {
-    overflow-y: scroll;
-    scrollbar-width: thin;
-    scrollbar-color: rgb(253, 138, 22) #1e1e1e;
+    overflow-y: auto;
 }
-
-.scroll-container::-webkit-scrollbar {
-    width: 5px;
-    background-color: #1e1e1e;
+.scroll-container::-webkit-scrollbar-track {
+    background: transparent;
 }
 .scroll-container::-webkit-scrollbar-thumb {
     background-color: rgb(253, 138, 22);
-    border-radius: 20px;
+    border-radius: 15px;
 }

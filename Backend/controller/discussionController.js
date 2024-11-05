@@ -92,6 +92,17 @@ exports.updateUpvotes = async (req, resp) => {
   }
 }
 
+exports.getAllTags = async (req, res) => {
+  const QuestionTags = await Question.find({}, 'tags');
+  // Combination of flat() and map() function
+  // flat(): It willcreates a new array with all nested sub-arrays concatenated into it
+  const listOfTags = QuestionTags.flatMap((que) => que.tags);
+
+  const arrayOfTags = [...new Set(listOfTags)];
+  // console.log(arrayOfTags)
+  res.send({tagsList: arrayOfTags});
+}
+
 exports.addQuestion = function (req, res) {
   const newquestion = new Question({
     asker: new ObjectId(req.body.questionasker),
