@@ -10,6 +10,7 @@ import Navbar_after_login from "../NavbarAfterLogin/Navbar_after_login.js";
 import useUser from "../../store/userContext.js";
 import MyfooterAfterLogin from "../FooterAfterLogin/MyfooterAfterLogin.js";
 import HashLoader from "react-spinners/HashLoader.js";
+import PhotoGallery from "../PhotoGallery/PhotoGallery.js"
 
 function LoginHomePage() {
   const api_key = process.env.REACT_APP_QUOTE_API_KEY;
@@ -173,6 +174,7 @@ function LoginHomePage() {
         {/* <NewUpdates title={"Articles"} userID={userID} news={articlesData} isArticleSelected={true}/>
         <NewUpdates title={"News"} userID={userID} news={newsData} isArticleSelected={false}/> */}
       </div>
+      <PhotoGallery/>
       <MyfooterAfterLogin />
     </>
   )

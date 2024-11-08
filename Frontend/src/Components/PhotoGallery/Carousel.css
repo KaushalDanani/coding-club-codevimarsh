@@ -1,0 +1,26 @@
+.carousel {
+  display: flex;
+  justify-content: center;
+  margin: 35px auto 20px;
+}
+
+.image-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 images per row */
+  gap: 40px;
+  padding: 40px;
+  /* justify-content: space-between; */
+  
+}
+
+@media (max-width: 1300px) {
+  .image-grid {
+    grid-template-columns: repeat(2, 1fr); /* Responsive for smaller screens */
+  }
+}
+
+@media (max-width: 700px) {
+  .image-grid {
+    grid-template-columns: repeat(1, 1fr); /* Responsive for smaller screens */
+  }
+}

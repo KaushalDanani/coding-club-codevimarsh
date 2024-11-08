@@ -1,0 +1,18 @@
+.gallery-container {
+  text-align: center;
+  margin-top: 20px;
+  background-color: #ffefd5; /*Light orange background*/
+  padding: 20px;
+  border-radius: 10px;
+  background-image: url('https://www.toptal.com/designers/subtlepatterns/uploads/summer-waves.png'); /* Orange textured background */
+  background-size: cover;
+  background-position: center;
+}
+
+.gallery-title {
+  font-size: 2.5rem;
+  /* color: white; */
+  color: #222;
+  font-weight: 700;
+  font-family: ;
+}
