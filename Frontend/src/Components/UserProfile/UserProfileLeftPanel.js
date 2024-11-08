@@ -9,6 +9,7 @@ function Tilt(props) {
   const { options, ...rest } = props;
   const tilt = useRef(null);
 
+  
   useEffect(() => {
     VanillaTilt.init(tilt.current, options);
   }, [options]);
@@ -18,18 +19,24 @@ function Tilt(props) {
 
 function UserProfileLeftPanel(props) {
   
-  const { user, setUser } = useUser();
+  const [user, SetUser] = useState(props.userData);
   const [showEdit, setShowEdit] = useState(false);
-  const base64Img = `data:image/png;base64,${user.profileImg}`;
+  const [base64Img, setBase64Img] = useState("");
   
+  useEffect(() => {
+    if(props.userData){
+      SetUser(props.userData);
+      setBase64Img(`data:image/png;base64,${props.userData.profileImg}`)
+    }
+  },[props.userData]);
+
+
   function EditDP() {
     setShowEdit(!showEdit);
   }
 
   function displayTags(tagElement){
-      return <UserProfileSkillTagElement 
-      tag = {tagElement}
-      />
+      return <UserProfileSkillTagElement key={user._id+tagElement} tag={tagElement} />
   }
 
 

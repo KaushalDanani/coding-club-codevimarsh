@@ -1,19 +1,20 @@
-import Question from './Question.js';
-import Comment from './Comment.js'
 import { useEffect, useState } from 'react'
 import { useLocation } from 'react-router-dom'
+import Question from './Question.js';
+import Comment from './Comment.js'
 import Navbar_after_login from '../NavbarAfterLogin/Navbar_after_login.js';
 import useUser from '../../store/userContext.js';
 import ToastComponent from '../Toast/toastComponent.js';
 import QuestionSkeleton from './QuestionSkeleton.js';
 import CommentSkeleton from './CommentSkeleton.js';
+import Myfooter from '../Footer/Myfooter.js';
 
 export default function Question_data() {
     const { user, setUser } = useUser();
     
     const location = useLocation();
     const [isQuestionDataFetch, setIsQuestionDataFetch] = useState(true);
-    const [userID, setUserID] = useState("");
+    const [userID, setUserID] = useState();
     const [imgData,setImgData] = useState("");
 
     useEffect(()=>{
@@ -25,7 +26,7 @@ export default function Question_data() {
 
     const [toastVisible, setToastVisible] = useState(false);
     const [toastMessage, setToastMessage] = useState("");
-    const [toastType, setToastType] = useState("");
+    const [toastType, setToastType] = useState();
     const searchParams = new URLSearchParams(location.search);
     const q_id = searchParams.get('q_id');
 
@@ -34,11 +35,11 @@ export default function Question_data() {
     const [Q_upvote, setQUp] = useState(false);
     const [R_data, setRData] = useState([]);
     const [rMap, setrMap] = useState(new Map());
-    const [upMap, setupMap] = useState(new Map());
+    const [userUps, setuserUps] = useState([]);
 
     useEffect(() => {
         setIsQuestionDataFetch(true);
-        if(userID!=null)
+        if(userID!=undefined)
         {
             fetch(`${process.env.REACT_APP_BACKEND_URL}/discussion/question?userID=${userID}&q_id=${q_id}`)
                 .then((response) => {
@@ -52,13 +53,9 @@ export default function Question_data() {
                     setAsker(data[1]);
                     setQUp(data[2]);
                     setRData(data[3]);
-
                     const m1 = new Map(data[4]);
-                    const uArr = data[5];
-                    const m2 = new Map(uArr);
-
                     setrMap(m1);
-                    setupMap(m2);
+                    setuserUps(data[5]);
 
                     setIsQuestionDataFetch(false);
                 })
@@ -117,7 +114,7 @@ export default function Question_data() {
                 code={comment.code}
                 up_count={comment.upvotes}
                 date={comment.replyDate}
-                value={upMap.get(comment._id)}
+                value={userUps.includes(comment._id)}
                 admin={user.isAdmin}
                 deleteReplyFromList={deleteReplyFromList}
             />
@@ -131,6 +128,7 @@ export default function Question_data() {
             {isQuestionDataFetch ? <QuestionSkeleton /> : questionHead()}
             {isQuestionDataFetch ? <CommentSkeleton /> : <>{R_data.map(commentGenerator)}</> }
 
+            <Myfooter />
         </>
     )
 

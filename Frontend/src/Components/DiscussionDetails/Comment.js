@@ -1,5 +1,5 @@
 import React from 'react'
-import { useEffect, useState } from 'react'
+import { Link, useEffect, useState } from 'react'
 import './Comment.css'
 import Upvote from './upvote.js'
 import ToastComponent from '../Toast/toastComponent.js'
@@ -69,7 +69,7 @@ function Comment(props) {
             <div className='discussion_c_card'>
 
                 <div className="avtarDisc">
-                    <a href={`profile?visitID=${props.commenter_id}`}>
+                    <a href={`/profile?visitID=${props.commenter_id}`}>
                         <img
                         src={`data:Image/jpeg;base64,${props.pfp}`}
                         alt={`Profile of ${props.commenter}`}
@@ -80,7 +80,7 @@ function Comment(props) {
                 <div className="innercontentDisc">
                     <div className="asker" id={props._id}>
                         <div id="commenter_id">
-                            <a href={`profile?visitID=${props.commenter_id}`}>
+                            <a href={`/profile?visitID=${props.commenter_id}`}>
                                 {props.commenter}
                             </a>
                         </div>

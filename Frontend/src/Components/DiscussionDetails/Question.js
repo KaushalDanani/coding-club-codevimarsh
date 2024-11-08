@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./Question.css";
 import Upvote from "./upvote.js";
+import CommentIcon from "./CommentIcon.js";
 import { Link } from "react-router-dom";
 
 function Question(props) {
@@ -60,7 +61,7 @@ function Question(props) {
             </div>
             <div id="comment_div">
               <Link to={`/discussion/question/addReply?q_id=${props._id}`}>
-                <button id="com_button">Comment</button>
+                <button id="com_button"><CommentIcon/>Comment</button>
               </Link>
             </div>
             <div id="date_div">{qDate}</div>

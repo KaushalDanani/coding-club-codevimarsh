@@ -111,16 +111,64 @@
     margin-right: 0.8vw;
 }
 
+.sort-search-operations {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.SortByUpvotesBtn {
+    padding: 0.5rem 1.4rem 0.5rem 1.4rem;
+    letter-spacing: 1px;
+    font-size: 0.9rem;
+    height: fit-content;
+    width: fit-content;
+    color: white;
+    /* border: 2px solid white; */
+    background-color: rgb(253, 138, 22);
+    align-self: flex-end;
+    border: none;
+    border-radius: 8px;
+}
+
+.SortByUpvotesBtn:hover {
+    background-color: rgb(189, 95, 0);
+}
+
+.upvote-tags-container {
+    display: flex;
+    gap: 1rem;
+    max-width: 88.7%;
+}
+
 .all_que_tag {
     display: flex;
     text-align: center;
-    justify-content: center;
+    justify-content: flex-start;
+    max-width: 100%;
+    overflow-x: auto;
+}
+.all_que_tag::-webkit-scrollbar {
+    height: 0.9rem;
+}
+.all_que_tag::-webkit-scrollbar-thumb {
+    border: 5px solid #363636;
+}
+.all_que_tag::-webkit-scrollbar-track {
+    background: #363636 !important;
 }
 
 #q_date{
     display: flex;
     align-items: center;
     padding-right: 2vw;
+}
+
+.operationsOnDiscussionData {
+    width: 85%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 @media (max-width:900px){

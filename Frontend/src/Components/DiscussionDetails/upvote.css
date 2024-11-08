@@ -4,3 +4,6 @@
     padding-left: 0.2vw;
     font-size: 1.4rem;
 }
+.upvoteContent{
+    display: flex;
+}

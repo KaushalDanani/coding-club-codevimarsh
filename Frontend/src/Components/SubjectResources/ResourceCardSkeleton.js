@@ -3,7 +3,7 @@ import Skeleton from "react-loading-skeleton";
 
 function ResourceCardSkeleton() {
   return Array(4).fill(0).map((resourceCard, index) => (
-      <div className="card" style={{ display: "flex" }}>
+      <div className="card" style={{ display: "flex" }} key={index} >
         <div id="wholeResourceCard" className="card-body">
           <div style={{position: "absolute", top: "26.5%", left: "-16%", border: "1px solid white", borderRadius: '1rem'}}>
             <Skeleton width={80} height={80} style={{borderRadius: '1rem'}} />

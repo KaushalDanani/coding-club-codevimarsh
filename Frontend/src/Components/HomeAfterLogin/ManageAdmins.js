@@ -27,7 +27,7 @@ function ManageAdmins() {
 
     function listAdmins(admin) {
         return (             
-            <div className='manageAdminsBodyRow'>
+            <div className='manageAdminsBodyRow' key={admin._id}>
                 <div>{admin.fname} {admin.lname}</div>
                 <div>{admin.username}</div>
                 <div>
@@ -109,7 +109,7 @@ function ManageAdmins() {
         {(!user || !user.isAdmin) ? navigate(`/`) : 
             <>
                 {toastVisible ? <ToastComponent message={toastMessage} type={toastType} /> : null}
-                <Link to={'/home'}>
+                <Link to={'/'}>
                     <div className='adminBackBtn'></div>
                 </Link>
                 <div className='manageAdminsDiv'>

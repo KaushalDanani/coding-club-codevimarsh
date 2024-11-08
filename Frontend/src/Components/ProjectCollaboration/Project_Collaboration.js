@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from 'react'
-import "./Project_Collaboration.css";
 import { Link } from 'react-router-dom';
+import "./Project_Collaboration.css";
 import ProjectCollaborationCard from './ProjectCollaborationCard.js';
 import Navbar_after_login from '../NavbarAfterLogin/Navbar_after_login.js';
 import ToastComponent from '../Toast/toastComponent.js';
-import MyfooterAfterLogin from '../FooterAfterLogin/MyfooterAfterLogin.js';
-import HashLoader from 'react-spinners/HashLoader.js';
 import useUser from '../../store/userContext.js';
 import ProjectCollaborationCardSkeleton from './ProjectCollaborationCardSkeleton.js';
+import Myfooter from '../Footer/Myfooter.js';
 
 function Project_Collaboration() {
   const { user, setUser } = useUser();
@@ -108,10 +107,9 @@ function Project_Collaboration() {
     if(collaborationData.size !== 0)
     {
       return(collaborationData.map((itemData) => (
-        // console.log("Helelo :  "+map.get(itemData._id))
         <ProjectCollaborationCard 
           key={itemData._id}
-          id={itemData._id}
+          projectCollaborationId={itemData._id}
           data={itemData} userDetails={map.get(itemData._id)}
           deleteCollabCard={deleteCollabCard}
         />
@@ -154,7 +152,8 @@ function Project_Collaboration() {
         }
 
       </div>
-      <MyfooterAfterLogin />
+
+      <Myfooter />
     </>
   )
 }

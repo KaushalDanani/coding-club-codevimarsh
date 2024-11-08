@@ -1,95 +1,118 @@
 import React, { useEffect, useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import "./UserProfile.css";
 import UserProfileLeftPanel from "./UserProfileLeftPanel.js";
 import UserProfileMainPanel from "./UserProfileMainPanel.js";
 import Navbar_after_login from "../NavbarAfterLogin/Navbar_after_login.js";
-import MyfooterAfterLogin from "../FooterAfterLogin/MyfooterAfterLogin.js";
-import { useLocation } from "react-router-dom";
 import HashLoader from "react-spinners/HashLoader.js";
 import useUser from "../../store/userContext.js";
+import ToastComponent from "../Toast/toastComponent.js";
+import Myfooter from "../Footer/Myfooter.js";
 
 function UserProfile() {
-  
+
   const { user, setUser } = useUser();
-  
+  const navigate = useNavigate();
+
   const location = useLocation();
-  const [userID,setUserID] = useState("");
-  const [base64Img,setBase64Img] = useState('');
-  const [searchValue, setSearchValue] = useState("");
-  const [userData,setUserData] = useState([]);
+  const [userID, setUserID] = useState("");
+  const [base64Img, setBase64Img] = useState('');
+  const [userData, setUserData] = useState([]);
   const [isLoadingProfile, setIsLoadingProfile] = useState(false);
 
+  const [toastVisible, setToastVisible] = useState(false);
+  const [toastMessage, setToastMessage] = useState("");
+  const [toastType, setToastType] = useState("");
+
   useEffect(() => {
-    if(user!=null)
-    {
+    if (user) {
       setUserID(user._id);
       setBase64Img(`data:image/png;base64,${user.profileImg}`);
       setUserData(user);
     }
-  },[user])
+  }, [user])
 
   const searchParams = new URLSearchParams(location.search);
-  const visitID = searchParams.get('visitID');
+  const visitID = searchParams.get('visitID') ?? null;
 
-  useEffect( () => {
+  useEffect(() => {
 
-    (async () => {
-      setIsLoadingProfile(true);
-      try {
-        if(visitID===null || visitID===userID)
-        {
-          const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/user/profile/?userID=${userID}`)
-          const data = await response.json();
-          setUserData(data[0]);
+    if(userID) {
+      (async () => {
+        setIsLoadingProfile(true);
+        try {
+          if (visitID === null || visitID === userID) {
+            const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/user/profile/?userID=${userID}`)
+            const data = await response.json();
+            setUserData(data[0]);
+          }
+          else {
+            const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/user/profile/?userID=${visitID}`)
+            const data = await response.json();
+            setUserData(data[0]);
+          }
         }
-        else
-        {
-          const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/user/profile/?userID=${visitID}`)
-          const data = await response.json();
-          setUserData(data[0]);
+        catch (err) {
+          console.error(err, err.response);
         }
-      }
-      catch(err)
-      {
-        console.error(err, err.response);
-      }
-      setIsLoadingProfile(false);
-    })();
-  },[visitID,userID]);
+        setIsLoadingProfile(false);
+      })();
+    }
+  }, [visitID, userID]);
 
 
-  function changeSearchValue(event) {
-    setSearchValue(event.target.value);
+  const searchUser = async () => {
+    const username = document.getElementById('searchUser').value;
+
+    const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/user/search/?username=${username}`);
+    const data = await response.json();
+    if (data.userID !== undefined) {
+      // alert(data.userID);
+      navigate(`/profile?visitID=${data.userID}`);
+    }
+    else {
+      setToastVisible(true);
+      setToastMessage("User does not exist!");
+      setToastType("error");
+      setTimeout(() => {
+        setToastVisible(false)
+      }, 1000);
+    }
   }
 
   if (isLoadingProfile)
     return <>
       <div className='loadingPage'>
         <HashLoader
-            color={'#ffffff'}
-            loading={isLoadingProfile}
-            size={70}
-            aria-label="Loading Spinner"
-            data-testid="loader"
+          color={'#ffffff'}
+          loading={isLoadingProfile}
+          size={70}
+          aria-label="Loading Spinner"
+          data-testid="loader"
         />
       </div>
     </>
 
   return (
     <>
-    <Navbar_after_login imgData={base64Img} />
-    <div className="userProfile">
-      
-      <div className="UPouterFrame">
-        <div>
-          <UserProfileLeftPanel visitID={visitID!=userID ? visitID : null}/>
+      {toastVisible ? <ToastComponent message={toastMessage} type={toastType} /> : null}
+      <Navbar_after_login imgData={base64Img} />
+      <div className="userProfile">
+        <div className="searchBarDiv">
+          <input id='searchUser' type="text" placeholder="search username"></input>
+          <button aria-label="SearchIcon" onClick={searchUser}></button>
         </div>
-        <div>
-          <UserProfileMainPanel />
+        <div className="UPouterFrame">
+          <div>
+            <UserProfileLeftPanel visitID={visitID != userID ? visitID : null} userData={userData} />
+          </div>
+          <div>
+            <UserProfileMainPanel userData={userData} />
+          </div>
         </div>
       </div>
-    </div>
-    <MyfooterAfterLogin/>
+
+      <Myfooter />
     </>
   );
 }

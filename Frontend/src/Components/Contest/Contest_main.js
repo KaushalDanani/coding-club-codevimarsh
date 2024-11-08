@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import './Contest_main.css';
 import Weekly_contest from "./Weekly_contest.js";
 import Running_contest from "./Running_contest.js";
 import Completed_contest from "./Completed_contest.js";
 import Navbar_after_login from "../NavbarAfterLogin/Navbar_after_login.js";
-import MyfooterAfterLogin from "../FooterAfterLogin/MyfooterAfterLogin.js";
-import { Link } from "react-router-dom";
 import HashLoader from "react-spinners/HashLoader.js";
 import useUser from "../../store/userContext.js";
+import Myfooter from "../Footer/Myfooter.js";
 
 export default function Contest_main() {
 
@@ -174,7 +174,7 @@ export default function Contest_main() {
             </>
             }
         </div>
-        <MyfooterAfterLogin/>
+        <Myfooter />
         </>
     );
 }

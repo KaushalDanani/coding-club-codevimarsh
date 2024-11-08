@@ -9,7 +9,6 @@ function Sign_in_page() {
 
     const {user, setUser} = useUser();
 
-
     const [enterdUsername, setEnterdUsername] = useState('')
     const [enterdPassword, setEnterdPassword] = useState('')
     const [showhide, setShowhide] = useState('true');
@@ -56,7 +55,8 @@ function Sign_in_page() {
                 else
                 {
                     setUser(data.user);
-                    navigate('/home')
+                    navigate('/')
+                    // window.location.reload();
                 }
             })
             .catch((err) => {

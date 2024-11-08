@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import './ProjectDisplay.css'
 import TechTag from "../Tags/TechTag.js";
+import Upvote from "../DiscussionDetails/upvote.js";
 
 function ProjectDisplay(props) {
     
@@ -49,105 +50,65 @@ function ProjectDisplay(props) {
             deletebtn();
         }
     }, [props.team,userID]);
-
-    // function showProjectData(){
-    //     var x = document.getElementById("video_info"+props.name);
-    //     var y = document.getElementById("btnname" + props.name);
-    //     if (x.style.display === "none" || x.style.display === "") {
-
-    //         x.style.display = "block";
-    //         y.innerHTML = "Show Less";
-
-    //     } else {
-    //         x.style.display = "none";
-    //         y.innerHTML = "Show More";
-    //     }
-    // }
     
-        function delete_project(){
-
-            const conf = window.confirm('Are you sure you want to delete Project?');
-            if(conf)
-            {
-                console.log(props.data._id);
-                const deleteProjectData = {
-                    projectCollaborationCardId: props.data._id
-                }
-            
-                fetch(`${process.env.REACT_APP_BACKEND_URL}/project/delete`,{
-                    method: 'POST',
-                    body: JSON.stringify(deleteProjectData),
-                    headers: {
-                    'Content-Type': 'application/json'
-                        }
-                    })
-                    .then(response => response.json())
-                    .then(data => {
-                        props.deleteProjectFromList(props.data._id,data.message);
-                    });
-
-            }  
-        }
-
-        function video(){
-            if(props.data.video){
-                return(
-                    <source type="video/mp4" src={props.data.video}></source>
-                )
-            }
-        }
-
-        function image(){
-            if(props.data.image){
-                return(
-                    <img src={props.data.image}  alt="project image" loading="lazy" ></img>
-                )
-            }
-        }
-
-        useEffect(() => {
-            setIsProjectDataFetching(true);
-            if(props.data.contributors){
-                    fetch(`${process.env.REACT_APP_BACKEND_URL}/project/members`,{
-                        method : 'POST',
-                        headers : {
-                            "Accept" : 'application/json',
-                            'Content-Type' : 'application/json'
-                        },
-                        body : JSON.stringify({
-                            contributors: props.data.contributors
-                        })
-                    }).then(
-                        response => response.json()
-                    ).then(
-                        (data) => {
-                            setFnamelname(data);
-                            setIsProjectDataFetching(false);
-                        }
-                    )
-                }
-        }, [props.data.contributors]);
-
-        function addtags(){
-            if(props.data.tags){
-                if(props.data.tags.length!=1 || props.data.tags[0]!="")
-                {
-                return(
-                    props.data.tags.map(techtags)
-                )
-                }
-            }
-        }
+    function delete_project(){
         
-        function techtags(tag){
+        const conf = window.confirm('Are you sure you want to delete Project?');
+        if(conf)
+        {
+            // console.log(props.data._id);
+            const deleteProjectData = {
+                projectCollaborationCardId: props.data._id
+            }
+        
+            fetch(`${process.env.REACT_APP_BACKEND_URL}/project/delete`,{
+                method: 'POST',
+                body: JSON.stringify(deleteProjectData),
+                headers: {
+                'Content-Type': 'application/json'
+                    }
+                })
+                .then(response => response.json())
+                .then(data => {
+                    props.deleteProjectFromList(props.data._id,data.message);
+                });
+        }  
+    }
+
+    function video(){
+        if(props.data.video){
             return(
-                <TechTag tagname = {tag} />
+                <source type="video/mp4" src={props.data.video}></source>
             )
         }
+    }
 
-        function toggleLink(){
-            setHover(!hover);
-        }
+    useEffect(() => {
+        setIsProjectDataFetching(true);
+        if(props.data.contributors){
+                fetch(`${process.env.REACT_APP_BACKEND_URL}/project/members`,{
+                    method : 'POST',
+                    headers : {
+                        "Accept" : 'application/json',
+                        'Content-Type' : 'application/json'
+                    },
+                    body : JSON.stringify({
+                        contributors: props.data.contributors
+                    })
+                }).then(
+                    response => response.json()
+                ).then(
+                    (data) => {
+                        setFnamelname(data);
+                        setIsProjectDataFetching(false);
+                    }
+                )
+            }
+    }, [props.data.contributors]);
+
+    function toggleLink(){
+        setHover(!hover);
+    }
 
     return (
         <>
@@ -158,8 +119,7 @@ function ProjectDisplay(props) {
                 <div className="projdispheader">
                     <div>
                         <a href={props.data.projectLink} target="_blank" >
-                        {/* {image()} */}
-                        <img src={props.data.image}  alt="Project Image" loading="lazy" ></img>
+                            <img src={props.data.image}  alt="Project Image" loading="lazy" ></img>
                         </a>
                     </div>
                     <div>
@@ -170,7 +130,7 @@ function ProjectDisplay(props) {
                     </a>
                         
                         <div className="projectdiscription">Project Description : <span> {props.data.description}</span> </div>
-                        <div className="projecttech">Technologies : <span> {addtags()} </span></div>
+                        <div className="projecttech">Technologies : {props.data.tags.map((tagname) => <TechTag tagname={tagname} key={props.data._id+tagname} />)} </div>
                         
                     </div>
 
@@ -189,10 +149,10 @@ function ProjectDisplay(props) {
                     <div className="teaminfo">
                         <h2>Team Member</h2>
                         <ul>
-                            {Fnamelname.map((data)=>{
+                            {Fnamelname.map((data, idx)=>{
                                 
                                 return(
-                                    <li>{data.fname} {data.lname}</li>
+                                    <li key={idx}>{data.fname} {data.lname}</li>
                                 )
                             })}
                         </ul>
@@ -200,8 +160,11 @@ function ProjectDisplay(props) {
                 </div> : null }
 
                 <div className="projbtn">
-                    <button className="projdispbutton"  onClick={() => setExpand(!expand)}> {expand ? 'Show More' : 'Show Less'}</button>
-                    <button id={`btnname${props.data.projectName}dlt`} className="projdispbutton" onClick={() => {delete_project()}}>Delete</button>
+                    <Upvote className="projdispbutton" value={props.value} Id={props.data._id} type='p' count={props.data.upvotes} user={props.userID} />
+                    <div>
+                        <button className="projdispbutton"  onClick={() => setExpand(!expand)}> {expand ? 'Show More' : 'Show Less'}</button>
+                        <button id={`btnname${props.data.projectName}dlt`} className="projdispbutton" onClick={() => {delete_project()}}>Delete</button>
+                    </div>
                 </div>
             </div>
         </div>

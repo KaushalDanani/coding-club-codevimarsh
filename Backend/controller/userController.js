@@ -16,11 +16,22 @@ exports.getProfile = async (req,res) => {
   }
 }
 
+exports.search = async (req,res) => {
+  const username = req.query.username;
+  try{
+    const resData = await User.findOne({username: username});
+    res.status(200).json({'userID' : resData._id.toString()});
+  }
+  catch(err){
+    res.status(400).json({'error' : err.message});
+  }
+}
+
 exports.editSkills = async (req,res) => {
     const skills = req.body.userSkills;
-    console.log(skills);
+    // console.log(skills);
   const userID = req.query.userID;
-  console.log(userID);
+  // console.log(userID);
 
   try {
     const user = await User.findOneAndUpdate(
@@ -31,7 +42,7 @@ exports.editSkills = async (req,res) => {
 
     res.send(user);
   } catch (err) {
-    console.log("SKILLS ERROR:",err);
+     console.log("SKILLS ERROR:",err);
   }
 }
 
@@ -110,7 +121,7 @@ exports.editProfilePassword = async (req,res) => {
         const newPass = req.password;
         const userID = req.query.userID;
 
-        console.log(newPass);
+        // console.log(newPass);
     
         const updatedUser = await User.findOneAndUpdate(
           { _id: userID },
@@ -146,7 +157,13 @@ exports.editProfileImage = async (req,res) => {
 exports.profileProjects = async (req,res) => {
   const userID = req.query.userID;
   const projData = await Project.find({ contributors: { $in: [userID] } });
-  res.send(projData);
+  const userUps = await User.findOne(
+    { _id: userID },
+    "-_id projectUpvotes"
+  ).then((obj) => {
+    return obj.projectUpvotes;
+  });
+  res.json({'projects': projData, 'userUps': userUps})
 }
 
 exports.homeDataset = async (req,res) => {

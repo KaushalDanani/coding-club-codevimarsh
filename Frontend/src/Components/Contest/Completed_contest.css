@@ -3,12 +3,6 @@
     src: url("/public/fonts/zai_CourierPolski1941.ttf");
 }
 
-*{
-    margin: 0;
-    padding: 0%;
-    box-sizing: border-box;
-}
-
 .completed_contest_main{
     padding: 1% 0%;
     border-radius: 10px;

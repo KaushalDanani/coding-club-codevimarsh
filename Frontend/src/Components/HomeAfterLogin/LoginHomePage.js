@@ -8,14 +8,14 @@ import NewTasks from "./NewTasks.js";
 // import NewUpdates from "./NewUpdates.js";
 import Navbar_after_login from "../NavbarAfterLogin/Navbar_after_login.js";
 import useUser from "../../store/userContext.js";
-import MyfooterAfterLogin from "../FooterAfterLogin/MyfooterAfterLogin.js";
 import HashLoader from "react-spinners/HashLoader.js";
 import PhotoGallery from "../PhotoGallery/PhotoGallery.js"
+import Myfooter from "../Footer/Myfooter.js";
 
 function LoginHomePage() {
   const api_key = process.env.REACT_APP_QUOTE_API_KEY;
   // const navigate = useNavigate()
-  const [isLoadingHome, setIsLoadingHome] = useState(false);
+  const [isLoadingHome, setIsLoadingHome] = useState(true);
   const [fname, setFname] = useState("");
   const [userID, setUserID] = useState("");
   const [admin, setAdmin] = useState(false);
@@ -29,22 +29,19 @@ function LoginHomePage() {
   const { user, setUser } = useUser();
 
   useEffect(() => {
-    // setTimeout(() => {
       fetch(api_key)
       .then((response) => response.json())
       .then((quote) => {
-        setQuote(quote.content);
+        setQuote(quote.quote);
         setAuthor(quote.author);
       });
-
-    // }, 3000)
   }, []);
 
   const changeQuoteHandler = () => {
     fetch(api_key)
       .then((response) => response.json())
       .then((quote) => {
-        setQuote(quote.content);
+        setQuote(quote.quote);
         setAuthor(quote.author);
       });
   };
@@ -175,7 +172,7 @@ function LoginHomePage() {
         <NewUpdates title={"News"} userID={userID} news={newsData} isArticleSelected={false}/> */}
       </div>
       <PhotoGallery/>
-      <MyfooterAfterLogin />
+      <Myfooter />
     </>
   )
   )

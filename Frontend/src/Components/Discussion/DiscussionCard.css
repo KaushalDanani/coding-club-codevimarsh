@@ -8,21 +8,18 @@
     box-sizing: border-box;
     animation: scrollAnimation linear;
     animation-timeline: view();
-    animation-range: entry 0 cover 42.5%;
+    animation-range: entry 0 cover 42.6%;
 }
 
 @keyframes scrollAnimation {
     0% {
         opacity: 0;
-        scale: 0;
     }
     50% {
         opacity: 0;
-        scale: 0.5;
     }
     100% {
         opacity: 1;
-        scale: 1;
     }
 }
 

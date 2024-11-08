@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import "./DiscussionCard.css";
 import "./Discussion_Forums.css";
+import Upvote from '../DiscussionDetails/upvote.js';
 import useUser from '../../store/userContext.js';
 import ToastComponent from '../Toast/toastComponent.js';
 import TechTag from '../Tags/TechTag.js';
@@ -14,6 +15,9 @@ function Discussion_block(props) {
   const [toastVisible, setToastVisible] = useState(false);
   const [toastMessage, setToastMessage] = useState("");
   const [toastType, setToastType] = useState("");
+  // const [isAdmin, setAdminVal] = useState(false)
+  const [userID,setUserID] = useState()
+  const [delCheck, setDelCheck] = useState(false)
 
   useEffect(() => {
     if (props.tags) {
@@ -21,11 +25,13 @@ function Discussion_block(props) {
     }
   }, [props.tags]);
 
+  // console.log(props);
+
   function getTag() {
     if(tag.length!=1 || tag[0]!="")
     {
       return(
-          tag.map((tag) => <TechTag tagname = {tag} />)
+          tag.map((tag, idx) => <TechTag key={idx} tagname = {tag} />)
       )
     }
   }
@@ -39,10 +45,11 @@ function Discussion_block(props) {
   }, [props.date]);
 
 
-  
-  const isAdmin = user.isAdmin;
-  const userID = user._id;
-  const delCheck = (userID === props.asker_id || isAdmin===true);
+  useEffect(()=>{
+    // setAdminVal(user.isAdmin);
+    setUserID(user._id);
+    setDelCheck(user._id === props.asker_id || user.isAdmin===true);
+  },[user])
 
   function deleteQue(q_id) {
     const conf = window.confirm('Are you sure you want to delete this reply?');
@@ -69,14 +76,14 @@ function Discussion_block(props) {
 
       <div className='discussion_c_card'>
         <div className='avtarDisc'>
-          <a href={`profile?visitID=${props.asker_id}`}>
+          <Link to={`/profile?visitID=${props.asker_id}`} href={`profile?visitID=${props.asker_id}`}>
             <img src={`data:Image/jpeg;base64,${props.pfp}`} alt={`Profile of ${props.asker_username}`} loading="lazy" />
-          </a>
+          </Link>
         </div>
         <div className='innercontentDisc'>
           <div className='asker' id={props._id}>
             <div id='asker_id'>
-              <a href={`profile?visitID=${props.asker_id}`}>{props.asker_username}</a>
+              <Link to={`/profile?visitID=${props.asker_id}`} href={`profile?visitID=${props.asker_id}`}>{props.asker_username}</Link>
             </div>
             <button
               className='del_discussion'
@@ -89,11 +96,14 @@ function Discussion_block(props) {
             <div id='ques'>
               {props.question}
             </div>
+          </Link>
             <div id="ques_tags">
-              <div className="all_que_tag">{getTag()}</div>
+              <div className='upvote-tags-container'>
+                <Upvote value={props.value} Id={props.q_id} type='q' count={props.up_count} user={userID}/>
+                <div className="all_que_tag">{getTag()}</div>
+              </div>
               <div id='q_date'>{qDate}</div>
             </div>
-          </Link>
         </div>
       </div>
     </>
