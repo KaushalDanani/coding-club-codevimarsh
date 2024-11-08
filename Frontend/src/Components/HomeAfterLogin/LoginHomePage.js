@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { Navigate, useNavigate } from "react-router-dom";
-import Skeleton from 'react-loading-skeleton'
 import 'react-loading-skeleton/dist/skeleton.css'
 import "./LoginHomePage.css";
 import Greeting from "./Greeting.js";
@@ -11,9 +10,9 @@ import useUser from "../../store/userContext.js";
 import HashLoader from "react-spinners/HashLoader.js";
 import PhotoGallery from "../PhotoGallery/PhotoGallery.js"
 import Myfooter from "../Footer/Myfooter.js";
+import Quote from "../Quotes/Quote.js";
 
 function LoginHomePage() {
-  const api_key = process.env.REACT_APP_QUOTE_API_KEY;
   // const navigate = useNavigate()
   const [isLoadingHome, setIsLoadingHome] = useState(true);
   const [fname, setFname] = useState("");
@@ -22,29 +21,9 @@ function LoginHomePage() {
   const [contests, setContests] = useState([]);
   // const [newsData, setNewsData] = useState([]);
   // const [articlesData, setArticlesData] = useState([]);
-  const [quote, setQuote] = useState("");
-  const [author, setAuthor] = useState("");
   // const [userData,setUserData] = useState('');
   const [base64Img,setBase64Img] = useState('');
   const { user, setUser } = useUser();
-
-  useEffect(() => {
-      fetch(api_key)
-      .then((response) => response.json())
-      .then((quote) => {
-        setQuote(quote.quote);
-        setAuthor(quote.author);
-      });
-  }, []);
-
-  const changeQuoteHandler = () => {
-    fetch(api_key)
-      .then((response) => response.json())
-      .then((quote) => {
-        setQuote(quote.quote);
-        setAuthor(quote.author);
-      });
-  };
 
   useEffect(() => {
     (async () => {
@@ -129,49 +108,14 @@ function LoginHomePage() {
       <Navbar_after_login imgData={base64Img} />
       <div className="background-color-LoginHome">
         <Greeting fname={fname} userID={userID} isAdmin={admin} />
-        <div className="quoteContainerAfterLogin">
-          <div style={{ display: "flex", justifyContent: "space-between" }}>
-            <h2 className="quoteTitle">Quote</h2>
-            <input
-              type="button"
-              className="new_quote_btn"
-              onClick={changeQuoteHandler}
-              title='Change Quote'
-            />
-          </div>
-          <hr />
-          <div className="quoteDiv">
-            <div className="quoteDivInfo">
-              {quote ? 
-              <>
-                <div id="openQuote" />
-                <p className="quoteContent">{quote}</p>
-                <div id="closeQuote" />
-              </>
-              : 
-              <> 
-                <Skeleton />
-                <Skeleton width={'60%'} />
-              </> }
-            </div>
-                <div className="authorName">
-                  {author ? 
-                      <span className="authorNameContainer"> ~ {author} </span>
-                    :
-                      <Skeleton height={'1.2rem'} width={250}/>
-                  }
-                </div>
-          </div>
-        </div>
-        <NewTasks userID={userID}
-          contests={contests}
-        />
+        <Quote />
+        <NewTasks userID={userID} contests={contests} />
         
         {/* Article and News Display Section */}
         {/* <NewUpdates title={"Articles"} userID={userID} news={articlesData} isArticleSelected={true}/>
         <NewUpdates title={"News"} userID={userID} news={newsData} isArticleSelected={false}/> */}
+        <PhotoGallery />
       </div>
-      <PhotoGallery/>
       <Myfooter />
     </>
   )

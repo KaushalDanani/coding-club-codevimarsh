@@ -6,14 +6,15 @@ import useUser from "../../store/userContext.js";
 function Greeting(props){
     
     return (
+        <div className="greeting-section">
+            <div className="greetmain">
+                <Link to={`/profile`}><h1 className="greet">Hey <span className="greetName">{props.fname}</span>,</h1></Link>
 
-        <div className="greetmain">
-            <Link to={`/profile`}><h1 className="greet">Hey <span className="greetName">{props.fname}</span>,</h1></Link>
+                <Link 
+                style={props.isAdmin ? {"display":"block"} : {"display":"none"}}
+                className="AddAdminBtn" to={`/manageAdmins`}>Manage Admins</Link>
 
-            <Link 
-            style={props.isAdmin ? {"display":"block"} : {"display":"none"}}
-            className="AddAdminBtn" to={`/manageAdmins`}>Manage Admins</Link>
-
+            </div>
         </div>
     )
 }

@@ -2,12 +2,17 @@
   position: relative;
   overflow: hidden;
   cursor: pointer;
-  border-radius: 8px;
-  transition: transform 0.3s ease-in-out;
+  border-radius: 50%;
+  border: 2px solid white;
+  box-shadow: 4px 8px 25px rgb(0, 0, 0);
+  transition: all 0.5s ease-in-out;
 }
 
 .image-card:hover {
-  transform: scale(1.03); /* Image transformation on hover */
+  transform: scale(1.17); /* Image transformation on hover */
+  box-shadow: none;
+  border: 2px dotted white;
+  border-radius: 0.5rem;
 }
 
 .gallery-image {
@@ -27,7 +32,7 @@
   color: #fff;
   padding: 10px;
   opacity: 0;
-  transition: opacity 0.3s ease-in-out;
+  transition: opacity 0.5s ease-in-out;
   text-align: center;
 }
 

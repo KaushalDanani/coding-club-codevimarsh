@@ -3,11 +3,23 @@
     src: url("/public/fonts/Cyborg\ Punk.ttf");
 }
 
+.greeting-section {
+    display: flex;
+    justify-content: center;
+}
+
+.greetmain{
+    display: flex;
+    justify-content: space-between; 
+    width: 90%;
+}
+
 .greet{
     color: white;
     margin-top: 0px;
     font-size: 1.35rem;
-    margin-top: 18%;
+    margin-top: 2.5rem;
+    letter-spacing: 0.05rem;
     font-family: newFont;
 }
 
@@ -21,12 +33,6 @@
     transition: all 0.3s;
 }
 
-.greetmain{
-    display: flex;
-    justify-content: space-between; 
-    position: relative;
-    width: 95%;
-}
 
 .AddAdminBtn{
     font-size: 0.9rem;

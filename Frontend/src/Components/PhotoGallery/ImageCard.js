@@ -4,7 +4,7 @@ import './ImageCard.css'; // Import CSS file
 const ImageCard = ({ url, text }) => {
   return (
     <div className="image-card">
-      <img src={url} alt="Gallery" className="gallery-image" />
+      <img className="gallery-image" src={url} alt="Gallery" loading='lazy' />
       <div className="image-text">
         <p>{text}</p>
       </div>

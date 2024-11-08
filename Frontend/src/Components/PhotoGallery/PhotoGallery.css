@@ -1,18 +1,29 @@
+@font-face {
+  font-family: newFont;
+  src: url("/public/fonts/Cyborg\ Punk.ttf");
+}
+
+.gallary-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .gallery-container {
+  width: 90%;
   text-align: center;
-  margin-top: 20px;
-  background-color: #ffefd5; /*Light orange background*/
-  padding: 20px;
-  border-radius: 10px;
-  background-image: url('https://www.toptal.com/designers/subtlepatterns/uploads/summer-waves.png'); /* Orange textured background */
-  background-size: cover;
-  background-position: center;
+  backdrop-filter: blur(4px);
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 1rem;
+  border-radius: 1.5rem;
+  border: 2px solid white;
 }
 
 .gallery-title {
-  font-size: 2.5rem;
-  /* color: white; */
-  color: #222;
-  font-weight: 700;
-  /* font-family: ; */
+  font-size: 1.35rem;
+  margin-left: 2.5rem;
+  margin-top: 1.5rem;
+  color: rgb(255, 255, 255);
+  font-family: newFont;
+  letter-spacing: 0.07rem;
 }
