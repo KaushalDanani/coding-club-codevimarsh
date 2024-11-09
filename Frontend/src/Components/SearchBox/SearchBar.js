@@ -50,7 +50,7 @@ const SearchBar = ({ sendBackSearchValue, type }) => {
 
   return (
     <>
-    <div style={{position: 'relative'}}>
+    <div style={{position: 'relative'}} onBlur={() => setShowSuggestions(false)}>
       <div className='searchContainer'>
           <input 
             className='searchInput'
@@ -58,7 +58,6 @@ const SearchBar = ({ sendBackSearchValue, type }) => {
             value={searchValue} 
             placeholder='Search by tags'
             onFocus={handleFocus}
-            onBlur={() => {setTimeout(() => {setShowSuggestions(false)}, 100)}}
             onChange={handleSearchValue}></input>
           <button className='searchBtn' title='Search' onClick={handleSearch}></button>
       </div>
@@ -70,7 +69,7 @@ const SearchBar = ({ sendBackSearchValue, type }) => {
                 <li
                   key={idx}
                   className='suggestionElement'
-                  onClick={() => handleLiClickFromSuggestions(suggestion)}>{suggestion}</li>
+                  onMouseDown={() => handleLiClickFromSuggestions(suggestion)}>{suggestion}</li>
               )
             })}
           </ul> }
